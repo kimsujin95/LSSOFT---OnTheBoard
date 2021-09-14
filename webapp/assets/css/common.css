@@ -41,7 +41,6 @@ div.container {
 }
 
 /*FOOTER*/
-#footerwrap{height:auto;margin-top:45px;padding-bottom:22px;background:#969696;}
 #footer{position:relative;width:100%;min-width:350px;max-width:1200px;margin:0 auto;padding-left:0px;}
 #footer h1{display:none;position:absolute;left:0;top:52px;}
 #footer .menu{overflow:hidden;padding-top:23px;text-align:center;}

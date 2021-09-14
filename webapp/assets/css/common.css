@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+/* 헤더 */
+div.wrap {
+	width: 100%;
+	background-color: black;
+	min-height: 50px;
+}
+
+/* 컨테이너 */
+div.container {
+	width: 1200px;
+	margin: 0 auto;
+	min-height: 50px;
+}
+
+/* 배경 테스트용 색상 */
+.back-green {
+	background-color: green;
+}
+
+/* 폰트 사이즈 */
+/* 내비 등 큰 사이즈 */
+.font-size-24 {
+	font-size: 2.4rem;
+}
+
+/* 크럼블 등 중간 크기 */
+.font-size-16 {
+	font-size: 1.6rem;
+}
+
+/* 일반 컨텐츠용 */
+.font-size-14 {
+	font-size: 1.4rem;
+}
+
+/* 작은 사이즈 */
+.font-size-12 {
+	font-size: 1.2rem;
+}

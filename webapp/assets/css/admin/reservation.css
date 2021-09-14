@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+/* 검색창 */
+div#search-bar {
+	padding: 10px 20px;
+	background-color: white;
+	border-radius: 5px;
+	margin-bottom: 15px;
+}
+
+/* 날짜 선택 */
+div#date-selection, div#date-selection > div {
+	display: inline-block;
+}
+
+label.date-label {
+	font-weight: 500;
+}
+
+/* 검색어 입력 영역 */
+div#search-area div {
+	display: inline-block;
+}
+
+/* 검색창 */
+div#keyword-area input {
+	width: 300px;
+}
+
+/* //검색창 */
+
+/* 테이블 영역 */
+table#reservation-list, table#review-list {
+	border-top: 2px solid rgb(224, 224, 224);
+	border-bottom: 2px solid rgb(224, 224, 224);
+	width: 100%;
+}
+
+table#reservation-list tr, table#review-list tr {
+	text-align: center;
+	height: 35px;
+}
+
+table#reservation-list th, table#review-list th {
+	text-align: center;
+	width: 11.1%;
+	font-weight: 600;
+}
+
+table#reservation-list th:first-child, table#review-list th:first-child {
+	width: 17.7%;
+}
+
+table#reservation-list th:nth-child(2), table#review-list th:nth-child(2){
+	width: 4.6%;
+}
+
+table#review-list th:nth-child(5) {
+	width: 44.4%;
+}
+
+/* 테이블 영역 */
+
+/* 모달 */
+.modal-dialog {
+	width: 600px;
+}
+
+h4.modal-title {
+	font-size: 1.6rem;
+	font-weight: bold;
+}
+
+/* 예약 상세 테이블 */
+table.reservation-detail, table.reservation-progress {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+table.reservation-detail tr, table.reservation-progress tr {
+	border: 1px solid rgb(224, 224, 224);
+	height: 35px;
+}
+
+table.reservation-detail tr th {
+	background-color: #d9edf7;
+	padding: 5px 10px;
+	width: 15%;
+}
+
+table.reservation-detail tr td {
+	padding: 5px;
+	width: 35%;
+}
+
+table.reservation-progress tr th {
+	background-color: #d9edf7;
+	padding: 5px;
+	width: 15%;
+}
+
+table.reservation-progress tr td {
+	padding: 5px;
+	width: 85%;
+}
+
+/* //예약 상세 테이블 */
+

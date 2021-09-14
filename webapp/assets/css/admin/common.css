@@ -1,0 +1,190 @@
+@charset "UTF-8";
+
+/* 헤더 */
+div#header {
+	width: 100%;
+	padding: 0 20px;
+	height: 50px;
+}
+
+div#main-store-name {
+	margin: 8.2px 0;
+}
+
+div#user-controller {
+	margin: 15px 0;
+}
+
+div#user-controller a {
+	margin: 0 10px;
+}
+
+/* 헤더 */
+
+/* 컨텐츠 */
+div#content {
+	width: 1200px;	
+}
+
+/* 어사이드 */
+div#aside {
+	width: 200px;
+}
+
+/* 사이드 네비 게이션 */
+ul#nav-list > li > a {
+	color: black;
+}
+/* 사이드 네비 게이션 */
+
+/* 사이드 네비 게이션 - 서브 */
+ul#sub-nav {
+	margin: 0;
+}
+
+ul#sub-nav > li > a {
+	color: black;
+}
+
+ul#sub-nav li.active > a{
+	color: white;
+}
+
+/* 더 보기 */
+.list-more {
+	font-size:1.2rem;
+	text-decoration: underline;
+}
+
+/* 더 보기 */
+
+/* 사이드 - 게임 리스트 */
+div#rank-area {
+	padding: 10px 5px;
+	background-color: white; 
+	border-radius: 5px;
+	position: fixed;
+	top: 55%;
+	left: 5px;
+	width:200px;
+}
+
+div#rank-title > h2 {
+	margin: 3px 0;
+	font-size: 1.6rem;
+	font-weight: 600;
+	text-align: center;
+}
+
+#rank-list {
+	padding: 5px 0;
+	margin: 0;
+}
+
+#rank-list>li {
+	width: 100%;
+}
+
+.list-inline>li>span {
+	font-size:1.4rem;
+	font-weight: bold;
+	text-align: center;
+}
+
+.rank-num {
+	display : inline-block;
+	width: 20%;
+	color: red;
+}
+
+.rank-subject {
+	display: inline-block;
+	width: 75%;
+}
+
+/* 사이드 - 게임 리스트 */
+
+/* 어사이드 */
+
+/* 메인 */
+div#main {
+	width: 1000px;
+	padding: 20px 10px;
+}
+
+div#main-title {
+	border-bottom: 1px solid rgb(224, 224, 224);
+}
+
+div#main-title>h1 {
+	font-size: 2.4rem;
+	font-weight: 700;
+}
+
+/* 메인 */
+
+/* 컨텐츠 영역 */
+div.content-area {
+	margin: 0px 20px 40px 20px;
+}
+
+/* 서브 타이틀 */
+div.sub-title {
+	margin-bottom: 10px;
+}
+
+div.sub-title>h2 {
+	font-size: 1.6rem;
+	font-weight: 500;
+	margin-right: 5px;
+	display: inline-block;
+}
+/* 컨텐츠 영역 */
+
+/* 페이징 버튼 */
+div#paging{
+	width: 300px;
+	margin: 0 auto;
+}
+
+div#paging > ul{
+	padding: 0 65px;
+}
+
+/* 페이징 버튼 */
+
+
+/* 폰트 세팅 */
+.text-white {
+	color: white;
+}
+
+.font-size-24 {
+	font-size: 2.4rem;
+}
+
+.font-size-16 {
+	font-size: 1.6rem;
+}
+
+.font-size-14 {
+	font-size: 1.4rem;
+}
+
+.font-size-12 {
+	font-size: 1.2rem;
+}
+
+/* 폰트 세팅 */
+
+/* 라디오 라벨 */
+label {
+	margin: 0;
+}
+
+/* 보더 */
+.border-default {
+	border: 1px solid rgb(224, 224, 224);
+}
+
+/* 보더 */

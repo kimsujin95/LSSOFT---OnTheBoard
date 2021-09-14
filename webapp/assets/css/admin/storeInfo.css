@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+/* 테이블 영역 */
+table#storeInfo-table {
+	border-top: 2px solid rgb(224, 224, 224);
+	border-bottom: 2px solid rgb(224, 224, 224);
+	width: 100%;
+}
+
+table#storeInfo-table tr {
+	height: 35px;
+	border: 1px solid rgb(224, 224, 224);
+}
+table#storeInfo-table tr th {
+	vertical-align: top;
+	padding: 10px;
+	background-color: #d9edf7;
+	width: 15%;
+}
+
+table#storeInfo-table tr td {
+	padding: 5px;
+	width: 85%;
+}
+
+input#adress, input#adress-detail {
+	width: 400px;
+}
+
+div.btn-area {
+	padding: 10px 0;
+	text-align: center;
+}

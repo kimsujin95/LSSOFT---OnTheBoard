@@ -41,27 +41,9 @@ div.container {
 }
 
 /*FOOTER*/
-/*푸터크기 설정*/
-#footer{
-	position:relative;
-	width:100%;
-	min-width:350px;
-	max-width:1200px;
-	margin:0 auto;
-	padding-left:0px;
-}
-/*푸터 로고 들어갈 시..*/
-#footer h1{
-	display:none;
-	position:absolute;
-	left:0;
-	top:52px;
-}
 /*푸터 메뉴위치*/
 #footer .menu{
-	overflow:hidden;
 	padding-top:23px;
-	text-align:center;
 }
 /*푸터 메뉴 리스트 가로배치*/
 #footer .menu li{
@@ -77,9 +59,7 @@ div.container {
 /*푸터 주소란 위치 및 색상*/
 #footer .addr{
 	margin-top:21px;
-	overflow:hidden;
 	line-height:15px;
-	text-align:center;
 	color:#fff;
 }
 /*푸터 주소란 여백설정*/

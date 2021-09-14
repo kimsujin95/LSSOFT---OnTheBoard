@@ -22,32 +22,82 @@ div.container {
 /* 폰트 사이즈 */
 /* 내비 등 큰 사이즈 */
 .font-size-24 {
-	font-size: 2.4rem;
+	font-size: 24px;
 }
 
 /* 크럼블 등 중간 크기 */
 .font-size-16 {
-	font-size: 1.6rem;
+	font-size: 16px;
 }
 
 /* 일반 컨텐츠용 */
 .font-size-14 {
-	font-size: 1.4rem;
+	font-size: 14px;
 }
 
 /* 작은 사이즈 */
 .font-size-12 {
-	font-size: 1.2rem;
+	font-size: 12px;
 }
 
 /*FOOTER*/
-#footer{position:relative;width:100%;min-width:350px;max-width:1200px;margin:0 auto;padding-left:0px;}
-#footer h1{display:none;position:absolute;left:0;top:52px;}
-#footer .menu{overflow:hidden;padding-top:23px;text-align:center;}
-#footer .menu li{float:none;display:inline-block;margin-right:15px;}
-#footer .menu li a{font-size:14px;line-height:20px;color:#fff;}
-#footer .menu li:nth-child(4){margin-right:0;}
-#footer .addr{margin-top:21px;overflow:hidden;font-size:14px;line-height:15px;text-align:center;color:#fff;}
-#footer .addr li{float:none;padding-left:13px;margin-right:10px;display:inline-block;background-position:0 1px;}
-#footer .addr li:first-child, #footer .addr li.phone,#footer .addr li.addr01{clear:both;padding-left:0;background:none;}
-#footer .copy{font-size:14px;line-height:20px;text-align:center;color:#fff;}
+/*푸터크기 설정*/
+#footer{
+	position:relative;
+	width:100%;
+	min-width:350px;
+	max-width:1200px;
+	margin:0 auto;
+	padding-left:0px;
+}
+/*푸터 로고 들어갈 시..*/
+#footer h1{
+	display:none;
+	position:absolute;
+	left:0;
+	top:52px;
+}
+/*푸터 메뉴위치*/
+#footer .menu{
+	overflow:hidden;
+	padding-top:23px;
+	text-align:center;
+}
+/*푸터 메뉴 리스트 가로배치*/
+#footer .menu li{
+	float:none;
+	display:inline-block;
+	margin-right:15px;
+}
+/*푸터 메뉴 리스트 색깔및 줄크기*/
+#footer .menu li a{
+	line-height:20px;
+	color:#fff;
+}
+/*푸터 주소란 위치 및 색상*/
+#footer .addr{
+	margin-top:21px;
+	overflow:hidden;
+	line-height:15px;
+	text-align:center;
+	color:#fff;
+}
+/*푸터 주소란 여백설정*/
+#footer .addr li{
+	float:none;
+	padding-left:13px;
+	margin-right:10px;
+	display:inline-block;
+	background-position:0 1px;}
+/*푸터 주소 항목간 위치조정*/	
+#footer .addr li:first-child, #footer .addr li.phone,#footer .addr li.addr01{
+	clear:both;
+	padding-left:0;
+	background:none;
+}
+/*푸터 카피라이트*/
+#footer .copy{
+	line-height:20px;
+	text-align:center;
+	color:#fff;
+}

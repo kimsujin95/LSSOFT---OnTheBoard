@@ -1,0 +1,546 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>On the Board:팀프로젝트 3조</title>
+
+
+<!-- css  -->
+<link href="${pageContext.request.contextPath }/assets/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/game/gamestyle.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/assets/css/game/gamelayout.css" rel="stylesheet" media="screen and (max-width:1023px)">
+
+
+<!-- js -->
+<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery-1.12.4.js"></script>
+
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css" type="text/css">
+
+
+
+</head>
+
+<body>
+	
+	<!-- 헤더 -->
+	<c:import url="/WEB-INF/views/admin/includes/header.jsp"></c:import>
+	<!-- //헤더 -->
+	
+	<!--wrap-->
+	<div class="wrap">
+		
+
+		<!--#mHeader-->
+		<div id="mHeader">
+			<h1>
+				<a href="${pageContext.request.contextPath }/main"><img src="${pageContext.request.contextPath}/assets/images/logo.png" alt="Logo"></a>
+			</h1>
+		</div>
+		<!--/#mHeader-->
+		<!--#container-->
+		<div id="container" class="gameList">
+			<!--#searchForm-->
+			<form name="searchForm" id="searchForm" method="POST" action>
+				<input type="hidden" name="pagenum" id="pagenum" value="1"> <input type="hidden"
+					name="view_type" id="view_type" value="bg"
+				>
+				<!--.sortSelect-->
+				<div class="sortSelect">
+					<h3 onclick="$(this).next('ul').toggle();">검색조건을 선택하세요</h3>
+					<ul id="searchTab">
+
+						<li>
+							<dl>
+								<dt onclick="searchTab_event(this);" class>대상연령</dt>
+								<dd>
+									<ul id="search_item0">
+										<li><input type="checkbox" id="check_all_item0" onclick="all_click(this);"> <label
+											onclick="$(this).prev().trigger('click');"
+										>전체</label></li>
+										<li class="show" item_num="0"><input type="checkbox" id="search_checkbox_0"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">만 4세 이상</label></li>
+										<li class="show" item_num="1"><input type="checkbox" id="search_checkbox_1"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">만 7세 이상</label></li>
+										<li class="show" item_num="2"><input type="checkbox" id="search_checkbox_1"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">만 10세 이상</label></li>
+										<li class="show" item_num="3"><input type="checkbox" id="search_checkbox_1"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">만 12세 이상</label></li>
+										<li class="show" item_num="4"><input type="checkbox" id="search_checkbox_1"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">만 14세 이상</label></li>
+									</ul>
+								</dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt onclick="searchTab_event(this);" class>게임인원</dt>
+								<dd>
+									<ul id="search_item1">
+										<li><input type="checkbox" id="check_all_item0" onclick="all_click(this);"> <label
+											onclick="$(this).prev().trigger('click');"
+										>전체</label></li>
+										<li class="show" item_num="0"><input type="checkbox" id="search_checkbox_1"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">2명</label></li>
+										<li class="show" item_num="1"><input type="checkbox" id="search_checkbox_1"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">3명</label></li>
+										<li class="show" item_num="2"><input type="checkbox" id="search_checkbox_1"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">4명</label></li>
+										<li class="show" item_num="3"><input type="checkbox" id="search_checkbox_1"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">5명</label></li>
+										<li class="show" item_num="4"><input type="checkbox" id="search_checkbox_1"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">6명 이상</label></li>
+									</ul>
+								</dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt onclick="searchTab_event(this);" class>게임시간</dt>
+								<dd>
+									<ul id="search_item2">
+										<li><input type="checkbox" id="check_all_item2" onclick="all_click(this);"> <label
+											onclick="$(this).prev().trigger('click');"
+										>전체</label></li>
+										<li class="show" item_num="0"><input type="checkbox" id="search_checkbox_2"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">15분 이상</label></li>
+										<li class="show" item_num="1"><input type="checkbox" id="search_checkbox_2"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">30분 이상</label></li>
+										<li class="show" item_num="2"><input type="checkbox" id="search_checkbox_2"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">45분 이상</label></li>
+										<li class="show" item_num="3"><input type="checkbox" id="search_checkbox_2"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">60분 이상</label></li>
+										<li class="show" item_num="4"><input type="checkbox" id="search_checkbox_2"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">120분 이상</label></li>
+									</ul>
+								</dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt onclick="searchTab_event(this);" class>게임장르</dt>
+								<dd>
+									<ul id="search_item3">
+										<li><input type="checkbox" id="check_all_item2" onclick="all_click(this);"> <label
+											onclick="$(this).prev().trigger('click');"
+										>전체</label></li>
+										<li class="show" item_num="0"><input type="checkbox" id="search_checkbox_3"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">파티 게임</label></li>
+										<li class="show" item_num="1"><input type="checkbox" id="search_checkbox_3"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">전략 게임</label></li>
+										<li class="show" item_num="2"><input type="checkbox" id="search_checkbox_3"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">추상 게임</label></li>
+										<li class="show" item_num="3"><input type="checkbox" id="search_checkbox_3"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">테마 게임</label></li>
+										<li class="show" item_num="4"><input type="checkbox" id="search_checkbox_3"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">워게임</label></li>
+								</dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt onclick="searchTab_event(this);" class>게임난이도</dt>
+								<dd>
+									<ul id="search_item4">
+										<li><input type="checkbox" id="check_all_item4" onclick="all_click(this);"> <label
+											onclick="$(this).prev().trigger('click');"
+										>전체</label></li>
+										<li class="show" item_num="0"><input type="checkbox" id="search_checkbox_4"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">초급</label></li>
+										<li class="show" item_num="1"><input type="checkbox" id="search_checkbox_4"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">중급</label></li>
+										<li class="show" item_num="2"><input type="checkbox" id="search_checkbox_4"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">상급</label></li>
+										<li class="show" item_num="3"><input type="checkbox" id="search_checkbox_4"
+											name="search_checkbox0[]" value=""
+										> <label onclick="$(this).prev().trigger('click');">최상급</label></li>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+					<div class="notice">
+						<!-- .listType -->
+						<ul class="listType">
+							<li class="sortB"><select title="정렬기준" name="search_sort" class="formSelect">
+									<option value="" selected="selected">정렬기준</option>
+									<option value="name_asc">오름차순</option>
+									<option value="name_desc">내림차순</option>
+							</select></li>
+							<li class="search">
+								<form name="search_form" method="post" action="" onsubmit="return search_chk(this);">
+									<fieldset>
+										<legend></legend>
+										<input type="text" name="search_text" class="formSearch" />
+									</fieldset>
+								</form>
+							</li>
+						</ul>
+						<!-- /.listType -->
+					</div>
+				</div>
+				<!--/.sortSelect-->
+
+			</form>
+			<!--/#searchForm-->
+			<!--#gameList-->
+			<ul class="bbsList04" id="gameList">
+				<li>
+					<div class="thum">
+						<a href=""><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393" alt=></a>
+					</div>
+					<div class="desc">
+						<p class="title">
+							<a href="./index.html">보난자</a>
+						</p>
+						<table>
+							<tbody>
+								<tr>
+									<th>게임인원</th>
+									<td>3~5인</td>
+								</tr>
+								<tr>
+									<th>게임연령</th>
+									<td>만 10세 이상</td>
+								</tr>
+								<tr>
+									<th>게임시간</th>
+									<td>45분</td>
+								</tr>
+								<tr>
+									<th>게임난이도</th>
+									<td>초급</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li>
+					<div class="thum">
+						<a href=""><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393"></a>
+					</div>
+					<div class="desc">
+						<p class="title">
+							<a href="">보난자</a>
+						</p>
+						<table>
+							<tbody>
+								<tr>
+									<th>게임인원</th>
+									<td>3~5인</td>
+								</tr>
+								<tr>
+									<th>게임연령</th>
+									<td>만 10세 이상</td>
+								</tr>
+								<tr>
+									<th>게임시간</th>
+									<td>45분</td>
+								</tr>
+								<tr>
+									<th>게임난이도</th>
+									<td>초급</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li>
+					<div class="thum">
+						<a href=""><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393"></a>
+					</div>
+					<div class="desc">
+						<p class="title">
+							<a href="">보난자</a>
+						</p>
+						<table>
+							<tbody>
+								<tr>
+									<th>게임인원</th>
+									<td>3~5인</td>
+								</tr>
+								<tr>
+									<th>게임연령</th>
+									<td>만 10세 이상</td>
+								</tr>
+								<tr>
+									<th>게임시간</th>
+									<td>45분</td>
+								</tr>
+								<tr>
+									<th>게임난이도</th>
+									<td>초급</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li>
+					<div class="thum">
+						<a href=""><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393"></a>
+					</div>
+					<div class="desc">
+						<p class="title">
+							<a href="">보난자</a>
+						</p>
+						<table>
+							<tbody>
+								<tr>
+									<th>게임인원</th>
+									<td>3~5인</td>
+								</tr>
+								<tr>
+									<th>게임연령</th>
+									<td>만 10세 이상</td>
+								</tr>
+								<tr>
+									<th>게임시간</th>
+									<td>45분</td>
+								</tr>
+								<tr>
+									<th>게임난이도</th>
+									<td>초급</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li>
+					<div class="thum">
+						<a href=""><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393"></a>
+					</div>
+					<div class="desc">
+						<p class="title">
+							<a href="">보난자</a>
+						</p>
+						<table>
+							<tbody>
+								<tr>
+									<th>게임인원</th>
+									<td>3~5인</td>
+								</tr>
+								<tr>
+									<th>게임연령</th>
+									<td>만 10세 이상</td>
+								</tr>
+								<tr>
+									<th>게임시간</th>
+									<td>45분</td>
+								</tr>
+								<tr>
+									<th>게임난이도</th>
+									<td>초급</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li>
+					<div class="thum">
+						<a href=""><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393"></a>
+					</div>
+					<div class="desc">
+						<p class="title">
+							<a href="">보난자</a>
+						</p>
+						<table>
+							<tbody>
+								<tr>
+									<th>게임인원</th>
+									<td>3~5인</td>
+								</tr>
+								<tr>
+									<th>게임연령</th>
+									<td>만 10세 이상</td>
+								</tr>
+								<tr>
+									<th>게임시간</th>
+									<td>45분</td>
+								</tr>
+								<tr>
+									<th>게임난이도</th>
+									<td>초급</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li>
+					<div class="thum">
+						<a href=""><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393"></a>
+					</div>
+					<div class="desc">
+						<p class="title">
+							<a href="">보난자</a>
+						</p>
+						<table>
+							<tbody>
+								<tr>
+									<th>게임인원</th>
+									<td>3~5인</td>
+								</tr>
+								<tr>
+									<th>게임연령</th>
+									<td>만 10세 이상</td>
+								</tr>
+								<tr>
+									<th>게임시간</th>
+									<td>45분</td>
+								</tr>
+								<tr>
+									<th>게임난이도</th>
+									<td>초급</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li>
+					<div class="thum">
+						<a href=""><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393"></a>
+					</div>
+					<div class="desc">
+						<p class="title">
+							<a href="">보난자</a>
+						</p>
+						<table>
+							<tbody>
+								<tr>
+									<th>게임인원</th>
+									<td>3~5인</td>
+								</tr>
+								<tr>
+									<th>게임연령</th>
+									<td>만 10세 이상</td>
+								</tr>
+								<tr>
+									<th>게임시간</th>
+									<td>45분</td>
+								</tr>
+								<tr>
+									<th>게임난이도</th>
+									<td>초급</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li>
+					<div class="thum">
+						<a href=""><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393"></a>
+					</div>
+					<div class="desc">
+						<p class="title">
+							<a href="">보난자</a>
+						</p>
+						<table>
+							<tbody>
+								<tr>
+									<th>게임인원</th>
+									<td>3~5인</td>
+								</tr>
+								<tr>
+									<th>게임연령</th>
+									<td>만 10세 이상</td>
+								</tr>
+								<tr>
+									<th>게임시간</th>
+									<td>45분</td>
+								</tr>
+								<tr>
+									<th>게임난이도</th>
+									<td>초급</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li>
+					<div class="thum">
+						<a href=""><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393"></a>
+					</div>
+					<div class="desc">
+						<p class="title">
+							<a href="">보난자</a>
+						</p>
+						<table>
+							<tbody>
+								<tr>
+									<th>게임인원</th>
+									<td>3~5인</td>
+								</tr>
+								<tr>
+									<th>게임연령</th>
+									<td>만 10세 이상</td>
+								</tr>
+								<tr>
+									<th>게임시간</th>
+									<td>45분</td>
+								</tr>
+								<tr>
+									<th>게임난이도</th>
+									<td>초급</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+			</ul>
+			<!--#gameList-->
+			<!--.paging-->
+			<div id="paging">
+				<div class="paging">
+					<a class="paging_first page_img"><img src="./webapp/image/paging_first.gif" alt=""></a> <a
+						class="paging_prev page_img"
+					><img src="./webapp/image/paging_prev.gif" alt=""></a> <strong>1</strong> <a
+						href="javascript:change_page(&quot;2&quot;);"
+					>2</a> <a href="javascript:change_page(&quot;3&quot;);">3</a> <a
+						href="javascript:change_page(&quot;4&quot;);"
+					>4</a> <a href="javascript:change_page(&quot;5&quot;);">5</a> <a
+						href="javascript:change_page(&quot;2&quot;);" class="page_next page_img"
+					><img src="./webapp/image/paging_next.gif" alt=""></a> <a
+						href="javascript:change_page(&quot;6&quot;)" class="page_last page_img"
+					><img src="./webapp/image/paging_last.gif" alt=""></a>
+				</div>
+			</div>
+			<!--/.paging-->
+		</div>
+		<!--/#container-->
+		
+		<!-- FOOTER -->
+		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+		<!-- // FOOTER -->
+
+	</div>
+	<!--/#wrap-->
+</body>
+</html>

@@ -21,7 +21,6 @@
 
 </head>
 <body>
-
 		
 	<!-- 헤더 -->
 	<c:import url="/WEB-INF/views/admin/includes/header.jsp"></c:import>
@@ -85,11 +84,15 @@
 							<tr>
 								<th>매장 위치</th>
 								<td>
-									<label for="adress-search">
-										<input id="adress" type="text" placeholder="주소를 입력해주세요">
-									</label>
-									<input type="button" id="adress-search" class="btn" value="주소찾기">
-									<br><input id="adress-detail" type="text" placeholder="상세 주소를 입력해주세요">
+									<div id="adress-area">
+										<label for="adress-search">
+											<input id="adress" type="text" placeholder="주소를 입력해주세요">
+											<input type="button" id="adress-search" class="btn" value="주소찾기">
+										</label>
+									</div>
+									<div id="adress-detail-area">
+										<input id="adress-detail" type="text" placeholder="상세 주소를 입력해주세요">
+									</div>
 								</td>
 							</tr>
 							<tr>
@@ -105,30 +108,54 @@
 								</td>
 							</tr>
 							<tr>
-								<th>매장 이용 요금</th>
+								<th>이용 요금</th>
 								<td>
-									<label for="weekday-rate">평일</label>
-									<input id="weekday-rate" type="number" placeholder="금액만 입력해주세요">
-									<br>
-									<label for="weekend-rate">주말</label>
-									<input id="weekend-rate" type="number" placeholder="금액만 입력해주세요">
+									<div id="weekday-area">
+										<input id="weekday-rate" type="number" placeholder="금액만 입력해주세요">
+										<label for="weekday-rate">평일</label>
+									</div>
+									<div id="weekend-area">
+										<input id="weekend-rate" type="number" placeholder="금액만 입력해주세요">
+										<label for="weekend-rate">주말</label>
+									</div>
 								</td>
 							</tr>
 							<tr>
 								<th>매장 이미지</th>
-								<td></td>
+								<td>
+									<div id="image-inserted" class="pull-left border-default">
+										<c:forEach begin="0" end="4">
+											<div class="image-area">
+												<img src="${pageContext.request.contextPath }/assets/images/admin/BoardGameStore.jpg">
+												<img src="${pageContext.request.contextPath }/assets/images/admin/BoardGameStore2.jpg">
+												<img src="${pageContext.request.contextPath }/assets/images/admin/BoardGameStore.jpg">
+											</div>
+										</c:forEach>
+									</div>
+									<label for="image-upload" class="btn btn-primary pull-left">사진 등록하기</label>
+									<input id="image-upload" type="file">
+								</td>
 							</tr>
 							<tr>
 								<th>매장 소개</th>
 								<td>
-									<textarea rows="" cols=""></textarea>
+									<textarea id="store-desc" placeholder="매장을 소개해주세요"></textarea>
 								</td>
 							</tr>
 						</table>
 						<!-- //테이블 영역 -->
 						<div class=btn-area>
-							<button class="btn btn-primary">수정하기</button>
-							<button class="btn">돌아가기</button>
+							<c:choose>
+								<c:when test="">	<!-- 매장이 등록 돼 있을 경우 -->
+									<button class="btn btn-primary">수정하기</button>
+								</c:when>
+								<c:otherwise>
+									<button class="btn btn-primary">등록하기</button>
+								</c:otherwise>
+							</c:choose>
+							<a href="${pageContext.request.contextPath }/admin/main">
+								<button class="btn">돌아가기</button>
+							</a>
 						</div>
 					</div>
 					<!-- //리스트 영역 -->

@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+div#datepicker {
+	margin: 0 auto;
+	width: 500px;
+	height: 500px;
+}

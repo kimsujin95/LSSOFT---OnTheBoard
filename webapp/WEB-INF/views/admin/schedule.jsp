@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <!-- 메타 태그 -->
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,10 +17,17 @@
 <!-- js -->
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery-1.12.4.js"></script>
 
+<!-- 데이트 피커 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+<link href="${pageContext.request.contextPath }/assets/css/datepicker.css" rel="stylesheet" type="text/css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+
 <title>admin-schedule</title>
 
 </head>
 <body>
+
 	<!-- 헤더 -->
 	<c:import url="/WEB-INF/views/admin/includes/header.jsp"></c:import>
 	<!-- //헤더 -->
@@ -50,12 +58,23 @@
 					</div>
 					<!-- //서브 타이틀 -->
 					
+					<!-- 달력 영역 -->
+					<div id="calendar">
+						<div id="datepicker" class="date"></div>
+					</div>
+					<!-- 달력 영역 -->
+					
+				</div>
+				<!-- //본문 영역 -->
+
+				<!-- 본문 영역 -->
+				<div class="content-area">
 					<!-- 서브 타이틀 -->
 					<div class="sub-title">
 						<h2>예약 세부 설정</h2>
 					</div>
-					<!-- //서브 타이틀 -->
-					
+					<!-- //서브 타이틀 -->					
+				
 				</div>
 				<!-- //본문 영역 -->
 				
@@ -66,5 +85,12 @@
 	</div>
 	<!-- //컨텐츠 -->
 </body>
+
+<script type="text/javascript">
+	$('.date').datepicker({
+		multidate: true,
+		format: 'yyyy-mm-dd'
+	});
+</script>
 
 </html>

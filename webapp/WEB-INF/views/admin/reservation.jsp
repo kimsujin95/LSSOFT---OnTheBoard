@@ -18,6 +18,13 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/bootstrap/bootstrap.js"></script>
 
+<!-- 데이트 피커 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+<link href="${pageContext.request.contextPath }/assets/css/datepicker.css" rel="stylesheet" type="text/css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+
+
 <title>admin-reservation management</title>
 
 </head>
@@ -58,22 +65,15 @@
 						<!-- 날짜 선택 영역 -->
 						<div id="date-area">
 							<!-- 시작일 -->
-							<div id="date-start" class="pull-left">
-								<span>예약일</span>
-								<label class="date-label" for="start">2021-09-10</label>
-								<button id="start" type="button">📅</button>
-								<span>부터</span>
-							</div>
-							
-							<!-- 마지막 -->
-							<div id="date-end" class="pull-left">
-								<label class="date-label" for="end">2021-09-11</label>
-								<button id="end" type="button">📅</button>
-								<span>까지</span>
+							<div id="date-picker" class="input-group input-daterange ">
+								<span class=input-group-addon>예약일</span>
+								<input id="date-start" type="text" class="form-control">
+								<span class="input-group-addon">~</span>
+								<input id="date-end" type="text" class="form-control">
 							</div>
 							
 							<!-- 버튼 그룹 -->
-							<div id="date-btn" class="btn-group btn-group-sm" class="pull-left">
+							<div id="date-btn" class="btn-group btn-group-sm pull-left">
 								<button type="button" class="btn">전체</button>
 								<button type="button" class="btn">오늘</button>
 								<button type="button" class="btn">내일</button>
@@ -276,10 +276,18 @@
 </body>
 
 <script type="text/javascript">
+	/* 예약 상세 보기 */
 	$(".user_name").on("click", function(){
 		console.log("유저 이름 클릭");	
 		$("#addModal").modal();
 	});
+	
+	/* 데이트 피커 */
+	$('.date').datepicker({
+		multidate: false,
+		format: 'yyyy-mm-dd'
+	});
+	
 </script>
 
 </html>

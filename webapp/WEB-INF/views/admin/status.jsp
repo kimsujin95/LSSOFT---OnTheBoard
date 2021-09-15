@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <!-- 메타 태그 -->
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,6 +20,7 @@
 
 </head>
 <body>
+
 	<!-- 헤더 -->
 	<c:import url="/WEB-INF/views/admin/includes/header.jsp"></c:import>
 	<!-- //헤더 -->

@@ -1,14 +1,12 @@
 @charset "UTF-8";
 
 /* 날짜 선택 영역 */
-div#date-start, div#date-end, div#date-start, div#date-btn {
+div#end, div#date-btn {
 	margin-right: 10px;
 }
 
-div#date-area span {
-	padding : 0 5px;
-	font-weight: bold;
-	text-align: center;
+#date-picker input {
+	width: 100px;
 }
 
 /* 테이블 영역 */

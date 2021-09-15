@@ -8,9 +8,10 @@ table#storeInfo-table {
 }
 
 table#storeInfo-table tr {
-	height: 35px;
+	min-height: 35px;
 	border: 1px solid rgb(224, 224, 224);
 }
+
 table#storeInfo-table tr th {
 	vertical-align: top;
 	padding: 10px;
@@ -19,14 +20,60 @@ table#storeInfo-table tr th {
 }
 
 table#storeInfo-table tr td {
-	padding: 5px;
+	padding: 10px 15px;
 	width: 85%;
 }
 
-input#adress, input#adress-detail {
-	width: 400px;
+table#storeInfo-table label {
+	margin-right: 10px;
 }
 
+/* 인풋 공용 */
+input[type="text"], input[type="number"] {
+	width: 250px;
+	height: 30px;
+	margin-right: 10px;
+}
+
+/* 주소 검색 */
+div#adress-area, div#weekday-area {
+	margin-bottom: 10px;
+}
+
+input#adress, input#adress-detail {
+	width: 550px;
+}
+
+/* 이미지 */
+div#image-inserted {
+	width: 550px;
+	height: 200px;
+	overflow-x: none;
+	overflow-y: auto;
+	margin-right: 10px;
+}
+
+div.image-area img {
+	margin: 15px 20px 15px 0px;
+	width: 140px;
+	height: 140px;
+}
+
+div.image-area img:first-child {
+	margin-left: 30px;
+}
+input#image-upload {
+	display: none;
+}
+
+/* 매장 소개 */
+textarea#store-desc {
+	width: 550px;
+	height: 100px;
+	resize: none;
+}
+
+/* 수정 및 뒤로 가기 버튼 */
 div.btn-area {
 	padding: 10px 0;
 	text-align: center;

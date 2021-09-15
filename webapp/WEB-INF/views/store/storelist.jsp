@@ -23,7 +23,10 @@
 
 </head>
 <body>
-
+	
+	<!-- 헤더 -->
+	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
+	
 	<div id="Store_main">
 
 		<div id="Store_main_content" class="container">

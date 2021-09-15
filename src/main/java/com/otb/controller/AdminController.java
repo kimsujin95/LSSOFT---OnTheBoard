@@ -22,28 +22,21 @@ public class AdminController {
 		return "/admin/reservation";
 	}
 
-	//admin - 매장관리 - 매장 정보가 메인
+	//admin - 스케쥴
 	@RequestMapping(value = "/schedule", method = {RequestMethod.GET, RequestMethod.POST})
 	public String scheduleManagement() {
 		System.out.println("admin - scheduleManagement --------------------------------------------------------");
 		return "/admin/schedule";
 	}
 
-	//admin - 매장관리 - 매장 정보가 메인
-	@RequestMapping(value = "/storeManagement", method = {RequestMethod.GET, RequestMethod.POST})
-	public String storeManagement() {
-		System.out.println("admin - storeManagement --------------------------------------------------------");
-		return "/admin/storeInfo";
-	}
-
-	//admin - 매장관리 - 매장 정보
+	//admin - 매장 정보
 	@RequestMapping(value = "/storeInfo", method = {RequestMethod.GET, RequestMethod.POST})
 	public String storeInfo() {
 		System.out.println("admin - storeInfo --------------------------------------------------------");
 		return "/admin/storeInfo";
 	}
 
-	//admin - 매장관리 - 보유 게임관리
+	//admin - 보유 게임관리
 	@RequestMapping(value = "/gameList", method = {RequestMethod.GET, RequestMethod.POST})
 	public String gameList() {
 		System.out.println("admin - gameList --------------------------------------------------------");

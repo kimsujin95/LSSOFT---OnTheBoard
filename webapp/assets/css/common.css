@@ -7,6 +7,44 @@ div.wrap {
 	min-height: 50px;
 }
 
+/* 서브 타이틀*/
+
+.sub-container {
+
+  position: relative;
+  z-index: 20;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+
+}
+
+.subtitle {
+
+  padding-bottom: 43px;
+  margin-top: 30px;
+
+}
+.subtitle h3 {
+
+  font-size: 20px;
+  line-height: 22px;
+  position: relative;
+  color: #333;
+ 
+}
+
+.subtitle .context {
+
+  line-height: 19px;
+  padding-top: 10px;
+  letter-spacing: -1px;
+  color: #666;
+  border-bottom: 1px solid #ff1f67;
+  padding-bottom:20px;
+  
+}
+
 /* 컨테이너 */
 div.container {
 	width: 1200px;

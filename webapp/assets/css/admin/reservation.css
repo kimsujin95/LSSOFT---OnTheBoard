@@ -1,33 +1,15 @@
 @charset "UTF-8";
 
-/* 검색창 */
-div#search-bar {
-	padding: 10px 20px;
-	background-color: white;
-	border-radius: 5px;
-	margin-bottom: 15px;
+/* 날짜 선택 영역 */
+div#date-start, div#date-end, div#date-start, div#date-btn {
+	margin-right: 10px;
 }
 
-/* 날짜 선택 */
-div#date-selection, div#date-selection > div {
-	display: inline-block;
+div#date-area span {
+	padding : 0 5px;
+	font-weight: bold;
+	text-align: center;
 }
-
-label.date-label {
-	font-weight: 500;
-}
-
-/* 검색어 입력 영역 */
-div#search-area div {
-	display: inline-block;
-}
-
-/* 검색창 */
-div#keyword-area input {
-	width: 300px;
-}
-
-/* //검색창 */
 
 /* 테이블 영역 */
 table#reservation-list, table#review-list {
@@ -42,8 +24,8 @@ table#reservation-list tr, table#review-list tr {
 }
 
 table#reservation-list th, table#review-list th {
-	text-align: center;
 	width: 11.1%;
+	text-align: center;
 	font-weight: 600;
 }
 
@@ -102,6 +84,10 @@ table.reservation-progress tr th {
 table.reservation-progress tr td {
 	padding: 5px;
 	width: 85%;
+}
+
+select#cancel-reason {
+	height: 30px
 }
 
 /* //예약 상세 테이블 */

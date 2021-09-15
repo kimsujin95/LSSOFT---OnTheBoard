@@ -11,7 +11,6 @@
 <!-- css  -->
 <link href="${pageContext.request.contextPath }/assets/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/admin/common.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/admin/schedule.css" rel="stylesheet" type="text/css">
 
 <!-- js -->
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery-1.12.4.js"></script>
@@ -38,7 +37,7 @@
 				
 				<!-- 메인 타이틀 -->
 				<div id="main-title">
-					<h1>스케쥴 관리</h1>
+					<h1>매출 현황</h1>
 				</div>
 				<!-- //메인 타이틀 -->
 					
@@ -46,13 +45,13 @@
 				<div class="content-area">
 					<!-- 서브 타이틀 -->
 					<div class="sub-title">
-						<h2>날짜 선택</h2>
+						<h2>월간 매출</h2>
 					</div>
 					<!-- //서브 타이틀 -->
 					
 					<!-- 서브 타이틀 -->
 					<div class="sub-title">
-						<h2>예약 세부 설정</h2>
+						<h2>주간 매출</h2>
 					</div>
 					<!-- //서브 타이틀 -->
 					

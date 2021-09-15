@@ -2,11 +2,16 @@
 
 /** COMMON **/
 /* div {
-    border: 1px solid #000000;
-    margin-bottom: 10px;
+	border: 1px solid #000000;
+	margin-bottom: 10px;
 } */
+
 #content {
 	margin-bottom: 30px;
+}
+
+#content .sub-container {
+	padding: 0px;
 }
 
 .text-center {
@@ -76,15 +81,17 @@ textarea {
 /* #select-option ul .active {
     background-color: #E0FFFF;
 } */
-#select-name {
-	margin: 5px 0px -10px 0px;
-	/* height: 35px;
-    width: 300px; */
+#select-option {
+	margin: 0px;
+	padding: 0px;
+	/* margin: 5px 0px -10px 0px;
+	height: 35px;
+    width: 300px;
 	padding: 7px 0px 0px 5px;
 	font-size: 16px;
 	font-weight: bold;
-	/* border: 1px solid #000;
-    border-radius: 5px;a */
+	border: 1px solid #000;
+    border-radius: 5px; */
 }
 
 #table-option td, th {
@@ -111,6 +118,11 @@ textarea {
 	margin-left: 3px;
 }
 
+#select-option-list {
+	margin: 0px;
+	padding: 0px;
+}
+
 #select-option-list #option-reset {
 	border-right: 1px solid #e2e2e2;
 }
@@ -134,14 +146,15 @@ textarea {
 
 #select-option-checkbox {
 	margin-top: 10px;
+	text-align: center;
 }
 
 #select-option-checkbox input {
-	margin: 8px 0px 0px 15px;
+	margin: 8px 0px 0px 30px;
 }
 
-#select-option-checkbox td, #select-option-checkbox th {
-	border: 1px solid #e2e2e2;
+#select-option-checkbox tr {
+	border-bottom: 1px solid #e2e2e2;
 }
 
 #select-option-checkbox>thead>tr>th {
@@ -151,6 +164,10 @@ textarea {
 	letter-spacing: 10px;
 }
 
+#select-option-checkbox .margin-left-none {
+	margin-left: 0px;
+}
+
 /* #option-reset .btn-reset::after {
     width: 11px;
     height: 10px;
@@ -158,6 +175,10 @@ textarea {
 } */
 
 /** MATCHING LIST **/
+#content .container.padding-none {
+	padding: 0px;
+}
+
 #table-matchingList .first-tr {
 	background-color: #ff1f67;
 	color: #fff;
@@ -180,17 +201,19 @@ textarea {
 	margin-top: 15px;
 }
 
-#paging {
+#paging-wrap #paging {
 	display: inline-block;
 }
 
-#paging li {
+#paging-wrap #paging li {
 	list-style-type: none;
 	float: left;
 	padding: 5px 11px;
 	margin: 0px 6px;
-	background-color: #E0FFFF;
+	background-color: #ff1f67;
 	border-radius: 15px;
+	color: #fff;
+	font-weight: bold;
 }
 
 /** WRITE FORM **/

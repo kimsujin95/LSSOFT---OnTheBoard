@@ -33,67 +33,18 @@
 	<!-- CONTENT -->
 	<div id="content" class="container">
 		<!-- SUB TITLE -->
-		<div class="sub-container">
+		<div class="container sub-container">
 
 			<div class="subtitle">
 				<h3>매칭게시판</h3>
-				<p class="context">매칭리스트</p>
+				<div class="context">매칭리스트</div>
 			</div>
 
 		</div>
 		<!-- // SUB TITLE -->
 
-		<!-- <div class="row"> -->
-		<%-- <div class="col-xs-4">
-
-				<table id="table-start">
-					<caption>
-						<span>내위치</span> 주변 매칭 리스트
-					</caption>
-					<colgroup>
-						<col width="200px">
-						<col width="60px">
-						<col width="120px">
-					</colgroup>
-
-					<thead>
-						<tr>
-							<th>게임</th>
-							<th>인원</th>
-							<th>시작날짜</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>테라포밍 마스</td>
-							<td>1/5</td>
-							<td>21. 11. 11.</td>
-						</tr>
-						<tr>
-							<td>할리갈리</td>
-							<td>1/5</td>
-							<td>21. 11. 11.</td>
-						</tr>
-						<tr>
-							<td>할리갈리</td>
-							<td>1/5</td>
-							<td>21. 11. 11.</td>
-						</tr>
-						<tr>
-							<td>할리갈리</td>
-							<td>1/5</td>
-							<td>21. 11. 11.</td>
-						</tr>
-						<tr>
-							<td>할리갈리</td>
-							<td>1/5</td>
-							<td>21. 11. 11.</td>
-						</tr>
-					</tbody>
-				</table>
-			</div> --%>
+		<!-- SELECT OPTION -->
 		<div id="select-option" class="container">
-
 			<!-- TAB CONTENT -->
 			<c:import url="/WEB-INF/views/includes/tab_content.jsp"></c:import>
 			<!-- // TAB CONTENT -->
@@ -101,9 +52,9 @@
 			<div>
 				<table id="select-option-checkbox">
 					<colgroup>
-						<col width="170px">
-						<col width="400px">
-						<col width="180px">
+						<col width="320px">
+						<col width="550px">
+						<col width="330px">
 					</colgroup>
 					<thead>
 						<tr>
@@ -114,9 +65,9 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="checkbox" id="male"> <label for="male">남</label> <input type="checkbox" id="female"> <label for="female">여</label> <input type="checkbox" id="sex-none"> <label for="sex-none">무관</label></td>
-							<td><input type="checkbox" id="10s"> <label for="10s">10대</label> <input type="checkbox" id="20s"> <label for="20s">20대</label> <input type="checkbox" id="30s"> <label for="30s">30대</label> <input type="checkbox" id="40s"> <label for="40s">40대</label> <input type="checkbox" id="50s"> <label for="50s">50대</label> <input type="checkbox" id="age-none"> <label for="age-none">무관</label></td>
-							<td><input type="checkbox" id="matching-ing"> <label for="matching-ing">매칭중</label> <input type="checkbox" id="matching-end"> <label for="matching-end">매칭완료</label></td>
+							<td><input class="margin-left-none" type="checkbox" id="male"> <label for="male">남</label> <input type="checkbox" id="female"> <label for="female">여</label> <input type="checkbox" id="sex-none"> <label for="sex-none">무관</label></td>
+							<td><input class="margin-left-none" type="checkbox" id="10s"> <label for="10s">10대</label> <input type="checkbox" id="20s"> <label for="20s">20대</label> <input type="checkbox" id="30s"> <label for="30s">30대</label> <input type="checkbox" id="40s"> <label for="40s">40대</label> <input type="checkbox" id="50s"> <label for="50s">50대</label> <input type="checkbox" id="age-none"> <label for="age-none">무관</label></td>
+							<td><input class="margin-left-none" type="checkbox" id="matching-ing"> <label for="matching-ing">매칭중</label> <input type="checkbox" id="matching-end"> <label for="matching-end">매칭완료</label></td>
 						</tr>
 					</tbody>
 				</table>
@@ -135,21 +86,24 @@
 				</div>
 			</div>
 		</div>
+		<!-- // SELECT OPTION -->
+
 		<br>
 		<br>
 		<br>
+
 		<!-- 매칭글 리스트 -->
-		<div>
+		<div class="container padding-none">
 			<table id="table-matchingList">
 				<colgroup>
+					<col width="125px">
 					<col width="115px">
-					<col width="105px">
-					<col width="325px">
-					<col width="175px">
-					<col width="65px">
-					<col width="65px">
+					<col width="335px">
+					<col width="185px">
+					<col width="75px">
+					<col width="75px">
+					<col width="155px">
 					<col width="145px">
-					<col width="135px">
 				</colgroup>
 				<thead>
 					<tr class="first-tr">
@@ -288,7 +242,7 @@
 		</div>
 		<br>
 		<div class="text-center">
-			<a href="${pageContext.request.contextPath}/matching/writeForm"><button class="btn btn-info btn-sm">매칭글 등록</button></a>
+			<a href="${pageContext.request.contextPath}/matching/writeForm"><button class="btn btn-default btn-sm">매칭글 등록</button></a>
 		</div>
 	</div>
 	<!-- // CONTENT -->

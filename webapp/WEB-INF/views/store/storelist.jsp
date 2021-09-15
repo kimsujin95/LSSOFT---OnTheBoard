@@ -9,8 +9,11 @@
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/bootstrap.css">
 
-<!-- CSS -->
+<!-- KaKaoMap_CSS -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/store/kakaomap/map.css" type="text/css">
+
+<!-- jQuery -->
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="${pageContext.request.contextPath}/assets/bootstrap/bootstrap.js"></script>
@@ -45,7 +48,7 @@
 </body>
 
 <!-- 카카오 지도 api 가져오기 -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c694e05d69f948b3793c67975a2ef4a5"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c694e05d69f948b3793c67975a2ef4a5&libraries=services"></script>
 
 <!-- 카카오 지도 키워드 검색 -->
 <script>

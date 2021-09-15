@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+#tap-content-wrap {
+	margin: 0px;
+	padding: 0px;
+}
+
 #tap-content-wrap li {
 	list-style-type: none;
 	margin: 3px 0px;

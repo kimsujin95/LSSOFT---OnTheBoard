@@ -8,17 +8,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value="/game")
 public class GameController {
 
+	//게임리스트
 	@RequestMapping(value="/gameList", method= {RequestMethod.GET, RequestMethod.POST})
-	public String gameList() {
+	public String gamelist() {
 		System.out.println("/game/gameList");
 		
 		return"/game/gameList";
 	}
 	
-	@RequestMapping(value="/gamedetail", method= {RequestMethod.GET, RequestMethod.POST})
-	public String gameDetail() {
-		System.out.println("/game/gameDetail");
+	//게임 읽기(게임정보 상세)
+	@RequestMapping(value="/gameDetails", method= {RequestMethod.GET, RequestMethod.POST})
+	public String gameDetails() {
+		System.out.println("/game/gameDetails");
 		
-		return"/game/gameDetail";
+		return"/game/gameDetails";
 	}
 }

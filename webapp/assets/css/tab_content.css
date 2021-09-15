@@ -12,6 +12,12 @@
 	border-radius: 5px;
 }
 
+.overflow-scroll {
+	height: 110px;
+	overflow: auto;
+	/* scrollbar-color: black black; */
+}
+
 #location-big {
 	margin: 0px;
 	padding: 0px;

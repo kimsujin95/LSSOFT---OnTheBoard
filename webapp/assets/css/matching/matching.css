@@ -41,12 +41,6 @@ textarea {
 	cursor: pointer;
 }
 
-.overflow-scroll {
-	height: 110px;
-	overflow: auto;
-	/* scrollbar-color: black black; */
-}
-
 /** LOCATION LIST **/
 #table-start {
 	text-align: center;

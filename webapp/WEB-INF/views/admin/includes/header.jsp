@@ -6,7 +6,7 @@
 	<div class=row>
 		<!-- 매장 이름 -->
 		<div id="header-store-name" class="col-xs-10">
-			<a href="${pageContext.request.contextPath }/store/info" class="text-white font-size-24">레드버튼 강남점</a>
+			<a href="${pageContext.request.contextPath }/store/storeinfo" class="text-white font-size-24">레드버튼 강남점</a>
 		</div>
 		<!-- //매장 이름 -->	
 		<!-- 유저 컨트롤러 -->

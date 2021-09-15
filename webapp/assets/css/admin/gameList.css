@@ -1,23 +1,5 @@
 @charset "UTF-8";
 
-/* 검색창 */
-div#search-bar {
-	padding: 10px 20px;
-	background-color: white;
-	border-radius: 5px;
-	margin-bottom: 15px;
-}
-
-/* 검색어 입력 영역 */
-div#search-area div {
-	display: inline-block;
-}
-
-/* 검색창 */
-div#keyword-area input {
-	width: 300px;
-}
-
 /* 게임 테이블 */
 table#game-list {
 	border-top: 2px solid rgb(224, 224, 224);
@@ -25,17 +7,27 @@ table#game-list {
 	width: 100%;
 }
 
+table#game-list th {
+	width: 16%;	
+	height: 35px;
+	text-align: center;
+	font-weight: 600;
+}
+
 table#game-list tbody tr {
+	text-align: center;
 	height: 150px;
 }
 
-table#game-list thead tr {
-	height: 35px;
-}
+table#game-list th:first-child {
+	width: 6%;
+} 
 
-table#game-list td, table#game-list th {
-	text-align: center;
-}
+table#game-list th:nth-child(2) {
+	width: 46%;
+} 
+
+
 
 /* 게임 테이블 */
 

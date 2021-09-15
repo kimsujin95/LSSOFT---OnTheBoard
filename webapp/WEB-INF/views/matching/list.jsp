@@ -20,7 +20,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/matching/matching.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/tab_content.css" type="text/css">
-<link href="${pageContext.request.contextPath}/assets/css/header.css" rel="stylesheet" type="text/css">
 
 <title>매칭리스트</title>
 </head>

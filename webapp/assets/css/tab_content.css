@@ -1,8 +1,37 @@
 @charset "UTF-8";
 
+#tap-content-wrap li {
+	list-style-type: none;
+	margin: 3px 0px;
+}
+
+#tap-content-wrap ul#location-big a {
+	padding: 10px;
+}
+
+#tap-content-wrap ul#game-style a {
+	padding: 10px;
+}
+
+#tap-content-wrap ul li a:hover {
+	cursor: pointer;
+	background-color: #ff1f67;
+	color: #fff;
+}
+
+#tap-content-wrap ul li a:link {
+	text-decoration: none;
+	color: #000;
+}
+
+#tap-content-wrap ul li a:visited {
+	text-decoration: none;
+	color: #000;
+}
+
 #ipt-keyword {
 	margin: 10px 0px -10px 0px;
-	background-image: url(../../images/matching/img-search.png);
+	background-image: url(../images/matching/img-search.png);
 	background-size: 24px;
 	background-repeat: no-repeat;
 	background-position: left center;
@@ -10,6 +39,7 @@
 	width: 250px;
 	padding: 0px 35px 0px 32px;
 	border-radius: 5px;
+	border-color: #ff1f67;
 }
 
 .overflow-scroll {
@@ -29,12 +59,7 @@
 	padding: 3px;
 	width: 50%;
 	text-align: left;
-	font-size: 13px;
-}
-
-#location-big li:hover {
-	background-color: #ff1f67;
-	cursor: pointer;
+	font-size: 16px;
 }
 
 #location-medium {
@@ -62,12 +87,7 @@
 	padding: 3px;
 	width: 50%;
 	text-align: left;
-	font-size: 13px;
-}
-
-#game-style li:hover {
-	background-color: #ff1f67;
-	cursor: pointer;
+	font-size: 16px;
 }
 
 #game-name {

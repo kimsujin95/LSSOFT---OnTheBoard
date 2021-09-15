@@ -111,10 +111,6 @@ textarea {
 	margin-left: 3px;
 }
 
-#select-option li {
-	list-style: none;
-}
-
 #select-option-list #option-reset {
 	border-right: 1px solid #e2e2e2;
 }

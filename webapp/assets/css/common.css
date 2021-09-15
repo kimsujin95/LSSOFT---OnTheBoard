@@ -9,7 +9,7 @@
 }
 
 /* 헤더 */
-.header-container {
+#header-container {
 	width: 100%;
 	margin: 0 auto;
 }

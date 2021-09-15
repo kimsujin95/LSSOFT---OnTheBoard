@@ -15,7 +15,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script src="${pageContext.request.contextPath}/assets/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/assets/bootstrap/bootstrap.js"></script>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/matching/matching.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css" type="text/css">
@@ -273,7 +273,7 @@
 					<div class="row">
 						<div class="col-xs-4 border-right overflow-scroll">
 							<ul id="game-style">
-								<li role="presentation"><a href="#style-strategy" aria-controls="style-strategy" role="tab" data-toggle="tab">전략(34)</a></li>
+								<li role="presentation" class="active"><a href="#style-strategy" aria-controls="style-strategy" role="tab" data-toggle="tab">전략(34)</a></li>
 								<li role="presentation"><a href="#style-abstract" aria-controls="style-abstract" role="tab" data-toggle="tab">추상(34)</a></li>
 								<li role="presentation"><a href="#style-collectible" aria-controls="style-collectible" role="tab" data-toggle="tab">컬렉터블(34)</a></li>
 								<li role="presentation"><a href="#style-family" aria-controls="style-family" role="tab" data-toggle="tab">가족(34)</a></li>
@@ -440,162 +440,161 @@
 				</div>
 			</div>
 		</div>
-	</div>
+		<br>
+		<br>
+		<br>
+		<!-- 매칭글 리스트 -->
+		<div>
+			<table id="table-matchingList">
+				<colgroup>
+					<col width="115px">
+					<col width="105px">
+					<col width="325px">
+					<col width="175px">
+					<col width="65px">
+					<col width="65px">
+					<col width="145px">
+					<col width="135px">
+				</colgroup>
+				<thead>
+					<tr class="first-tr">
+						<th>매칭상태</th>
+						<th>조회수</th>
+						<th>제목</th>
+						<th>게임</th>
+						<th>인원</th>
+						<th>성별</th>
+						<th>지역</th>
+						<th>시작날짜</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>매칭중</td>
+						<td>999,999</td>
+						<td><a href="${pageContext.request.contextPath}/matching/read">테라포밍 마스 하시오</a></td>
+						<td>테라포밍 마스</td>
+						<td>1/5</td>
+						<td>남</td>
+						<td>서울 강남구</td>
+						<td>21. 11. 11.</td>
+					</tr>
 
-	<br>
-	<br>
-	<br>
-	<!-- 매칭글 리스트 -->
-	<div>
-		<table id="table-matchingList">
-			<colgroup>
-				<col width="115px">
-				<col width="105px">
-				<col width="325px">
-				<col width="175px">
-				<col width="65px">
-				<col width="65px">
-				<col width="145px">
-				<col width="135px">
-			</colgroup>
-			<thead>
-				<tr class="first-tr">
-					<th>매칭상태</th>
-					<th>조회수</th>
-					<th>제목</th>
-					<th>게임</th>
-					<th>인원</th>
-					<th>성별</th>
-					<th>지역</th>
-					<th>시작날짜</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>매칭중</td>
-					<td>999,999</td>
-					<td><a href="${pageContext.request.contextPath}/matching/read">테라포밍 마스 하시오</a></td>
-					<td>테라포밍 마스</td>
-					<td>1/5</td>
-					<td>남</td>
-					<td>서울 강남구</td>
-					<td>21. 11. 11.</td>
-				</tr>
-
-				<tr>
-					<td>매칭중</td>
-					<td>999,999</td>
-					<td>테라포밍 마스 하시오</td>
-					<td>테라포밍 마스</td>
-					<td>1/5</td>
-					<td>남</td>
-					<td>서울 강남구</td>
-					<td>21. 11. 11.</td>
-				</tr>
-				<tr>
-					<td>매칭중</td>
-					<td>999,999</td>
-					<td>테라포밍 마스 하시오</td>
-					<td>테라포밍 마스</td>
-					<td>1/5</td>
-					<td>남</td>
-					<td>서울 강남구</td>
-					<td>21. 11. 11.</td>
-				</tr>
-				<tr>
-					<td>매칭중</td>
-					<td>999,999</td>
-					<td>테라포밍 마스 하시오</td>
-					<td>테라포밍 마스</td>
-					<td>1/5</td>
-					<td>남</td>
-					<td>서울 강남구</td>
-					<td>21. 11. 11.</td>
-				</tr>
-				<tr>
-					<td>매칭중</td>
-					<td>999,999</td>
-					<td>테라포밍 마스 하시오</td>
-					<td>테라포밍 마스</td>
-					<td>1/5</td>
-					<td>남</td>
-					<td>서울 강남구</td>
-					<td>21. 11. 11.</td>
-				</tr>
-				<tr>
-					<td>매칭중</td>
-					<td>999,999</td>
-					<td>테라포밍 마스 하시오</td>
-					<td>테라포밍 마스</td>
-					<td>1/5</td>
-					<td>남</td>
-					<td>서울 강남구</td>
-					<td>21. 11. 11.</td>
-				</tr>
-				<tr>
-					<td>매칭중</td>
-					<td>999,999</td>
-					<td>테라포밍 마스 하시오</td>
-					<td>테라포밍 마스</td>
-					<td>1/5</td>
-					<td>남</td>
-					<td>서울 강남구</td>
-					<td>21. 11. 11.</td>
-				</tr>
-				<tr>
-					<td>매칭중</td>
-					<td>999,999</td>
-					<td>테라포밍 마스 하시오</td>
-					<td>테라포밍 마스</td>
-					<td>1/5</td>
-					<td>남</td>
-					<td>서울 강남구</td>
-					<td>21. 11. 11.</td>
-				</tr>
-				<tr>
-					<td>매칭중</td>
-					<td>999,999</td>
-					<td>테라포밍 마스 하시오</td>
-					<td>테라포밍 마스</td>
-					<td>1/5</td>
-					<td>남</td>
-					<td>서울 강남구</td>
-					<td>21. 11. 11.</td>
-				</tr>
-				<tr>
-					<td>매칭중</td>
-					<td>999,999</td>
-					<td>테라포밍 마스 하시오</td>
-					<td>테라포밍 마스</td>
-					<td>1/5</td>
-					<td>남</td>
-					<td>서울 강남구</td>
-					<td>21. 11. 11.</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-
-	<div id="paging-wrap" class="text-center">
-		<div id="paging">
-			<ul>
-				<li>«</li>
-				<li>‹</li>
-				<li>1</li>
-				<li>2</li>
-				<li>3</li>
-				<li>4</li>
-				<li>5</li>
-				<li>6</li>
-				<li>7</li>
-				<li>›</li>
-				<li>»</li>
-			</ul>
+					<tr>
+						<td>매칭중</td>
+						<td>999,999</td>
+						<td>테라포밍 마스 하시오</td>
+						<td>테라포밍 마스</td>
+						<td>1/5</td>
+						<td>남</td>
+						<td>서울 강남구</td>
+						<td>21. 11. 11.</td>
+					</tr>
+					<tr>
+						<td>매칭중</td>
+						<td>999,999</td>
+						<td>테라포밍 마스 하시오</td>
+						<td>테라포밍 마스</td>
+						<td>1/5</td>
+						<td>남</td>
+						<td>서울 강남구</td>
+						<td>21. 11. 11.</td>
+					</tr>
+					<tr>
+						<td>매칭중</td>
+						<td>999,999</td>
+						<td>테라포밍 마스 하시오</td>
+						<td>테라포밍 마스</td>
+						<td>1/5</td>
+						<td>남</td>
+						<td>서울 강남구</td>
+						<td>21. 11. 11.</td>
+					</tr>
+					<tr>
+						<td>매칭중</td>
+						<td>999,999</td>
+						<td>테라포밍 마스 하시오</td>
+						<td>테라포밍 마스</td>
+						<td>1/5</td>
+						<td>남</td>
+						<td>서울 강남구</td>
+						<td>21. 11. 11.</td>
+					</tr>
+					<tr>
+						<td>매칭중</td>
+						<td>999,999</td>
+						<td>테라포밍 마스 하시오</td>
+						<td>테라포밍 마스</td>
+						<td>1/5</td>
+						<td>남</td>
+						<td>서울 강남구</td>
+						<td>21. 11. 11.</td>
+					</tr>
+					<tr>
+						<td>매칭중</td>
+						<td>999,999</td>
+						<td>테라포밍 마스 하시오</td>
+						<td>테라포밍 마스</td>
+						<td>1/5</td>
+						<td>남</td>
+						<td>서울 강남구</td>
+						<td>21. 11. 11.</td>
+					</tr>
+					<tr>
+						<td>매칭중</td>
+						<td>999,999</td>
+						<td>테라포밍 마스 하시오</td>
+						<td>테라포밍 마스</td>
+						<td>1/5</td>
+						<td>남</td>
+						<td>서울 강남구</td>
+						<td>21. 11. 11.</td>
+					</tr>
+					<tr>
+						<td>매칭중</td>
+						<td>999,999</td>
+						<td>테라포밍 마스 하시오</td>
+						<td>테라포밍 마스</td>
+						<td>1/5</td>
+						<td>남</td>
+						<td>서울 강남구</td>
+						<td>21. 11. 11.</td>
+					</tr>
+					<tr>
+						<td>매칭중</td>
+						<td>999,999</td>
+						<td>테라포밍 마스 하시오</td>
+						<td>테라포밍 마스</td>
+						<td>1/5</td>
+						<td>남</td>
+						<td>서울 강남구</td>
+						<td>21. 11. 11.</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
-	</div>
-	<br>
-	<div class="text-center">
-		<a href="${pageContext.request.contextPath}/matching/writeForm"><button class="btn btn-info btn-sm">매칭글 등록</button></a>
+
+		<div id="paging-wrap" class="text-center">
+			<div id="paging">
+				<ul>
+					<li>«</li>
+					<li>‹</li>
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+					<li>6</li>
+					<li>7</li>
+					<li>›</li>
+					<li>»</li>
+				</ul>
+			</div>
+		</div>
+		<br>
+		<div class="text-center">
+			<a href="${pageContext.request.contextPath}/matching/writeForm"><button class="btn btn-info btn-sm">매칭글 등록</button></a>
+		</div>
 	</div>
 	<!-- // CONTENT -->
 

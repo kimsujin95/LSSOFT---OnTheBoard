@@ -10,33 +10,27 @@
 
 <title>On the Board:팀프로젝트 3조</title>
 
-
 <!-- css  -->
 <link href="${pageContext.request.contextPath }/assets/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/game/gamestyle.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/assets/css/game/gamelayout.css" rel="stylesheet" media="screen and (max-width:1023px)">
+<link href="${pageContext.request.contextPath }/assets/css/game/gamestyle.css" rel="stylesheet">
 
 
 <!-- js -->
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery-1.12.4.js"></script>
 
-
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css" type="text/css">
-
-
-
 </head>
 
 <body>
 	
-	<!-- 헤더 -->
+	<!-- Header -->
 	<c:import url="/WEB-INF/views/admin/includes/header.jsp"></c:import>
-	<!-- //헤더 -->
+	<!-- /#Header -->
 	
 	<!--wrap-->
 	<div class="wrap">
-		
+	
 
 		<!--#mHeader-->
 		<div id="mHeader">
@@ -45,8 +39,8 @@
 			</h1>
 		</div>
 		<!--/#mHeader-->
-		<!--#container-->
-		<div id="container" class="gameList">
+		<!--#container- 메인-->
+		<div id="main" class="container bg-primary gameList">
 			<!--#searchForm-->
 			<form name="searchForm" id="searchForm" method="POST" action>
 				<input type="hidden" name="pagenum" id="pagenum" value="1"> <input type="hidden"
@@ -519,26 +513,27 @@
 			<!--.paging-->
 			<div id="paging">
 				<div class="paging">
-					<a class="paging_first page_img"><img src="./webapp/image/paging_first.gif" alt=""></a> <a
+					<a class="paging_first page_img"><img src="${pageContext.request.contextPath }/assets/images/icons/paging_first.gif" alt=""></a> <a
 						class="paging_prev page_img"
-					><img src="./webapp/image/paging_prev.gif" alt=""></a> <strong>1</strong> <a
+					><img src="${pageContext.request.contextPath }/assets/images/icons/paging_prev.gif" alt=""></a> <strong>1</strong> <a
 						href="javascript:change_page(&quot;2&quot;);"
-					>2</a> <a href="javascript:change_page(&quot;3&quot;);">3</a> <a
+					>2</a>
+					<a href="javascript:change_page(&quot;3&quot;);">3</a> <a
 						href="javascript:change_page(&quot;4&quot;);"
 					>4</a> <a href="javascript:change_page(&quot;5&quot;);">5</a> <a
 						href="javascript:change_page(&quot;2&quot;);" class="page_next page_img"
-					><img src="./webapp/image/paging_next.gif" alt=""></a> <a
+					><img src="${pageContext.request.contextPath }/assets/images/icons/paging_next.gif" alt=""></a> <a
 						href="javascript:change_page(&quot;6&quot;)" class="page_last page_img"
-					><img src="./webapp/image/paging_last.gif" alt=""></a>
+					><img src="${pageContext.request.contextPath }/assets/images/icons/paging_last.gif" alt=""></a>
 				</div>
 			</div>
 			<!--/.paging-->
 		</div>
 		<!--/#container-->
 		
-		<!-- FOOTER -->
+		<!-- Footer -->
 		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
-		<!-- // FOOTER -->
+		<!-- /#Footer -->
 
 	</div>
 	<!--/#wrap-->

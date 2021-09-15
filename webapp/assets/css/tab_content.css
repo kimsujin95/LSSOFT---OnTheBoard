@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+#ipt-keyword {
+	margin: 10px 0px -10px 0px;
+	background-image: url(../../images/matching/img-search.png);
+	background-size: 24px;
+	background-repeat: no-repeat;
+	background-position: left center;
+	height: 35px;
+	width: 250px;
+	padding: 0px 35px 0px 32px;
+	border-radius: 5px;
+}
+
+#location-big {
+	margin: 0px;
+	padding: 0px;
+}
+
+#location-big li {
+	float: left;
+	/* margin: 3px; */
+	padding: 3px;
+	width: 50%;
+	text-align: left;
+	font-size: 13px;
+}
+
+#location-big li:hover {
+	background-color: #ff1f67;
+	cursor: pointer;
+}
+
+#location-medium {
+	margin: 0px;
+	padding: 0px;
+}
+
+#location-medium li {
+	float: left;
+	/* margin: 3px; */
+	padding: 3px;
+	width: 33.3%;
+	text-align: left;
+	font-size: 13px;
+}
+
+#game-style {
+	margin: 0px;
+	padding: 0px;
+}
+
+#game-style li {
+	float: left;
+	/* margin: 3px; */
+	padding: 3px;
+	width: 50%;
+	text-align: left;
+	font-size: 13px;
+}
+
+#game-style li:hover {
+	background-color: #ff1f67;
+	cursor: pointer;
+}
+
+#game-name {
+	margin: 0px;
+	padding: 0px;
+}
+
+#game-name li {
+	float: left;
+	/* margin: 3px; */
+	padding: 3px;
+	width: 33.3%;
+	text-align: left;
+	font-size: 13px;
+}

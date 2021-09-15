@@ -65,7 +65,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><input class="margin-left-none" type="checkbox" id="male"> <label for="male">남</label> <input type="checkbox" id="female"> <label for="female">여</label> <input type="checkbox" id="sex-none"> <label for="sex-none">무관</label></td>
+							<td><input class="margin-left-none" type="checkbox" id="male" value="male" name="sex-limit"> <label for="male">남</label> <input type="checkbox" id="female" value="female" name="sex-limit"> <label for="female">여</label> <input type="checkbox" id="sex-none" value="sex-none" name="sex-limit"> <label for="sex-none">무관</label></td>
 							<td><input class="margin-left-none" type="checkbox" id="10s"> <label for="10s">10대</label> <input type="checkbox" id="20s"> <label for="20s">20대</label> <input type="checkbox" id="30s"> <label for="30s">30대</label> <input type="checkbox" id="40s"> <label for="40s">40대</label> <input type="checkbox" id="50s"> <label for="50s">50대</label> <input type="checkbox" id="age-none"> <label for="age-none">무관</label></td>
 							<td><input class="margin-left-none" type="checkbox" id="matching-ing"> <label for="matching-ing">매칭중</label> <input type="checkbox" id="matching-end"> <label for="matching-end">매칭완료</label></td>
 						</tr>
@@ -73,7 +73,6 @@
 				</table>
 			</div>
 			<div id="select-option-list" class="row">
-				<!-- <div class="col-xs-4"></div> -->
 				<div id="option-reset" class="col-xs-1">
 					<button class="btn-reset">
 						선택초기화 <img src="${pageContext.request.contextPath}/assets/images/matching/btn-reset.png" alt="option-reset-btn">

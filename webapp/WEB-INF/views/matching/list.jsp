@@ -252,29 +252,4 @@
 
 </body>
 
-<script>
-	// 옵션 선택 리스트 탭
-	// 메뉴가 선택되어 active가 되기 전 이벤트
-	$('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
-		e.target // 현재 설정된 tab
-		e.relatedTarget // 이전에 설정된 탭
-	});
-	// 메뉴가 선택되어 active가 된 후 이벤트
-	$('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
-		e.target // 현재 설정된 tab
-		e.relatedTarget // 이전에 설정된 탭
-	});
-	// 다른 메뉴가 선택되어 active가 remove 되기 전 이벤트
-	$('a[data-toggle="tab"]').on('hide.bs.tab', function(e) {
-		e.target // 현재 설정된 tab
-		e.relatedTarget // 이전에 설정된 탭
-	});
-	// 다른 메뉴가 선택되어 active가 remove 된 후 이벤트
-	$('a[data-toggle="tab"]').on('hidden.bs.tab', function(e) {
-		e.target // 현재 설정된 tab
-		e.relatedTarget // 이전에 설정된 탭
-	});
-	// -- 옵션 선택 리스트 탭 --
-</script>
-
 </html>

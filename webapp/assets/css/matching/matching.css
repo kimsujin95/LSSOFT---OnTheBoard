@@ -5,7 +5,6 @@
 	border: 1px solid #000000;
 	margin-bottom: 10px;
 } */
-
 #content {
 	margin-bottom: 30px;
 }
@@ -179,7 +178,7 @@ textarea {
 	padding: 0px;
 }
 
-#table-matchingList .first-tr {
+#table-matchingList .first-tr th {
 	background-color: #ff1f67;
 	color: #fff;
 }
@@ -223,11 +222,37 @@ textarea {
 	/* padding: 7px 26px; */
 }
 
-#datepick {
+#write-form #title {
+	border-color: #ff1f67;
+	border-radius: 5px;
+	height: 25px;
+	width: 400px;
+}
+
+#ipt-keyword {
+	background-image: url(../../images/matching/img-search.png);
+	background-size: 20px;
+	background-repeat: no-repeat;
+	background-position: left center;
+	height: 25px;
+	width: 180px;
+	padding: 0px 35px 0px 32px;
+	border-radius: 5px;
+	border-color: #ff1f67;
+}
+
+#write-form #datepick, #write-form #time {
 	height: 18px;
 	width: 110px;
 	letter-spacing: 2px;
 	text-align: center;
+	border: none;
+	font-size: 12px;
+}
+
+#write-form #content {
+	border: 2px solid #ff1f67;
+	border-radius: 5px;
 }
 
 /** READ **/

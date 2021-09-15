@@ -33,14 +33,7 @@
 
 	<!-- #wrap -->
 	<div id="wrap">
-		<!--#mHeader-->
-		<div id="mHeader">
-			<h1>
-				<a href="${pageContext.request.contextPath }/main"><img src="${pageContext.request.contextPath }/assets/images/Logo.png" alt="Logo"></a>
-			</h1>
-		</div>
-
-		<!--/#mHeader-->
+		
 		<!-- #container -->
 		<div id="container" class="list">
 

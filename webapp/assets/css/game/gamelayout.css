@@ -9,19 +9,6 @@ body{font-size:12px;}
 #mHeader h1 img{height:28px;}
 #mHeader .btnMenu{position:absolute;left:10px;top:17px;}
 
-#footerwrap{height:auto;margin-top:45px;padding-bottom:22px;}
-#footer{min-width:320px;padding-left:0;}
-#footer h1{display:none;}
-#footer .menu{overflow:hidden;padding-top:23px;text-align:center;}
-#footer .menu li{float:none;display:inline-block;margin-right:15px;}
-#footer .menu li a{font-size:11px;line-height:15px;color:#fff;}
-#footer .menu li:nth-child(4){margin-right:0;}
-#footer .addr{margin-top:21px;font-size:12px;line-height:15px;text-align:center;}
-#footer .addr li{float:none;display:inline-block;background-position:0 1px;}
-#footer .addr li:first-child, #footer .addr li.addr01, #footer .addr li.phone{clear:both;padding-left:0;background:none;}
-#footer .copy{font-size:12px;line-height:15px;text-align:center;}
-
-
 
 #main{min-width:320px;margin:0;padding:0 10px;}
 
@@ -41,7 +28,7 @@ body{font-size:12px;}
 .tabMenu02 li a{font-size:13px;line-height:35px;}
 .tabMenu02 .search{position:static;margin-bottom:15px;}
 .tabMenu02 .search .formText{padding-right:90px;width:100%;margin:0;}
-.tabMenu02 .search .btnGray01{position:absolute;right:0;top:0px;width:80px;}
+
 
 
 .listType li.sort{padding-left:15px;}
@@ -54,12 +41,7 @@ body{font-size:12px;}
 .bbsList02>li dt{margin-bottom:3px;font-size:16px;line-height:24px;}
 .bbsList02>li dd{font-size:13px;line-height:22px;}
 .bbsList02>li dl em{color:#1db3a8;}
-.bbsList02>li dd.date{margin-top:4px;}
-.bbsList02>li dd.txt{height:44px;}
-.bbsList02>li img.icon_new{width:20px;margin-top:-2px;}
-.bbsList02>li dd.game_info{margin:6px 0 5px;}
-.bbsList02>li dd.game_info li{display:block;font-size:13px;margin-left:0;padding-left:0;background:none;}
-.bbsList02_game>li dd.txt{height:66px;}
+
 
 /* 리스트 게임이미지 */
 .bbsList04{overflow:hidden;margin:30px -5px 20px;}
@@ -119,7 +101,7 @@ body{font-size:12px;}
 .searchResult .bbsList04{margin:12px 0 -10px;}
 
 
-
+/*
 @media (max-width:1240px){
     #headerwrap{padding:0 20px;}
     #main{padding:0 20px;}
@@ -171,4 +153,4 @@ body{font-size:12px;}
 @media (max-width:370px){
 .bbsList04>li{width:100%;}
 }
-
+*/

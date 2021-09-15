@@ -67,20 +67,7 @@ ol,ul,li {
 #mHeader{display:none;}
 #headerwrap{height:105px;border-bottom:1px solid #d8d8d8;}
 
-#container{width:100%;max-width:1200px;margin:40px auto 0;}
-
-#footerwrap{height:155px;margin-top:80px;background:#969696;}
-#footer{position:relative;width:100%;max-width:1200px;margin:0 auto;padding-left:63px;}
-#footer h1{position:absolute;left:0;top:52px;}
-#footer .menu{overflow:hidden;padding-top:33px;}
-#footer .menu li{float:left;margin-right:20px;}
-#footer .menu li a{font-size:14px;line-height:20px;color:#fff;}
-#footer .addr{margin-top:10px;overflow:hidden;;font-size:14px;line-height:20px;color:#fff;}
-#footer .addr.eng {padding-top:50px;}
-#footer .addr li{float:left;padding-left:13px;margin-right:10px;}
-#footer .addr li:first-child, #footer .addr li.phone{clear:both;padding-left:0;background:none;}
-#footer .copy{font-size:14px;line-height:20px;color:#fff;}
-
+#main{width:100%;max-width:1200px;margin:40px auto 0;}
 
 .tabMenu01{position:relative;margin-top:30px;}
 .tabMenu01 ul{overflow:hidden;}
@@ -133,7 +120,7 @@ ol,ul,li {
 .bbsList04 li{float:left;width:20%;padding:0 5px;margin-bottom:10px;}
 .bbsList04 li .thum {border:1px solid #d8d8d8;position:relative;text-align:center;}
 .bbsList04 li .thum img{width:100%;}
-.bbsList04 li .thum .over{position:absolute;left:0;top:0;width:100%;height:100%;background:url('images/event_close_over.png');}
+.bbsList04 li .thum .over{position:absolute;left:0;top:0;width:100%;height:100%;background:url();}
 .bbsList04 li .thum .over span{position:absolute;right:0;top:0;display:inline-block;padding:5px 10px 3px;font-size:16px;color:#fff;background:#d03333;}
 .bbsList04 li dl{padding:18px; border:1px solid #d8d8d8; border-top:none;}
 .bbsList04 li dt{margin:10px 0 13px; font-size:20px; line-height:24px; height:24px; overflow:hidden; text-align:left;}
@@ -167,7 +154,7 @@ ol,ul,li {
 .sortSelect h3{display:none;}
 .sortSelect>ul:after{content:"";clear:both;}
 .sortSelect>ul>li{float:left;width:20%;position:relative;}
-.sortSelect li dt{padding-left:7.5%;font-size:16px;line-height:48px;cursor:pointer;border:1px solid #d8d8d8;border-left:none;background:url('./image/tab_menu_arrow.gif') no-repeat 85% 50%;}
+.sortSelect li dt{padding-left:7.5%;font-size:16px;line-height:48px;cursor:pointer;border:1px solid #d8d8d8;border-left:none;background:url('${pageContext.request.contextPath }/assets/images/icons/tab_menu_arrow.gif') no-repeat 85% 50%;}
 .sortSelect>ul>li:first-child dt{border-left:1px solid #d8d8d8;}
 .sortSelect li dd{display:none;position:absolute;left:-1px;top:50px;width:100%;background:#f0f0f0;border:1px solid #dadada;border-top:none; z-index:1;}
 .sortSelect>ul>li:first-child dd{left:0;}
@@ -184,7 +171,7 @@ ol,ul,li {
 .gameDetail .gameInfo .thum img{width:100%;}
 .gameDetail .gameInfo .infoBox{width:auto;padding-left:30px;}
 .gameDetail .gameInfo .infoBox .info{padding:0 16px; display:block; height:auto;}
-.gameDetail .gameInfo .infoBox .info li{position:relative;padding-left:141px;font-size:16px;line-height:26px;height:auto;color:#838383;background:url('images/icon_dot03.png') no-repeat 0 10px;}
+.gameDetail .gameInfo .infoBox .info li{position:relative;padding-left:141px;font-size:16px;line-height:26px;height:auto;color:#838383;background:url('${pageContext.request.contextPath }/assets/images/icons/icon_dot03.png') no-repeat 0 10px;}
 .gameDetail .gameInfo .infoBox .info li em{position:absolute;left:14px;top:0;display:inline-block;width:127px;color:#333;}
 .gameDetail .gameInfo .infoBox ul.info:first-child{margin-bottom:20px;padding:24px 15px 22px;border:1px solid #dedede;background:#f8f8f8;}
 .gameDetail .gameInfo .infoBox p.order{margin-top:37px;}
@@ -209,6 +196,7 @@ ol,ul,li {
 .gameDetail #gameGuide>div .embed-container {position:relative; padding-bottom:56.25%; padding-top:30px; margin-top: 30px; overflow:hidden;}
 .gameDetail #gameGuide>div .embed-container iframe, .embed-container object, .embed-container embed {position:absolute; top:0; left:0; width:100%; height:100%;}
 
+/*
 @media (max-width:1240px){
 #headerwrap{padding:0 20px;}
 #container{padding:0 20px;}
@@ -231,3 +219,4 @@ ol,ul,li {
 	.videoeWrap {position: relative;width: 100%;padding-bottom: 56.25%;padding-top: 20px;}
 	iframe {position: absolute;width: 100%;height: 100%;left:0;top:0;}
 }
+*/

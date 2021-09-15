@@ -13,7 +13,7 @@
 <!-- css  -->
 <link href="${pageContext.request.contextPath }/assets/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/game/gamelayout.css" rel="stylesheet" media="screen and (max-width:1023px)">
+<link href="${pageContext.request.contextPath }/assets/css/game/gamelayout.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/assets/css/game/gamestyle.css" rel="stylesheet">
 
 
@@ -31,16 +31,8 @@
 	<!--wrap-->
 	<div class="wrap">
 	
-
-		<!--#mHeader-->
-		<div id="mHeader">
-			<h1>
-				<a href="${pageContext.request.contextPath }/main"><img src="${pageContext.request.contextPath}/assets/images/logo.png" alt="Logo"></a>
-			</h1>
-		</div>
-		<!--/#mHeader-->
-		<!--#container- 메인-->
-		<div id="main" class="container bg-primary gameList">
+		<!--#container-->
+		<div id="main" class="gameList">
 			<!--#searchForm-->
 			<form name="searchForm" id="searchForm" method="POST" action>
 				<input type="hidden" name="pagenum" id="pagenum" value="1"> <input type="hidden"

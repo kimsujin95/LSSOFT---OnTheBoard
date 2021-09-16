@@ -40,12 +40,15 @@
 
 		<!-- SUB TITLE -->
 		<div class="container sub-container">
-
-			<div class="subtitle">
-				<h3>매칭내역</h3>
-				<div class="context">매칭내역을 확인 할 수 있습니다.</div>
+			<div class="subtitle clearfix">
+				<div class="context1 font-size-24">매칭내역</div>
+				<div class="context2 clearfix">
+					<ul>
+						<li><a href="#">마이페이지</a></li>
+						<li class="last-li"><a href="#">매칭내역</a></li>
+					</ul>
+				</div>
 			</div>
-
 		</div>
 		<!-- // SUB TITLE -->
 

@@ -24,8 +24,8 @@ public class AdminController {
 
 	//admin - 스케쥴
 	@RequestMapping(value = "/schedule", method = {RequestMethod.GET, RequestMethod.POST})
-	public String scheduleManagement() {
-		System.out.println("admin - scheduleManagement --------------------------------------------------------");
+	public String schedule() {
+		System.out.println("admin - schedule --------------------------------------------------------");
 		return "/admin/schedule";
 	}
 
@@ -41,6 +41,13 @@ public class AdminController {
 	public String gameList() {
 		System.out.println("admin - gameList --------------------------------------------------------");
 		return "/admin/gameList";
+	}
+
+	//admin - 보유 게임관리
+	@RequestMapping(value = "/status", method = {RequestMethod.GET, RequestMethod.POST})
+	public String status() {
+		System.out.println("admin - status --------------------------------------------------------");
+		return "/admin/status";
 	}
 	
 }

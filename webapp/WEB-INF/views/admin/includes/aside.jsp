@@ -11,7 +11,7 @@
 		<li class="list-group-item"><a href="${pageContext.request.contextPath }/admin/schedule">스케쥴 관리</a></li>
 		<li class="list-group-item"><a href="${pageContext.request.contextPath }/admin/storeInfo">매장 정보</a></li>
 		<li class="list-group-item"><a href="${pageContext.request.contextPath }/admin/gameList">보유 게임</a></li>
-		<li class="list-group-item"><a>매출 현황</a></li>
+		<li class="list-group-item"><a href="${pageContext.request.contextPath }/admin/status">매출 현황</a></li>
 	</ul>
 	<!-- //사이드 바 -->
 

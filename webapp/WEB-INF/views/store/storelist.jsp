@@ -11,6 +11,8 @@
 
 <!-- KaKaoMap_CSS -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/store/kakaomap/map.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/tab_content.css" type="text/css">
 
 <!-- jQuery -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
@@ -23,7 +25,10 @@
 
 </head>
 <body>
-
+	
+	<!-- 헤더 -->
+	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
+	
 	<div id="Store_main">
 
 		<div id="Store_main_content" class="container">

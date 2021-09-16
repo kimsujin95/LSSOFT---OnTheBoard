@@ -241,7 +241,7 @@
 		</div>
 		<br>
 		<div class="text-center">
-			<a href="${pageContext.request.contextPath}/matching/writeForm"><button class="btn-red">매칭글 등록</button></a>
+			<a href="${pageContext.request.contextPath}/matching/writeForm"><button type="button" class="btn-red">매칭글 등록</button></a>
 		</div>
 	</div>
 	<!-- // CONTENT -->

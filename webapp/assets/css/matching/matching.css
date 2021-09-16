@@ -45,50 +45,10 @@ textarea {
 	cursor: pointer;
 }
 
-/** LOCATION LIST
-#table-start {
-	text-align: center;
-}
-
-#table-start thead th {
-	text-align: center;
-	font-size: 17px;
-	padding: 5px 0px;
-}
-
-#table-start tr {
-	border-bottom: 1px solid #e2e2e2;
-}
-
-#table-start td {
-	padding: 5px 0px;
-}
-
-#table-start>caption {
-	background-color: #f00;
-	font-size: 20px;
-	font-weight: bold;
-	text-align: center;
-	color: black;
-}
-
-#table-start>caption>span {
-	color: #fff;
-}
-**/
-
 /** SELECT OPTION **/
 #select-option {
 	margin: 0px;
 	padding: 0px;
-	/* margin: 5px 0px -10px 0px;
-	height: 35px;
-    width: 300px;
-	padding: 7px 0px 0px 5px;
-	font-size: 16px;
-	font-weight: bold;
-	border: 1px solid #000;
-    border-radius: 5px; */
 }
 
 #table-option td, th {
@@ -198,12 +158,15 @@ textarea {
 #paging-wrap #paging li {
 	list-style-type: none;
 	float: left;
-	padding: 5px 11px;
+	padding: 2px 8px;
 	margin: 0px 6px;
-	background-color: #ff1f67;
-	border-radius: 15px;
-	color: #fff;
+	border: 3px solid #ff1f67;
+	border-radius: 18px;
 	font-weight: bold;
+}
+
+#paging-wrap #paging li.li-pd {
+	padding: 2px 9.5px;
 }
 
 /** WRITE FORM **/

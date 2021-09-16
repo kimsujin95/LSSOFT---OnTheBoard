@@ -229,7 +229,7 @@
 			<div id="paging">
 				<ul>
 					<li>«</li>
-					<li>‹</li>
+					<li class="li-pd">‹</li>
 					<li>1</li>
 					<li>2</li>
 					<li>3</li>
@@ -237,7 +237,7 @@
 					<li>5</li>
 					<li>6</li>
 					<li>7</li>
-					<li>›</li>
+					<li class="li-pd">›</li>
 					<li>»</li>
 				</ul>
 			</div>

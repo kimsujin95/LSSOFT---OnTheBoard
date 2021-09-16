@@ -36,8 +36,8 @@
 		<div class="container sub-container">
 
 			<div class="subtitle">
-				<h3>매칭게시판</h3>
-				<div class="context">매칭리스트</div>
+				<h3>프로필 관리</h3>
+				<div class="context">프로필을 수정 할 수 있습니다.</div>
 			</div>
 
 		</div>

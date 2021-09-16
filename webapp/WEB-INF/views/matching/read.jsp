@@ -34,12 +34,15 @@
 	<div id="content" class="container">
 		<!-- SUB TITLE -->
 		<div class="container sub-container">
-
-			<div class="subtitle">
-				<h3>매칭게시판</h3>
-				<div class="context">글읽기</div>
+			<div class="subtitle clearfix">
+				<div class="context1 font-size-24">매칭게시판</div>
+				<div class="context2 clearfix">
+					<ul>
+						<li><a href="#">매칭게시판</a></li>
+						<li class="last-li"><a href="#">매칭글</a></li>
+					</ul>
+				</div>
 			</div>
-
 		</div>
 		<!-- // SUB TITLE -->
 		<div id="content-title">
@@ -93,9 +96,9 @@
 						<td>20대, 30대</td>
 					</tr>
 					<tr class="border-none">
-						<th>인원<br>(5)
+						<th>인원<br>(4)
 						</th>
-						<td>참가자 프로필 리스트<br>(닉네임/나이/성별)<br> (닉네임/나이/성별)<br> (닉네임/나이/성별)<br> (닉네임/나이/성별)<br></td>
+						<td>(닉네임/나이/성별)<br> (닉네임/나이/성별)<br> (닉네임/나이/성별)<br> (닉네임/나이/성별)<br></td>
 					</tr>
 				</table>
 			</div>
@@ -103,7 +106,6 @@
 			<div id="content-content" class="col-md-6">내용 출력 입니다.</div>
 		</div>
 		<div id="read-btn" class="row">
-			<!-- <div class="col-md-1"></div> -->
 			<div class="col-md-3 text-center">
 				<button class="btn-red">참가신청</button>
 				<button class="btn-white">참가취소</button>

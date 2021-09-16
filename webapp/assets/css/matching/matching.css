@@ -228,6 +228,11 @@ textarea {
 	border-radius: 5px;
 }
 
+#write-form select {
+	border: 1px solid #000;
+	border-radius: 5px;
+}
+
 #write-form #datepick, #write-form #time {
 	height: 18px;
 	width: 110px;
@@ -257,8 +262,8 @@ textarea {
 }
 
 #content-title .c-t-float-r>a {
-	font-size: 17px;
-	color: lightgray;
+	font-size: 16px;
+	color: #666;
 }
 
 #game-img-info a {
@@ -280,7 +285,6 @@ textarea {
 
 #table-game-info th, #table-game-info td {
 	padding: 6px 14px;
-	/* padding-left: 5px; */
 }
 
 #table-game-info .border-none {
@@ -301,7 +305,7 @@ textarea {
 
 #content-comment .content-comment-1 {
 	border: 1px solid lightgray;
-	border-radius: 10px;
+	border-radius: 5px;
 	background-color: #f3f1f1;
 	padding: 5px;
 }

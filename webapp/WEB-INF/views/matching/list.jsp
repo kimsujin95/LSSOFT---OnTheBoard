@@ -34,12 +34,15 @@
 	<div id="content" class="container">
 		<!-- SUB TITLE -->
 		<div class="container sub-container">
-
-			<div class="subtitle">
-				<h3>매칭게시판</h3>
-				<div class="context">매칭리스트</div>
+			<div class="subtitle clearfix">
+				<div class="context1 font-size-24">매칭게시판</div>
+				<div class="context2 clearfix">
+					<ul>
+						<li><a href="#">매칭게시판</a></li>
+						<li class="last-li"><a href="#">매칭리스트</a></li>
+					</ul>
+				</div>
 			</div>
-
 		</div>
 		<!-- // SUB TITLE -->
 

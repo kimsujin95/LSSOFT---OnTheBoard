@@ -34,12 +34,15 @@
 	<div id="content" class="container">
 		<!-- SUB TITLE -->
 		<div class="container sub-container">
-
-			<div class="subtitle">
-				<h3>매칭게시판</h3>
-				<div class="context">글수정</div>
+			<div class="subtitle clearfix">
+				<div class="context1 font-size-24">매칭게시판</div>
+				<div class="context2 clearfix">
+					<ul>
+						<li><a href="#">매칭게시판</a></li>
+						<li class="last-li"><a href="#">매칭수정</a></li>
+					</ul>
+				</div>
 			</div>
-
 		</div>
 		<!-- // SUB TITLE -->
 
@@ -112,7 +115,7 @@
 
 					<label for="">나이제한</label>
 					<br>
-					<input type="checkbox" id="10s"> <label for="10s" value="10s">10대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="20s"> <label for="20s" value="20s" checked="checked">20대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="30s"> <label for="30s" value="30s">30대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="40s"> <label for="40s" value="40s">40대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="none"> <label for="none" value="none">무관</label>
+					<input type="checkbox" id="10s" value="10s"> <label for="10s">10대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="20s" value="20s"> <label for="20s">20대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="30s" value="30s"> <label for="30s">30대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="40s" value="40s"> <label for="40s">40대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="none" value="none"> <label for="none">무관</label>
 
 					<br>
 					<br>
@@ -127,8 +130,8 @@
 			<br>
 
 			<div id="write-btn" class="text-center">
-				<a href="${pageContext.request.contextPath}/matching/read"><button type="button" class="btn btn-danger btn-sm">취소</button></a>
-				<button type="submit" class="btn btn-info btn-sm">저장</button>
+				<a href="${pageContext.request.contextPath}/matching/read"><button type="button" class="btn-white">취소</button></a>
+				<button type="submit" class="btn-red">저장</button>
 			</div>
 		</form>
 	</div>

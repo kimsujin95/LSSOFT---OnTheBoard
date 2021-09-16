@@ -42,12 +42,15 @@
 	<div id="content" class="container">
 		<!-- SUB TITLE -->
 		<div class="container sub-container">
-
-			<div class="subtitle">
-				<h3>매칭게시판</h3>
-				<div class="context">매칭글 등록</div>
+			<div class="subtitle clearfix">
+				<div class="context1 font-size-24">매칭게시판</div>
+				<div class="context2 clearfix">
+					<ul>
+						<li><a href="#">매칭게시판</a></li>
+						<li class="last-li"><a href="#">매칭등록</a></li>
+					</ul>
+				</div>
 			</div>
-
 		</div>
 		<!-- // SUB TITLE -->
 
@@ -152,7 +155,6 @@
 						<option value="people-two">2</option>
 						<option value="people-three">3</option>
 						<option value="people-four">4</option>
-						<option value="people-five">5</option>
 					</select>
 
 					<br>
@@ -186,8 +188,8 @@
 			<br>
 
 			<div id="write-btn" class="text-center">
-				<a href="${pageContext.request.contextPath}/matching/list"><button type="button" class="btn btn-danger btn-sm">취소</button></a>
-				<button type="submit" class="btn btn-info btn-sm">등록</button>
+				<a href="${pageContext.request.contextPath}/matching/list"><button type="button" class="btn-white">취소</button></a>
+				<button type="submit" class="btn-red">등록</button>
 			</div>
 		</form>
 	</div>

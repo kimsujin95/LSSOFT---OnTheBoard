@@ -38,9 +38,18 @@ div .main-img {
 
 
 		<div class="main-img">
-
-			<img src="${pageContext.request.contextPath}/assets/images/main.JPG" height="400px">
-
+				
+			<br>
+		
+			<img src="${pageContext.request.contextPath}/assets/images/boardgamemain.png" height="250px">
+			
+			<br><br>
+			
+			<h3>온 더 보드는 보드판 위에선 모두가 평등하다는 뜻으로, 이용자 누구나 쉽고 빠르게 보드겜을 즐길 수 있게 이어주는
+			멀티 플랫폼입니다.</h3>
+			
+			<br><br><br><br>
+			
 		</div>
 
 		<div class="main-img">

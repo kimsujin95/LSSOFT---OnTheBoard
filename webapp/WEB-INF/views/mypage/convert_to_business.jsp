@@ -35,13 +35,16 @@
 	<div id="main-container" class="container">
 
 		<!-- SUB TITLE -->
-		<div class="sub-container">
-
-			<div class="subtitle">
-				<h3>사업자 전환</h3>
-				<div class="context">사업자 계정으로 전환 할 수 있습니다.</div>
+		<div class="container sub-container">
+			<div class="subtitle clearfix">
+				<div class="context1 font-size-24">사업자전환</div>
+				<div class="context2 clearfix">
+					<ul>
+						<li><a href="#">마이페이지</a></li>
+						<li class="last-li"><a href="#">사업자전환</a></li>
+					</ul>
+				</div>
 			</div>
-
 		</div>
 		<!-- // SUB TITLE -->
 
@@ -407,7 +410,9 @@ NICE신용평가정보㈜(이하 “대행사”)가 “대행사”에서 제�
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 col-md-offset-4 text-center">
-					<button class="btn btn-red"><a href="${pageContext.request.contextPath}/admin/storeInfo/">전환하기</a></button>
+					<button class="btn btn-red">
+						<a href="${pageContext.request.contextPath}/admin/storeInfo/">전환하기</a>
+					</button>
 				</div>
 			</div>
 		</div>

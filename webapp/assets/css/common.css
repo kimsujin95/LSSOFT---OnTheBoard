@@ -22,11 +22,11 @@ address, em {
 }
 
 a {
-	text-decoration: none
+	text-decoration: none;
 }
 
 a[href]:active, a[href]:focus, a[href]:hover {
-	text-decoration: none
+	text-decoration: none;
 }
 
 /* 버튼3 */
@@ -81,6 +81,7 @@ header {
 header a {
 	text-decoration: none;
 	outline: none;
+	color: #ff1f67;
 }
 
 header>nav {
@@ -97,7 +98,7 @@ header ul {
 }
 
 header ul>li {
-	font-size: 20px;
+	font-size: 24px;
 	height: 100%;
 	display: flex;
 	align-items: center;

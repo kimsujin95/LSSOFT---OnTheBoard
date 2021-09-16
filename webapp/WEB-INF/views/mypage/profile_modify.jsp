@@ -34,16 +34,19 @@
 
 	<div class="container">
 
-		<!-- SUB TITLE -->
-		<div class="sub-container">
-
-			<div class="subtitle">
-				<h3>프로필 관리</h3>
-				<div class="context">프로필을 수정 할 수 있습니다.</div>
-			</div>
-
-		</div>
-		<!-- // SUB TITLE -->
+	<!-- SUB TITLE -->
+      <div class="container sub-container">
+         <div class="subtitle clearfix">
+            <div class="context1 font-size-24">프로필관리</div>
+            <div class="context2 clearfix">
+               <ul>
+                  <li><a href="#">마이페이지</a></li>
+                  <li class="last-li"><a href="#">프로필관리</a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <!-- // SUB TITLE -->
 
 
 		<div class="container bootstrap snippets bootdey">

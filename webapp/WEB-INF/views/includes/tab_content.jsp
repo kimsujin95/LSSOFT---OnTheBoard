@@ -186,7 +186,7 @@
 		</div>
 
 		<div role="tabpanel" class="tab-pane" id="game-style-name">
-			<input type="text" id="ipt-keyword" value="" placeholder="장르 검색"> <input type="text" id="ipt-keyword" value="" placeholder="게임 검색">
+			<input type="text" id="ipt-keyword" value="" placeholder="게임 검색">
 			<hr>
 			<div class="row">
 				<div class="col-xs-4 border-right overflow-scroll">

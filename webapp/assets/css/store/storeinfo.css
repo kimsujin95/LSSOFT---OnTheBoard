@@ -281,9 +281,10 @@ ul,ol,li{
 
 /* 예매 달력 */
 #on-the-board-include{
+    position: relative;
     width: 1100px;
     margin: 0 auto;
-    padding: 0;
+    padding: 10px 0 10px 0;
     background-color: #fff;
 }
 
@@ -436,14 +437,24 @@ button, input {
 }
 
 /* 예약 인원 수 선택 영역 */
-
-.people-choice-area{
-    position: relative;
-    width: 20%;
+#how_to_choice_people > li > a{
+    
 }
 
-.people-choice-area > .people-select-btn{
-    display: inline-block;
+.group_user_profile_img{
+    object-fit: cover;
+    height: 40px;
+}
+
+.group_user_info{
+    padding: 0 5px 0 5px;
+    margin: 5px 0 5px 0;
+}
+
+#choice_by_grouplist > div{
+    max-height: 400px;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 /* .select-by-no > button{
@@ -461,7 +472,7 @@ button, input {
 /* 예약 인원 선택 */
 .tab-content{
     border: 1px solid #ddd;
-    height: 100px;
+    height: auto;
     width: 25%;
 }
 
@@ -470,6 +481,20 @@ button, input {
     width: 100%;
 }
 
-#choice_by_count button{
-    
+.reservation{
+    height: 30px;
+}
+
+.reservation_btn{
+    position: absolute;
+    right: 0;
+}
+
+button.btn-red {
+	background-color: #ff1f67;
+	border: none;
+	font-size: 12px;
+	color: #fff;
+	border-radius: 5px;
+	padding: 6.5px;
 }

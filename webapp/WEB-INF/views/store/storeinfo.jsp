@@ -31,7 +31,9 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!-- fontawesome cdn -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+	rel="stylesheet"
+>
 
 </head>
 <body>
@@ -42,14 +44,19 @@
 	<!-- 메인 컨텐츠 구역 -->
 
 	<div id="store-main-content" class="container">
-	<div class="sub-container">
-
-         <div class="subtitle">
-            <h3>매장 상세정보</h3>
-            <p class="context">매장 > 매장 상세정보</p>
-         </div>
-
-      </div>
+		<!-- SUB TITLE -->
+		<div class="container sub-container">
+			<div class="subtitle clearfix">
+				<div class="context1 font-size-24">매장 정보</div>
+				<div class="context2 clearfix">
+					<ul>
+						<li><a href="#">매장</a></li>
+						<li class="last-li"><a href="#">매장 상세정보</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- // SUB TITLE -->
 		<!-- 매장 정보 상단 이미지슬라이드, 매장 상세정보 -->
 		<div id="store-info-top-content">
 			<!-- 이미지 슬라이드 -->
@@ -74,13 +81,17 @@
 						<!-- 이미지의 개수만큼 item을 만든다. 중요한 포인트는 carousel-indicators의 li 태그 개수와 item의 개수는 일치해야 한다. -->
 						<div class="item active">
 							<!-- 아미지 설정- -->
-							<img src="${pageContext.request.contextPath}/assets/images/admin/BoardGameStore.jpg" class="store_img">
+							<img src="${pageContext.request.contextPath}/assets/images/admin/BoardGameStore.jpg"
+								class="store_img"
+							>
 							<!-- 캡션 설정 (생략 가능) -->
 							<!-- 글자 색은 검은색 -->
 							<div class="carousel-caption">매장이미지1 입니다.</div>
 						</div>
 						<div class="item">
-							<img src="${pageContext.request.contextPath}/assets/images/admin/BoardGameStore2.jpg" class="store_img">
+							<img src="${pageContext.request.contextPath}/assets/images/admin/BoardGameStore2.jpg"
+								class="store_img"
+							>
 							<div class="carousel-caption">매장이미지2 입니다.</div>
 						</div>
 					</div>
@@ -273,16 +284,16 @@
 				</ul>
 			</div>
 			<!-- 리뷰 페이징 -->
-            <div class="paging-wrap">
+			<div class="paging-wrap">
 
-                <ul class="pagination" id="pages"></ul>
-                
-                <!-- 리뷰 작성하기 버튼 -->
-                <div class="write_review">
-                    <button type="button" id="review_btn">리뷰남기기</button>
-                </div>
+				<ul class="pagination" id="pages"></ul>
 
-            </div>
+				<!-- 리뷰 작성하기 버튼 -->
+				<div class="write_review">
+					<button type="button" id="review_btn" class="btn-red">리뷰남기기</button>
+				</div>
+
+			</div>
 		</div>
 
 		<!-- 예약 사전설정 구역(날짜,시간) -->
@@ -436,10 +447,11 @@
 
 					<!-- 달력 보기 -->
 					<div class="bg-line">
-                        <input type="hidden" id="datepicker" value="">
-                        <button type="button" id="calendar" onclick="$('#datepicker').datepicker('show')"
-                            class="btn-calendar-large" title="달력보기">달력보기</button>
-                    </div>
+						<input type="hidden" id="datepicker" value="">
+						<button type="button" id="calendar" onclick="$('#datepicker').datepicker('show')"
+							class="btn-calendar-large" title="달력보기"
+						>달력보기</button>
+					</div>
 				</div>
 			</div>
 
@@ -474,17 +486,39 @@
 							</div>
 						</div>
 						<div role="tabpanel" class="tab-pane" id="choice_by_grouplist">
-							<div>
-								<!-- 그룹 리스트 나열해 주기-->
-								<ul>
-									<!-- 매칭이 완료된 그룹 리스트 -->
-									<!-- 내역이 없을 시 리스트 존재x 텍스트 띄워주기 -->
-									<li>그룹1</li>
-									<li>그룹2</li>
-									<li>그룹3</li>
-								</ul>
-							</div>
-						</div>
+                            <div>
+                                <!-- 그룹 리스트 나열해 주기-->
+                                <ul>
+                                    <!-- 매칭이 완료된 그룹 리스트 -->
+                                    <!-- 내역이 없을 시 리스트 존재x 텍스트 띄워주기 -->
+                                    <li role="presentation"><a href="#chosen_group" aria-controls="chosen_group" role="tab" data-toggle="tab">그룹1</a></li>
+                                    <li role="presentation"><a href="#chosen_group" aria-controls="chosen_group" role="tab" data-toggle="tab">그룹2</a></li>
+                                    <li role="presentation"><a href="#chosen_group" aria-controls="chosen_group" role="tab" data-toggle="tab">그룹3</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="chosen_group">
+                            <ul class="group_wrap">
+                                <!-- 그룹 구성원 인원수 만큼 프로필 게시 -->
+                                <li class="group_user_info">
+                                    <img class="group_user_profile_img" src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
+                                    <label>드웨인_존슨</label>
+                                </li>
+                                <!-- //그룹 구성원 인원수 만큼 프로필 게시 -->
+                                <li class="group_user_info">
+                                    <img class="group_user_profile_img" src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
+                                    <label>더락</label>
+                                </li>
+                                <li class="group_user_info">
+                                    <img class="group_user_profile_img" src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
+                                    <label>DJ</label>
+                                </li>
+                                <li class="group_user_info">
+                                    <img class="group_user_profile_img" src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
+                                    <label>흑드라군</label>
+                                </li>
+                            </ul>
+                        </div>
 					</div>
 
 				</div>
@@ -518,6 +552,10 @@
 
 			</div>
 
+			<div class="reservation">
+				<button class="reservation_btn btn-red">예약하기</button>
+			</div>
+
 		</div>
 
 
@@ -537,7 +575,9 @@
 
 					<ul>
 
-						<li class="game-list"><img src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg">
+						<li class="game-list"><img
+							src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg"
+						>
 							<table>
 								<tr>
 									<td>voidFall</td>
@@ -549,7 +589,9 @@
 									<td>playing Time : 90min</td>
 								</tr>
 							</table></li>
-						<li class="game-list"><img src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg">
+						<li class="game-list"><img
+							src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg"
+						>
 							<table>
 								<tr>
 									<td>voidFall</td>
@@ -561,7 +603,9 @@
 									<td>playing Time : 90min</td>
 								</tr>
 							</table></li>
-						<li class="game-list"><img src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg">
+						<li class="game-list"><img
+							src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg"
+						>
 							<table>
 								<tr>
 									<td>voidFall</td>
@@ -573,7 +617,9 @@
 									<td>playing Time : 90min</td>
 								</tr>
 							</table></li>
-						<li class="game-list"><img src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg">
+						<li class="game-list"><img
+							src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg"
+						>
 							<table>
 								<tr>
 									<td>voidFall</td>
@@ -585,7 +631,9 @@
 									<td>playing Time : 90min</td>
 								</tr>
 							</table></li>
-						<li class="game-list"><img src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg">
+						<li class="game-list"><img
+							src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg"
+						>
 							<table>
 								<tr>
 									<td>voidFall</td>
@@ -597,7 +645,9 @@
 									<td>playing Time : 90min</td>
 								</tr>
 							</table></li>
-						<li class="game-list"><img src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg">
+						<li class="game-list"><img
+							src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg"
+						>
 							<table>
 								<tr>
 									<td>voidFall</td>
@@ -609,7 +659,9 @@
 									<td>playing Time : 90min</td>
 								</tr>
 							</table></li>
-						<li class="game-list"><img src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg">
+						<li class="game-list"><img
+							src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg"
+						>
 							<table>
 								<tr>
 									<td>voidFall</td>
@@ -621,7 +673,9 @@
 									<td>playing Time : 90min</td>
 								</tr>
 							</table></li>
-						<li class="game-list"><img src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg">
+						<li class="game-list"><img
+							src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg"
+						>
 							<table>
 								<tr>
 									<td>voidFall</td>
@@ -666,11 +720,11 @@
 
 
 	</div>
-	
+
 	<!-- FOOTER -->
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 	<!-- // FOOTER -->
-	
+
 	<!-- Datepicker -->
 	<script type="text/javascript">
 

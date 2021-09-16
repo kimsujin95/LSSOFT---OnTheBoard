@@ -32,14 +32,19 @@
 	
 	
 	<div id="Store_main">
-	<div class="sub-container">
-
-         <div class="subtitle">
-            <h3>매장 목록</h3>
-            <p class="context">매장 > 매장 목록 검색</p>
+	<!-- SUB TITLE -->
+      <div class="container sub-container">
+         <div class="subtitle clearfix">
+            <div class="context1 font-size-24">매장 정보</div>
+            <div class="context2 clearfix">
+               <ul>
+                  <li><a href="#">매장</a></li>
+                  <li class="last-li"><a href="#">매장 목록</a></li>
+               </ul>
+            </div>
          </div>
-
       </div>
+      <!-- // SUB TITLE -->
 		<div id="Store_main_content" class="container">
 
 			<!-- 지역, 게임, 키워드 검색 -->

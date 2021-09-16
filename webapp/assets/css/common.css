@@ -28,14 +28,12 @@ textarea,
 th,
 ul {
     margin: 0;
-    padding: 0
+    padding: 0;
 }
 body,
 button,
-input,
 select,
 table,
-
 fieldset,
 img {
     border: 0
@@ -284,7 +282,7 @@ div.container {
 }
 
 /*FOOTER*/
-#footerwrap{margin-top:80px;padding-bottom:22px;background:#ff1f67;}
+#footerwrap{margin-top:100px;padding-bottom:22px;background:#ff1f67;}
 
 /*푸터 메뉴위치*/
 #footer .menu {

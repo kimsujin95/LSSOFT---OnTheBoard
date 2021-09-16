@@ -20,7 +20,7 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mypage/convert_to_business.css" type="text/css">
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/bootstrap.css">
 
 <title>온 더 보드: 사업자 전환</title>
 
@@ -32,7 +32,7 @@
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 	<!-- // HEADER -->
 
-	<div id="main-container">
+	<div id="main-container" class="container">
 
 		<!-- SUB TITLE -->
 		<div class="sub-container">
@@ -45,17 +45,19 @@
 		</div>
 		<!-- // SUB TITLE -->
 
-		<table style="margin-left: auto; margin-right: auto;">
+		<div id="table-area">
 
-			<tr>
-				<td>
-					<div>
-						<span class="contract">이용약관</span>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td><textarea name="tos" rows=15 cols=100>
+			<table style="margin-left: auto; margin-right: auto;">
+
+				<tr>
+					<td>
+						<div>
+							<span class="contract">이용약관</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td><textarea name="tos" rows=15 cols=100>
 제1조(목적)
  이 약관은 온 더 보드(전자상거래 사업자)가 운영하 온 더 보드(이하 “몰”이라 한다)에서 제공하는 인터넷 관련
  서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리ㆍ의무 및 책임사항을 규정함을 목적으로 합니다.
@@ -279,19 +281,19 @@
 
  ②“몰”과 이용자간에 제기된 전자상거래 소송에는 한국법을 적용합니다.
                 </textarea></td>
-			</tr>
-			<tr>
-				<td><input type="checkbox">이용약관에 동의합니다.<br> <br> <br> <br></td>
-			</tr>
-			<tr>
-				<td>
-					<div>
-						<span class="contract">개인정보 수집 및 이용에 대한 안내</span>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td><textarea name="tos" rows=15 cols=100>
+				</tr>
+				<tr>
+					<td><input type="checkbox">이용약관에 동의합니다.<br> <br> <br> <br></td>
+				</tr>
+				<tr>
+					<td>
+						<div>
+							<span class="contract">개인정보 수집 및 이용에 대한 안내</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td><textarea name="tos" rows=15 cols=100>
 
 수집하는 개인정보의 항목
 회사는 회원가입, 상담, 서비스 신청 및 제공 등을 위해 아래와 같은 개인정보를 수집하고 있습니다.
@@ -392,15 +394,22 @@ NICE신용평가정보㈜(이하 “대행사”)가 “대행사”에서 제�
 '정보통신망 이용촉진 및 정보보호 등에 관한 법률'의 거래기록 보존 의무에 따른 보존: 1년
 
                 </textarea></td>
-			</tr>
-			<tr>
-				<td><input type="checkbox">개인정보 수집 및 이용에 대한 안내에 동의합니다.</td>
-			</tr>
-		</table>
+				</tr>
+				<tr>
+					<td><input type="checkbox">개인정보 수집 및 이용에 대한 안내에 동의합니다.</td>
+				</tr>
 
-		<div class="btn-wrap">
-			<button id="btn-confirm">전환신청</button>
-			<button id="btn-cancel">취소</button>
+
+			</table>
+
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4 text-center">
+					<button class="btn btn-red"><a href="${pageContext.request.contextPath}/admin/storeInfo/">전환하기</a></button>
+				</div>
+			</div>
 		</div>
 
 	</div>
@@ -408,7 +417,6 @@ NICE신용평가정보㈜(이하 “대행사”)가 “대행사”에서 제�
 	<!-- FOOTER -->
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 	<!-- // FOOTER -->
-
 </body>
 
 </html>

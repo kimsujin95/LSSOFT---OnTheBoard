@@ -11,6 +11,7 @@
 
 <!-- 합쳐지고 최소화된 최신 CSS -->
 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/bootstrap.css">
 
 <!-- jQuery -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
@@ -169,8 +170,18 @@
 		</div>
 		<!-- content-->
 
+
 	</div>
 	<!-- wrapper -->
-
+	
+	
+	<!-- FOOTER -->
+	<footer>
+	
+	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+	
+	</footer>
+	<!-- // FOOTER -->
 </body>
+
 </html>

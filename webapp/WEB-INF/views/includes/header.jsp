@@ -18,7 +18,7 @@
 		
 		
 			<div class="dropdown">
-			<a href="${pageContext.request.contextPath }/mypage/main"><img class="icon" id="mypage" title="마이페이지"
+			<a href="#"><img class="icon" id="mypage" title="마이페이지"
 				src="${pageContext.request.contextPath}/assets/images/icons/id-card.png" alt="마이페이지"></a> 
 				
 				      

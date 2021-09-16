@@ -1,15 +1,11 @@
 #main-container {
+
 	position: relative;
 	max-width: 1200px;
 	height: 100%;
 	margin: auto;
 	background: #f5f6f7;
 	text-align: center;
-}
-
-.btn-wrap {
-	text-align: center;
-	margin: auto;
 }
 
 .contract {

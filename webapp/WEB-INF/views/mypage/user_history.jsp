@@ -22,7 +22,7 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mypage/user_history.css" type="text/css">
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/bootstrap.css">
 
 
 

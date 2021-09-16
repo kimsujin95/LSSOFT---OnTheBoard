@@ -238,16 +238,16 @@ textarea {
 	font-size: 15px;
 }
 
-#table-game-info tr {
-	border-bottom: 1px solid #e2e2e2;
-}
-
 #table-game-info th {
 	text-align: center;
 }
 
-#table-game-info th, #table-game-info td {
-	padding: 6px 14px;
+#table-game-info th {
+	padding: 5px 30px 5px 0px;
+}
+
+#table-game-info td {
+	padding-left: 10px;
 }
 
 #table-game-info .border-none {

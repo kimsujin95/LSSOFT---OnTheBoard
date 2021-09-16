@@ -68,8 +68,8 @@
 			<div class="col-md-3 border-right">
 				<table id=table-game-info>
 					<colgroup>
-						<col width="60px">
-						<col width="200px">
+						<col width="100px">
+						<col width="230px">
 					</colgroup>
 					<tr>
 						<th>장르</th>

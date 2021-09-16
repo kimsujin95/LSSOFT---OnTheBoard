@@ -106,15 +106,15 @@
 			<!-- <div class="col-md-1"></div> -->
 			<div class="col-md-3 text-center">
 				<button class="btn-red">참가신청</button>
-				<button class="btn-gray">참가취소</button>
+				<button class="btn-white">참가취소</button>
 			</div>
 			<div class="col-md-4 text-right">
 				<button class="btn-red">매칭완료</button>
 				<button class="btn-blue">예약하기</button>
 			</div>
 			<div class="col-md-5 text-right">
-				<a href="${pageContext.request.contextPath}/matching/list"><button class="btn-gray">목록</button></a> <a href="${pageContext.request.contextPath}/matching/modifyForm"><button class="btn-blue">수정</button></a>
-				<button class="btn-gray">삭제</button>
+				<a href="${pageContext.request.contextPath}/matching/list"><button class="btn-white">목록</button></a> <a href="${pageContext.request.contextPath}/matching/modifyForm"><button class="btn-blue">수정</button></a>
+				<button class="btn-white">삭제</button>
 			</div>
 		</div>
 

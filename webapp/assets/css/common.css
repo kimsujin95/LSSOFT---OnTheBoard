@@ -65,13 +65,13 @@ a[href]:hover {
 	padding: 6.5px;
 }
 
-.btn-gray {
-	background-color: darkgray;
-	border: none;
+.btn-white {
+	background-color: white;
+	border: 1px solid #000;
 	font-size: 12px;
-	color: #fff;
+	color: #000;
 	border-radius: 5px;
-	padding: 6.5px;
+	padding: 5.5px;
 }
 
 .btn-blue {

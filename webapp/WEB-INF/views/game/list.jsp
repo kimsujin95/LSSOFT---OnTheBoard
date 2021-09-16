@@ -202,7 +202,7 @@
 			<ul class="bbsList04" id="gameList">
 				<li>
 					<div class="thum">
-						<a href=""><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393" alt=></a>
+						<a href="${pageContext.request.contextPath}/game/gameDetails"><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393" alt=></a>
 					</div>
 					<div class="desc">
 						<p class="title">
@@ -232,7 +232,7 @@
 				</li>
 				<li>
 					<div class="thum">
-						<a href=""><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393"></a>
+						<a href="${pageContext.request.contextPath}/game/gameDetails"><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393" alt=></a>
 					</div>
 					<div class="desc">
 						<p class="title">
@@ -262,7 +262,7 @@
 				</li>
 				<li>
 					<div class="thum">
-						<a href=""><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393"></a>
+						<a href="${pageContext.request.contextPath}/game/gameDetails"><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393" alt=></a>
 					</div>
 					<div class="desc">
 						<p class="title">
@@ -292,7 +292,7 @@
 				</li>
 				<li>
 					<div class="thum">
-						<a href=""><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393"></a>
+						<a href="${pageContext.request.contextPath}/game/gameDetails"><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393" alt=></a>
 					</div>
 					<div class="desc">
 						<p class="title">
@@ -322,7 +322,7 @@
 				</li>
 				<li>
 					<div class="thum">
-						<a href=""><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393"></a>
+						<a href="${pageContext.request.contextPath}/game/gameDetails"><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393" alt=></a>
 					</div>
 					<div class="desc">
 						<p class="title">
@@ -352,7 +352,7 @@
 				</li>
 				<li>
 					<div class="thum">
-						<a href=""><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393"></a>
+						<a href="${pageContext.request.contextPath}/game/gameDetails"><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393" alt=></a>
 					</div>
 					<div class="desc">
 						<p class="title">
@@ -382,7 +382,7 @@
 				</li>
 				<li>
 					<div class="thum">
-						<a href=""><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393"></a>
+						<a href="${pageContext.request.contextPath}/game/gameDetails"><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393" alt=></a>
 					</div>
 					<div class="desc">
 						<p class="title">
@@ -412,7 +412,7 @@
 				</li>
 				<li>
 					<div class="thum">
-						<a href=""><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393"></a>
+						<a href="${pageContext.request.contextPath}/game/gameDetails"><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393" alt=></a>
 					</div>
 					<div class="desc">
 						<p class="title">
@@ -442,7 +442,7 @@
 				</li>
 				<li>
 					<div class="thum">
-						<a href=""><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393"></a>
+						<a href="${pageContext.request.contextPath}/game/gameDetails"><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393" alt=></a>
 					</div>
 					<div class="desc">
 						<p class="title">
@@ -472,7 +472,7 @@
 				</li>
 				<li>
 					<div class="thum">
-						<a href=""><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393"></a>
+						<a href="${pageContext.request.contextPath}/game/gameDetails"><img src="http://gdimg.gmarket.co.kr/804891547/still/600?ver=1524112393" alt=></a>
 					</div>
 					<div class="desc">
 						<p class="title">

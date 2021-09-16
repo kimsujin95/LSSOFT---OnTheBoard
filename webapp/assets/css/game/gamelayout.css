@@ -77,10 +77,10 @@ body{font-size:12px;}
 .gameDetail .gameInfo .infoBox ul.info:first-child{margin-bottom:10px;padding:12px 15px 11px;border:none;background:#f8f8f8;}
 .gameDetail .gameInfo .infoBox .bbssvc{position:relative;margin-top:10px;padding:0 15px;text-align:right;}
 
-.gameDetail .gameInfo .infoBox .bbssvc li {height:30px;vertical-align:middle; float: left;}
-.gameDetail .gameInfo .infoBox .bbssvc li:first-child{float:left;}
-.gameDetail .gameInfo .infoBox .bbssvc li:first-child img{height:27px;}
-.gameDetail .gameInfo .infoBox .bbssvc li:last-child{float: right;}
+.gameDetail .gameInfo .infoBox .bbssvc button {height:30px;vertical-align:middle; float: left;}
+.gameDetail .gameInfo .infoBox .bbssvc button:first-child{float:left;}
+.gameDetail .gameInfo .infoBox .bbssvc button:first-child img{height:27px;}
+.gameDetail .gameInfo .infoBox .bbssvc button:last-child{float: right;}
 .gameDetail .tabMenu02{margin-top:25px;}
 .gameDetail #gameIntro{margin-top:20px;border:none;}
 .gameDetail #gameIntro>dl:first-child{margin:15px 0;border:none;}

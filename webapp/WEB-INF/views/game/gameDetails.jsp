@@ -44,44 +44,44 @@
 
 			<!-- .gameDetail -->
 			<div class="gameDetail">
+				
 				<!-- .gameInfo -->
 				<div class="gameInfo">
-					<h2>
-						보난자<span>Bonanza</span>
-					</h2>
-
+					<!-- .innerbox -->
 					<div class="innerbox">
+						
 						<div class="thum">
 							<img src="${pageContext.request.contextPath }/assets/images/game/bonanza1.png" alt="Bonanza">
 						</div>
 						<!--별점 평점 기능 넣기-->
 						<div id="star-rater"></div>
-
+						<!-- infoBox -->
 						<div class="infoBox">
 							<ul class="info">
+							<li class="gameTitle">
+								보난자
+								<span>Bonanza</span>
+							</li>
 								<li><em>대상연령</em>만 10세 이상</li>
 								<li><em>게임인원</em>3명 ~ 5명</li>
 								<li><em>게임시간</em>45분</li>
 								<li><em>게임장르</em>가족 게임</li>
 								<li><em>게임난이도</em>초급</li>
 							</ul>
-
-							<ul class="bbssvc">
-								<li><a href=""><img src="${pageContext.request.contextPath }/assets/images/icons/icon_facebook_heart.png" width="auto"
-										height="20px" alt="Heart icon"
-									>찜하기</a></li>
-								<li><a href="" target="_blank"><img src="${pageContext.request.contextPath }/assets/images/icons/icon_store.png"
-										width="20px" height="auto" alt="Store Icon"
-									>매칭바로가기</a></li>
-							</ul>
+							<div class="bbssvc">
+								<button class="btn-blue">찜하기</button>
+								<button class="btn-red">매칭바로가기</button>
+							</div>
 
 						</div>
+						<!-- ./infoBox -->
 					</div>
+					<!-- /.innerbox -->
 				</div>
 				<!-- /.gameInfo -->
 				<!-- .tabMenu01 -->
 				<div class="tabMenu01" id="gameIntroTab">
-					<ul>
+					<ul class="tab nav-tabs nav-justified">
 						<li class="current"><a href="#gameIntroTab" data-toggle="tab">게임소개</a></li>
 						<li class="current_l"><a href="#gameStoreTab" data-toggle="tab">보유매장</a></li>
 						<li class="current_l"><a href="#gameGuideTab" data-toggle="tab">게임가이드</a></li>
@@ -92,17 +92,16 @@
 				<div id="gameIntro">
 
 					<dl style="border-bottom: 0px; text-align: center;">
-						<img src="./image/bonanza-_intro.jpg" title="bonanza_intro.jpg" alt="보난자">
+						<img src="${pageContext.request.contextPath }/assets/images/game/bonanza_intro.jpg" title="bonanza_intro.jpg" alt="보난자">
 						<br style="clear: both;">
 						<br style="clear: both;">
+					</dl>	
 				</div>
-				</dl>
-
 			</div>
 			<!-- /#gameIntro -->
 			<!-- .tabMenu01 -->
 			<div class="tabMenu01" id="gameStoreTab">
-				<ul>
+				<ul class="tab nav-tabs nav-justified">
 					<li class="current_l"><a href="#gameIntroTab" data-toggle="tab">게임소개</a></li>
 					<li class="current"><a href="#gameStoreTab" data-toggle="tab">보유매장</a></li>
 					<li class="current_l"><a href="#gameGuideTab" data-toggle="tab">게임가이드</a></li>
@@ -179,7 +178,7 @@
 			<!-- #gameGuide -->
 			<!-- .tabMenu01 -->
 			<div class="tabMenu01" id="gameGuideTab">
-				<ul id="gameGuide">
+				<ul class="tab nav-tabs nav-justified" id="gameGuide">
 					<li class="current_l"><a href="#gameIntroTab" data-toggle="tab">게임소개</a></li>
 					<li class="current_l"><a href="#gameStoreTab" data-toggle="tab">보유매장</a></li>
 					<li class="current"><a href="#gameGuideTab" data-toggle="tab">게임가이드</a></li>

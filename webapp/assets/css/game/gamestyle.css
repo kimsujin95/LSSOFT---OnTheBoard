@@ -65,7 +65,7 @@ ol,ul,li {
 }
 
 /* LAYOUT */
-#wrap{position:relative;width:100%;z-index:1;}
+#wrap{position:relative;max-width:1200px;z-index:1;display:flex; justify-content: center;}
 #mHeader{display:none;}
 #headerwrap{height:105px;border-bottom:1px solid #d8d8d8;}
 
@@ -76,6 +76,7 @@ ol,ul,li {
 .tabMenu01 li{float:left;width:15.17%;text-align:center;}
 .tabMenu01 li a{display:block;font-size:16px;line-height:55px;color:#838383;border:1px solid #d8d8d8;border-bottom:1px solid #ee204d;}
 .tabMenu01 li:first-child a{border-left:1px solid #d8d8d8;}
+.tabMenu01 li a:hover{cursor: pointer;background-color: #ff1f67;color: #fff;}
 .tabMenu01 li.current a{color:#ee204d;text-decoration:underline;border-color:#ee204d;border-bottom:1px solid #fff;}
 .tabMenu01 #gameGuide{margin-bottom: 30px;}
 
@@ -162,20 +163,21 @@ ol,ul,li {
 .sortSelect li dd li:first-child{border-top:none;}
 .sortSelect li dd li input{vertical-align:middle;margin-right:5px;}
 
-.gameDetail{margin-top:30px;border-top:2px solid #383838;}
+.gameDetail{position:relatve; left:50%; margin-top:30px;border-top:2px solid #383838;}
 .gameDetail .gameInfo{position:relative;margin-bottom:80px;padding:38px 40px 0;}
-.gameDetail .gameInfo h2{font-size:30px;color:#333; }
-.gameDetail .gameInfo h2 span{padding-left:10px;font-size:16px;text-align:right;}
 .gameDetail .gameInfo .innerbox{display:table;width:100%;table-layout:fixed;margin-top:23px;}
+.gameDetail .gameInfo .innerbox .gameTitle{font-size:30px;color:#333;text-align:left; }
+.gameDetail .gameInfo .innerbox .gameTitle span{padding-left:10px;font-size:16px;text-align:right;}
 .gameDetail .gameInfo .thum{display:table-cell;width:41.25%; vertical-align:top;}
 .gameDetail .gameInfo .thum img{width:100%;}
 .gameDetail .gameInfo .infoBox{width:auto;padding-left:30px;}
 .gameDetail .gameInfo .infoBox .info{padding:0 16px; display:block; height:auto;}
+.gameDetail .gameInfo .infoBox .info li:first-child{font-size:30px;color:#333;text-align:left;padding-left: 10px;margin-bottom: 30px; border-bottom: 3px solid #000000;}
+.gameDetail .gameInfo .infobox .info li span{padding-left:10px;font-size:16px;text-align:right;}
 .gameDetail .gameInfo .infoBox .info li{position:relative;padding-left:141px;font-size:16px;line-height:26px;height:auto;color:#838383;background:url('${pageContext.request.contextPath }/assets/images/icons/icon_dot03.png') no-repeat 0 10px;}
 .gameDetail .gameInfo .infoBox .info li em{position:absolute;left:14px;top:0;display:inline-block;width:127px;color:#333;}
 .gameDetail .gameInfo .infoBox ul.info:first-child{margin-bottom:20px;padding:24px 15px 22px;border:1px solid #dedede;background:#f8f8f8;}
 .gameDetail .tabMenu01{margin-top:50px;}
-.gameDetail .tabMenu01 ul li a:hover{cursor: pointer;background-color: #ff1f67;color: #fff;}
 .gameDetail #gameIntro{margin-top:30px;border:1px solid #d9d9d9;}
 .gameDetail #gameIntro>dl:first-child{margin:30px;border-bottom:1px solid #d9d9d9;}
 .gameDetail #gameIntro>dl div {max-width:780px; margin:0 auto;}

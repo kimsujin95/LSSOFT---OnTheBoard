@@ -33,15 +33,19 @@
 
 	<!-- #wrap -->
 	<div id="wrap">
-		
-		<!-- #container -->
-		<div id="container" class="list">
-			<div class="subtitle">
-				<h3>게임목록</h3>
-				<div class="context">게임상세정보</div>
+		<div class="sub-container">
+		<!--.subtitle -->
+         <div class="subtitle clearfix">
+				<div class="context1 font-size-24">게임목록</div>
+				<div class="context2 clearfix">
+					<ul>
+						<li><a href="#">메인</a></li>
+						<li><a href="#">게임</a></li>
+						<li class="last-li"><a href="#">게임세부정보</a></li>
+					</ul>
 			</div>
-
-
+		</div>
+         <!-- /.subtitle -->
 			<!-- .gameDetail -->
 			<div class="gameDetail">
 				

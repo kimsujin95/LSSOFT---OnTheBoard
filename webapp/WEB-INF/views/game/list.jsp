@@ -31,14 +31,21 @@
 	<!--wrap-->
 	<div class="wrap">
 		<div class="sub-container">
-
-         <div class="subtitle">
-            <h3>게임목록</h3>
-            <p class="context">아래 메뉴에서 원하는 조건을 선택하면, 만족하는 보드게임을 찾으실 수 있습니다.</p>
-         </div>
-         
+		<!--.subtitle -->
+         <div class="subtitle clearfix">
+				<div class="context1 font-size-24">게임목록</div>
+				<div class="context2 clearfix">
+					<ul>
+						<li><a href="#">메인</a></li>
+						<li><a href="#">게임</a></li>
+						<li class="last-li"><a href="#">게임목록</a></li>
+					</ul>
+				</div>
+			</div>
+         <!-- /.subtitle -->
          <div>
          <!--#searchForm-->
+         <p class="context">아래 메뉴에서 원하는 조건을 선택하면, 만족하는 보드게임을 찾으실 수 있습니다.</p>
 			<form name="searchForm" id="searchForm" method="POST" action>
 				<input type="hidden" name="pagenum" id="pagenum" value="1"> <input type="hidden"
 					name="view_type" id="view_type" value="bg"

@@ -1,0 +1,72 @@
+body {
+	background: white;
+	margin: 0;
+	padding: 0;
+}
+
+#sidebar {
+	background: #333;
+	width: 300px;
+	height: 100%;
+	top: 0;
+	left: -300px;
+	position: fixed;
+}
+
+#sidebar>ul {
+	margin: 0;
+	padding: 0;
+	top: 50px;
+	left: 70px;
+	position: absolute;
+}
+
+#sidebar li {
+	margin: 0 0 30px;
+	list-style: none;
+	font-size: 20px;
+	font-style: bold;
+	color: white;
+}
+
+#sidebar li:hover {
+	margin: 0 0 30px;
+	list-style: none;
+	font-size: 20px;
+	font-style: bold;
+	color: red;
+	font-family: '고딕';
+	cursor: pointer;
+}
+
+#sidebar>button {
+	background: #333;
+	position: absolute;
+	top: 150px;
+	left: 300px;
+	width: 52px;
+	height: 52px;
+	border: none;
+	color: white;
+	cursor: pointer;
+}
+
+a:link {
+	color: white;
+	text-decoration: none;
+}
+
+a:visited {
+	color: white;
+	text-decoration: none;
+}
+
+a:hover {
+	color: red;
+	text-decoration: none;
+}
+
+a:active {
+	color: pink;
+	text-decoration: none;
+}

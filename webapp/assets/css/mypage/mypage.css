@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+
+/* 컨텐츠 */
+div#content.container {
+	width: 1200px;
+	margin: 0;
+	padding: 0;
+}
+
+
+
+
+/* 폰트 세팅 */
+.text-white {
+	color: white;
+}
+
+.font-size-24 {
+	font-size: 2.4rem;
+}
+
+.font-size-16 {
+	font-size: 1.6rem;
+}
+
+.font-size-14 {
+	font-size: 1.4rem;
+}
+
+.font-size-12 {
+	font-size: 1.2rem;
+}
+
+
+
+.table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+
+
+.table thead{
+	color: #fff;
+	background-color: #ff1f67;
+	
+}
+
+.text-center {
+	text-align: center;
+}
+
+.content-area {
+	width: 1200px;
+	margin: auto;
+}
+
+
+

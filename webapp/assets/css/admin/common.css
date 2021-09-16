@@ -144,6 +144,11 @@ div#paging > ul{
 
 /* 페이징 버튼 */
 
+/* 버튼 영역 */
+div.btn-area {
+	padding: 20px 0;
+	text-align: center;
+}
 
 /* 폰트 세팅 */
 .text-white {

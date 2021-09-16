@@ -12,6 +12,7 @@ ul,ol,li{
 
 #store-info-top-content{
     width: 100%;
+    padding-bottom: 40px;
 }
 
 /* 이미지 슬라이드, 매장 상세정보 CSS */
@@ -93,12 +94,14 @@ ul,ol,li{
 /*리뷰 게시 구역*/
 .store-review-wraper{
     position: relative;
+    padding: 20px 0 20px 0;
 }
 
 .paging-wrap{
     width: 100%;
     height: 80px;
     text-align: center;
+    position: relative;
 }
 
 .pagination{
@@ -116,6 +119,11 @@ ul,ol,li{
     border-right: 1px solid #ff1f67;
 }
 
+.write_review{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
 
 .user_review > li > .user_profile_img, .review_writer_info{
     float: left;
@@ -462,3 +470,6 @@ button, input {
     width: 100%;
 }
 
+#choice_by_count button{
+    
+}

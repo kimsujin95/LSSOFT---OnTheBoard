@@ -42,7 +42,14 @@
 	<!-- 메인 컨텐츠 구역 -->
 
 	<div id="store-main-content" class="container">
+	<div class="sub-container">
 
+         <div class="subtitle">
+            <h3>매장 상세정보</h3>
+            <p class="context">매장 > 매장 상세정보</p>
+         </div>
+
+      </div>
 		<!-- 매장 정보 상단 이미지슬라이드, 매장 상세정보 -->
 		<div id="store-info-top-content">
 			<!-- 이미지 슬라이드 -->
@@ -266,9 +273,16 @@
 				</ul>
 			</div>
 			<!-- 리뷰 페이징 -->
-			<div class="paging-wrap">
-				<ul class="pagination" id="pages"></ul>
-			</div>
+            <div class="paging-wrap">
+
+                <ul class="pagination" id="pages"></ul>
+                
+                <!-- 리뷰 작성하기 버튼 -->
+                <div class="write_review">
+                    <button type="button" id="review_btn">리뷰남기기</button>
+                </div>
+
+            </div>
 		</div>
 
 		<!-- 예약 사전설정 구역(날짜,시간) -->

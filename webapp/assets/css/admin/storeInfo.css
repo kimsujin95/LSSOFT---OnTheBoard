@@ -44,6 +44,15 @@ input#adress, input#adress-detail {
 	width: 550px;
 }
 
+/* 지도 화면 */
+div#map {
+	width: 550px;
+	height: 300px;
+	margin: 10px 0;
+	display: none;
+}
+
+
 /* 이미지 */
 div#image-inserted {
 	width: 550px;

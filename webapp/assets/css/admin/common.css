@@ -30,6 +30,7 @@ div#content.container {
 
 /* 사이드 - 게임 리스트 */
 div#rank-area {
+	z-index: 100;
 	padding: 5px 8px;
 	background-color: white; 
 	border-radius: 4px;

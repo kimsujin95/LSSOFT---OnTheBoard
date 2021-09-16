@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/* 데이트 피커 크기 조절 */
 .datepicker-inline {
     width: 445px !important;
     height: 445px !important;
@@ -11,7 +12,9 @@
     width: 445px;
     height: 445px;
 }
+/* 데이트 피커 크기 조절 */
 
+/* 시간 선택 표 */
 table#time-table {
 	width: 445px;
 	height: 445px;
@@ -26,6 +29,7 @@ table#time-table th {
 	height: 35px;
 }
 
+/* 예약 가능 인원 설정 */
 div#res-people {
 	padding: 0 2px;
 }
@@ -37,7 +41,13 @@ div#res-people select, div#res-people input {
 	width: 70px;
 }
 
+/* 예약 가능 인원 설정 */
+
+/* 수정 버튼 */
 table#time-table td > button.btn {
 	width: 45%;
 	margin: 5px 5px;
 }
+
+/* 시간 선택 표 */
+

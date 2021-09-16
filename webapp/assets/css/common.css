@@ -175,7 +175,7 @@ header ul>li {
 }
 
 .subtitle {
-	padding-bottom: 43px;
+	padding-bottom: 40px;
 	margin-top: 30px;
 }
 
@@ -188,11 +188,10 @@ header ul>li {
 
 .subtitle .context {
 	line-height: 19px;
-	padding-top: 10px;
 	letter-spacing: -1px;
 	color: #666;
 	border-bottom: 1px solid #ff1f67;
-	padding-bottom: 20px;
+	padding-bottom: 15px;
 }
 
 /* aside */

@@ -36,7 +36,7 @@
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 	<!-- // HEADER -->
 
-	<div id="content" class="container">
+	<div class="container">
 
 		<!-- SUB TITLE -->
 		<div class="container sub-container">

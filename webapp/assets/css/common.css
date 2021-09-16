@@ -251,6 +251,8 @@ div.container {
 	width: 1200px;
 	margin: 0 auto;
 	min-height: 50px;
+	padding-right: 0px;
+	padding-left: 0px;
 }
 
 /* 배경 테스트용 색상 */

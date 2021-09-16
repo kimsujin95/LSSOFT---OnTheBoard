@@ -33,7 +33,7 @@
 	<!-- // HEADER -->
 
 	<!-- wrapper -->
-	<div id="wrapper">
+	<div class="container">
 
 		<!-- SUB TITLE -->
 		<div class="sub-container">

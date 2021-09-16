@@ -21,6 +21,11 @@
 	text-align: center;
 }
 
+body #content {
+	
+	padding: 0px;
+
+	}
 
 #paging-wrap {
 	margin-top: 55px;

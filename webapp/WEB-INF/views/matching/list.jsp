@@ -36,8 +36,8 @@
 		<div class="container sub-container">
 
 			<div class="subtitle">
-				<h3>프로필 관리</h3>
-				<div class="context">프로필을 수정 할 수 있습니다.</div>
+				<h3>매칭게시판</h3>
+				<div class="context">매칭리스트</div>
 			</div>
 
 		</div>
@@ -241,7 +241,7 @@
 		</div>
 		<br>
 		<div class="text-center">
-			<a href="${pageContext.request.contextPath}/matching/writeForm"><button class="btn btn-default btn-sm">매칭글 등록</button></a>
+			<a href="${pageContext.request.contextPath}/matching/writeForm"><button type="button" class="btn-red">매칭글 등록</button></a>
 		</div>
 	</div>
 	<!-- // CONTENT -->

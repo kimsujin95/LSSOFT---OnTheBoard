@@ -118,10 +118,24 @@
 
 					<br>
 				</div>
-				<div class="col-md-5 border-left">
+				<div class="col-md-5 border-left row">
 					<label for="">지역</label>
 					<br>
-					<span>지역드롭다운 / 검색</span>
+					<div class="col-xs-6">
+						시/도 선택 <select>
+							<option>지역 선택</option>
+							<option value="a">서울</option>
+							<option value="b">경기도</option>
+							<option value="c">충청남도</option>
+						</select>
+					</div>
+					<div class="col-xs-6">
+						주소 소분류<select>
+							<option>세부 지역 선택</option>
+							<option>강남구</option>
+							<option>강북구</option>
+						</select>
+					</div>
 
 					<br>
 					<br>
@@ -174,21 +188,16 @@
 	<!-- // CONTENT -->
 
 	<!-- FOOTER -->
-
+	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 	<!-- // FOOTER -->
 
 </body>
 
 <script>
-/* 	$(function() {
+	$(function() {
 		$("#datepick").datepicker({
 
 		});
-	}); */
-
-	$('#datepick').bootstrapMaterialDatePicker({
-		weekStart : 0,
-		time : false
 	});
 </script>
 

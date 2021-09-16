@@ -25,7 +25,7 @@
 <body>
 	
 	<!-- Header -->
-	<c:import url="/WEB-INF/views/admin/includes/header.jsp"></c:import>
+	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 	<!-- /#Header -->
 	
 	<!--wrap-->

@@ -28,7 +28,7 @@
 <body>
 
 	<!-- Header -->
-	<c:import url="/WEB-INF/views/admin/includes/header.jsp"></c:import>
+	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 	<!-- /#Header -->
 
 	<!-- #wrap -->
@@ -36,6 +36,10 @@
 		
 		<!-- #container -->
 		<div id="container" class="list">
+			<div class="subtitle">
+				<h3>게임목록</h3>
+				<div class="context">게임상세정보</div>
+			</div>
 
 
 			<!-- .gameDetail -->
@@ -78,9 +82,9 @@
 				<!-- .tabMenu01 -->
 				<div class="tabMenu01" id="gameIntroTab">
 					<ul>
-						<li class="current"><a href="#gameIntroTab">게임소개</a></li>
-						<li class="current_l"><a href="#gameStoreTab">보유매장</a></li>
-						<li class="current_l"><a href="#gameGuideTab">게임가이드</a></li>
+						<li class="current"><a href="#gameIntroTab" data-toggle="tab">게임소개</a></li>
+						<li class="current_l"><a href="#gameStoreTab" data-toggle="tab">보유매장</a></li>
+						<li class="current_l"><a href="#gameGuideTab" data-toggle="tab">게임가이드</a></li>
 					</ul>
 				</div>
 				<!-- /.tabMenu01 -->
@@ -99,9 +103,9 @@
 			<!-- .tabMenu01 -->
 			<div class="tabMenu01" id="gameStoreTab">
 				<ul>
-					<li class="current_l"><a href="#gameIntroTab">게임소개</a></li>
-					<li class="current"><a href="#gameStoreTab">보유매장</a></li>
-					<li class="current_l"><a href="#gameGuideTab">게임가이드</a></li>
+					<li class="current_l"><a href="#gameIntroTab" data-toggle="tab">게임소개</a></li>
+					<li class="current"><a href="#gameStoreTab" data-toggle="tab">보유매장</a></li>
+					<li class="current_l"><a href="#gameGuideTab" data-toggle="tab">게임가이드</a></li>
 				</ul>
 			</div>
 			<!-- /.tabMenu01 -->
@@ -176,9 +180,9 @@
 			<!-- .tabMenu01 -->
 			<div class="tabMenu01" id="gameGuideTab">
 				<ul id="gameGuide">
-					<li class="current_l"><a href="#gameIntroTab">게임소개</a></li>
-					<li class="current_l"><a href="#gameStoreTab">보유매장</a></li>
-					<li class="current"><a href="#gameGuideTab">게임가이드</a></li>
+					<li class="current_l"><a href="#gameIntroTab" data-toggle="tab">게임소개</a></li>
+					<li class="current_l"><a href="#gameStoreTab" data-toggle="tab">보유매장</a></li>
+					<li class="current"><a href="#gameGuideTab" data-toggle="tab">게임가이드</a></li>
 				</ul>
 			</div>
 
@@ -216,4 +220,29 @@
 
 </body>
 
+<script>
+
+// 옵션 선택 리스트 탭
+// 메뉴가 선택되어 active가 되기 전 이벤트
+$('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+	e.target // 현재 설정된 tab
+	e.relatedTarget // 이전에 설정된 탭
+});
+// 메뉴가 선택되어 active가 된 후 이벤트
+$('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+	e.target // 현재 설정된 tab
+	e.relatedTarget // 이전에 설정된 탭
+});
+// 다른 메뉴가 선택되어 active가 remove 되기 전 이벤트
+$('a[data-toggle="tab"]').on('hide.bs.tab', function(e) {
+	e.target // 현재 설정된 tab
+	e.relatedTarget // 이전에 설정된 탭
+});
+// 다른 메뉴가 선택되어 active가 remove 된 후 이벤트
+$('a[data-toggle="tab"]').on('hidden.bs.tab', function(e) {
+	e.target // 현재 설정된 tab
+	e.relatedTarget // 이전에 설정된 탭
+});
+// -- 옵션 선택 리스트 탭 --
+</script>
 </html>

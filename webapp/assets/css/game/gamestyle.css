@@ -4,7 +4,7 @@
 /* IE 9 does not support @font-face within @media */
 * {word-break:keep-all;}
 
-@font-face {
+/*@font-face {
     font-family: 'notokr-medium';
     src: url('../webapp/font/NotoKR-Medium/notokr-medium.eot');
     src: url('../webapp/font/NotoKR-Medium/notokr-medium.eot?#iefix') format('embedded-opentype'),
@@ -52,15 +52,17 @@ body, select, input, textarea{
 a{color:#383838;text-decoration:none;}
 a:hover{text-decoration:none;}
 iframe{z-index:1;}
-ol,ul,li {
-	list-style:none;
-}
+
 
 .clear{clear:both;}
 .show{display:block;}
 .hide{display:none;}
 
+*/
 
+ol,ul,li {
+	list-style:none;
+}
 
 /* LAYOUT */
 #wrap{position:relative;width:100%;z-index:1;}
@@ -87,16 +89,14 @@ ol,ul,li {
 
 
 /* 리스트_매장 */
-.bbsList02{margin-top:30px;border-top:2px solid #383838;}
-.bbsList02 .innerbox{border:1px solid #d8d8d8;border-top:none;}
-.bbsList02 table{width:100%; border-collapse:collapse;}
-.bbsList02 thead{border-bottom:2px solid #000;}
-.bbsList02 thead tr th{height: 35px; font-size: 16px;border-bottom:2px solid #000;}
+.bbsList02{padding:0px; }
+.bbsList02 .innerbox{border:1px solid #d8d8d8;margin-top:30px;}
+.bbsList02 .innerbox table th{background-color: #ff1f67;color: #fff; font-size: 17px;}
+.bbsList02 .innerbox table{width:100%; border-collapse:collapse;}
+.bbsList02 .innerbox tr {border-bottom: 1px solid #e2e2e2;}
+.bbsList02 .innerbox table th,.bbsList02 .innerbox table td {padding: 8px 0px; text-align: center;} 
 .bbsList02 td{padding:16px 0 14px;font-size:16px;line-height:22px;min-height:51px;border-top:1px solid #d8d8d8;}
 .bbsList02 td.num{width:100px;text-align:center;}
-.bbsList02 td.title{padding-right:10.66%;background:url('') no-repeat 93.89% 50%;}
-
-.bbsList02 tr.current td.title{background-image:url('');}
 .bbsList02 tr:first-child td{border-top:none;}
 .bbsList02 tr td{cursor:pointer;}
 
@@ -164,8 +164,8 @@ ol,ul,li {
 
 .gameDetail{margin-top:30px;border-top:2px solid #383838;}
 .gameDetail .gameInfo{position:relative;margin-bottom:80px;padding:38px 40px 0;}
-.gameDetail .gameInfo h2{font-size:30px;color:#333;}
-.gameDetail .gameInfo h2 span{padding-left:10px;font-size:16px;}
+.gameDetail .gameInfo h2{font-size:30px;color:#333; }
+.gameDetail .gameInfo h2 span{padding-left:10px;font-size:16px;text-align:right;}
 .gameDetail .gameInfo .innerbox{display:table;width:100%;table-layout:fixed;margin-top:23px;}
 .gameDetail .gameInfo .thum{display:table-cell;width:41.25%; vertical-align:top;}
 .gameDetail .gameInfo .thum img{width:100%;}
@@ -174,10 +174,8 @@ ol,ul,li {
 .gameDetail .gameInfo .infoBox .info li{position:relative;padding-left:141px;font-size:16px;line-height:26px;height:auto;color:#838383;background:url('${pageContext.request.contextPath }/assets/images/icons/icon_dot03.png') no-repeat 0 10px;}
 .gameDetail .gameInfo .infoBox .info li em{position:absolute;left:14px;top:0;display:inline-block;width:127px;color:#333;}
 .gameDetail .gameInfo .infoBox ul.info:first-child{margin-bottom:20px;padding:24px 15px 22px;border:1px solid #dedede;background:#f8f8f8;}
-.gameDetail .gameInfo .infoBox p.order{margin-top:37px;}
-.gameDetail .gameInfo .infoBox p.order em{padding-right:29px;font-size:20px;}
-.gameDetail .gameInfo .infoBox p.order a{display:inline-block;width:194px;line-height:37px;font-size:16px;color:#fff;text-align:center;background:#6497f0;}
 .gameDetail .tabMenu01{margin-top:50px;}
+.gameDetail .tabMenu01 ul li a:hover{cursor: pointer;background-color: #ff1f67;color: #fff;}
 .gameDetail #gameIntro{margin-top:30px;border:1px solid #d9d9d9;}
 .gameDetail #gameIntro>dl:first-child{margin:30px;border-bottom:1px solid #d9d9d9;}
 .gameDetail #gameIntro>dl div {max-width:780px; margin:0 auto;}

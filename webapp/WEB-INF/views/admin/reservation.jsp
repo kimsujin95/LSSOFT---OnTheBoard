@@ -24,7 +24,6 @@
 <link href="${pageContext.request.contextPath }/assets/css/datepicker.css" rel="stylesheet" type="text/css">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 
-
 <title>admin-reservation management</title>
 
 </head>
@@ -63,17 +62,18 @@
 					<!-- 검색 영역 -->
 					<div id="search-bar" class="border-default">
 						<!-- 날짜 선택 영역 -->
-						<div id="date-area">
+						<div id="date-area" class="clearfix">
 							<!-- 시작일 -->
-							<div id="date-picker" class="input-group input-daterange ">
-								<span class=input-group-addon>예약일</span>
-								<input id="date-start" type="text" class="form-control">
-								<span class="input-group-addon">~</span>
-								<input id="date-end" type="text" class="form-control">
+							
+							<div id="date-picker" class="input-daterange input-group pull-left">
+							  	<span class="input-group-addon">예약일</span>
+							  	<input type="text" class="form-control" name="start" placeholder="📅">
+								<span class="input-group-addon">부터</span>
+								<input type="text" class="form-control" name="end" placeholder="📅">
 							</div>
 							
 							<!-- 버튼 그룹 -->
-							<div id="date-btn" class="btn-group btn-group-sm pull-left">
+							<div id="date-btn" class="btn-group btn-group pull-left">
 								<button type="button" class="btn">전체</button>
 								<button type="button" class="btn">오늘</button>
 								<button type="button" class="btn">내일</button>
@@ -282,10 +282,9 @@
 		$("#addModal").modal();
 	});
 	
-	/* 데이트 피커 */
-	$('.date').datepicker({
-		multidate: false,
-		format: 'yyyy-mm-dd'
+	$(".input-daterange").datepicker({
+		format: "yyyy/mm/dd",
+	    autoclose: true
 	});
 	
 </script>

@@ -64,6 +64,12 @@ ol,ul,li {
 	list-style:none;
 }
 
+select {
+  -moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
 /* LAYOUT */
 #wrap{position:relative;max-width:1200px;z-index:1;display:flex; justify-content: center;}
 #mHeader{display:none;}
@@ -74,10 +80,10 @@ ol,ul,li {
 .tabMenu01{position:relative;margin-top:30px;}
 .tabMenu01 ul{overflow:hidden;}
 .tabMenu01 li{float:left;width:15.17%;text-align:center;}
-.tabMenu01 li a{display:block;font-size:16px;line-height:55px;color:#838383;border:1px solid #d8d8d8;border-bottom:1px solid #ee204d;}
+.tabMenu01 li a{display:block;font-size:16px;line-height:50px;color:#838383;border:1px solid #d8d8d8;border-bottom:1px solid #ee204d;}
 .tabMenu01 li:first-child a{border-left:1px solid #d8d8d8;}
 .tabMenu01 li a:hover{cursor: pointer;background-color: #ff1f67;color: #fff;}
-.tabMenu01 li.current a{color:#ee204d;text-decoration:underline;border-color:#ee204d;border-bottom:1px solid #fff;}
+.tabMenu01 li.current a{color:#000;text-decoration:underline;line-height:55px;border-color:#ee204d;border-bottom:1px solid #fff;}
 .tabMenu01 #gameGuide{margin-bottom: 30px;}
 
 
@@ -139,10 +145,23 @@ ol,ul,li {
 
 .listType{overflow:hidden;margin:50px 0 -20px;}
 .listType li{float:right;padding-left:7px;}
-.listType li.sortB select{width:130px;height:32px;font-size:14px;margin-left:3px;}
+.listType li.sortB select{
+  text-align:center;
+  color: #444;
+  background-color: #fff;
+  height: 35px;
+  width: 100px;
+  margin-top: 10px;
+  border: 2px solid #aaa;
+  border-radius: 0.5em;
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+  	border-radius: 5px;	border-color: #ff1f67;
+}
+
+.listType li input{margin-top: 10px;background-image: url('../../images/matching/img-search.png');	background-size: 24px;	background-repeat: no-repeat;	background-position: left center;	height: 35px;	width: 250px;	padding: 0px 35px 0px 32px;	border-radius: 5px;	border-color: #ff1f67;}
 
 /* 버튼 */
-.btnWhite02{display:inline-block;width:220px;font-size:16px;line-height:48px;text-align:center;color:#838383;border:1px solid #838383;background:#fff;}
+/*.btnWhite02{display:inline-block;width:220px;font-size:16px;line-height:48px;text-align:center;color:#838383;border:1px solid #838383;background:#fff;}
 .btnRed01{border:none;color: white;background-color: #d03333;	padding: 15px 32px;	text-align: center;	text-decoration: none;	display: inline-block;	font-size: 16px;	margin: 4px 2px;cursor:pointer;}
 
 

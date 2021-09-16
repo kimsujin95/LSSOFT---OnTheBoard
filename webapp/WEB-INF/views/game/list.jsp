@@ -36,11 +36,9 @@
             <h3>게임목록</h3>
             <p class="context">아래 메뉴에서 원하는 조건을 선택하면, 만족하는 보드게임을 찾으실 수 있습니다.</p>
          </div>
-
-      </div>
-		<!--#container-->
-		<div id="main" class="gameList">
-			<!--#searchForm-->
+         
+         <div>
+         <!--#searchForm-->
 			<form name="searchForm" id="searchForm" method="POST" action>
 				<input type="hidden" name="pagenum" id="pagenum" value="1"> <input type="hidden"
 					name="view_type" id="view_type" value="bg"
@@ -193,11 +191,6 @@
 							</li>
 							<li class="search">
 								<input type="text" id="ipt-keyword" value="" placeholder="게임 검색">
-								<fieldset>
-									<legend></legend>
-									<input type="text" name="search_text" class="formSearch" />
-								</fieldset>
-								</form>
 							</li>
 						</ul>
 						<!-- /.listType -->
@@ -207,6 +200,12 @@
 
 			</form>
 			<!--/#searchForm-->
+         </div>
+
+      </div>
+		<!--#container-->
+		<div id="main" class="gameList">
+			
 			<!--#gameList-->
 			<ul class="bbsList04" id="gameList">
 				<li>

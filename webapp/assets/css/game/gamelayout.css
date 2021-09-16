@@ -12,6 +12,8 @@ body{font-size:12px;}
 
 #main{min-width:320px;margin:0;padding:0 10px;}
 
+
+
 .tabMenu01{margin:0 -10px;padding:10px;border:2px solid #ddd;border-width:2px 0;}
 .tabMenu01 dl{position:relative;}
 .tabMenu01 dt{display:block;position:relative;padding:13px 15px 12px;font-size:16px;color:#383838;letter-spacing:-0.05px;cursor:pointer;border:2px solid #dcdcdc;background:#fff;}
@@ -79,7 +81,6 @@ body{font-size:12px;}
 
 .gameDetail .gameInfo .infoBox .bbssvc button {height:30px;vertical-align:middle; float: left;}
 .gameDetail .gameInfo .infoBox .bbssvc button:first-child{float:left;}
-.gameDetail .gameInfo .infoBox .bbssvc button:first-child img{height:27px;}
 .gameDetail .gameInfo .infoBox .bbssvc button:last-child{float: right;}
 .gameDetail .tabMenu02{margin-top:25px;}
 .gameDetail #gameIntro{margin-top:20px;border:none;}

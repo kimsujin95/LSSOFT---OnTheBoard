@@ -82,7 +82,7 @@
 				<!-- .tabMenu01 -->
 				<div class="tabMenu01" id="gameIntroTab">
 					<ul class="tab nav-tabs nav-justified">
-						<li class="current"><a href="#gameIntroTab" data-toggle="tab">게임소개</a></li>
+						<li class="current "><a href="#gameIntroTab" data-toggle="tab">게임소개</a></li>
 						<li class="current_l"><a href="#gameStoreTab" data-toggle="tab">보유매장</a></li>
 						<li class="current_l"><a href="#gameGuideTab" data-toggle="tab">게임가이드</a></li>
 					</ul>

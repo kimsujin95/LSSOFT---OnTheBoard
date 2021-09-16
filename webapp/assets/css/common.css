@@ -188,6 +188,19 @@ header ul>li {
 	margin-right: -19px;
 }
 
+.sub-container>.subtitle .context2 li a:link {
+	color: #666;
+}
+.sub-container>.subtitle .context2 li a:active {
+	color: #666;
+}
+.sub-container>.subtitle .context2 li a:hover {
+	color: #666;
+}
+.sub-container>.subtitle .context2 li a:visited {
+	color: #666;
+}
+
 /* aside */
 #aside-area {
 	padding: 5px 8px;

@@ -17,6 +17,12 @@
 <!-- js -->
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery-1.12.4.js"></script>
 
+<!-- 도로명 주소 api -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<!-- 카카오 맵 api -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c694e05d69f948b3793c67975a2ef4a5&libraries=services"></script>
+
 <title>admin-storeInfo</title>
 
 </head>
@@ -93,6 +99,8 @@
 									<div id="adress-detail-area">
 										<input id="adress-detail" type="text" placeholder="상세 주소를 입력해주세요">
 									</div>
+									<!-- 지도 -->
+									<div id="map"></div>
 								</td>
 							</tr>
 							<tr>
@@ -171,4 +179,58 @@
 	<!-- //컨텐츠 -->
 	
 </body>
+
+<script type="text/javascript">
+	
+	$("#adress-search").on("click", function(){
+		/* 도로명 주소 api */
+	    new daum.Postcode({
+	        oncomplete: function(data) {
+	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+	            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+	            
+				var addr = data.roadAddress; // 최종 주소 변수
+				
+				      // 주소 정보를 해당 필드에 넣는다.
+				      document.getElementById("adress").value = addr;
+				      // 주소로 상세 정보를 검색
+				      geocoder.addressSearch(data.roadAddress, function(results, status) {
+				          // 정상적으로 검색이 완료됐으면
+				          if (status === daum.maps.services.Status.OK) {
+				
+				              var result = results[0]; //첫번째 결과의 값을 활용
+				
+				              // 해당 주소에 대한 좌표를 받아서
+				              var coords = new daum.maps.LatLng(result.y, result.x);
+				              // 지도를 보여준다.
+				              mapContainer.style.display = "block";
+				              map.relayout();
+				              // 지도 중심을 변경한다.
+				              map.setCenter(coords);
+				              // 마커를 결과값으로 받은 위치로 옮긴다.
+				              marker.setPosition(coords)
+				          }
+				      });
+	        }
+	    }).open();
+	})
+	
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+	      mapOption = {
+	          center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+	          level: 5 // 지도의 확대 레벨
+	      };
+	
+	  //지도를 미리 생성
+	  var map = new daum.maps.Map(mapContainer, mapOption);
+	  //주소-좌표 변환 객체를 생성
+	  var geocoder = new daum.maps.services.Geocoder();
+	  //마커를 미리 생성
+	  var marker = new daum.maps.Marker({
+	      position: new daum.maps.LatLng(37.537187, 127.005476),
+	      map: map
+	  });
+	
+</script>
+
 </html>

@@ -69,6 +69,19 @@ select {
 	-webkit-appearance: none;
 	appearance: none;
 }
+select:hover {
+  border-color: #888;
+}
+
+select:focus {
+  border-color: #aaa;
+  color: #ff1f67;
+  outline: none;
+}
+
+select:disabled {
+  opacity: 0.5;
+}
 
 /* LAYOUT */
 #wrap{position:relative;max-width:1200px;z-index:1;display:flex; justify-content: center;}
@@ -145,17 +158,8 @@ select {
 
 .listType{overflow:hidden;margin:50px 0 -20px;}
 .listType li{float:right;padding-left:7px;}
-.listType li.sortB select{
-  text-align:center;
-  color: #444;
-  background-color: #fff;
-  height: 35px;
-  width: 100px;
-  margin-top: 10px;
-  border: 2px solid #aaa;
-  border-radius: 0.5em;
-  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
-  	border-radius: 5px;	border-color: #ff1f67;
+.listType li.sortB select{text-align:center;color: #444;background-color: #fff;height: 35px;width: 120px;margin-top: 10px;border: 2px solid #ff1f67;border-radius: 5px;
+   	background-image:'../../images/matching/img-search.png'; background-size: 24px;	background-repeat: no-repeat;	background-position: right;
 }
 
 .listType li input{margin-top: 10px;background-image: url('../../images/matching/img-search.png');	background-size: 24px;	background-repeat: no-repeat;	background-position: left center;	height: 35px;	width: 250px;	padding: 0px 35px 0px 32px;	border-radius: 5px;	border-color: #ff1f67;}

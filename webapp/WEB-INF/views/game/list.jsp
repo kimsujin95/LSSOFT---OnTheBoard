@@ -184,7 +184,7 @@
 						<ul class="listType">
 							<li class="sortB">
 								<select title="정렬기준" name="search_sort" class="formSelect">
-										<option value="" selected="selected">정렬기준</option>
+										<option value="" selected="selected">정렬기준<img src="${pageContext.request.contextPath}/assets/images/icons/tab_menu_arrow.gif"></option>
 										<option value="name_asc">오름차순</option>
 										<option value="name_desc">내림차순</option>
 								</select>

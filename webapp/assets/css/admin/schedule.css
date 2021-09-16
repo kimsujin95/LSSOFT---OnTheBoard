@@ -1,7 +1,43 @@
 @charset "UTF-8";
 
-div#datepicker {
-	margin: 0 auto;
-	width: 500px;
-	height: 500px;
+.datepicker-inline {
+    width: 445px !important;
+    height: 445px !important;
+    padding:0 !important;
+}
+
+.datepicker table {
+	border: 1px solid rgb(224, 224, 224);
+    width: 445px;
+    height: 445px;
+}
+
+table#time-table {
+	width: 445px;
+	height: 445px;
+}
+
+table#time-table td, table#time-table th {
+	text-align: center;
+}
+
+table#time-table th {
+	background-color: #d9edf7;
+	height: 35px;
+}
+
+div#res-people {
+	padding: 0 2px;
+}
+
+div#res-people label {
+	width: 150px;
+}
+div#res-people select, div#res-people input {
+	width: 70px;
+}
+
+table#time-table td > button.btn {
+	width: 45%;
+	margin: 5px 5px;
 }

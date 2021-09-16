@@ -5,8 +5,12 @@ div#end, div#date-btn {
 	margin-right: 10px;
 }
 
-#date-picker input {
-	width: 100px;
+div.input-group {
+	width: 500px;
+}
+
+div#date-picker {
+	margin-right: 20px;
 }
 
 /* 테이블 영역 */

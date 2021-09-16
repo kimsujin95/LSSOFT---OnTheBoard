@@ -422,11 +422,10 @@
 
 					<!-- 달력 보기 -->
 					<div class="bg-line">
-						<input type="hidden" id="datePicker" value="" class="hasDatepicker">
-						<button type="button" id="calendar" onclick="$('#datePicker').datepicker('show')"
-							class="btn-calendar-large" title="달력보기"
-						>달력보기</button>
-					</div>
+                        <input type="hidden" id="datepicker" value="">
+                        <button type="button" id="calendar" onclick="$('#datepicker').datepicker('show')"
+                            class="btn-calendar-large" title="달력보기">달력보기</button>
+                    </div>
 				</div>
 			</div>
 
@@ -654,11 +653,12 @@
 
 	</div>
 
-	<script>
+	<!-- Datepicker -->
+	<script type="text/javascript">
 
-        $("#datepicker").datepicker{
-            
-        }
+        $(function () {
+            $("#datepicker").datepicker();
+        });
 
     </script>
 

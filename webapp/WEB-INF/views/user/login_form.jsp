@@ -6,21 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>온 더 보드: 로그인</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/login_form_style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/login_form.css">
 </head>
 
 <body>
 
 	<div id="wrap">
 
-		<!--header navi-->
-		<!--//header navi-->
-
 		<div class="main-container">
 			<div class="main-wrap">
 				<header>
 					<div class="logo-wrap">
-						<img src="${pageContext.request.contextPath}/assets/image/mypage/logo.png">
+						<a href="${pageContext.request.contextPath}/main"><img src="${pageContext.request.contextPath}/assets/images/logo.png"></a>
 					</div>
 				</header>
 				<section class="login-input-section-wrap">
@@ -38,17 +35,17 @@
 					<h2>다른 로그인 수단</h2>
 					<ul class="sign-button-list">
 						<li><button>
-								<i class="fas fa-qrcode"></i><span>NAVER</span>
+								<img class="logo" src=""><span>NAVER</span>
 							</button></li>
 						<li><button>
-								<i class="fab fa-facebook-square"></i><span>KAKAO</span>
+								<img class="logo" src=""><span>KAKAO</span>
 							</button></li>
 						<li><button>
-								<i class="fab fa-line"></i><span>GOOGLE</span>
+								<img class="logo" src=""><span>GOOGLE</span>
 							</button></li>
 					</ul>
 					<p class="forget-msg">
-						아직 회원이 아니신가요? | <a href="sign_up_form.html">회원가입</a>
+						아직 회원이 아니신가요? | <a href="${pageContext.request.contextPath}/user/signupForm">회원가입</a>
 					</p>
 				</section>
 				<footer>

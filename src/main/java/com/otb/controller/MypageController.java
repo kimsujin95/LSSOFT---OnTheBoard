@@ -8,6 +8,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value="/mypage", method = {RequestMethod.GET, RequestMethod.POST})
 public class MypageController {
 	
+	//메인
+	@RequestMapping(value="/main", method = {RequestMethod.GET, RequestMethod.POST})
+	public String main() {
+		
+		return "/mypage/mypage";
+	}
+	
+	
 	//이용내역
 	@RequestMapping(value="/history", method = {RequestMethod.GET, RequestMethod.POST})
 	public String history() {

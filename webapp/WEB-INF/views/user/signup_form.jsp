@@ -5,13 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>온 더 보드: 회원가입</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/sign_up_form_style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/signup_form.css">
 
 </head>
 <body>
 	<!-- header -->
 	<div id="header">
-		<img src="${pageContext.request.contextPath}/assets/image/mypage/logo.png" id="logo">
+		<img src="${pageContext.request.contextPath}/assets/images/logo.png" id="logo">
 	</div>
 
 
@@ -158,8 +158,6 @@
 					<span>회원가입</span>
 				</button>
 			</div>
-
-
 
 		</div>
 		<!-- content-->

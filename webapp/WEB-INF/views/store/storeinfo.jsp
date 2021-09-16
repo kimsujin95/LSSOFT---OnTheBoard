@@ -666,7 +666,11 @@
 
 
 	</div>
-
+	
+	<!-- FOOTER -->
+	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+	<!-- // FOOTER -->
+	
 	<!-- Datepicker -->
 	<script type="text/javascript">
 

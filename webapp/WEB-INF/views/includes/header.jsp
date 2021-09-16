@@ -50,7 +50,7 @@
 	<header>
 		<nav>
 			<ul>
-				<li><a href="${pageContext.request.contextPath }/store/main">매장</a></li>
+				<li><a href="${pageContext.request.contextPath }/store/storelist">매장</a></li>
 				<li><a href="${pageContext.request.contextPath }/game/list">게임</a></li>
 				<li><a href="${pageContext.request.contextPath }/main"><img id="logo" src="${pageContext.request.contextPath}/assets/images/logo.png"></a></li>
 				<li><a href="${pageContext.request.contextPath }/matching/list">매칭</a></li>

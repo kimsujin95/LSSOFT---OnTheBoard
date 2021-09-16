@@ -67,8 +67,11 @@
 		</div>
 
 	</div>
-
-
+	
+	<!-- FOOTER -->
+	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+	<!-- // FOOTER -->
+	
 </body>
 
 <!-- 카카오 지도 api 가져오기 -->

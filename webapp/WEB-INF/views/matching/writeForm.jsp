@@ -23,6 +23,12 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/matching/matching.css" type="text/css">
 
+<!-- 데이트 피커 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+<link href="${pageContext.request.contextPath}/assets/css/datepicker.css" rel="stylesheet" type="text/css">
+<script src="resources/js/plugin/datepicker/bootstrap-datepicker.ko.min.js"></script>
+
 <title>매칭글 등록</title>
 </head>
 
@@ -194,10 +200,20 @@
 </body>
 
 <script>
-	$(function() {
-		$("#datepick").datepicker({
-
-		});
+	$('#datepick').datepicker({
+		language: 'ko',
+		todayBtn: 'linked',
+		format: 'yyyy-mm-dd',
+		autoclose: true,
+		
+		days: ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"],
+		daysShort: ["일", "월", "화", "수", "목", "금", "토"],
+		daysMin: ["일", "월", "화", "수", "목", "금", "토"],
+		months: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+		monthsShort: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+		today: "오늘",
+		titleFormat: "yyyy년 mm월",
+		weekStart: 0
 	});
 </script>
 

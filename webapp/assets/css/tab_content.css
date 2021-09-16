@@ -34,7 +34,7 @@
 	color: #000;
 }
 
-#content #select-option #ipt-keyword {
+#ipt-keyword {
 	margin: 10px 0px -10px 0px;
 	background-image: url(../images/matching/img-search.png);
 	background-size: 24px;

@@ -30,7 +30,14 @@
 	
 	<!--wrap-->
 	<div class="wrap">
-	
+		<div class="sub-container">
+
+         <div class="subtitle">
+            <h3>게임목록</h3>
+            <p class="context">아래 메뉴에서 원하는 조건을 선택하면, 만족하는 보드게임을 찾으실 수 있습니다.</p>
+         </div>
+
+      </div>
 		<!--#container-->
 		<div id="main" class="gameList">
 			<!--#searchForm-->
@@ -177,17 +184,19 @@
 					<div class="notice">
 						<!-- .listType -->
 						<ul class="listType">
-							<li class="sortB"><select title="정렬기준" name="search_sort" class="formSelect">
-									<option value="" selected="selected">정렬기준</option>
-									<option value="name_asc">오름차순</option>
-									<option value="name_desc">내림차순</option>
-							</select></li>
+							<li class="sortB">
+								<select title="정렬기준" name="search_sort" class="formSelect">
+										<option value="" selected="selected">정렬기준</option>
+										<option value="name_asc">오름차순</option>
+										<option value="name_desc">내림차순</option>
+								</select>
+							</li>
 							<li class="search">
-								<form name="search_form" method="post" action="" onsubmit="return search_chk(this);">
-									<fieldset>
-										<legend></legend>
-										<input type="text" name="search_text" class="formSearch" />
-									</fieldset>
+								<input type="text" id="ipt-keyword" value="" placeholder="게임 검색">
+								<fieldset>
+									<legend></legend>
+									<input type="text" name="search_text" class="formSearch" />
+								</fieldset>
 								</form>
 							</li>
 						</ul>

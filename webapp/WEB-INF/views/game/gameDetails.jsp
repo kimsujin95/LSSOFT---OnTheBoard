@@ -14,9 +14,15 @@
 
 
 <!-- css  -->
-<link href="${pageContext.request.contextPath }/assets/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/game/gamelayout.css" rel="stylesheet" media="screen and (max-width:1023px)">
+<link href="${pageContext.request.contextPath }/assets/bootstrap/bootstrap.css" rel="stylesheet"
+	type="text/css"
+>
+<link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet"
+	type="text/css"
+>
+<link href="${pageContext.request.contextPath }/assets/css/game/gamelayout.css" rel="stylesheet"
+	media="screen"
+>
 <link href="${pageContext.request.contextPath }/assets/css/game/gamestyle.css" rel="stylesheet">
 
 
@@ -34,26 +40,27 @@
 	<!-- #wrap -->
 	<div id="wrap">
 		<div class="sub-container">
-		<!--.subtitle -->
-         <div class="subtitle clearfix">
+			<!--.subtitle -->
+			<div class="subtitle clearfix">
 				<div class="context1 font-size-24">게임목록</div>
 				<div class="context2 clearfix">
 					<ul>
-						<li><a href="#">메인</a></li>
-						<li><a href="#">게임</a></li>
-						<li class="last-li"><a href="#">게임세부정보</a></li>
+						<li><a href="${pageContext.request.contextPath}/main">메인</a></li>
+						<li><a href="${pageContext.request.contextPath}/game/list">게임목록</a></li>
+						<li class="last-li"><a href="${pageContext.request.contextPath}/game/gameDetails?id=">게임세부정보</a></li>
 					</ul>
+				</div>
 			</div>
-		</div>
-         <!-- /.subtitle -->
+			<!-- /.subtitle -->
+		
 			<!-- .gameDetail -->
 			<div class="gameDetail">
-				
+
 				<!-- .gameInfo -->
 				<div class="gameInfo">
 					<!-- .innerbox -->
 					<div class="innerbox">
-						
+
 						<div class="thum">
 							<img src="${pageContext.request.contextPath }/assets/images/game/bonanza1.png" alt="Bonanza">
 						</div>
@@ -62,15 +69,15 @@
 						<!-- infoBox -->
 						<div class="infoBox">
 							<ul class="info">
-							<li class="gameTitle">
-								보난자
-								<span>Bonanza</span>
-							</li>
+								<li class="gameTitle">보난자 <span>Bonanza</span>
+								</li>
 								<li><em>대상연령</em>만 10세 이상</li>
 								<li><em>게임인원</em>3명 ~ 5명</li>
 								<li><em>게임시간</em>45분</li>
 								<li><em>게임장르</em>가족 게임</li>
 								<li><em>게임난이도</em>초급</li>
+								
+								<li><em>게임테마</em><a href="">#카드게임 </a><a href="">#협상</a></li>
 							</ul>
 							<div class="bbssvc">
 								<button class="btn-blue">찜하기</button>
@@ -96,10 +103,12 @@
 				<div id="gameIntro">
 
 					<dl style="border-bottom: 0px; text-align: center;">
-						<img src="${pageContext.request.contextPath }/assets/images/game/bonanza_intro.jpg" title="bonanza_intro.jpg" alt="보난자">
+						<img src="${pageContext.request.contextPath }/assets/images/game/bonanza_intro.jpg"
+							title="bonanza_intro.jpg" alt="보난자"
+						>
 						<br style="clear: both;">
 						<br style="clear: both;">
-					</dl>	
+					</dl>
 				</div>
 			</div>
 			<!-- /#gameIntro -->
@@ -209,8 +218,8 @@
 		</div>
 		<!-- /.gameDetail -->
 	</div>
-	<!-- /#container -->
-	<!-- #footerwrap -->
+	<!-- /.sub-container -->
+
 	<div id="footerwrap">
 		<!-- Footer -->
 		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
@@ -224,28 +233,27 @@
 </body>
 
 <script>
-
-// 옵션 선택 리스트 탭
-// 메뉴가 선택되어 active가 되기 전 이벤트
-$('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
-	e.target // 현재 설정된 tab
-	e.relatedTarget // 이전에 설정된 탭
-});
-// 메뉴가 선택되어 active가 된 후 이벤트
-$('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
-	e.target // 현재 설정된 tab
-	e.relatedTarget // 이전에 설정된 탭
-});
-// 다른 메뉴가 선택되어 active가 remove 되기 전 이벤트
-$('a[data-toggle="tab"]').on('hide.bs.tab', function(e) {
-	e.target // 현재 설정된 tab
-	e.relatedTarget // 이전에 설정된 탭
-});
-// 다른 메뉴가 선택되어 active가 remove 된 후 이벤트
-$('a[data-toggle="tab"]').on('hidden.bs.tab', function(e) {
-	e.target // 현재 설정된 tab
-	e.relatedTarget // 이전에 설정된 탭
-});
-// -- 옵션 선택 리스트 탭 --
+	// 옵션 선택 리스트 탭
+	// 메뉴가 선택되어 active가 되기 전 이벤트
+	$('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+		e.target // 현재 설정된 tab
+		e.relatedTarget // 이전에 설정된 탭
+	});
+	// 메뉴가 선택되어 active가 된 후 이벤트
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+		e.target // 현재 설정된 tab
+		e.relatedTarget // 이전에 설정된 탭
+	});
+	// 다른 메뉴가 선택되어 active가 remove 되기 전 이벤트
+	$('a[data-toggle="tab"]').on('hide.bs.tab', function(e) {
+		e.target // 현재 설정된 tab
+		e.relatedTarget // 이전에 설정된 탭
+	});
+	// 다른 메뉴가 선택되어 active가 remove 된 후 이벤트
+	$('a[data-toggle="tab"]').on('hidden.bs.tab', function(e) {
+		e.target // 현재 설정된 tab
+		e.relatedTarget // 이전에 설정된 탭
+	});
+	// -- 옵션 선택 리스트 탭 --
 </script>
 </html>

@@ -33,15 +33,14 @@
 		<div class="sub-container">
 		<!--.subtitle -->
          <div class="subtitle clearfix">
-				<div class="context1 font-size-24">게임목록</div>
-				<div class="context2 clearfix">
-					<ul>
-						<li><a href="#">메인</a></li>
-						<li><a href="#">게임</a></li>
-						<li class="last-li"><a href="#">게임목록</a></li>
-					</ul>
-				</div>
+			<div class="context1 font-size-24">게임목록</div>
+			<div class="context2 clearfix">
+				<ul>
+					<li><a href="${pageContext.request.contextPath}/main">메인</a></li>
+					<li class="last-li"><a href="${pageContext.request.contextPath}/game/list">게임목록</a></li>
+				</ul>
 			</div>
+		</div>
          <!-- /.subtitle -->
          <div>
          <!--#searchForm-->

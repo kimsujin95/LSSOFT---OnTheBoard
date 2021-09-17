@@ -14,7 +14,7 @@ body{font-size:12px;}
 
 
 
-.tabMenu01{margin:0 -10px;padding:10px;border:2px solid #ddd;border-width:2px 0;}
+.tabMenu01{margin:0 -10px;padding:10px;border-width:2px 0;}
 .tabMenu01 dl{position:relative;}
 .tabMenu01 dt{display:block;position:relative;padding:13px 15px 12px;font-size:16px;color:#383838;letter-spacing:-0.05px;cursor:pointer;border:2px solid #dcdcdc;background:#fff;}
 .tabMenu01 dt img{position:absolute;right:15px;top:16px;height:10px;}
@@ -66,7 +66,7 @@ body{font-size:12px;}
 .sortSelect li dd li{padding:13px 15px 12px;font-size:13px;line-height:100%;border-width:2px;}
 
 .gameDetail{margin-top:10px;}
-.gameDetail .gameInfo{margin-bottom:30px;padding:15px 0 15px;border:1px solid #d9d9d9;border-top:none;}
+.gameDetail .gameInfo{margin-bottom:30px;padding:15px 0 15px;border-top:none;}
 .gameDetail .gameInfo h2{font-size:20px;padding:0 15px;}
 .gameDetail .gameInfo h2 span{display:block;padding-left:0;margin-top:5px;font-size:13px;}
 .gameDetail .gameInfo .innerbox{margin-top:12px;}

@@ -30,6 +30,7 @@
 	
 	<!--wrap-->
 	<div class="wrap">
+		<!-- .sub-container -->
 		<div class="sub-container">
 		<!--.subtitle -->
          <div class="subtitle clearfix">
@@ -209,7 +210,7 @@
          </div>
 
       </div>
-		<!--#container-->
+		<!--#main-->
 		<div id="main" class="gameList">
 			
 			<!--#gameList-->

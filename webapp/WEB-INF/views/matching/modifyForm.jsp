@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/matching/matching.css" type="text/css">
 
-<title>글수정</title>
+<title>MATCHING</title>
 </head>
 
 <body>

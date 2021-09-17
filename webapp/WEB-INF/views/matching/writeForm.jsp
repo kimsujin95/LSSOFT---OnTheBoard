@@ -29,7 +29,7 @@
 <link href="${pageContext.request.contextPath}/assets/css/datepicker.css" rel="stylesheet" type="text/css">
 <script src="resources/js/plugin/datepicker/bootstrap-datepicker.ko.min.js"></script>
 
-<title>매칭글 등록</title>
+<title>MATCHING</title>
 </head>
 
 <body>

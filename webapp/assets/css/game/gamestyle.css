@@ -213,7 +213,7 @@ select:disabled {
 .gameDetail #gameStore 
 .gameDetail #gameGuide{margin-top:30px;border:1px solid #d9d9d9;}
 .gameDetail #gameGuide dl{border-bottom: 0px; text-align: center;}
-.gameDetail #gameGuide>dl:first-child {margin: 30px;border-bottom: 1px solid #d9d9d9;}
+.gameDetail #gameGuide>dl:first-child {margin: 30px;}
 .gameDetail #gameGuide .videoeWrap{padding-top: 30px;}
 .gameDetail #gameGuide div {text-align: center; max-width: 780px;margin: 0 auto;}
 .gameDetail #gameGuide>div .embed-container {position:relative; padding-bottom:56.25%; padding-top:30px; margin-top: 30px; overflow:hidden;}

@@ -38,7 +38,7 @@
 	<!-- /#Header -->
 
 	<!-- #wrap -->
-	<div id="wrap">
+	<div class="wrap">
 		<div class="sub-container">
 			<!--.subtitle -->
 			<div class="subtitle clearfix">
@@ -52,10 +52,13 @@
 				</div>
 			</div>
 			<!-- /.subtitle -->
+		</div>
+		<!-- /.sub-container -->
+		<!-- main -->
+		<div id="main" class="container">
 		
 			<!-- .gameDetail -->
 			<div class="gameDetail">
-
 				<!-- .gameInfo -->
 				<div class="gameInfo">
 					<!-- .innerbox -->
@@ -76,7 +79,7 @@
 								<li><em>게임시간</em>45분</li>
 								<li><em>게임장르</em>가족 게임</li>
 								<li><em>게임난이도</em>초급</li>
-								
+
 								<li><em>게임테마</em><a href="">#카드게임 </a><a href="">#협상</a></li>
 							</ul>
 							<div class="bbssvc">
@@ -104,13 +107,12 @@
 
 					<dl style="border-bottom: 0px; text-align: center;">
 						<img src="${pageContext.request.contextPath }/assets/images/game/bonanza_intro.jpg"
-							title="bonanza_intro.jpg" alt="보난자"
-						>
-						<br style="clear: both;">
-						<br style="clear: both;">
+							title="bonanza_intro.jpg" alt="보난자">
+						<br>
+						<br>
 					</dl>
 				</div>
-			</div>
+			
 			<!-- /#gameIntro -->
 			<!-- .tabMenu01 -->
 			<div class="tabMenu01" id="gameStoreTab">
@@ -218,14 +220,12 @@
 		</div>
 		<!-- /.gameDetail -->
 	</div>
-	<!-- /.sub-container -->
+	<!-- /.container -->
 
-	<div id="footerwrap">
-		<!-- Footer -->
-		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
-		<!-- /#Footer -->
-	</div>
-	<!-- /#footerwrap -->
+
+	<!-- Footer -->
+	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+	<!-- /#Footer -->
 	</div>
 	<!-- /#wrap -->
 

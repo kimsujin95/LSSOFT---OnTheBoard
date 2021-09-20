@@ -32,6 +32,7 @@
 				        <li><a href="${pageContext.request.contextPath }/mypage/modifyProfile">프로필</a></li>
 				        <li><a href="${pageContext.request.contextPath }/mypage/modify">회원정보수정</a></li>
 				        <li><a href="${pageContext.request.contextPath }/mypage/business">사업자전환</a></li>
+				        <li><a href="${pageContext.request.contextPath }/message/inbox">메세지</a></li>
 				      </ul>
 				      </div>
 				    </div>

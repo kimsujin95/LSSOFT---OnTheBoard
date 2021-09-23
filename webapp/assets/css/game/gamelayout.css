@@ -51,7 +51,20 @@ body{font-size:12px;}
 .bbsList04 li dt{margin-bottom:10px;font-size:15px;}
 .bbsList04 li dd li{font-size:12px;}
 
+
 /* 보드게임 */
+.sortBox {
+    display: block;
+    width: 100%;
+    height: 51px;
+    border: solid 1px #dadada;
+    padding: 10px 14px 10px 14px;
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+}
+
+
 .gameList{position:relative;}
 .gameList .listType{position:absolute;right:15px;top:101px;}
 .gameList .sortSelect{position:relative;left:0;top:0;margin:15px 0 0;padding:0;}

@@ -75,7 +75,7 @@ textarea {
 	margin-left: 3px;
 }
 
-#select-option-list {
+/* #select-option-list {
 	margin: 0px;
 	padding: 0px;
 }
@@ -93,12 +93,12 @@ textarea {
 	background-color: transparent;
 	border: none;
 	font-size: 12px;
-}
+} */
 
-#select-option-list img {
+/* #select-option-list img {
 	width: 10px;
 	height: 10px;
-}
+} */
 
 #select-option-checkbox {
 	margin-top: 10px;

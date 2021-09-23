@@ -124,3 +124,28 @@
 	text-align: left;
 	font-size: 13px;
 }
+
+#select-option-list {
+	margin: 0px;
+	padding: 0px;
+}
+
+#select-option-list #option-reset {
+	border-right: 1px solid #e2e2e2;
+}
+
+#select-option-list div {
+	padding: 3px;
+}
+
+#select-option-list button {
+	overflow: hidden;
+	background-color: transparent;
+	border: none;
+	font-size: 12px;
+}
+
+#tap-content-wrap #select-option-list img {
+	width: 10px;
+	height: 10px;
+}

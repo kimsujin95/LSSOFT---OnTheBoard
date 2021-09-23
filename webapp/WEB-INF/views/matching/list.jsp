@@ -19,7 +19,7 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/matching/matching.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/tab_content.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/matching/matching_tab_content.css" type="text/css">
 
 <title>MATCHING</title>
 </head>
@@ -49,7 +49,7 @@
 		<!-- SELECT OPTION -->
 		<div id="select-option" class="container">
 			<!-- TAB CONTENT -->
-			<c:import url="/WEB-INF/views/includes/tab_content.jsp"></c:import>
+			<c:import url="/WEB-INF/views/matching/matching_tab_content.jsp"></c:import>
 			<!-- // TAB CONTENT -->
 
 			<div>

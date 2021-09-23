@@ -321,18 +321,6 @@
 		</div>
 
 	</div>
-	<div id="select-option-list" class="row">
-		<div id="option-reset" class="col-xs-1">
-			<button class="btn-reset">
-				선택초기화 <img src="${pageContext.request.contextPath}/assets/images/matching/btn-reset.png" alt="option-reset-btn">
-			</button>
-		</div>
-		<div class="col-xs-11">
-			<button>
-				테라포밍 마스 <img src="${pageContext.request.contextPath}/assets/images/matching/btn-X.png" alt="delete img">
-			</button>
-		</div>
-	</div>
 </div>
 
 

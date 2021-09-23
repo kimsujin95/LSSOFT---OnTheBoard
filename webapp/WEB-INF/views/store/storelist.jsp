@@ -12,7 +12,7 @@
 <!-- KaKaoMap_CSS -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/store/kakaomap/map.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/tab_content.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/store/store_tab_content.css" type="text/css">
 
 <!-- jQuery -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
@@ -48,7 +48,7 @@
 		<div id="Store_main_content" class="container">
 
 			<!-- 지역, 게임, 키워드 검색 -->
-			<c:import url="/WEB-INF/views/includes/tab_content.jsp"></c:import>
+			<c:import url="/WEB-INF/views/store/tab_content.jsp"></c:import>
 
 			<!-- 지도 -->
 			<div class="map_wrap">
@@ -58,7 +58,7 @@
 					<div class="option">
 						<div>
 							<form onsubmit="searchPlaces(); return false;">
-								키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15">
+								키워드 : <input type="text" value="강남역" id="keyword" size="15">
 								<button type="submit">검색하기</button>
 							</form>
 						</div>

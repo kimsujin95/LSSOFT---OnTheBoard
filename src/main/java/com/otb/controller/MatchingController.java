@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.otb.sevice.MatchingService;
+import com.otb.vo.MatchingVo;
+
 @Controller
 @RequestMapping(value = "/matching", method = {RequestMethod.GET, RequestMethod.POST})
 public class MatchingController {
@@ -28,11 +31,11 @@ public class MatchingController {
 	
 	// 매칭글 쓰기
 	@RequestMapping("/write")
-	public MatchingVo write() {
+	public String write() {
 		
-		MatchingVo matchingVo = new MatchingVo();
+		int write = matchingService.write();
 		
-		return matchingVo;
+		return "redirect:/matching/list";
 	}
 	
 	// 매칭글 읽기

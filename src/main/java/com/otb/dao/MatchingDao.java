@@ -1,5 +1,6 @@
 package com.otb.dao;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -7,13 +8,13 @@ import org.springframework.stereotype.Repository;
 public class MatchingDao {
 	
 	@Autowired
-//	private SqlSession sqlSession;
+	private SqlSession sqlSession;
 	
 	// 매칭글 쓰기
 	public int write() {
-		
-//		int write = sqlSession.insert("matching.write");
-		int write = 1;
+		System.out.println("MatchingDao: write;;;");
+		int write = sqlSession.insert("matching.write");
+
 		return write;
 	}
 

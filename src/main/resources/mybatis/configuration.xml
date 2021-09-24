@@ -2,7 +2,9 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+		<typeAlias alias="MatchingVo" type="com.otb.vo.MatchingVo" />
 	</typeAliases>
 	<mappers>
+		<mapper resource="mybatis/mappers/matching.xml" />
 	</mappers>
 </configuration>

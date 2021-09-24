@@ -4,12 +4,16 @@
 
 <mapper namespace="matching">
 
-<resultMap id="resultMapMatchingVo" type="MatchingVo">
-	<result column="" property="" />
-	<result column="" property="" />
-	<result column="" property="" />
-	<result column="" property="" />
-	<result column="" property="" />
-</resultMap>
+	<resultMap id="resultMapMatchingVo" type="MatchingVo">
+		<result column="" property="" />
+		<result column="" property="" />
+		<result column="" property="" />
+		<result column="" property="" />
+		<result column="" property="" />
+	</resultMap>
+
+<insert id="write" parameterType="MatchingVo">
+
+</insert>
 
 </mapper>

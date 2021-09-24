@@ -18,6 +18,7 @@ public class MatchingController {
 	// 매칭리스트
 	@RequestMapping("/list")
 	public String list() {
+		System.out.println("MatchingController: list;;;");
 		
 		return "/matching/list";
 	}
@@ -25,6 +26,7 @@ public class MatchingController {
 	// 매칭글 쓰기폼
 	@RequestMapping("/writeForm")
 	public String writeForm() {
+		System.out.println("MatchingController: writeForm;;;");
 		
 		return "/matching/writeForm";
 	}
@@ -32,6 +34,7 @@ public class MatchingController {
 	// 매칭글 쓰기
 	@RequestMapping("/write")
 	public String write() {
+		System.out.println("MatchingController: write;;;");
 		
 		int write = matchingService.write();
 		
@@ -41,6 +44,7 @@ public class MatchingController {
 	// 매칭글 읽기
 	@RequestMapping("/read")
 	public String read() {
+		System.out.println("MatchingController: read;;;");
 		
 		return "/matching/read";
 	}
@@ -48,8 +52,18 @@ public class MatchingController {
 	// 매칭글 수정폼
 	@RequestMapping("/modifyForm")
 	public String modify() {
+		System.out.println("MatchingController: modifyForm;;;");
 		
 		return "/matching/modifyForm";
+	}
+	
+	// 매칭글 삭제
+	@RequestMapping("/delete")
+	public String delete() {
+		System.out.println("MatchingController: deletr;;;");
+		// deleteForm == modal
+		
+		return "redirect:/matching/list";
 	}
 
 }

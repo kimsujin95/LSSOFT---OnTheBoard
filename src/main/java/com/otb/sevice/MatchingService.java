@@ -13,7 +13,7 @@ public class MatchingService {
 	
 	// 매칭글 쓰기
 	public int write() {
-		
+		System.out.println("MatchingService: write;;;");
 		int write = matchingDao.write();
 		
 		return write;

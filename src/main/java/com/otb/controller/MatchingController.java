@@ -2,6 +2,7 @@ package com.otb.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,10 +34,11 @@ public class MatchingController {
 	
 	// 매칭글 쓰기
 	@RequestMapping("/write")
-	public String write() {
+	public String write(@ModelAttribute MatchingVo matchingVo) {
 		System.out.println("MatchingController: write;;;");
+		System.out.println(matchingVo);
 		
-		int write = matchingService.write();
+		int write = matchingService.write(matchingVo);
 		
 		return "redirect:/matching/list";
 	}

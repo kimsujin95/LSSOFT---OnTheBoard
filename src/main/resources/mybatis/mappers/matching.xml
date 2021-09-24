@@ -4,16 +4,28 @@
 
 <mapper namespace="matching">
 
+<!-- 
 	<resultMap id="resultMapMatchingVo" type="MatchingVo">
-		<result column="" property="" />
-		<result column="" property="" />
-		<result column="" property="" />
-		<result column="" property="" />
-		<result column="" property="" />
+		<result column="matching_no" property="matchingNo" />
+		<result column="user_nickname" property="userNickname" />
+		<result column="user_gender" property="userGender" />
+		<result column="user_birth_date" property="userBirthDate" />
 	</resultMap>
-
-<insert id="write" parameterType="MatchingVo">
-
-</insert>
+ -->
+ 
+	<insert id="write" parameterType="MatchingVo">
+	<![CDATA[
+		INSERT INTO
+			matching(matching_no, user_no, matching_title, matching_content, matching_people)
+		VALUES
+			(
+				seq_matching_no.NEXTVAL,
+				#{ userNo },
+				#{ matchingTitle},
+				#{ matchingContent },
+				#{ matchingPeople }
+			)
+	]]>
+	</insert>
 
 </mapper>

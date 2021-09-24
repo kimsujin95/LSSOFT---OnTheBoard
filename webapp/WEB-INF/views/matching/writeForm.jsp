@@ -54,13 +54,13 @@
 		</div>
 		<!-- // SUB TITLE -->
 
-		<form id="write-form" action="#" method="post">
+		<form id="write-form" action="${pageContext.request.contextPath}/matching/write" method="get">
 			<div class="row">
 				<div class="col-md-1"></div>
 				<div class="col-md-5">
 					<label for="title">제목</label>
 					<br>
-					<input id="title" type="text" placeholder="제목을 입력해 주세요.">
+					<input id="title" type="text" name="matchingTitle" placeholder="제목을 입력해 주세요." value="">
 
 					<br>
 					<br>
@@ -68,6 +68,7 @@
 					<label for="">작성자</label>
 					<br>
 					<span>NICKNAME (AGE/SEX)</span>
+					<input type="hidden" name="userNo" value="1">
 
 					<br>
 					<br>
@@ -151,10 +152,10 @@
 
 					<label for="">인원</label>
 					<br>
-					<select id="people-count">
-						<option value="people-two">2</option>
-						<option value="people-three">3</option>
-						<option value="people-four">4</option>
+					<select id="people-count" name="matchingPeople">
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
 					</select>
 
 					<br>
@@ -180,7 +181,7 @@
 
 					<label for="content">내용</label>
 					<br>
-					<textarea name="content" id="content" cols="60" rows="5" placeholder="내용을 입력해 주세요."></textarea>
+					<textarea name="matchingContent" id="content" cols="60" rows="5" placeholder="내용을 입력해 주세요."></textarea>
 				</div>
 				<div class="col-md-1"></div>
 			</div>

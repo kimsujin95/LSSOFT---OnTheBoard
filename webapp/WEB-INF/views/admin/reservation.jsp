@@ -19,10 +19,10 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/bootstrap/bootstrap.js"></script>
 
 <!-- 데이트 피커 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 <link href="${pageContext.request.contextPath }/assets/css/datepicker.css" rel="stylesheet" type="text/css">
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />-->
 
 <title>admin-reservation management</title>
 
@@ -283,8 +283,8 @@
 	});
 	
 	$(".input-daterange").datepicker({
-		format: "yyyy/mm/dd",
-	    autoclose: true
+		format: "yyyy/mm/dd"
+	    ,autoclose: true
 	});
 	
 </script>

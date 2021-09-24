@@ -117,7 +117,9 @@
 								</div>
 							</div>
 							<div class="col-xs-12 btn-area">
-								<button id="insert" type="submit" class="btn btn-lg btn-primary">등록하기</button>
+								<button id="scheduleCheck" type="submit" class="btn btn-lg btn-primary">스케쥴 확인</button>
+								<button id="insert" type="submit" class="btn btn-lg btn-primary">등록</button>
+								<button id="delete" type="submit" class="btn btn-lg btn-primary">삭제</button>
 							</div>
 						</div>
 					</div>
@@ -138,9 +140,9 @@
 	
 	/* div에 데이트 피커 선언 */
 	$(".date").datepicker({
-		multidate: true
-		,format: "yyyy-mm-dd"
+		format: "yyyy-mm-dd"
 		,todayHighlight: true
+		,multidate : true
 	});
 	
 	/* input type="hidden"에 데이터 저장 */
@@ -153,6 +155,31 @@
 	    
 	    console.log(date);
 	    
+	});
+	
+	$("#scheduleCheck").on("click", function(){
+		console.log("스케쥴 확인 클릭");
+		if($("#scheduleCheck").text() === "스케쥴 확인") {
+			$("#insert").text("수정");
+			$("#scheduleCheck").text("스케쥴 일괄 변경");
+			
+			$(".date").datepicker({
+				format: "yyyy-mm-dd"
+				,todayHighlight: true
+			});
+			
+		} else if ($("#scheduleCheck").text() === "스케쥴 일괄 변경") {
+			$("#insert").text("등록");
+			$("#scheduleCheck").text("스케쥴 확인");
+			
+			$(".date").datepicker({
+				format: "yyyy-mm-dd"
+				,todayHighlight: true
+				,multidate : true
+			});
+		}
+		
+		
 	});
 	
 	$(".time-select").on("click", function(){

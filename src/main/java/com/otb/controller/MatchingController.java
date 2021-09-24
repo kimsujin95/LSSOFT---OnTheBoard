@@ -1,5 +1,6 @@
 package com.otb.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -7,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value = "/matching", method = {RequestMethod.GET, RequestMethod.POST})
 public class MatchingController {
+	
+	@Autowired
+	private MatchingService matchingService;
 	
 	// 매칭리스트
 	@RequestMapping("/list")
@@ -17,9 +21,18 @@ public class MatchingController {
 	
 	// 매칭글 쓰기폼
 	@RequestMapping("/writeForm")
-	public String write() {
+	public String writeForm() {
 		
 		return "/matching/writeForm";
+	}
+	
+	// 매칭글 쓰기
+	@RequestMapping("/write")
+	public MatchingVo write() {
+		
+		MatchingVo matchingVo = new MatchingVo();
+		
+		return matchingVo;
 	}
 	
 	// 매칭글 읽기

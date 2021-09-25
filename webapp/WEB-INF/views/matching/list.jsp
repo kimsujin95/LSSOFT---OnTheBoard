@@ -120,107 +120,18 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>매칭중</td>
-						<td>999,999</td>
-						<td><a href="${pageContext.request.contextPath}/matching/read">테라포밍 마스 하시오</a></td>
-						<td>테라포밍 마스</td>
-						<td>1/5</td>
-						<td>남</td>
-						<td>서울 강남구</td>
-						<td>21. 11. 11.</td>
-					</tr>
-
-					<tr>
-						<td>매칭중</td>
-						<td>999,999</td>
-						<td>테라포밍 마스 하시오</td>
-						<td>테라포밍 마스</td>
-						<td>1/5</td>
-						<td>남</td>
-						<td>서울 강남구</td>
-						<td>21. 11. 11.</td>
-					</tr>
-					<tr>
-						<td>매칭중</td>
-						<td>999,999</td>
-						<td>테라포밍 마스 하시오</td>
-						<td>테라포밍 마스</td>
-						<td>1/5</td>
-						<td>남</td>
-						<td>서울 강남구</td>
-						<td>21. 11. 11.</td>
-					</tr>
-					<tr>
-						<td>매칭중</td>
-						<td>999,999</td>
-						<td>테라포밍 마스 하시오</td>
-						<td>테라포밍 마스</td>
-						<td>1/5</td>
-						<td>남</td>
-						<td>서울 강남구</td>
-						<td>21. 11. 11.</td>
-					</tr>
-					<tr>
-						<td>매칭중</td>
-						<td>999,999</td>
-						<td>테라포밍 마스 하시오</td>
-						<td>테라포밍 마스</td>
-						<td>1/5</td>
-						<td>남</td>
-						<td>서울 강남구</td>
-						<td>21. 11. 11.</td>
-					</tr>
-					<tr>
-						<td>매칭중</td>
-						<td>999,999</td>
-						<td>테라포밍 마스 하시오</td>
-						<td>테라포밍 마스</td>
-						<td>1/5</td>
-						<td>남</td>
-						<td>서울 강남구</td>
-						<td>21. 11. 11.</td>
-					</tr>
-					<tr>
-						<td>매칭중</td>
-						<td>999,999</td>
-						<td>테라포밍 마스 하시오</td>
-						<td>테라포밍 마스</td>
-						<td>1/5</td>
-						<td>남</td>
-						<td>서울 강남구</td>
-						<td>21. 11. 11.</td>
-					</tr>
-					<tr>
-						<td>매칭중</td>
-						<td>999,999</td>
-						<td>테라포밍 마스 하시오</td>
-						<td>테라포밍 마스</td>
-						<td>1/5</td>
-						<td>남</td>
-						<td>서울 강남구</td>
-						<td>21. 11. 11.</td>
-					</tr>
-					<tr>
-						<td>매칭중</td>
-						<td>999,999</td>
-						<td>테라포밍 마스 하시오</td>
-						<td>테라포밍 마스</td>
-						<td>1/5</td>
-						<td>남</td>
-						<td>서울 강남구</td>
-						<td>21. 11. 11.</td>
-					</tr>
-					<tr>
-						<td>매칭중</td>
-						<td>999,999</td>
-						<td>테라포밍 마스 하시오</td>
-						<td>테라포밍 마스</td>
-						<td>1/5</td>
-						<td>남</td>
-						<td>서울 강남구</td>
-						<td>21. 11. 11.</td>
-					</tr>
+					<c:forEach items="${matchingList}" var="matchingVo" varStatus="status">
+						<tr>
+							<td>매칭중</td>
+							<td>999,999</td>
+							<td><a href="${pageContext.request.contextPath}/matching/read?no=${matchingVo.matchingNo}">${matchingVo.matchingTitle}</a></td>
+							<td>테라포밍 마스</td>
+							<td>1/${matchingVo.matchingPeople}</td>
+							<td>남</td>
+							<td>서울 강남구</td>
+							<td>21. 11. 11.</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>

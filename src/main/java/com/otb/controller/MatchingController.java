@@ -1,10 +1,14 @@
 package com.otb.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.otb.sevice.MatchingService;
 import com.otb.vo.MatchingVo;
@@ -18,8 +22,12 @@ public class MatchingController {
 	
 	// 매칭리스트
 	@RequestMapping("/list")
-	public String list() {
+	public String list(Model model) {
 		System.out.println("MatchingController: list;;;");
+		
+		List<MatchingVo> matchingList = matchingService.list();
+		
+		model.addAttribute("matchingList", matchingList);
 		
 		return "/matching/list";
 	}
@@ -45,8 +53,13 @@ public class MatchingController {
 	
 	// 매칭글 읽기
 	@RequestMapping("/read")
-	public String read() {
+	public String read(Model model, @RequestParam(value = "no") int matchingNo) {
 		System.out.println("MatchingController: read;;;");
+		System.out.println(matchingNo);
+		
+		MatchingVo matchingVo = matchingService.read(matchingNo);
+		
+		model.addAttribute("matchingVo", matchingVo);
 		
 		return "/matching/read";
 	}

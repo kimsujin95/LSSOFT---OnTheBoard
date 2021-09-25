@@ -46,7 +46,7 @@
 		</div>
 		<!-- // SUB TITLE -->
 		<div id="content-title">
-			[ 할리갈리 ] 셋이서 하실분 구함
+			[ 할리갈리 ] ${matchingVo.matchingTitle}
 			<br>
 			할갈man (29/남)
 			<br>
@@ -103,7 +103,7 @@
 				</table>
 			</div>
 
-			<div id="content-content" class="col-md-6">내용 출력 입니다.</div>
+			<div id="content-content" class="col-md-6">${matchingVo.matchingContent}</div>
 		</div>
 		<div id="read-btn" class="row">
 			<div class="col-md-3 text-center">

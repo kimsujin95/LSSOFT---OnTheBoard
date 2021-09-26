@@ -109,7 +109,8 @@
 	function searchPlaces() {
 
 		var keyword = document.getElementById('keyword').value;
-
+		
+		//문자열의 앞 뒤 공백 없애기
 		if (!keyword.replace(/^\s+|\s+$/g, '')) {
 			alert('키워드를 입력해주세요!');
 			return false;
@@ -298,15 +299,21 @@
 			el.removeChild(el.lastChild);
 		}
 	}
-
-	//맵 중심좌표 값 가져오기
-	kakao.maps.event.addListener(map, 'dragend', function() {
-
-		// 지도 중심좌표를 얻어옵니다 
-		var latlng = map.getCenter();
-
-		console.log(latlng);
-
+	
+	$(function(){
+		
+		kakao.maps.event.addListener(map, 'center_changed', function(){
+			
+			var bounds = map.getBounds();
+			
+			// 영역의 남서쪽 좌표를 얻어옵니다 
+		    var swLatLng = bounds.getSouthWest(); 
+		    
+		    // 영역의 북동쪽 좌표를 얻어옵니다 
+		    var neLatLng = bounds.getNorthEast();
+			
+		});
+		
 	});
 
 </script>

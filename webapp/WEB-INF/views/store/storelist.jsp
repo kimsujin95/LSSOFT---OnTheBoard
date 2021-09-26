@@ -25,26 +25,26 @@
 
 </head>
 <body>
-	
+
 	<!-- 헤더 -->
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
-	
-	
-	
+
+
+	<!-- 매장 리스트 메인 -->
 	<div id="Store_main">
-	<!-- SUB TITLE -->
-      <div class="container sub-container">
-         <div class="subtitle clearfix">
-            <div class="context1 font-size-24">매장 정보</div>
-            <div class="context2 clearfix">
-               <ul>
-                  <li><a href="#">매장</a></li>
-                  <li class="last-li"><a href="#">매장 목록</a></li>
-               </ul>
-            </div>
-         </div>
-      </div>
-      <!-- // SUB TITLE -->
+		<!-- SUB TITLE -->
+		<div class="container sub-container">
+			<div class="subtitle clearfix">
+				<div class="context1 font-size-24">매장 정보</div>
+				<div class="context2 clearfix">
+					<ul>
+						<li><a href="#">매장</a></li>
+						<li class="last-li"><a href="#">매장 목록</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- // SUB TITLE -->
 		<div id="Store_main_content" class="container">
 
 			<!-- 지역, 게임, 키워드 검색 -->
@@ -58,7 +58,7 @@
 					<div class="option">
 						<div>
 							<form onsubmit="searchPlaces(); return false;">
-								키워드 : <input type="text" value="강남역" id="keyword" size="15">
+								키워드 : <input type="text" value="보드게임카페" id="keyword" size="15">
 								<button type="submit">검색하기</button>
 							</form>
 						</div>
@@ -72,15 +72,12 @@
 		</div>
 
 	</div>
-	
+
 	<!-- FOOTER -->
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 	<!-- // FOOTER -->
-	
-</body>
 
-<!-- 카카오 지도 api 가져오기 -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c694e05d69f948b3793c67975a2ef4a5&libraries=services"></script>
+</body>
 
 <!-- 카카오 지도 키워드 검색 -->
 <script>
@@ -301,6 +298,17 @@
 			el.removeChild(el.lastChild);
 		}
 	}
+
+	//맵 중심좌표 값 가져오기
+	kakao.maps.event.addListener(map, 'dragend', function() {
+
+		// 지도 중심좌표를 얻어옵니다 
+		var latlng = map.getCenter();
+
+		console.log(latlng);
+
+	});
+
 </script>
 
 </html>

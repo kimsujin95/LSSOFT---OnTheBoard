@@ -5,15 +5,25 @@
 <mapper namespace="user">
 
 	<resultMap id="resultMapUserVo" type="UserVo">
-		<result column="" property="" />
-		<result column="" property="" />
-		<result column="" property="" />
-		<result column="" property="" />
-		<result column="" property="" />
+		<result column="user_no" property="userNo" />
+		<result column="user_id" property="userId" />
+		<result column="user_password" property="userPassword" />
 	</resultMap>
 
-<insert id="signup" parameterType="UserVo">
+	<select id="selectUser" parameterType="UserVo" resultMap="resultMapUserVo">
 
-</insert>
+		<![CDATA[
+			SELECT  
+			      user_no
+				 ,user_id
+			FROM 
+			      users
+			WHERE 
+			      user_id = #{userId}
+			AND 
+			      user_password = #{userPassword}
+        ]]>
+
+	</select>
 
 </mapper>

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE HTML>
 <html>
@@ -20,34 +21,46 @@
 						<a href="${pageContext.request.contextPath}/main"><img src="${pageContext.request.contextPath}/assets/images/logo.png"></a>
 					</div>
 				</header>
-				<section class="login-input-section-wrap">
-					<div class="login-input-wrap">
-						<input placeholder="아이디" type="text"></input>
-					</div>
-					<div class="login-input-wrap password-wrap">
-						<input placeholder="비밀번호" type="password"></input>
-					</div>
-					<div class="login-button-wrap">
-						<button>로그인</button>
-					</div>
-				</section>
-				<section class="Easy-sgin-in-wrap">
-					<h2>다른 로그인 수단</h2>
-					<ul class="sign-button-list">
-						<li><button>
-								<img class="logo" src=""><span>NAVER</span>
-							</button></li>
-						<li><button>
-								<img class="logo" src=""><span>KAKAO</span>
-							</button></li>
-						<li><button>
-								<img class="logo" src=""><span>GOOGLE</span>
-							</button></li>
-					</ul>
-					<p class="forget-msg">
-						아직 회원이 아니신가요? | <a href="${pageContext.request.contextPath}/user/signupForm">회원가입</a>
-					</p>
-				</section>
+
+				<form action="${pageContext.request.contextPath}/user/login" method="get">
+					<section class="login-input-section-wrap">
+						<div class="login-input-wrap">
+							<input placeholder="아이디" type="text" name="userId" value=""></input>
+						</div>
+						<div class="login-input-wrap password-wrap">
+							<input placeholder="비밀번호" type="password" name="userPassword" value=""></input>
+						</div>
+
+
+						<c:if test="${param.result eq 'fail'}">
+							<p>로그인에 실패했습니다. 다시 로그인해 주세요</p>
+						</c:if>
+
+
+						<div class="login-button-wrap">
+							<button type="submit">로그인</button>
+						</div>
+					</section>
+					<section class="Easy-sgin-in-wrap">
+						<h2>다른 로그인 수단</h2>
+						<ul class="sign-button-list">
+							<li><button>
+									<img class="logo" src=""><span>NAVER</span>
+								</button></li>
+							<li><button>
+									<img class="logo" src=""><span>KAKAO</span>
+								</button></li>
+							<li><button>
+									<img class="logo" src=""><span>GOOGLE</span>
+								</button></li>
+						</ul>
+						<p class="forget-msg">
+							아직 회원이 아니신가요? | <a href="${pageContext.request.contextPath}/user/signupForm">회원가입</a>
+						</p>
+					</section>
+
+				</form>
+
 				<footer>
 					<div class="copyright-wrap">
 						<span> Copyright © ON THE BOARD. All Rights Reserved.</span>

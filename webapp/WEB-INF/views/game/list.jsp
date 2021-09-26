@@ -46,6 +46,9 @@
          <div>
          <!--#searchForm-->
          <p class="context">아래 메뉴에서 원하는 조건을 선택하면, 만족하는 보드게임을 찾으실 수 있습니다.</p>
+         <div class="bbssvc">
+			<a href="${pageContext.request.contextPath}/game/gameRegister"><button class="btn-blue">게임등록</button></a>
+         </div>
 			<form name="searchForm" id="searchForm" method="POST" action>
 				<input type="hidden" name="pagenum" id="pagenum" value="1"> <input type="hidden"
 					name="view_type" id="view_type" value="bg"
@@ -138,7 +141,7 @@
 						</li>
 						<li>
 							<dl>
-								<dt onclick="searchTab_event(this);" class>게임장르</dt>
+								<dt onclick="searchTab_event(this);" class>게임테마</dt>
 								<dd>
 									<ul id="search_item3">
 										<li><input type="checkbox" id="check_all_item2" onclick="all_click(this);"> <label
@@ -221,7 +224,7 @@
 					</div>
 					<div class="desc">
 						<p class="title">
-							<a href="./index.html">보난자</a>
+							<a href="${pageContext.request.contextPath}/game/gameDetails">보난자</a>
 						</p>
 						<table>
 							<tbody>
@@ -519,19 +522,20 @@
 			<!--#gameList-->
 			<!--.paging-->
 			<div id="paging">
-				<div class="paging">
-					<a class="paging_first page_img"><img src="${pageContext.request.contextPath }/assets/images/icons/paging_first.gif" alt=""></a> <a
-						class="paging_prev page_img"
-					><img src="${pageContext.request.contextPath }/assets/images/icons/paging_prev.gif" alt=""></a> <strong>1</strong> <a
-						href="javascript:change_page(&quot;2&quot;);"
-					>2</a>
-					<a href="javascript:change_page(&quot;3&quot;);">3</a> <a
-						href="javascript:change_page(&quot;4&quot;);"
-					>4</a> <a href="javascript:change_page(&quot;5&quot;);">5</a> <a
-						href="javascript:change_page(&quot;2&quot;);" class="page_next page_img"
-					><img src="${pageContext.request.contextPath }/assets/images/icons/paging_next.gif" alt=""></a> <a
-						href="javascript:change_page(&quot;6&quot;)" class="page_last page_img"
-					><img src="${pageContext.request.contextPath }/assets/images/icons/paging_last.gif" alt=""></a>
+				<div class="paging text-center">
+					<ul>
+					<li>«</li>
+					<li class="li-pd">‹</li>
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+					<li>6</li>
+					<li>7</li>
+					<li class="li-pd">›</li>
+					<li>»</li>
+				</ul>
 				</div>
 			</div>
 			<!--/.paging-->

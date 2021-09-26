@@ -1,12 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <title>온 더 보드: 게임등록</title>
 <!-- css  -->
-<link href="${pageContext.request.contextPath }/assets/css/game/gamelayout.css" rel="stylesheet"
-	type="text/css"
->
+<link href="${pageContext.request.contextPath }/assets/css/game/gameRegister.css" rel="stylesheet" type="text/css">
 
 <!-- js -->
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery-1.12.4.js"></script>
@@ -26,95 +25,77 @@
 
 			<!-- gamename_ko -->
 			<div>
-				<h3 class="join_title">
-					<label for="id">게임명(한글)</label>
+				<h3 class="register-title">
+					<label for="game_kor">게임명(한글)</label>
 				</h3>
-				<span class="box int_id"> <input type="text" id="id" class="int" maxlength="20">
+				<span class="box int_id"> <label for="game_kor"><input type="text" id="game_kor"
+						class="int" maxlength="20"
+					></label>
 				</span> <span class="error_next_box"></span>
 			</div>
 
 			<!-- gamename_en -->
 			<div>
-				<h3 class="join_title">
-					<label for="pswd1">게임명(영어)</label>
+				<h3 class="register-title">
+					<label for="game_eng">게임명(영어)</label>
 				</h3>
-				<span class="box int_pass"> <input type="text" id="pswd1" class="int" maxlength="20">
+				<span class="box int_pass"> <label for="game_eng"><input type="text"
+						id="game_eng" class="int" maxlength="20"
+					></label>
 				</span> <span class="error_next_box"></span>
 			</div>
 
 			<!-- thumbnail -->
 			<div class="setting">
-                <div class="setting image_picker">
-                    <h2>Image</h2>
-                    <div class="settings_wrap"><label class="drop_target">
-                            <div class="image_preview"></div><input id="inputFile" type="file" />
-                        </label>
-                        <div class="settings_actions vertical"><a data-action="choose_from_uploaded"><i class="fa fa-picture-o"></i>업로드 파일 중에 선택</a><a class="disabled" data-action="remove_current_image"><i class="fa fa-ban"></i>현재 첨부파일 삭제</a></div>
-                        <div class="image_details"><label class="input_line image_title"><input type="text" placeholder="Title" /></label>
-                            <!--label.input_line.image_alt//input(type='text' placeholder='Alternative Text')-->
-                            <!--a.confirm(data-action='confirm_image_details')//i.fa.fa-check-circle-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-			<!-- NAME -->
-			<div>
-				<h3 class="join_title">
-					<label for="name">게임인원</label>
-				</h3>
-				<span class="box int_name"> <input type="text" id="name" class="int" maxlength="20">
-				</span> <span class="error_next_box"></span>
+				<div class="setting image_picker">
+					<h2>Image</h2>
+					<div class="settings_wrap">
+						<label class="drop_target">
+							<div class="image_preview"></div>
+							<label for=""><input id="inputFile" type="file" /> </label>
+							<div class="settings_actions vertical">
+								<a data-action="choose_from_uploaded"><i class="fa fa-picture-o"></i>업로드 파일 중에 선택</a><a
+									class="disabled" data-action="remove_current_image"
+								><i class="fa fa-ban"></i>현재 첨부파일 삭제</a>
+							</div>
+							<div class="image_details">
+								<label class="input_line image_title"><label for=""><input type="text"
+										placeholder="Title"
+									/></label>
+							</div>
+					</div>
+				</div>
 			</div>
 
-			<!--NICKNAME-->
-
+			<!-- Game Player -->
 			<div>
-				<h3 class="join_title">
-					<label for="name">게임연령</label>
+				<h3 class="register-title">
+					<label for="gamePlayer">게임인원</label>
 				</h3>
-				<span class="box int_nickname"> <input type="text" id="nickname" class="int" maxlength="20">
-				</span> <span class="error_next_box"></span>
-			</div>
+				<div id="sel-wrap">
 
-            <!--NICKNAME-->
-
-			<div>
-				<h3 class="join_title">
-					<label for="name">게임연령</label>
-				</h3>
-				<span class="box int_nickname"> <input type="text" id="nickname" class="int" maxlength="20">
-				</span> <span class="error_next_box"></span>
-			</div>
-
-            <!--NICKNAME-->
-
-			<div>
-				<h3 class="join_title">
-					<label for="name">게임연령</label>
-				</h3>
-				<span class="box int_nickname"> <input type="text" id="nickname" class="int" maxlength="20">
-				</span> <span class="error_next_box"></span>
-			</div>
-
-
-			<!-- BIRTH -->
-			<div>
-				<h3 class="join_title">
-					<label for="yy">게임시간</label>
-				</h3>
-
-				<div id="bir_wrap">
-					<!-- BIRTH_YY -->
-					<div id="bir_yy">
-						<span class="box"> <input type="text" id="yy" class="int" maxlength="4" placeholder="년(4자)">
+					<!-- gameplayer min -->
+					<div id="select">
+						<span class="box"> <select id="gamePlayer_min" class="sel">
+								<option>최소</option>
+								<option value="01">1</option>
+								<option value="02">2</option>
+								<option value="03">3</option>
+								<option value="04">4</option>
+								<option value="05">5</option>
+								<option value="06">6</option>
+						</select>
 						</span>
 					</div>
 
-					<!-- BIRTH_MM -->
-					<div id="bir_mm">
-						<span class="box"> <select id="mm" class="sel">
-								<option>월</option>
+					<!-- gameplayer min txt-->
+					<div id="select_txt">
+						<span class="box">명 부터 </span>
+					</div>
+					<!--gameplayer max -->
+					<div id="select">
+						<span class="box"> <select id="gamePlayer_max" class="sel">
+								<option>최대</option>
 								<option value="01">1</option>
 								<option value="02">2</option>
 								<option value="03">3</option>
@@ -130,70 +111,186 @@
 						</select>
 						</span>
 					</div>
-
-					<!-- BIRTH_DD -->
-					<div id="bir_dd">
-						<span class="box"> <input type="text" id="dd" class="int" maxlength="2" placeholder="일">
-						</span>
+					<!--gameplayer max txt-->
+					<div id="select_txt">
+						<span class="box">명 까지 </span>
 					</div>
-
 				</div>
 				<span class="error_next_box"></span>
 			</div>
 
-			<!-- GENDER -->
+			<!--Game Age---->
 			<div>
-				<h3 class="join_title">
-					<label for="gender">성별</label>
+				<h3 class="register-title">
+					<label for="gameAge">게임연령</label>
 				</h3>
-				<span class="box gender_code"> <select id="gender" class="sel">
-						<option>성별</option>
-						<option value="M">남자</option>
-						<option value="F">여자</option>
-				</select>
-				</span> <span class="error_next_box">필수 정보입니다.</span>
+				<div id="sel-wrap">
+
+					<!-- Gameage -->
+					<div id="select">
+						<span class="box"> <select id="gameAge" class="sel">
+								<option>선택</option>
+								<option value="01">만 4세이상</option>
+								<option value="02">만 5세이상</option>
+								<option value="03">만 6세이상</option>
+								<option value="04">만 7세이상</option>
+								<option value="05">만 9세이상</option>
+								<option value="06">만 10세이상</option>
+								<option value="07">만 12세이상</option>
+								<option value="08">만 14세이상</option>
+								<option value="09">만 15세이상</option>
+
+						</select>
+
+						</span>
+					</div>
+					<span class="error_next_box"></span>
+				</div>
+				<span class="error_next_box"></span>
 			</div>
 
-			<!-- EMAIL -->
+			<!--Game Theme-->
+
 			<div>
-				<h3 class="join_title">
-					<label for="email">이메일</label>
+				<h3 class="register-title">
+					<label for="game">게임테마</label>
 				</h3>
-				<span class="box int_email"> <input type="text" id="email" class="int" maxlength="100" placeholder="선택입력">
-				</span> <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>
+				<div id="sel-wrap">
+
+					<!-- Tjheme -->
+					<div id="select">
+						<span class="themebox"> <label for="strategy"><input type="checkbox"
+								name="theme" value="strategy"
+							/>전략</label> <label for="abstract"><input type="checkbox" name="theme" value="abstract" />추상</label>
+							<label for="collectable"><input type="checkbox" name="theme" value="collectable" />컬렉터블</label>
+							<label for="family"><input type="checkbox" name="theme" value="family" />가족</label> <label
+							for="party"
+						><input type="checkbox" name="theme" value="party" />파티</label> <label for="children"><input
+								type="checkbox" name="theme" value="children"
+							/>어린이<br></label> <label for="theme"><input type="checkbox" name="theme" value="theme" />테마</label>
+							<label for="wargame"><input type="checkbox" name="theme" value="wargame" />워게임</label> <label
+							for="korean"
+						><input type="checkbox" name="theme" value="korean" />한글</label> <label for="economic"><input
+								type="checkbox" name="theme" value="economic"
+							/>경제</label> <label for="cooperation"><input type="checkbox" name="theme"
+								value="cooperation"
+							/>협력<br></label> <label for="puzzle"><input type="checkbox" name="theme" value="puzzle" />퍼즐</label>
+							<label for="adventure"><input type="checkbox" name="theme" value="adventure" />모험</label> <label
+							for="dice"
+						><input type="checkbox" name="theme" value="dice" />주사위</label>
+						</span>
+					</div>
+					<span class="error_next_box"></span>
+				</div>
 			</div>
 
-			<!-- MOBILE -->
+			<!--Difficulty-->
+
 			<div>
-				<h3 class="join_title">
-					<label for="phoneNo">휴대전화</label>
+				<h3 class="register-title">
+					<label for="name">게임난이도</label>
 				</h3>
-				<span class="box int_mobile"> <input type="tel" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력">
-				</span> <span class="error_next_box"></span>
-			</div>
+				<div id="sel-wrap">
 
-			<!--ADDRESS-->
-			<div>
-				<h3 class="join_title">
-					<label for="address">주소<span class="optional">(선택)</span></label>
-				</h3>
-				<span class="box int_address"> <input type="text" id="address" class="int" placeholder="주소 입력">
-				</span>
-			</div>
+					<!-- difficulty option -->
+					<div id="select">
+						<span class="box"> <select id="mm" class="sel">
+								<option>선택</option>
+								<option value="01">초급(가족용 보드게임)</option>
+								<option value="02">중급(대중용 보드게임)</option>
+								<option value="03">고급(게이머용 보드게임)</option>
+						</select>
+
+						</span>
+					</div>
+					<span class="error_next_box"></span>
+				</div>
 
 
-			<!-- JOIN BTN-->
-			<div class="btn_area">
-				<button type="button" id="btnJoin">
-					<span>회원가입</span>
-				</button>
+				<!-- Playtime -->
+				<div>
+					<h3 class="register-title">
+						<label for="gameTime">게임시간</label>
+					</h3>
+
+					<div id="sel-wrap">
+
+						<!-- playtime min -->
+						<div id="select">
+							<span class="box"> <select id="gameTime_min" class="sel">
+									<option>최소</option>
+									<option value="01"></option>
+									<option value="02">2</option>
+									<option value="03">3</option>
+									<option value="04">4</option>
+									<option value="05">5</option>
+									<option value="06">6</option>
+									<option value="07">7</option>
+									<option value="08">8</option>
+									<option value="09">9</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+							</select>
+							</span>
+						</div>
+
+						<!-- playtime min txt-->
+						<div id="select_txt">
+							<span class="box">분 부터 </span>
+						</div>
+						<!--playtime max -->
+						<div id="select">
+							<span class="box"> <select id="gameTime_max" class="sel">
+									<option>최대</option>
+									<option value="01">1</option>
+									<option value="02">2</option>
+									<option value="03">3</option>
+									<option value="04">4</option>
+									<option value="05">5</option>
+									<option value="06">6</option>
+									<option value="07">7</option>
+									<option value="08">8</option>
+									<option value="09">9</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+							</select>
+							</span>
+						</div>
+						<!--playtime max txt-->
+						<div id="select_txt">
+							<span class="box">분 까지 </span>
+						</div>
+
+
+
+					</div>
+					<span class="error_next_box"></span>
+				</div>
+
+
+				<!-- youtube -->
+				<div>
+					<h3 class="register-title">
+						<label for="youtube">유튜브</label>
+					</h3>
+					<span class="box int_youtube"> <label for=""><input type="text" id="youtube"
+							class="int" maxlength="100" placeholder="embed주소"
+						></span> <span class="error_next_box">유튜브주소를 다시 확인해주세요.</span>
+				</div>
+
+				<!-- register BTN-->
+				<div class="btn_area">
+					<button type="button" id="btnReg">
+						<span>게임등록</span>
+					</button>
+				</div>
+
 			</div>
+			<!-- content-->
 
 		</div>
-		<!-- content-->
-
-	</div>
-	<!-- wrapper -->
-
+		<!-- wrapper -->
 </body>
 </html>

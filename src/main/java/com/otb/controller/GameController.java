@@ -1,5 +1,7 @@
 package com.otb.controller;
 
+import javax.xml.ws.RequestWrapper;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,7 +13,7 @@ public class GameController {
 	//게임리스트
 	@RequestMapping(value="/list")
 	public String list() {
-		System.out.println("/game/list");
+		System.out.println("[GameController/list]");
 		
 		return"/game/list";
 	}
@@ -19,8 +21,16 @@ public class GameController {
 	//게임 읽기(게임정보 상세)
 	@RequestMapping(value="/gameDetails")
 	public String gameDetails() {
-		System.out.println("/game/gameDetails");
+		System.out.println("[GameController/gameDetails]");
 		
 		return"/game/gameDetails";
+	}
+	
+	//Game Register(temp)
+	@RequestMapping(value="/gameRegister")
+	public String gameRegister() {
+		System.out.println("[GameController/gameRegister]");
+		
+		return"/game/gameRegister";
 	}
 }

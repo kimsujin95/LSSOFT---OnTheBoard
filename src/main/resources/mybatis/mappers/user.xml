@@ -19,6 +19,7 @@
 		<result column="user_reg_date" property="userRegDate" />
 		<result column="sido_code" property="sidoCode" />
 		<result column="sigungu_code" property="sigunguCode" />
+		<result column="user_age" property="userAge" />
 	</resultMap>
 
 	<select id="selectUser" parameterType="UserVo" resultMap="resultMapUserVo">
@@ -49,6 +50,7 @@
 				 ,user_nickname
 				 ,user_gender
 				 ,user_birth_date
+				 ,to_char(sysdate, 'yyyy') - to_char(user_birth_date, 'yyyy') + 1 user_age
 				 ,user_reg_date
 			FROM 
 			      users

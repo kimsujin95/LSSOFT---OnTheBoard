@@ -10,6 +10,7 @@ public class UserVo {
 	private String userGender;
 	private String userEmail;
 	private String userBirthDate;
+	private String userAge;
 	private String userPhoneNo;
 	private int userGrade;
 	private String userPathProfile;
@@ -22,8 +23,8 @@ public class UserVo {
 	}
 
 	public UserVo(int userNo, String userId, String userPassword, String userName, String userNickname,
-			String userGender, String userEmail, String userBirthDate, String userPhoneNo, int userGrade,
-			String userPathProfile, String userRegDate, String sidoCode, String sigunguCode) {
+			String userGender, String userEmail, String userBirthDate, String userAge, String userPhoneNo,
+			int userGrade, String userPathProfile, String userRegDate, String sidoCode, String sigunguCode) {
 		super();
 		this.userNo = userNo;
 		this.userId = userId;
@@ -33,6 +34,7 @@ public class UserVo {
 		this.userGender = userGender;
 		this.userEmail = userEmail;
 		this.userBirthDate = userBirthDate;
+		this.userAge = userAge;
 		this.userPhoneNo = userPhoneNo;
 		this.userGrade = userGrade;
 		this.userPathProfile = userPathProfile;
@@ -105,6 +107,14 @@ public class UserVo {
 		this.userBirthDate = userBirthDate;
 	}
 
+	public String getUserAge() {
+		return userAge;
+	}
+
+	public void setUserAge(String userAge) {
+		this.userAge = userAge;
+	}
+
 	public String getUserPhoneNo() {
 		return userPhoneNo;
 	}
@@ -157,9 +167,9 @@ public class UserVo {
 	public String toString() {
 		return "UserVo [userNo=" + userNo + ", userId=" + userId + ", userPassword=" + userPassword + ", userName="
 				+ userName + ", userNickname=" + userNickname + ", userGender=" + userGender + ", userEmail="
-				+ userEmail + ", userBirthDate=" + userBirthDate + ", userPhoneNo=" + userPhoneNo + ", userGrade="
-				+ userGrade + ", userPathProfile=" + userPathProfile + ", userRegDate=" + userRegDate + ", sidoCode="
-				+ sidoCode + ", sigunguCode=" + sigunguCode + "]";
+				+ userEmail + ", userBirthDate=" + userBirthDate + ", userAge=" + userAge + ", userPhoneNo="
+				+ userPhoneNo + ", userGrade=" + userGrade + ", userPathProfile=" + userPathProfile + ", userRegDate="
+				+ userRegDate + ", sidoCode=" + sidoCode + ", sigunguCode=" + sigunguCode + "]";
 	}
 
 }

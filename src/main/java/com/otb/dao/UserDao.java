@@ -20,7 +20,7 @@ public class UserDao {
 
 	}
 	
-	public int selectUser(int no) {
+	public UserVo selectUser(int no) {
 
 		System.out.println("[UserDao.selectUser(no)]");
 

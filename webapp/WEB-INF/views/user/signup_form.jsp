@@ -152,7 +152,7 @@
 					<h3 class="join_title">
 						<label for="address">주소<span class="optional">(선택)</span></label>
 					</h3>
-					<span class="box int_address"> <input type="text" id="address" name="sidoCode" class="int" placeholder="주소 입력">
+					<span class="box int_address"> <input type="text" id="address" class="int" placeholder="주소 입력">
 					</span>
 				</div>
 				

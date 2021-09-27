@@ -67,31 +67,26 @@
 
 					<label for="">작성자</label>
 					<br>
-					<span>NICKNAME (AGE/SEX)</span>
-					<input type="hidden" name="userNo" value="${authUser.userNo}">
+					<span>${writeUserMap.authUserInfo.userNickname} (${writeUserMap.writeUserAge}/ <c:choose>
+							<c:when test="${writeUserMap.authUserInfo.userGender eq 'male' }">
+							남
+						</c:when>
+							<c:otherwise>
+							여
+						</c:otherwise>
+						</c:choose>)
+					</span> <input type="hidden" name="userNo" value="${authUser.userNo}">
 
 					<br>
 					<br>
 
-					<label for="game-style">장르</label>
+					<label for="game-style">테마</label>
 					<br>
 					<select id="game-style">
-						<option value="game-style-none">장 르 선 택</option>
-						<option value="strategy">전략</option>
-						<option value="abstract">추상</option>
-						<option value="collectible">컬렉터블</option>
-						<option value="family">가족</option>
-						<option value="kids">어린이</option>
-						<option value="party">파티</option>
-						<option value="theme">테마</option>
-						<option value="wargame">워게임</option>
-						<option value="korean">한글</option>
-						<option value="card">카드</option>
-						<option value="economy">경제</option>
-						<option value="cooperation">협력</option>
-						<option value="puzzle">퍼즐</option>
-						<option value="adventure">모험</option>
-						<option value="dice">주사위</option>
+						<option value="game-style-none">테 마 선 택</option>
+						<c:forEach items="${writeUserMap.writeGameTheme}" var="gameTheme">
+							<option value="strategy">${gameTheme.themeName}</option>
+						</c:forEach>
 					</select>
 
 					<br>
@@ -101,15 +96,9 @@
 					<br>
 					<select id="game-name">
 						<option value="game-name-none">게 임 선 택</option>
-						<option value="terapoming">테라포밍 마스</option>
-						<option value="">할리갈리</option>
-						<option value="">도블</option>
-						<option value="">부루마불</option>
-						<option value="">글룸헤이븐</option>
-						<option value="">루미큐브</option>
-						<option value="">원카드</option>
-						<option value="">보난자</option>
-						<option value="">젠가</option>
+						<c:forEach items="${writeUserMap.writeGameName}" var="gameName">
+							<option value="terapoming">${gameName.gameNameKo}</option>
+						</c:forEach>
 					</select> <input type="text" id="ipt-keyword" value="" placeholder="게임 검색">
 
 					<br>
@@ -132,7 +121,7 @@
 					<label for="">지역</label>
 					<br>
 					<div class="col-xs-6">
-						시/도 선택 <select>
+						시/도 선택&nbsp;&nbsp;<select>
 							<option>지역 선택</option>
 							<option value="a">서울</option>
 							<option value="b">경기도</option>
@@ -140,8 +129,8 @@
 						</select>
 					</div>
 					<div class="col-xs-6">
-						주소 소분류<select>
-							<option>세부 지역 선택</option>
+						시/군/구 선택&nbsp;&nbsp;<select>
+							<option>지역 선택</option>
 							<option>강남구</option>
 							<option>강북구</option>
 						</select>
@@ -203,21 +192,24 @@
 </body>
 
 <script>
-	$('#datepick').datepicker({
-		language: 'ko',
-		todayBtn: 'linked',
-		format: 'yyyy-mm-dd',
-		autoclose: true,
-		
-		days: ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"],
-		daysShort: ["일", "월", "화", "수", "목", "금", "토"],
-		daysMin: ["일", "월", "화", "수", "목", "금", "토"],
-		months: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
-		monthsShort: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
-		today: "오늘",
-		titleFormat: "yyyy년 mm월",
-		weekStart: 0
-	});
+	$('#datepick').datepicker(
+			{
+				language : 'ko',
+				todayBtn : 'linked',
+				format : 'yyyy-mm-dd',
+				autoclose : true,
+
+				days : [ "일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일" ],
+				daysShort : [ "일", "월", "화", "수", "목", "금", "토" ],
+				daysMin : [ "일", "월", "화", "수", "목", "금", "토" ],
+				months : [ "1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월",
+						"9월", "10월", "11월", "12월" ],
+				monthsShort : [ "1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월",
+						"9월", "10월", "11월", "12월" ],
+				today : "오늘",
+				titleFormat : "yyyy년 mm월",
+				weekStart : 0
+			});
 </script>
 
 </html>

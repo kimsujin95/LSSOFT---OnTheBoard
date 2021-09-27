@@ -25,13 +25,13 @@ public class UserService {
 	}
 	
 	// 일련번호로 (사용자정보 가져오기)
-	public int getUserInfo(int userNo) {
+	public UserVo getUserInfo(int userNo) {
 		
 		System.out.println("[UserService.getUserInfo()]");
 
-		int count = userDao.selectUser(userNo);
+		UserVo userVo = userDao.selectUser(userNo);
 
-		return count;
+		return userVo;
 
 	}
 	

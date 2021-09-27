@@ -21,15 +21,14 @@
 <script src="${pageContext.request.contextPath}/assets/bootstrap/bootstrap.js"></script>
 
 <!-- services와 clusterer, drawing 라이브러리 불러오기 -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c694e05d69f948b3793c67975a2ef4a5&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c694e05d69f948b3793c67975a2ef4a5&libraries=services"></script>
 
 </head>
 <body>
 
 	<!-- 헤더 -->
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
-
-
+	
 	<!-- 매장 리스트 메인 -->
 	<div id="Store_main">
 		<!-- SUB TITLE -->
@@ -81,15 +80,17 @@
 
 <!-- 카카오 지도 키워드 검색 -->
 <script>
+		
 	// 마커를 담을 배열입니다
 	var markers = [];
 
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 	mapOption = {
 		center : new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
 		level : 3
 	// 지도의 확대 레벨
 	};
+	
 
 	// 지도를 생성합니다    
 	var map = new kakao.maps.Map(mapContainer, mapOption);
@@ -107,7 +108,8 @@
 
 	// 키워드 검색을 요청하는 함수입니다
 	function searchPlaces() {
-
+		
+		// keyword에 담긴 문자열을 var keyword에 담는다.
 		var keyword = document.getElementById('keyword').value;
 		
 		//문자열의 앞 뒤 공백 없애기
@@ -150,13 +152,13 @@
 		var listEl = document.getElementById('placesList'), menuEl = document
 				.getElementById('menu_wrap'), fragment = document
 				.createDocumentFragment(), bounds = new kakao.maps.LatLngBounds(), listStr = '';
-
+		
 		// 검색 결과 목록에 추가된 항목들을 제거합니다
 		removeAllChildNods(listEl);
 
 		// 지도에 표시되고 있는 마커를 제거합니다
 		removeMarker();
-
+		
 		for (var i = 0; i < places.length; i++) {
 
 			// 마커를 생성하고 지도에 표시합니다

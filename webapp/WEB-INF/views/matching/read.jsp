@@ -199,7 +199,7 @@
 
 		<div id="content-comment-write">
 			<div class="content-comment-write-1">
-				<strong>할갈man</strong>
+				<strong>${authUser.userId}<!-- userNickname 으로 변경 --></strong>
 			</div>
 			<textarea name="comment" id="content-comment-write-text" placeholder="댓글을 남겨주세요."></textarea>
 			<div class="content-comment-write-2">

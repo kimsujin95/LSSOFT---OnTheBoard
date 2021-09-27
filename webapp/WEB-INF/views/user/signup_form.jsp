@@ -79,7 +79,7 @@
 					<div id="bir_wrap">
 						<!-- BIRTH_YY -->
 						<div id="bir_yy">
-							<span class="box"> <input type="text" name="userBirthDate" id="yy" class="int" maxlength="6" placeholder="생년월일(6자)">
+							<span class="box"> <input type="text" name="userBirthDate" id="yy" class="int" maxlength="8" placeholder="생년월일(8자리)">
 							</span>
 						</div>
 						

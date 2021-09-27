@@ -19,6 +19,14 @@ public class UserDao {
 		return sqlSession.selectOne("user.selectUser", userVo);
 
 	}
+	
+	public int selectUser(int no) {
+
+		System.out.println("[UserDao.selectUser(no)]");
+
+		return sqlSession.selectOne("user.selectUserByNo", no);
+
+	}
 
 	public int insertUser(UserVo userVo) {
 
@@ -27,5 +35,5 @@ public class UserDao {
 		return sqlSession.insert("user.insertUser", userVo);
 
 	}
-
+	
 }

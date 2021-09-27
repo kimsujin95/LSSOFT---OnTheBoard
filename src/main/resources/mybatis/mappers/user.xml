@@ -38,12 +38,40 @@
         ]]>
 
 	</select>
+	
+		<select id="selectUserByNo" parameterType="int" resultMap="resultMapUserVo">
+
+		<!-- 정보조회용 -->
+		<![CDATA[
+			SELECT  
+			      user_no
+			     ,user_id
+				 ,user_nickname
+				 ,user_gender
+				 ,user_birth_date
+				 ,user_reg_date
+			FROM 
+			      users
+			WHERE 
+			      user_no = #{userNo}
+        ]]>
+
+	</select>
 
 	<!-- 회원가입용 -->
 	<insert id="insertUser" parameterType="UserVo">
 		<![CDATA[
-		INSERT INTO users 
-		
+		INSERT INTO users (
+				user_no
+			   ,user_id
+			   ,user_password
+			   ,user_name
+			   ,user_nickname
+			   ,user_gender
+			   ,user_birth_date
+			   ,user_grade
+			   ,user_reg_date
+			   )
 		VALUES(
 				seq_users_no.NEXTVAL
 			   ,#{userId}
@@ -51,14 +79,10 @@
 			   ,#{userName}
 			   ,#{userNickname}
 			   ,#{userGender}
-			   ,#{userEmail}
 			   ,#{userBirthDate}
-			   ,#{userPhoneNo}
 			   ,#{userGrade}
-			   ,#{userPathProfile}
 			   ,sysdate
-			   ,#{sidoCode}
-			   ,#{sigunguCode}
+			   )
 		]]>
 	</insert>
 

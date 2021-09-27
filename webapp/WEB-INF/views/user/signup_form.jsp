@@ -79,7 +79,7 @@
 					<div id="bir_wrap">
 						<!-- BIRTH_YY -->
 						<div id="bir_yy">
-							<span class="box"> <input type="text" name="userBirthDate" id="yy" class="int" maxlength="6" placeholder="생년월일(6자)">
+							<span class="box"> <input type="text" name="userBirthDate" id="yy" class="int" maxlength="8" placeholder="생년월일(8자리)">
 							</span>
 						</div>
 						
@@ -152,7 +152,7 @@
 					<h3 class="join_title">
 						<label for="address">주소<span class="optional">(선택)</span></label>
 					</h3>
-					<span class="box int_address"> <input type="text" id="address" name="sidoCode" class="int" placeholder="주소 입력">
+					<span class="box int_address"> <input type="text" id="address" class="int" placeholder="주소 입력">
 					</span>
 				</div>
 				

@@ -8,14 +8,27 @@
 		<result column="user_no" property="userNo" />
 		<result column="user_id" property="userId" />
 		<result column="user_password" property="userPassword" />
+		<result column="user_name" property="userName" />
+		<result column="user_nickname" property="userNickname" />
+		<result column="user_gender" property="userGender" />
+		<result column="user_email" property="userEmail" />
+		<result column="user_birth_date" property="userBirthDate" />
+		<result column="user_phone_no" property="userPhoneNo" />
+		<result column="user_grade" property="userGrade" />
+		<result column="user_path_profile" property="userPathProfile" />
+		<result column="user_reg_date" property="userRegDate" />
+		<result column="sido_code" property="sidoCode" />
+		<result column="sigungu_code" property="sigunguCode" />
 	</resultMap>
 
 	<select id="selectUser" parameterType="UserVo" resultMap="resultMapUserVo">
 
+		<!-- 로그인용 -->
 		<![CDATA[
 			SELECT  
 			      user_no
-				 ,user_id
+			     ,user_id
+				 ,user_nickname
 			FROM 
 			      users
 			WHERE 
@@ -25,5 +38,28 @@
         ]]>
 
 	</select>
+
+	<!-- 회원가입용 -->
+	<insert id="insertUser" parameterType="UserVo">
+		<![CDATA[
+		INSERT INTO users 
+		
+		VALUES(
+				seq_users_no.NEXTVAL
+			   ,#{userId}
+			   ,#{userPassword}
+			   ,#{userName}
+			   ,#{userNickname}
+			   ,#{userGender}
+			   ,#{userEmail}
+			   ,#{userBirthDate}
+			   ,#{userPhoneNo}
+			   ,#{userGrade}
+			   ,#{userPathProfile}
+			   ,sysdate
+			   ,#{sidoCode}
+			   ,#{sigunguCode}
+		]]>
+	</insert>
 
 </mapper>

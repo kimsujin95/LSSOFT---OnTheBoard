@@ -22,7 +22,7 @@
 					</div>
 				</header>
 
-				<form action="${pageContext.request.contextPath}/user/login" method="get">
+				<form action="${pageContext.request.contextPath}/user/login" method="post">
 					<section class="login-input-section-wrap">
 						<div class="login-input-wrap">
 							<input placeholder="아이디" type="text" name="userId" value=""></input>

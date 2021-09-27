@@ -4,8 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <title>온 더 보드: 게임등록</title>
+
 <!-- css  -->
-<link href="${pageContext.request.contextPath }/assets/css/game/gameRegister.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/game/gameUpload.css" rel="stylesheet" type="text/css">
+
 
 <!-- js -->
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery-1.12.4.js"></script>
@@ -22,7 +24,7 @@
 
 		<!-- content-->
 		<div id="content">
-
+			<form action="/upload" method="post" enctype="multipart/form-data">
 			<!-- gamename_ko -->
 			<div>
 				<h3 class="register-title">
@@ -45,28 +47,7 @@
 				</span> <span class="error_next_box"></span>
 			</div>
 
-			<!-- thumbnail -->
-			<div class="setting">
-				<div class="setting image_picker">
-					<h2>Image</h2>
-					<div class="settings_wrap">
-						<label class="drop_target">
-							<div class="image_preview"></div>
-							<label for=""><input id="inputFile" type="file" /> </label>
-							<div class="settings_actions vertical">
-								<a data-action="choose_from_uploaded"><i class="fa fa-picture-o"></i>업로드 파일 중에 선택</a><a
-									class="disabled" data-action="remove_current_image"
-								><i class="fa fa-ban"></i>현재 첨부파일 삭제</a>
-							</div>
-							<div class="image_details">
-								<label class="input_line image_title"><label for=""><input type="text"
-										placeholder="Title"
-									/></label>
-							</div>
-					</div>
-				</div>
-			</div>
-
+			
 			<!-- Game Player -->
 			<div>
 				<h3 class="register-title">
@@ -157,7 +138,7 @@
 				</h3>
 				<div id="sel-wrap">
 
-					<!-- Tjheme -->
+					<!-- Theme -->
 					<div id="select">
 						<span class="themebox"> <label for="strategy"><input type="checkbox"
 								name="theme" value="strategy"
@@ -194,7 +175,7 @@
 
 					<!-- difficulty option -->
 					<div id="select">
-						<span class="box"> <select id="mm" class="sel">
+						<span class="box"> <select id="difficulty" class="sel">
 								<option>선택</option>
 								<option value="01">초급(가족용 보드게임)</option>
 								<option value="02">중급(대중용 보드게임)</option>
@@ -275,10 +256,37 @@
 					<h3 class="register-title">
 						<label for="youtube">유튜브</label>
 					</h3>
-					<span class="box int_youtube"> <label for=""><input type="text" id="youtube"
+					<span class="box int_youtube"><input type="text" id="youtube"
 							class="int" maxlength="100" placeholder="embed주소"
 						></span> <span class="error_next_box">유튜브주소를 다시 확인해주세요.</span>
 				</div>
+				
+				<!-- thumbnail -->
+			<div>
+				<h3 class="register-title">
+					<label for="upload">파일첨부</label>
+				</h3>
+				<div class="setting image_picker">
+					
+						<div class="settings_wrap">
+							<label class="drop_target">
+								<div class="image_preview"></div>
+								<label for="gameImg"><input id="gameImg" type="file" /></label>
+								<div class="settings_actions vertical select_img">
+									<a data-action="choose_from_uploaded"><i class="fa fa-picture-o"></i>업로드 파일 중에 선택</a><a
+										class="disabled" data-action="remove_current_image"
+									><i class="fa fa-ban"></i>현재 첨부파일 삭제</a>
+								</div>
+								<div class="image_details">
+									<label class="input_line image_title"><label for="ImgTitle"><input type="text"
+											placeholder="Title"
+										/></label>
+								<input type="submit" value="전송" >		
+								</div>
+						</div>
+					
+				</div>
+			</div>
 
 				<!-- register BTN-->
 				<div class="btn_area">
@@ -286,11 +294,25 @@
 						<span>게임등록</span>
 					</button>
 				</div>
-
+			</form>
 			</div>
 			<!-- content-->
 
 		</div>
 		<!-- wrapper -->
+
+<script>
+  $("#gameImg").change(function(){
+   if(this.files && this.files[0]) {
+    var reader = new FileReader;
+    reader.onload = function(data) {
+     $(".select_img img").attr("src", data.target.result).width(500);        
+    }
+    reader.readAsDataURL(this.files[0]);
+   }
+  });
+ </script>
+		
 </body>
+
 </html>

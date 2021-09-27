@@ -26,14 +26,54 @@
 		]]>
 	</select>
 
+	<!-- 매칭 글 등록 - 유저 나이 -->
+	<select id="userAge" parameterType="int" resultType="int">
+	<![CDATA[
+		SELECT
+		    to_char(sysdate, 'yyyy') - to_char(user_birth_date, 'yyyy') + 1
+		FROM
+		    users
+		WHERE
+		    user_no = #{userNo}
+	]]>
+	</select>
+
+	<!-- 매칭 글 등록 - 게임 이름 -->
+	<select id="gameName" resultType="GameVo">
+	<![CDATA[
+		SELECT
+		    game_name_ko gameNameKo
+		FROM
+		    game
+	]]>
+	</select>
+
+	<!-- 매칭 글 등록 - 게임 테마 -->
+	<select id="gameTheme" resultType="ThemeVo">
+	<![CDATA[
+		SELECT
+			theme_name themeName
+		FROM
+			theme
+	]]>
+	</select>
+
 	<!-- 매칭 글 등록 -->
 	<insert id="write" parameterType="MatchingVo">
+		<selectKey keyProperty="matchingNo" resultType="int" order="BEFORE">
+			<![CDATA[
+				SELECT
+					seq_matching_no.NEXTVAL
+				FROM
+					dual
+			]]>
+		</selectKey>
 	<![CDATA[
 		INSERT INTO
 			matching(matching_no, user_no, matching_title, matching_content, matching_people)
 		VALUES
 			(
-				seq_matching_no.NEXTVAL,
+				#{ matchingNo },
 				#{ userNo },
 				#{ matchingTitle},
 				#{ matchingContent },

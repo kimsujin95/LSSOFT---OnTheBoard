@@ -1,6 +1,7 @@
 package com.otb.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.otb.sevice.MatchingService;
+import com.otb.sevice.UserService;
 import com.otb.vo.MatchingVo;
 import com.otb.vo.UserVo;
 
@@ -42,8 +44,13 @@ public class MatchingController {
 		
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		System.out.println(authUser);
-		String userNickname = authUser.getUserNickname();
-		System.out.println(userNickname);
+		int authUserNo = authUser.getUserNo();
+		System.out.println(authUserNo);
+
+		Map<String, Object> writeUserMap = matchingService.writeUserInfo(authUserNo);
+		System.out.println(writeUserMap);
+		
+		model.addAttribute("writeUserMap", writeUserMap);
 		
 		return "/matching/writeForm";
 	}

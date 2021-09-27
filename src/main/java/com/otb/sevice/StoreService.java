@@ -20,9 +20,18 @@ public class StoreService {
 		
 		List<StoreVo> storeList = storeDao.storeList();
 		
-		System.out.println(storeList);
+		return storeList;
+	}
+	
+	//매장 키워드 검색
+	public List<StoreVo> storeSearchList(String keyword){
 		
-		return null;
+		System.out.println("[StoreService.storeSearchList]");
+		
+		List<StoreVo> storeList = storeDao.storeSearchList(keyword);
+		
+		return storeList;
+		
 	}
 	
 }

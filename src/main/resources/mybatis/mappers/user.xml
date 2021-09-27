@@ -8,7 +8,8 @@
 		<result column="user_no" property="userNo" />
 		<result column="user_id" property="userId" />
 		<result column="user_password" property="userPassword" />
-		<result column="user_name" property="userNickname" />
+		<result column="user_name" property="userName" />
+		<result column="user_nickname" property="userNickname" />
 		<result column="user_gender" property="userGender" />
 		<result column="user_email" property="userEmail" />
 		<result column="user_birth_date" property="userBirthDate" />
@@ -22,9 +23,11 @@
 
 	<select id="selectUser" parameterType="UserVo" resultMap="resultMapUserVo">
 
+		<!-- 로그인용 -->
 		<![CDATA[
 			SELECT  
 			      user_no
+			     ,user_id
 				 ,user_nickname
 			FROM 
 			      users
@@ -35,5 +38,28 @@
         ]]>
 
 	</select>
+
+	<!-- 회원가입용 -->
+	<insert id="insertUser" parameterType="UserVo">
+		<![CDATA[
+		INSERT INTO users 
+		
+		VALUES(
+				seq_users_no.NEXTVAL
+			   ,#{userId}
+			   ,#{userPassword}
+			   ,#{userName}
+			   ,#{userNickname}
+			   ,#{userGender}
+			   ,#{userEmail}
+			   ,#{userBirthDate}
+			   ,#{userPhoneNo}
+			   ,#{userGrade}
+			   ,#{userPathProfile}
+			   ,sysdate
+			   ,#{sidoCode}
+			   ,#{sigunguCode}
+		]]>
+	</insert>
 
 </mapper>

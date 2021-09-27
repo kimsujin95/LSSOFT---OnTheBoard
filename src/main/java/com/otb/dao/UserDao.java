@@ -20,4 +20,12 @@ public class UserDao {
 
 	}
 
+	public int insertUser(UserVo userVo) {
+
+		System.out.println("[UserDao.insertUser()]");
+
+		return sqlSession.insert("user.insertUser", userVo);
+
+	}
+
 }

@@ -15,12 +15,25 @@ public class UserService {
 	
 	// 로그인(사용자정보 가져오기)
 	public UserVo getUser(UserVo userVo) {
+		
 		System.out.println("[UserService.getUser()]");
 
 		UserVo authUser = userDao.selectUser(userVo);
 
 		return authUser;
 
+	}
+	
+	//회원가입
+	
+	public int signupUser(UserVo userVo) {
+		
+		System.out.println("[UserService.signupUser()]");
+		
+		int count = userDao.insertUser(userVo);
+		
+		return count;
+		
 	}
 	
 

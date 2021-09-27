@@ -14,8 +14,8 @@ public class UserVo {
 	private int userGrade;
 	private String userPathProfile;
 	private String userRegDate;
-	private int sidoCode;
-	private int sigunguCode;
+	private String sidoCode;
+	private String sigunguCode;
 
 	public UserVo() {
 
@@ -23,7 +23,7 @@ public class UserVo {
 
 	public UserVo(int userNo, String userId, String userPassword, String userName, String userNickname,
 			String userGender, String userEmail, String userBirthDate, String userPhoneNo, int userGrade,
-			String userPathProfile, String userRegDate, int sidoCode, int sigunguCode) {
+			String userPathProfile, String userRegDate, String sidoCode, String sigunguCode) {
 		super();
 		this.userNo = userNo;
 		this.userId = userId;
@@ -137,20 +137,29 @@ public class UserVo {
 		this.userRegDate = userRegDate;
 	}
 
-	public int getSidoCode() {
+	public String getSidoCode() {
 		return sidoCode;
 	}
 
-	public void setSidoCode(int sidoCode) {
+	public void setSidoCode(String sidoCode) {
 		this.sidoCode = sidoCode;
 	}
 
-	public int getSigunguCode() {
+	public String getSigunguCode() {
 		return sigunguCode;
 	}
 
-	public void setSigunguCode(int sigunguCode) {
+	public void setSigunguCode(String sigunguCode) {
 		this.sigunguCode = sigunguCode;
+	}
+
+	@Override
+	public String toString() {
+		return "UserVo [userNo=" + userNo + ", userId=" + userId + ", userPassword=" + userPassword + ", userName="
+				+ userName + ", userNickname=" + userNickname + ", userGender=" + userGender + ", userEmail="
+				+ userEmail + ", userBirthDate=" + userBirthDate + ", userPhoneNo=" + userPhoneNo + ", userGrade="
+				+ userGrade + ", userPathProfile=" + userPathProfile + ", userRegDate=" + userRegDate + ", sidoCode="
+				+ sidoCode + ", sigunguCode=" + sigunguCode + "]";
 	}
 
 }

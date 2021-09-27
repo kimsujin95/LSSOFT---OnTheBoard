@@ -11,6 +11,5 @@
 		<mapper resource="mybatis/mappers/matching.xml" />
 		<mapper resource="mybatis/mappers/user.xml" />
 		<mapper resource="mybatis/mappers/store.xml" />
-		<mapper resource="mybatis/mappers/game.xml" />
 	</mappers>
 </configuration>

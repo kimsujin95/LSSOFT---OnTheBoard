@@ -29,6 +29,8 @@ public class MatchingDao {
 	public int write(MatchingVo matchingVo) {
 		System.out.println("MatchingDao: write;;;");
 
+		System.out.println(matchingVo);
+		
 		int write = sqlSession.insert("matching.write", matchingVo);
 
 		return write;

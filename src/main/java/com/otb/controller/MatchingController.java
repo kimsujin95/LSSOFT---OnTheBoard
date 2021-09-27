@@ -2,6 +2,8 @@ package com.otb.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.otb.sevice.MatchingService;
 import com.otb.vo.MatchingVo;
+import com.otb.vo.UserVo;
 
 @Controller
 @RequestMapping(value = "/matching", method = {RequestMethod.GET, RequestMethod.POST})
@@ -34,8 +37,13 @@ public class MatchingController {
 	
 	// 매칭글 쓰기폼
 	@RequestMapping("/writeForm")
-	public String writeForm() {
+	public String writeForm(HttpSession session, Model model) {
 		System.out.println("MatchingController: writeForm;;;");
+		
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		System.out.println(authUser);
+		String userNickname = authUser.getUserNickname();
+		System.out.println(userNickname);
 		
 		return "/matching/writeForm";
 	}

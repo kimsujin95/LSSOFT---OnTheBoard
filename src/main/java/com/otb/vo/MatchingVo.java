@@ -32,14 +32,15 @@ public class MatchingVo {
 		super();
 	}
 	
-	public MatchingVo(int matchingNo, int userNo, int matchingPeople, String matchingTitle, String matchingContent) {
+	
+	public MatchingVo(int userNo, int matchingPeople, String matchingTitle, String matchingContent) {
 		super();
-		this.matchingNo = matchingNo;
 		this.userNo = userNo;
 		this.matchingPeople = matchingPeople;
 		this.matchingTitle = matchingTitle;
 		this.matchingContent = matchingContent;
 	}
+
 
 	public MatchingVo(int matchingNo, int userNo, String userNickname, int userBirthDate, String userGender, String themeName,
 			String gameNameKo, String matchingDate, String matchingTime, String sidoName, String sigunguName,

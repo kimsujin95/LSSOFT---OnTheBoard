@@ -68,7 +68,7 @@
 					<label for="">작성자</label>
 					<br>
 					<span>NICKNAME (AGE/SEX)</span>
-					<input type="hidden" name="userNo" value="1">
+					<input type="hidden" name="userNo" value="${authUser.userNo}">
 
 					<br>
 					<br>

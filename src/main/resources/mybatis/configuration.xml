@@ -4,10 +4,14 @@
 	<typeAliases>
 		<typeAlias alias="MatchingVo" type="com.otb.vo.MatchingVo" />
 		<typeAlias alias="UserVo" type="com.otb.vo.UserVo" />
+		<typeAlias alias="GameVo" type="com.otb.vo.GameVo" />
+		<typeAlias alias="GameVo" type="com.otb.vo.GameVo" />
+		<typeAlias alias="ThemeVo" type="com.otb.vo.ThemeVo" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/matching.xml" />
 		<mapper resource="mybatis/mappers/user.xml" />
 		<mapper resource="mybatis/mappers/store.xml" />
+		<mapper resource="mybatis/mappers/game.xml" />
 	</mappers>
 </configuration>

@@ -83,11 +83,11 @@ public class MatchingVo {
 		this.matchingNo = matchingNo;
 	}
 
-	public int getuserNo() {
+	public int getUserNo() {
 		return userNo;
 	}
 
-	public void setuserNo(int userNo) {
+	public void setUserNo(int userNo) {
 		this.userNo = userNo;
 	}
 
@@ -99,11 +99,11 @@ public class MatchingVo {
 		this.userNickname = userNickname;
 	}
 
-	public int getuserBirthDate() {
+	public int getUserBirthDate() {
 		return userBirthDate;
 	}
 
-	public void setuserBirthDate(int userBirthDate) {
+	public void setUserBirthDate(int userBirthDate) {
 		this.userBirthDate = userBirthDate;
 	}
 

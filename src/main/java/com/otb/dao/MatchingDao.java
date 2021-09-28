@@ -29,14 +29,14 @@ public class MatchingDao {
 	}
 
 	// 매칭글 쓰기폼 - 유저 나이
-	public int userAge(int userNo) {
-		System.out.println("매칭 다오: userAge;;;");
-
-		int userAge = sqlSession.selectOne("matching.userAge", userNo);
-		System.out.println(userAge);
-
-		return userAge;
-	}
+	/*
+	 * public int userAge(int userNo) { System.out.println("매칭 다오: userAge;;;");
+	 * 
+	 * int userAge = sqlSession.selectOne("matching.userAge", userNo);
+	 * System.out.println(userAge);
+	 * 
+	 * return userAge; }
+	 */
 
 	// 매칭글 쓰기폼 - 게임 이름
 	public List<GameVo> gameName() {
@@ -68,15 +68,15 @@ public class MatchingDao {
 
 		return write;
 	}
-	
+
 	// 매칭글 쓰기 → 매칭그룹 생성
 	public int addMatchingMember(MatchingGroupVo matchingGroupVo) {
 		System.out.println("매칭 다오: addMatchingMember;;;");
-		
+
 		int addMatchingMember = sqlSession.insert("matching.addMatchingMember", matchingGroupVo);
-		
+
 		return addMatchingMember;
-	} 
+	}
 
 	// 매칭글 읽기
 	public MatchingVo read(int matchingNo) {
@@ -88,6 +88,23 @@ public class MatchingDao {
 		System.out.println(matchingVo);
 
 		return matchingVo;
+	}
+
+	// 매칭글 읽기 - 조회수 증가
+	public int hitsUp(int matchingNo) {
+		System.out.println("매칭 다오: hitsUp;;;");
+		int hitsUp = sqlSession.update("matching.hitsUp", matchingNo);
+
+		return hitsUp;
+	}
+
+	// 매칭글 읽기 - 매칭 참가 신청
+	public int joinMatching(MatchingGroupVo matchingGroupVo) {
+		System.out.println("매칭 다오: joinMatching;;;");
+
+		int joinMatching = sqlSession.insert("matching.joinMatching", matchingGroupVo);
+
+		return joinMatching;
 	}
 
 }

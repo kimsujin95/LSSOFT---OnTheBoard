@@ -46,14 +46,18 @@
 		</div>
 		<!-- // SUB TITLE -->
 		<div id="content-title">
-			[ 할리갈리 ] ${matchingVo.matchingTitle}
+			[ 할리갈리 ] ${readInfo.matchingVo.matchingTitle}
 			<br>
-			할갈man (29/남)
+			${readInfo.writerInfo.userNickname} (${readInfo.writerInfo.userAge}
+			<c:choose>
+				<c:when test="${readInfo.writerInfo.userGender eq 'male'}">/ 남)</c:when>
+				<c:otherwise>/ 여)</c:otherwise>
+			</c:choose>
 			<br>
 			<div class="clearfix">
-				<div class="c-t-float-l">2021. 11. 11. &nbsp; 조회수 999,999</div>
+				<div class="c-t-float-l">2021. 11. 11. &nbsp; 조회수 ${readInfo.matchingVo.matchingHits}</div>
 				<div class="c-t-float-r">
-					<a href="#">[URL복사]</a>
+					<span>[URL복사]</span>
 				</div>
 			</div>
 		</div>
@@ -62,7 +66,8 @@
 		<div class="row">
 			<div id="game-img-info" class="col-md-3 text-center">
 				<img src="${pageContext.request.contextPath}/assets/images/matching/할리갈리.jpg" alt="게임값" width="100%">
-				<br><br>
+				<br>
+				<br>
 				<a href="#">할리갈리</a>
 			</div>
 			<div class="col-md-3 border-right">
@@ -107,7 +112,7 @@
 		</div>
 		<div id="read-btn" class="row">
 			<div class="col-md-3 text-center">
-				<button class="btn-red">참가신청</button>
+				<a href="${pageContext.request.contextPath}/matching/joinMatching?matchingNo=${readInfo.matchingVo.matchingNo}&matchingPeople=${readInfo.matchingVo.matchingPeople}"><button class="btn-red">참가신청</button></a>
 				<button class="btn-white">참가취소</button>
 			</div>
 			<div class="col-md-4 text-right">
@@ -197,15 +202,17 @@
 		<br>
 		<br>
 
-		<div id="content-comment-write">
-			<div class="content-comment-write-1">
-				<strong>${authUser.userId}<!-- userNickname 으로 변경 --></strong>
+		<c:if test="${authUser != null}">
+			<div id="content-comment-write">
+				<div class="content-comment-write-1">
+					<strong>${authUser.userNickname}</strong>
+				</div>
+				<textarea name="comment" id="content-comment-write-text" placeholder="댓글을 남겨주세요."></textarea>
+				<div class="content-comment-write-2">
+					<span class="cursor-pointer">등록</span>
+				</div>
 			</div>
-			<textarea name="comment" id="content-comment-write-text" placeholder="댓글을 남겨주세요."></textarea>
-			<div class="content-comment-write-2">
-				<span class="cursor-pointer">등록</span>
-			</div>
-		</div>
+		</c:if>
 	</div>
 	<!-- // CONTENT -->
 

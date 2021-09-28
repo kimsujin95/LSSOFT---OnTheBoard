@@ -121,10 +121,18 @@
 				</thead>
 				<tbody>
 					<c:forEach items="${matchingList}" var="matchingVo" varStatus="status">
-						<tr>
-							<td>매칭중</td>
-							<td>999,999</td>
-							<td><a href="${pageContext.request.contextPath}/matching/read?no=${matchingVo.matchingNo}">${matchingVo.matchingTitle}</a></td>
+						<tr id="readMatching" onClick="location.href='${pageContext.request.contextPath}/matching/read?no=${matchingVo.matchingNo}'">
+							<%-- <c:choose>
+								<c:when test="${matchingVo.matchingStatus eq 'matchingIng'}">
+									<td>매칭중</td>
+								</c:when>
+								<c:otherwise>
+									<td>매칭완료</td>
+								</c:otherwise>
+							</c:choose> --%>
+							<td>${matchingVo.matchingStatus}</td>
+							<td>${matchingVo.matchingHits}</td>
+							<td>${matchingVo.matchingTitle}</td>
 							<td>테라포밍 마스</td>
 							<td>1/${matchingVo.matchingPeople}</td>
 							<td>남</td>
@@ -154,9 +162,11 @@
 			</div>
 		</div>
 		<br>
-		<div class="text-center">
-			<a href="${pageContext.request.contextPath}/matching/writeForm"><button type="button" class="btn-white">매칭글 등록</button></a>
-		</div>
+		<c:if test="${authUser != null}">
+			<div class="text-center">
+				<a href="${pageContext.request.contextPath}/matching/writeForm"><button type="button" class="btn-white">매칭글 등록</button></a>
+			</div>
+		</c:if>
 	</div>
 	<!-- // CONTENT -->
 

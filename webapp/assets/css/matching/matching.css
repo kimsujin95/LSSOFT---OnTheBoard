@@ -147,6 +147,10 @@ textarea {
 	text-align: center;
 }
 
+#table-matchingList #readMatching {
+	cursor: pointer;
+}
+
 #paging-wrap {
 	margin-top: 15px;
 }

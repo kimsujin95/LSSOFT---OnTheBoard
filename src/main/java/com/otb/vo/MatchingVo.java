@@ -23,7 +23,7 @@ public class MatchingVo {
 	private String matchingTitle;
 	private String matchingContent;
 	private String matchingRegDate;
-	private int matchingHit;
+	private int matchingHits;
 	private String matchingStatus;
 	
 	
@@ -47,7 +47,7 @@ public class MatchingVo {
 			int matchingPeople, String matchingPermissionGender, String matchingPermissionTeens,
 			String matchingPermissionTwenties, String matchingPermissionThirties, String matchingPermissionFourties,
 			String matchingPermissionAllAge, String matchingTitle, String matchingContent, String matchingRegDate,
-			int matchingHit, String matchingStatus) {
+			int matchingHits, String matchingStatus) {
 		super();
 		this.matchingNo = matchingNo;
 		this.userNo = userNo;
@@ -70,7 +70,7 @@ public class MatchingVo {
 		this.matchingTitle = matchingTitle;
 		this.matchingContent = matchingContent;
 		this.matchingRegDate = matchingRegDate;
-		this.matchingHit = matchingHit;
+		this.matchingHits = matchingHits;
 		this.matchingStatus = matchingStatus;
 	}
 
@@ -83,11 +83,11 @@ public class MatchingVo {
 		this.matchingNo = matchingNo;
 	}
 
-	public int getuserNo() {
+	public int getUserNo() {
 		return userNo;
 	}
 
-	public void setuserNo(int userNo) {
+	public void setUserNo(int userNo) {
 		this.userNo = userNo;
 	}
 
@@ -99,11 +99,11 @@ public class MatchingVo {
 		this.userNickname = userNickname;
 	}
 
-	public int getuserBirthDate() {
+	public int getUserBirthDate() {
 		return userBirthDate;
 	}
 
-	public void setuserBirthDate(int userBirthDate) {
+	public void setUserBirthDate(int userBirthDate) {
 		this.userBirthDate = userBirthDate;
 	}
 
@@ -243,12 +243,12 @@ public class MatchingVo {
 		this.matchingRegDate = matchingRegDate;
 	}
 
-	public int getMatchingHit() {
-		return matchingHit;
+	public int getmatchingHits() {
+		return matchingHits;
 	}
 
-	public void setMatchingHit(int matchingHit) {
-		this.matchingHit = matchingHit;
+	public void setmatchingHits(int matchingHits) {
+		this.matchingHits = matchingHits;
 	}
 
 	public String getMatchingStatus() {
@@ -270,7 +270,7 @@ public class MatchingVo {
 				+ ", matchingPermissionThirties=" + matchingPermissionThirties + ", matchingPermissionFourties="
 				+ matchingPermissionFourties + ", matchingPermissionAllAge=" + matchingPermissionAllAge
 				+ ", matchingTitle=" + matchingTitle + ", matchingContent=" + matchingContent + ", matchingRegDate="
-				+ matchingRegDate + ", matchingHit=" + matchingHit + ", matchingStatus=" + matchingStatus + "]";
+				+ matchingRegDate + ", matchingHits=" + matchingHits + ", matchingStatus=" + matchingStatus + "]";
 	}
 
 }

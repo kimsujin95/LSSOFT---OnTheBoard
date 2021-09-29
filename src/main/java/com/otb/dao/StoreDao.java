@@ -21,8 +21,17 @@ public class StoreDao {
 		
 		List<StoreVo> storeList = sqlSession.selectList("store.list");
 		
-		System.out.println(storeList);
-		
 		return storeList;
+	};
+	
+	//매장 키워드 검색
+	public List<StoreVo> storeSearchList(String keyword){
+		
+		System.out.println("[StoreDao.storeSearchList]");
+		
+		return sqlSession.selectList("store.searchList",keyword);
+		
 	}
+	
+	
 }

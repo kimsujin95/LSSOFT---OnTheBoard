@@ -67,22 +67,18 @@
 
 					<label for="">작성자</label>
 					<br>
-					<span>${writeUserMap.authUserInfo.userNickname} (${writeUserMap.writeUserAge}/ <c:choose>
-							<c:when test="${writeUserMap.authUserInfo.userGender eq 'male' }">
-							남
-						</c:when>
-							<c:otherwise>
-							여
-						</c:otherwise>
-						</c:choose>)
-					</span> <input type="hidden" name="userNo" value="${authUser.userNo}">
+					<span>${writeUserMap.authUserInfo.userNickname} (${writeUserMap.authUserInfo.userAge}<c:choose>
+							<c:when test="${writeUserMap.authUserInfo.userGender eq 'male'}">/ 남)</c:when>
+							<c:otherwise>/ 여)</c:otherwise>
+						</c:choose>
+					</span>
 
 					<br>
 					<br>
 
 					<label for="game-style">테마</label>
 					<br>
-					<select id="game-style">
+					<select id="game-style" name="game-style">
 						<option value="game-style-none">테 마 선 택</option>
 						<c:forEach items="${writeUserMap.writeGameTheme}" var="gameTheme">
 							<option value="strategy">${gameTheme.themeName}</option>
@@ -94,7 +90,7 @@
 
 					<label for="game-name">게임</label>
 					<br>
-					<select id="game-name">
+					<select id="game-name" name="game-name">
 						<option value="game-name-none">게 임 선 택</option>
 						<c:forEach items="${writeUserMap.writeGameName}" var="gameName">
 							<option value="terapoming">${gameName.gameNameKo}</option>
@@ -121,18 +117,18 @@
 					<label for="">지역</label>
 					<br>
 					<div class="col-xs-6">
-						시/도 선택&nbsp;&nbsp;<select>
+						시/도 선택&nbsp;&nbsp;<select name="sido">
 							<option>지역 선택</option>
-							<option value="a">서울</option>
-							<option value="b">경기도</option>
-							<option value="c">충청남도</option>
+							<option value="서울">서울</option>
+							<option value="경기도">경기도</option>
+							<option value="충청남도">충청남도</option>
 						</select>
 					</div>
 					<div class="col-xs-6">
-						시/군/구 선택&nbsp;&nbsp;<select>
+						시/군/구 선택&nbsp;&nbsp;<select name="sigungu">
 							<option>지역 선택</option>
-							<option>강남구</option>
-							<option>강북구</option>
+							<option value="강남구">강남구</option>
+							<option value="">강북구</option>
 						</select>
 					</div>
 

@@ -10,6 +10,8 @@
 		<result column="matching_title" property="matchingTitle" />
 		<result column="matching_content" property="matchingContent" />
 		<result column="matching_people" property="matchingPeople" />
+		<result column="matching_hits" property="matchingHits" />
+		<result column="matching_status" property="matchingStatus" />
 	</resultMap>
 
 	<!-- 매칭 리스트 -->
@@ -20,42 +22,46 @@
 				user_no,
 				matching_title,
 				matching_content,
-				matching_people
+				matching_people,
+				matching_status,
+				matching_hits
 			FROM
 				matching
+			ORDER BY
+				matching_no DESC
 		]]>
 	</select>
 
 	<!-- 매칭 글 등록 - 유저 나이 -->
-	<select id="userAge" parameterType="int" resultType="int">
-	<![CDATA[
-		SELECT
-		    to_char(sysdate, 'yyyy') - to_char(user_birth_date, 'yyyy') + 1
-		FROM
-		    users
-		WHERE
-		    user_no = #{userNo}
-	]]>
-	</select>
+	<!-- <select id="userAge" parameterType="int" resultType="int">
+		<![CDATA[
+			SELECT
+			    to_char(sysdate, 'yyyy') - to_char(user_birth_date, 'yyyy') + 1
+			FROM
+			    users
+			WHERE
+			    user_no = #{userNo}
+		]]>
+	</select> -->
 
 	<!-- 매칭 글 등록 - 게임 이름 -->
 	<select id="gameName" resultType="GameVo">
-	<![CDATA[
-		SELECT
-		    game_name_ko gameNameKo
-		FROM
-		    game
-	]]>
+		<![CDATA[
+			SELECT
+			    game_name_ko gameNameKo
+			FROM
+			    game
+		]]>
 	</select>
 
 	<!-- 매칭 글 등록 - 게임 테마 -->
 	<select id="gameTheme" resultType="ThemeVo">
-	<![CDATA[
-		SELECT
-			theme_name themeName
-		FROM
-			theme
-	]]>
+		<![CDATA[
+			SELECT
+				theme_name themeName
+			FROM
+				theme
+		]]>
 	</select>
 
 	<!-- 매칭 글 등록 -->
@@ -68,19 +74,35 @@
 					dual
 			]]>
 		</selectKey>
-	<![CDATA[
-		INSERT INTO
-			matching(matching_no, user_no, matching_title, matching_content, matching_people)
-		VALUES
-			(
-				#{ matchingNo },
-				#{ userNo },
-				#{ matchingTitle},
-				#{ matchingContent },
-				#{ matchingPeople }
-			)
-	]]>
+		<![CDATA[
+			INSERT INTO
+				matching(matching_no, user_no, matching_title, matching_content, matching_people, matching_status, matching_hits)
+			VALUES
+				(
+					#{ matchingNo },
+					#{ userNo },
+					#{ matchingTitle},
+					#{ matchingContent },
+					#{ matchingPeople },
+					'매칭중',
+					0
+				)
+		]]>
 	</insert>
+
+	<!-- 매칭글 등록 → 매칭 그룹 생성 -->
+	<select id="addMatchingMember" parameterType="matchingGroupVo">
+		<![CDATA[
+			INSERT INTO
+				matching_group
+			VALUES
+				(
+					#{ matchingNo },
+					#{ userNo },
+					#{ matchingPeople }
+				)
+		]]>
+	</select>
 
 	<!-- 매칭 글 읽기 -->
 	<select id="read" parameterType="int" resultMap="resultMapMatchingVo">
@@ -90,12 +112,41 @@
 				user_no,
 				matching_title,
 				matching_content,
-				matching_people
+				matching_people,
+				matching_hits,
+				matching_status
 			FROM
 				matching
 			WHERE
-				matching_no = #{ matching_no }
+				matching_no = #{ matchingNo }
 		]]>
 	</select>
+	
+	
+	<!-- 매칭 글 읽기 - 조회수 증가 -->
+	<update id="hitsUp">
+		<![CDATA[
+			UPDATE
+				matching
+			SET
+				matching_hits = matching_hits + 1
+			WHERE
+				matching_no = #{ matchingNo }
+		]]>
+	</update>
+
+	<!-- 매칭 글 읽기 - 매칭 참가 신청 -->
+	<insert id="joinMatching" parameterType="matchingGroupVo">
+		<![CDATA[
+			INSERT INTO
+				matching_group
+			VALUES
+				(
+					#{ matchingNo },
+					#{ userNo },
+					#{ matchingPeople }
+				)
+		]]>	
+	</insert>
 
 </mapper>

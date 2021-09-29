@@ -3,6 +3,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="MatchingVo" type="com.otb.vo.MatchingVo" />
+		<typeAlias alias="MatchingGroupVo" type="com.otb.vo.MatchingGroupVo" />
 		<typeAlias alias="UserVo" type="com.otb.vo.UserVo" />
 		<typeAlias alias="GameVo" type="com.otb.vo.GameVo" />
 		<typeAlias alias="ThemeVo" type="com.otb.vo.ThemeVo" />

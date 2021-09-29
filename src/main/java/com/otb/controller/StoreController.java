@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.otb.sevice.StoreService;
 import com.otb.vo.StoreVo;
@@ -19,17 +20,13 @@ public class StoreController {
 	@Autowired
 	private StoreService storeService;
 	
-//	//매장 정보리스트
-//	@RequestMapping("/storelist")
-//	public String storelist(Model model) {
-//		System.out.println("[StoreController.storelist]");
-//		
-//		List<StoreVo> storeList = storeService.storeList();
-//		
-//		model.addAttribute("storeList", storeList);
-//		
-//		return "/store/storelist";
-//	}
+	//매장 리스트
+	@RequestMapping("/storelist")
+	public String storelist() {
+		System.out.println("[StoreController.storelist]");
+		
+		return "/store/storelisttest";
+	}
 	
 	//매장 상세정보 페이지
 	@RequestMapping("/storeinfo")
@@ -55,16 +52,22 @@ public class StoreController {
 //	}
 	
 	//매장 검색
-	@RequestMapping("/storelist")
-	public String storeSearchList(@RequestParam(value="keyword", defaultValue="") String keyword, Model model){
-		List<StoreVo> searchList = storeService.storeSearchList(keyword);
+	@ResponseBody
+	@RequestMapping("/storesearchlist")
+	public List<StoreVo> storeSearchList(@RequestParam(value="keyword", defaultValue="") String keyword, Model model){
 		
-		System.out.println(searchList);
+		System.out.println("[StoreController.storesearchlist]");
+		System.out.println(keyword);
+		List<StoreVo> searchlist = storeService.storeSearchList(keyword);
 		
-		model.addAttribute("searchList", searchList);
+		System.out.println(searchlist);
 		
-		return "/store/storelisttest";
+//		model.addAttribute("searchList", searchList);
+		
+		return searchlist;
 		
 	}
+	
+	
 	
 }

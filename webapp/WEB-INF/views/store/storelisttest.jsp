@@ -10,9 +10,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/bootstrap.css">
 
 <!-- KaKaoMap_CSS -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/store/kakaomap/map.css"
-	type="text/css"
->
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css"
 	type="text/css"
 >
@@ -30,6 +28,10 @@
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c694e05d69f948b3793c67975a2ef4a5&libraries=services"
 ></script>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/store/kakaomap/map.css"
+	type="text/css"
+>
 
 </head>
 <body>
@@ -71,7 +73,7 @@
 						</div>
 					</div>
 					<hr>
-					<ul id="placesList"></ul>
+					<ul id="searchlist"></ul>
 					<div id="pagination"></div>
 				</div>
 			</div>
@@ -96,55 +98,6 @@
 	};
 
 	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-	//마커를 표시할 위치와 storeName 객체 배열입니다.
-	var i = -1;
-	var positions = [];
-		
-	<c:forEach var="storeList" items="${searchList}">
-		
-		i += 1;
-			
-		positions[i] = {storeName : "${storeList.storeName}", latlng :  new kakao.maps.LatLng(${storeList.storeLat},${storeList.storeLng})};
-				
-	</c:forEach>
-
-	//마커 이미지의 이미지 주소입니다
-	var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-		
-	for (var i = 0; i < positions.length; i++) {
-		
-		// 마커를 생성합니다
-		var marker = new kakao.maps.Marker({
-			map : map, // 마커를 표시할 지도
-			position : positions[i].latlng, // 마커를 표시할 위치
-		});
-				
-		// 마커에 표시할 인포윈도우를 생성합니다 
-	    var infowindow = new kakao.maps.InfoWindow({
-	        content: positions[i].storeName // 인포윈도우에 표시할 내용
-	    });
-		
-		//마커 mouseover, mouseout 이벤트
-	    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-	    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-				
-	}
-	
-	// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
-	function makeOverListener(map, marker, infowindow) {
-	    return function() {
-	        infowindow.open(map, marker);
-	    };
-	}
-
-	// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
-	function makeOutListener(infowindow) {
-	    return function() {
-	        infowindow.close();
-	    };
-	
-	}
 	
 	//키워드 검색요청 함수
 	function searchStore(){
@@ -155,9 +108,126 @@
 	        alert('키워드를 입력해주세요!');
 	        return false;
 	    }
-						
+				
+		$.ajax({
+            cache : false,
+            url : "${pageContext.request.contextPath}/store/storesearchlist",
+            type : 'POST', 
+            data : {keyword : keyword},
+            
+            success : function(searchstorelist) {
+                
+            	//키워드 검색을 통해 넘겨받은 매장리스트값을 목록표출 함수로 넘겨준다.
+                displayPlaces(searchstorelist);
+				            	
+            }, // success 
+    		
+            error : function(XHR, status, error) {
+				
+            	console.error(status + " : " + error);
+
+            	}
+        }); // $.ajax */
+		
+	}
+		
+	// 검색 결과 목록과 마커를 표출하는 함수입니다
+	function displayPlaces(places) {
+
+	    var listEl = document.getElementById('searchlist'),
+	    	menuEl = document.getElementById('menu_wrap'),
+	    	fragment = document.createDocumentFragment(), 
+	    	listStr = '';
+	    
+	    // 검색 결과 목록에 추가된 항목들을 제거합니다
+	    removeAllChildNods(listEl);
+			    
+	    for ( var i=0; i<places.length; i++ ) {
+
+	    	var itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
+			
+	    	fragment.appendChild(itemEl);
+	    	
+	    }
+
+	    // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
+	    listEl.appendChild(fragment);
+	    menuEl.scrollTop = 0;
+		
 	}
 	
+	
+	// 검색결과 항목을 Element로 반환하는 함수
+	function getListItem(index, places) {
+
+	    var el = document.createElement('li'),
+	    itemStr = '<a href="#">'+places.storeName+'</a>';
+
+	    el.innerHTML = itemStr;
+	    el.className = 'item';
+
+	    return el;
+	}
+	
+	/* //마커 찍어주는 함수
+	function marker(){
+		
+		//마커를 표시할 위치와 storeName 객체 배열
+		var i = -1;
+		var positions = [];
+			
+		<c:forEach var="storeList" items="${searchList}">
+			
+			i += 1;
+				
+			positions[i] = {storeName : "${storeList.storeName}", latlng :  new kakao.maps.LatLng(${storeList.storeLat},${storeList.storeLng})};
+					
+		</c:forEach>
+	
+		//마커 이미지의 이미지 주소
+		var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+			
+		for (var i = 0; i < positions.length; i++) {
+			
+			// 마커 생성
+			var marker = new kakao.maps.Marker({
+				map : map, // 마커를 표시할 지도
+				position : positions[i].latlng, // 마커를 표시할 위치
+			});
+					
+			// 마커에 표시할 인포윈도우를 생성
+		    var infowindow = new kakao.maps.InfoWindow({
+		        content: positions[i].storeName // 인포윈도우에 표시할 내용
+		    });
+			
+			//마커 mouseover, mouseout 이벤트
+		    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+		    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+					
+		}
+		
+		// 인포윈도우를 표시하는 클로저를 만드는 함수
+		function makeOverListener(map, marker, infowindow) {
+		    return function() {
+		        infowindow.open(map, marker);
+		    };
+		}
+	
+		// 인포윈도우를 닫는 클로저를 만드는 함수
+		function makeOutListener(infowindow) {
+		    return function() {
+		        infowindow.close();
+		    };
+		
+		}
+	} */
+		
+	// 검색결과 목록의 자식 Element를 제거하는 함수
+	function removeAllChildNods(el) {   
+	    while (el.hasChildNodes()) {
+	        el.removeChild (el.lastChild);
+	    }
+	}
 </script>
 
 </html>

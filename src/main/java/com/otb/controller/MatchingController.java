@@ -54,7 +54,7 @@ public class MatchingController {
 		return "/matching/writeForm";
 	}
 
-	// 매칭글 쓰기
+	// 매칭글 등록
 	@RequestMapping("/write")
 	public String write(@ModelAttribute MatchingVo matchingVo, HttpSession session) {
 		System.out.println("매칭 컨트롤러: write;;;");
@@ -105,7 +105,6 @@ public class MatchingController {
 		
 		return "redirect:/matching/read?no=" + matchingNo;
 	}
-	
 	
 	
 	

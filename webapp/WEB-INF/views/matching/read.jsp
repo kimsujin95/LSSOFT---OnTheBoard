@@ -55,7 +55,7 @@
 			</c:choose>
 			<br>
 			<div class="clearfix">
-				<div class="c-t-float-l">2021. 11. 11. &nbsp; 조회수 ${readInfo.matchingVo.matchingHits}</div>
+				<div class="c-t-float-l">${readInfo.matchingVo.matchingRegDate}&nbsp; 조회수 ${readInfo.matchingVo.matchingHits}</div>
 				<div class="c-t-float-r">
 					<span>[URL복사]</span>
 				</div>
@@ -101,9 +101,15 @@
 						<td>20대, 30대</td>
 					</tr>
 					<tr class="border-none">
-						<th>인원<br>(4)
+						<th>인원<br>(${readInfo.matchingVo.matchingMember}/${readInfo.matchingVo.matchingPeople})
 						</th>
-						<td>(닉네임/나이/성별)<br> (닉네임/나이/성별)<br> (닉네임/나이/성별)<br> (닉네임/나이/성별)<br></td>
+						<td><c:forEach items="${readInfo.matchingMemberInfoList}" var="userVo" varStatus="status">
+						${userVo.userNickname} / ${userVo.userAge}<c:choose>
+									<c:when test="${userVo.userGender eq 'male'}">/ 남</c:when>
+									<c:otherwise>/ 여</c:otherwise>
+								</c:choose><c:if test="${readInfo.writerInfo.userNo eq userVo.userNo}"><img id="img-crown" src="${pageContext.request.contextPath}/assets/images/matching/read-crown.png"></c:if>
+								<br>
+							</c:forEach></td>
 					</tr>
 				</table>
 			</div>

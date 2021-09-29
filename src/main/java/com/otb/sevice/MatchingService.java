@@ -47,7 +47,7 @@ public class MatchingService {
 		return writeUserInfo;
 	}
 	
-	// 매칭글 쓰기
+	// 매칭글 등록
 	public int write(MatchingVo matchingVo) {
 		System.out.println("매칭 서비스: write;;;");
 		
@@ -69,7 +69,7 @@ public class MatchingService {
 		matchingGroupVo.setMatchingPeople(matchingPeople);
 		System.out.println(matchingGroupVo);
 		
-		int matchingGroupAdd = matchingDao.addMatchingMember(matchingGroupVo);
+		int createMatchingGroup = matchingDao.createMatchingGroup(matchingGroupVo);
 		
 
 		return write;
@@ -82,15 +82,27 @@ public class MatchingService {
 		
 		// 클릭한 매칭 번호로 글정보 불러오기
 		MatchingVo matchingVo = matchingDao.read(matchingNo);
+		
 		// 작성자 정보 불러오기
 		int userNo = matchingVo.getUserNo();
 		System.out.println(userNo);
 		UserVo writerInfo = userDao.selectUser(userNo);
 		System.out.println(writerInfo);
+		
+		// 매칭에 참여중인 인원 수
+		int matchingMember = matchingDao.matchingMember(matchingNo);
+		System.out.println(matchingMember);
+		matchingVo.setMatchingMember(matchingMember);
+		
+		// 매칭에 참여중인 인원 정보 리스트
+		List<UserVo> matchingMemberInfoList = matchingDao.matchingMemberInfoList(matchingNo);
+		System.out.println(matchingMemberInfoList);
+		
 		// Map으로 묶기
 		Map<String, Object> readInfo = new HashMap<String, Object>();
 		readInfo.put("matchingVo", matchingVo);
 		readInfo.put("writerInfo", writerInfo);
+		readInfo.put("matchingMemberInfoList", matchingMemberInfoList);
 		
 		// 클릭 후 조회수 1 증가
 		int hitsUp = matchingDao.hitsUp(matchingNo);
@@ -98,7 +110,7 @@ public class MatchingService {
 		return readInfo;
 	}
 	
-	// 매칭글 읽기 - 매칭 참가 신청
+	// 매칭글 읽기 - 매칭 참가 신청 
 	public int joinMatching(MatchingGroupVo matchingGroupVo) {
 		System.out.println("매칭 서비스: joinMatching;;;");
 		

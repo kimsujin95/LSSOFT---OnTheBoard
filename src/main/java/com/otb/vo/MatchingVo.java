@@ -6,6 +6,7 @@ public class MatchingVo {
 	private int userNo;
 	private String userNickname;
 	private int userBirthDate;
+	private int userAge;
 	private String userGender;
 	private String themeName;
 	private String gameNameKo;
@@ -25,6 +26,7 @@ public class MatchingVo {
 	private String matchingRegDate;
 	private int matchingHits;
 	private String matchingStatus;
+	private int matchingMember;
 	
 	
 	
@@ -42,17 +44,18 @@ public class MatchingVo {
 	}
 
 
-	public MatchingVo(int matchingNo, int userNo, String userNickname, int userBirthDate, String userGender, String themeName,
+	public MatchingVo(int matchingNo, int userNo, String userNickname, int userBirthDate, int userAge, String userGender, String themeName,
 			String gameNameKo, String matchingDate, String matchingTime, String sidoName, String sigunguName,
 			int matchingPeople, String matchingPermissionGender, String matchingPermissionTeens,
 			String matchingPermissionTwenties, String matchingPermissionThirties, String matchingPermissionFourties,
 			String matchingPermissionAllAge, String matchingTitle, String matchingContent, String matchingRegDate,
-			int matchingHits, String matchingStatus) {
+			int matchingHits, String matchingStatus, int matchingMember) {
 		super();
 		this.matchingNo = matchingNo;
 		this.userNo = userNo;
 		this.userNickname = userNickname;
 		this.userBirthDate = userBirthDate;
+		this.userAge = userAge;
 		this.userGender = userGender;
 		this.themeName = themeName;
 		this.gameNameKo = gameNameKo;
@@ -72,6 +75,7 @@ public class MatchingVo {
 		this.matchingRegDate = matchingRegDate;
 		this.matchingHits = matchingHits;
 		this.matchingStatus = matchingStatus;
+		this.matchingMember = matchingMember;
 	}
 
 	
@@ -105,6 +109,14 @@ public class MatchingVo {
 
 	public void setUserBirthDate(int userBirthDate) {
 		this.userBirthDate = userBirthDate;
+	}
+	
+	public int getUserAge() {
+		return userAge;
+	}
+	
+	public void setUserAge(int userAge) {
+		this.userAge = userAge;
 	}
 
 	public String getUserGender() {
@@ -258,11 +270,19 @@ public class MatchingVo {
 	public void setMatchingStatus(String matchingStatus) {
 		this.matchingStatus = matchingStatus;
 	}
+	
+	public int getMatchingMember() {
+		return matchingMember;
+	}
+
+	public void setMatchingMember(int matchingMember) {
+		this.matchingMember = matchingMember;
+	}
 
 	@Override
 	public String toString() {
 		return "MatchingVo [matchingNo=" + matchingNo + ", userNo=" + userNo + ", userNickname=" + userNickname
-				+ ", userBirthDate=" + userBirthDate + ", userGender=" + userGender + ", themeName=" + themeName
+				+ ", userBirthDate=" + userBirthDate + ", userAge= " + userAge + ", userGender=" + userGender + ", themeName=" + themeName
 				+ ", gameNameKo=" + gameNameKo + ", matchingDate=" + matchingDate + ", matchingTime=" + matchingTime
 				+ ", sidoName=" + sidoName + ", sigunguName=" + sigunguName + ", matchingPeople=" + matchingPeople
 				+ ", matchingPermissionGender=" + matchingPermissionGender + ", matchingPermissionTeens="
@@ -270,7 +290,7 @@ public class MatchingVo {
 				+ ", matchingPermissionThirties=" + matchingPermissionThirties + ", matchingPermissionFourties="
 				+ matchingPermissionFourties + ", matchingPermissionAllAge=" + matchingPermissionAllAge
 				+ ", matchingTitle=" + matchingTitle + ", matchingContent=" + matchingContent + ", matchingRegDate="
-				+ matchingRegDate + ", matchingHits=" + matchingHits + ", matchingStatus=" + matchingStatus + "]";
+				+ matchingRegDate + ", matchingHits=" + matchingHits + ", matchingStatus=" + matchingStatus + ", matchingMember=" + matchingMember + "]";
 	}
 
 }

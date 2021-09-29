@@ -258,6 +258,10 @@ textarea {
 	border: none;
 }
 
+#table-game-info #img-crown {
+	width: 10%;
+}
+
 #content-content {
 	font-size: 18px;
 }

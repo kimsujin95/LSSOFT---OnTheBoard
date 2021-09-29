@@ -10,6 +10,7 @@ import com.otb.vo.GameVo;
 import com.otb.vo.MatchingGroupVo;
 import com.otb.vo.MatchingVo;
 import com.otb.vo.ThemeVo;
+import com.otb.vo.UserVo;
 
 @Repository
 public class MatchingDao {
@@ -58,7 +59,7 @@ public class MatchingDao {
 		return gameTheme;
 	}
 
-	// 매칭글 쓰기
+	// 매칭글 등록
 	public int write(MatchingVo matchingVo) {
 		System.out.println("매칭 다오: write;;;");
 
@@ -69,13 +70,13 @@ public class MatchingDao {
 		return write;
 	}
 
-	// 매칭글 쓰기 → 매칭그룹 생성
-	public int addMatchingMember(MatchingGroupVo matchingGroupVo) {
-		System.out.println("매칭 다오: addMatchingMember;;;");
+	// 매칭글 등록 → 매칭그룹 생성
+	public int createMatchingGroup(MatchingGroupVo matchingGroupVo) {
+		System.out.println("매칭 다오: createMatchingGroup;;;");
 
-		int addMatchingMember = sqlSession.insert("matching.addMatchingMember", matchingGroupVo);
+		int createMatchingGroup = sqlSession.insert("matching.createMatchingGroup", matchingGroupVo);
 
-		return addMatchingMember;
+		return createMatchingGroup;
 	}
 
 	// 매칭글 읽기
@@ -105,6 +106,24 @@ public class MatchingDao {
 		int joinMatching = sqlSession.insert("matching.joinMatching", matchingGroupVo);
 
 		return joinMatching;
+	}
+	
+	// 리스트 / 매칭글 읽기 - 현재 매칭에 참가중인 인원 수
+	public int matchingMember(int matchingNo) {
+		System.out.println("매칭 다오: matchingMember;;;");
+		int matchingMember = sqlSession.selectOne("matching.matchingMember", matchingNo);
+		System.out.println(matchingMember);
+		
+		return matchingMember;
+	}
+	
+	// 매칭글 읽기 - 현재 매칭에 참가중인 인원 정보
+	public List<UserVo> matchingMemberInfoList(int matchingNo) {
+		System.out.println("매칭 다오: matchingMemberInfoList;;;");
+		
+		List<UserVo> matchingMemberInfoList = sqlSession.selectList("matching.matchingMemberInfoList", matchingNo);
+		
+		return matchingMemberInfoList;
 	}
 
 }

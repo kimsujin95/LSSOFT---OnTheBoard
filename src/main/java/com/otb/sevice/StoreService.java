@@ -1,11 +1,14 @@
 package com.otb.sevice;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.otb.dao.StoreDao;
+import com.otb.vo.MatchingVo;
 import com.otb.vo.StoreVo;
 
 @Service
@@ -32,6 +35,19 @@ public class StoreService {
 		
 		return storeList;
 		
+	}
+	
+	// 유저 예약 페이지 정보
+	public Map<String, Object> userDataInfoMap(int userNo) {
+		System.out.println("[StoreService.userDataInfoMap]");
+		
+		List<MatchingVo> userHostMatchingList = storeDao.userHostMatchingList(userNo);
+		System.out.println(userHostMatchingList);
+		
+		Map<String, Object> userDataInfoMap = new HashMap<String, Object>();
+		userDataInfoMap.put("userHostMatchingList", userHostMatchingList);
+		
+		return userDataInfoMap;
 	}
 	
 }

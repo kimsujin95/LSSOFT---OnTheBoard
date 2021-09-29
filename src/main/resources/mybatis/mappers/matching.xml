@@ -198,5 +198,18 @@
 			    ) m ON u.user_no = m.user_no
 		]]>
 	</select>
+	
+	<!-- (재영)스토어인포 - 에약 페이지에서 호스트인 그룹 -->
+	<select id="userHostMatchingList" parameterType="int" resultMap="resultMapMatchingVo">
+		<![CDATA[
+			SELECT
+			    matching_no,
+			    matching_title
+			FROM
+			    matching
+			WHERE
+			    user_no = #{ userNo }
+		]]>
+	</select>
 
 </mapper>

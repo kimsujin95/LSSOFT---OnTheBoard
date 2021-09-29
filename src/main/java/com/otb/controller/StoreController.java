@@ -1,6 +1,10 @@
 package com.otb.controller;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.otb.sevice.StoreService;
 import com.otb.vo.StoreVo;
+import com.otb.vo.UserVo;
 
 @Controller
 @RequestMapping(value= "/store", method= {RequestMethod.GET, RequestMethod.POST})
@@ -30,11 +35,23 @@ public class StoreController {
 	
 	//매장 상세정보 페이지
 	@RequestMapping("/storeinfo")
-	public String storeinfo(){
+	/* @RequestParam("storeNo") int storeNo, */
+	public String storeinfo(HttpSession session, Model model){
 		System.out.println("[storeController.storeinfo]");
+		
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		System.out.println(authUser);
+		int userNo = authUser.getUserNo();
+		System.out.println(userNo);
+		
+		Map<String, Object> userDataInfoMap = storeService.userDataInfoMap(userNo);
+		System.out.println(userDataInfoMap);
+		model.addAttribute("userDataInfoMap", userDataInfoMap);
 		
 		return "/store/storeinfo";
 	}
+	
+	//매장 
 	
 //	//매장 정보 테스트 페이지
 //	@RequestMapping("/storelisttest")

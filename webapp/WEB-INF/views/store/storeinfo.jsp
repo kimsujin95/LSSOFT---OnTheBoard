@@ -488,12 +488,12 @@
 						<div role="tabpanel" class="tab-pane" id="choice_by_grouplist">
                             <div>
                                 <!-- 그룹 리스트 나열해 주기-->
-                                <ul>
+                                <ul id="grouplist">
                                     <!-- 매칭이 완료된 그룹 리스트 -->
                                     <!-- 내역이 없을 시 리스트 존재x 텍스트 띄워주기 -->
-                                    <li role="presentation"><a href="#chosen_group" aria-controls="chosen_group" role="tab" data-toggle="tab">그룹1</a></li>
-                                    <li role="presentation"><a href="#chosen_group" aria-controls="chosen_group" role="tab" data-toggle="tab">그룹2</a></li>
-                                    <li role="presentation"><a href="#chosen_group" aria-controls="chosen_group" role="tab" data-toggle="tab">그룹3</a></li>
+                                    <c:forEach items="${userDataInfoMap.userHostMatchingList}" var="matchingVo" varStatus="status">
+                                    	<li role="presentation"><a href="#chosen_group" aria-controls="chosen_group" role="tab" data-toggle="tab">${status.index + 1}. ${matchingVo.matchingTitle}</a></li>
+                                    </c:forEach>
                                 </ul>
                             </div>
                         </div>

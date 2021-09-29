@@ -161,7 +161,7 @@
 	function getListItem(index, places) {
 
 	    var el = document.createElement('li'),
-	    itemStr = '<a href="#">'+places.storeName+'</a>';
+	    itemStr = '<a href="${pageContext.request.contextPath}/store/storeinfo?storeNo='+places.storeNo+'">'+places.storeName+'</a>';
 
 	    el.innerHTML = itemStr;
 	    el.className = 'item';

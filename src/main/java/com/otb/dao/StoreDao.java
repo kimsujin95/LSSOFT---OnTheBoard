@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.otb.vo.MatchingVo;
 import com.otb.vo.StoreVo;
 
 @Repository
@@ -31,6 +32,17 @@ public class StoreDao {
 		
 		return sqlSession.selectList("store.searchList",keyword);
 		
+	}
+	
+	// 호스트인 유저의 매칭 리스트
+	public List<MatchingVo> userHostMatchingList(int userNo) {
+		
+		System.out.println("[StoreDao.userHostMatchingList]");
+		
+		List<MatchingVo> userHostMatchingList = sqlSession.selectList("matching.userHostMatchingList", userNo);
+		System.out.println(userHostMatchingList);
+		
+		return userHostMatchingList;
 	}
 	
 	

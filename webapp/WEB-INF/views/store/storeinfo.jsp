@@ -492,7 +492,7 @@
                                     <!-- 매칭이 완료된 그룹 리스트 -->
                                     <!-- 내역이 없을 시 리스트 존재x 텍스트 띄워주기 -->
                                     <c:forEach items="${userDataInfoMap.userHostMatchingList}" var="matchingVo" varStatus="status">
-                                    	<li role="presentation"><a href="#chosen_group" aria-controls="chosen_group" role="tab" data-toggle="tab">${status.index + 1}. ${matchingVo.matchingTitle}</a></li>
+                                    	<li role="presentation"><a href="#chosen_group" aria-controls="chosen_group" role="tab" data-toggle="tab"><span class="groupUser" data-no="${matchingVo.matchingNo}">${status.index + 1}. ${matchingVo.matchingTitle}</span></a></li>
                                     </c:forEach>
                                 </ul>
                             </div>
@@ -822,6 +822,20 @@
         $("document").ready(function () {
             paging(totalData, dataPerPage, pageCount, 1);
         });
+        
+        
+        $('#grouplist').on('click', '.groupUser', function(){
+    		// event.preventDefault(); --> form일때만 사용 가능
+    		
+    		// hidden no값 입력하기 == html 태그에 데이터 숨기기(click에 해당하는 태그)
+    		// data 값 설정 소문자로, guestNo == 오류
+    		var no = $(this).data("no");
+    		console.log(no);
+    		
+    		// ajax 랜더링 for문
+        });
+        
+        
     </script>
 
 </body>

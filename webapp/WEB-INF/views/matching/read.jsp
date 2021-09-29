@@ -107,7 +107,8 @@
 						${userVo.userNickname} / ${userVo.userAge}<c:choose>
 									<c:when test="${userVo.userGender eq 'male'}">/ 남</c:when>
 									<c:otherwise>/ 여</c:otherwise>
-								</c:choose><c:if test="${readInfo.writerInfo.userNo eq userVo.userNo}"><img id="img-crown" src="${pageContext.request.contextPath}/assets/images/matching/read-crown.png"></c:if>
+								</c:choose><c:if test="${readInfo.wri
+								terInfo.userNo eq userVo.userNo}"><img id="img-crown" src="${pageContext.request.contextPath}/assets/images/matching/read-crown.png"></c:if>
 								<br>
 							</c:forEach></td>
 					</tr>

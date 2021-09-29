@@ -55,7 +55,7 @@
 			</c:choose>
 			<br>
 			<div class="clearfix">
-				<div class="c-t-float-l">${readInfo.matchingVo.matchingRegDate}&nbsp; 조회수 ${readInfo.matchingVo.matchingHits}</div>
+				<div class="c-t-float-l">${readInfo.matchingVo.matchingRegDate}&nbsp;조회수 ${readInfo.matchingVo.matchingHits}</div>
 				<div class="c-t-float-r">
 					<span>[URL복사]</span>
 				</div>
@@ -107,8 +107,10 @@
 						${userVo.userNickname} / ${userVo.userAge}<c:choose>
 									<c:when test="${userVo.userGender eq 'male'}">/ 남</c:when>
 									<c:otherwise>/ 여</c:otherwise>
-								</c:choose><c:if test="${readInfo.wri
-								terInfo.userNo eq userVo.userNo}"><img id="img-crown" src="${pageContext.request.contextPath}/assets/images/matching/read-crown.png"></c:if>
+								</c:choose>
+								<c:if test="${readInfo.writerInfo.userNo eq userVo.userNo}">
+									<img id="img-crown" src="${pageContext.request.contextPath}/assets/images/matching/read-crown.png">
+								</c:if>
 								<br>
 							</c:forEach></td>
 					</tr>
@@ -124,7 +126,7 @@
 			</div>
 			<div class="col-md-4 text-right">
 				<button class="btn-red">매칭완료</button>
-				<button class="btn-blue">예약하기</button>
+				<a href="${pageContext.request.contextPath}/store/storelist"><button class="btn-blue">예약하기</button></a>
 			</div>
 			<div class="col-md-5 text-right">
 				<a href="${pageContext.request.contextPath}/matching/list"><button class="btn-white">목록</button></a> <a href="${pageContext.request.contextPath}/matching/modifyForm"><button class="btn-blue">수정</button></a>

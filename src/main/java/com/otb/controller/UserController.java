@@ -83,7 +83,7 @@ public class UserController {
 
 		System.out.println(count + "건 가입 성공");
 
-		return "redirect:/main";
+		return "/user/login_form";
 
 	}
 

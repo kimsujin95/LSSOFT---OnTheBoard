@@ -90,15 +90,16 @@ public class MatchingController {
 	// 매칭글 읽기 - 매칭 참가 신청
 	@ResponseBody
 	@RequestMapping("/joinMatching")
-	public UserVo joinMaching(@ModelAttribute MatchingGroupVo matchingGroupVo) {
+	public Map<String, Object> joinMaching(@ModelAttribute MatchingGroupVo matchingGroupVo) {
 		System.out.println("매칭 컨트롤러: joinMatching;;;");
 		System.out.println(matchingGroupVo);
 		
 		// 매칭글 번호 / 매칭 최대인원 확인
 		// 매칭에 참가하는 유저no, 매칭no로 매칭 참가
-		UserVo joinMatchingUserInfo = matchingService.joinMatching(matchingGroupVo);
+		Map<String, Object> joinMatchingInfo = matchingService.joinMatching(matchingGroupVo);
+		System.out.println(joinMatchingInfo);
 		
-		return joinMatchingUserInfo;
+		return joinMatchingInfo;
 	}
 	
 	

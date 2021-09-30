@@ -101,7 +101,7 @@
 						<td>20대, 30대</td>
 					</tr>
 					<tr class="border-none">
-						<th>인원<br>(${readInfo.matchingVo.matchingMember}/${readInfo.matchingVo.matchingPeople})
+						<th>인원<br>(<span id="joinMatchingMember">${readInfo.matchingVo.matchingMember}</span>/${readInfo.matchingVo.matchingPeople})
 						</th>
 						<td><c:forEach items="${readInfo.matchingMemberInfoList}" var="userVo" varStatus="status">
 						${userVo.userNickname} / ${userVo.userAge}<c:choose>
@@ -121,10 +121,10 @@
 		</div>
 		<div id="read-btn" class="row">
 			<div class="col-md-3 text-center">
-				<%-- <a href="${pageContext.request.contextPath}/matching/joinMatching?matchingNo=${readInfo.matchingVo.matchingNo}"> --%>
-				<button id="btn-joinMatching" class="btn-red" data-user_no="${authUser.userNo}" data-matching_no="${readInfo.matchingVo.matchingNo}">참가신청</button>
-				<!-- </a> -->
-				<button class="btn-white">참가취소</button>
+				<c:if test="${readInfo.writerInfo.userNo ne authUser.userNo && not empty authUser}">
+					<button id="btn-joinMatching" class="btn-red" data-user_no="${authUser.userNo}" data-matching_no="${readInfo.matchingVo.matchingNo}">참가신청</button>
+					<button class="btn-white">참가취소</button>
+				</c:if>
 			</div>
 			<div class="col-md-4 text-right">
 				<button class="btn-red">매칭완료</button>
@@ -254,9 +254,12 @@ $('#btn-joinMatching').on('click', function(){
 		url: '${pageContext.request.contextPath}/matching/joinMatching',
 		type: 'post',
 		data: matchingGroupVo,
-		success: function(userInfo){
-			console.log(userInfo);
-			render(userInfo);
+		success: function(joinMatchingInfo){
+			console.log(joinMatchingInfo.userInfo);
+			render(joinMatchingInfo.userInfo);
+			
+			console.log(joinMatchingInfo.matchingMember);
+			$('#joinMatchingMember').text(joinMatchingInfo.matchingMember);
 		},
 		error: function(XHR, status, error) {
 			console.log(status + ' : ' + error);

@@ -20,6 +20,7 @@
 		<result column="matching_no" property="matchingNo" />
 		<result column="user_no" property="userNo" />
 		<result column="matching_people" property="matchingPeople" />
+		<result column="join_reg_date" property="joinRegDate" />
 	</resultMap>
 	
 	<resultMap id="resultMapUserVo" type="UserVo">
@@ -116,7 +117,8 @@
 				(
 					#{ matchingNo },
 					#{ userNo },
-					#{ matchingPeople }
+					#{ matchingPeople },
+					sysdate
 				)
 		]]>
 	</select>
@@ -157,11 +159,12 @@
 	<insert id="joinMatching" parameterType="matchingGroupVo">
 		<![CDATA[
 			INSERT INTO
-				matching_group(matching_no, user_no)
+				matching_group(matching_no, user_no, join_reg_date)
 			VALUES
 				(
 					#{ matchingNo },
-					#{ userNo }
+					#{ userNo },
+					sysdate
 				)
 		]]>	
 	</insert>
@@ -185,17 +188,21 @@
 			    u.user_no,
 			    u.user_nickname,
 			    to_char(sysdate, 'yyyy') - to_char(u.user_birth_date, 'yyyy') + 1 user_age,
-			    u.user_gender
+			    u.user_gender,
+			    m.join_reg_date
 			FROM
 			    users u
 			    RIGHT OUTER JOIN (
 			        SELECT
-			            user_no
+			            user_no,
+			            join_reg_date
 			        FROM
 			            matching_group
 			        WHERE
 			            matching_no = #{ matchingNo }
 			    ) m ON u.user_no = m.user_no
+			ORDER BY
+				m.join_reg_date ASC
 		]]>
 	</select>
 	

@@ -5,16 +5,18 @@ public class MatchingGroupVo {
 	private int matchingNo;
 	private int userNo;
 	private int matchingPeople;
+	private String joinRegDate;
 
 	public MatchingGroupVo() {
 		super();
 	}
 
-	public MatchingGroupVo(int matchingNo, int userNo, int matchingPeople) {
+	public MatchingGroupVo(int matchingNo, int userNo, int matchingPeople, String joinRegDate) {
 		super();
 		this.matchingNo = matchingNo;
 		this.userNo = userNo;
 		this.matchingPeople = matchingPeople;
+		this.joinRegDate = joinRegDate;
 	}
 
 	public int getMatchingNo() {
@@ -40,11 +42,19 @@ public class MatchingGroupVo {
 	public void setMatchingPeople(int matchingPeople) {
 		this.matchingPeople = matchingPeople;
 	}
+	
+	public String getJoinRegDate() {
+		return joinRegDate;
+	}
+
+	public void setJoinRegDate(String joinRegDate) {
+		this.joinRegDate = joinRegDate;
+	}
 
 	@Override
 	public String toString() {
 		return "MatchingGroupVo [matchingNo=" + matchingNo + ", userNo=" + userNo + ", matchingPeople=" + matchingPeople
-				+ "]";
+				+ ", joinRegDate=" + joinRegDate + "]";
 	}
-
+	
 }

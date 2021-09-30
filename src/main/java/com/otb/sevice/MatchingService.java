@@ -111,10 +111,16 @@ public class MatchingService {
 	}
 	
 	// 매칭글 읽기 - 매칭 참가 신청 
-	public UserVo joinMatching(MatchingGroupVo matchingGroupVo) {
+	public Map<String, Object> joinMatching(MatchingGroupVo matchingGroupVo) {
 		System.out.println("매칭 서비스: joinMatching;;;");
 		
 		int joinMatching = matchingDao.joinMatching(matchingGroupVo);
+		
+		// 그룹에 추가 후 그룹원 수 불러오기
+		int matchingNo = matchingGroupVo.getMatchingNo();
+		System.out.println(matchingNo);
+		int matchingMember = matchingDao.matchingMember(matchingNo);
+		System.out.println(matchingMember);
 		
 		// 그룹에 추가되는 유저 정보 불러오기
 		int userNo = matchingGroupVo.getUserNo();
@@ -122,7 +128,12 @@ public class MatchingService {
 		UserVo userInfo = userDao.selectUser(userNo);
 		System.out.println(userInfo);
 		
-		return userInfo;
+		// Map으로 묶어서 넘기기
+		Map<String, Object> joinMatchingInfo = new HashMap<String, Object>();
+		joinMatchingInfo.put("matchingMember", matchingMember);
+		joinMatchingInfo.put("userInfo", userInfo);
+		
+		return joinMatchingInfo;
 	}
 	
 

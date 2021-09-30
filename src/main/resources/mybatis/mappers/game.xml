@@ -4,32 +4,18 @@
 
 <mapper namespace="game">
 
-	<resultMap id="resultMapGameVo" type="GameVo">
-		<result column="game_no" property="gameNo" />
-		<result column="game_name_ko" property="gameNameKo" />
-		<result column="game_name_en" property="gameNameEn" />
-		<result column="game_path_thumbnail" property="gameThumbImg" />
-		<result column="game_people" property="gamePeople" />
-		<result column="game_age" property="gameAge" />
-		<result column="game_time" property="gameTime" />
-		<result column="game_difficulty" property="gameDifficulty" />
-		<result column="game_description" property="gameDescripttion" />
-		<result column="game_guide" property="gameGuide" />
-		<result column="theme_no" property="themeNo" />
-		<result column="game_img" property="gameImg" />
-	</resultMap>
 	
 	<!-- 게임목록 (썸네일리스트) -->
-	<select id="list" resultMap="resultMapGameVo">
+	<select id="list" resultType="GameVo">
 		<![CDATA[
 			SELECT  
 					game_no
 			,		game_name_ko
-			,		game_path_thumbnail
 			,		game_people
 			,		game_age
 			,		game_time
 			,		game_difficulty
+			,		game_path_thumbnail
 			,		theme_no
 			
 			FROM 
@@ -51,8 +37,8 @@
 				,	game_difficulty
 				,	game_description
 				,	game_guide
-				,	game_img
 				,	theme_no
+				)
 			VALUES(
 					seq_game_no.NEXTVAL
 			   ,	#{gameNameKo}
@@ -63,7 +49,6 @@
 			   ,	#{gameDifficulty}
 			   ,	#{gameDescription}
 			   ,	#{gameGuide}
-			   ,	#{gameImg}
 			   ,	#{themeNo}
 			   
 			   )
@@ -73,7 +58,7 @@
 	</insert>
 	
 	<!-- 게임상세정보(읽기) -->
-	<select id="read" parameterType="int" resultMap="resultMapGameVo">
+	<select id="read" parameterType="int" resultType="GameVo">
 		<![CDATA[
 			SELECT  
 					game_no
@@ -89,14 +74,12 @@
 			,		game_guide
 			
 			FROM 
-					game g
-			LEFT OUTER 
-			JOIN
-					theme t
-			ON	
-				g.theme_no = t.theme_no
+					game g, theme t
 			WHERE
-				game_no = {#gameNo}	
+				game_no = #{gameNo}
+				
+			AND	
+				t.theme_no = g.theme_no
 		]]>
 	</select>
 

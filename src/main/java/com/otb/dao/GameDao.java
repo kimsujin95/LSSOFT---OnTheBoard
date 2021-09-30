@@ -36,12 +36,12 @@ public class GameDao {
 	}
 	
 	//게임등록
-	public int gameRegister(GameVo gameVo) {
-		System.out.println("[GameDao: gameRegister]");
+	public int gameUpload(GameVo gameVo) {
+		System.out.println("[GameDao: gameUpload]");
 		
-		int gameRegister = sqlSession.insert("game.write",gameVo);
+		int gameUpload = sqlSession.insert("game.write",gameVo);
 
-		return gameRegister;
+		return gameUpload;
 	}
 	
 	

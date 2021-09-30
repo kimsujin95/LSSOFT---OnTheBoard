@@ -22,10 +22,11 @@
 	<!-- wrapper -->
 	<div id="wrapper">
 
+
 		<!-- content-->
 		<div id="content">
-			<form action="/upload" method="post" enctype="multipart/form-data">
 			<!-- gamename_ko -->
+			<form autocomplete="off" action="localhost:8088/game/upload" method="post" enctype="multipart/form-data">
 			<div>
 				<h3 class="register-title">
 					<label for="game_kor">게임명(한글)</label>
@@ -111,15 +112,15 @@
 					<div id="select">
 						<span class="box"> <select id="gameAge" class="sel">
 								<option>선택</option>
-								<option value="01">만 4세이상</option>
-								<option value="02">만 5세이상</option>
-								<option value="03">만 6세이상</option>
-								<option value="04">만 7세이상</option>
-								<option value="05">만 9세이상</option>
-								<option value="06">만 10세이상</option>
-								<option value="07">만 12세이상</option>
-								<option value="08">만 14세이상</option>
-								<option value="09">만 15세이상</option>
+								<option value="04">만 4세이상</option>
+								<option value="05">만 5세이상</option>
+								<option value="06">만 6세이상</option>
+								<option value="07">만 7세이상</option>
+								<option value="09">만 9세이상</option>
+								<option value="10">만 10세이상</option>
+								<option value="12">만 12세이상</option>
+								<option value="14">만 14세이상</option>
+								<option value="15">만 15세이상</option>
 
 						</select>
 
@@ -186,7 +187,7 @@
 					</div>
 					<span class="error_next_box"></span>
 				</div>
-
+			</div>
 
 				<!-- Playtime -->
 				<div>
@@ -200,18 +201,12 @@
 						<div id="select">
 							<span class="box"> <select id="gameTime_min" class="sel">
 									<option>최소</option>
-									<option value="01"></option>
-									<option value="02">2</option>
-									<option value="03">3</option>
-									<option value="04">4</option>
-									<option value="05">5</option>
-									<option value="06">6</option>
-									<option value="07">7</option>
-									<option value="08">8</option>
-									<option value="09">9</option>
-									<option value="10">10</option>
-									<option value="11">11</option>
-									<option value="12">12</option>
+									<option value="15">15</option>
+									<option value="20">20</option>
+									<option value="25">25</option>
+									<option value="30">30</option>
+									<option value="35">35</option>
+									<option value="40">40</option>
 							</select>
 							</span>
 						</div>
@@ -271,26 +266,21 @@
 						<div class="settings_wrap">
 							<label class="drop_target">
 								<div class="image_preview"></div>
-								<label for="gameImg"><input id="gameImg" type="file" /></label>
+								
+								<input id="gameImg" type="file" />
 								<div class="settings_actions vertical select_img">
-									<a data-action="choose_from_uploaded"><i class="fa fa-picture-o"></i>업로드 파일 중에 선택</a><a
-										class="disabled" data-action="remove_current_image"
-									><i class="fa fa-ban"></i>현재 첨부파일 삭제</a>
+									<img src="">
 								</div>
-								<div class="image_details">
-									<label class="input_line image_title"><label for="ImgTitle"><input type="text"
-											placeholder="Title"
-										/></label>
-								<input type="submit" value="전송" >		
-								</div>
+								 <p>썸네일</p>
+								 <img src="${game.thumbImg}" class="thumbImg"/>
 						</div>
-					
+					<%=request.getSession().getServletContext().getRealPath("/") %>
 				</div>
 			</div>
 
 				<!-- register BTN-->
 				<div class="btn_area">
-					<button type="button" id="btnReg">
+					<button type="button" id="btnReg" type="submit" >
 						<span>게임등록</span>
 					</button>
 				</div>
@@ -306,7 +296,7 @@
    if(this.files && this.files[0]) {
     var reader = new FileReader;
     reader.onload = function(data) {
-     $(".select_img img").attr("src", data.target.result).width(500);        
+     $(".select_img img").attr("src", data.target.result).width(116);        
     }
     reader.readAsDataURL(this.files[0]);
    }

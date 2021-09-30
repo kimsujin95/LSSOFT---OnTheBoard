@@ -3,6 +3,7 @@ package com.otb.sevice;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ public class GameService {
 
 	@Autowired
 	private GameDao gameDao;
+	
 	
 	//게임목록
 	public List<GameVo> gameList(){
@@ -36,14 +38,33 @@ public class GameService {
 		
 		return GameVo;
 	}
+	/*
+	@Autowired(required=false)
+	@Qualifier("uploadPath")
+	private String uploadPath;
 	
 	//게임등록
-	public int gameRegister(GameVo gameVo) {
-		System.out.println("[GameService: gameWrite]");
+	public int gameUpload(GameVo gameVo, MultipartFile file, HttpServletRequest req) throws Exception{
+		System.out.println("[GameService: gameUpload]");
+			
 		
-		int gameRegister = gameDao.gameRegister(gameVo);
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = GameUploadUtil.calcPath(imgUploadPath);
+		String fileName = null;
 
-		return gameRegister;
+		if(file != null) {
+		 fileName =  GameUploadUtil.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		} else {
+		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+
+		gameVo.setGameImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		gameVo.setGameThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		 
+		int count = gameDao.gameUpload(gameVo);
+		
+		return count; 
+				
 	}
-	
+	*/
 }

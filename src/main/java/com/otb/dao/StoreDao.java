@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.otb.vo.MatchingVo;
 import com.otb.vo.StoreVo;
+import com.otb.vo.UserVo;
 
 @Repository
 public class StoreDao {
@@ -43,6 +44,13 @@ public class StoreDao {
 		System.out.println(userHostMatchingList);
 		
 		return userHostMatchingList;
+	}
+	
+	//그룹원들 정보 가져오기
+	public List<UserVo> grouplist(int matchingno){
+		System.out.println("[StoreDao.grouplist]");
+		
+		return sqlSession.selectList("store.getgrouplist",matchingno);
 	}
 	
 	

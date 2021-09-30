@@ -2,7 +2,6 @@ package com.otb.controller;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -31,16 +30,19 @@ public class StoreController {
 		System.out.println("[StoreController.storelist]");
 		
 		return "/store/storelisttest";
-	}
+	} 
 	
 	//매장 상세정보 페이지
 	@RequestMapping("/storeinfo")
 	/* @RequestParam("storeNo") int storeNo, */
-	public String storeinfo(HttpSession session, Model model){
+	public String storeinfo(@RequestParam int storeNo, HttpSession session, Model model){
 		System.out.println("[storeController.storeinfo]");
+		
+		
 		
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		System.out.println(authUser);
+		
 		int userNo = authUser.getUserNo();
 		System.out.println(userNo);
 		
@@ -49,9 +51,24 @@ public class StoreController {
 		model.addAttribute("userDataInfoMap", userDataInfoMap);
 		
 		return "/store/storeinfo";
+		
 	}
 	
-	//매장 
+	//그룹넘버에 따른 그룹원 정보 목록 가져오기
+	@ResponseBody
+	@RequestMapping("/grouplist")
+	public List<UserVo> grouplist(@RequestParam(value="matchingno") int matchingno){
+		
+		System.out.println("[StoreController.grouplist]");
+		
+		System.out.println(matchingno);
+		
+		List<UserVo> grouplistinfo = storeService.grouplist(matchingno);
+		System.out.println(grouplistinfo);
+		
+		return null;
+	}
+	
 	
 //	//매장 정보 테스트 페이지
 //	@RequestMapping("/storelisttest")
@@ -84,7 +101,5 @@ public class StoreController {
 		return searchlist;
 		
 	}
-	
-	
 	
 }

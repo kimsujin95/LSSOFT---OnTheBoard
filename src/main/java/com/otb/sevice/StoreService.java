@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.otb.dao.StoreDao;
 import com.otb.vo.MatchingVo;
 import com.otb.vo.StoreVo;
+import com.otb.vo.UserVo;
 
 @Service
 public class StoreService {
@@ -48,6 +49,13 @@ public class StoreService {
 		userDataInfoMap.put("userHostMatchingList", userHostMatchingList);
 		
 		return userDataInfoMap;
+	}
+	
+	//그룹원들 정보 가져오기
+	public List<UserVo> grouplist(int matchingno){
+		System.out.println("[StoreService.grouplist]");
+		
+		return storeDao.grouplist(matchingno);
 	}
 	
 }

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="game">
+
+	<resultMap id="resultMapGameVo" type="GameVo">
+		<result column="game_no" property="gameNo" />
+		<result column="game_name_ko" property="gameNameKo" />
+		<result column="game_name_en" property="gameNameEn" />
+		<result column="game_path_thumbnail" property="gameThumbImg" />
+		<result column="game_people" property="gamePeople" />
+		<result column="game_age" property="gameAge" />
+		<result column="game_time" property="gameTime" />
+		<result column="game_difficulty" property="gameDifficulty" />
+		<result column="game_description" property="gameDescripttion" />
+		<result column="game_guide" property="gameGuide" />
+		<result column="theme_no" property="themeNo" />
+		<result column="game_img" property="gameImg" />
+	</resultMap>
+	
+	<!-- 게임목록 (썸네일리스트) -->
+	<select id="list" resultMap="resultMapGameVo">
+		<![CDATA[
+			SELECT  
+					game_no
+			,		game_name_ko
+			,		game_path_thumbnail
+			,		game_people
+			,		game_age
+			,		game_time
+			,		game_difficulty
+			,		theme_no
+			
+			FROM 
+					game
+		]]>
+	</select>
+	
+	<!-- 게임등록 -->
+	<insert id="write" parameterType="GameVo">
+		<![CDATA[
+			INSERT INTO 
+						game(
+					game_no
+				,	game_name_ko
+				,	game_name_en
+				,	game_people
+				,	game_age
+				,	game_time
+				,	game_difficulty
+				,	game_description
+				,	game_guide
+				,	game_img
+				,	theme_no
+			VALUES(
+					seq_game_no.NEXTVAL
+			   ,	#{gameNameKo}
+			   ,	#{gameNameEn}
+			   ,	#{gamePeople}
+			   ,	#{gameAge}
+			   ,	#{gameTime}
+			   ,	#{gameDifficulty}
+			   ,	#{gameDescription}
+			   ,	#{gameGuide}
+			   ,	#{gameImg}
+			   ,	#{themeNo}
+			   
+			   )
+							
+						
+		]]>
+	</insert>
+	
+	<!-- 게임상세정보(읽기) -->
+	<select id="read" parameterType="int" resultMap="resultMapGameVo">
+		<![CDATA[
+			SELECT  
+					game_no
+			,		game_name_ko
+			,		game_name_en
+			,		game_path_thumbnail
+			,		game_people
+			,		game_age
+			,		game_time
+			,		game_difficulty
+			,		theme_name
+			,		game_description
+			,		game_guide
+			
+			FROM 
+					game g
+			LEFT OUTER 
+			JOIN
+					theme t
+			ON	
+				g.theme_no = t.theme_no
+			WHERE
+				game_no = {#gameNo}	
+		]]>
+	</select>
+
+</mapper>

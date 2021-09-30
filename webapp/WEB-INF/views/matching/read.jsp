@@ -117,7 +117,7 @@
 				</table>
 			</div>
 
-			<div id="content-content" class="col-md-6">${matchingVo.matchingContent}</div>
+			<div id="content-content" class="col-md-6">${readInfo.matchingVo.matchingContent}</div>
 		</div>
 		<div id="read-btn" class="row">
 			<div class="col-md-3 text-center">

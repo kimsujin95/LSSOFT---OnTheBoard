@@ -112,7 +112,7 @@
 									<img id="img-crown" src="${pageContext.request.contextPath}/assets/images/matching/read-crown.png">
 								</c:if>
 								<br>
-							</c:forEach></td>
+							</c:forEach><span id="addMatchingMember"></span></td>
 					</tr>
 				</table>
 			</div>
@@ -121,7 +121,9 @@
 		</div>
 		<div id="read-btn" class="row">
 			<div class="col-md-3 text-center">
-				<a href="${pageContext.request.contextPath}/matching/joinMatching?matchingNo=${readInfo.matchingVo.matchingNo}&matchingPeople=${readInfo.matchingVo.matchingPeople}"><button class="btn-red">참가신청</button></a>
+				<%-- <a href="${pageContext.request.contextPath}/matching/joinMatching?matchingNo=${readInfo.matchingVo.matchingNo}"> --%>
+				<button id="btn-joinMatching" class="btn-red" data-user_no="${authUser.userNo}" data-matching_no="${readInfo.matchingVo.matchingNo}">참가신청</button>
+				<!-- </a> -->
 				<button class="btn-white">참가취소</button>
 			</div>
 			<div class="col-md-4 text-right">
@@ -230,5 +232,51 @@
 	<!-- // FOOTER -->
 
 </body>
+
+<script>
+
+$('#btn-joinMatching').on('click', function(){
+	
+	var userNo = $(this).data("user_no");
+	var matchingNo = $(this).data("matching_no");
+	
+	console.log(userNo);
+	console.log(matchingNo);
+	
+	var matchingGroupVo = {
+			userNo: userNo,
+			matchingNo: matchingNo
+	};
+	
+	console.log(matchingGroupVo);
+	
+	$.ajax({
+		url: '${pageContext.request.contextPath}/matching/joinMatching',
+		type: 'post',
+		data: matchingGroupVo,
+		success: function(userInfo){
+			console.log(userInfo);
+			render(userInfo);
+		},
+		error: function(XHR, status, error) {
+			console.log(status + ' : ' + error);
+		}
+		
+	});
+	
+});
+
+function render(userInfo) {
+	if (userInfo.userGender === 'male') {
+		var userGender = '남';
+	} else {
+		var userGender = '여';
+	}
+	var str = userInfo.userNickname + ' / ' + userInfo.userAge + ' / ' + userGender + '<br>';
+	
+	$('#addMatchingMember').append(str);
+}
+
+</script>
 
 </html>

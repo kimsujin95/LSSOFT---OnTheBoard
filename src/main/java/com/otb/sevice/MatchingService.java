@@ -111,12 +111,18 @@ public class MatchingService {
 	}
 	
 	// 매칭글 읽기 - 매칭 참가 신청 
-	public int joinMatching(MatchingGroupVo matchingGroupVo) {
+	public UserVo joinMatching(MatchingGroupVo matchingGroupVo) {
 		System.out.println("매칭 서비스: joinMatching;;;");
 		
 		int joinMatching = matchingDao.joinMatching(matchingGroupVo);
 		
-		return joinMatching;
+		// 그룹에 추가되는 유저 정보 불러오기
+		int userNo = matchingGroupVo.getUserNo();
+		System.out.println(userNo);
+		UserVo userInfo = userDao.selectUser(userNo);
+		System.out.println(userInfo);
+		
+		return userInfo;
 	}
 	
 

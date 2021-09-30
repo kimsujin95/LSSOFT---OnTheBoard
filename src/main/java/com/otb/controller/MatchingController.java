@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.otb.sevice.MatchingService;
 import com.otb.vo.MatchingGroupVo;
@@ -87,24 +88,23 @@ public class MatchingController {
 	}
 
 	// 매칭글 읽기 - 매칭 참가 신청
+	@ResponseBody
 	@RequestMapping("/joinMatching")
-	public String joinMaching(@ModelAttribute MatchingGroupVo matchingGroupVo, HttpSession session) {
+	public UserVo joinMaching(@ModelAttribute MatchingGroupVo matchingGroupVo) {
 		System.out.println("매칭 컨트롤러: joinMatching;;;");
+		System.out.println(matchingGroupVo);
+		
 		// 매칭글 번호 / 매칭 최대인원 확인
-		System.out.println(matchingGroupVo);
-		int matchingNo = matchingGroupVo.getMatchingNo();
+		// 매칭에 참가하는 유저no, 매칭no로 매칭 참가
+		UserVo joinMatchingUserInfo = matchingService.joinMatching(matchingGroupVo);
 		
-		// 참가할 로그인 유저 번호로 매칭그룹에 추가
-		UserVo authUser = (UserVo) session.getAttribute("authUser");
-		int userNo = authUser.getUserNo();
-		System.out.println(userNo);
-		
-		matchingGroupVo.setUserNo(userNo);
-		System.out.println(matchingGroupVo);
-		int joinMatching = matchingService.joinMatching(matchingGroupVo);
-		
-		return "redirect:/matching/read?no=" + matchingNo;
+		return joinMatchingUserInfo;
 	}
+	
+	
+	
+	
+	
 	
 	
 	

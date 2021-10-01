@@ -30,10 +30,11 @@ public class MatchingDao {
 	}
 
 	// 마이페이지 - 매칭 리스트
-	public List<MatchingVo> mypageList() {
+	public List<MatchingVo> mypageList(int userNo) {
 		System.out.println("매칭 다오: mypageList;;;");
+		System.out.println(userNo);
 
-		List<MatchingVo> matchingList = sqlSession.selectList("matching.mypageList");
+		List<MatchingVo> matchingList = sqlSession.selectList("matching.mypageList", userNo);
 
 		System.out.println(matchingList);
 

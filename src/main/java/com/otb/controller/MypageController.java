@@ -2,14 +2,18 @@ package com.otb.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.otb.sevice.MypageService;
 import com.otb.vo.MatchingVo;
+import com.otb.vo.UserVo;
 
 @Controller
 @RequestMapping(value="/mypage", method = {RequestMethod.GET, RequestMethod.POST})
@@ -42,9 +46,13 @@ public class MypageController {
 	
 	//매칭
 	@RequestMapping(value="/matching", method = {RequestMethod.GET, RequestMethod.POST})
-	public String matching(Model model) {
+	public String matching(Model model, @ModelAttribute UserVo userVo, HttpSession session) {
 		
-		List<MatchingVo> matchingList = mypageService.list();
+		System.out.println("[MypageController.matching()]");
+		
+		int userNo = ((UserVo) session.getAttribute("authUser")).getUserNo();
+		
+		List<MatchingVo> matchingList = mypageService.list(userNo);
 		
 		model.addAttribute("matchingList", matchingList);
 		

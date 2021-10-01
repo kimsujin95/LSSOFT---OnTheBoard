@@ -48,6 +48,22 @@
 				matching_no DESC
 		]]>
 	</select>
+	
+	<!-- (영하) 마이페이지 매칭 리스트 -->
+	<select id="mypageList" parameterType="int" resultMap="resultMapMatchingVo">
+		<![CDATA[
+			SELECT
+				m.matching_no,
+				mg.user_no,
+				m.matching_title,
+				m.matching_status,
+				m.matching_reg_date
+			FROM
+			    matching m, matching_group mg
+			WHERE
+			    mg.user_no = #{ userNo }
+		]]>
+	</select>
 
 	<!-- 매칭 글 등록 - 유저 나이 -->
 	<!-- <select id="userAge" parameterType="int" resultType="int">

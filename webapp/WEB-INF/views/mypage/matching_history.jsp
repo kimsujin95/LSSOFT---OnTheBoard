@@ -67,13 +67,13 @@
 				<tbody>
 
 					<c:forEach items="${matchingList}" var="matchingVo" varStatus="status">
-						<tr id="readMatching" onClick="location.href='${pageContext.request.contextPath}/matching/read?no=${matchingVo.matchingNo}'">
+						<tr>
 	
 							<td>${matchingVo.matchingNo}</td>
 							<td>${matchingVo.matchingTitle}</td>
 							<td>${matchingVo.matchingRegDate}</td>
 							<td>${matchingVo.matchingStatus}</td>
-							<td>상세정보</td>
+							<td><a href="${pageContext.request.contextPath}/matching/read?no=${matchingVo.matchingNo}">상세정보</a></td>
 							
 						</tr>
 					</c:forEach>

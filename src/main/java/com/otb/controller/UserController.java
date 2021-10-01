@@ -30,6 +30,7 @@ public class UserController {
 
 	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
 	public String login(Model model, @ModelAttribute UserVo userVo, HttpSession session) {
+		
 		System.out.println("[UserController.login()]");
 
 		UserVo authUser = userService.getUser(userVo);
@@ -40,12 +41,6 @@ public class UserController {
 			
 			session.setAttribute("authUser", authUser);
 			
-			int userNo = ((UserVo) session.getAttribute("authUser")).getUserNo();
-			
-			UserVo userInfo = userService.getUserInfo(userNo);
-			
-			model.addAttribute("userVo", userInfo);
-
 			return "redirect:/main";
 
 		} else {
@@ -99,14 +94,18 @@ public class UserController {
 		
 		System.out.println("[MypageController.confirm()]");
 		
-		int userNo = ((UserVo) session.getAttribute("authUser")).getUserNo();
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		
+		int userNo = authUser.getUserNo();
 		
 		userVo.setUserNo(userNo);
 		
 		int count = userService.userGradeModify(userVo);
 		
-		System.out.println(count + "건이 수정되었습니다.");
+		System.out.println(count + "건 변경 성공.");
 		
+		authUser.setUserGrade(userVo.getUserGrade());
+				
 		return "/mypage/confirm";
 	}
 

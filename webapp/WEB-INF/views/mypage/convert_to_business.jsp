@@ -408,15 +408,17 @@ NICE신용평가정보㈜(이하 “대행사”)가 “대행사”에서 제�
 		</div>
 
 		<div class="container">
-			<div class="row">
-				<div class="col-md-4 col-md-offset-4 text-center">
-					<button class="btn btn-red" id="btnSubmit">
-						<a href="${pageContext.request.contextPath}/main" onclick='javascript:window.open("${pageContext.request.contextPath}/user/modifyUserGrade/","confirm", "width=500px,height=650px,left=100px,top=100px");'>전환하기</a>
-						</button>
-				</div>
-			</div>
-		</div>
+			<form id="businessForm" method="post" action="${pageContext.request.contextPath}/user/modifyUserGrade">
+				<div class="row">
+					<div class="col-md-4 col-md-offset-4 text-center">
 
+						<button type="submit" class="btn btn-red" id="btnSubmit">
+						         전환하기
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
 
 	<!-- FOOTER -->

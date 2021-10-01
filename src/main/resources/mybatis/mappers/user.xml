@@ -30,6 +30,7 @@
 			      user_no
 			     ,user_id
 				 ,user_nickname
+				 ,user_grade
 			FROM 
 			      users
 			WHERE 

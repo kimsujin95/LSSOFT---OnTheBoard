@@ -10,22 +10,12 @@
 
 	<div class="small-menu" class="clearfix">
 
-		<c:choose>
+		<c:if test="${authUser.userGrade==2}">
 
-			<c:when test="${!empty authUser}">
-				
-				
-
-					<div id="admin-menu">
-						<a href="${pageContext.request.contextPath }/admin/main">매장관리${userVo.userGrade}</a>
-					</div>
-					
-				
-	
-
-			</c:when>
-
-		</c:choose>
+			<div id="admin-menu">
+				<a href="${pageContext.request.contextPath }/admin/main">매장관리</a>
+			</div>
+		</c:if>
 
 		<div id="user-menu">
 

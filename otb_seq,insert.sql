@@ -159,45 +159,83 @@ VALUES
 -- // INSERT GAME
 
 -- INSERT THEME
-INSERT INTO
-    theme
-VALUES
-    (
-        seq_theme_no.NEXTVAL,
-        '테마1'
-    );
+CREATE SEQUENCE seq_theme_no 
+INCREMENT BY 1
+START WITH 1;
 
 INSERT INTO
-    theme
-VALUES
-    (
-        seq_theme_no.NEXTVAL,
-        '테마2'
-    );
+        THEME(  theme_no, theme_name)
+VALUES (
+        SEQ_THEME_NO.nextval
+    ,   '전략');
+    
+      INSERT INTO
+        THEME(  theme_no, theme_name)
+VALUES (
+        SEQ_THEME_NO.nextval
+    ,   '추상');
+      INSERT INTO
+        THEME(  theme_no, theme_name)
+VALUES (
+        SEQ_THEME_NO.nextval
+    ,   '컬렉터블');
+    
+      INSERT INTO
+        THEME(  theme_no, theme_name)
+VALUES (
+        SEQ_THEME_NO.nextval
+    ,   '가족');
+      INSERT INTO
+        THEME(  theme_no, theme_name)
+VALUES (
+        SEQ_THEME_NO.nextval
+    ,   '파티');
+      INSERT INTO
+        THEME(  theme_no, theme_name)
+VALUES (
+        SEQ_THEME_NO.nextval
+    ,   '어린이');
+      INSERT INTO
+        THEME(  theme_no, theme_name)
+VALUES (
+        SEQ_THEME_NO.nextval
+    ,   '테마');
+      INSERT INTO
+        THEME(  theme_no, theme_name)
+VALUES (
+        SEQ_THEME_NO.nextval
+    ,   '워게임');
+      INSERT INTO
+        THEME(  theme_no, theme_name)
+VALUES (
+        SEQ_THEME_NO.nextval
+    ,   '한글');
+      INSERT INTO
+        THEME(  theme_no, theme_name)
+VALUES (
+        SEQ_THEME_NO.nextval
+    ,   '경제');
+      INSERT INTO
+        THEME(  theme_no, theme_name)
+VALUES (
+        SEQ_THEME_NO.nextval
+    ,   '협력');
+      INSERT INTO
+        THEME(  theme_no, theme_name)
+VALUES (
+        SEQ_THEME_NO.nextval
+    ,   '퍼즐');
+      INSERT INTO
+        THEME(  theme_no, theme_name)
+VALUES (
+        SEQ_THEME_NO.nextval
+    ,   '모험');
+      INSERT INTO
+        THEME(  theme_no, theme_name)
+VALUES (
+        SEQ_THEME_NO.nextval
+    ,   '주사위');
 
-INSERT INTO
-    theme
-VALUES
-    (
-        seq_theme_no.NEXTVAL,
-        '테마3'
-    );
-
-INSERT INTO
-    theme
-VALUES
-    (
-        seq_theme_no.NEXTVAL,
-        '테마4'
-    );
-
-INSERT INTO
-    theme
-VALUES
-    (
-        seq_theme_no.NEXTVAL,
-        '테마5'
-    );
 -- // INSERT THEME
 
 -- INSERT SIDO

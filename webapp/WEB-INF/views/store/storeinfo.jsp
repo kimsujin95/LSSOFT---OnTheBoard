@@ -458,12 +458,12 @@
 							<!-- 그룹리스트중 하나 선택 시 그룹원들의 리스트가 matching_group_info에 나열 -->
 							<ul id="matching_group_info"></ul>
 
-							<ul class="group_wrap">
+							<%-- <ul class="group_wrap">
 								<!-- 그룹 구성원 인원수 만큼 프로필 게시 -->
 								<li class="group_user_info"><img class="group_user_profile_img" src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
 									<label>드웨인_존슨</label></li>
 								<!-- //그룹 구성원 인원수 만큼 프로필 게시 -->
-							</ul>
+							</ul> --%>
 						</div>
 					</div>
 
@@ -769,11 +769,11 @@
     		        type : 'POST',
     		        data : {matchingno : no},
     		        
-    		        success : function() {
+    		        success : function(grouplistinfo) {
     		            // ajax 랜더링 for문
     		        	//#matching_group_info 뒤에 그룹원 정보 리스트 출력하는 함수
-    					
-    		        	
+    		        	displaygrouplist(grouplistinfo);
+    		        	console.log(grouplistinfo);
     		        	
     		        }, // success 
     				
@@ -788,6 +788,46 @@
     		
         });
         
+        function displaygrouplist(grouplistinfo){
+        	
+        	var listEl = document.getElementById('matching_group_info'),
+        	fragment = document.createDocumentFragment(),
+        	listStr = '';
+        	
+        	// 검색 결과 목록에 추가된 항목들을 제거합니다
+    	    removeAllChildNods(listEl);
+        	
+        	for(var i =0; i<grouplistinfo.length; i++){
+        		
+        		var itemEl = getListItem(i,grouplistinfo[i]);
+        		
+        		fragment.appendChild(itemEl);
+        		
+        	};
+        	
+        	//그룹원 항목을 Element에 추가
+        	listEl.appendChild(fragment);
+        	
+        };
+        
+    	// 그룹원 항목을 Element로 반환하는 함수
+    	function getListItem(index, grouplistinfo) {
+
+    	    var el = document.createElement('li'),
+    	    itemStr = '<label>'+ grouplistinfo.userNickname +'</label>';
+
+    	    el.innerHTML = itemStr;
+    	    el.className = 'item';
+
+    	    return el;
+    	}
+        
+    	// 그룹원 목록의 자식 Element를 제거하는 함수
+    	function removeAllChildNods(el) {   
+    	    while (el.hasChildNodes()) {
+    	        el.removeChild (el.lastChild);
+    	    }
+    	}
         
     </script>
 

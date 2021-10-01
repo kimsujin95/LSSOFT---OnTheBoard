@@ -8,10 +8,10 @@ public class GameVo {
 	private String gameNameEn;
 	private String gameImg;
 	private String gamePeople;
-	private int gameAge;
-	private int gameTime;
-	private int gameDifficulty;
-	private String gmaeDescription;
+	private String gameAge;
+	private String gameTime;
+	private String gameDifficulty;
+	private String gameDescription;
 	private String gameGuide;
 	private int themeNo;
 	
@@ -23,9 +23,10 @@ public class GameVo {
 	public GameVo() {
 	}
 	
-	
-	public GameVo(int gameNo, String gameNameKo, String gameNameEn, String gameImg, String gamePeople,
-			int gameAge, int gameTime, int gameDifficulty, String gmaeDescription, String gameGuide, int themeNo, String gameThumbImg) {
+	public GameVo(int gameNo, String gameNameKo, String gameNameEn, String gameImg, String gamePeople, String gameAge,
+			String gameTime, String gameDifficulty, String gameDescription, String gameGuide, int themeNo,
+			String gameThumbImg) {
+		super();
 		this.gameNo = gameNo;
 		this.gameNameKo = gameNameKo;
 		this.gameNameEn = gameNameEn;
@@ -34,141 +35,118 @@ public class GameVo {
 		this.gameAge = gameAge;
 		this.gameTime = gameTime;
 		this.gameDifficulty = gameDifficulty;
-		this.gmaeDescription = gmaeDescription;
+		this.gameDescription = gameDescription;
 		this.gameGuide = gameGuide;
 		this.themeNo = themeNo;
 		this.gameThumbImg = gameThumbImg;
 	}
-
-
-	//generic-g/s
 
 	public int getGameNo() {
 		return gameNo;
 	}
 
-
 	public void setGameNo(int gameNo) {
 		this.gameNo = gameNo;
 	}
-
 
 	public String getGameNameKo() {
 		return gameNameKo;
 	}
 
-
 	public void setGameNameKo(String gameNameKo) {
 		this.gameNameKo = gameNameKo;
 	}
-
 
 	public String getGameNameEn() {
 		return gameNameEn;
 	}
 
-
 	public void setGameNameEn(String gameNameEn) {
 		this.gameNameEn = gameNameEn;
 	}
-
 
 	public String getGameImg() {
 		return gameImg;
 	}
 
-
 	public void setGameImg(String gameImg) {
 		this.gameImg = gameImg;
 	}
-
 
 	public String getGamePeople() {
 		return gamePeople;
 	}
 
-
 	public void setGamePeople(String gamePeople) {
 		this.gamePeople = gamePeople;
 	}
 
-
-	public int getGameAge() {
+	public String getGameAge() {
 		return gameAge;
 	}
 
-
-	public void setGameAge(int gameAge) {
+	public void setGameAge(String gameAge) {
 		this.gameAge = gameAge;
 	}
 
-	public int getGameTime() {
+	public String getGameTime() {
 		return gameTime;
 	}
 
-
-	public void setGameTime(int gameTime) {
+	public void setGameTime(String gameTime) {
 		this.gameTime = gameTime;
 	}
 
-	public int getGameDifficulty() {
+	public String getGameDifficulty() {
 		return gameDifficulty;
 	}
 
-
-	public void setGameDifficulty(int gameDifficulty) {
+	public void setGameDifficulty(String gameDifficulty) {
 		this.gameDifficulty = gameDifficulty;
 	}
 
-
-	public String getGmaeDescription() {
-		return gmaeDescription;
+	public String getGameDescription() {
+		return gameDescription;
 	}
 
-
-	public void setGmaeDescription(String gmaeDescription) {
-		this.gmaeDescription = gmaeDescription;
+	public void setGameDescription(String gameDescription) {
+		this.gameDescription = gameDescription;
 	}
-
 
 	public String getGameGuide() {
 		return gameGuide;
 	}
 
-
 	public void setGameGuide(String gameGuide) {
 		this.gameGuide = gameGuide;
 	}
-
 
 	public int getThemeNo() {
 		return themeNo;
 	}
 
-
 	public void setThemeNo(int themeNo) {
 		this.themeNo = themeNo;
 	}
-	
+
 	public String getGameThumbImg() {
 		return gameThumbImg;
 	}
-
 
 	public void setGameThumbImg(String gameThumbImg) {
 		this.gameThumbImg = gameThumbImg;
 	}
 
-	//generic-method
-
 	@Override
 	public String toString() {
 		return "GameVo [gameNo=" + gameNo + ", gameNameKo=" + gameNameKo + ", gameNameEn=" + gameNameEn + ", gameImg="
 				+ gameImg + ", gamePeople=" + gamePeople + ", gameAge=" + gameAge + ", gameTime=" + gameTime
-				+ ", gameDifficulty=" + gameDifficulty + ", gmaeDescription=" + gmaeDescription + ", gameGuide="
+				+ ", gameDifficulty=" + gameDifficulty + ", gameDescription=" + gameDescription + ", gameGuide="
 				+ gameGuide + ", themeNo=" + themeNo + ", gameThumbImg=" + gameThumbImg + "]";
 	}
-
+	
+	
+	
 	
 
 	

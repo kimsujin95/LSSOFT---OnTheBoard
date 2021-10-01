@@ -29,14 +29,14 @@ public class GameService {
 	}
 	
 	//게임상세정보
-	public GameVo gameRead(int gameNo) {
+	public GameVo gameDetails(int gameNo) {
 		System.out.println("[GameService.gameRead()]");
 		
-		GameVo GameVo = gameDao.gameRead(gameNo);
+		GameVo gameVo = gameDao.gameDetails(gameNo);
 		
-		System.out.println(GameVo);
+		System.out.println(gameVo);
 		
-		return GameVo;
+		return gameVo;
 	}
 	/*
 	@Autowired(required=false)

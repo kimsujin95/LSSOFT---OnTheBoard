@@ -137,15 +137,21 @@
 	    var listEl = document.getElementById('searchlist'),
 	    	menuEl = document.getElementById('menu_wrap'),
 	    	fragment = document.createDocumentFragment(),
+	    	bounds = new kakao.maps.LatLngBounds(),
 	    	listStr = '';
 	    
 	    // 검색 결과 목록에 추가된 항목들을 제거합니다
 	    removeAllChildNods(listEl);
 			    
 	    for ( var i=0; i<places.length; i++ ) {
-
-	    	var itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
+	    	var placePosition = new kakao.maps.LatLng(places[i].storeLat, places[i].storeLng), //검색된 매장의 위도경도값을 placePosition 에 담아준다.
+	    		/* marker = addMarker(placePosition, i), //i번째 매장의 좌표값을 marker에 담아준다. */
+	    	 	itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
 			
+	    	bounds.extend(placePosition);
+	    	 	
+	    	 	
+	    	 	
 	    	fragment.appendChild(itemEl);
 	    	
 	    }

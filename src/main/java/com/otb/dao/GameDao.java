@@ -28,11 +28,11 @@ public class GameDao {
 	public GameVo gameDetails(int gameNo) {
 		System.out.println("[GameDao.gameRead]");
 		
-		GameVo GameVo = sqlSession.selectOne("game.read", gameNo);
+		GameVo gameVo = sqlSession.selectOne("game.read", gameNo);
 		
-		System.out.println(GameVo);
+		System.out.println(gameVo);
 
-		return GameVo;
+		return gameVo;
 	}
 	
 	//게임등록

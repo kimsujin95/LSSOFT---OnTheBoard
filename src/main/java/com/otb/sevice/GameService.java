@@ -32,11 +32,11 @@ public class GameService {
 	public GameVo gameDetails(int gameNo) {
 		System.out.println("[GameService.gameRead()]");
 		
-		GameVo GameVo = gameDao.gameDetails(gameNo);
+		GameVo gameVo = gameDao.gameDetails(gameNo);
 		
-		System.out.println(GameVo);
+		System.out.println(gameVo);
 		
-		return GameVo;
+		return gameVo;
 	}
 	/*
 	@Autowired(required=false)

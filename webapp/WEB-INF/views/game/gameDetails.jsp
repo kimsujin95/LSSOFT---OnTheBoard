@@ -64,7 +64,7 @@
 					<!-- .innerbox -->
 					<div class="innerbox">
 						<div class="thum">
-							<img src="${gameVo.gameThumbImg }" alt="${gameVo.gameNameKo }">
+							<img src="${pageContext.request.contextPath}/upload/${gameVo.gameThumbImg }" alt="${gameVo.gameNameKo }">
 						</div>
 						<!--별점 평점 기능 넣기-->
 						<div id="star-rater"></div>
@@ -103,12 +103,9 @@
 				<!-- #gameIntro -->
 				<div id="gameIntro">
 
-					<dl style="border-bottom: 0px; text-align: center;">
-						<img src="${gameVo.gameDescription }"
-							title="${gameVo.gameNameKo }" alt="${gameVo.gameNameKo }">
-						<br>
-						<br>
-					</dl>
+					<div >
+						<img src="${pageContext.request.contextPath}/upload/${gameVo.gameDescription }" alt="${gameVo.gameNameKo }">
+					</div>
 				</div>
 			
 			<!-- /#gameIntro -->
@@ -143,7 +140,7 @@
 									<td>강남보드게임</td>
 									<td>서울시 강남구 역삼동</td>
 									<td>02-555-1234</td>
-									<td><span class="linkStore"><a href="">매장정보<br>상세보기
+									<td><span class="linkStore"><a href="${storeVo.ownStore }">매장정보<br>상세보기
 										</a></span></td>
 								</tr>
 								<tr class="storeList_body">
@@ -170,14 +167,7 @@
 									<td><span class="linkStore"><a href="">매장정보<br>상세보기
 										</a></span></td>
 								</tr>
-								<tr class="storeList_body">
-									<td>5</td>
-									<td>강남보드게임</td>
-									<td>서울시 강남구 역삼동</td>
-									<td>02-555-1234</td>
-									<td><span class="linkStore"><a href="">매장정보<br>상세보기
-										</a></span></td>
-								</tr>
+							
 							</tbody>
 
 						</table>
@@ -200,18 +190,15 @@
 
 			<div id="gameGuide">
 				<!--<h3>게임가이드</h3>-->
-				<dl>
-					<div class="videowrap">
-						<div class="embed-container">
-							<iframe width="100%" height="485" src="${gameVo.gameGuide}"
-								title="YouTube video player" showinfo="0" loading="lazy" marginheight="30"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-								allowfullscreen>
-							</iframe>
-						</div>
-						
+				<div class="videowrap">
+					<div class="embed-container">
+						<iframe width="100%" height="485" src="https://www.youtube.com/embed/${gameVo.gameGuide}"
+							title="YouTube video player" showinfo="0" loading="lazy" marginheight="30"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+							allowfullscreen>
+						</iframe>
 					</div>
-				</dl>
+				</div>
 			</div>
 			<!-- /#gameGuide -->
 		</div>

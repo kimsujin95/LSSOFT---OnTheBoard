@@ -198,8 +198,7 @@ select:disabled {
 .gameDetail .gameInfo .infoBox ul.info:first-child{margin-bottom:20px;padding:24px 15px 22px;border:1px solid #dedede;background:#f8f8f8;}
 .gameDetail .tabMenu01{margin-top:50px;}
 .gameDetail #gameIntro{margin-top:30px;border:1px solid #d9d9d9;}
-.gameDetail #gameIntro>dl:first-child{margin:30px;border-bottom:1px solid #d9d9d9;}
-.gameDetail #gameIntro>dl div {max-width:780px; margin:0 auto;}
+.gameDetail #gameIntro>div {border-bottom: 0px; text-align: center;margin:30px;}
 .gameDetail #gameIntro>dl p {max-width:780px; margin:0 auto;}
 .gameDetail #gameIntro dt{font-size:20px;color:#333;}
 .gameDetail #gameIntro dt img{margin-right:10px;vertical-align:middle;}

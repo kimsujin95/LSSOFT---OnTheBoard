@@ -47,7 +47,7 @@
 					<ul>
 						<li><a href="${pageContext.request.contextPath}/main">메인</a></li>
 						<li><a href="${pageContext.request.contextPath}/game/list">게임목록</a></li>
-						<li class="last-li"><a href="${pageContext.request.contextPath}/game/gameDetails?id=">게임세부정보</a></li>
+						<li class="last-li"><a href="${pageContext.request.contextPath}/game/gameDetails?gameNo=${gameVo.gameNo}">게임세부정보</a></li>
 					</ul>
 				</div>
 			</div>
@@ -63,23 +63,22 @@
 				<div class="gameInfo">
 					<!-- .innerbox -->
 					<div class="innerbox">
-
 						<div class="thum">
-							<img src="${pageContext.request.contextPath }/assets/images/game/bonanza1.png" alt="Bonanza">
+							<img src="${gameVo.gameThumbImg }" alt="${gameVo.gameNameKo }">
 						</div>
 						<!--별점 평점 기능 넣기-->
 						<div id="star-rater"></div>
 						<!-- infoBox -->
 						<div class="infoBox">
 							<ul class="info">
-								<li class="gameTitle">보난자 <span>Bonanza</span>
+								<li class="gameTitle">${gameVo.gameNameKo}<span>${gameVo.gameNameEn}</span>
 								</li>
-								<li><em>대상연령</em>만 10세 이상</li>
-								<li><em>게임인원</em>3명 ~ 5명</li>
-								<li><em>게임시간</em>45분</li>
-								<li><em>게임난이도</em>초급</li>
+								<li><em>대상연령</em>${gameVo.gameAge}</li>
+								<li><em>게임인원</em>${gameVo.gamePeople}</li>
+								<li><em>게임시간</em>${gameVo.gameTime}</li>
+								<li><em>게임난이도</em>${gameVo.gameDifficulty}</li>
 
-								<li><em>게임테마</em><a href="">#카드게임 </a><a href="">#협상</a></li>
+								<li><em>게임테마</em><a href="">#${gameVo.themeNo} </a></li>
 							</ul>
 							<div class="bbssvc">
 								<button class="btn-blue">찜하기</button>
@@ -105,8 +104,8 @@
 				<div id="gameIntro">
 
 					<dl style="border-bottom: 0px; text-align: center;">
-						<img src="${pageContext.request.contextPath }/assets/images/game/bonanza_intro.jpg"
-							title="bonanza_intro.jpg" alt="보난자">
+						<img src="${gameVo.gameDescription }"
+							title="${gameVo.gameNameKo }" alt="${gameVo.gameNameKo }">
 						<br>
 						<br>
 					</dl>
@@ -204,18 +203,17 @@
 				<dl>
 					<div class="videowrap">
 						<div class="embed-container">
-							<iframe width="100%" height="485" src="https://www.youtube.com/embed/sQVG5UWCSLg"
+							<iframe width="100%" height="485" src="${gameVo.gameGuide}"
 								title="YouTube video player" showinfo="0" loading="lazy" marginheight="30"
 								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-								allowfullscreen
-							>
+								allowfullscreen>
+							</iframe>
 						</div>
-						</iframe>
+						
 					</div>
 				</dl>
 			</div>
 			<!-- /#gameGuide -->
-
 		</div>
 		<!-- /.gameDetail -->
 	</div>

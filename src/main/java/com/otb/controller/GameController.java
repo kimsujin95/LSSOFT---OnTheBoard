@@ -38,10 +38,10 @@ public class GameController {
 	
 	//게임 읽기(게임정보 상세)
 	@RequestMapping(value="/gameDetails")
-	public String gameDetails(Model model, @RequestParam("gameNo") int gameNo) {
+	public String gameDetails(Model model, @RequestParam("no") int gameNo) {
 		System.out.println("[GameController/gameDetails]");
 		
-		GameVo gameVo = gameService.gameRead(gameNo);
+		GameVo gameVo = gameService.gameDetails(gameNo);
 		System.out.println(gameVo);
 				
 		model.addAttribute("gameVo", gameVo);

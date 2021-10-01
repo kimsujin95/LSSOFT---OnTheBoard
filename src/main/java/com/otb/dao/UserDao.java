@@ -36,4 +36,14 @@ public class UserDao {
 
 	}
 	
+	//유저등급변경
+	
+	public int updateUserGrade(UserVo userVo) {
+		
+		System.out.println("[UserDao.updateUserGrade()]");
+		
+		return sqlSession.update("user.updateUserGrade", userVo);
+		
+	}
+	
 }

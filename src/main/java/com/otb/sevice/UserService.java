@@ -47,5 +47,17 @@ public class UserService {
 		
 	}
 	
+	//유저등급변경
+	
+	public int userGradeModify(UserVo userVo) {
+		
+		System.out.println("[UserService.userGradeModify()]");
+		
+		int count = userDao.updateUserGrade(userVo);
+		
+		return count;
+		
+	}
+	
 
 }

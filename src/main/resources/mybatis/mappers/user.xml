@@ -51,6 +51,7 @@
 				 ,user_gender
 				 ,user_birth_date
 				 ,to_char(sysdate, 'yyyy') - to_char(user_birth_date, 'yyyy') + 1 user_age
+				 ,user_grade
 				 ,user_reg_date
 			FROM 
 			      users
@@ -87,5 +88,20 @@
 			   )
 		]]>
 	</insert>
+	
+	<!-- 회원등급변경 -->
+	<update id="updateUserGrade" parameterType="UserVo">
+	
+			<![CDATA[
+			UPDATE  
+			    users
+			SET 
+			    user_grade = 2
+			WHERE 
+			    user_no = #{userNo}
+       	    ]]>
+	
+	</update>
+	
 
 </mapper>

@@ -136,7 +136,7 @@
 
 	    var listEl = document.getElementById('searchlist'),
 	    	menuEl = document.getElementById('menu_wrap'),
-	    	fragment = document.createDocumentFragment(), 
+	    	fragment = document.createDocumentFragment(),
 	    	listStr = '';
 	    
 	    // 검색 결과 목록에 추가된 항목들을 제거합니다

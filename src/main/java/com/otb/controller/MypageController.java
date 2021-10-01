@@ -8,8 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.otb.sevice.MatchingService;
-import com.otb.sevice.UserService;
+import com.otb.sevice.MypageService;
 import com.otb.vo.MatchingVo;
 
 @Controller
@@ -17,8 +16,7 @@ import com.otb.vo.MatchingVo;
 public class MypageController {
 	
 	@Autowired
-	private UserService userService;
-	private MatchingService matchingService;
+	private MypageService mypageService;
 	
 	//메인
 	@RequestMapping(value="/main", method = {RequestMethod.GET, RequestMethod.POST})
@@ -46,7 +44,7 @@ public class MypageController {
 	@RequestMapping(value="/matching", method = {RequestMethod.GET, RequestMethod.POST})
 	public String matching(Model model) {
 		
-		List<MatchingVo> matchingList = matchingService.list();
+		List<MatchingVo> matchingList = mypageService.list();
 		
 		model.addAttribute("matchingList", matchingList);
 		

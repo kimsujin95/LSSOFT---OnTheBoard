@@ -4,10 +4,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.otb.sevice.UserService;
 import com.otb.vo.UserVo;
@@ -29,7 +29,7 @@ public class UserController {
 	// 로그인
 
 	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
-	public String login(@ModelAttribute UserVo userVo, HttpSession session) {
+	public String login(Model model, @ModelAttribute UserVo userVo, HttpSession session) {
 		System.out.println("[UserController.login()]");
 
 		UserVo authUser = userService.getUser(userVo);
@@ -39,6 +39,12 @@ public class UserController {
 			System.out.println("[LOGIN SUCCEED]");
 			
 			session.setAttribute("authUser", authUser);
+			
+			int userNo = ((UserVo) session.getAttribute("authUser")).getUserNo();
+			
+			UserVo userInfo = userService.getUserInfo(userNo);
+			
+			model.addAttribute("userVo", userInfo);
 
 			return "redirect:/main";
 
@@ -85,6 +91,23 @@ public class UserController {
 
 		return "/user/login_form";
 
+	}
+	
+	//회원등급변경
+	@RequestMapping(value="/modifyUserGrade", method = {RequestMethod.GET, RequestMethod.POST})
+	public String confirm(@ModelAttribute UserVo userVo, HttpSession session) {
+		
+		System.out.println("[MypageController.confirm()]");
+		
+		int userNo = ((UserVo) session.getAttribute("authUser")).getUserNo();
+		
+		userVo.setUserNo(userNo);
+		
+		int count = userService.userGradeModify(userVo);
+		
+		System.out.println(count + "건이 수정되었습니다.");
+		
+		return "/mypage/confirm";
 	}
 
 }

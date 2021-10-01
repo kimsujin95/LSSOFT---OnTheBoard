@@ -1,12 +1,22 @@
 package com.otb.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.otb.sevice.MypageService;
+import com.otb.vo.MatchingVo;
 
 @Controller
 @RequestMapping(value="/mypage", method = {RequestMethod.GET, RequestMethod.POST})
 public class MypageController {
+	
+	@Autowired
+	private MypageService mypageService;
 	
 	//메인
 	@RequestMapping(value="/main", method = {RequestMethod.GET, RequestMethod.POST})
@@ -32,7 +42,11 @@ public class MypageController {
 	
 	//매칭
 	@RequestMapping(value="/matching", method = {RequestMethod.GET, RequestMethod.POST})
-	public String matching() {
+	public String matching(Model model) {
+		
+		List<MatchingVo> matchingList = mypageService.list();
+		
+		model.addAttribute("matchingList", matchingList);
 		
 		return "/mypage/matching_history";
 	}
@@ -65,7 +79,7 @@ public class MypageController {
 		
 		return "/mypage/convert_to_business";
 	}
-	
+		
 	//사이드바
 	
 	@RequestMapping(value="/side", method = {RequestMethod.GET, RequestMethod.POST})

@@ -79,7 +79,7 @@
 					<div id="bir_wrap">
 						<!-- BIRTH_YY -->
 						<div id="bir_yy">
-							<span class="box"> <input type="text" name="userBirthDate" id="yy" class="int" maxlength="8" placeholder="생년월일(8자리)">
+							<span class="box"> <input type="text" name="userBirthDate" id="yy" class="int" maxlength="8" placeholder="생년월일( 8자리'yyyymmdd' )">
 							</span>
 						</div>
 						
@@ -124,7 +124,7 @@
 					<span class="box gender_code"> <select id="gender" name="userGender" class="sel">
 							<option>성별</option>
 							<option value="male">남자</option>
-							<option value="femail">여자</option>
+							<option value="female">여자</option>
 					</select>
 					</span> <span class="error_next_box">필수 정보입니다.</span>
 				</div>

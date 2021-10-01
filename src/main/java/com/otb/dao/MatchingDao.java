@@ -29,6 +29,17 @@ public class MatchingDao {
 		return matchingList;
 	}
 
+	// 마이페이지 - 매칭 리스트
+	public List<MatchingVo> mypageList() {
+		System.out.println("매칭 다오: mypageList;;;");
+
+		List<MatchingVo> matchingList = sqlSession.selectList("matching.mypageList");
+
+		System.out.println(matchingList);
+
+		return matchingList;
+	}
+
 	// 매칭글 쓰기폼 - 유저 나이
 	/*
 	 * public int userAge(int userNo) { System.out.println("매칭 다오: userAge;;;");
@@ -107,22 +118,22 @@ public class MatchingDao {
 
 		return joinMatching;
 	}
-	
+
 	// 리스트 / 매칭글 읽기 - 현재 매칭에 참가중인 인원 수
 	public int matchingMember(int matchingNo) {
 		System.out.println("매칭 다오: matchingMember;;;");
 		int matchingMember = sqlSession.selectOne("matching.matchingMember", matchingNo);
 		System.out.println(matchingMember);
-		
+
 		return matchingMember;
 	}
-	
+
 	// 매칭글 읽기 - 현재 매칭에 참가중인 인원 정보
 	public List<UserVo> matchingMemberInfoList(int matchingNo) {
 		System.out.println("매칭 다오: matchingMemberInfoList;;;");
-		
+
 		List<UserVo> matchingMemberInfoList = sqlSession.selectList("matching.matchingMemberInfoList", matchingNo);
-		
+
 		return matchingMemberInfoList;
 	}
 

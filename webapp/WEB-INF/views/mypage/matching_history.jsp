@@ -65,34 +65,18 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>할리갈리 하실분</td>
-						<td>2021-08-03</td>
-						<td>매칭중</td>
-						<td>상세정보</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>할리갈리 하실분</td>
-						<td>2021-08-03</td>
-						<td>매칭완료</td>
-						<td>상세정보</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>할리갈리 하실분</td>
-						<td>2021-08-03</td>
-						<td>매칭취소</td>
-						<td>상세정보</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>할리갈리 하실분</td>
-						<td>2021-08-03</td>
-						<td>매칭완료</td>
-						<td>상세정보</td>
-					</tr>
+
+					<c:forEach items="${matchingList}" var="matchingVo" varStatus="status">
+						<tr id="readMatching" onClick="location.href='${pageContext.request.contextPath}/matching/read?no=${matchingVo.matchingNo}'">
+	
+							<td>${matchingVo.matchingNo}</td>
+							<td>${matchingVo.matchingTitle}</td>
+							<td>${matchingVo.matchingRegDate}</td>
+							<td>${matchingVo.matchingStatus}</td>
+							<td>상세정보</td>
+							
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>

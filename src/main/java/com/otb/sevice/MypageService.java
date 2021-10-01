@@ -14,11 +14,11 @@ public class MypageService {
 	@Autowired
 	private MatchingDao matchingDao;
 	
-	public List<MatchingVo> list() {
+	public List<MatchingVo> list(int userNo) {
 		
 		System.out.println("[MypageService.list()]");
 		
-		List<MatchingVo> matchingList = matchingDao.mypageList();
+		List<MatchingVo> matchingList = matchingDao.mypageList(userNo);
 		
 		return matchingList;
 	}

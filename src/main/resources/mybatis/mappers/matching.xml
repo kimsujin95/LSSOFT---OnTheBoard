@@ -59,7 +59,8 @@
 				m.matching_status,
 				m.matching_reg_date
 			FROM
-			    matching m, matching_group mg
+			    matching m LEFT OUTER JOIN matching_group mg
+			    ON m.matching_no = mg.matching_no
 			WHERE
 			    mg.user_no = #{ userNo }
 		]]>

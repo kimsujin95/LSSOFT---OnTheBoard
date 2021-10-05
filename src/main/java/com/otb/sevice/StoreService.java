@@ -64,7 +64,11 @@ public class StoreService {
 	public List<ReservationTimeVo> getDateInfo(ReservationDateVo reservationDateVo) {
 		System.out.println("StoreService.getDateInfo");
 		
-		return storeDao.getDateInfo(reservationDateVo);
+		int reservationDateNo = storeDao.getDateNo(reservationDateVo);
+		System.out.println(reservationDateNo);
+		
+		
+		return null;
 	}
 	
 }

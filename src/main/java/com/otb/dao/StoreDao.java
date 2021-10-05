@@ -55,10 +55,10 @@ public class StoreDao {
 		return sqlSession.selectList("store.getgrouplist",matchingno);
 	}
 	
-	public List<ReservationTimeVo> getDateInfo(ReservationDateVo reservationDateVo){
+	public int getDateNo(ReservationDateVo reservationDateVo){
 		System.out.println("[StoreDao.getDateInfo]");
 		
-		return sqlSession.selectList("store.getDateInfo", reservationDateVo);
+		return sqlSession.selectOne("store.getDateInfo", reservationDateVo);
 	}
 	
 }

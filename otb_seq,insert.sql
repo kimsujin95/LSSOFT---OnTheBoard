@@ -444,3 +444,26 @@ VALUES
         127.02286735499807
     );
 -- // INSERT STORE
+    
+ -- INSERT RESERVATIONDATE
+insert into reservation_date
+values(SEQ_RESERVATION_DATE_NO.nextval, 1, '2010/10/05', 20, 4);
+
+insert into reservation_date
+values(SEQ_RESERVATION_DATE_NO.nextval, 2, '2010/10/05', 20, 4);
+
+insert into reservation_time
+values(SEQ_RESERVATION_TIME_NO.nextval, 1, '09');
+
+insert into reservation_time
+values(SEQ_RESERVATION_TIME_NO.nextval, 1, '10');
+
+insert into reservation_time
+values(SEQ_RESERVATION_TIME_NO.nextval, 1, '11');
+
+insert into reservation_time
+values(SEQ_RESERVATION_TIME_NO.nextval, 2, '09');
+
+insert into reservation_time
+values(SEQ_RESERVATION_TIME_NO.nextval, 2, '10');
+--// INSERT RESERVATIONDATE

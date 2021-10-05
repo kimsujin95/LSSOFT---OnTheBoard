@@ -11,7 +11,6 @@ public class ReservationVo {
 	private String reservationType;
 	private int reservationDateNo;
 	
-	
 	//constructors
 	public ReservationVo() {
 		

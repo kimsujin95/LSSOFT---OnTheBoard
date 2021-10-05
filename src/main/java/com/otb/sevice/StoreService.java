@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.otb.dao.StoreDao;
 import com.otb.vo.MatchingVo;
+import com.otb.vo.ReservationDateVo;
+import com.otb.vo.ReservationTimeVo;
 import com.otb.vo.StoreVo;
 import com.otb.vo.UserVo;
 
@@ -56,6 +58,13 @@ public class StoreService {
 		System.out.println("[StoreService.grouplist]");
 		
 		return storeDao.grouplist(matchingno);
+	}
+	
+	//선택한 날짜의 예약가능시간 정보 가져오기
+	public List<ReservationTimeVo> getDateInfo(ReservationDateVo reservationDateVo) {
+		System.out.println("StoreService.getDateInfo");
+		
+		return storeDao.getDateInfo(reservationDateVo);
 	}
 	
 }

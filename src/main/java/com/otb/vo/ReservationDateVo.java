@@ -1,7 +1,7 @@
 package com.otb.vo;
 
 public class ReservationDateVo {
-
+	
 	//fields
 	private int reservationDateNo;
 	private int storeNo;

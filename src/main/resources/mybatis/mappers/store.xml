@@ -41,5 +41,10 @@
 		]]>
 	</select>
 	
+	<select id="getDateInfo" parameterType="ReservationDateVo" resultType="ReservationTimeVo">
+		<![CDATA[
+			
+		]]>
+	</select>	
 
 </mapper>

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.otb.sevice.StoreService;
 import com.otb.vo.ReservationDateVo;
+import com.otb.vo.ReservationTimeVo;
 import com.otb.vo.StoreVo;
 import com.otb.vo.UserVo;
 
@@ -112,6 +113,10 @@ public class StoreController {
 		System.out.println("[StoreController.getStoreRevTime]");
 		
 		System.out.println("reservationDateVo : " + reservationDateVo);
+		
+		List<ReservationTimeVo> reservationableTimeVo = storeService.getDateInfo(reservationDateVo);
+		
+		System.out.println(reservationableTimeVo);
 		
 		return null;
 	}

@@ -8,6 +8,8 @@
 		<typeAlias alias="GameVo" type="com.otb.vo.GameVo" />
 		<typeAlias alias="ThemeVo" type="com.otb.vo.ThemeVo" />
 		<typeAlias alias="StoreVo" type="com.otb.vo.StoreVo" />
+		<typeAlias alias="ReservationTimeVo" type="com.otb.vo.ReservationTimeVo" />
+		<typeAlias alias="ReservationDateVo" type="com.otb.vo.ReservationDateVo" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/matching.xml" />

@@ -6,6 +6,8 @@ DROP SEQUENCE seq_matching_no;
 DROP SEQUENCE seq_sido_no;
 DROP SEQUENCE seq_sigungu_no;
 DROP SEQUENCE seq_store_no;
+DROP SEQUENCE seq_reservation_date_no;
+DROP SEQUENCE seq_reservation_time_no;
 
 CREATE SEQUENCE seq_users_no
 START WITH 1
@@ -38,6 +40,16 @@ INCREMENT BY 1
 NOCACHE;
 
 CREATE SEQUENCE seq_store_no
+START WITH 1
+INCREMENT BY 1
+NOCACHE;
+
+CREATE SEQUENCE seq_reservation_date_no
+START WITH 1
+INCREMENT BY 1
+NOCACHE;
+
+CREATE SEQUENCE seq_reservation_time_no
 START WITH 1
 INCREMENT BY 1
 NOCACHE;

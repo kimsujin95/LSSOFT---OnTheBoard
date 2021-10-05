@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.otb.vo.MatchingVo;
+import com.otb.vo.ReservationDateVo;
+import com.otb.vo.ReservationTimeVo;
 import com.otb.vo.StoreVo;
 import com.otb.vo.UserVo;
 
@@ -53,5 +55,10 @@ public class StoreDao {
 		return sqlSession.selectList("store.getgrouplist",matchingno);
 	}
 	
+	public List<ReservationTimeVo> getDateInfo(ReservationDateVo reservationDateVo){
+		System.out.println("[StoreDao.getDateInfo]");
+		
+		return sqlSession.selectList("store.getDateInfo", reservationDateVo);
+	}
 	
 }

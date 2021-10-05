@@ -4,20 +4,24 @@ public class StoreVo {
 	
 	//fields
 	private int storeNo;
+	private int userNo;
 	private String storeName;
-	private int storeNumber;
-	private String storeAdress;
+	private String storeType;
+	private String storeBusinessNo;
+	private String storeAdressRoad;
 	private String storeAdressDetail;
 	private String storePhoneNo;
-	private int storeChargeWeek;
-	private int storeChargeWeekend;
+	private int storeChargeWeek = 0;
+	private int storeChargeWeekend = 0;
 	private String storeDesc;
 	private double storeLat;	//위도
 	private double storeLng;	//경도
+	private String sido;		//시, 도
+	private String sigungu;		//시, 군, 구
+	
 	
 	// constructors
 	public StoreVo() {
-		
 	}
 	
 	public StoreVo(int storeNo, String storeName, double storeLat, double storeLng) {
@@ -27,16 +31,16 @@ public class StoreVo {
 		this.storeLat = storeLat;
 		this.storeLng = storeLng;
 	}
-
 	
-	public StoreVo(int storeNo, String storeName, int storeNumber, String storeAdress, String storeAdressDetail,
-			String storePhoneNo, int storeChargeWeek, int storeChargeWeekend, String storeDesc, double storeLat,
-			double storeLng) {
+	public StoreVo(int storeNo, String storeName, String storeType, String storeBusinessNo, String storeAdressRoad,
+			String storeAdressDetail, String storePhoneNo, int storeChargeWeek, int storeChargeWeekend,
+			String storeDesc, double storeLat, double storeLng) {
 		super();
 		this.storeNo = storeNo;
 		this.storeName = storeName;
-		this.storeNumber = storeNumber;
-		this.storeAdress = storeAdress;
+		this.storeType = storeType;
+		this.storeBusinessNo = storeBusinessNo;
+		this.storeAdressRoad = storeAdressRoad;
 		this.storeAdressDetail = storeAdressDetail;
 		this.storePhoneNo = storePhoneNo;
 		this.storeChargeWeek = storeChargeWeek;
@@ -47,8 +51,17 @@ public class StoreVo {
 	}
 
 	// g/s
+	
 	public int getStoreNo() {
 		return storeNo;
+	}
+
+	public int getUserNo() {
+		return userNo;
+	}
+
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
 
 	public void setStoreNo(int storeNo) {
@@ -62,37 +75,29 @@ public class StoreVo {
 	public void setStoreName(String storeName) {
 		this.storeName = storeName;
 	}
-
-	public double getStoreLat() {
-		return storeLat;
-	}
-
-	public void setStoreLat(double storeLat) {
-		this.storeLat = storeLat;
-	}
-
-	public double getStoreLng() {
-		return storeLng;
-	}
-
-	public void setStoreLng(double storeLng) {
-		this.storeLng = storeLng;
-	}
 	
-	public int getStoreNumber() {
-		return storeNumber;
+	public String getStoreType() {
+		return storeType;
 	}
 
-	public void setStoreNumber(int storeNumber) {
-		this.storeNumber = storeNumber;
+	public void setStoreType(String storeType) {
+		this.storeType = storeType;
 	}
 
-	public String getStoreAdress() {
-		return storeAdress;
+	public String getStoreBusinessNo() {
+		return storeBusinessNo;
 	}
 
-	public void setStoreAdress(String storeAdress) {
-		this.storeAdress = storeAdress;
+	public void setStoreBusinessNo(String storeBusinessNo) {
+		this.storeBusinessNo = storeBusinessNo;
+	}
+
+	public String getStoreAdressRoad() {
+		return storeAdressRoad;
+	}
+
+	public void setStoreAdressRoad(String storeAdressRoad) {
+		this.storeAdressRoad = storeAdressRoad;
 	}
 
 	public String getStoreAdressDetail() {
@@ -135,15 +140,45 @@ public class StoreVo {
 		this.storeDesc = storeDesc;
 	}
 
+	public double getStoreLat() {
+		return storeLat;
+	}
+
+	public void setStoreLat(double storeLat) {
+		this.storeLat = storeLat;
+	}
+
+	public double getStoreLng() {
+		return storeLng;
+	}
+
+	public void setStoreLng(double storeLng) {
+		this.storeLng = storeLng;
+	}
+
+	public String getSido() {
+		return sido;
+	}
+
+	public void setSido(String sido) {
+		this.sido = sido;
+	}
+
+	public String getSigungu() {
+		return sigungu;
+	}
+
+	public void setSigungu(String sigungu) {
+		this.sigungu = sigungu;
+	}
+
 	@Override
 	public String toString() {
-		return "StoreVo [storeNo=" + storeNo + ", storeName=" + storeName + ", storeNumber=" + storeNumber
-				+ ", storeAdress=" + storeAdress + ", storeAdressDetail=" + storeAdressDetail + ", storePhoneNo="
-				+ storePhoneNo + ", storeChargeWeek=" + storeChargeWeek + ", storeChargeWeekend=" + storeChargeWeekend
-				+ ", storeDesc=" + storeDesc + ", storeLat=" + storeLat + ", storeLng=" + storeLng + "]";
+		return "StoreVo [storeNo=" + storeNo + ", userNo=" + userNo + ", storeName=" + storeName + ", storeType="
+				+ storeType + ", storeBusinessNo=" + storeBusinessNo + ", storeAdressRoad=" + storeAdressRoad
+				+ ", storeAdressDetail=" + storeAdressDetail + ", storePhoneNo=" + storePhoneNo + ", storeChargeWeek="
+				+ storeChargeWeek + ", storeChargeWeekend=" + storeChargeWeekend + ", storeDesc=" + storeDesc
+				+ ", storeLat=" + storeLat + ", storeLng=" + storeLng + ", sido=" + sido + ", sigungu=" + sigungu + "]";
 	}
-	
-	
-	
 	
 }

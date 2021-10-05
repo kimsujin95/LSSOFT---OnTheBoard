@@ -43,7 +43,9 @@
 	
 	<select id="getDateInfo" parameterType="ReservationDateVo" resultType="int">
 		<![CDATA[
-			select 
+			select reservation_date_no as reservationDateNo
+			from reservation_date
+			where store_no = #{reservationDateVo.storeNo} and store_reservation_date = #{reservationDateVo.storeReservationDate}
 		]]>
 	</select>	
 

@@ -1,18 +1,49 @@
 package com.otb.controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.otb.sevice.AdminService;
+import com.otb.vo.StoreVo;
+import com.otb.vo.UserVo;
 
 @Controller
 @RequestMapping(value="/admin", method = {RequestMethod.GET, RequestMethod.POST})
 public class AdminController {
-
+	
+	@Autowired
+	private AdminService adminService;
+	
 	//admin - 메인 화면
 	@RequestMapping(value = "/main", method = {RequestMethod.GET, RequestMethod.POST})
-	public String main() {
+	public String main(HttpSession session) {
 		System.out.println("admin - main --------------------------------------------------------");
-		return "/admin/main";
+		
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		
+		if(authUser != null) {
+			
+			int userNo = authUser.getUserNo();
+			
+			StoreVo storeVo = adminService.getStore(userNo);
+			
+			if(storeVo != null) {
+				return "/admin/main";
+			} else {
+				return "/admin/storeInfo";
+			}
+			
+		} else {
+			return "/admin/error";
+		}
+		
+		
 	}
 	
 	//admin - 예약 관리
@@ -31,11 +62,53 @@ public class AdminController {
 
 	//admin - 매장 정보
 	@RequestMapping(value = "/storeInfo", method = {RequestMethod.GET, RequestMethod.POST})
-	public String storeInfo() {
+	public String storeInfo(HttpSession session, Model model) {
 		System.out.println("admin - storeInfo --------------------------------------------------------");
+		int userNo = ((UserVo) session.getAttribute("authUser")).getUserNo();
+		StoreVo storeInfo = adminService.getStore(userNo);
+		
+		System.out.println(storeInfo.toString());
+		
+		model.addAttribute("storeInfo", storeInfo);
+		
 		return "/admin/storeInfo";
 	}
+	
+	//store-info 등록
+	@RequestMapping(value = "/storeInfoInsert", method = {RequestMethod.GET, RequestMethod.POST})
+	public String storeInfoInsert(@ModelAttribute StoreVo storeInfo, HttpSession session) {
+		System.out.println("매장 정보 업데이트");
+		
+		int userNo = ((UserVo) session.getAttribute("authUser")).getUserNo();
+		storeInfo.setUserNo(userNo);
+		
+		System.out.println(storeInfo.toString());
+		
+		adminService.registerStoreInfo(storeInfo);
+		
+		return "redirect:/admin/storeInfo";
+	}
+	
+	//store-info 수정
+	@RequestMapping(value = "/storeInfoModify", method = {RequestMethod.GET, RequestMethod.POST})
+	public String storeInfoModify(@ModelAttribute StoreVo storeInfo, HttpSession session) {
+		System.out.println("매장 정보 업데이트");
+		
+		int userNo = ((UserVo) session.getAttribute("authUser")).getUserNo();
+		storeInfo.setUserNo(userNo);
+		
+		System.out.println(storeInfo.toString());
 
+		adminService.modifyStoreInfo(storeInfo);
+		
+		return "redirect:/admin/storeInfo";
+	}
+	
+	@RequestMapping(value = "/imageUpload", method = {RequestMethod.GET, RequestMethod.POST})
+	public void imageUpload() {
+		
+	}
+	
 	//admin - 보유 게임관리
 	@RequestMapping(value = "/gameList", method = {RequestMethod.GET, RequestMethod.POST})
 	public String gameList() {

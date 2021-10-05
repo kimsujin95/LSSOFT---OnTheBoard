@@ -46,14 +46,12 @@
 	</bean>
 
 	<!-- url매핑 -->
-	<mvc:resources mapping="/upload/**"
-		location="file:C:/javaStudy/otb/src/img/" />
-		
+	<mvc:resources mapping="/upload/**" location="file:C:/javaStudy/otb/src/img/" />
+	
 	<bean class="java.lang.String" id="uploadPath">
  		<constructor-arg value="C:\Javastudy\workspace_web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\OnTheBoard\
  		src\" />
 	</bean>
-		
 		
 	<!-- json message converter -->
 	<mvc:annotation-driven>

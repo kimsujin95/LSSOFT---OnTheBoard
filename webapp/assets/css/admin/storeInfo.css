@@ -36,11 +36,11 @@ input[type="text"], input[type="number"] {
 }
 
 /* 주소 검색 */
-div#adress-area, div#weekday-area {
+div#address-area, div#weekday-area {
 	margin-bottom: 10px;
 }
 
-input#adress, input#adress-detail {
+input#store-address, input#store-address-detail {
 	width: 550px;
 }
 

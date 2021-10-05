@@ -8,12 +8,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.otb.sevice.StoreService;
+import com.otb.vo.ReservationDateVo;
 import com.otb.vo.StoreVo;
 import com.otb.vo.UserVo;
 
@@ -68,19 +70,24 @@ public class StoreController {
 	// 매장 상세정보 페이지
 	@RequestMapping("/storeinfo")
 	/* @RequestParam("storeNo") int storeNo, */
-	public String storeinfo(@RequestParam int storeNo, HttpSession session, Model model) {
+	public String storeinfo(@RequestParam("storeNo") int storeNo, HttpSession session, Model model) {
 		System.out.println("[storeController.storeinfo]");
 
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
-		System.out.println(authUser);
+		
+		if(authUser != null) {
+			System.out.println(authUser);
+			
+			int userNo = authUser.getUserNo();
+			System.out.println(userNo);
+			
+			Map<String, Object> userDataInfoMap = storeService.userDataInfoMap(userNo);
+			System.out.println(userDataInfoMap);
+			model.addAttribute("userDataInfoMap", userDataInfoMap);
+		}
 
-		int userNo = authUser.getUserNo();
-		System.out.println(userNo);
-
-		Map<String, Object> userDataInfoMap = storeService.userDataInfoMap(userNo);
-		System.out.println(userDataInfoMap);
-		model.addAttribute("userDataInfoMap", userDataInfoMap);
-
+		model.addAttribute("storeNo", storeNo);
+		
 		return "/store/storeinfo";
 
 	}
@@ -100,5 +107,13 @@ public class StoreController {
 		return grouplistinfo;
 	}
 	
+	@RequestMapping("/getStoreRevTime")
+	public Map<String,Object> getStoreRevTime(@ModelAttribute("storeRevTimeVo")ReservationDateVo reservationDateVo) {
+		System.out.println("[StoreController.getStoreRevTime]");
+		
+		System.out.println("reservationDateVo : " + reservationDateVo);
+		
+		return null;
+	}
 
 }

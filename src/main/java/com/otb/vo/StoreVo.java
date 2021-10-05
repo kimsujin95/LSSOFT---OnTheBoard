@@ -8,8 +8,8 @@ public class StoreVo {
 	private String storeName;
 	private String storeType;
 	private String storeBusinessNo;
-	private String storeAdressRoad;
-	private String storeAdressDetail;
+	private String storeAddressRoad;
+	private String storeAddressDetail;
 	private String storePhoneNo;
 	private int storeChargeWeek = 0;
 	private int storeChargeWeekend = 0;
@@ -32,16 +32,16 @@ public class StoreVo {
 		this.storeLng = storeLng;
 	}
 	
-	public StoreVo(int storeNo, String storeName, String storeType, String storeBusinessNo, String storeAdressRoad,
-			String storeAdressDetail, String storePhoneNo, int storeChargeWeek, int storeChargeWeekend,
+	public StoreVo(int storeNo, String storeName, String storeType, String storeBusinessNo, String storeAddressRoad,
+			String storeAddressDetail, String storePhoneNo, int storeChargeWeek, int storeChargeWeekend,
 			String storeDesc, double storeLat, double storeLng) {
 		super();
 		this.storeNo = storeNo;
 		this.storeName = storeName;
 		this.storeType = storeType;
 		this.storeBusinessNo = storeBusinessNo;
-		this.storeAdressRoad = storeAdressRoad;
-		this.storeAdressDetail = storeAdressDetail;
+		this.storeAddressRoad = storeAddressRoad;
+		this.storeAddressDetail = storeAddressDetail;
 		this.storePhoneNo = storePhoneNo;
 		this.storeChargeWeek = storeChargeWeek;
 		this.storeChargeWeekend = storeChargeWeekend;
@@ -92,20 +92,20 @@ public class StoreVo {
 		this.storeBusinessNo = storeBusinessNo;
 	}
 
-	public String getStoreAdressRoad() {
-		return storeAdressRoad;
+	public String getStoreAddressRoad() {
+		return storeAddressRoad;
 	}
 
-	public void setStoreAdressRoad(String storeAdressRoad) {
-		this.storeAdressRoad = storeAdressRoad;
+	public void setStoreAddressRoad(String storeAddressRoad) {
+		this.storeAddressRoad = storeAddressRoad;
 	}
 
-	public String getStoreAdressDetail() {
-		return storeAdressDetail;
+	public String getStoreAddressDetail() {
+		return storeAddressDetail;
 	}
 
-	public void setStoreAdressDetail(String storeAdressDetail) {
-		this.storeAdressDetail = storeAdressDetail;
+	public void setStoreAddressDetail(String storeAddressDetail) {
+		this.storeAddressDetail = storeAddressDetail;
 	}
 
 	public String getStorePhoneNo() {
@@ -175,8 +175,8 @@ public class StoreVo {
 	@Override
 	public String toString() {
 		return "StoreVo [storeNo=" + storeNo + ", userNo=" + userNo + ", storeName=" + storeName + ", storeType="
-				+ storeType + ", storeBusinessNo=" + storeBusinessNo + ", storeAdressRoad=" + storeAdressRoad
-				+ ", storeAdressDetail=" + storeAdressDetail + ", storePhoneNo=" + storePhoneNo + ", storeChargeWeek="
+				+ storeType + ", storeBusinessNo=" + storeBusinessNo + ", storeAddressRoad=" + storeAddressRoad
+				+ ", storeAddressDetail=" + storeAddressDetail + ", storePhoneNo=" + storePhoneNo + ", storeChargeWeek="
 				+ storeChargeWeek + ", storeChargeWeekend=" + storeChargeWeekend + ", storeDesc=" + storeDesc
 				+ ", storeLat=" + storeLat + ", storeLng=" + storeLng + ", sido=" + sido + ", sigungu=" + sigungu + "]";
 	}

@@ -447,10 +447,10 @@ VALUES
     
  -- INSERT RESERVATIONDATE
 insert into reservation_date
-values(SEQ_RESERVATION_DATE_NO.nextval, 1, '2010/10/05', 20, 4);
+values(SEQ_RESERVATION_DATE_NO.nextval, 1, '2021/10/05', 20, 4);
 
 insert into reservation_date
-values(SEQ_RESERVATION_DATE_NO.nextval, 2, '2010/10/05', 20, 4);
+values(SEQ_RESERVATION_DATE_NO.nextval, 2, '2021/10/05', 20, 4);
 
 insert into reservation_time
 values(SEQ_RESERVATION_TIME_NO.nextval, 1, '09');

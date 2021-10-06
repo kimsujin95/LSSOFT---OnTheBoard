@@ -31,6 +31,7 @@
 		</if>
 	</select>
 
+	<!-- 로그인 한 사용자의 정보로 그룹리스트 가져오기 -->
 	<select id="getgrouplist" parameterType="int" resultType="com.otb.vo.UserVo">
 		<![CDATA[
 			select mg.user_no as userNo,
@@ -41,12 +42,22 @@
 		]]>
 	</select>
 	
+	<!-- 매장번호, 날짜데이터로 예약날짜번호값 가져오기 -->
 	<select id="getDateInfo" parameterType="ReservationDateVo" resultType="int">
 		<![CDATA[
 			select reservation_date_no as reservationDateNo
 			from reservation_date
-			where store_no = #{reservationDateVo.storeNo} and store_reservation_date = #{reservationDateVo.storeReservationDate}
+			where store_no = #{storeNo} and store_reservation_date = #{storeReservationDate}
 		]]>
 	</select>	
-
+	
+	<!--  -->
+	<select id="getStoreRevTime" parameterType="int" resultType="ReservationTimeVo">
+		<![CDATA[
+			select reservation_date_no as  reservationDateNo,
+				   store_reservation_time as storeReservationTime
+			from reservation_time
+			where reservation_date_no = #{reservationDateNo}
+		]]>
+	</select>
 </mapper>

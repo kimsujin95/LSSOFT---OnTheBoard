@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.otb.vo.MatchingVo;
 import com.otb.vo.ReservationDateVo;
+import com.otb.vo.ReservationTimeVo;
 import com.otb.vo.StoreVo;
 import com.otb.vo.UserVo;
 
@@ -54,10 +55,18 @@ public class StoreDao {
 		return sqlSession.selectList("store.getgrouplist",matchingno);
 	}
 	
+	//매장번호, 날짜데이터로 예약날짜번호 값 가져오기
 	public int getDateNo(ReservationDateVo reservationDateVo){
 		System.out.println("[StoreDao.getDateInfo]");
 		
-		return sqlSession.selectOne("store.getDateInfo", reservationDateVo);
+		return sqlSession.selectOne("store.getDateInfo",reservationDateVo);
+	}
+	
+	//예약날짜번호 값으로 해당 매장 예약가능 시간대 정보 가져오기
+	public List<ReservationTimeVo> getStoreRevTime(int reservationDateNo) {
+		System.out.println("[StoreDao.getStoreRevTime]");
+		
+		return sqlSession.selectList("store.getStoreRevTime",reservationDateNo);
 	}
 	
 }

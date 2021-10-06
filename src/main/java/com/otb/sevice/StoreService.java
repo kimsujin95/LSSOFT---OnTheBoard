@@ -62,11 +62,13 @@ public class StoreService {
 	
 	//선택한 날짜의 예약가능시간 정보 가져오기
 	public List<ReservationTimeVo> getDateInfo(ReservationDateVo reservationDateVo) {
-		System.out.println("StoreService.getDateInfo");
+		System.out.println("[StoreService.getDateInfo]");
 		
 		int reservationDateNo = storeDao.getDateNo(reservationDateVo);
 		System.out.println(reservationDateNo);
 		
+		List<ReservationTimeVo> reservationableTimeVo = storeDao.getStoreRevTime(reservationDateNo);
+		System.out.println("reservationableTimeVo : " + reservationableTimeVo);
 		
 		return null;
 	}

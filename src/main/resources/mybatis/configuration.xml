@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
 	<typeAliases>
 		<typeAlias alias="MatchingVo" type="com.otb.vo.MatchingVo" />
 		<typeAlias alias="MatchingGroupVo" type="com.otb.vo.MatchingGroupVo" />
@@ -8,9 +9,11 @@
 		<typeAlias alias="GameVo" type="com.otb.vo.GameVo" />
 		<typeAlias alias="ThemeVo" type="com.otb.vo.ThemeVo" />
 		<typeAlias alias="StoreVo" type="com.otb.vo.StoreVo" />
+		<typeAlias alias="StoreImageVo" type="com.otb.vo.StoreImageVo" />
 		<typeAlias alias="ReservationTimeVo" type="com.otb.vo.ReservationTimeVo" />
 		<typeAlias alias="ReservationDateVo" type="com.otb.vo.ReservationDateVo" />
 	</typeAliases>
+	
 	<mappers>
 		<mapper resource="mybatis/mappers/matching.xml" />
 		<mapper resource="mybatis/mappers/user.xml" />
@@ -18,4 +21,5 @@
 		<mapper resource="mybatis/mappers/store.xml" />
 		<mapper resource="mybatis/mappers/admin.xml" />
 	</mappers>
+	
 </configuration>

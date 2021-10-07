@@ -196,91 +196,7 @@
 						</li>
 
 					</div>
-					<!-- //리뷰 반복 출력 -->
-					<div class="user_review">
-
-						<li>
-
-							<div class="user_profile_img">
-								<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
-							</div>
-
-							<div class="review_writer_info">
-
-								<table>
-									<tr>
-										<td>드웨인_존슨</td>
-									</tr>
-									<tr>
-										<td>2021/09/15</td>
-									</tr>
-									<tr>
-										<td>사장님도 친절하고 가게도 완전 깨끗~</td>
-									</tr>
-								</table>
-
-							</div>
-
-						</li>
-
-					</div>
-					<!-- //리뷰 반복 출력 -->
-					<div class="user_review">
-
-						<li>
-
-							<div class="user_profile_img">
-								<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
-							</div>
-
-							<div class="review_writer_info">
-
-								<table>
-									<tr>
-										<td>드웨인_존슨</td>
-									</tr>
-									<tr>
-										<td>2021/09/15</td>
-									</tr>
-									<tr>
-										<td>사장님도 친절하고 가게도 완전 깨끗~</td>
-									</tr>
-								</table>
-
-							</div>
-
-						</li>
-
-					</div>
-					<!-- //리뷰 반복 출력 -->
-					<div class="user_review">
-
-						<li>
-
-							<div class="user_profile_img">
-								<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
-							</div>
-
-							<div class="review_writer_info">
-
-								<table>
-									<tr>
-										<td id="user_name">드웨인_존슨</td>
-									</tr>
-									<tr>
-										<td id="write_date">2021/09/15</td>
-									</tr>
-									<tr>
-										<td id="review_content">사장님도 친절하고 가게도 완전 깨끗~</td>
-									</tr>
-								</table>
-
-							</div>
-
-						</li>
-
-					</div>
-					<!-- //리뷰 반복 출력 -->
+					
 				</ul>
 			</div>
 			<!-- 리뷰 페이징 -->
@@ -521,7 +437,20 @@
 					<!-- 예약 가능 시간대 표기 and 선택 -->
 					<div id="time_table_wrap">
 						<ul id="time_table">
-							<li data-time="09">09</li>
+<!-- 					   	    <li class="time_btn" data-time="09">09</li>
+							<li class="time_btn" data-time="10">10</li>
+							<li class="time_btn" data-time="11">11</li>
+							<li class="time_btn" data-time="12">12</li>
+							<li class="time_btn" data-time="13">13</li>
+							<li class="time_btn" data-time="14">14</li>
+							<li class="time_btn" data-time="15">15</li>
+							<li class="time_btn" data-time="16">16</li>
+							<li class="time_btn" data-time="17">17</li>
+							<li class="time_btn" data-time="18">18</li>
+							<li class="time_btn" data-time="19">19</li>
+							<li class="time_btn" data-time="20">20</li>
+							<li class="time_btn" data-time="21">21</li>
+							<li class="time_btn" data-time="22">22</li> -->
 						</ul>
 					</div>
 
@@ -671,21 +600,42 @@
 
             		var storeRevTimeVo = {storeReservationDate : storeReservationDate, storeNo : storeNo};
             		
+            		var revtimeArray = [09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
+            		console.log(revtimeArray);
+            		
+            		/* for(var i = 0; i < revtimeArray.length; i++){
+            			
+            			revtimeArray[i] = '';
+            			if (revtimeArray[i] == reservationableTimeList[i].storeReservationTime) {
+            				<li class="time_btn active" data-time="revtimeArray[i]">revtimeArray[i]</li>
+            			} else {
+            				<li class="time_btn" data-time="revtimeArray[i]">revtimeArray[i]</li>
+            			}
+            			
+            		} */
+            		
             		$.ajax({
         		        cache : false,
         		        url : "${pageContext.request.contextPath}/store/getStoreRevTime",
         		        type : 'POST',
         		        data : storeRevTimeVo,
         		        
-        		        success : function() {
-							
-        		        		
+        		        success : function(reservationableTimeList) {
+        		        	
+        		        	console.log(reservationableTimeList);
+        		        	checkTimetable(reservationableTimeList, revtimeArray);
+        		        	/* for (var i = 0; i < reservationableTimeList.length; i++) {
+        		        		if (reservationableTimeList[i].storeReservationTime === date-time[i]) {
+            		        		asd.addClass('active');
+            		        	}
+        		        	} */
+        		        	
         		        }, // success 
         				
         		        error : function(XHR, status, error) {
         					
         		        	console.error(status + " : " + error);
-
+							
         		        	}
         		    }); // $.ajax */
             		
@@ -694,6 +644,47 @@
             });
         	
         });
+        
+        //예약 타임테이블 버튼을 활성화 하는 함수
+        function checkTimetable (reservationableTimeList, revtimeArray){
+        	
+        	console.log(reservationableTimeList);
+        	console.log(revtimeArray);
+        	
+        	 var listEl = document.getElementById('time_table'),
+        		 fragment = document.createDocumentFragment(),
+        		 listStr = '';
+        	
+        	removeAllChildNods(listEl);
+        	
+        	for(var i=0; i < revtimeArray.length; i++){
+        		
+				var itemEl = compareDate(i,reservationableTimeList, revtimeArray);
+        		
+        		fragment.appendChild(itemEl);
+				        		
+        	}
+        	
+        	listEl.appendChild(fragment);
+        	
+        }
+        
+       function compareDate (i, reservationableTime, revtimeArray){
+			
+        	var el = document.createElement('li');
+        	
+        	if(revtimeArray[i] == reservationableTime[i].storeReservationTime){
+        		var itemStr = '<button type="button" class="time_btn active">' + revtimeArray[i] + "시 ~ " + revtimeArray[i+1] + "시" + '</button>';
+        	}else{
+        		var itemStr = '<button type="button" class="time_btn">' + revtimeArray[i] + "시 ~ " + revtimeArray[i+1] + "시" + '</button>';
+        	}
+
+    	    el.innerHTML = itemStr;
+    	    /* el.className = 'time_btn'; */
+
+    	    return el;
+        	
+        }
         
     </script>
 
@@ -853,14 +844,14 @@
     	    el.className = 'item';
 
     	    return el;
-    	}
+    	};
         
     	// 그룹원 목록의 자식 Element를 제거하는 함수
     	function removeAllChildNods(el) {   
     	    while (el.hasChildNodes()) {
     	        el.removeChild (el.lastChild);
-    	    }
-    	}
+    	    };
+    	};
         
     </script>
 

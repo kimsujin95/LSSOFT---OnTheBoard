@@ -70,7 +70,17 @@ public class StoreService {
 		List<ReservationTimeVo> reservationableTimeVo = storeDao.getStoreRevTime(reservationDateNo);
 		System.out.println("reservationableTimeVo : " + reservationableTimeVo);
 		
-		return null;
+		/*
+		 * //예약가능시간 정보가 포함된 reservationableTimeList의 Map<String, Object>
+		 * reservationableTimeMap = new HashMap<String, Object>();
+		 * 
+		 * for(int i=0; i< reservationableTimeVo.size(); i++) {
+		 * reservationableTimeMap.put(reservationableTimeVo.get(i).
+		 * getStoreReservationTime(), true); }
+		 * System.out.println(reservationableTimeMap);
+		 */
+		
+		return reservationableTimeVo;
 	}
 	
 }

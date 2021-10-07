@@ -66,7 +66,11 @@ public class StoreDao {
 	public List<ReservationTimeVo> getStoreRevTime(int reservationDateNo) {
 		System.out.println("[StoreDao.getStoreRevTime]");
 		
-		return sqlSession.selectList("store.getStoreRevTime",reservationDateNo);
+		List<ReservationTimeVo> reservationableTimeList = sqlSession.selectList("store.getStoreRevTime",reservationDateNo);
+		
+		System.out.println("reservationableTimeList : " + reservationableTimeList);
+		
+		return reservationableTimeList;
 	}
 	
 }

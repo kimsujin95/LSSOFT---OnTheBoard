@@ -108,17 +108,19 @@ public class StoreController {
 		return grouplistinfo;
 	}
 	
+	// 매장번호와 날짜데이터를 받아와서 예약가능 시간대 정보를 반환해준다.
+	@ResponseBody
 	@RequestMapping("/getStoreRevTime")
-	public Map<String,Object> getStoreRevTime(@ModelAttribute("storeRevTimeVo")ReservationDateVo reservationDateVo) {
+	public List<ReservationTimeVo> getStoreRevTime(@ModelAttribute("storeRevTimeVo")ReservationDateVo reservationDateVo) {
 		System.out.println("[StoreController.getStoreRevTime]");
 		
 		System.out.println("reservationDateVo : " + reservationDateVo);
 		
-		List<ReservationTimeVo> reservationableTimeVo = storeService.getDateInfo(reservationDateVo);
+		List<ReservationTimeVo> reservationableTimeList = storeService.getDateInfo(reservationDateVo);
 		
-		System.out.println(reservationableTimeVo);
+		System.out.println("reservationableTimeList : " + reservationableTimeList);
 		
-		return null;
+		return reservationableTimeList;
 	}
 
 }

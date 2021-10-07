@@ -12,6 +12,12 @@ public class StoreImageVo {
 		super();
 	}
 
+	public StoreImageVo(int storeNo, String storePathImage) {
+		super();
+		this.storeNo = storeNo;
+		this.storePathImage = storePathImage;
+	}
+
 	public StoreImageVo(int storeImageNo, int storeNo, String storePathImage) {
 		super();
 		this.storeImageNo = storeImageNo;

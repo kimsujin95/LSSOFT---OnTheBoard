@@ -23,7 +23,7 @@ public class AdminController {
 	//admin - 메인 화면
 	@RequestMapping(value = "/main", method = {RequestMethod.GET, RequestMethod.POST})
 	public String main(HttpSession session) {
-		System.out.println("admin - main --------------------------------------------------------");
+		//System.out.println("admin - main --------------------------------------------------------");
 		
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
 		
@@ -43,35 +43,47 @@ public class AdminController {
 			return "/admin/error";
 		}
 		
-		
 	}
 	
 	//admin - 예약 관리
 	@RequestMapping(value = "/reservation", method = {RequestMethod.GET, RequestMethod.POST})
 	public String reservation() {
-		System.out.println("admin - reservation --------------------------------------------------------");
+		//System.out.println("admin - reservation --------------------------------------------------------");
 		return "/admin/reservation";
 	}
 
 	//admin - 스케쥴
 	@RequestMapping(value = "/schedule", method = {RequestMethod.GET, RequestMethod.POST})
 	public String schedule() {
-		System.out.println("admin - schedule --------------------------------------------------------");
+		//System.out.println("admin - schedule --------------------------------------------------------");
 		return "/admin/schedule";
 	}
 
+	
+	//////////////////////////////////////// 매장 정보 등록 및 수정 ////////////////////////////////////////
+	
 	//admin - 매장 정보
 	@RequestMapping(value = "/storeInfo", method = {RequestMethod.GET, RequestMethod.POST})
 	public String storeInfo(HttpSession session, Model model) {
-		System.out.println("admin - storeInfo --------------------------------------------------------");
-		int userNo = ((UserVo) session.getAttribute("authUser")).getUserNo();
-		StoreVo storeInfo = adminService.getStore(userNo);
 		
-		System.out.println(storeInfo.toString());
+		//System.out.println("admin - storeInfo --------------------------------------------------------");
 		
-		model.addAttribute("storeInfo", storeInfo);
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
 		
-		return "/admin/storeInfo";
+		if(authUser != null) {
+			int userNo = authUser.getUserNo();
+			StoreVo storeInfo = adminService.getStore(userNo);
+			
+			//System.out.println(storeInfo.toString());
+			
+			model.addAttribute("storeInfo", storeInfo);
+			
+			return "/admin/storeInfo";
+			
+		} else {
+			return "/admin/error";
+		}
+	
 	}
 	
 	//store-info 등록
@@ -104,10 +116,8 @@ public class AdminController {
 		return "redirect:/admin/storeInfo";
 	}
 	
-	@RequestMapping(value = "/imageUpload", method = {RequestMethod.GET, RequestMethod.POST})
-	public void imageUpload() {
-		
-	}
+	//////////////////////////////////////// 매장 정보 등록 및 수정 ////////////////////////////////////////
+
 	
 	//admin - 보유 게임관리
 	@RequestMapping(value = "/gameList", method = {RequestMethod.GET, RequestMethod.POST})

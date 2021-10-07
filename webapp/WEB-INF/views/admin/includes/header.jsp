@@ -12,15 +12,10 @@
 		<!-- //매장 이름 -->	
 		<!-- 유저 컨트롤러 -->
 		<div id="user-controller" class="col-xs-2 ">
-			<c:choose>
-				<c:when test="${!empty authUser }">
-					<a id="my-store" class="text-white font-size-14 ">내 매장 확인하기</a> 
-					<a id="logout" class="text-white font-size-14 ">로그아웃</a>
-				</c:when>
-				<c:otherwise>
-					<a id="logout" class="text-white font-size-14 ">로그인</a>
-				</c:otherwise>
-			</c:choose>
+			<c:if test="${!empty authUser }">
+				<a id="my-store" class="text-white font-size-14 ">내 매장 확인하기</a> 
+				<a href ="${pageContext.request.contextPath }/user/logout" id="logout" class="text-white font-size-14 ">로그아웃</a>
+			</c:if>
 		</div>
 		<!-- //유저 컨트롤러 -->
 	</div>

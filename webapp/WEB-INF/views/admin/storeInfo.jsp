@@ -61,7 +61,7 @@
 					<div class="list-area">
 						<c:choose>
 							<c:when test="${!empty storeInfo }">
-								<form action="${pageContext.request.contextPath }/admin/storeInfoModify" method="get">
+								<form id="form" action="${pageContext.request.contextPath }/admin/storeInfoModify" method="post">
 									<!-- 테이블 영역 -->
 									<table id="storeInfo-table" class="font-size-14">
 										<tr>
@@ -109,11 +109,11 @@
 											</th>
 											<td>
 												<div id="address-area">
-													<input id="store-address" type="text" name="storeAdressRoad" value="${storeInfo.storeAdressRoad }">
-													<button id="adress-search" class="btn btn-primary" type="button">주소 찾기</button>
+													<input id="store-address" type="text" name="storeAddressRoad" value="${storeInfo.storeAddressRoad }">
+													<button id="address-search" class="btn btn-primary" type="button">주소 찾기</button>
 												</div>
-												<div id="adress-detail-area">
-													<input id="store-address-detail" type="text" name="storeAdressDetail" value="${storeInfo.storeAdressDetail }">
+												<div id="address-detail-area">
+													<input id="store-address-detail" type="text" name="storeAddressDetail" value="${storeInfo.storeAddressDetail }">
 													<input id="store-lat" type="hidden" name="storeLat" value="${storeInfo.storeLat }">
 													<input id="store-lng" type="hidden" name="storeLng" value="${storeInfo.storeLng }">
 												</div>
@@ -148,20 +148,22 @@
 											</th>
 											<td>
 												<div id="image-inserted" class="pull-left border-default">
-													<c:forEach begin="0" end="4">
+													<%-- <c:forEach begin="0" end="4">
 														<div class="image-area">
 															<img src="${pageContext.request.contextPath }/assets/images/admin/BoardGameStore.jpg">
 															<img src="${pageContext.request.contextPath }/assets/images/admin/BoardGameStore2.jpg">
 															<img src="${pageContext.request.contextPath }/assets/images/admin/BoardGameStore.jpg">
 														</div>
-													</c:forEach>
+													</c:forEach> --%>
 												</div>
 												<label for="image-upload" class="btn btn-primary pull-left">사진 등록하기</label>
-												<input id="image-upload" type="file" name="storeImages">
+												<input id="image-upload" name="storeImages[]" type="file" multiple="multiple" accept=".jpg, .png">
 											</td>
 										</tr>
 										<tr>
-											<th>매장 소개</th>
+											<th>
+												<label for ="store-desc">매장 소개</label>
+											</th>
 											<td>
 												<textarea id="store-desc" name="storeDesc">${storeInfo.storeDesc }</textarea>
 											</td>
@@ -177,7 +179,7 @@
 								</form>
 							</c:when>
 							<c:otherwise>
-								<form action="${pageContext.request.contextPath }/admin/storeInfoInsert" method="get">
+								<form action="${pageContext.request.contextPath }/admin/storeInfoInsert" method="post">
 										<!-- 테이블 영역 -->
 									<table id="storeInfo-table" class="font-size-14">
 										<tr>
@@ -211,11 +213,11 @@
 											</th>
 											<td>
 												<div id="address-area">
-													<input id="store-address" type="text" name="storeAdressRoad" placeholder="주소를 입력해주세요">
-													<button id="adress-search" class="btn btn-primary" type="button">주소 찾기</button>
+													<input id="store-address" type="text" name="storeAddressRoad" placeholder="주소를 입력해주세요">
+													<button id="address-search" class="btn btn-primary" type="button">주소 찾기</button>
 												</div>
-												<div id="adress-detail-area">
-													<input id="store-address-detail" type="text" name="storeAdressDetail" placeholder="상세 주소를 입력해주세요">
+												<div id="address-detail-area">
+													<input id="store-address-detail" type="text" name="storeAddressDetail" placeholder="상세 주소를 입력해주세요">
 													<input id="store-lat" type="hidden" name="storeLat">
 													<input id="store-lng" type="hidden" name="storeLng">
 												</div>
@@ -250,16 +252,9 @@
 											</th>
 											<td>
 												<div id="image-inserted" class="pull-left border-default">
-													<c:forEach begin="0" end="4">
-														<div class="image-area">
-															<img src="${pageContext.request.contextPath }/assets/images/admin/BoardGameStore.jpg">
-															<img src="${pageContext.request.contextPath }/assets/images/admin/BoardGameStore2.jpg">
-															<img src="${pageContext.request.contextPath }/assets/images/admin/BoardGameStore.jpg">
-														</div>
-													</c:forEach>
 												</div>
 												<label for="image-upload" class="btn btn-primary pull-left">사진 등록하기</label>
-												<input id="image-upload" type="file" name="storeImages">
+												<input id="image-upload" name="storeImages[]" type="file" multiple="multiple" accept=".jpg, .png">
 											</td>
 										</tr>
 										<tr>
@@ -295,6 +290,80 @@
 	
 </body>
 
+<!-- 매장 이미지 등록 및 삭제 ajax -->
+<script type="text/javascript">
+
+	//이미지 업로드 클릭 시, form 속성 변경
+	$("#image-upload").on("click", function(){
+		console.log("이미지 등록 클릭");
+		
+		var form = $("#form");
+		
+		//동작 시, form tag의 액션과 enctype을 변경
+		form.attr("action", "${pageContext.request.contextPath }/storeImageUpload");
+		form.attr("enctype", "multipart/form-data");
+		
+		var imageForm = document.getElementById("form");
+		var formData = new FormData(imageForm);
+		
+		//파일을 전송할 배열
+		var filesTempArr = [];
+		
+		//파일 추가
+		function addFiles(e) {
+			
+			console.log("이미지 파일 업로드");
+			
+			var files = e.target.files;							//이벤트 대상의 파일들
+			var filesArr = Array.prototype.slice.call(files);	//대상 파일들을 배열의 형태로 전환
+			
+			//받아온 파일을 전송할 배열에 넣는다
+			for(var i = 0; i < filesArr.length; i++) {
+				filesTempArr.push(filesArr[i]);
+				//console.log(filesTempArr[i]);					파일 체크 완료
+			}
+			
+			//데이터 전송
+			//파일 데이터를 formData에 추가,	append 메소드의 첫번째 파라미터는 controller에서 해당 파일을 확인할 key 값이 된다
+			for(var i = 0; i < filesTempArr.length; i++) {
+				formData.append("files", filesTempArr[i]);
+			};
+			
+			//ajax로 전송
+			$.ajax({
+			    type : "POST",
+			    url : "${pageContext.request.contextPath }/storeImageUpload",
+			    data : formData,
+			    processData: false,
+			    contentType: false,
+			    success : function(data) {
+			        if(data.result){
+			            alert("Success");
+			        }else{
+			            alert(data.result);
+			        }
+			        
+			    },
+			    err : function(err) {
+			        alert(err.status);
+			    }
+			});
+			
+			form.val("");									//ajax 형태로 전송하므로, 새로고침이 없어 input의 val이 그대로 남아 있다 - 사용자가 이미지를 재등록 할 경우를 대비하여 val을 비운다
+			
+			//전송 이후, 해당 form 태그의 attr을 원래 상태로 복구
+			form.removeAttr("enctype");
+			
+		}
+		
+		$("#image-upload").on("input", addFiles);
+		
+	});
+
+	
+</script>
+
+<!-- 지도 및 도로명 주소 api -->
 <script type="text/javascript">
 	
 	var mapContainer = document.getElementById('map') // 지도를 표시할 div
@@ -315,6 +384,7 @@
 	    map: map
 	});
 	
+	//등록된 매장 정보가 있을 때
 	if(${storeInfo != null}) {
 		
 		//console.log("매장 정보 있음")
@@ -338,7 +408,8 @@
 		
 	} 
 	
-	$("#adress-search").on("click", function(){
+	//주소 검색으로 도로명 주소, 위도 경도 값 저장 및 지도 표현
+	$("#address-search").on("click", function(){
 		/* 도로명 주소 api */
 	    new daum.Postcode({
 	        oncomplete: function(data) {

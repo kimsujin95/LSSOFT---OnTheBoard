@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.otb.vo.StoreImageVo;
 import com.otb.vo.StoreVo;
 
 @Repository
@@ -32,6 +33,12 @@ public class AdminDao {
 		sqlSession.update("admin.updateStoreInfo", storeVo);
 		System.out.println("업데이트 완료");
 	}
-		
+	
+	//매장 이미지 등록 - ajax
+	public void insertStoreImage(StoreImageVo storeImage) {
+		sqlSession.insert("admin.insertStoreImage", storeImage);
+		System.out.println("이미지 저장 완료");
+	}
+	
 	
 }

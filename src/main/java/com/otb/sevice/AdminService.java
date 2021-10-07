@@ -1,9 +1,18 @@
 package com.otb.sevice;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.List;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.otb.dao.AdminDao;
+import com.otb.vo.StoreImageVo;
 import com.otb.vo.StoreVo;
 
 @Service
@@ -39,6 +48,57 @@ public class AdminService {
 		adminDao.updateStoreInfo(storeVo);
 	}
 	
-	
-	
+	//매장 이미지 등록
+	public void restoreImages(List<MultipartFile> fileList, int userNo) {
+		
+		System.out.println("서비스 도착");
+		
+		//저장 폴더 경로
+		String saveDirectory = "C:\\JavaStudy\\upload\\otb";
+		
+		//매장 번호 호출
+		int storeNo = adminDao.selectStore(userNo).getStoreNo();
+		
+		//이미지 저장
+		for(MultipartFile image : fileList) {
+			//이미지의 원래 이름
+			String oriName = image.getOriginalFilename();
+			
+			//이미지의 확장자 명 구하기
+			int indexNum = oriName.lastIndexOf(".");
+			String exName = oriName.substring(indexNum);
+			
+			//이미지의 저장용 이름
+			String saveName = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+			
+			//저장 경로
+			String storePathImage = saveDirectory +"\\"+ saveName;
+			
+			StoreImageVo storeImage = new StoreImageVo(storeNo, storePathImage);
+			System.out.println(storeImage.toString());
+
+			try {
+				//파일 정보를 하드 디스크에 저장
+				byte[] fileData = image.getBytes();
+				
+				OutputStream out = new FileOutputStream(storePathImage);
+				BufferedOutputStream bf = new BufferedOutputStream(out);
+				
+				bf.write(fileData);
+				bf.close();
+				
+				//파일 정보를 db에 저장
+				adminDao.insertStoreImage(storeImage);
+				
+				int storeImageNo = storeImage.getStoreImageNo();
+				System.out.println("매장 이미지 번호 " + storeImageNo);
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		}
+		
+	}	
 }

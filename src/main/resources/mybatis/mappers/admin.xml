@@ -4,14 +4,15 @@
 
 <mapper namespace="admin">
 	
+	<!-- StoreVo resultMap -->
 	<resultMap id="resultMapAdminVo" type="StoreVo">
 		<result column="store_no" property="storeNo" />
 		<result column="user_no" property="userNo" />
 		<result column="store_name" property="storeName" />
 		<result column="store_type" property="storeType" />
 		<result column="store_business_no" property="storeBusinessNo" />
-		<result column="store_address_road" property="storeAdressRoad" />
-		<result column="store_address_detail" property="storeAdressDetail" />
+		<result column="store_address_road" property="storeAddressRoad" />
+		<result column="store_address_detail" property="storeAddressDetail" />
 		<result column="store_latitude" property="storeLat" />
 		<result column="store_longitude" property="storeLng" />
 		<result column="store_phone_no" property="storePhoneNo" />
@@ -20,6 +21,13 @@
 		<result column="store_description" property="storeDesc" />
 		<result column="sido_code" property="sido" />
 		<result column="sigungu_code" property="sigungu" />
+	</resultMap>
+	
+	<!-- StoreImageVo resultMap -->
+	<resultMap id="resultMapStoreImage" type="StoreImageVo">
+		<result column="store_image_no" property="storeImageNo" />
+		<result column="store_no" property="storeNo" />
+		<result column="store_path_image" property="storePathImage" />
 	</resultMap>
 	
 	<!-- 매장 정보 호출 -->
@@ -54,8 +62,8 @@
 				,#{storeType}
 				,#{storeName}
 				,#{storeBusinessNo}
-				,#{storeAdressRoad}
-				,#{storeAdressDetail}
+				,#{storeAddressRoad}
+				,#{storeAddressDetail}
 				,#{storeLat}
 				,#{storeLng}
 				,#{storePhoneNo}
@@ -68,7 +76,7 @@
 		]]>
 	</insert>
 	
-	<!-- 매장 등록 -->
+	<!-- 매장 수정 -->
 	<update id="updateStoreInfo" parameterType="StoreVo">
 		<![CDATA[
 			UPDATE store 
@@ -76,8 +84,8 @@
 				 store_type = #{storeType}
 				,store_name = #{storeName}
 				,store_business_no = #{storeBusinessNo}
-				,store_address_road = #{storeAdressRoad}
-				,store_address_detail = #{storeAdressDetail}
+				,store_address_road = #{storeAddressRoad}
+				,store_address_detail = #{storeAddressDetail}
 				,store_latitude = #{storeLat}
 				,store_longitude = #{storeLng}
 				,store_phone_no = #{storePhoneNo}
@@ -89,5 +97,23 @@
 			WHERE user_no = #{userNo}
 		]]>
 	</update>
+	
+	<!-- 매장 이미지 등록 -->
+	<insert id="insertStoreImage" parameterType="StoreImageVo">
+		<selectKey keyProperty="storeImageNo" resultType="int" order="BEFORE">
+			<![CDATA[
+				 SELECT sequence_store_image_no.NEXTVAL 
+				 FROM DUAL
+			]]>
+		</selectKey>
+		<![CDATA[
+			INSERT INTO store_image
+			VALUES(
+				 #{storeImageNo}
+				,#{storeNo}
+				,#{storePathImage}
+			)
+		]]>
+	</insert>
 	
 </mapper>

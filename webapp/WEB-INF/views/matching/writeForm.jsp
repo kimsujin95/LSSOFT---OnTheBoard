@@ -174,7 +174,7 @@
 			<br>
 
 			<div id="write-btn" class="text-center">
-				<a href="${pageContext.request.contextPath}/matching/list"><button type="button" class="btn-white">취소</button></a>
+				<a href="${pageContext.request.contextPath}/matching/main"><button type="button" class="btn-white">취소</button></a>
 				<button type="submit" class="btn-red">등록</button>
 			</div>
 		</form>

@@ -124,6 +124,10 @@ textarea {
 	margin-left: 0px;
 }
 
+#y-select-opt .btn-selectDel {
+	margin-left: 12px;
+}
+
 /** MATCHING LIST **/
 #content .container.padding-none {
 	padding: 0px;

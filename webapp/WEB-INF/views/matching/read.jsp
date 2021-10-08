@@ -103,16 +103,18 @@
 					<tr class="border-none">
 						<th>인원<br>(<span id="joinMatchingMember">${readInfo.matchingVo.matchingMember}</span>/${readInfo.matchingVo.matchingPeople})
 						</th>
-						<td><c:forEach items="${readInfo.matchingMemberInfoList}" var="userVo" varStatus="status">
-						${userVo.userNickname} / ${userVo.userAge}<c:choose>
+						<td id="addMatchingMember">
+							<c:forEach items="${readInfo.matchingMemberInfoList}" var="userVo" varStatus="status">
+								<div data-no="${userVo.userNo}">${userVo.userNickname} / ${userVo.userAge}<c:choose>
 									<c:when test="${userVo.userGender eq 'male'}">/ 남</c:when>
 									<c:otherwise>/ 여</c:otherwise>
 								</c:choose>
 								<c:if test="${readInfo.writerInfo.userNo eq userVo.userNo}">
 									<img id="img-crown" src="${pageContext.request.contextPath}/assets/images/matching/read-crown.png">
 								</c:if>
-								<br>
-							</c:forEach><span id="addMatchingMember"></span></td>
+								</div>
+							</c:forEach>
+						</td>
 					</tr>
 				</table>
 			</div>
@@ -122,20 +124,30 @@
 		<div id="read-btn" class="row">
 			<div class="col-md-3 text-center">
 				<c:if test="${readInfo.writerInfo.userNo ne authUser.userNo && not empty authUser}">
-					<button id="btn-joinMatching" class="btn-red" data-user_no="${authUser.userNo}" data-matching_no="${readInfo.matchingVo.matchingNo}">참가신청</button>
-					<button class="btn-white">참가취소</button>
+					<c:if test="${readInfo.matchingVo.matchingMember ne readInfo.matchingVo.matchingPeople}">
+					<button id="btn-joinMatching" class="btn-white" data-user_no="${authUser.userNo}" data-matching_no="${readInfo.matchingVo.matchingNo}" data-now_member="${readInfo.matchingVo.matchingMember}" data-total_member="${readInfo.matchingVo.matchingPeople}">참가신청</button>
+					</c:if>
+					<%-- <c:forEach items="${readInfo.matchingMemberInfoList}" var="matchingGroupVo"> --%>
+						<%-- <c:if test="${matchingGroupVo.userNo eq authUser.userNo}"> --%>
+							<button id="btn-outMatching"  class="btn-red" data-user_no="${authUser.userNo}" data-matching_no="${readInfo.matchingVo.matchingNo}">참가취소</button>
+						<%-- </c:if> --%>
+					<%-- </c:forEach> --%>
 				</c:if>
 			</div>
 			<div class="col-md-4 text-right">
-				<button class="btn-red">매칭완료</button>
-				<a href="${pageContext.request.contextPath}/store/storelist"><button class="btn-blue">예약하기</button></a>
+				<c:if test="${readInfo.writerInfo.userNo eq authUser.userNo}">
+					<button class="btn-red">매칭완료</button>
+					<a href="${pageContext.request.contextPath}/store/storelist"><button class="btn-blue">예약하기</button></a>
+				</c:if>
 			</div>
 			<div class="col-md-5 text-right">
-				<a href="${pageContext.request.contextPath}/matching/list"><button class="btn-white">목록</button></a> <a href="${pageContext.request.contextPath}/matching/modifyForm"><button class="btn-blue">수정</button></a>
-				<button class="btn-white">삭제</button>
+				<c:if test="${readInfo.writerInfo.userNo eq authUser.userNo}">
+					<a href="${pageContext.request.contextPath}/matching/modifyForm"><button class="btn-blue">수정</button></a>
+					<button id="btnDel-modal" class="btn-white">삭제</button>
+				</c:if>
+				<a href="${pageContext.request.contextPath}/matching/main"><button class="btn-white">목록</button></a>
 			</div>
 		</div>
-
 		<hr>
 
 		<div>댓글</div>
@@ -235,8 +247,58 @@
 
 <script>
 
+// 매칭 참가 버튼 클릭: 참가자 리스트 출력
 $('#btn-joinMatching').on('click', function(){
+	var userNo = $(this).data("user_no");
+	var matchingNo = $(this).data("matching_no");
+	console.log(userNo);
+	console.log(matchingNo);
 	
+	
+
+	var matchingGroupVo = {
+			userNo: userNo,
+			matchingNo: matchingNo
+	};
+
+	console.log(matchingGroupVo);
+
+	$.ajax({
+		url: '${pageContext.request.contextPath}/matching/joinMatching',
+		type: 'post',
+		data: matchingGroupVo,
+		success: function(joinMatchingInfo){
+			console.log(joinMatchingInfo.userInfo);
+			renderJoin(joinMatchingInfo.userInfo);
+			
+			console.log(joinMatchingInfo.matchingMember);
+			$('#joinMatchingMember').text(joinMatchingInfo.matchingMember);
+		},
+		error: function(XHR, status, error) {
+			console.log(status + ' : ' + error);
+		}
+		
+	});
+	var nowMember = $(this).data("now_member");
+	console.log(nowMember)
+	var totalMember = $(this).data("total_member");
+	console.log(totalMember);
+});
+
+function renderJoin(userInfo) {
+	if (userInfo.userGender === 'male') {
+		var userGender = '남';
+	} else {
+		var userGender = '여';
+	}
+	var str = '<div data-no="' + userInfo.userNo + '">' + userInfo.userNickname + ' / ' + userInfo.userAge + ' / ' + userGender + '</div>';
+	
+	$('#addMatchingMember').append(str);
+}
+// -- 매칭 참가 버튼 클릭: 참가자 리스트 출력 --
+
+// 매칭참가 취소 버튼 클릭: 참가자 리스트에서 삭제
+$('#btn-outMatching').on('click', function() {
 	var userNo = $(this).data("user_no");
 	var matchingNo = $(this).data("matching_no");
 	
@@ -247,38 +309,22 @@ $('#btn-joinMatching').on('click', function(){
 			userNo: userNo,
 			matchingNo: matchingNo
 	};
-	
 	console.log(matchingGroupVo);
 	
 	$.ajax({
-		url: '${pageContext.request.contextPath}/matching/joinMatching',
+		url: '${pageContext.request.contextPath}/matching/outMatching',
 		type: 'post',
 		data: matchingGroupVo,
-		success: function(joinMatchingInfo){
-			console.log(joinMatchingInfo.userInfo);
-			render(joinMatchingInfo.userInfo);
-			
-			console.log(joinMatchingInfo.matchingMember);
-			$('#joinMatchingMember').text(joinMatchingInfo.matchingMember);
+		success: function(matchingMember) {
+			$('[data-no=' + userNo + ']').remove();
+			$('#joinMatchingMember').text(matchingMember);
 		},
 		error: function(XHR, status, error) {
 			console.log(status + ' : ' + error);
 		}
-		
 	});
-	
 });
-
-function render(userInfo) {
-	if (userInfo.userGender === 'male') {
-		var userGender = '남';
-	} else {
-		var userGender = '여';
-	}
-	var str = userInfo.userNickname + ' / ' + userInfo.userAge + ' / ' + userGender + '<br>';
-	
-	$('#addMatchingMember').append(str);
-}
+// -- 매칭참가 취소 버튼 클릭: 참가자 리스트에서 삭제 --
 
 </script>
 

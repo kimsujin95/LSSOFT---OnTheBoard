@@ -57,7 +57,7 @@
 				mg.user_no,
 				m.matching_title,
 				m.matching_status,
-				m.matching_reg_date
+				to_char(m.matching_reg_date, 'yyyy. mm. dd.') matching_reg_date
 			FROM
 			    matching m LEFT OUTER JOIN matching_group mg
 			    ON m.matching_no = mg.matching_no
@@ -185,6 +185,16 @@
 				)
 		]]>	
 	</insert>
+	<!-- 매칭 글 읽기 - 매칭 참가 취소 -->
+	<delete id="outMatching" parameterType="matchingGroupVo">
+		<![CDATA[
+			DELETE FROM
+				matching_group
+			WHERE
+				user_no = #{ userNo }
+				AND matching_no = #{ matchingNo }
+		]]>
+	</delete>
 	
 	<!-- 리스트 / 매칭 글 읽기 - 현재 매칭 참가중인 인원 수 -->
 	<select id="matchingMember" parameterType="int" resultType="int">

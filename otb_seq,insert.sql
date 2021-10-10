@@ -1,6 +1,7 @@
 -- SEQUENCE
 DROP SEQUENCE seq_users_no;
 DROP SEQUENCE seq_game_no;
+DROP SEQUENCE seq_game_bookmark_no;
 DROP SEQUENCE seq_theme_no;
 DROP SEQUENCE seq_matching_no;
 DROP SEQUENCE seq_sido_no;
@@ -15,6 +16,11 @@ INCREMENT BY 1
 NOCACHE;
 
 CREATE SEQUENCE seq_game_no
+START WITH 1
+INCREMENT BY 1
+NOCACHE;
+
+CREATE SEQUENCE seq_game_bookmark_no
 START WITH 1
 INCREMENT BY 1
 NOCACHE;

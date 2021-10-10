@@ -51,13 +51,14 @@
 		]]>
 	</select>	
 	
-	<!--  -->
+	<!-- 매장 예약가능 시간 리스트 가져오기 -->
 	<select id="getStoreRevTime" parameterType="int" resultType="ReservationTimeVo">
 		<![CDATA[
 			select reservation_date_no as  reservationDateNo,
 				   store_reservation_time as storeReservationTime
 			from reservation_time
 			where reservation_date_no = #{reservationDateNo}
+			order by store_reservation_time asc
 		]]>
 	</select>
 </mapper>

@@ -499,3 +499,34 @@ button.btn-red {
 button.time_btn {
 	background-color: white;
 }
+
+/* 예약시간 선택 버튼 */ 
+#time_table_wrap {
+	display:inline-block;
+	
+}
+
+#time_table{
+	max-height:250px;
+}
+
+#time_table > li{
+	display:inline-block;
+}
+
+#time_table > li button{
+	display:inline-block;
+	background-color:none;
+	width:50px;
+	margin:5px;
+	text-align:center;
+}
+
+#time_table > li .btn_active:hover{
+	background-color:#ff1f67;
+	color : #fff;
+}
+
+#time_table > li .btn_inactive{
+	cursor:default;
+}

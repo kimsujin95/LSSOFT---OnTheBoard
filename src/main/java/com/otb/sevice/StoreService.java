@@ -61,7 +61,7 @@ public class StoreService {
 	}
 	
 	//선택한 날짜의 예약가능시간 정보 가져오기
-	public List<ReservationTimeVo> getDateInfo(ReservationDateVo reservationDateVo) {
+	public String[] getDateInfo(ReservationDateVo reservationDateVo) {
 		System.out.println("[StoreService.getDateInfo]");
 		
 		int reservationDateNo = storeDao.getDateNo(reservationDateVo);
@@ -69,6 +69,18 @@ public class StoreService {
 		
 		List<ReservationTimeVo> reservationableTimeVo = storeDao.getStoreRevTime(reservationDateNo);
 		System.out.println("reservationableTimeVo : " + reservationableTimeVo);
+		
+		//reservationableTimeVo 의 배열요소 값들을 14개의 시간대 값 배열의 요소와 비교하여 일치하는 값만을 반환
+		String [] revableTimeList = new String[14];
+		
+		for(int i = 0; i < reservationableTimeVo.size(); i++) {
+			for(int j = 0; j < revableTimeList.length; j++) {
+				if(Integer.parseInt(reservationableTimeVo.get(i).getStoreReservationTime()) == (j + 9)) {
+					revableTimeList[j] = reservationableTimeVo.get(i).getStoreReservationTime();
+					break;
+				};
+			};
+		};
 		
 		/*
 		 * //예약가능시간 정보가 포함된 reservationableTimeList의 Map<String, Object>
@@ -80,7 +92,7 @@ public class StoreService {
 		 * System.out.println(reservationableTimeMap);
 		 */
 		
-		return reservationableTimeVo;
+		return revableTimeList;
 	}
 	
 }

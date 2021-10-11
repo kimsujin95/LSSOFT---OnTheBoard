@@ -187,7 +187,7 @@
 							+ '<td>' + matchingList.matchingStatus + '</td>'
 							+ '<td>' + matchingList.matchingHits + '</td>'
 							+ '<td>' + matchingList.matchingTitle + '</td>'
-							+ '<td>테라포밍 마스</td>'
+							+ '<td>' + matchingList.gameNameKo + '</td>'
 							+ '<td>' + matchingMemberList + '/' + matchingList.matchingPeople + '</td>'
 							+ '<td>남</td>'
 							+ '<td>서울 강남구</td>'
@@ -239,6 +239,39 @@
 		};
 	});
 // -- 성별 제한 체크박스 중복 선택 해제 --
+
+// 선택된 옵션에 맞는 리스트만 출력하기
+$('input[type="checkbox"]').on('click', function() {
+	var keyword = new Array();
+	
+	$('input').each(function() {
+		if ($(this).is(':checked')) {
+			var checked = $(this).val();
+			keyword.push(checked);
+		}
+	});
+	
+	console.log('keyword= ' + keyword);
+	
+	$('#listHtml').html('');
+	$.ajax({
+		url: '${pageContext.request.contextPath}/matching/list',
+		type: 'post',
+		data: { keyword: keyword },
+		success: function(matchingListMap) {
+			console.log('컨트롤러 방문해서 검색 리스트 갖고 오기 성공');
+			
+			// 리스트 반복문
+			for (var i = 0; i < matchingListMap.matchingList.length; i++) {
+				render(matchingListMap.matchingList[i], matchingListMap.matchingMemberList[i]);
+			}
+		},
+		error: function(XHR, status, error) {
+			console.log(status + ' : ' + error);
+		}
+	});
+});
+// -- 선택된 옵션에 맞는 리스트만 출력하기 --
 
 </script>
 

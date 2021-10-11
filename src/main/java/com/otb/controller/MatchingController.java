@@ -26,7 +26,7 @@ public class MatchingController {
 	@Autowired
 	private MatchingService matchingService;
 
-	// 매칭 - 메인페이지(리스트)
+	// 매칭 - 메인페이지(ajax리스트)
 	@RequestMapping("/main")
 	public String main() {
 		System.out.println("매칭 컨트롤러: main;;;");
@@ -37,14 +37,15 @@ public class MatchingController {
 	// 매칭리스트 API
 	@ResponseBody
 	@RequestMapping("/list")
-	public Map<String, Object> list() {
+	public Map<String, Object> list(@RequestParam(value= "keyword[]", required= false, defaultValue= "") List<String> keyword) {
 		System.out.println("매칭 컨트롤러: list;;;");
-		Map<String, Object> matchingListMap = matchingService.list();
+		System.out.println("keyword= " + keyword);
+		Map<String, Object> matchingListMap = matchingService.list(keyword);
 		System.out.println("매칭 컨트롤러: list;;; " + matchingListMap);
 		return matchingListMap;
 	}
 
-	// 매칭글 쓰기폼
+	// 매칭글 작성 폼
 	@RequestMapping("/writeForm")
 	public String writeForm(HttpSession session, Model model) {
 		System.out.println("매칭 컨트롤러: writeForm;;;");
@@ -117,6 +118,17 @@ public class MatchingController {
 		int matchingMember = matchingService.outMatching(matchingGroupVo);
 		
 		return matchingMember;
+	}
+	
+	// 매칭글 읽기 - 매칭상태 변경
+	@ResponseBody
+	@RequestMapping("statusComplete")
+	public int statusComplete(@RequestParam("matchingNo") int matchingNo) {
+		System.out.println("매칭 컨트롤러: statusComplete;;;");
+		System.out.println(matchingNo);
+		
+		int statusComplete = matchingService.statusComplete(matchingNo);
+		return statusComplete;
 	}
 	
 	

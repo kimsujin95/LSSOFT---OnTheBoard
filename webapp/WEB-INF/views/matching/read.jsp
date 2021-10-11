@@ -136,7 +136,7 @@
 			</div>
 			<div class="col-md-4 text-right">
 				<c:if test="${readInfo.writerInfo.userNo eq authUser.userNo}">
-					<button class="btn-red">매칭완료</button>
+					<button id="btn-statusComplete" class="btn-red" data-no="${readInfo.matchingVo.matchingNo}">매칭완료</button>
 					<a href="${pageContext.request.contextPath}/store/storelist"><button class="btn-blue">예약하기</button></a>
 				</c:if>
 			</div>
@@ -325,6 +325,30 @@ $('#btn-outMatching').on('click', function() {
 	});
 });
 // -- 매칭참가 취소 버튼 클릭: 참가자 리스트에서 삭제 --
+
+// 매칭완료 클릭 - 매칭완료 상태로 변경
+$('#btn-statusComplete').on('click', function() {
+	
+	var matchingNo = $(this).data('no');
+	console.log(matchingNo);
+	
+	$.ajax({
+		url: '${pageContext.request.contextPath}/matching/statusComplete',
+		type: 'post',
+		data: { matchingNo: matchingNo },
+		success: function(statusChange) {
+			if (statusChange === 1) {
+				console.log(statusChange + '매칭상태 변경 성공');
+			} else {
+				console.log(statusChange + '매칭상태 변경 실패');
+			}
+		},
+		error: function(XHR, status, error) {
+			console.log(status + ' : ' + error);
+		}
+	});
+});
+// -- 매칭완료 클릭 - 매칭완료 상태로 변경 --
 
 </script>
 

@@ -90,10 +90,10 @@
 
 					<label for="game-name">게임</label>
 					<br>
-					<select id="game-name" name="game-name">
+					<select id="game-name" name="gameNo">
 						<option value="game-name-none">게 임 선 택</option>
 						<c:forEach items="${writeUserMap.writeGameName}" var="gameName">
-							<option value="terapoming">${gameName.gameNameKo}</option>
+							<option value="${gameName.gameNo}">${gameName.gameNameKo}</option>
 						</c:forEach>
 					</select> <input type="text" id="ipt-keyword" value="" placeholder="게임 검색">
 
@@ -117,15 +117,15 @@
 					<label for="">지역</label>
 					<br>
 					<div class="col-xs-6">
-						시/도 선택&nbsp;&nbsp;<select name="sido">
+						시/도 선택&nbsp;&nbsp;<select id="select-sido">
 							<option>지역 선택</option>
-							<option value="서울">서울</option>
-							<option value="경기도">경기도</option>
-							<option value="충청남도">충청남도</option>
+							<c:forEach items="${writeUserMap.writeSidoList}" var="sidoVo" varStatus="status">
+								<option value="${sidoVo.sidoName}">${sidoVo.sidoName}</option>
+							</c:forEach>
 						</select>
 					</div>
 					<div class="col-xs-6">
-						시/군/구 선택&nbsp;&nbsp;<select name="sigungu">
+						시/군/구 선택&nbsp;&nbsp;<select id="select-sigungu">
 							<option>지역 선택</option>
 							<option value="강남구">강남구</option>
 							<option value="">강북구</option>

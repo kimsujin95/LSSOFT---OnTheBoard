@@ -299,6 +299,9 @@
 		
 		var form = $("#form");
 		
+		var formOri = form.attr("action");
+		console.log(formOri);
+		
 		//동작 시, form tag의 액션과 enctype을 변경
 		form.attr("action", "${pageContext.request.contextPath }/storeImageUpload");
 		form.attr("enctype", "multipart/form-data");
@@ -353,6 +356,7 @@
 			
 			//전송 이후, 해당 form 태그의 attr을 원래 상태로 복구
 			form.removeAttr("enctype");
+			form.attr("action", formOri);
 			
 		}
 		

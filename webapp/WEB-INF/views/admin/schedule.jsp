@@ -62,7 +62,7 @@
 					<div id="calendar" class="container-fluid">
 						<div class="row">
 							<div id="picker-container" class="date col-xs-6">
-								<input id="date-input" type="hidden">
+								<input id="date-input" type="hidden" name="date">
 							</div>
 							<div class="col-xs-6">
 								<div id="table-area">
@@ -91,26 +91,41 @@
 										</tr>
 										<tr>
 											<td>
-												<button class="btn time-select">09:00</button>
-												<button class="btn time-select">10:00</button>
+												<input type="checkbox" class="btn-check" id="btn-check-09" name="times" value="09">
+												<label class="btn time-select" for="btn-check-09">09:00</label>
+												<input type="checkbox" class="btn-check" id="btn-check-10" name="times" value="10">
+												<label class="btn time-select" for="btn-check-10">10:00</label>
 												<br>
-												<button class="btn time-select">11:00</button>
-												<button class="btn time-select">12:00</button>
+												<input type="checkbox" class="btn-check" id="btn-check-11" name="times" value="11">
+												<label class="btn time-select" for="btn-check-11">11:00</label>
+												<input type="checkbox" class="btn-check" id="btn-check-12" name="times" value="12">
+												<label class="btn time-select" for="btn-check-12">12:00</label>
 												<br>
-												<button class="btn time-select">13:00</button>
-												<button class="btn time-select">14:00</button>
+												<input type="checkbox" class="btn-check" id="btn-check-13" name="times" value="13">
+												<label class="btn time-select" for="btn-check-13">13:00</label>
+												<input type="checkbox" class="btn-check" id="btn-check-14" name="times" value="14">
+												<label class="btn time-select" for="btn-check-14">14:00</label>
 												<br>
-												<button class="btn time-select">15:00</button>
-												<button class="btn time-select">16:00</button>
+												<input type="checkbox" class="btn-check" id="btn-check-15" name="times" value="15">
+												<label class="btn time-select" for="btn-check-15">15:00</label>
+												<input type="checkbox" class="btn-check" id="btn-check-16" name="times" value="16">
+												<label class="btn time-select" for="btn-check-16">16:00</label>
 												<br>
-												<button class="btn time-select">17:00</button>
-												<button class="btn time-select">18:00</button>
+												<input type="checkbox" class="btn-check" id="btn-check-17" name="times" value="17">
+												<label class="btn time-select" for="btn-check-17">17:00</label>
+												<input type="checkbox" class="btn-check" id="btn-check-18" name="times" value="18">
+												<label class="btn time-select" for="btn-check-18">18:00</label>
 												<br>
-												<button class="btn time-select">19:00</button>
-												<button class="btn time-select">20:00</button>
+												<input type="checkbox" class="btn-check" id="btn-check-19" name="times" value="19">
+												<label class="btn time-select" for="btn-check-19">19:00</label>
+												<input type="checkbox" class="btn-check" id="btn-check-20" name="times" value="20">
+												<label class="btn time-select" for="btn-check-20">20:00</label>
 												<br>
-												<button class="btn time-select">21:00</button>
-												<button class="btn time-select">22:00</button>
+												<input type="checkbox" class="btn-check" id="btn-check-21" name="times" value="21">
+												<label class="btn time-select" for="btn-check-21">21:00</label>
+												<input type="checkbox" class="btn-check" id="btn-check-22" name="times" value="22">
+												<label class="btn time-select" for="btn-check-22">22:00</label>
+												<br>
 											</td>
 										</tr>
 									</table>
@@ -136,11 +151,11 @@
 	<!-- //컨텐츠 -->
 </body>
 
+<!-- 데이트 피커 -->
 <script type="text/javascript">
-	
 	/* div에 데이트 피커 선언 */
 	$(".date").datepicker({
-		format: "yyyy-mm-dd"
+		format: "yyyy/mm/dd"
 		,todayHighlight: true
 		,multidate : true
 	});
@@ -150,16 +165,18 @@
 	    $("#date-input").val(
 	        $(".date").datepicker("getFormattedDate")
 	    );
-	    
-	    var date = $("#date-input").val();
-	    
-	    console.log(date);
+	   
+	    console.log($("#date-input").val());
 	    
 	});
-	
+</script>
+
+<!-- 스케쥴 등록 ajax -->
+<script type="text/javascript">
 	$("#scheduleCheck").on("click", function(){
-		console.log("스케쥴 확인 클릭");
 		if($("#scheduleCheck").text() === "스케쥴 확인") {
+			console.log("스케쥴 확인 클릭");
+	
 			$("#insert").text("수정");
 			$("#scheduleCheck").text("스케쥴 일괄 변경");
 			
@@ -169,11 +186,13 @@
 			});
 			
 		} else if ($("#scheduleCheck").text() === "스케쥴 일괄 변경") {
+			console.log("스케쥴 일괄 변경");
+	
 			$("#insert").text("등록");
 			$("#scheduleCheck").text("스케쥴 확인");
 			
 			$(".date").datepicker({
-				format: "yyyy-mm-dd"
+				format: "yyyy/mm/dd"
 				,todayHighlight: true
 				,multidate : true
 			});
@@ -183,7 +202,6 @@
 	});
 	
 	$(".time-select").on("click", function(){
-		console.log($(this).text());
 		
 		if($(this).hasClass("btn-primary") === true) {
 			$(this).removeClass("btn-primary");
@@ -193,7 +211,43 @@
 		
 	});
 	
-	
+	$("#insert").on("click", function(){
+		
+	    var date = $("#date-input").val();
+	    var times = [];
+	    
+	    $("input[name='times']:checked").each(function(i) {
+	    	times.push($(this).val());
+	    });
+		
+	    console.log(date);
+	    console.log(times);
+	    
+	    var allData = {
+	    		"date" : date,
+	    		"times" : times
+	    };
+	    
+	    console.log(allData);
+	    
+	    $.ajax({
+	        //요청 코드
+	        url: "${pageContext.request.contextPath }/admin/scheduleInsert",				//데이터를 받을 주소를 입력
+	        type: "get",				//get, post 데이터를 보낼 때, 방식을 설정
+	        //contentType: "application/json",
+	        data: allData,	//보내는 데이터의 형식, 객체를 생성하여 집어넣어도 된다
+	        
+	        //데이터를 받는 코드
+	        /* dataType: "json",			//데이터를 받는 형식, 일반적인 java코드를 이해하지 못하기 때문에 json으로 번역하여 받는다
+	        success: function(resultData) {
+	            // TODO : 결과로 받은 resultData로 작업 !
+	        },
+	        error: function(jqXHR, textStatus, errorThrown) {
+	            // 에러 로그는 아래처럼 확인해볼 수 있다. 
+	            alert("업로드 에러\ncode : " + jqXHR.status + "\nerror message : " + jqXHR.responseText);
+	        } */
+		});
+	    
+	});
 </script>
-
 </html>

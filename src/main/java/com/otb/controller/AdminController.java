@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.otb.sevice.AdminService;
 import com.otb.vo.StoreVo;
@@ -59,6 +62,23 @@ public class AdminController {
 		return "/admin/schedule";
 	}
 
+	//schedule - 등록
+	@ResponseBody
+	@RequestMapping(value = "/scheduleInsert", method = {RequestMethod.GET, RequestMethod.POST})
+	public void shceduleInsert(@RequestParam("date") String date, @RequestParam("times[]") String[] times) {
+		System.out.println("스케쥴 인서트 도착");
+		System.out.println(date);
+		
+		String[] days = date.split(",");
+		for(int i = 0; i < days.length; i++) {
+			System.out.println(days[i]);
+		}
+		
+		for(int i = 0; i < times.length; i++) {
+			System.out.println(times[i]);
+		}
+		
+	}
 	
 	//////////////////////////////////////// 매장 정보 등록 및 수정 ////////////////////////////////////////
 	

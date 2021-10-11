@@ -14,6 +14,8 @@
 		<result column="matching_status" property="matchingStatus" />
 		<result column="matching_reg_date" property="matchingRegDate" />
 		<result column="matching_member" property="matchingMember" />
+		<result column="game_name_ko" property="gameNameKo" />
+		<result column="game_no" property="gameNo" />
 	</resultMap>
 	
 	<resultMap id="resultMapMatchingGroupVo" type="MatchingGroupVo">
@@ -29,26 +31,56 @@
 		<result column="user_nickname" property="userNickname" />
 		<result column="user_gender" property="userGender" />
 	</resultMap>
+	
+	<resultMap id="resultMapGameVo" type="GameVo">
+		<result column="game_no" property="gameNo" />
+		<result column="game_name_ko" property="gameNameKo" />
+	</resultMap>
+	
+	<resultMap id="resultMapSidoVo" type="SidoVo">
+		<result column="sido_code" property="sidoCode" />
+		<result column="sido_name" property="sidoName" />
+	</resultMap>
+	
+	<resultMap id="resultMapSigunguVo" type="SigunguVo">
+		<result column="sigungu_code" property="sigunguCode" />
+		<result column="sido_code" property="sidoCode" />
+		<result column="sigungu_name" property="sigunguName" />
+	</resultMap>
 
 	<!-- 매칭 리스트 -->
-	<select id="list" resultMap="resultMapMatchingVo">
+	<select id="list" parameterType="java.util.List" resultMap="resultMapMatchingVo">
 		<![CDATA[
 			SELECT
-				matching_no,
-				user_no,
-				matching_title,
-				matching_content,
-				matching_people,
-				matching_status,
-				matching_hits,
-				matching_reg_date
+				m.matching_no,
+				m.user_no,
+				m.matching_title,
+				m.matching_content,
+				m.matching_people,
+				m.matching_status,
+				m.matching_hits,
+				m.matching_reg_date,
+				g.game_name_ko
 			FROM
-				matching
+				matching m LEFT OUTER JOIN game g
+				ON m.game_no = g.game_no
+		]]>
+		<if test="list.size != 0">
+		<![CDATA[
+			WHERE
+		]]>
+		<foreach collection="list" item="keyword" separator="or">
+		<![CDATA[
+				m.matching_status LIKE '%'||#{keyword}||'%'
+		]]>
+		</foreach>
+		</if>
+		<![CDATA[
 			ORDER BY
-				matching_no DESC
+				m.matching_no DESC
 		]]>
 	</select>
-	
+			
 	<!-- (영하) 마이페이지 매칭 리스트 -->
 	<select id="mypageList" parameterType="int" resultMap="resultMapMatchingVo">
 		<![CDATA[
@@ -78,17 +110,18 @@
 		]]>
 	</select> -->
 
-	<!-- 매칭 글 등록 - 게임 이름 -->
-	<select id="gameName" resultType="GameVo">
+	<!-- 매칭글 작성 폼 - 게임 이름 -->
+	<select id="gameName" resultMap="resultMapGameVo">
 		<![CDATA[
 			SELECT
-			    game_name_ko gameNameKo
+				game_no,
+			    game_name_ko
 			FROM
 			    game
 		]]>
 	</select>
 
-	<!-- 매칭 글 등록 - 게임 테마 -->
+	<!-- 매칭글 작성 폼 - 게임 테마 -->
 	<select id="gameTheme" resultType="ThemeVo">
 		<![CDATA[
 			SELECT
@@ -97,6 +130,33 @@
 				theme
 		]]>
 	</select>
+	
+	<!-- 매칭글 작성 폼 - 시도 리스트 -->
+	<select id="sidoList" resultMap="resultMapSidoVo">
+		<![CDATA[
+			SELECT
+				sido_code,
+				sido_name
+			FROM
+				sido
+			ORDER BY
+				sido_code ASC
+		]]>
+	</select>
+	
+	<!-- 매칭글 작성 폼 - 시군구 리스트 -->
+<!-- 	<select id="sigunguList" resultMap="resultMapSigunguVo">
+		<![CDATA[
+			SELECT
+				sigungu_code,
+				sido_code,
+				sigungu_name
+			FROM
+				sigungu
+			ORDER BY
+				sido_code ASC
+		]]>
+	</select> -->
 
 	<!-- 매칭 글 등록 -->
 	<insert id="write" parameterType="MatchingVo">
@@ -110,7 +170,7 @@
 		</selectKey>
 		<![CDATA[
 			INSERT INTO
-				matching(matching_no, user_no, matching_title, matching_content, matching_people, matching_status, matching_hits, matching_reg_date)
+				matching(matching_no, user_no, matching_title, matching_content, matching_people, game_no, matching_status, matching_hits, matching_reg_date)
 			VALUES
 				(
 					#{ matchingNo },
@@ -118,6 +178,7 @@
 					#{ matchingTitle},
 					#{ matchingContent },
 					#{ matchingPeople },
+					#{ gameNo },
 					'매칭중',
 					0,
 					sysdate
@@ -232,6 +293,17 @@
 				m.join_reg_date ASC
 		]]>
 	</select>
+	
+	<update id="statusComplete" parameterType="int">
+		<![CDATA[
+			UPDATE
+				matching
+			SET
+				matching_status = '매칭완료'
+			WHERE
+				matching_no = #{ matchingNo }
+		]]>
+	</update>
 	
 	<!-- (재영)스토어인포 - 에약 페이지에서 호스트인 그룹 -->
 	<select id="userHostMatchingList" parameterType="int" resultMap="resultMapMatchingVo">

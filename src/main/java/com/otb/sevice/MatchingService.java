@@ -24,11 +24,11 @@ public class MatchingService {
 	private UserDao userDao;
 	
 	// 매칭 리스트
-	public Map<String, Object> list() {
+	public Map<String, Object> list(List<String> keyword) {
 		System.out.println("매칭 서비스: list;;;");
 		
 		// 매칭리스트
-		List<MatchingVo> matchingList = matchingDao.list();
+		List<MatchingVo> matchingList = matchingDao.list(keyword);
 		// 매칭에 참여중인 멤버 리스트
 		List<Integer> matchingMemberList = new ArrayList<Integer>();
 		for (int i = 0; i < matchingList.size(); i++) {
@@ -47,7 +47,7 @@ public class MatchingService {
 		return matchingListMap;
 	}
 	
-	// 매칭글 쓰기폼
+	// 매칭글 작성 폼
 	public Map<String, Object> writeUserInfo(int authUserNo) {
 		System.out.println("매칭 서비스: writeUserInfo;;;");
 		
@@ -57,8 +57,8 @@ public class MatchingService {
 //		writeUserInfo.put("writeUserAge", matchingDao.userAge(authUserNo));
 		writeUserInfo.put("writeGameName", matchingDao.gameName());
 		writeUserInfo.put("writeGameTheme", matchingDao.gameTheme());
-		// put sido
-		// put sigungo
+		writeUserInfo.put("writeSidoList", matchingDao.sidoList());
+//		writeUserInfo.put("writeSigunguList", matchingDao.sigunguList());
 		
 		return writeUserInfo;
 	}
@@ -163,6 +163,14 @@ public class MatchingService {
 		System.out.println(matchingMember);
 		
 		return matchingMember;
+	}
+	
+	// 매칭글 읽기 - 매칭상태 변경
+	public int statusComplete(int matchingNo) {
+		System.out.println("매칭 서비스: statusComplete;;;");
+		
+		int statusComplete = matchingDao.statusComplete(matchingNo);
+		return statusComplete;
 	}
 	
 

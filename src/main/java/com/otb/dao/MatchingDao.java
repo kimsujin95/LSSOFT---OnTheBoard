@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.otb.vo.GameVo;
 import com.otb.vo.MatchingGroupVo;
 import com.otb.vo.MatchingVo;
+import com.otb.vo.SidoVo;
+import com.otb.vo.SigunguVo;
 import com.otb.vo.ThemeVo;
 import com.otb.vo.UserVo;
 
@@ -19,10 +21,10 @@ public class MatchingDao {
 	private SqlSession sqlSession;
 
 	// 매칭 리스트
-	public List<MatchingVo> list() {
+	public List<MatchingVo> list(List<String> keyword) {
 		System.out.println("매칭 다오: list;;;");
 
-		List<MatchingVo> matchingList = sqlSession.selectList("matching.list");
+		List<MatchingVo> matchingList = sqlSession.selectList("matching.list", keyword);
 
 		System.out.println("매칭 다오: list;;; " + matchingList);
 
@@ -51,7 +53,7 @@ public class MatchingDao {
 	 * return userAge; }
 	 */
 
-	// 매칭글 쓰기폼 - 게임 이름
+	// 매칭글 작성 폼 - 게임 리스트
 	public List<GameVo> gameName() {
 		System.out.println("매칭 다오: gameName;;;");
 
@@ -61,7 +63,7 @@ public class MatchingDao {
 		return gameName;
 	}
 
-	// 매칭글 쓰기폼 - 게임 테마
+	// 매칭글 작성 폼 - 게임 테마 리스트
 	public List<ThemeVo> gameTheme() {
 		System.out.println("매칭 다오: gameTheme;;;");
 
@@ -70,6 +72,25 @@ public class MatchingDao {
 
 		return gameTheme;
 	}
+	
+	// 매칭글 작성 폼 - 시도 리스트
+	public List<SidoVo> sidoList() {
+		System.out.println("매칭 다오: sidoList;;;");
+		
+		List<SidoVo> sidoList = sqlSession.selectList("matching.sidoList");
+		
+		return sidoList;
+	}
+	
+	// 매칭글 작성 폼 - 시군구 리스트
+	/*
+	 * public List<SigunguVo> sigunguList() {
+	 * System.out.println("매칭 다오: sigunguList;;;");
+	 * 
+	 * List<SigunguVo> sigunguList = sqlSession.selectList("matching.sigunguList");
+	 * 
+	 * return sigunguList; }
+	 */
 
 	// 매칭글 등록
 	public int write(MatchingVo matchingVo) {
@@ -143,6 +164,14 @@ public class MatchingDao {
 		List<UserVo> matchingMemberInfoList = sqlSession.selectList("matching.matchingMemberInfoList", matchingNo);
 
 		return matchingMemberInfoList;
+	}
+	
+	// 매칭글 읽기 - 매칭상태 변경
+	public int statusComplete(int matchingNo) {
+		System.out.println("매칭 서비스: statusComplete;;;");
+		
+		int statusComplete = sqlSession.update("matching.statusComplete", matchingNo);
+		return statusComplete;
 	}
 
 }

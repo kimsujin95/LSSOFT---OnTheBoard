@@ -9,6 +9,7 @@ public class MatchingVo {
 	private int userAge;
 	private String userGender;
 	private String themeName;
+	private String gameNo;
 	private String gameNameKo;
 	private String matchingDate;
 	private String matchingTime;
@@ -34,22 +35,13 @@ public class MatchingVo {
 		super();
 	}
 	
-	
-	public MatchingVo(int userNo, int matchingPeople, String matchingTitle, String matchingContent) {
-		super();
-		this.userNo = userNo;
-		this.matchingPeople = matchingPeople;
-		this.matchingTitle = matchingTitle;
-		this.matchingContent = matchingContent;
-	}
-
-
-	public MatchingVo(int matchingNo, int userNo, String userNickname, int userBirthDate, int userAge, String userGender, String themeName,
-			String gameNameKo, String matchingDate, String matchingTime, String sidoName, String sigunguName,
-			int matchingPeople, String matchingPermissionGender, String matchingPermissionTeens,
-			String matchingPermissionTwenties, String matchingPermissionThirties, String matchingPermissionFourties,
-			String matchingPermissionAllAge, String matchingTitle, String matchingContent, String matchingRegDate,
-			int matchingHits, String matchingStatus, int matchingMember) {
+	public MatchingVo(int matchingNo, int userNo, String userNickname, int userBirthDate, int userAge,
+			String userGender, String themeName, String gameNo, String gameNameKo, String matchingDate,
+			String matchingTime, String sidoName, String sigunguName, int matchingPeople,
+			String matchingPermissionGender, String matchingPermissionTeens, String matchingPermissionTwenties,
+			String matchingPermissionThirties, String matchingPermissionFourties, String matchingPermissionAllAge,
+			String matchingTitle, String matchingContent, String matchingRegDate, int matchingHits,
+			String matchingStatus, int matchingMember) {
 		super();
 		this.matchingNo = matchingNo;
 		this.userNo = userNo;
@@ -58,6 +50,7 @@ public class MatchingVo {
 		this.userAge = userAge;
 		this.userGender = userGender;
 		this.themeName = themeName;
+		this.gameNo = gameNo;
 		this.gameNameKo = gameNameKo;
 		this.matchingDate = matchingDate;
 		this.matchingTime = matchingTime;
@@ -78,7 +71,6 @@ public class MatchingVo {
 		this.matchingMember = matchingMember;
 	}
 
-	
 	public int getMatchingNo() {
 		return matchingNo;
 	}
@@ -133,6 +125,14 @@ public class MatchingVo {
 
 	public void setThemeName(String themeName) {
 		this.themeName = themeName;
+	}
+	
+	public String getGameNo() {
+		return gameNo;
+	}
+
+	public void setGameNo(String gameNo) {
+		this.gameNo = gameNo;
 	}
 
 	public String getGameNameKo() {
@@ -282,15 +282,16 @@ public class MatchingVo {
 	@Override
 	public String toString() {
 		return "MatchingVo [matchingNo=" + matchingNo + ", userNo=" + userNo + ", userNickname=" + userNickname
-				+ ", userBirthDate=" + userBirthDate + ", userAge= " + userAge + ", userGender=" + userGender + ", themeName=" + themeName
-				+ ", gameNameKo=" + gameNameKo + ", matchingDate=" + matchingDate + ", matchingTime=" + matchingTime
-				+ ", sidoName=" + sidoName + ", sigunguName=" + sigunguName + ", matchingPeople=" + matchingPeople
-				+ ", matchingPermissionGender=" + matchingPermissionGender + ", matchingPermissionTeens="
-				+ matchingPermissionTeens + ", matchingPermissionTwenties=" + matchingPermissionTwenties
-				+ ", matchingPermissionThirties=" + matchingPermissionThirties + ", matchingPermissionFourties="
-				+ matchingPermissionFourties + ", matchingPermissionAllAge=" + matchingPermissionAllAge
-				+ ", matchingTitle=" + matchingTitle + ", matchingContent=" + matchingContent + ", matchingRegDate="
-				+ matchingRegDate + ", matchingHits=" + matchingHits + ", matchingStatus=" + matchingStatus + ", matchingMember=" + matchingMember + "]";
+				+ ", userBirthDate=" + userBirthDate + ", userAge=" + userAge + ", userGender=" + userGender
+				+ ", themeName=" + themeName + ", gameNo=" + gameNo + ", gameNameKo=" + gameNameKo + ", matchingDate="
+				+ matchingDate + ", matchingTime=" + matchingTime + ", sidoName=" + sidoName + ", sigunguName="
+				+ sigunguName + ", matchingPeople=" + matchingPeople + ", matchingPermissionGender="
+				+ matchingPermissionGender + ", matchingPermissionTeens=" + matchingPermissionTeens
+				+ ", matchingPermissionTwenties=" + matchingPermissionTwenties + ", matchingPermissionThirties="
+				+ matchingPermissionThirties + ", matchingPermissionFourties=" + matchingPermissionFourties
+				+ ", matchingPermissionAllAge=" + matchingPermissionAllAge + ", matchingTitle=" + matchingTitle
+				+ ", matchingContent=" + matchingContent + ", matchingRegDate=" + matchingRegDate + ", matchingHits="
+				+ matchingHits + ", matchingStatus=" + matchingStatus + ", matchingMember=" + matchingMember + "]";
 	}
 
 }

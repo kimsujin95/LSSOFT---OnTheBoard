@@ -9,18 +9,12 @@
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!-- 부가적인 테마 -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"
->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <!-- CSS -->
-<link href="${pageContext.request.contextPath}/assets/css/common.css" rel="stylesheet"
-	type="text/css"
->
-<link href="${pageContext.request.contextPath}/assets/css/store/storeinfo.css" rel="stylesheet"
-	type="text/css"
->
+<link href="${pageContext.request.contextPath}/assets/css/common.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/store/storeinfo.css" rel="stylesheet" type="text/css">
 
 <!-- jQuery -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
@@ -31,9 +25,7 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!-- fontawesome cdn -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
-	rel="stylesheet"
->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -81,31 +73,25 @@
 						<!-- 이미지의 개수만큼 item을 만든다. 중요한 포인트는 carousel-indicators의 li 태그 개수와 item의 개수는 일치해야 한다. -->
 						<div class="item active">
 							<!-- 아미지 설정- -->
-							<img src="${pageContext.request.contextPath}/assets/images/admin/BoardGameStore.jpg"
-								class="store_img"
-							>
+							<img src="${pageContext.request.contextPath}/assets/images/admin/BoardGameStore.jpg" class="store_img">
 							<!-- 캡션 설정 (생략 가능) -->
 							<!-- 글자 색은 검은색 -->
 							<div class="carousel-caption">매장이미지1 입니다.</div>
 						</div>
 						<div class="item">
-							<img src="${pageContext.request.contextPath}/assets/images/admin/BoardGameStore2.jpg"
-								class="store_img"
-							>
+							<img src="${pageContext.request.contextPath}/assets/images/admin/BoardGameStore2.jpg" class="store_img">
 							<div class="carousel-caption">매장이미지2 입니다.</div>
 						</div>
 					</div>
 					<!-- 왼쪽 화살표 버튼 -->
 					<!-- href는 carousel의 id를 가르킨다. -->
-					<a class="left carousel-control" href="#carousel-store-img-generic" role="button"
-						data-slide="prev"
-					> <!-- 왼쪽 화살표 --> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<a class="left carousel-control" href="#carousel-store-img-generic" role="button" data-slide="prev"> <!-- 왼쪽 화살표 --> <span
+						class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 					</a>
 					<!-- 오른쪽 화살표 버튼 -->
 					<!-- href는 carousel의 id를 가르킨다. -->
-					<a class="right carousel-control" href="#carousel-store-img-generic" role="button"
-						data-slide="next"
-					> <!-- 오른쪽 화살표 --> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<a class="right carousel-control" href="#carousel-store-img-generic" role="button" data-slide="next"> <!-- 오른쪽 화살표 --> <span
+						class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 					</a>
 				</div>
 			</div>
@@ -196,91 +182,7 @@
 						</li>
 
 					</div>
-					<!-- //리뷰 반복 출력 -->
-					<div class="user_review">
 
-						<li>
-
-							<div class="user_profile_img">
-								<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
-							</div>
-
-							<div class="review_writer_info">
-
-								<table>
-									<tr>
-										<td>드웨인_존슨</td>
-									</tr>
-									<tr>
-										<td>2021/09/15</td>
-									</tr>
-									<tr>
-										<td>사장님도 친절하고 가게도 완전 깨끗~</td>
-									</tr>
-								</table>
-
-							</div>
-
-						</li>
-
-					</div>
-					<!-- //리뷰 반복 출력 -->
-					<div class="user_review">
-
-						<li>
-
-							<div class="user_profile_img">
-								<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
-							</div>
-
-							<div class="review_writer_info">
-
-								<table>
-									<tr>
-										<td>드웨인_존슨</td>
-									</tr>
-									<tr>
-										<td>2021/09/15</td>
-									</tr>
-									<tr>
-										<td>사장님도 친절하고 가게도 완전 깨끗~</td>
-									</tr>
-								</table>
-
-							</div>
-
-						</li>
-
-					</div>
-					<!-- //리뷰 반복 출력 -->
-					<div class="user_review">
-
-						<li>
-
-							<div class="user_profile_img">
-								<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
-							</div>
-
-							<div class="review_writer_info">
-
-								<table>
-									<tr>
-										<td id="user_name">드웨인_존슨</td>
-									</tr>
-									<tr>
-										<td id="write_date">2021/09/15</td>
-									</tr>
-									<tr>
-										<td id="review_content">사장님도 친절하고 가게도 완전 깨끗~</td>
-									</tr>
-								</table>
-
-							</div>
-
-						</li>
-
-					</div>
-					<!-- //리뷰 반복 출력 -->
 				</ul>
 			</div>
 			<!-- 리뷰 페이징 -->
@@ -314,126 +216,98 @@
 
 							<button class="" type="button" date-data="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"15" <span
-									style="pointer-events: none;" class="ir"
-								>일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"15" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">수</span>
 
 							</button>
 
 							<button class="" type="button" date-data="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"16" <span
-									style="pointer-events: none;" class="ir"
-								>일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"16" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">목</span>
 
 							</button>
 
 							<button class="" type="button" date-data="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"17" <span
-									style="pointer-events: none;" class="ir"
-								>일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"17" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">금</span>
 
 							</button>
 
 							<button class="" type="button" date-data="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"18" <span
-									style="pointer-events: none;" class="ir"
-								>일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"18" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">토</span>
 
 							</button>
 
 							<button class="" type="button" date-data="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"19" <span
-									style="pointer-events: none;" class="ir"
-								>일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"19" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">일</span>
 
 							</button>
 
 							<button class="" type="button" date-data="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"20" <span
-									style="pointer-events: none;" class="ir"
-								>일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"20" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">월</span>
 
 							</button>
 
 							<button class="" type="button" date-data="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"21" <span
-									style="pointer-events: none;" class="ir"
-								>일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"21" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">화</span>
 
 							</button>
 
 							<button class="" type="button" date-data="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"22" <span
-									style="pointer-events: none;" class="ir"
-								>일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"22" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">수</span>
 
 							</button>
 
 							<button class="" type="button" date-data="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"23" <span
-									style="pointer-events: none;" class="ir"
-								>일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"23" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">목</span>
 
 							</button>
 
 							<button class="" type="button" date-data="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"24" <span
-									style="pointer-events: none;" class="ir"
-								>일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"24" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">금</span>
 
 							</button>
 
 							<button class="" type="button" date-data="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"25" <span
-									style="pointer-events: none;" class="ir"
-								>일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"25" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">토</span>
 
 							</button>
 
 							<button class="" type="button" date-data="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"26" <span
-									style="pointer-events: none;" class="ir"
-								>일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"26" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">일</span>
 
 							</button>
 
 							<button class="" type="button" date-data="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"27" <span
-									style="pointer-events: none;" class="ir"
-								>일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"27" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">월</span>
 
 							</button>
 
 							<button class="" type="button" date-data="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"28" <span
-									style="pointer-events: none;" class="ir"
-								>일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"28" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">화</span>
 
 							</button>
@@ -447,11 +321,8 @@
 
 					<!-- 달력 보기 -->
 					<div class="bg-line">
-						<input type="hidden" id="datepicker" value="">
-						<input type="hidden" id="date_selected">
-						<button type="button" id="calendar" onclick="$('#datepicker').datepicker('show')"
-							class="btn-calendar-large" title="달력보기"
-						>달력보기</button>
+						<input type="hidden" id="datepicker" value=""> <input type="hidden" id="date_selected">
+						<button type="button" id="calendar" onclick="$('#datepicker').datepicker('show')" class="btn-calendar-large" title="달력보기">달력보기</button>
 					</div>
 				</div>
 			</div>
@@ -459,18 +330,14 @@
 			<div class="quick-reserve-area">
 
 				<!-- 예약 인원 선택 -->
-				<div class="">
-					<label>인원 수 선택</label>
+				<div class="select_rev_info_area">
 					<ul class="nav nav-tabs nav-justified" role="tablist" id="how_to_choice_people">
-						<li role="presentation" class="active"><a href="#choice_by_count"
-							aria-controls="choice_by_count" role="tab" data-toggle="tab"
-						>직접 입력</a></li>
-						<li role="presentation"><a href="#choice_by_grouplist"
-							aria-controls="choice_by_grouplist" role="tab" data-toggle="tab"
-						>그룹 리스트에서 선택</a></li>
+						<li role="presentation" class="active"><a href="#choice_by_count" aria-controls="choice_by_count" role="tab" data-toggle="tab">직접 입력</a></li>
+						<li role="presentation"><a href="#choice_by_grouplist" aria-controls="choice_by_grouplist" role="tab" data-toggle="tab">그룹 리스트에서 선택</a></li>
 					</ul>
-
+					
 					<div class="tab-content">
+					<label>인원 선택</label>
 						<div role="tabpanel" class="tab-pane active" id="choice_by_count">
 							<div>
 								<table>
@@ -492,13 +359,9 @@
 								<ul id="grouplist">
 									<!-- 매칭이 완료된 그룹 리스트 -->
 									<!-- 내역이 없을 시 리스트 존재x 텍스트 띄워주기 -->
-									<c:forEach items="${userDataInfoMap.userHostMatchingList}" var="matchingVo"
-										varStatus="status"
-									>
-										<li role="presentation"><a href="#chosen_group" aria-controls="chosen_group"
-											role="tab" data-toggle="tab"
-										> <span class="groupUser" data-no="${matchingVo.matchingNo}">${status.index + 1}.
-													${matchingVo.matchingTitle}</span>
+									<c:forEach items="${userDataInfoMap.userHostMatchingList}" var="matchingVo" varStatus="status">
+										<li role="presentation"><a href="#chosen_group" aria-controls="chosen_group" role="tab" data-toggle="tab"> <span class="groupUser"
+												data-no="${matchingVo.matchingNo}">${status.index + 1}. ${matchingVo.matchingTitle}</span>
 										</a></li>
 									</c:forEach>
 								</ul>
@@ -520,19 +383,9 @@
 
 					<!-- 예약 가능 시간대 표기 and 선택 -->
 					<div id="time_table_wrap">
-						<ul id="time_table">
-							<li data-time="09">09</li>
-						</ul>
+					<label>시간 선택</label>
+							<ul id="time_table"></ul>
 					</div>
-
-					<!-- 					for(i= 9, i < 23, i++) {
-						if(i  === true) {
-						 $('data-time="i"').addClass('active');
-						 }
-					}
-					
-					class="none" -->
-
 
 				</div>
 				<!-- <div class="number-of-people-choice-area">
@@ -588,9 +441,7 @@
 
 					<ul>
 
-						<li class="game-list"><img
-							src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg"
-						>
+						<li class="game-list"><img src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg">
 							<table>
 								<tr>
 									<td>voidFall</td>
@@ -671,21 +522,39 @@
 
             		var storeRevTimeVo = {storeReservationDate : storeReservationDate, storeNo : storeNo};
             		
+            		var revtimeArray = ["09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"];
+            		console.log(revtimeArray);
+            		
+            		/* for(var i = 0; i < revtimeArray.length; i++){
+            			
+            			revtimeArray[i] = '';
+            			if (revtimeArray[i] == reservationableTimeList[i].storeReservationTime) {
+            				<li class="time_btn active" data-time="revtimeArray[i]">revtimeArray[i]</li>
+            			} else {
+            				<li class="time_btn" data-time="revtimeArray[i]">revtimeArray[i]</li>
+            			}
+            			
+            		} */
+            		
             		$.ajax({
         		        cache : false,
         		        url : "${pageContext.request.contextPath}/store/getStoreRevTime",
         		        type : 'POST',
         		        data : storeRevTimeVo,
         		        
-        		        success : function() {
-							
-        		        		
+        		        success : function(reservationableTimeList) {
+        		        	for(var i = 0; i < reservationableTimeList.length; i++){
+        		        		console.log(reservationableTimeList[i]);
+        		        	};
+        		        	
+        		        	checkTimetable(reservationableTimeList, revtimeArray);
+        		        	
         		        }, // success 
         				
         		        error : function(XHR, status, error) {
         					
         		        	console.error(status + " : " + error);
-
+							
         		        	}
         		    }); // $.ajax */
             		
@@ -694,6 +563,48 @@
             });
         	
         });
+        
+        //예약 타임테이블 버튼을 활성화 하는 함수
+        function checkTimetable (reservationableTimeList, revtimeArray){
+			        	
+        	 var listEl = document.getElementById('time_table'),
+        		 fragment = document.createDocumentFragment(),
+        		 listStr = '';
+        	
+        	removeAllChildNods(listEl);
+        	
+        	for(var i=0; i < revtimeArray.length; i++){
+        		
+				var itemEl = compareDate(reservationableTimeList[i], revtimeArray[i]);
+        		
+        		fragment.appendChild(itemEl);
+				        		
+        	}
+        	
+        	listEl.appendChild(fragment);
+        	
+        }
+       
+        //예약시간 데이터 비교 후 선택 버튼 생성
+       	function compareDate (reservationableTime, revtimeArray){
+			
+        	console.log('compareDate : ' + reservationableTime);
+        	console.log('compareDate : ' + revtimeArray);
+        	
+        	var el = document.createElement('li');
+        	
+        	if(revtimeArray === reservationableTime){
+        		var itemStr = '<button onclick="clicktimetable('+revtimeArray+')" type="button" class="btn_active" data-value="'+ revtimeArray +'">' + revtimeArray + ":00 " + '</button>';
+        	}else{
+        		var itemStr = '<button type="button" class="btn_inactive" data-value="">' + revtimeArray + ":00 " + '</button>';
+        	}
+			
+    	    el.innerHTML = itemStr;
+    	    /* el.className = 'time_btn'; */
+
+    	    return el;
+        	
+        }
         
     </script>
 
@@ -715,7 +626,7 @@
         })
     </script>
 	<!-- /이미지 출력 -->
-	
+
 
 	<!-- 페이징 -->
 	<script type="text/javascript">
@@ -853,15 +764,21 @@
     	    el.className = 'item';
 
     	    return el;
-    	}
+    	};
         
     	// 그룹원 목록의 자식 Element를 제거하는 함수
-    	function removeAllChildNods(el) {   
+    	function removeAllChildNods(el) {
     	    while (el.hasChildNodes()) {
     	        el.removeChild (el.lastChild);
-    	    }
+    	    };
+    	};
+			
+     	function clicktimetable(value){
+    		
+    		console.log(value);
+    		
     	}
-        
+    	
     </script>
 
 </body>

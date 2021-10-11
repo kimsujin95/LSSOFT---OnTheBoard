@@ -26,15 +26,22 @@ public class MatchingController {
 	@Autowired
 	private MatchingService matchingService;
 
-	// 매칭리스트
-	@RequestMapping("/list")
-	public String list(Model model) {
-		System.out.println("매칭 컨트롤러: list;;;");
-
-		List<MatchingVo> matchingList = matchingService.list();
-		model.addAttribute("matchingList", matchingList);
+	// 매칭 - 메인페이지(리스트)
+	@RequestMapping("/main")
+	public String main() {
+		System.out.println("매칭 컨트롤러: main;;;");
 
 		return "/matching/list";
+	}
+	
+	// 매칭리스트 API
+	@ResponseBody
+	@RequestMapping("/list")
+	public Map<String, Object> list() {
+		System.out.println("매칭 컨트롤러: list;;;");
+		Map<String, Object> matchingListMap = matchingService.list();
+		System.out.println("매칭 컨트롤러: list;;; " + matchingListMap);
+		return matchingListMap;
 	}
 
 	// 매칭글 쓰기폼
@@ -62,7 +69,7 @@ public class MatchingController {
 		System.out.println(matchingVo);
 
 		// matchingVo에 글 작성자(userNo) 추가하기
-		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		int userNo = authUser.getUserNo();
 		matchingVo.setUserNo(userNo);
 		System.out.println(matchingVo);
@@ -70,15 +77,15 @@ public class MatchingController {
 		// 글쓰기 폼에서 받은 데이터 묶어서 INSERT
 		int write = matchingService.write(matchingVo);
 
-		return "redirect:/matching/list";
+		return "redirect:/matching/main";
 	}
 
 	// 매칭글 읽기
 	@RequestMapping("/read")
-	public String read(Model model, @RequestParam(value = "no") int matchingNo) {
+	public String read(HttpSession session, Model model, @RequestParam(value = "no") int matchingNo) {
 		System.out.println("매칭 컨트롤러: read;;;");
 		System.out.println(matchingNo);
-
+		
 		// 클릭한 매칭글 번호 받아서 데이터(글/작성자 정보) 불러오기
 		Map<String, Object> readInfo = matchingService.read(matchingNo);
 		System.out.println(readInfo);
@@ -100,6 +107,16 @@ public class MatchingController {
 		System.out.println(joinMatchingInfo);
 		
 		return joinMatchingInfo;
+	}
+	// 매칭글 읽기 - 매칭 참가 취소
+	@ResponseBody
+	@RequestMapping("/outMatching")
+	public int outMatching(@ModelAttribute MatchingGroupVo matchingGroupVo) {
+		System.out.println("매칭 컨트롤러: outMatching;;;");
+		System.out.println("매칭 컨트롤러: outMatching;;; " + matchingGroupVo);
+		int matchingMember = matchingService.outMatching(matchingGroupVo);
+		
+		return matchingMember;
 	}
 	
 	
@@ -127,7 +144,7 @@ public class MatchingController {
 		System.out.println("매칭 컨트롤러: delete;;;");
 		// deleteForm == modal
 
-		return "redirect:/matching/list";
+		return "redirect:/matching/main";
 	}
 
 }

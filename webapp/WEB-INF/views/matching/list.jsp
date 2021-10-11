@@ -68,9 +68,9 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><input class="margin-left-none" type="checkbox" id="male" value="male" name="sex-limit"> <label for="male">남</label> <input type="checkbox" id="female" value="female" name="sex-limit"> <label for="female">여</label> <input type="checkbox" id="sex-none" value="sex-none" name="sex-limit"> <label for="sex-none">무관</label></td>
-							<td><input class="margin-left-none" type="checkbox" id="10s"> <label for="10s">10대</label> <input type="checkbox" id="20s"> <label for="20s">20대</label> <input type="checkbox" id="30s"> <label for="30s">30대</label> <input type="checkbox" id="40s"> <label for="40s">40대</label> <input type="checkbox" id="50s"> <label for="50s">50대</label> <input type="checkbox" id="age-none"> <label for="age-none">무관</label></td>
-							<td><input class="margin-left-none" type="checkbox" id="matching-ing"> <label for="matching-ing">매칭중</label> <input type="checkbox" id="matching-end"> <label for="matching-end">매칭완료</label></td>
+							<td><input class="margin-left-none" type="checkbox" id="male" value="남자만" name="gender-limit"> <label for="male">남</label> <input type="checkbox" id="female" value="여자만" name="gender-limit"> <label for="female">여</label> <input type="checkbox" id="sex-none" value="성별무관" name="gender-limit"> <label for="sex-none">무관</label></td>
+							<td><input class="margin-left-none" type="checkbox" id="10s" value="10대"> <label for="10s">10대</label> <input type="checkbox" id="20s" value="20대"> <label for="20s">20대</label> <input type="checkbox" id="30s" value="30대"> <label for="30s">30대</label> <input type="checkbox" id="40s" value="40대"> <label for="40s">40대</label> <input type="checkbox" id="50s" value="50대"> <label for="50s">50대</label> <input type="checkbox" id="age-none" value="나이무관"> <label for="age-none">무관</label></td>
+							<td><input class="margin-left-none" type="checkbox" id="matching-ing" value="매칭중"> <label for="matching-ing">매칭중</label> <input type="checkbox" id="matching-end" value="매칭완료"> <label for="matching-end">매칭완료</label></td>
 						</tr>
 					</tbody>
 				</table>
@@ -81,10 +81,7 @@
 						선택초기화 <img src="${pageContext.request.contextPath}/assets/images/matching/btn-reset.png" alt="option-reset-btn">
 					</button>
 				</div>
-				<div class="col-xs-11">
-					<button>
-						테라포밍 마스 <img src="${pageContext.request.contextPath}/assets/images/matching/btn-X.png" alt="delete img">
-					</button>
+				<div id="y-select-opt" class="col-xs-11">
 				</div>
 			</div>
 		</div>
@@ -119,27 +116,8 @@
 						<th>시작날짜</th>
 					</tr>
 				</thead>
-				<tbody>
-					<c:forEach items="${matchingList}" var="matchingVo" varStatus="status">
-						<tr id="readMatching" onClick="location.href='${pageContext.request.contextPath}/matching/read?no=${matchingVo.matchingNo}'">
-							<%-- <c:choose>
-								<c:when test="${matchingVo.matchingStatus eq 'matchingIng'}">
-									<td>매칭중</td>
-								</c:when>
-								<c:otherwise>
-									<td>매칭완료</td>
-								</c:otherwise>
-							</c:choose> --%>
-							<td>${matchingVo.matchingStatus}</td>
-							<td>${matchingVo.matchingHits}</td>
-							<td>${matchingVo.matchingTitle}</td>
-							<td>테라포밍 마스</td>
-							<td>1/${matchingVo.matchingPeople}</td>
-							<td>남</td>
-							<td>서울 강남구</td>
-							<td>21. 11. 11.</td>
-						</tr>
-					</c:forEach>
+				<tbody id="listHtml">
+				<!-- javascript List -->
 				</tbody>
 			</table>
 		</div>
@@ -175,5 +153,93 @@
 	<!-- // FOOTER -->
 
 </body>
+
+<script>
+
+// 매칭 리스트
+
+	// ready - 페이지 출력 전에 실행시킴
+	$(document).ready(function() {
+		fetch();
+	});
+	
+	// ready 내부 ajax
+	function fetch() {
+		$.ajax({
+			url: '${pageContext.request.contextPath}/matching/list',
+			type: 'post',
+			success: function(matchingListMap) {
+				console.log('컨트롤러 방문해서 리스트 갖고 오기 성공');
+				// 리스트 반복문
+				for (var i = 0; i < matchingListMap.matchingList.length; i++) {
+					render(matchingListMap.matchingList[i], matchingListMap.matchingMemberList[i]);
+				}
+			},
+			error: function(XHR, status, error) {
+				console.log(status + ' : ' + error);
+			}
+		});
+	};
+	
+	// ajax에 사용할 반복문 출력 HTML코드
+	function render(matchingList, matchingMemberList) {
+		var listHtml = '<tr id="readMatching" onClick="location.href=\'${pageContext.request.contextPath}/matching/read?no=' + matchingList.matchingNo + '\'">'
+							+ '<td>' + matchingList.matchingStatus + '</td>'
+							+ '<td>' + matchingList.matchingHits + '</td>'
+							+ '<td>' + matchingList.matchingTitle + '</td>'
+							+ '<td>테라포밍 마스</td>'
+							+ '<td>' + matchingMemberList + '/' + matchingList.matchingPeople + '</td>'
+							+ '<td>남</td>'
+							+ '<td>서울 강남구</td>'
+							+ '<td>21. 11. 11.</td>'
+						+ '</tr>';
+
+		$('#listHtml').append(listHtml);
+	};
+	
+	// -- 매칭 리스트(페이지 출력 전에 실행시킴) --
+
+// 옵션 선택 값 추가/삭제
+	$('input[type="checkbox"]').on('click', function (){
+		var inputClick = $(this).val();
+		
+		if ($(this).is(':checked')){
+			console.log(inputClick);
+			$(this).attr('checked', 'checked');
+			$('#y-select-opt').append('<button class="btn-selectDel" data-value="' + inputClick + '">' + inputClick + '<img src="${pageContext.request.contextPath}/assets/images/matching/btn-X.png"></button>');
+		} else {
+			$(this).removeAttr('checked');
+			console.log('selectDel');
+			$('[data-value="' + inputClick + '"]').remove();
+		}
+	});
+	
+	// 옵션 선택 리스트에서 클릭으로 삭제
+	$('#y-select-opt').on('click', '.btn-selectDel', function() {
+		console.log('btn-selectDel');
+		var selectDel = $(this).data('value');
+		console.log(selectDel);
+		$('input[type="checkbox"][value="' + selectDel + '"]').removeAttr('checked');
+		$(this).remove();
+	});
+	
+	// 선택초기화
+	$('.btn-reset').on('click', function() {
+		$('#y-select-opt').html('');
+		$('input[type="checkbox"]').removeAttr('checked');
+	});
+// -- 옵션 선택 값 추가/삭제 --
+
+// 성별 제한 체크박스 중복 선택 해제
+	$('input[type="checkbox"][name="gender-limit"]').click(function (){
+		if($(this).prop('checked')){
+			$('input[type="checkbox"][name="gender-limit"]').prop('checked', false);
+
+			$(this).prop('checked', true);
+		};
+	});
+// -- 성별 제한 체크박스 중복 선택 해제 --
+
+</script>
 
 </html>

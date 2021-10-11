@@ -41,7 +41,7 @@
 					<div role="tabpanel" class="tab-pane active" id="location-seoul">
 						<ul id="location-medium">
 							<li><input type="checkbox" id="seoul"> <label for="seoul">서울전체</label></li>
-							<li><input type="checkbox" id="seoul-gangnam"> <label for="seoul-gangnam">강남구(12)</label></li>
+							<li><input type="checkbox" id="seoul-gangnam" value="서울 강남구"> <label for="seoul-gangnam">강남구(12)</label></li>
 							<li><input type="checkbox" id="seoul-gangdong"> <label for="seoul-gangdong">강동구(12)</label></li>
 							<li><input type="checkbox" id="seoul-gangbuk"> <label for="seoul-gangbuk">강북구(12)</label></li>
 							<li><input type="checkbox" id="seoul-gangseo"> <label for="seoul-gangseo">강서구(12)</label></li>

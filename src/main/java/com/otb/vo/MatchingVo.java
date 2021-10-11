@@ -255,11 +255,11 @@ public class MatchingVo {
 		this.matchingRegDate = matchingRegDate;
 	}
 
-	public int getmatchingHits() {
+	public int getMatchingHits() {
 		return matchingHits;
 	}
 
-	public void setmatchingHits(int matchingHits) {
+	public void setMatchingHits(int matchingHits) {
 		this.matchingHits = matchingHits;
 	}
 

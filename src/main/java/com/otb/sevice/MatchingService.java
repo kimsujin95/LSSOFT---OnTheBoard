@@ -1,5 +1,6 @@
 package com.otb.sevice;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,12 +24,27 @@ public class MatchingService {
 	private UserDao userDao;
 	
 	// 매칭 리스트
-	public List<MatchingVo> list() {
+	public Map<String, Object> list() {
 		System.out.println("매칭 서비스: list;;;");
 		
+		// 매칭리스트
 		List<MatchingVo> matchingList = matchingDao.list();
+		// 매칭에 참여중인 멤버 리스트
+		List<Integer> matchingMemberList = new ArrayList<Integer>();
+		for (int i = 0; i < matchingList.size(); i++) {
+			int matchingNo = matchingList.get(i).getMatchingNo();
+			int matchingMember = matchingDao.matchingMember(matchingNo);
+			matchingMemberList.add(matchingMember);
+		}
 		
-		return matchingList;
+		System.out.println("매칭 서비스: list;;; - 매칭멤버리스트: " + matchingMemberList);
+		
+		// 매칭리스트에 사용할 맵(매칭리스트, 매칭참여중인멤버리스트)
+		Map<String, Object> matchingListMap = new HashMap<String, Object>();
+		matchingListMap.put("matchingList", matchingList);
+		matchingListMap.put("matchingMemberList", matchingMemberList);
+		
+		return matchingListMap;
 	}
 	
 	// 매칭글 쓰기폼
@@ -74,41 +90,41 @@ public class MatchingService {
 
 		return write;
 	}
-	
+
 	// 매칭글 읽기
-	public Map<String, Object> read(int matchingNo) {
-		System.out.println("매칭 서비스: read;;;");
-		System.out.println(matchingNo);
-		
-		// 클릭한 매칭 번호로 글정보 불러오기
-		MatchingVo matchingVo = matchingDao.read(matchingNo);
-		
-		// 작성자 정보 불러오기
-		int userNo = matchingVo.getUserNo();
-		System.out.println(userNo);
-		UserVo writerInfo = userDao.selectUser(userNo);
-		System.out.println(writerInfo);
-		
-		// 매칭에 참여중인 인원 수
-		int matchingMember = matchingDao.matchingMember(matchingNo);
-		System.out.println(matchingMember);
-		matchingVo.setMatchingMember(matchingMember);
-		
-		// 매칭에 참여중인 인원 정보 리스트
-		List<UserVo> matchingMemberInfoList = matchingDao.matchingMemberInfoList(matchingNo);
-		System.out.println(matchingMemberInfoList);
-		
-		// Map으로 묶기
-		Map<String, Object> readInfo = new HashMap<String, Object>();
-		readInfo.put("matchingVo", matchingVo);
-		readInfo.put("writerInfo", writerInfo);
-		readInfo.put("matchingMemberInfoList", matchingMemberInfoList);
-		
-		// 클릭 후 조회수 1 증가
-		int hitsUp = matchingDao.hitsUp(matchingNo);
-		
-		return readInfo;
-	}
+		public Map<String, Object> read(int matchingNo) {
+			System.out.println("매칭 서비스: read;;;");
+			System.out.println(matchingNo);
+			
+			// 클릭한 매칭 번호로 글정보 불러오기
+			MatchingVo matchingVo = matchingDao.read(matchingNo);
+			
+			// 작성자 정보 불러오기
+			int userNo = matchingVo.getUserNo();
+			System.out.println(userNo);
+			UserVo writerInfo = userDao.selectUser(userNo);
+			System.out.println(writerInfo);
+			
+			// 매칭에 참여중인 인원 수
+			int matchingMember = matchingDao.matchingMember(matchingNo);
+			System.out.println(matchingMember);
+			matchingVo.setMatchingMember(matchingMember);
+			
+			// 매칭에 참여중인 인원 정보 리스트
+			List<UserVo> matchingMemberInfoList = matchingDao.matchingMemberInfoList(matchingNo);
+			System.out.println(matchingMemberInfoList);
+			
+			// Map으로 묶기
+			Map<String, Object> readInfo = new HashMap<String, Object>();
+			readInfo.put("matchingVo", matchingVo);
+			readInfo.put("writerInfo", writerInfo);
+			readInfo.put("matchingMemberInfoList", matchingMemberInfoList);
+			
+			// 클릭 후 조회수 1 증가
+			int hitsUp = matchingDao.hitsUp(matchingNo);
+			
+			return readInfo;
+		}
 	
 	// 매칭글 읽기 - 매칭 참가 신청 
 	public Map<String, Object> joinMatching(MatchingGroupVo matchingGroupVo) {
@@ -134,6 +150,19 @@ public class MatchingService {
 		joinMatchingInfo.put("userInfo", userInfo);
 		
 		return joinMatchingInfo;
+	}
+	// 매칭글 읽기 - 매칭 참가 취소
+	public int outMatching(MatchingGroupVo matchingGroupVo) {
+		System.out.println("매칭 서비스: outMatching;;;");
+		int outMatching = matchingDao.outMatching(matchingGroupVo);
+		
+		// 그룹에 삭제 후 그룹원 수 불러오기
+		int matchingNo = matchingGroupVo.getMatchingNo();
+		System.out.println(matchingNo);
+		int matchingMember = matchingDao.matchingMember(matchingNo);
+		System.out.println(matchingMember);
+		
+		return matchingMember;
 	}
 	
 

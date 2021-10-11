@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.otb.sevice.StoreService;
 import com.otb.vo.ReservationDateVo;
-import com.otb.vo.ReservationTimeVo;
 import com.otb.vo.StoreVo;
 import com.otb.vo.UserVo;
 
@@ -108,17 +107,21 @@ public class StoreController {
 		return grouplistinfo;
 	}
 	
+	// 매장번호와 날짜데이터를 받아와서 예약가능 시간대 정보를 반환해준다.
+	@ResponseBody
 	@RequestMapping("/getStoreRevTime")
-	public Map<String,Object> getStoreRevTime(@ModelAttribute("storeRevTimeVo")ReservationDateVo reservationDateVo) {
+	public String[] getStoreRevTime(@ModelAttribute("storeRevTimeVo")ReservationDateVo reservationDateVo) {
 		System.out.println("[StoreController.getStoreRevTime]");
 		
 		System.out.println("reservationDateVo : " + reservationDateVo);
 		
-		List<ReservationTimeVo> reservationableTimeVo = storeService.getDateInfo(reservationDateVo);
+		String[] reservationableTimeList = storeService.getDateInfo(reservationDateVo);
 		
-		System.out.println(reservationableTimeVo);
+		for(int i = 0; i < reservationableTimeList.length; i++) {
+			System.out.println("reservationableTimeList : " + reservationableTimeList[i]);
+		}
 		
-		return null;
+		return reservationableTimeList;
 	}
-
+	
 }

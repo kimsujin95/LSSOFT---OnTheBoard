@@ -12,6 +12,8 @@
 		<typeAlias alias="StoreImageVo" type="com.otb.vo.StoreImageVo" />
 		<typeAlias alias="ReservationTimeVo" type="com.otb.vo.ReservationTimeVo" />
 		<typeAlias alias="ReservationDateVo" type="com.otb.vo.ReservationDateVo" />
+		<typeAlias alias="SidoVo" type="com.otb.vo.SidoVo" />
+		<typeAlias alias="SigunguVo" type="com.otb.vo.SigunguVo" />
 	</typeAliases>
 	
 	<mappers>

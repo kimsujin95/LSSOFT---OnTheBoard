@@ -24,7 +24,7 @@ public class MatchingDao {
 
 		List<MatchingVo> matchingList = sqlSession.selectList("matching.list");
 
-		System.out.println(matchingList);
+		System.out.println("매칭 다오: list;;; " + matchingList);
 
 		return matchingList;
 	}
@@ -118,6 +118,13 @@ public class MatchingDao {
 		int joinMatching = sqlSession.insert("matching.joinMatching", matchingGroupVo);
 
 		return joinMatching;
+	}
+	// 매칭글 읽기 - 매칭 참가 취소
+	public int outMatching(MatchingGroupVo matchingGroupVo) {
+		System.out.println("매칭 다오: outMatching;;;");
+		int outMatching = sqlSession.delete("matching.outMatching", matchingGroupVo);
+		
+		return outMatching;
 	}
 
 	// 리스트 / 매칭글 읽기 - 현재 매칭에 참가중인 인원 수

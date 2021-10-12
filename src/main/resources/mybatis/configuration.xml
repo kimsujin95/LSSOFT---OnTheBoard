@@ -6,6 +6,7 @@
 		<typeAlias alias="MatchingVo" type="com.otb.vo.MatchingVo" />
 		<typeAlias alias="MatchingGroupVo" type="com.otb.vo.MatchingGroupVo" />
 		<typeAlias alias="UserVo" type="com.otb.vo.UserVo" />
+		<typeAlias alias="MessageVo" type="com.otb.vo.MessageVo" />
 		<typeAlias alias="GameVo" type="com.otb.vo.GameVo" />
 		<typeAlias alias="ThemeVo" type="com.otb.vo.ThemeVo" />
 		<typeAlias alias="StoreVo" type="com.otb.vo.StoreVo" />
@@ -19,6 +20,7 @@
 	<mappers>
 		<mapper resource="mybatis/mappers/matching.xml" />
 		<mapper resource="mybatis/mappers/user.xml" />
+		<mapper resource="mybatis/mappers/message.xml" />
 		<mapper resource="mybatis/mappers/game.xml" />
 		<mapper resource="mybatis/mappers/store.xml" />
 		<mapper resource="mybatis/mappers/admin.xml" />

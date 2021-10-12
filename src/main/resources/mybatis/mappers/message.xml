@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="message">
+
+	<resultMap id="resultMapMessageVo" type="MessageVo">
+		<result column="message_no" property="messageNo" />
+		<result column="message_room" property="messageRoom" />
+		<result column="user_send" property="userSend" />
+		<result column="user_receive" property="userReceive" />
+		<result column="message_content" property="messageContent" />
+		<result column="message_reg_date" property="messageRegDate" />
+		<result column="message_read_date" property="messageReadDate" />
+		<result column="message_read_check" property="messageReadCheck" />
+	</resultMap>
+
+
+	<!-- 메세지 리스트 가져오기 -->
+	<select id="message_list" parameterType="MessageVo" resultMap="resultMapMessageVo">
+
+		<![CDATA[
+  			SELECT  
+			      message_no
+                 ,message_room
+				 ,user_send
+				 ,user_receive
+				 ,message_reg_date
+				 ,message_read_date
+				 ,message_read_check
+			FROM 
+			      message
+			WHERE 
+                 
+                 message_no IN (SELECT 
+                                       MAX(message_no) 
+			                    FROM 
+                                       message
+                                GROUP BY 
+			                           message_room)
+			                    AND (user_send = #{userNickname} OR user_receive = #{userNickname})
+			     		 		ORDER BY 
+			     		 				message_no 
+			     		 		DESC;
+        ]]>
+
+	</select>
+
+	<!-- 메세지 list에서 상대방 profile 가져오기 -->
+	<select id="get_other_profile" parameterType="MessageVo" resultType="String">
+
+		<![CDATA[
+  			SELECT  
+			      user_path_profile
+			FROM 
+			      users
+		]]>
+
+		<choose>
+			<when test="user_send == user_nickname">
+			<![CDATA[
+			  WHERE user_nickname = #{userReceive}
+			]]>
+			</when>
+			<otherwise>
+			<![CDATA[
+			  WHERE user_nickname = #{userSend}
+			]]>
+			</otherwise>
+		</choose>
+	</select>
+
+	<!-- 안읽은 메세지 갯수 가져오기 -->
+	<select id="count_unread" parameterType="MessageVo" resultType="Int">
+
+		<![CDATA[
+			SELECT  
+			      m.count(message_no)
+			FROM 
+			      message
+			WHERE 
+			      user_receive = #{userNickname}
+			AND
+			      message_read_check = 0
+			AND 
+			      message_room = #{messageRoom}
+        ]]>
+
+	</select>
+
+	<!-- 메세지 내용 가져오기 -->
+	<select id="room_content_list" parameterType="MessageVo" resultMap="resultMapMessageVo">
+
+		<![CDATA[
+			SELECT  
+			      m.message_no
+			     ,m.message_room
+			     ,m.user_send
+			     ,m.user_receive
+			     ,m.send_time
+			     ,m.read_time
+			     ,m.content
+			     ,m.message_read_check
+			     ,u.user_path_profile
+			FROM 
+			      message m LEFT OUTER JOIN user u
+			ON
+			      m.user_send = u.user_ninckname
+		 ]]>
+
+		<choose>
+			<when test="room !=0">
+		 		<![CDATA[
+		 		
+		 	WHERE message_room = #{messageRoom}
+		 	
+		 		]]>
+			</when>
+			<otherwise>
+				<![CDATA[
+		 		
+		 	WHERE (user_receive = #{userReceive} AND user_send = #{userNickname})
+		 	OR (user_send = #{userReceive} AND user_receive = #{userNickname})
+		 	
+		 		]]>
+
+			</otherwise>
+		</choose>
+
+	</select>
+
+	<!-- 메세지 읽음 처리 -->
+	<insert id="messageSendInlist" parameterType="MessageVo">
+		<choose>
+			<when test="room != 0">
+				<![CDATA[
+				INSERT INTO  
+				    		message
+					VALUES (
+					        0
+					       ,#{messageRoom}
+					       ,#{userSend}
+					       ,#{userReceive}
+					       ,sysdate
+					       ,sysdate
+					       ,#{content}
+					       ,0
+					       );
+	       	    ]]>
+			</when>
+			<otherwise>
+				<![CDATA[
+				INSERT INTO  
+				    		message
+					VALUES (
+					        0
+					       ,#{messageRoom}
+					       ,#{userSend}
+					       ,#{userReceive}
+					       ,sysdate
+					       ,sysdate
+					       ,#{content}
+					       ,0
+					       );
+	       	    ]]>
+
+			</otherwise>
+		</choose>
+	</insert>
+
+	<!-- room 번호 최댓값 구하기 -->
+	<select id="max_room" parameterType="MessageVo" resultType="Int">
+
+		<![CDATA[
+			SELECT  
+			     max(room)
+			FROM 
+			      message
+   		 ]]>
+
+	</select>
+
+	<!-- 메세지 이력이 있는지 검색 -->
+	<select id="exist_chat" parameterType="MessageVo" resultType="Int">
+
+		<![CDATA[
+			SELECT  
+			     count(message_no)
+			FROM 
+			      message
+			WHERE
+			      (user_receive = #{userRecieve} AND user_send=#{userSend})
+			OR
+			      (user_send = #{userRecieve} AND userReceive = #{userSend})
+   		 ]]>
+
+	</select>
+
+	<!-- 기존 메세지 내역의 room 번호를 가져옴 -->
+	<select id="select_room" parameterType="MessageVo" resultType="String">
+
+		<![CDATA[
+			SELECT  
+			     message_room
+			FROM 
+			      message
+			WHERE
+			      (user_receive = #{userRecieve} AND user_send=#{userSend})
+			OR
+			      (user_send = #{userRecieve} AND userReceive = #{userSend})
+			LIMIT 0,1
+   		 ]]>
+	</select>
+
+</mapper>

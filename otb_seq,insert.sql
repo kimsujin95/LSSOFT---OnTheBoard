@@ -115,66 +115,54 @@ VALUES
         1,
         sysdate
     );
+
+INSERT INTO
+    users(user_no, user_id, user_password, user_name, user_nickname, user_gender, user_birth_date, user_grade, user_reg_date)
+VALUES
+    (
+        seq_users_no.NEXTVAL,
+        'asd',
+        'asd',
+        'asd',
+        'asd',
+        'male',
+        '19991111',
+        1,
+        sysdate
+    );
+
+INSERT INTO
+    users(user_no, user_id, user_password, user_name, user_nickname, user_gender, user_birth_date, user_grade, user_reg_date)
+VALUES
+    (
+        seq_users_no.NEXTVAL,
+        'qwe',
+        'qwe',
+        'qwe',
+        'qwe',
+        'female',
+        '19931111',
+        1,
+        sysdate
+    );
+
+INSERT INTO
+    users(user_no, user_id, user_password, user_name, user_nickname, user_gender, user_birth_date, user_grade, user_reg_date)
+VALUES
+    (
+        seq_users_no.NEXTVAL,
+        'zxc',
+        'zxc',
+        'zxc',
+        'zxc',
+        'male',
+        '19881111',
+        1,
+        sysdate
+    );
 -- // INSERT USERS
 
--- INSERT GAME
-INSERT INTO 
-    game(game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no)
-VALUES
-    (
-        seq_game_no.nextval,
-        '보난자',
-        'Bonanza',
-        'upload\thumb\1.png',
-        '3명~5명',
-        '만 10세이상',
-        '45분',
-        '초급',
-        'upload\desc\1.jpg',
-        'OwgKvBQ7bqs',
-        2
-    );
-            
-INSERT INTO 
-    game(game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no)
-VALUES
-    (
-        seq_game_no.nextval,
-        '아컴호러',
-        'Arkham Horror',
-        'upload\thumb\2.png',
-        '1명~4명',
-        '만 12세이상',
-        '60분',
-        '고급',
-        'upload\desc\2.jpg',
-        'OkaaG0_oAtI',
-        7
-    );
-   
-INSERT INTO 
-    game(game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no)
-VALUES
-    (
-        seq_game_no.nextval,
-        '할리갈리',
-        'Halli Galli',
-        'upload\thumb\3.png',
-        '2명~6명',
-        '만 6세이상',
-        '10분',
-        '초급',
-        'upload\desc\3.jpg',
-        '0q0yClzjADk',
-        5
-    );
--- // INSERT GAME
-
 -- INSERT THEME
-CREATE SEQUENCE seq_theme_no 
-INCREMENT BY 1
-START WITH 1;
-
 INSERT INTO
         THEME(  theme_no, theme_name)
 VALUES (
@@ -247,8 +235,60 @@ VALUES (
 VALUES (
         SEQ_THEME_NO.nextval
     ,   '주사위');
-
 -- // INSERT THEME
+
+-- INSERT GAME
+INSERT INTO 
+    game
+VALUES
+    (
+        seq_game_no.nextval,
+        '보난자',
+        'Bonanza',
+        'upload\thumb\1.png',
+        '3명~5명',
+        '만 10세이상',
+        '45분',
+        '초급',
+        'upload\desc\1.jpg',
+        'OwgKvBQ7bqs',
+        2
+    );
+
+INSERT INTO 
+    game
+VALUES
+    (
+        seq_game_no.nextval,
+        '아컴호러',
+        'Arkham Horror',
+        'upload\thumb\2.png',
+        '1명~4명',
+        '만 12세이상',
+        '60분',
+        '고급',
+        'upload\desc\2.jpg',
+        'OkaaG0_oAtI',
+        7
+    );
+   
+INSERT INTO 
+    game
+VALUES
+    (
+        seq_game_no.nextval,
+        '할리갈리',
+        'Halli Galli',
+        'upload\thumb\3.png',
+        '2명~6명',
+        '만 6세이상',
+        '10분',
+        '초급',
+        'upload\desc\3.jpg',
+        '0q0yClzjADk',
+        5
+    );
+-- // INSERT GAME
 
 -- INSERT SIDO
 INSERT INTO
@@ -466,4 +506,4 @@ values(SEQ_RESERVATION_TIME_NO.nextval, 2, '09');
 
 insert into reservation_time
 values(SEQ_RESERVATION_TIME_NO.nextval, 2, '10');
---// INSERT RESERVATIONDATE
+-- // INSERT RESERVATIONDATE

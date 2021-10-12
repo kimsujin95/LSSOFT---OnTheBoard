@@ -72,25 +72,26 @@ public class MatchingDao {
 
 		return gameTheme;
 	}
-	
+
 	// 매칭글 작성 폼 - 시도 리스트
 	public List<SidoVo> sidoList() {
 		System.out.println("매칭 다오: sidoList;;;");
-		
+
 		List<SidoVo> sidoList = sqlSession.selectList("matching.sidoList");
-		
+
 		return sidoList;
 	}
-	
+
 	// 매칭글 작성 폼 - 시군구 리스트
-	/*
-	 * public List<SigunguVo> sigunguList() {
-	 * System.out.println("매칭 다오: sigunguList;;;");
-	 * 
-	 * List<SigunguVo> sigunguList = sqlSession.selectList("matching.sigunguList");
-	 * 
-	 * return sigunguList; }
-	 */
+
+	 public List<SigunguVo> sigunguList() {
+		 System.out.println("매칭 다오: sigunguList;;;");
+	
+		 List<SigunguVo> sigunguList = sqlSession.selectList("matching.sigunguList");
+	
+		 return sigunguList;
+	 }
+
 
 	// 매칭글 등록
 	public int write(MatchingVo matchingVo) {
@@ -140,11 +141,12 @@ public class MatchingDao {
 
 		return joinMatching;
 	}
+
 	// 매칭글 읽기 - 매칭 참가 취소
 	public int outMatching(MatchingGroupVo matchingGroupVo) {
 		System.out.println("매칭 다오: outMatching;;;");
 		int outMatching = sqlSession.delete("matching.outMatching", matchingGroupVo);
-		
+
 		return outMatching;
 	}
 
@@ -165,11 +167,11 @@ public class MatchingDao {
 
 		return matchingMemberInfoList;
 	}
-	
+
 	// 매칭글 읽기 - 매칭상태 변경
 	public int statusComplete(int matchingNo) {
 		System.out.println("매칭 서비스: statusComplete;;;");
-		
+
 		int statusComplete = sqlSession.update("matching.statusComplete", matchingNo);
 		return statusComplete;
 	}

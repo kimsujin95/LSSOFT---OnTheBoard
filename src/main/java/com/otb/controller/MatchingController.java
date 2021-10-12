@@ -121,14 +121,13 @@ public class MatchingController {
 	}
 	
 	// 매칭글 읽기 - 매칭상태 변경
-	@ResponseBody
 	@RequestMapping("statusComplete")
-	public int statusComplete(@RequestParam("matchingNo") int matchingNo) {
+	public String statusComplete(@RequestParam("no") int matchingNo) {
 		System.out.println("매칭 컨트롤러: statusComplete;;;");
 		System.out.println(matchingNo);
 		
 		int statusComplete = matchingService.statusComplete(matchingNo);
-		return statusComplete;
+		return "redirect:/matching/read?no=" + matchingNo;
 	}
 	
 	

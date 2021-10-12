@@ -136,8 +136,12 @@
 			</div>
 			<div class="col-md-4 text-right">
 				<c:if test="${readInfo.writerInfo.userNo eq authUser.userNo}">
-					<button id="btn-statusComplete" class="btn-red" data-no="${readInfo.matchingVo.matchingNo}">매칭완료</button>
-					<a href="${pageContext.request.contextPath}/store/storelist"><button class="btn-blue">예약하기</button></a>
+					<c:if test="${readInfo.matchingVo.matchingStatus eq '매칭중'}">
+						<a href="${pageContext.request.contextPath}/matching/statusComplete?no=${readInfo.matchingVo.matchingNo}"><button id="btn-statusComplete" class="btn-red">매칭완료</button></a>
+					</c:if>
+					<c:if test="${readInfo.matchingVo.matchingStatus eq '매칭완료'}">
+						<a href="${pageContext.request.contextPath}/store/storelist"><button class="btn-blue">예약하기</button></a>
+					</c:if>
 				</c:if>
 			</div>
 			<div class="col-md-5 text-right">
@@ -329,10 +333,9 @@ $('#btn-outMatching').on('click', function() {
 // 매칭완료 클릭 - 매칭완료 상태로 변경
 $('#btn-statusComplete').on('click', function() {
 	
-	var matchingNo = $(this).data('no');
-	console.log(matchingNo);
+	alert('매칭완료 상태로 변경 되었습니다.\n예약을 진행해 주세요.');
 	
-	$.ajax({
+	/* 	$.ajax({
 		url: '${pageContext.request.contextPath}/matching/statusComplete',
 		type: 'post',
 		data: { matchingNo: matchingNo },
@@ -346,7 +349,7 @@ $('#btn-statusComplete').on('click', function() {
 		error: function(XHR, status, error) {
 			console.log(status + ' : ' + error);
 		}
-	});
+	}); */
 });
 // -- 매칭완료 클릭 - 매칭완료 상태로 변경 --
 

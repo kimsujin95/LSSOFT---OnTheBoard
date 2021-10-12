@@ -68,7 +68,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><input class="margin-left-none" type="checkbox" id="male" value="남자만" name="gender-limit"> <label for="male">남</label> <input type="checkbox" id="female" value="여자만" name="gender-limit"> <label for="female">여</label> <input type="checkbox" id="sex-none" value="성별무관" name="gender-limit"> <label for="sex-none">무관</label></td>
+							<td><input class="margin-left-none" type="checkbox" id="male" value="남" name="gender-limit"> <label for="male">남</label> <input type="checkbox" id="female" value="여" name="gender-limit"> <label for="female">여</label> <input type="checkbox" id="sex-none" value="성별무관" name="gender-limit"> <label for="sex-none">무관</label></td>
 							<td><input class="margin-left-none" type="checkbox" id="10s" value="10대"> <label for="10s">10대</label> <input type="checkbox" id="20s" value="20대"> <label for="20s">20대</label> <input type="checkbox" id="30s" value="30대"> <label for="30s">30대</label> <input type="checkbox" id="40s" value="40대"> <label for="40s">40대</label> <input type="checkbox" id="50s" value="50대"> <label for="50s">50대</label> <input type="checkbox" id="age-none" value="나이무관"> <label for="age-none">무관</label></td>
 							<td><input class="margin-left-none" type="checkbox" id="matching-ing" value="매칭중"> <label for="matching-ing">매칭중</label> <input type="checkbox" id="matching-end" value="매칭완료"> <label for="matching-end">매칭완료</label></td>
 						</tr>
@@ -189,9 +189,9 @@
 							+ '<td>' + matchingList.matchingTitle + '</td>'
 							+ '<td>' + matchingList.gameNameKo + '</td>'
 							+ '<td>' + matchingMemberList + '/' + matchingList.matchingPeople + '</td>'
-							+ '<td>남</td>'
-							+ '<td>서울 강남구</td>'
-							+ '<td>21. 11. 11.</td>'
+							+ '<td>' + matchingList.matchingPermissionGender + '</td>'
+							+ '<td>' + matchingList.sidoName + '\t' + matchingList.sigunguName + '</td>'
+							+ '<td>' + matchingList.matchingDate + '</td>'
 						+ '</tr>';
 
 		$('#listHtml').append(listHtml);
@@ -203,16 +203,47 @@
 	$('input[type="checkbox"]').on('click', function (){
 		var inputClick = $(this).val();
 		
-		if ($(this).is(':checked')){
+		if ($(this).is(':checked')) {
 			console.log(inputClick);
-			$(this).attr('checked', 'checked');
 			$('#y-select-opt').append('<button class="btn-selectDel" data-value="' + inputClick + '">' + inputClick + '<img src="${pageContext.request.contextPath}/assets/images/matching/btn-X.png"></button>');
 		} else {
 			$(this).removeAttr('checked');
 			console.log('selectDel');
 			$('[data-value="' + inputClick + '"]').remove();
 		}
+		
+		// 선택된 옵션에 맞는 리스트 출력
+		var keyword = new Array();
+		
+		$('input').each(function() {
+			if ($(this).is(':checked')) {
+				var checked = $(this).val();
+				keyword.push(checked);
+			}
+		});
+		
+		console.log('keyword= ' + keyword);
+		
+		$('#listHtml').html('');
+		$.ajax({
+			url: '${pageContext.request.contextPath}/matching/list',
+			type: 'post',
+			data: { keyword: keyword },
+			success: function(matchingListMap) {
+				console.log('컨트롤러 방문해서 검색 리스트 갖고 오기 성공');
+				
+				// 리스트 반복문
+				for (var i = 0; i < matchingListMap.matchingList.length; i++) {
+					render(matchingListMap.matchingList[i], matchingListMap.matchingMemberList[i]);
+				}
+			},
+			error: function(XHR, status, error) {
+				console.log(status + ' : ' + error);
+			}
+		});
+		// -- 선택된 옵션에 맞는 리스트 출력 --
 	});
+// -- 옵션 선택 값 추가/삭제 --
 	
 	// 옵션 선택 리스트에서 클릭으로 삭제
 	$('#y-select-opt').on('click', '.btn-selectDel', function() {
@@ -225,53 +256,23 @@
 	
 	// 선택초기화
 	$('.btn-reset').on('click', function() {
-		$('#y-select-opt').html('');
+		$('#y-select-opt').empty();
 		$('input[type="checkbox"]').removeAttr('checked');
+		
+		$('#listHtml').empty();
+		fetch();
 	});
 // -- 옵션 선택 값 추가/삭제 --
 
 // 성별 제한 체크박스 중복 선택 해제
-	$('input[type="checkbox"][name="gender-limit"]').click(function (){
+	/* $('input[type="checkbox"][name="gender-limit"]').on('click', function () {
 		if($(this).prop('checked')){
 			$('input[type="checkbox"][name="gender-limit"]').prop('checked', false);
-
+			
 			$(this).prop('checked', true);
 		};
-	});
+	}); */
 // -- 성별 제한 체크박스 중복 선택 해제 --
-
-// 선택된 옵션에 맞는 리스트만 출력하기
-$('input[type="checkbox"]').on('click', function() {
-	var keyword = new Array();
-	
-	$('input').each(function() {
-		if ($(this).is(':checked')) {
-			var checked = $(this).val();
-			keyword.push(checked);
-		}
-	});
-	
-	console.log('keyword= ' + keyword);
-	
-	$('#listHtml').html('');
-	$.ajax({
-		url: '${pageContext.request.contextPath}/matching/list',
-		type: 'post',
-		data: { keyword: keyword },
-		success: function(matchingListMap) {
-			console.log('컨트롤러 방문해서 검색 리스트 갖고 오기 성공');
-			
-			// 리스트 반복문
-			for (var i = 0; i < matchingListMap.matchingList.length; i++) {
-				render(matchingListMap.matchingList[i], matchingListMap.matchingMemberList[i]);
-			}
-		},
-		error: function(XHR, status, error) {
-			console.log(status + ' : ' + error);
-		}
-	});
-});
-// -- 선택된 옵션에 맞는 리스트만 출력하기 --
 
 </script>
 

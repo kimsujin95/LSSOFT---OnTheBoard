@@ -55,10 +55,10 @@ public class MatchingService {
 		Map<String, Object> writeUserInfo = new HashMap<String, Object>();
 		writeUserInfo.put("authUserInfo", userDao.selectUser(authUserNo));
 //		writeUserInfo.put("writeUserAge", matchingDao.userAge(authUserNo));
-		writeUserInfo.put("writeGameName", matchingDao.gameName());
-		writeUserInfo.put("writeGameTheme", matchingDao.gameTheme());
-		writeUserInfo.put("writeSidoList", matchingDao.sidoList());
-//		writeUserInfo.put("writeSigunguList", matchingDao.sigunguList());
+		writeUserInfo.put("gameList", matchingDao.gameName());
+		writeUserInfo.put("themeList", matchingDao.gameTheme());
+		writeUserInfo.put("sidoList", matchingDao.sidoList());
+		writeUserInfo.put("sigunguList", matchingDao.sigunguList());
 		
 		return writeUserInfo;
 	}

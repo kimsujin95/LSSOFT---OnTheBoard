@@ -204,7 +204,14 @@ textarea {
 	border-radius: 5px;
 }
 
-#write-form #datepick, #write-form #time {
+#write-form #datepick {
+	height: 18px;
+	width: 120px;
+	font-size: 12px;
+	border-radius: 5px;
+}
+
+#write-form #time {
 	height: 18px;
 	width: 110px;
 	letter-spacing: 2px;

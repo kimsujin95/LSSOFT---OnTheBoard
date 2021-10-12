@@ -8,12 +8,15 @@ public class MatchingVo {
 	private int userBirthDate;
 	private int userAge;
 	private String userGender;
+	private int themeNo;
 	private String themeName;
-	private String gameNo;
+	private int gameNo;
 	private String gameNameKo;
 	private String matchingDate;
 	private String matchingTime;
+	private int sidoCode;
 	private String sidoName;
+	private int sigunguCode;
 	private String sigunguName;
 	private int matchingPeople;
 	private String matchingPermissionGender;
@@ -29,15 +32,13 @@ public class MatchingVo {
 	private String matchingStatus;
 	private int matchingMember;
 	
-	
-	
 	public MatchingVo() {
 		super();
 	}
-	
+
 	public MatchingVo(int matchingNo, int userNo, String userNickname, int userBirthDate, int userAge,
-			String userGender, String themeName, String gameNo, String gameNameKo, String matchingDate,
-			String matchingTime, String sidoName, String sigunguName, int matchingPeople,
+			String userGender, int themeNo, String themeName, int gameNo, String gameNameKo, String matchingDate,
+			String matchingTime, int sidoCode, String sidoName, int sigunguCode, String sigunguName, int matchingPeople,
 			String matchingPermissionGender, String matchingPermissionTeens, String matchingPermissionTwenties,
 			String matchingPermissionThirties, String matchingPermissionFourties, String matchingPermissionAllAge,
 			String matchingTitle, String matchingContent, String matchingRegDate, int matchingHits,
@@ -49,12 +50,15 @@ public class MatchingVo {
 		this.userBirthDate = userBirthDate;
 		this.userAge = userAge;
 		this.userGender = userGender;
+		this.themeNo = themeNo;
 		this.themeName = themeName;
 		this.gameNo = gameNo;
 		this.gameNameKo = gameNameKo;
 		this.matchingDate = matchingDate;
 		this.matchingTime = matchingTime;
+		this.sidoCode = sidoCode;
 		this.sidoName = sidoName;
+		this.sigunguCode = sigunguCode;
 		this.sigunguName = sigunguName;
 		this.matchingPeople = matchingPeople;
 		this.matchingPermissionGender = matchingPermissionGender;
@@ -102,11 +106,11 @@ public class MatchingVo {
 	public void setUserBirthDate(int userBirthDate) {
 		this.userBirthDate = userBirthDate;
 	}
-	
+
 	public int getUserAge() {
 		return userAge;
 	}
-	
+
 	public void setUserAge(int userAge) {
 		this.userAge = userAge;
 	}
@@ -119,6 +123,14 @@ public class MatchingVo {
 		this.userGender = userGender;
 	}
 
+	public int getThemeNo() {
+		return themeNo;
+	}
+
+	public void setThemeNo(int themeNo) {
+		this.themeNo = themeNo;
+	}
+	
 	public String getThemeName() {
 		return themeName;
 	}
@@ -126,12 +138,12 @@ public class MatchingVo {
 	public void setThemeName(String themeName) {
 		this.themeName = themeName;
 	}
-	
-	public String getGameNo() {
+
+	public int getGameNo() {
 		return gameNo;
 	}
 
-	public void setGameNo(String gameNo) {
+	public void setGameNo(int gameNo) {
 		this.gameNo = gameNo;
 	}
 
@@ -159,12 +171,28 @@ public class MatchingVo {
 		this.matchingTime = matchingTime;
 	}
 
+	public int getSidoCode() {
+		return sidoCode;
+	}
+
+	public void setSidoCode(int sidoCode) {
+		this.sidoCode = sidoCode;
+	}
+
 	public String getSidoName() {
 		return sidoName;
 	}
 
 	public void setSidoName(String sidoName) {
 		this.sidoName = sidoName;
+	}
+
+	public int getSigunguCode() {
+		return sigunguCode;
+	}
+
+	public void setSigunguCode(int sigunguCode) {
+		this.sigunguCode = sigunguCode;
 	}
 
 	public String getSigunguName() {
@@ -270,7 +298,7 @@ public class MatchingVo {
 	public void setMatchingStatus(String matchingStatus) {
 		this.matchingStatus = matchingStatus;
 	}
-	
+
 	public int getMatchingMember() {
 		return matchingMember;
 	}
@@ -283,15 +311,16 @@ public class MatchingVo {
 	public String toString() {
 		return "MatchingVo [matchingNo=" + matchingNo + ", userNo=" + userNo + ", userNickname=" + userNickname
 				+ ", userBirthDate=" + userBirthDate + ", userAge=" + userAge + ", userGender=" + userGender
-				+ ", themeName=" + themeName + ", gameNo=" + gameNo + ", gameNameKo=" + gameNameKo + ", matchingDate="
-				+ matchingDate + ", matchingTime=" + matchingTime + ", sidoName=" + sidoName + ", sigunguName="
-				+ sigunguName + ", matchingPeople=" + matchingPeople + ", matchingPermissionGender="
-				+ matchingPermissionGender + ", matchingPermissionTeens=" + matchingPermissionTeens
-				+ ", matchingPermissionTwenties=" + matchingPermissionTwenties + ", matchingPermissionThirties="
-				+ matchingPermissionThirties + ", matchingPermissionFourties=" + matchingPermissionFourties
-				+ ", matchingPermissionAllAge=" + matchingPermissionAllAge + ", matchingTitle=" + matchingTitle
-				+ ", matchingContent=" + matchingContent + ", matchingRegDate=" + matchingRegDate + ", matchingHits="
-				+ matchingHits + ", matchingStatus=" + matchingStatus + ", matchingMember=" + matchingMember + "]";
+				+ ", themeNo=" + themeNo + ", themeName=" + themeName + ", gameNo=" + gameNo + ", gameNameKo="
+				+ gameNameKo + ", matchingDate=" + matchingDate + ", matchingTime=" + matchingTime + ", sidoCode="
+				+ sidoCode + ", sidoName=" + sidoName + ", sigunguCode=" + sigunguCode + ", sigunguName=" + sigunguName
+				+ ", matchingPeople=" + matchingPeople + ", matchingPermissionGender=" + matchingPermissionGender
+				+ ", matchingPermissionTeens=" + matchingPermissionTeens + ", matchingPermissionTwenties="
+				+ matchingPermissionTwenties + ", matchingPermissionThirties=" + matchingPermissionThirties
+				+ ", matchingPermissionFourties=" + matchingPermissionFourties + ", matchingPermissionAllAge="
+				+ matchingPermissionAllAge + ", matchingTitle=" + matchingTitle + ", matchingContent=" + matchingContent
+				+ ", matchingRegDate=" + matchingRegDate + ", matchingHits=" + matchingHits + ", matchingStatus="
+				+ matchingStatus + ", matchingMember=" + matchingMember + "]";
 	}
 
 }

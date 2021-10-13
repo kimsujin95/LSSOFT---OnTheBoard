@@ -7,11 +7,15 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.otb.dao.MatchingDao;
 import com.otb.dao.UserDao;
+import com.otb.vo.GameVo;
 import com.otb.vo.MatchingGroupVo;
 import com.otb.vo.MatchingVo;
+import com.otb.vo.SigunguVo;
 import com.otb.vo.UserVo;
 
 @Service
@@ -23,12 +27,41 @@ public class MatchingService {
 	@Autowired
 	private UserDao userDao;
 	
+	// 매칭 메인페이지 - tab_content 지역/게임 리스트
+	public Map<String, Object> tabContent() {
+		System.out.println("매칭 서비스: tabContent;;;");
+		
+		Map<String, Object> tabContent = new HashMap<>();
+		tabContent.put("sidoList", matchingDao.sidoList());
+		tabContent.put("themeList", matchingDao.themeList());
+		
+		return tabContent;
+	}
+	
+	// 매칭 메인페이지 - 시도 코드에 맞는 시군구 리스트
+	public List<SigunguVo> tabContentSigunguList(int sidoCode) {
+		System.out.println("매칭 서비스: tabContentSigunguList;;;");
+		
+		List<SigunguVo> tabContentSigunguList = matchingDao.tabContentSigunguList(sidoCode);
+		
+		return tabContentSigunguList;
+	}
+	
+	// 매칭 메인페이지 - 테마 코드에 맞는 게임 리스트
+	public List<GameVo> tabContentGameList(int themeNo) {
+		System.out.println("매칭 서비스: tabContentSigunguList;;;");
+		
+		List<GameVo> gameList = matchingDao.tabContentGameList(themeNo);
+		
+		return gameList;
+	}
+	
 	// 매칭 리스트
-	public Map<String, Object> list() {
+	public Map<String, Object> list(List<String> keyword) {
 		System.out.println("매칭 서비스: list;;;");
 		
 		// 매칭리스트
-		List<MatchingVo> matchingList = matchingDao.list();
+		List<MatchingVo> matchingList = matchingDao.list(keyword);
 		// 매칭에 참여중인 멤버 리스트
 		List<Integer> matchingMemberList = new ArrayList<Integer>();
 		for (int i = 0; i < matchingList.size(); i++) {
@@ -47,18 +80,17 @@ public class MatchingService {
 		return matchingListMap;
 	}
 	
-	// 매칭글 쓰기폼
+	// 매칭글 작성 폼
 	public Map<String, Object> writeUserInfo(int authUserNo) {
 		System.out.println("매칭 서비스: writeUserInfo;;;");
 		
 		// Map - 글작성자 정보(로그인유저), 글작성자 나이계산(DB), 게임 리스트, 테마 리스트, 지역 리스트(sido, sigungu)
 		Map<String, Object> writeUserInfo = new HashMap<String, Object>();
 		writeUserInfo.put("authUserInfo", userDao.selectUser(authUserNo));
-//		writeUserInfo.put("writeUserAge", matchingDao.userAge(authUserNo));
-		writeUserInfo.put("writeGameName", matchingDao.gameName());
-		writeUserInfo.put("writeGameTheme", matchingDao.gameTheme());
-		// put sido
-		// put sigungo
+		writeUserInfo.put("gameList", matchingDao.gameList());
+		writeUserInfo.put("themeList", matchingDao.themeList());
+		writeUserInfo.put("sidoList", matchingDao.sidoList());
+		writeUserInfo.put("sigunguList", matchingDao.sigunguList());
 		
 		return writeUserInfo;
 	}
@@ -163,6 +195,14 @@ public class MatchingService {
 		System.out.println(matchingMember);
 		
 		return matchingMember;
+	}
+	
+	// 매칭글 읽기 - 매칭상태 변경
+	public int statusComplete(int matchingNo) {
+		System.out.println("매칭 서비스: statusComplete;;;");
+		
+		int statusComplete = matchingDao.statusComplete(matchingNo);
+		return statusComplete;
 	}
 	
 

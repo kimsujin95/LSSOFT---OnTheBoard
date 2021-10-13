@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.otb.sevice.MatchingService;
+import com.otb.vo.GameVo;
 import com.otb.vo.MatchingGroupVo;
 import com.otb.vo.MatchingVo;
+import com.otb.vo.SigunguVo;
 import com.otb.vo.UserVo;
 
 @Controller
@@ -26,25 +28,52 @@ public class MatchingController {
 	@Autowired
 	private MatchingService matchingService;
 
-	// 매칭 - 메인페이지(리스트)
+	// 매칭 메인페이지(tab-content, ajax리스트)
 	@RequestMapping("/main")
-	public String main() {
+	public String main(Model model) {
 		System.out.println("매칭 컨트롤러: main;;;");
-
+		
+		Map<String, Object> tabContent = matchingService.tabContent();
+		model.addAttribute("tabContent", tabContent);
+		
 		return "/matching/list";
+	}
+	
+	// 매칭 메인페이지 - 시도 코드에 맞는 시군구 리스트
+	@ResponseBody
+	@RequestMapping("/tabContentSigunguList")
+	public List<SigunguVo> tabContentSigunguList(int sidoCode) {
+		System.out.println("매칭 컨트롤러: API-tabContentSigunguList;;;");
+		System.out.println(sidoCode);
+		
+		List<SigunguVo> sigunguList = matchingService.tabContentSigunguList(sidoCode);
+		
+		return sigunguList;
+	}
+	
+	// 매칭 메인페이지 - 테마 코드에 맞는 게임 리스트
+	@ResponseBody
+	@RequestMapping("/tabContentGameList")
+	public List<GameVo> tabContentGameList(int themeNo) {
+		System.out.println("매칭 컨트롤러: API-tabContentGameList;;;");
+		System.out.println(themeNo);
+		
+		List<GameVo> gameList = matchingService.tabContentGameList(themeNo);
+		return gameList;
 	}
 	
 	// 매칭리스트 API
 	@ResponseBody
 	@RequestMapping("/list")
-	public Map<String, Object> list() {
-		System.out.println("매칭 컨트롤러: list;;;");
-		Map<String, Object> matchingListMap = matchingService.list();
+	public Map<String, Object> list(@RequestParam(value= "keyword[]", required= false, defaultValue= "") List<String> keyword) {
+		System.out.println("매칭 컨트롤러: API-list;;;");
+		System.out.println("keyword= " + keyword);
+		Map<String, Object> matchingListMap = matchingService.list(keyword);
 		System.out.println("매칭 컨트롤러: list;;; " + matchingListMap);
 		return matchingListMap;
 	}
 
-	// 매칭글 쓰기폼
+	// 매칭글 작성 폼
 	@RequestMapping("/writeForm")
 	public String writeForm(HttpSession session, Model model) {
 		System.out.println("매칭 컨트롤러: writeForm;;;");
@@ -98,7 +127,7 @@ public class MatchingController {
 	@ResponseBody
 	@RequestMapping("/joinMatching")
 	public Map<String, Object> joinMaching(@ModelAttribute MatchingGroupVo matchingGroupVo) {
-		System.out.println("매칭 컨트롤러: joinMatching;;;");
+		System.out.println("매칭 컨트롤러: API-joinMatching;;;");
 		System.out.println(matchingGroupVo);
 		
 		// 매칭글 번호 / 매칭 최대인원 확인
@@ -112,11 +141,21 @@ public class MatchingController {
 	@ResponseBody
 	@RequestMapping("/outMatching")
 	public int outMatching(@ModelAttribute MatchingGroupVo matchingGroupVo) {
-		System.out.println("매칭 컨트롤러: outMatching;;;");
-		System.out.println("매칭 컨트롤러: outMatching;;; " + matchingGroupVo);
+		System.out.println("매칭 컨트롤러: API-outMatching;;;");
+		System.out.println("매칭 컨트롤러: API-outMatching;;; " + matchingGroupVo);
 		int matchingMember = matchingService.outMatching(matchingGroupVo);
 		
 		return matchingMember;
+	}
+	
+	// 매칭글 읽기 - 매칭상태 변경
+	@RequestMapping("statusComplete")
+	public String statusComplete(@RequestParam("no") int matchingNo) {
+		System.out.println("매칭 컨트롤러: statusComplete;;;");
+		System.out.println(matchingNo);
+		
+		int statusComplete = matchingService.statusComplete(matchingNo);
+		return "redirect:/matching/read?no=" + matchingNo;
 	}
 	
 	

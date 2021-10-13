@@ -362,8 +362,8 @@
 									<!-- 매칭이 완료된 그룹 리스트 -->
 									<!-- 내역이 없을 시 리스트 존재x 텍스트 띄워주기 -->
 									<c:forEach items="${userDataInfoMap.userHostMatchingList}" var="matchingVo" varStatus="status">
-										<li role="presentation"><a href="#chosen_group" aria-controls="chosen_group" role="tab" data-toggle="tab"> <span
-												class="groupUser" data-no="${matchingVo.matchingNo}">${status.index + 1}. ${matchingVo.matchingTitle}</span>
+										<li role="presentation" class="selgroup" data-no="${matchingVo.matchingNo}"><a href="#chosen_group" aria-controls="chosen_group" role="tab" data-toggle="tab"> <span
+												class="groupUser">${status.index + 1}. ${matchingVo.matchingTitle}</span>
 										</a></li>
 									</c:forEach>
 								</ul>
@@ -545,7 +545,7 @@
         		        	
         		        	checkTimetable(reservationableTimeList, revtimeArray);
         		        	
-        		        }, // success 
+        		        }, // success
         				
         		        error : function(XHR, status, error) {
         					
@@ -603,9 +603,10 @@
         
 		
 		
-        //시간 클릭 시 class값 변경
+        //예약파트
         $(function(){
-			        	
+        	
+			//시간 클릭 시 class값 변경        	
         	$('#time_table').on('click','input[type="checkbox"]', function(){
         		
           		
@@ -626,7 +627,8 @@
         	$('#rev_btn').on('click',function(){
 					
 				var chdval = new Array();
-					
+				var groupNo;
+								
 				$('input').each(function(){
 					
           			if($(this).is(':checked')){
@@ -637,7 +639,37 @@
 					
           		});
 				
-					console.log(chdval);
+				groupNo = $('li[class="selgroup active"]').data("no");
+				
+				console.log(chdval);
+				console.log("selected_groupNo : " + groupNo);
+				
+				var revinfo = {
+						checkedTime : chdval,
+						matchingNo : groupNo
+				};
+				
+				console.log(revinfo);
+				
+				$.ajax({
+    		        cache : false,
+    		        url : "${pageContext.request.contextPath}/reservation/reservationinfo",
+    		        type : 'POST',
+    		        data : revinfo,
+    		        
+    		        success : function() {
+    		            // ajax 랜더링 for문
+    		        	
+    		        	
+    		        }, // success 
+    				
+    		        error : function(XHR, status, error) {
+    					
+    		        	console.error(status + " : " + error);
+    		        	}
+    		        
+    		    }); // $.ajax */
+				
         	})
         		
         })
@@ -730,7 +762,7 @@
         
         
         <!-- 그룹목록 클릭 시 그룹원정보 리스트로 나열하기 -->
-        $('#grouplist').on('click', '.groupUser', function(){
+        $('#grouplist').on('click', '.selgroup', function(){
     		// event.preventDefault(); --> form일때만 사용 가능
     		
     		// hidden no값 입력하기 == html 태그에 데이터 숨기기(click에 해당하는 태그)

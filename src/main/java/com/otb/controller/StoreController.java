@@ -104,6 +104,8 @@ public class StoreController {
 		List<UserVo> grouplistinfo = storeService.grouplist(matchingno);
 		System.out.println(grouplistinfo);
 
+		
+		
 		return grouplistinfo;
 	}
 	

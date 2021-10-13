@@ -156,7 +156,7 @@
 	// 검색결과 항목을 Element로 반환하는 함수
 	function getListItem(index, places) {
 
-		var el = document.createElement('li'), itemStr = '<a href="${pageContext.request.contextPath}/store/storeinfo?storeNo='
+		var el = document.createElement('li'), itemStr = '<a href="${pageContext.request.contextPath}/store/storeinfo/'
 				+ places.storeNo + '">' + places.storeName + '</a>';
 
 		el.innerHTML = itemStr;

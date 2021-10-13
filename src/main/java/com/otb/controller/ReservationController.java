@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,13 +21,18 @@ public class ReservationController {
 	private ReservationService reservationService;
 	
 	@ResponseBody
-	@RequestMapping("/reservationinfo")
-	public String reservationinfo(@RequestParam("revinfo") List<String> revinfo) {
+	@RequestMapping("/reservationinfo/{storeNo}")
+	public String reservationinfo(@PathVariable("storeNo")int storeNo, @RequestParam ("checkedTime[]") String[] checkedTime, @RequestParam("matchingNo") int matchingNo) {
 		System.out.println("[reservationController.reservationinfo]");
-
-		System.out.println(revinfo);
 		
-		return null;
+		for(int i = 0; i < checkedTime.length; i++)  {
+			System.out.println("checkedTime" + checkedTime[i]);
+		}
+		
+		System.out.println(matchingNo);
+		System.out.println("매장번호 : " + storeNo);
+		
+		return "1";
 	}
 	
 }

@@ -653,13 +653,13 @@
 				
 				$.ajax({
     		        cache : false,
-    		        url : "${pageContext.request.contextPath}/reservation/reservationinfo",
+    		        url : "${pageContext.request.contextPath}/reservation/reservationinfo/"+${storeNo},
     		        type : 'POST',
     		        data : revinfo,
     		        
-    		        success : function() {
+    		        success : function(val) {
     		            // ajax 랜더링 for문
-    		        	
+						console.log("도착");
     		        	
     		        }, // success 
     				

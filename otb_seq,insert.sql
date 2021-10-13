@@ -10,6 +10,9 @@ DROP SEQUENCE seq_store_no;
 DROP SEQUENCE seq_reservation_date_no;
 DROP SEQUENCE seq_reservation_time_no;
 
+ALTER table game
+ ADD hit_count number(20) default 0 ; 
+
 CREATE SEQUENCE seq_users_no
 START WITH 1
 INCREMENT BY 1

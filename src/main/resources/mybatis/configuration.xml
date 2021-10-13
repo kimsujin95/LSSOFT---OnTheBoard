@@ -11,6 +11,7 @@
 		<typeAlias alias="ThemeVo" type="com.otb.vo.ThemeVo" />
 		<typeAlias alias="StoreVo" type="com.otb.vo.StoreVo" />
 		<typeAlias alias="StoreImageVo" type="com.otb.vo.StoreImageVo" />
+		<typeAlias alias="ReservationVo" type="com.otb.vo.ReservationVo" />
 		<typeAlias alias="ReservationTimeVo" type="com.otb.vo.ReservationTimeVo" />
 		<typeAlias alias="ReservationDateVo" type="com.otb.vo.ReservationDateVo" />
 		<typeAlias alias="SidoVo" type="com.otb.vo.SidoVo" />
@@ -24,6 +25,7 @@
 		<mapper resource="mybatis/mappers/game.xml" />
 		<mapper resource="mybatis/mappers/store.xml" />
 		<mapper resource="mybatis/mappers/admin.xml" />
+		<mapper resource="mybatis/mappers/reservation.xml" />
 	</mappers>
 	
 </configuration>

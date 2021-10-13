@@ -1,18 +1,18 @@
 package com.otb.controller;
 
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.otb.sevice.AdminService;
+import com.otb.vo.ReservationDateVo;
 import com.otb.vo.StoreVo;
 import com.otb.vo.UserVo;
 
@@ -23,30 +23,30 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 	
-	//admin - 메인 화면
-	@RequestMapping(value = "/main", method = {RequestMethod.GET, RequestMethod.POST})
-	public String main(HttpSession session) {
-		//System.out.println("admin - main --------------------------------------------------------");
-		
-		UserVo authUser = (UserVo) session.getAttribute("authUser");
-		
-		if(authUser != null) {
-			
-			int userNo = authUser.getUserNo();
-			
-			StoreVo storeVo = adminService.getStore(userNo);
-			
-			if(storeVo != null) {
-				return "/admin/main";
-			} else {
-				return "/admin/storeInfo";
-			}
-			
-		} else {
-			return "/admin/error";
-		}
-		
-	}
+//	//admin - 메인 화면
+//	@RequestMapping(value = "/main", method = {RequestMethod.GET, RequestMethod.POST})
+//	public String main(HttpSession session) {
+//		//System.out.println("admin - main --------------------------------------------------------");
+//		
+//		UserVo authUser = (UserVo) session.getAttribute("authUser");
+//		
+//		if(authUser != null) {
+//			
+//			int userNo = authUser.getUserNo();
+//			
+//			StoreVo storeVo = adminService.getStore(userNo);
+//			
+//			if(storeVo != null) {
+//				return "/admin/main";
+//			} else {
+//				return "/admin/storeInfo";
+//			}
+//			
+//		} else {
+//			return "/admin/error";
+//		}
+//		
+//	}
 	
 	//admin - 예약 관리
 	@RequestMapping(value = "/reservation", method = {RequestMethod.GET, RequestMethod.POST})
@@ -62,29 +62,34 @@ public class AdminController {
 		return "/admin/schedule";
 	}
 
-	//schedule - 등록
+	//schedule - 등록(ajax)
 	@ResponseBody
 	@RequestMapping(value = "/scheduleInsert", method = {RequestMethod.GET, RequestMethod.POST})
-	public void shceduleInsert(@RequestParam("date") String date, @RequestParam("times[]") String[] times) {
-		System.out.println("스케쥴 인서트 도착");
-		System.out.println(date);
+	public void scheduleInsert(@RequestParam("date") String date, @RequestParam("times[]") String[] times,@ModelAttribute ReservationDateVo reservationDateVo, HttpSession session) {
+//		System.out.println("스케쥴 인서트 도착");
+//		System.out.println(date);
+//		System.out.println(reservationDateVo.toString());
 		
-		String[] days = date.split(",");
-		for(int i = 0; i < days.length; i++) {
-			System.out.println(days[i]);
-		}
+		int storeNo = ((StoreVo)session.getAttribute("storeInfo")).getStoreNo();
+		reservationDateVo.setStoreNo(storeNo);
 		
-		for(int i = 0; i < times.length; i++) {
-			System.out.println(times[i]);
-		}
+		System.out.println(reservationDateVo.toString());
+		
+		adminService.addSchedule(date, times, reservationDateVo);
+	}
+	
+	//schedule - 조회(ajax)
+	@ResponseBody
+	@RequestMapping(value = "/scheduleLookup", method = {RequestMethod.GET, RequestMethod.POST})
+	public void scheduleLookup() {
 		
 	}
 	
 	//////////////////////////////////////// 매장 정보 등록 및 수정 ////////////////////////////////////////
 	
-	//admin - 매장 정보
-	@RequestMapping(value = "/storeInfo", method = {RequestMethod.GET, RequestMethod.POST})
-	public String storeInfo(HttpSession session, Model model) {
+	//admin - 매장 정보	- main으로 변경
+	@RequestMapping(value = "/main", method = {RequestMethod.GET, RequestMethod.POST})
+	public String storeInfo(HttpSession session) {
 		
 		//System.out.println("admin - storeInfo --------------------------------------------------------");
 		
@@ -96,7 +101,7 @@ public class AdminController {
 			
 			//System.out.println(storeInfo.toString());
 			
-			model.addAttribute("storeInfo", storeInfo);
+			session.setAttribute("storeInfo", storeInfo);
 			
 			return "/admin/storeInfo";
 			
@@ -118,7 +123,7 @@ public class AdminController {
 		
 		adminService.registerStoreInfo(storeInfo);
 		
-		return "redirect:/admin/storeInfo";
+		return "redirect:/admin/main";
 	}
 	
 	//store-info 수정
@@ -133,7 +138,7 @@ public class AdminController {
 
 		adminService.modifyStoreInfo(storeInfo);
 		
-		return "redirect:/admin/storeInfo";
+		return "redirect:/admin/main";
 	}
 	
 	//////////////////////////////////////// 매장 정보 등록 및 수정 ////////////////////////////////////////

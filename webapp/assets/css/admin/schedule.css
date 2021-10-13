@@ -14,8 +14,13 @@
 }
 /* 데이트 피커 크기 조절 */
 
+/* 주말 색상 변경 */
 th.dow:first-child {
 	color: red;
+}
+
+th.dow:nth-child(7) {
+	color: blue;
 }
 
 /* 시간 선택 표 */

@@ -82,7 +82,7 @@
 														<option value="6">6</option>
 													</select>
 													<label class="input-group-addon">총 예약 가능 인원</label>
-													<input type="number" class="form-control" name="storeReservationTotal" value="0">
+													<input type="text" class="form-control" name="storeReservationTotal" value="0">
 												</div>
 											</td>
 										</tr>
@@ -236,8 +236,8 @@
 		
 	    var date = $("#date-input").val();
 	    var times = [];
-		var storeReservationMax = $("select[name=storeReservationMax]").val();
-	    var storeReservationTotal = $("input[name=storeReservationTotal]").val();
+		var storeReservationMax = Number($("select[name=storeReservationMax]").val());
+	    var storeReservationTotal = Number($("input[name=storeReservationTotal]").val());
 	    
 	    $("input[name='times']:checked").each(function(i) {
 	    	times.push($(this).val());
@@ -260,9 +260,17 @@
 	    	return false;
 	    }
 	    
+	    console.log("storeReservationTotal < storeReservationMax");
+    	
+    	console.log(storeReservationTotal);
+    	console.log(storeReservationMax);
+    	
+    	console.log(storeReservationTotal < storeReservationMax);
+	    
 	    if(storeReservationTotal < storeReservationMax) {
 	    	alert("총 예약 가능 인원이 1회 최대 예약 인원보다 작을 수 없습니다.")
 	    	console.log("인원 수 재설정 필요");
+	    	
 	    	return false;
 	    }
 	    

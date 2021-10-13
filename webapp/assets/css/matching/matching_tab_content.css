@@ -88,12 +88,12 @@
 	font-size: 16px;
 }
 
-#location-tabpanel .location-medium {
+#location .location-medium {
 	margin: 0px;
 	padding: 0px;
 }
 
-#location-tabpanel .location-medium li {
+#location .location-medium li {
 	float: left;
 	/* margin: 3px; */
 	padding: 3px;
@@ -116,12 +116,12 @@
 	font-size: 16px;
 }
 
-#game-name {
+#game-style-name .game-name {
 	margin: 0px;
 	padding: 0px;
 }
 
-#game-name li {
+#game-style-name .game-name li {
 	float: left;
 	/* margin: 3px; */
 	padding: 3px;

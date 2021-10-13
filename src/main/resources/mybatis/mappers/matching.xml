@@ -16,11 +16,9 @@
 		<result column="matching_permission_gender" property="matchingPermissionGender" />
 		<result column="matching_reg_date" property="matchingRegDate" />
 		<result column="matching_member" property="matchingMember" />
+		<result column="theme_name" property="themeName" />
 		<result column="game_name_ko" property="gameNameKo" />
-		<result column="game_no" property="gameNo" />
-		<result column="sido_code" property="sidoCode" />
 		<result column="sido_name" property="sidoName" />
-		<result column="sigungu_code" property="sigunguCode" />
 		<result column="sigungu_name" property="sigunguName" />
 	</resultMap>
 	
@@ -89,7 +87,7 @@
 		<![CDATA[
 			WHERE
 		]]>
-		<foreach collection="list" item="keyword" separator="or">
+		<foreach collection="list" item="keyword" separator="and">
 		<![CDATA[
 				m.matching_status
 				|| m.matching_permission_gender
@@ -103,38 +101,6 @@
 		]]>
 	</select>
 	
-	<!-- 메인 - 시도 코드에 맞는 시군구 리스트 -->
-	<select id="tabContentSigunguList" parameterType="int" resultMap="resultMapSigunguVo">
-		<![CDATA[
-			SELECT
-			    sg.sido_code,
-			    sd.sido_name,
-			    sg.sigungu_code,
-			    sg.sigungu_name
-			FROM
-			    sigungu sg LEFT OUTER JOIN sido sd
-			    ON sg.sido_code = sd.sido_code
-			WHERE
-			    sg.sido_code = #{ sidoCode }
-		]]>
-	</select>
-	
-	<!-- 메인 - 테마 번호에 맞는 게임 리스트 -->
-	<select id="tabContentGameList" parameterType="int" resultMap="resultMapGameVo">
-		<![CDATA[
-			SELECT
-				g.theme_no,
-				t.theme_name,
-				g.game_no,
-				g.game_name_ko
-			FROM
-				game g LEFT OUTER JOIN theme t
-				ON g.theme_no = t.theme_no
-			WHERE
-				g.theme_no = #{ themeNo }
-		]]>
-	</select>
-			
 	<!-- (영하) 마이페이지 매칭 리스트 -->
 	<select id="mypageList" parameterType="int" resultMap="resultMapMatchingVo">
 		<![CDATA[
@@ -258,16 +224,23 @@
 	<select id="read" parameterType="int" resultMap="resultMapMatchingVo">
 		<![CDATA[
 			SELECT
-				matching_no,
-				user_no,
-				matching_title,
-				matching_content,
-				matching_people,
-				matching_hits,
-				matching_status,
-				to_char(matching_reg_date, 'yyyy. mm. dd. hh24:mi') matching_reg_date
+			    m.matching_no,
+			    m.user_no,
+			    m.matching_title,
+			    m.matching_content,
+			    m.matching_people,
+			    m.matching_hits,
+			    m.matching_status,
+			    to_char(m.matching_reg_date, 'yyyy. mm. dd. hh24:mi') matching_reg_date,
+			    to_char(m.matching_date, 'yyyy. mm. dd. ') matching_date,
+			    g.game_name_ko,
+			    t.theme_name
 			FROM
-				matching
+			    matching m
+			    LEFT OUTER JOIN game g
+			    ON m.game_no = g.game_no
+			    LEFT OUTER JOIN theme t
+			    ON m.theme_no = t.theme_no
 			WHERE
 				matching_no = #{ matchingNo }
 		]]>

@@ -204,7 +204,13 @@ textarea {
 	border-radius: 5px;
 }
 
-#write-form #datepick {
+#write-form .date-time {
+	height: 22px;
+	border-radius: 5px;
+	padding: 10.5px 5px;
+}
+
+/* #write-form #datepick {
 	height: 18px;
 	width: 120px;
 	font-size: 12px;
@@ -218,7 +224,7 @@ textarea {
 	text-align: center;
 	border: none;
 	font-size: 12px;
-}
+} */
 
 #write-form #content {
 	border-radius: 5px;

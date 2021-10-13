@@ -102,14 +102,14 @@
 
 					<label for="">날짜</label>
 					<br>
-					<!-- <label for="datepick">📅</label> --> <input id="datepick" name="matchingDate" type="date" value="">
+					<!-- <label for="datepick">📅</label> --><input class="date-time" id="datepick" name="matchingDate" type="date" value="">
 
 					<br>
 					<br>
 
 					<label for="">시간</label>
 					<br>
-					<label for="time">⌚</label> <input type="text" id="time">
+					<!-- <label for="time">⌚</label> --><input class="date-time" type="time" id="time" value="">
 
 					<br>
 				</div>
@@ -160,7 +160,7 @@
 
 					<label for="">나이제한</label>
 					<br>
-					<input type="checkbox" id="10s" value="10대"> <label for="10s">10대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="20s" value="20s"> <label for="20s">20대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="30s" value="30s"> <label for="30s">30대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="40s" value="40s"> <label for="40s">40대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="none" value="none"> <label for="none">나이무관</label>
+					<input type="checkbox" id="10s" value="10대"> <label for="10s">10대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="20s" value="20대"> <label for="20s">20대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="30s" value="30대"> <label for="30s">30대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="40s" value="40대"> <label for="40s">40대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="ageNone" value="나이무관"> <label for="ageNone">나이무관</label>
 
 					<br>
 					<br>

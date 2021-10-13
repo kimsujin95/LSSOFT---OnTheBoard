@@ -521,7 +521,7 @@
 					
             		console.log(revtimeArray);
             		
-            		$('#time_table').data("date", "1");
+            		$("#time_table").data("date", "1");
             		
             		/* for(var i = 0; i < revtimeArray.length; i++){
             			

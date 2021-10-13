@@ -17,8 +17,14 @@
 		<result column="game_guide" property="gameGuide" />
 		<result column="theme_no" property="themeNo" />
 		<result column="game_img" property="gameImg" />
+		<result column="hit_count" property="hitCount" />
 	</resultMap>
 
+	<resultMap id="resultMapGameBookmarkVo" type="GameBookmarkVo">
+		<result column="user_no" property="userNo" />
+		<result column="game_no" property="gameNo" />
+		<result column="game_bookmark_no" property="gameBookmarkNo" />
+	</resultMap>
 		
 	<!-- 게임목록 (썸네일리스트) -->
 	<select id="list" resultMap="resultMapGameVo">
@@ -99,5 +105,94 @@
 				t.theme_no = g.theme_no
 		]]>
 	</select>
+	<!-- 필터검색 게임목록 -->
+	<select id="searchList" parameterType = "String" resultMap="resultMapGameVo">
+	<![CDATA[
+		SELECT  
+				game_no
+		,		game_name_ko
+		,		game_people
+		,		game_age
+		,		game_time
+		,		game_difficulty
+		,		game_path_thumbnail
+		,		theme_no
+		
+		FROM 
+				game
+		ORDER by 
+			game_no desc		
+	]]>
+		<if test="value != null or value != '' ">	
+	<![CDATA[
+    	WHERE
+		    game_name_ko LIKE '%'||#{searchword}||'%'
+    ]]>
+		</if>
 
+    <![CDATA[
+		ORDER BY
+			game_no DESC
+		]]>
+	</select>
+	
+	<!-- 찜하기 -->
+		<insert id="addBookmark" parameterType="GameBookmarkVo">
+		<![CDATA[
+			INSERT INTO
+				game_bookmark
+			VALUES (
+					seq_bookmark_no.nextval
+				,	game_no
+				,	user_no)	
+		]]>
+		</insert>
+		<!-- 찜횟수 추가 -->
+		<update id="bookmarkUp" parameterType="GameVo">
+		<![CDATA[
+			UPDATE
+				game
+			SET
+				hit_count = hit_count + 1
+			WHERE
+				game_no =#{gameNo}	
+		]]>
+		</update>
+		
+	<!-- 찜횟수 총합 -->
+		<select id="bookmarkCount" resultType="GameVo" parameterType="GameVo">
+		<![CDATA[
+			SELECT
+				hit_count
+			FROM
+				game
+			WHERE	
+				game_no=#{gameNo}			
+		]]>
+		</select>
+	<!--찜하기 해제  -->
+		<delete id="removeBookmark" parameterType="GameBookmarkVo">
+		<![CDATA[
+			DELETE FROM
+				game_bookmark
+			WHERE
+				user_no=#{userNo}
+			AND	
+				game_no=#{gameNo}			
+		]]>
+		</delete>
+		<!-- 찜횟수 삭제 -->
+		<update id="BookmarkDown" parameterType="GameVo">
+		<![CDATA[
+			UPDATE
+				game
+			SET
+				hit_count = hit_count - 1
+			WHERE
+				game_no = #{gameNo}	
+		]]>
+		</update>
+		
+		<!-- 페이징 -->	
+		
 </mapper>

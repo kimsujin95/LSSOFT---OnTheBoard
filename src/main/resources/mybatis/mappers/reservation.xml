@@ -4,6 +4,10 @@
 
 <mapper namespace="reservation">
 
-	
+	<select id="getstoreCharge" parameterType="int" resultType="int">
+		<![CDATA[
+			select 
+		]]>
+	</select>
 	
 </mapper>

@@ -31,9 +31,8 @@ public class ReservationService {
 		//매장 번호로 매장 시간당 요금을 가져온다.
 		int storechargeperhour = reservationDao.getstoreCharge(storeNo);
 		
-		
-		
 		return null;
+		
 	}
 	
 }

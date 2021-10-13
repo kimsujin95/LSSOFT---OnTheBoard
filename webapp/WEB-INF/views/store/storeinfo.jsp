@@ -214,98 +214,98 @@
 						</div>
 						<div class="date-area" id="formDeList">
 
-							<button class="" type="button" date-data="" month="">
+							<button class="datebar_btn" type="button" data-date="15" month="">
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"15" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">수</span>
 
 							</button>
 
-							<button class="" type="button" date-data="" month="">
+							<button class="datebar_btn" type="button" data-date="16" month="">
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"16" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">목</span>
 
 							</button>
 
-							<button class="" type="button" date-data="" month="">
+							<button class="datebar_btn" type="button" data-date="17" month="">
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"17" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">금</span>
 
 							</button>
 
-							<button class="" type="button" date-data="" month="">
+							<button class="datebar_btn" type="button" data-date="18" month="">
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"18" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">토</span>
 
 							</button>
 
-							<button class="" type="button" date-data="" month="">
+							<button class="datebar_btn" type="button" data-date="" month="">
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"19" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">일</span>
 
 							</button>
 
-							<button class="" type="button" date-data="" month="">
+							<button class="datebar_btn" type="button" data-date="" month="">
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"20" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">월</span>
 
 							</button>
 
-							<button class="" type="button" date-data="" month="">
+							<button class="datebar_btn" type="button" data-date="" month="">
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"21" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">화</span>
 
 							</button>
 
-							<button class="" type="button" date-data="" month="">
+							<button class="datebar_btn" type="button" data-date="" month="">
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"22" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">수</span>
 
 							</button>
 
-							<button class="" type="button" date-data="" month="">
+							<button class="datebar_btn" type="button" data-date="" month="">
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"23" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">목</span>
 
 							</button>
 
-							<button class="" type="button" date-data="" month="">
+							<button class="datebar_btn" type="button" data-date="" month="">
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"24" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">금</span>
 
 							</button>
 
-							<button class="" type="button" date-data="" month="">
+							<button class="datebar_btn" type="button" data-date="" month="">
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"25" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">토</span>
 
 							</button>
 
-							<button class="" type="button" date-data="" month="">
+							<button class="datebar_btn" type="button" data-date="" month="">
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"26" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">일</span>
 
 							</button>
 
-							<button class="" type="button" date-data="" month="">
+							<button class="datebar_btn" type="button" data-date="" month="">
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"27" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">월</span>
 
 							</button>
 
-							<button class="" type="button" date-data="" month="">
+							<button class="datebar_btn" type="button" data-date="" month="">
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"28" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">화</span>
@@ -386,7 +386,7 @@
 					<!-- 예약 가능 시간대 표기 and 선택 -->
 					<div id="time_table_wrap">
 						<label>시간 선택</label>
-						<ul id="time_table"></ul>
+						<ul id="time_table" data-date=""></ul>
 					</div>
 
 				</div>
@@ -515,25 +515,16 @@
             		var storeNo = ${storeNo};
             		console.log(storeNo);
             		
+            		var timetable = document.querySelector("#time_table");
+            		
             		storeReservationDate = date;
             		console.log(storeReservationDate);
             		var storeRevTimeVo = {storeReservationDate : storeReservationDate, storeNo : storeNo};
 					
             		console.log(revtimeArray);
             		
-            		$("#time_table").data("date", "1");
-            		
-            		/* for(var i = 0; i < revtimeArray.length; i++){
-            			
-            			revtimeArray[i] = '';
-            			if (revtimeArray[i] == reservationableTimeList[i].storeReservationTime) {
-            				<li class="time_btn active" data-time="revtimeArray[i]">revtimeArray[i]</li>
-            			} else {
-            				<li class="time_btn" data-time="revtimeArray[i]">revtimeArray[i]</li>
-            			}
-            			
-            		} */
-            		
+            		timetable.setAttribute("data-date", storeReservationDate);
+					
             		$.ajax({
         		        cache : false,
         		        url : "${pageContext.request.contextPath}/store/getStoreRevTime",
@@ -541,6 +532,7 @@
         		        data : storeRevTimeVo,
         		        
         		        success : function(reservationableTimeList) {
+        		        	
         		        	for(var i = 0; i < reservationableTimeList.length; i++){
         		        		console.log(reservationableTimeList[i]);
         		        	};
@@ -576,7 +568,7 @@
 				var itemEl = compareDate(reservationableTimeList[i], revtimeArray[i]);
         		
         		fragment.appendChild(itemEl);
-				        		
+				
         	}
         	
         	listEl.appendChild(fragment);
@@ -630,7 +622,8 @@
 				
 				var chdval = new Array();
 				var groupNo;
-								
+				var seldate;
+				
 				$('input').each(function(){
 					
           			if($(this).is(':checked')){
@@ -643,14 +636,15 @@
 				
 				groupNo = $('li[class="selgroup active"]').data("no");
 				
-				
+				seldate = $('#time_table').data("date");
 				
 				console.log(chdval);
 				console.log("selected_groupNo : " + groupNo);
 				
 				var revinfo = {
 						checkedTime : chdval,
-						matchingNo : groupNo
+						matchingNo : groupNo,
+						selectedDate : seldate
 				};
 				
 				console.log(revinfo);
@@ -678,7 +672,7 @@
         		
         })
 		     	
-     	//클릭한 시간을 배열에 담기
+     	/* //클릭한 시간을 배열에 담기
      	function insertTime(checkedvalue, selectTimeArray){
      		
 			for(var i = 0; i < revtimeArray.length; i++){
@@ -691,7 +685,7 @@
 				
 			}
 			
-		}
+		} */
      	
     </script>
 	
@@ -842,7 +836,11 @@
     		
     	}
      	
-     	
+     	$('.datebar_btn').on('click',function(){
+     		
+     		console.log($(this).data("date"));
+     		
+     	});
     	
     </script>
 

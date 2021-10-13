@@ -8,6 +8,7 @@
 		<typeAlias alias="UserVo" type="com.otb.vo.UserVo" />
 		<typeAlias alias="GameVo" type="com.otb.vo.GameVo" />
 		<typeAlias alias="ThemeVo" type="com.otb.vo.ThemeVo" />
+		<typeAlias alias="GameBookmarkVo" type="com.otb.vo.GameBookmarkVo" />
 		<typeAlias alias="StoreVo" type="com.otb.vo.StoreVo" />
 		<typeAlias alias="StoreImageVo" type="com.otb.vo.StoreImageVo" />
 		<typeAlias alias="ReservationTimeVo" type="com.otb.vo.ReservationTimeVo" />

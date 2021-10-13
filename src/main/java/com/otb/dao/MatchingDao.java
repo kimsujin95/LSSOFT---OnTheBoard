@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.otb.vo.GameVo;
 import com.otb.vo.MatchingGroupVo;
 import com.otb.vo.MatchingVo;
+import com.otb.vo.SidoVo;
+import com.otb.vo.SigunguVo;
 import com.otb.vo.ThemeVo;
 import com.otb.vo.UserVo;
 
@@ -19,14 +21,32 @@ public class MatchingDao {
 	private SqlSession sqlSession;
 
 	// 매칭 리스트
-	public List<MatchingVo> list() {
+	public List<MatchingVo> list(List<String> keyword) {
 		System.out.println("매칭 다오: list;;;");
 
-		List<MatchingVo> matchingList = sqlSession.selectList("matching.list");
+		List<MatchingVo> matchingList = sqlSession.selectList("matching.list", keyword);
 
 		System.out.println("매칭 다오: list;;; " + matchingList);
 
 		return matchingList;
+	}
+	
+	// 매칭 메인페이지 - 시도 코드에 맞는 시군구 리스트
+	public List<SigunguVo> tabContentSigunguList(int sidoCode) {
+		System.out.println("매칭 다오: tabContentSigunguList;;;");
+		
+		List<SigunguVo> tabContentSigunguList = sqlSession.selectList("matching.tabContentSigunguList", sidoCode);
+		
+		return tabContentSigunguList;
+	}
+	
+	// 매칭 메인페이지 - 테마 코드에 맞는 게임 리스트
+	public List<GameVo> tabContentGameList(int themeNo) {
+		System.out.println("매칭 다오: tabContentGameList;;;");
+		
+		List<GameVo> gameList = sqlSession.selectList("matching.tabContentGameList", themeNo);
+		
+		return gameList;
 	}
 
 	// 마이페이지 - 매칭 리스트
@@ -41,35 +61,44 @@ public class MatchingDao {
 		return matchingList;
 	}
 
-	// 매칭글 쓰기폼 - 유저 나이
-	/*
-	 * public int userAge(int userNo) { System.out.println("매칭 다오: userAge;;;");
-	 * 
-	 * int userAge = sqlSession.selectOne("matching.userAge", userNo);
-	 * System.out.println(userAge);
-	 * 
-	 * return userAge; }
-	 */
+	// 매칭글 작성 폼 - 게임 리스트
+	public List<GameVo> gameList() {
+		System.out.println("매칭 다오: gameList;;;");
 
-	// 매칭글 쓰기폼 - 게임 이름
-	public List<GameVo> gameName() {
-		System.out.println("매칭 다오: gameName;;;");
+		List<GameVo> gameList = sqlSession.selectList("matching.gameList");
+		System.out.println(gameList);
 
-		List<GameVo> gameName = sqlSession.selectList("matching.gameName");
-		System.out.println(gameName);
-
-		return gameName;
+		return gameList;
 	}
 
-	// 매칭글 쓰기폼 - 게임 테마
-	public List<ThemeVo> gameTheme() {
-		System.out.println("매칭 다오: gameTheme;;;");
+	// 매칭글 작성 폼 - 게임 테마 리스트
+	public List<ThemeVo> themeList() {
+		System.out.println("매칭 다오: themeList;;;");
 
-		List<ThemeVo> gameTheme = sqlSession.selectList("matching.gameTheme");
-		System.out.println(gameTheme);
+		List<ThemeVo> themeList = sqlSession.selectList("matching.themeList");
+		System.out.println(themeList);
 
-		return gameTheme;
+		return themeList;
 	}
+
+	// 매칭글 작성 폼 - 시도 리스트
+	public List<SidoVo> sidoList() {
+		System.out.println("매칭 다오: sidoList;;;");
+
+		List<SidoVo> sidoList = sqlSession.selectList("matching.sidoList");
+
+		return sidoList;
+	}
+
+	// 매칭글 작성 폼 - 시군구 리스트
+	public List<SigunguVo> sigunguList() {
+		 System.out.println("매칭 다오: sigunguList;;;");
+	
+		 List<SigunguVo> sigunguList = sqlSession.selectList("matching.sigunguList");
+	
+		 return sigunguList;
+	 }
+
 
 	// 매칭글 등록
 	public int write(MatchingVo matchingVo) {
@@ -119,11 +148,12 @@ public class MatchingDao {
 
 		return joinMatching;
 	}
+
 	// 매칭글 읽기 - 매칭 참가 취소
 	public int outMatching(MatchingGroupVo matchingGroupVo) {
 		System.out.println("매칭 다오: outMatching;;;");
 		int outMatching = sqlSession.delete("matching.outMatching", matchingGroupVo);
-		
+
 		return outMatching;
 	}
 
@@ -143,6 +173,14 @@ public class MatchingDao {
 		List<UserVo> matchingMemberInfoList = sqlSession.selectList("matching.matchingMemberInfoList", matchingNo);
 
 		return matchingMemberInfoList;
+	}
+
+	// 매칭글 읽기 - 매칭상태 변경
+	public int statusComplete(int matchingNo) {
+		System.out.println("매칭 서비스: statusComplete;;;");
+
+		int statusComplete = sqlSession.update("matching.statusComplete", matchingNo);
+		return statusComplete;
 	}
 
 }

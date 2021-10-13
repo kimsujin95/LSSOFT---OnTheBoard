@@ -123,15 +123,11 @@
 		</div>
 		<div id="read-btn" class="row">
 			<div class="col-md-3 text-center">
-				<c:if test="${readInfo.writerInfo.userNo ne authUser.userNo && not empty authUser}">
+				<c:if test="${readInfo.writerInfo.userNo ne authUser.userNo && not empty authUser && readInfo.matchingVo.matchingStatus eq '매칭중'}">
 					<c:if test="${readInfo.matchingVo.matchingMember ne readInfo.matchingVo.matchingPeople}">
-					<button id="btn-joinMatching" class="btn-white" data-user_no="${authUser.userNo}" data-matching_no="${readInfo.matchingVo.matchingNo}" data-now_member="${readInfo.matchingVo.matchingMember}" data-total_member="${readInfo.matchingVo.matchingPeople}">참가신청</button>
+						<button id="btn-joinMatching" class="btn-white" data-user_no="${authUser.userNo}" data-matching_no="${readInfo.matchingVo.matchingNo}" data-now_member="${readInfo.matchingVo.matchingMember}" data-total_member="${readInfo.matchingVo.matchingPeople}">참가신청</button>
 					</c:if>
-					<%-- <c:forEach items="${readInfo.matchingMemberInfoList}" var="matchingGroupVo"> --%>
-						<%-- <c:if test="${matchingGroupVo.userNo eq authUser.userNo}"> --%>
-							<button id="btn-outMatching"  class="btn-red" data-user_no="${authUser.userNo}" data-matching_no="${readInfo.matchingVo.matchingNo}">참가취소</button>
-						<%-- </c:if> --%>
-					<%-- </c:forEach> --%>
+					<button id="btn-outMatching"  class="btn-red" data-user_no="${authUser.userNo}" data-matching_no="${readInfo.matchingVo.matchingNo}">참가취소</button>
 				</c:if>
 			</div>
 			<div class="col-md-4 text-right">

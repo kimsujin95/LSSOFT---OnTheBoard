@@ -12,8 +12,16 @@
 		<result column="matching_people" property="matchingPeople" />
 		<result column="matching_hits" property="matchingHits" />
 		<result column="matching_status" property="matchingStatus" />
+		<result column="matching_date" property="matchingDate" />
+		<result column="matching_permission_gender" property="matchingPermissionGender" />
 		<result column="matching_reg_date" property="matchingRegDate" />
 		<result column="matching_member" property="matchingMember" />
+		<result column="game_name_ko" property="gameNameKo" />
+		<result column="game_no" property="gameNo" />
+		<result column="sido_code" property="sidoCode" />
+		<result column="sido_name" property="sidoName" />
+		<result column="sigungu_code" property="sigunguCode" />
+		<result column="sigungu_name" property="sigunguName" />
 	</resultMap>
 	
 	<resultMap id="resultMapMatchingGroupVo" type="MatchingGroupVo">
@@ -29,26 +37,104 @@
 		<result column="user_nickname" property="userNickname" />
 		<result column="user_gender" property="userGender" />
 	</resultMap>
+	
+	<resultMap id="resultMapThemeVo" type="ThemeVo">
+		<result column="theme_no" property="themeNo" />
+		<result column="theme_name" property="themeName" />
+	</resultMap>
+	
+	<resultMap id="resultMapGameVo" type="GameVo">
+		<result column="theme_no" property="themeNo" />
+		<result column="theme_name" property="themeName" />
+		<result column="game_no" property="gameNo" />
+		<result column="game_name_ko" property="gameNameKo" />
+	</resultMap>
+	
+	<resultMap id="resultMapSidoVo" type="SidoVo">
+		<result column="sido_code" property="sidoCode" />
+		<result column="sido_name" property="sidoName" />
+	</resultMap>
+	
+	<resultMap id="resultMapSigunguVo" type="SigunguVo">
+		<result column="sigungu_code" property="sigunguCode" />
+		<result column="sido_code" property="sidoCode" />
+		<result column="sigungu_name" property="sigunguName" />
+		<result column="sido_name" property="sidoName" />
+	</resultMap>
 
 	<!-- 매칭 리스트 -->
-	<select id="list" resultMap="resultMapMatchingVo">
+	<select id="list" parameterType="java.util.List" resultMap="resultMapMatchingVo">
 		<![CDATA[
 			SELECT
-				matching_no,
-				user_no,
-				matching_title,
-				matching_content,
-				matching_people,
-				matching_status,
-				matching_hits,
-				matching_reg_date
+				m.matching_no,
+				m.user_no,
+				m.matching_title,
+				m.matching_content,
+				m.matching_people,
+				to_char(m.matching_date, 'yyyy. mm. dd. ') matching_date,
+				m.matching_permission_gender,
+				m.matching_status,
+				m.matching_hits,
+				m.matching_reg_date,
+				g.game_name_ko,
+				sd.sido_name,
+    			sg.sigungu_name
 			FROM
-				matching
+				matching m
+				LEFT OUTER JOIN game g ON m.game_no = g.game_no
+				LEFT OUTER JOIN sido sd ON m.sido_code = sd.sido_code
+    			LEFT OUTER JOIN sigungu sg ON m.sigungu_code = sg.sigungu_code
+		]]>
+		<if test="list.size != 0">
+		<![CDATA[
+			WHERE
+		]]>
+		<foreach collection="list" item="keyword" separator="or">
+		<![CDATA[
+				m.matching_status
+				|| m.matching_permission_gender
+				LIKE '%'||#{keyword}||'%'
+		]]>
+		</foreach>
+		</if>
+		<![CDATA[
 			ORDER BY
-				matching_no DESC
+				m.matching_no DESC
 		]]>
 	</select>
 	
+	<!-- 메인 - 시도 코드에 맞는 시군구 리스트 -->
+	<select id="tabContentSigunguList" parameterType="int" resultMap="resultMapSigunguVo">
+		<![CDATA[
+			SELECT
+			    sg.sido_code,
+			    sd.sido_name,
+			    sg.sigungu_code,
+			    sg.sigungu_name
+			FROM
+			    sigungu sg LEFT OUTER JOIN sido sd
+			    ON sg.sido_code = sd.sido_code
+			WHERE
+			    sg.sido_code = #{ sidoCode }
+		]]>
+	</select>
+	
+	<!-- 메인 - 테마 번호에 맞는 게임 리스트 -->
+	<select id="tabContentGameList" parameterType="int" resultMap="resultMapGameVo">
+		<![CDATA[
+			SELECT
+				g.theme_no,
+				t.theme_name,
+				g.game_no,
+				g.game_name_ko
+			FROM
+				game g LEFT OUTER JOIN theme t
+				ON g.theme_no = t.theme_no
+			WHERE
+				g.theme_no = #{ themeNo }
+		]]>
+	</select>
+			
 	<!-- (영하) 마이페이지 매칭 리스트 -->
 	<select id="mypageList" parameterType="int" resultMap="resultMapMatchingVo">
 		<![CDATA[
@@ -66,35 +152,57 @@
 		]]>
 	</select>
 
-	<!-- 매칭 글 등록 - 유저 나이 -->
-	<!-- <select id="userAge" parameterType="int" resultType="int">
+	<!-- 매칭글 작성 폼 - 게임 이름 -->
+	<select id="gameList" resultMap="resultMapGameVo">
 		<![CDATA[
 			SELECT
-			    to_char(sysdate, 'yyyy') - to_char(user_birth_date, 'yyyy') + 1
-			FROM
-			    users
-			WHERE
-			    user_no = #{userNo}
-		]]>
-	</select> -->
-
-	<!-- 매칭 글 등록 - 게임 이름 -->
-	<select id="gameName" resultType="GameVo">
-		<![CDATA[
-			SELECT
-			    game_name_ko gameNameKo
+				game_no,
+			    game_name_ko
 			FROM
 			    game
+			ORDER BY
+				game_no ASC
 		]]>
 	</select>
 
-	<!-- 매칭 글 등록 - 게임 테마 -->
-	<select id="gameTheme" resultType="ThemeVo">
+	<!-- 매칭글 작성 폼 - 게임 테마 -->
+	<select id="themeList" resultMap="resultMapThemeVo">
 		<![CDATA[
 			SELECT
-				theme_name themeName
+				theme_no,
+				theme_name
 			FROM
 				theme
+			ORDER BY
+				theme_no ASC
+		]]>
+	</select>
+	
+	<!-- 매칭글 작성 폼 - 시/도 리스트 -->
+	<select id="sidoList" resultMap="resultMapSidoVo">
+		<![CDATA[
+			SELECT
+				sido_code,
+				sido_name
+			FROM
+				sido
+			ORDER BY
+				sido_code ASC
+		]]>
+	</select>
+	
+	<!-- 매칭글 작성 폼 - 시/군/구 리스트 -->
+	<select id="sigunguList" resultMap="resultMapSigunguVo">
+		<![CDATA[
+			SELECT
+				sigungu_code,
+				sido_code,
+				sigungu_name
+			FROM
+				sigungu
+			ORDER BY
+				sido_code ASC,
+				sigungu_code ASC
 		]]>
 	</select>
 
@@ -110,7 +218,7 @@
 		</selectKey>
 		<![CDATA[
 			INSERT INTO
-				matching(matching_no, user_no, matching_title, matching_content, matching_people, matching_status, matching_hits, matching_reg_date)
+				matching(matching_no, user_no, matching_title, matching_content, matching_people, matching_date, sido_code, sigungu_code, matching_permission_gender, theme_no, game_no, matching_status, matching_hits, matching_reg_date)
 			VALUES
 				(
 					#{ matchingNo },
@@ -118,6 +226,12 @@
 					#{ matchingTitle},
 					#{ matchingContent },
 					#{ matchingPeople },
+					#{ matchingDate },
+					#{ sidoCode },
+					#{ sigunguCode },
+					#{ matchingPermissionGender },
+					#{ themeNo },
+					#{ gameNo },
 					'매칭중',
 					0,
 					sysdate
@@ -232,6 +346,17 @@
 				m.join_reg_date ASC
 		]]>
 	</select>
+	
+	<update id="statusComplete" parameterType="int">
+		<![CDATA[
+			UPDATE
+				matching
+			SET
+				matching_status = '매칭완료'
+			WHERE
+				matching_no = #{ matchingNo }
+		]]>
+	</update>
 	
 	<!-- (재영)스토어인포 - 에약 페이지에서 호스트인 그룹 -->
 	<select id="userHostMatchingList" parameterType="int" resultMap="resultMapMatchingVo">

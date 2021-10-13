@@ -521,6 +521,8 @@
 					
             		console.log(revtimeArray);
             		
+            		$('#time_table').data("date", "1");
+            		
             		/* for(var i = 0; i < revtimeArray.length; i++){
             			
             			revtimeArray[i] = '';
@@ -640,6 +642,8 @@
           		});
 				
 				groupNo = $('li[class="selgroup active"]').data("no");
+				
+				
 				
 				console.log(chdval);
 				console.log("selected_groupNo : " + groupNo);

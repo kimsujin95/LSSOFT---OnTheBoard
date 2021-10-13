@@ -180,9 +180,6 @@
 		
 		/* input type="hidden"에 데이터 저장 */
 		$(".date").on("changeDate", dateInsert);
-		
-		console.log("window-onload");
-		console.log(dateInsert);
 	}
 	
 	function dateInsert() {

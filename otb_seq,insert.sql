@@ -2,6 +2,7 @@
 DROP SEQUENCE seq_users_no;
 DROP SEQUENCE seq_game_no;
 DROP SEQUENCE seq_theme_no;
+DROP SEQUENCE seq_game__bookmark_no;
 DROP SEQUENCE seq_matching_no;
 DROP SEQUENCE seq_sido_no;
 DROP SEQUENCE seq_sigungu_no;
@@ -20,6 +21,11 @@ INCREMENT BY 1
 NOCACHE;
 
 CREATE SEQUENCE seq_theme_no
+START WITH 1
+INCREMENT BY 1
+NOCACHE;
+
+CREATE SEQUENCE seq_bookmark_no
 START WITH 1
 INCREMENT BY 1
 NOCACHE;

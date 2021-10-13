@@ -74,15 +74,15 @@
 											<td>
 												<div id="res-people" class="input-group pull-left">
 													<label class="input-group-addon">1회 최대 예약 인원</label>
-													<select class="form-control">
-														<option>2</option>
-														<option>3</option>
-														<option>4</option>
-														<option>5</option>
-														<option>6</option>
+													<select class="form-control" name="storeReservationMax">
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+														<option value="6">6</option>
 													</select>
 													<label class="input-group-addon">총 예약 가능 인원</label>
-													<input type="number" class="form-control">
+													<input type="number" class="form-control" name="storeReservationTotal" value="0">
 												</div>
 											</td>
 										</tr>
@@ -95,37 +95,54 @@
 												<label class="btn time-select" for="btn-check-09">09:00</label>
 												<input type="checkbox" class="btn-check" id="btn-check-10" name="times" value="10">
 												<label class="btn time-select" for="btn-check-10">10:00</label>
-												<br>
+											</td>
+										</tr>
+										<tr>
+											<td>	
 												<input type="checkbox" class="btn-check" id="btn-check-11" name="times" value="11">
 												<label class="btn time-select" for="btn-check-11">11:00</label>
 												<input type="checkbox" class="btn-check" id="btn-check-12" name="times" value="12">
 												<label class="btn time-select" for="btn-check-12">12:00</label>
-												<br>
+											</td>
+										</tr>
+										<tr>
+											<td>
 												<input type="checkbox" class="btn-check" id="btn-check-13" name="times" value="13">
 												<label class="btn time-select" for="btn-check-13">13:00</label>
 												<input type="checkbox" class="btn-check" id="btn-check-14" name="times" value="14">
 												<label class="btn time-select" for="btn-check-14">14:00</label>
-												<br>
+											</td>
+										</tr>
+										<tr>
+											<td>
 												<input type="checkbox" class="btn-check" id="btn-check-15" name="times" value="15">
 												<label class="btn time-select" for="btn-check-15">15:00</label>
 												<input type="checkbox" class="btn-check" id="btn-check-16" name="times" value="16">
 												<label class="btn time-select" for="btn-check-16">16:00</label>
-												<br>
+											</td>
+										</tr>
+										<tr>
+											<td>
 												<input type="checkbox" class="btn-check" id="btn-check-17" name="times" value="17">
 												<label class="btn time-select" for="btn-check-17">17:00</label>
 												<input type="checkbox" class="btn-check" id="btn-check-18" name="times" value="18">
 												<label class="btn time-select" for="btn-check-18">18:00</label>
-												<br>
+											</td>
+										</tr>
+										<tr>
+											<td>
 												<input type="checkbox" class="btn-check" id="btn-check-19" name="times" value="19">
 												<label class="btn time-select" for="btn-check-19">19:00</label>
 												<input type="checkbox" class="btn-check" id="btn-check-20" name="times" value="20">
 												<label class="btn time-select" for="btn-check-20">20:00</label>
-												<br>
+											</td>
+										</tr>
+										<tr>
+											<td>
 												<input type="checkbox" class="btn-check" id="btn-check-21" name="times" value="21">
 												<label class="btn time-select" for="btn-check-21">21:00</label>
 												<input type="checkbox" class="btn-check" id="btn-check-22" name="times" value="22">
 												<label class="btn time-select" for="btn-check-22">22:00</label>
-												<br>
 											</td>
 										</tr>
 									</table>
@@ -153,25 +170,28 @@
 
 <!-- 데이트 피커 -->
 <script type="text/javascript">
-	/* div에 데이트 피커 선언 */
-	$(".date").datepicker({
-		format: "yyyy/mm/dd"
-		,todayHighlight: true
-		,multidate : true
-	});
+	window.onload = function() {
+		/* div에 데이트 피커 선언 */
+		$(".date").datepicker({
+			format: "yyyy/mm/dd"
+			,todayHighlight: true
+			,multidate : true
+		});
+		
+		/* input type="hidden"에 데이터 저장 */
+		$(".date").on("changeDate", dateInsert);
+		
+		console.log("window-onload");
+		console.log(dateInsert);
+	}
 	
-	/* input type="hidden"에 데이터 저장 */
-	$(".date").on("changeDate", function() {
-	    $("#date-input").val(
-	        $(".date").datepicker("getFormattedDate")
-	    );
-	   
-	    console.log($("#date-input").val());
-	    
-	});
+	function dateInsert() {
+		$("#date-input").val($(".date").datepicker("getFormattedDate"));
+		    console.log($("#date-input").val());
+	};
 </script>
 
-<!-- 스케쥴 등록 ajax -->
+<!-- 스케쥴 등록 및 확인 선택 -->
 <script type="text/javascript">
 	$("#scheduleCheck").on("click", function(){
 		if($("#scheduleCheck").text() === "스케쥴 확인") {
@@ -181,7 +201,7 @@
 			$("#scheduleCheck").text("스케쥴 일괄 변경");
 			
 			$(".date").datepicker({
-				format: "yyyy-mm-dd"
+				format: "yyyy/mm/dd"
 				,todayHighlight: true
 			});
 			
@@ -198,9 +218,13 @@
 			});
 		}
 		
-		
 	});
 	
+</script>
+
+<!-- 스케쥴 정보 등록 및 수정-->
+<script type="text/javascript">
+	//시간 선택 시, 해당 checkbox의 label 활성화
 	$(".time-select").on("click", function(){
 		
 		if($(this).hasClass("btn-primary") === true) {
@@ -208,13 +232,15 @@
 		} else {
 			$(this).addClass("btn-primary");
 		}
-		
 	});
-	
+
+	//등록 버튼 클릭 시, 선택된 날짜 및 시간 정보를 ajax로 등록 요청
 	$("#insert").on("click", function(){
 		
 	    var date = $("#date-input").val();
 	    var times = [];
+		var storeReservationMax = $("select[name=storeReservationMax]").val();
+	    var storeReservationTotal = $("input[name=storeReservationTotal]").val();
 	    
 	    $("input[name='times']:checked").each(function(i) {
 	    	times.push($(this).val());
@@ -223,31 +249,45 @@
 	    console.log(date);
 	    console.log(times);
 	    
+	    // 예외처리 
+	    
+	    if(date.length < 1) {
+	    	alert("날짜를 선택해주세요.");
+	    	console.log("날짜 미선택");
+	    	return false;
+	    }
+	    
+	    if(times.length < 1) {
+	    	alert("시간을 선택해주세요.");
+	    	console.log("시간 미선택");
+	    	return false;
+	    }
+	    
+	    if(storeReservationTotal < storeReservationMax) {
+	    	alert("총 예약 가능 인원이 1회 최대 예약 인원보다 작을 수 없습니다.")
+	    	console.log("인원 수 재설정 필요");
+	    	return false;
+	    }
+	    
+	    //예외처리 이후, data 취합
 	    var allData = {
-	    		"date" : date,
-	    		"times" : times
+	    		date : date,
+	    		times : times,
+	    		storeReservationMax : storeReservationMax,
+	    		storeReservationTotal : storeReservationTotal
 	    };
 	    
 	    console.log(allData);
 	    
+	    //ajax로 스케쥴 데이터	 등록
 	    $.ajax({
 	        //요청 코드
 	        url: "${pageContext.request.contextPath }/admin/scheduleInsert",				//데이터를 받을 주소를 입력
 	        type: "get",				//get, post 데이터를 보낼 때, 방식을 설정
 	        //contentType: "application/json",
-	        data: allData,	//보내는 데이터의 형식, 객체를 생성하여 집어넣어도 된다
-	        
-	        //데이터를 받는 코드
-	        /* dataType: "json",			//데이터를 받는 형식, 일반적인 java코드를 이해하지 못하기 때문에 json으로 번역하여 받는다
-	        success: function(resultData) {
-	            // TODO : 결과로 받은 resultData로 작업 !
-	        },
-	        error: function(jqXHR, textStatus, errorThrown) {
-	            // 에러 로그는 아래처럼 확인해볼 수 있다. 
-	            alert("업로드 에러\ncode : " + jqXHR.status + "\nerror message : " + jqXHR.responseText);
-	        } */
+	        data: allData	//보내는 데이터의 형식, 객체를 생성하여 집어넣어도 된다
 		});
-	    
 	});
 </script>
+
 </html>

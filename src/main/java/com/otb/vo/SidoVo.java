@@ -2,25 +2,25 @@ package com.otb.vo;
 
 public class SidoVo {
 
-	private int sidoCoda;
+	private int sidoCode;
 	private String sidoName;
 
 	public SidoVo() {
 		super();
 	}
 
-	public SidoVo(int sidoCoda, String sidoName) {
+	public SidoVo(int sidoCode, String sidoName) {
 		super();
-		this.sidoCoda = sidoCoda;
+		this.sidoCode = sidoCode;
 		this.sidoName = sidoName;
 	}
 
-	public int getSidoCoda() {
-		return sidoCoda;
+	public int getsidoCode() {
+		return sidoCode;
 	}
 
-	public void setSidoCoda(int sidoCoda) {
-		this.sidoCoda = sidoCoda;
+	public void setsidoCode(int sidoCode) {
+		this.sidoCode = sidoCode;
 	}
 
 	public String getSidoName() {
@@ -33,7 +33,7 @@ public class SidoVo {
 
 	@Override
 	public String toString() {
-		return "SidoVo [sidoCoda=" + sidoCoda + ", sidoName=" + sidoName + "]";
+		return "SidoVo [sidoCode=" + sidoCode + ", sidoName=" + sidoName + "]";
 	}
 
 }

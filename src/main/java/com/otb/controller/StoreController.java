@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -68,9 +69,8 @@ public class StoreController {
 //	}
 
 	// 매장 상세정보 페이지
-	@RequestMapping("/storeinfo")
-	/* @RequestParam("storeNo") int storeNo, */
-	public String storeinfo(@RequestParam("storeNo") int storeNo, HttpSession session, Model model) {
+	@RequestMapping("/storeinfo/{storeNo}")
+	public String storeinfo(@PathVariable("storeNo") int storeNo, HttpSession session, Model model) {
 		System.out.println("[storeController.storeinfo]");
 
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
@@ -86,7 +86,7 @@ public class StoreController {
 			model.addAttribute("userDataInfoMap", userDataInfoMap);
 		}
 
-		model.addAttribute("storeNo", storeNo);
+		/* model.addAttribute("storeNo", storeNo); */
 		
 		return "/store/storeinfo";
 
@@ -104,6 +104,8 @@ public class StoreController {
 		List<UserVo> grouplistinfo = storeService.grouplist(matchingno);
 		System.out.println(grouplistinfo);
 
+		
+		
 		return grouplistinfo;
 	}
 	

@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.otb.dao.AdminDao;
+import com.otb.vo.ReservationDateVo;
+import com.otb.vo.ReservationTimeVo;
 import com.otb.vo.StoreImageVo;
 import com.otb.vo.StoreVo;
 
@@ -101,4 +103,58 @@ public class AdminService {
 		}
 		
 	}	
+
+	//매장 스케쥴 등록
+	public void addSchedule(String date, String[] times, ReservationDateVo reservationDateVo) {
+//		System.out.println("스케쥴 서비스 도착");
+		String[] days = date.split(",");
+		
+		for(int i = 0; i < days.length; i ++) {
+			reservationDateVo.setStoreReservationDate(days[i]);
+			
+			//날짜 번호를 찾는다
+			int dateNo = adminDao.selectDateNo(reservationDateVo);
+			
+			//해당하는 날짜 번호가 없을 경우
+			if(dateNo == 0) {
+				System.out.println("날짜 번호 없음");
+				//날짜 번호 생성
+				adminDao.insertDate(reservationDateVo);
+				
+				dateNo = reservationDateVo.getReservationDateNo();
+				System.out.println("date 인서트 이후 dateNo 값 비교");
+				
+				//해당 날짜번호를 FK로 갖는 시간 데이터 생성
+				System.out.println(dateNo);
+				for(int j = 0; j < times.length; j ++) {
+					ReservationTimeVo reservationTimeVo = new ReservationTimeVo();
+					reservationTimeVo.setReservationDateNo(dateNo);
+					reservationTimeVo.setStoreReservationTime(times[j]);
+					
+					System.out.println(reservationTimeVo.toString());
+					
+					adminDao.insertTime(reservationTimeVo);
+				}
+			} else {
+				System.out.println("날짜 번호 있음");
+				//날짜 번호가 이미 있을 경우, 해당하는 날짜 번호를 갖는 시간을 모두 삭제
+				adminDao.deleteTime(dateNo);
+				
+				//이후 재등록
+				for(int j = 0; j < times.length; j ++) {
+					ReservationTimeVo reservationTimeVo = new ReservationTimeVo();
+					reservationTimeVo.setReservationDateNo(dateNo);
+					reservationTimeVo.setStoreReservationTime(times[j]);
+					
+					System.out.println(reservationTimeVo.toString());
+					
+					adminDao.insertTime(reservationTimeVo);
+				} 
+				
+			}
+			
+		}
+		
+	}
+
 }

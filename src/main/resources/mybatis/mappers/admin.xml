@@ -30,6 +30,22 @@
 		<result column="store_path_image" property="storePathImage" />
 	</resultMap>
 	
+	<!-- ReservationDateVo resultMap -->
+	<resultMap id="resultMapReservationDate" type="ReservationDateVo">
+		<result column="reservation_date_no" property="reservationDateNo" />
+		<result column="store_no" property="storeNo" />
+		<result column="store_reservation_date" property="storeReservationDate" />
+		<result column="store_reservation_total" property="storeReservationTotal" />
+		<result column="store_reservation_max" property="storeReservationMax" />
+	</resultMap>
+	
+	<!-- ReservationTimeVo resultMap -->
+	<resultMap id="resultMapReservationTimeVo" type="ReservationTimeVo">
+		<result column="reservation_time_no" property="reservationTimeNo" />
+		<result column="reservation_date_no" property="reservationDateNo" />
+		<result column="store_reservation_time" property="storeReservationTime" />
+	</resultMap>
+	
 	<!-- 매장 정보 호출 -->
 	<select id="selectStore" parameterType="int" resultMap="resultMapAdminVo">
 		<![CDATA[
@@ -115,5 +131,55 @@
 			)
 		]]>
 	</insert>
+	
+	<!-- 매장 예약 날짜 조회(유무 확인) -->
+	<select id="selectDateNo" parameterType="ReservationDateVo" resultType="int">
+		<![CDATA[
+			SELECT reservation_date_no
+			FROM RESERVATION_DATE
+			WHERE store_reservation_date = #{storeReservationDate}
+			  AND store_no = #{storeNo}
+		]]>
+	</select>
+	
+	<!-- 매장 예약 날짜 등록 -->
+	<insert id="insertDate" parameterType="ReservationDateVo">
+		<selectKey keyProperty="reservationDateNo" resultType="int" order="BEFORE">
+			<![CDATA[
+				 SELECT sequence_reservation_date_no.NEXTVAL 
+				 FROM DUAL
+			]]>
+		</selectKey>
+		<![CDATA[
+			INSERT INTO reservation_date
+			VALUES(
+				 #{reservationDateNo}
+				,#{storeNo}
+				,#{storeReservationDate}
+				,#{storeReservationTotal}
+				,#{storeReservationMax}
+			)
+		]]>
+	</insert>
+	
+	<!-- 매장 예약 시간 등록 -->
+	<insert id="insertTime" parameterType="ReservationTimeVo">
+		<![CDATA[
+			INSERT INTO reservation_time
+			VALUES(
+				 sequence_reservation_time_no.NEXTVAL
+				,#{reservationDateNo}
+				,#{storeReservationTime}
+			)
+		]]>
+	</insert>
+	
+	<!-- 매장 예약 시간 삭제 -->
+	<delete id="deleteTime" parameterType="int">
+		<![CDATA[
+			DELETE reservation_time
+			WHERE reservation_date_no = #{reservationDateNo}
+		]]>
+	</delete>
 	
 </mapper>

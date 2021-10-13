@@ -14,6 +14,10 @@
 }
 /* 데이트 피커 크기 조절 */
 
+th.dow:first-child {
+	color: red;
+}
+
 /* 시간 선택 표 */
 table#time-table {
 	width: 445px;

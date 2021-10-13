@@ -29,6 +29,7 @@
 			SELECT  
 			      user_no
 			     ,user_id
+			     ,user_name
 				 ,user_nickname
 				 ,user_grade
 			FROM 
@@ -48,6 +49,7 @@
 			SELECT  
 			      user_no
 			     ,user_id
+			     ,user_name
 				 ,user_nickname
 				 ,user_gender
 				 ,user_birth_date

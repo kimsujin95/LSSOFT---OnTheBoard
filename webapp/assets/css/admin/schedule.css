@@ -44,7 +44,7 @@ div#res-people select, div#res-people input {
 /* 예약 가능 인원 설정 */
 
 /* 수정 버튼 */
-table#time-table td > button.btn {
+table#time-table td > label.btn {
 	width: 45%;
 	margin: 5px 5px;
 }

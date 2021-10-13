@@ -22,6 +22,7 @@ div#user-controller > a {
 /* 컨텐츠 */
 div#content.container {
 	width: 1200px;
+	min-width: 1200px;
 	margin: 0;
 	padding: 0;
 }
@@ -192,3 +193,10 @@ label {
 }
 
 /* 보더 */
+
+/* input type checkbox */
+.btn-check {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  pointer-events: none;
+}

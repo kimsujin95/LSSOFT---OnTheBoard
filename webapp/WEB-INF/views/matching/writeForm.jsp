@@ -78,10 +78,10 @@
 
 					<label for="game-style">테마</label>
 					<br>
-					<select id="game-style" name="game-style">
+					<select id="game-style" name="themeNo">
 						<option value="game-style-none">테 마 선 택</option>
-						<c:forEach items="${writeUserMap.writeGameTheme}" var="gameTheme">
-							<option value="strategy">${gameTheme.themeName}</option>
+						<c:forEach items="${writeUserMap.themeList}" var="themeVo">
+							<option value="${themeVo.themeNo}">${themeVo.themeName}</option>
 						</c:forEach>
 					</select>
 
@@ -90,10 +90,10 @@
 
 					<label for="game-name">게임</label>
 					<br>
-					<select id="game-name" name="game-name">
+					<select id="game-name" name="gameNo">
 						<option value="game-name-none">게 임 선 택</option>
-						<c:forEach items="${writeUserMap.writeGameName}" var="gameName">
-							<option value="terapoming">${gameName.gameNameKo}</option>
+						<c:forEach items="${writeUserMap.gameList}" var="gameVo">
+							<option value="${gameVo.gameNo}">${gameVo.gameNameKo}</option>
 						</c:forEach>
 					</select> <input type="text" id="ipt-keyword" value="" placeholder="게임 검색">
 
@@ -102,7 +102,7 @@
 
 					<label for="">날짜</label>
 					<br>
-					<label for="datepick">📅</label> <input type="text" id="datepick">
+					<!-- <label for="datepick">📅</label> --> <input id="datepick" name="matchingDate" type="date" value="">
 
 					<br>
 					<br>
@@ -117,18 +117,19 @@
 					<label for="">지역</label>
 					<br>
 					<div class="col-xs-6">
-						시/도 선택&nbsp;&nbsp;<select name="sido">
+						시/도 선택&nbsp;&nbsp;<select name="sidoCode" id="select-sido">
 							<option>지역 선택</option>
-							<option value="서울">서울</option>
-							<option value="경기도">경기도</option>
-							<option value="충청남도">충청남도</option>
+							<c:forEach items="${writeUserMap.sidoList}" var="sidoVo" varStatus="status">
+								<option value="${sidoVo.sidoCode}">${sidoVo.sidoName}</option>
+							</c:forEach>
 						</select>
 					</div>
 					<div class="col-xs-6">
-						시/군/구 선택&nbsp;&nbsp;<select name="sigungu">
+						시/군/구 선택&nbsp;&nbsp;<select name="sigunguCode" id="select-sigungu">
 							<option>지역 선택</option>
-							<option value="강남구">강남구</option>
-							<option value="">강북구</option>
+							<c:forEach items="${writeUserMap.sigunguList}" var="sigunguVo">
+								<option value="${sigunguVo.sigunguCode}">${sigunguVo.sigunguName}</option>
+							</c:forEach>
 						</select>
 					</div>
 
@@ -148,10 +149,10 @@
 
 					<label for="">성별제한</label>
 					<br>
-					<select id="sex-limit">
-						<option value="none">무관</option>
-						<option value="female">여</option>
-						<option value="male">남</option>
+					<select id="sex-limit" name="matchingPermissionGender">
+						<option value="성별무관">성별무관</option>
+						<option value="여">여</option>
+						<option value="남">남</option>
 					</select>
 
 					<br>
@@ -159,7 +160,7 @@
 
 					<label for="">나이제한</label>
 					<br>
-					<input type="checkbox" id="10s" value="10s"> <label for="10s">10대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="20s" value="20s"> <label for="20s">20대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="30s" value="30s"> <label for="30s">30대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="40s" value="40s"> <label for="40s">40대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="none" value="none"> <label for="none">무관</label>
+					<input type="checkbox" id="10s" value="10s"> <label for="10s">10대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="20s" value="20s"> <label for="20s">20대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="30s" value="30s"> <label for="30s">30대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="40s" value="40s"> <label for="40s">40대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="none" value="none"> <label for="none">나이무관</label>
 
 					<br>
 					<br>
@@ -188,7 +189,7 @@
 </body>
 
 <script>
-	$('#datepick').datepicker(
+	/* $('#datepick').datepicker(
 			{
 				language : 'ko',
 				todayBtn : 'linked',
@@ -205,7 +206,7 @@
 				today : "오늘",
 				titleFormat : "yyyy년 mm월",
 				weekStart : 0
-			});
+			}); */
 </script>
 
 </html>

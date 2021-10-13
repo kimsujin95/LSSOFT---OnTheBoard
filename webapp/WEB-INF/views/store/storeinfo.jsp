@@ -332,12 +332,14 @@
 				<!-- 예약 인원 선택 -->
 				<div class="select_rev_info_area">
 					<ul class="nav nav-tabs nav-justified" role="tablist" id="how_to_choice_people">
-						<li role="presentation" class="active"><a href="#choice_by_count" aria-controls="choice_by_count" role="tab" data-toggle="tab">직접 입력</a></li>
-						<li role="presentation"><a href="#choice_by_grouplist" aria-controls="choice_by_grouplist" role="tab" data-toggle="tab">그룹 리스트에서 선택</a></li>
+						<li role="presentation" class="active"><a href="#choice_by_count" aria-controls="choice_by_count" role="tab" data-toggle="tab">직접
+								입력</a></li>
+						<li role="presentation"><a href="#choice_by_grouplist" aria-controls="choice_by_grouplist" role="tab" data-toggle="tab">그룹
+								리스트에서 선택</a></li>
 					</ul>
-					
+
 					<div class="tab-content">
-					<label>인원 선택</label>
+						<label>인원 선택</label>
 						<div role="tabpanel" class="tab-pane active" id="choice_by_count">
 							<div>
 								<table>
@@ -360,8 +362,8 @@
 									<!-- 매칭이 완료된 그룹 리스트 -->
 									<!-- 내역이 없을 시 리스트 존재x 텍스트 띄워주기 -->
 									<c:forEach items="${userDataInfoMap.userHostMatchingList}" var="matchingVo" varStatus="status">
-										<li role="presentation"><a href="#chosen_group" aria-controls="chosen_group" role="tab" data-toggle="tab"> <span class="groupUser"
-												data-no="${matchingVo.matchingNo}">${status.index + 1}. ${matchingVo.matchingTitle}</span>
+										<li role="presentation" class="selgroup" data-no="${matchingVo.matchingNo}"><a href="#chosen_group" aria-controls="chosen_group" role="tab" data-toggle="tab"> <span
+												class="groupUser">${status.index + 1}. ${matchingVo.matchingTitle}</span>
 										</a></li>
 									</c:forEach>
 								</ul>
@@ -383,8 +385,8 @@
 
 					<!-- 예약 가능 시간대 표기 and 선택 -->
 					<div id="time_table_wrap">
-					<label>시간 선택</label>
-							<ul id="time_table"></ul>
+						<label>시간 선택</label>
+						<ul id="time_table"></ul>
 					</div>
 
 				</div>
@@ -397,11 +399,9 @@
                             <div class="select-by-no">
                                 <button type="button" class="btn-tab on" id="">직접 선택</button>
                                 <div class="people-no-select-section">
-
                                 </div>
                             </div>
                         </div>
-
                         그룹으로 선택
                         <div class="people-select-btn">
                             <div class="select-by-group">
@@ -410,16 +410,14 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="time-choice-area">
-
                 </div> -->
 
 
 			</div>
 
 			<div class="reservation">
-				<button class="reservation_btn btn-red">예약하기</button>
+				<button id="rev_btn" class="reservation_btn btn-red">예약하기</button>
 			</div>
 
 		</div>
@@ -506,7 +504,7 @@
 	        showMonthAfterYear: true,
 	        yearSuffix: '년'
 	    });
-	
+		var revtimeArray = ["09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"];
         $(function () {
             
         	var selectedDate;
@@ -519,10 +517,8 @@
             		
             		storeReservationDate = date;
             		console.log(storeReservationDate);
-
             		var storeRevTimeVo = {storeReservationDate : storeReservationDate, storeNo : storeNo};
-            		
-            		var revtimeArray = ["09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"];
+					
             		console.log(revtimeArray);
             		
             		/* for(var i = 0; i < revtimeArray.length; i++){
@@ -549,7 +545,7 @@
         		        	
         		        	checkTimetable(reservationableTimeList, revtimeArray);
         		        	
-        		        }, // success 
+        		        }, // success
         				
         		        error : function(XHR, status, error) {
         					
@@ -594,20 +590,107 @@
         	var el = document.createElement('li');
         	
         	if(revtimeArray === reservationableTime){
-        		var itemStr = '<button onclick="clicktimetable('+revtimeArray+')" type="button" class="btn_active" data-value="'+ revtimeArray +'">' + revtimeArray + ":00 " + '</button>';
+        		var itemStr = '<input type="checkbox" id="chb_'+revtimeArray+'" class="btn_active" name="btn_active" value="'+ revtimeArray +'"><label for="chb_'+revtimeArray+'">'+ revtimeArray + ":00" +'</label>';
         	}else{
-        		var itemStr = '<button type="button" class="btn_inactive" data-value="">' + revtimeArray + ":00 " + '</button>';
+        		var itemStr = '<label>'+ revtimeArray +'</label>';
         	}
 			
     	    el.innerHTML = itemStr;
-    	    /* el.className = 'time_btn'; */
-
+    	    //el.className = 'time_btn';
     	    return el;
         	
         }
         
+		
+		
+        //예약파트
+        $(function(){
+        	
+			//시간 클릭 시 class값 변경        	
+        	$('#time_table').on('click','input[type="checkbox"]', function(){
+        		
+          		
+          		console.log("클릭");
+          		
+          		if($(this).is(':checked')){
+          			$(this).attr('class', 'btn_active_click');
+          			console.log("체크");
+          		}else{
+          			$(this).attr('class', 'btn_active');
+          			console.log("체크해제");
+          			$(this).removeAttr('checked');
+          		}
+          		
+          	});
+        	
+        	//예약버튼 클릭 시 시간대 체크된 항목들만 배열에 담기
+        	$('#rev_btn').on('click',function(){
+					
+				var chdval = new Array();
+				var groupNo;
+								
+				$('input').each(function(){
+					
+          			if($(this).is(':checked')){
+          				var checked = ($(this).val());
+          				chdval.push(checked);
+          				
+          			}
+					
+          		});
+				
+				groupNo = $('li[class="selgroup active"]').data("no");
+				
+				console.log(chdval);
+				console.log("selected_groupNo : " + groupNo);
+				
+				var revinfo = {
+						checkedTime : chdval,
+						matchingNo : groupNo
+				};
+				
+				console.log(revinfo);
+				
+				$.ajax({
+    		        cache : false,
+    		        url : "${pageContext.request.contextPath}/reservation/reservationinfo/"+${storeNo},
+    		        type : 'POST',
+    		        data : revinfo,
+    		        
+    		        success : function(val) {
+    		            // ajax 랜더링 for문
+						console.log("도착");
+    		        	
+    		        }, // success 
+    				
+    		        error : function(XHR, status, error) {
+    					
+    		        	console.error(status + " : " + error);
+    		        	}
+    		        
+    		    }); // $.ajax */
+				
+        	})
+        		
+        })
+		     	
+     	//클릭한 시간을 배열에 담기
+     	function insertTime(checkedvalue, selectTimeArray){
+     		
+			for(var i = 0; i < revtimeArray.length; i++){
+				
+				if(checkedvalue == revtimeArray[i]){
+					
+					selectTimeArray[i] = checkedvalue;
+					
+				}
+				
+			}
+			
+		}
+     	
     </script>
-
+	
 	<!-- 이미지 출력 -->
 	<script>
         $(function () {
@@ -626,50 +709,36 @@
         })
     </script>
 	<!-- /이미지 출력 -->
-
-
+	
 	<!-- 페이징 -->
 	<script type="text/javascript">
-
         var totalData = 1000;    // 총 데이터 수 --> 실제로는 DB에서 가져온다.
         var dataPerPage = 4;    // 한 페이지에 나타낼 데이터 수
         var pageCount = 5;        // 한 화면에 나타낼 페이지 수
-
         function paging(totalData, dataPerPage, pageCount, currentPage) {
-
             // console.log("currentPage : " + currentPage);
-
             var totalPage = Math.ceil(totalData / dataPerPage);    // 총 페이지 수
             var pageGroup = Math.ceil(currentPage / pageCount);    // 페이지 그룹
-
             // console.log("pageGroup : " + pageGroup);
-
             var last = pageGroup * pageCount;    // 화면에 보여질 마지막 페이지 번호
             if (last > totalPage)
                 last = totalPage;
             var first = last - (pageCount - 1);    // 화면에 보여질 첫번째 페이지 번호
             var next = last + 1;
             var prev = first - 1;
-
             // console.log("last : " + last);
             // console.log("first : " + first);
             // console.log("next : " + next);
             // console.log("prev : " + prev);
-
             var $pingingView = $("#pages");
-
             var html = "";
-
             if (prev > 0)
                 html += "<a href=# id='prev'><i class='fas fa-angle-left'></i></a> ";
-
             for (var i = first; i <= last; i++) {
                 html += "<a href='#' id=" + i + ">" + i + "</a> ";
             }
-
             if (last < totalPage)
                 html += "<a href=# id='next'><i class='fas fa-angle-right'></i></a>";
-
             $("#pages").html(html);    // 페이지 목록 생성
             $("#pages a").css("color", "#ff1f67");
             $("#pages a#" + currentPage).css({
@@ -678,28 +747,22 @@
                 "color": "white",
                 "font-weight": "bold"
             });    // 현재 페이지 표시
-
             $("#pages a").click(function () {
-
                 var $item = $(this);
                 var $id = $item.attr("id");
                 var selectedPage = $item.text();
-
                 if ($id == "next") selectedPage = next;
                 if ($id == "prev") selectedPage = prev;
-
                 paging(totalData, dataPerPage, pageCount, selectedPage);
             });
-
         }
-
         $("document").ready(function () {
             paging(totalData, dataPerPage, pageCount, 1);
         });
         
         
         <!-- 그룹목록 클릭 시 그룹원정보 리스트로 나열하기 -->
-        $('#grouplist').on('click', '.groupUser', function(){
+        $('#grouplist').on('click', '.selgroup', function(){
     		// event.preventDefault(); --> form일때만 사용 가능
     		
     		// hidden no값 입력하기 == html 태그에 데이터 숨기기(click에 해당하는 태그)
@@ -724,7 +787,6 @@
     		        error : function(XHR, status, error) {
     					
     		        	console.error(status + " : " + error);
-
     		        	}
     		    }); // $.ajax */
     		    
@@ -756,13 +818,10 @@
         
     	// 그룹원 항목을 Element로 반환하는 함수
     	function getListItem(index, grouplistinfo) {
-
     	    var el = document.createElement('li'),
-    	    itemStr = '<label>'+ grouplistinfo.userNickname +'</label>';
-
+    	    itemStr = '<label class="groupwon">'+ grouplistinfo.userNickname +'</label>';
     	    el.innerHTML = itemStr;
     	    el.className = 'item';
-
     	    return el;
     	};
         
@@ -778,6 +837,8 @@
     		console.log(value);
     		
     	}
+     	
+     	
     	
     </script>
 

@@ -512,6 +512,11 @@ button.time_btn {
 
 #time_table > li{
 	display:inline-block;
+	width:50px;
+}
+
+#time_table > li input{
+	background-color:#ff1f67;
 }
 
 #time_table > li button{
@@ -522,7 +527,17 @@ button.time_btn {
 	text-align:center;
 }
 
+#time_table > li .btn_active {
+	background-color: #fff;
+	color: #ff1f67;
+}
+
 #time_table > li .btn_active:hover{
+	background-color:#ff1f67;
+	color : #fff;
+}
+
+#time_table > li .btn_active_click {
 	background-color:#ff1f67;
 	color : #fff;
 }

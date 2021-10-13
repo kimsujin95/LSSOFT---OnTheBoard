@@ -113,7 +113,7 @@
 													<button id="address-search" class="btn btn-primary" type="button">주소 찾기</button>
 												</div>
 												<div id="address-detail-area">
-													<input id="store-address-detail" type="text" name="storeAddressDetail" value="${storeInfo.storeAddressDetail }">
+													<input id="store-address-detail" type="text" name="storeAddressDetail" placeholder="상세 주소를 입력해주세요(선택)" value="${storeInfo.storeAddressDetail }">
 													<input id="store-lat" type="hidden" name="storeLat" value="${storeInfo.storeLat }">
 													<input id="store-lng" type="hidden" name="storeLng" value="${storeInfo.storeLng }">
 												</div>
@@ -126,7 +126,7 @@
 												<label for="store-phone-no">대표 전화</label>
 											</th>
 											<td>
-												<input id="store-phone-no" type="text" name="storePhoneNo" value="${storeInfo.storePhoneNo }">
+												<input id="store-phone-no" type="text" name="storePhoneNo" placeholder="대표 전화를 입력해주세요(선택)" value="${storeInfo.storePhoneNo }">
 											</td>
 										</tr>
 										<tr>
@@ -165,7 +165,7 @@
 												<label for ="store-desc">매장 소개</label>
 											</th>
 											<td>
-												<textarea id="store-desc" name="storeDesc">${storeInfo.storeDesc }</textarea>
+												<textarea id="store-desc" name="storeDesc" placeholder="매장을 소개해주세요(선택)">${storeInfo.storeDesc }</textarea>
 											</td>
 										</tr>
 									</table>
@@ -217,9 +217,9 @@
 													<button id="address-search" class="btn btn-primary" type="button">주소 찾기</button>
 												</div>
 												<div id="address-detail-area">
-													<input id="store-address-detail" type="text" name="storeAddressDetail" placeholder="상세 주소를 입력해주세요">
-													<input id="store-lat" type="hidden" name="storeLat">
-													<input id="store-lng" type="hidden" name="storeLng">
+													<input id="store-address-detail" type="text" name="storeAddressDetail" placeholder="상세 주소를 입력해주세요(선택)">
+													<input id="store-lat" type="hidden" name="storeLat" value="0">
+													<input id="store-lng" type="hidden" name="storeLng" value="0">
 												</div>
 												<!-- 지도 -->
 												<div id="map"></div>
@@ -230,18 +230,18 @@
 												<label for="store-phone-no">대표 전화</label>
 											</th>
 											<td>
-												<input id="store-phone-no" type="text" name="storePhoneNo" placeholder="대표 전화를 입력해주세요">
+												<input id="store-phone-no" type="text" name="storePhoneNo" placeholder="대표 전화를 입력해주세요(선택)">
 											</td>
 										</tr>
 										<tr>
 											<th>이용 요금</th>
 											<td>
 												<div id="weekday-area">
-													<input id="store-charge-week" type="number" name="storeChargeWeek" placeholder="금액만 입력해주세요">
+													<input id="store-charge-week" type="number" name="storeChargeWeek" value="0">
 													<label for="store-charge-week">평일</label>
 												</div>
 												<div id="weekend-area">
-													<input id="store-charge-weekend" type="number" name="storeChargeWeekend" placeholder="금액만 입력해주세요">
+													<input id="store-charge-weekend" type="number" name="storeChargeWeekend" value="0">
 													<label for="store-charge-weekend">주말</label>
 												</div>
 											</td>
@@ -260,7 +260,7 @@
 										<tr>
 											<th>매장 소개</th>
 											<td>
-												<textarea id="store-desc" name="storeDesc" placeholder="매장을 소개해주세요"></textarea>
+												<textarea id="store-desc" name="storeDesc" placeholder="매장을 소개해주세요(선택)"></textarea>
 											</td>
 										</tr>
 									</table>
@@ -463,6 +463,70 @@
 	    }).open();
 	})
 	
+</script>
+
+<!-- 공백 입력 방지용 js -->
+<script type="text/javascript">
+	$("[type=submit]").on("click", function(){
+		//event.preventDefault();
+		console.log("등록 버튼 클릭");
+		//radio checked 여부 확인
+		var storeType = $("input[name=storeType]:checked").length;
+		
+		//업종 선택 여부 확인
+		if(storeType === 0) {
+			alert("업종을 선택해주세요");
+			return false;
+		}
+		
+		//store name 확인
+		var storeName = $("input[name=storeName]").val();
+		if(storeName.length < 1) {
+			alert("매장명을 입력해주세요.")
+			return false;
+		}
+
+		//store business no 확인
+		var storeBusinessNo = $("input[name=storeBusinessNo]").val();
+		if(storeBusinessNo.length < 1) {
+			alert("사업자 번호를 입력해주세요.")
+			return false;
+		}
+		
+		//store address road 확인
+		var storeAddressRoad = $("input[name=storeAddressRoad]").val();
+		if(storeAddressRoad.length < 1) {
+			alert("주소를 입력해주세요.")
+			return false;
+		}
+		
+		//store lat 확인(주소를 직접 입력했는지, 아닌지를 구분)
+		var storeLat = $("input[name=storeLat]").val();
+		
+		console.log(storeLat);
+		
+		if(storeLat < 1) {
+			alert("주소 찾기를 이용하여 주소를 입력해주세요.")
+			return false;
+		}
+		
+		//store charge week 확인
+		var storeChargeWeek = $("input[name=storeChargeWeek]").val();
+		if(storeChargeWeek < 1) {
+			alert("평일 요금을 입력해주세요.")
+			return false;
+		}
+
+		//store charge week 확인
+		var storeChargeWeekend = $("input[name=storeChargeWeekend]").val();
+		if(storeChargeWeekend < 1) {
+			alert("주말 요금을 입력해주세요.")
+			return false;
+		}
+		
+		return true;
+		
+	});
 </script>
 
 </html>

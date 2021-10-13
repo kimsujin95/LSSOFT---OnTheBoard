@@ -608,7 +608,7 @@
         //예약파트
         $(function(){
         	
-			//시간 클릭 시 class값 변경        	
+			//시간 클릭 시 class값 변경
         	$('#time_table').on('click','input[type="checkbox"]', function(){
         		
           		
@@ -627,7 +627,7 @@
         	
         	//예약버튼 클릭 시 시간대 체크된 항목들만 배열에 담기
         	$('#rev_btn').on('click',function(){
-					
+				
 				var chdval = new Array();
 				var groupNo;
 								

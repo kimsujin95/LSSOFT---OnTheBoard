@@ -35,6 +35,7 @@
 		<result column="reservation_date_no" property="reservationDateNo" />
 		<result column="store_no" property="storeNo" />
 		<result column="store_reservation_date" property="storeReservationDate" />
+		<result column="date_type" property="dateType" />
 		<result column="store_reservation_total" property="storeReservationTotal" />
 		<result column="store_reservation_max" property="storeReservationMax" />
 	</resultMap>
@@ -158,6 +159,7 @@
 				,#{storeReservationDate}
 				,#{storeReservationTotal}
 				,#{storeReservationMax}
+				,#{dateType}
 			)
 		]]>
 	</insert>

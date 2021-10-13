@@ -6,6 +6,7 @@ public class ReservationDateVo {
 	private int reservationDateNo;
 	private int storeNo;
 	private String storeReservationDate;
+	private String dateType;
 	private int storeReservationTotal;
 	private int storeReservationMax;
 	
@@ -14,16 +15,17 @@ public class ReservationDateVo {
 		
 	}
 	
-	public ReservationDateVo(int reservationDateNo, int storeNo, String storeReservationDate, int storeReservationTotal,
-			int storeReservationMax) {
+	public ReservationDateVo(int reservationDateNo, int storeNo, String storeReservationDate, String dateType,
+			int storeReservationTotal, int storeReservationMax) {
 		super();
 		this.reservationDateNo = reservationDateNo;
 		this.storeNo = storeNo;
 		this.storeReservationDate = storeReservationDate;
+		this.dateType = dateType;
 		this.storeReservationTotal = storeReservationTotal;
 		this.storeReservationMax = storeReservationMax;
 	}
-	
+
 	//g/s
 	public int getReservationDateNo() {
 		return reservationDateNo;
@@ -49,6 +51,14 @@ public class ReservationDateVo {
 		this.storeReservationDate = storeReservationDate;
 	}
 
+	public String getDateType() {
+		return dateType;
+	}
+
+	public void setDateType(String dateType) {
+		this.dateType = dateType;
+	}
+
 	public int getStoreReservationTotal() {
 		return storeReservationTotal;
 	}
@@ -64,13 +74,13 @@ public class ReservationDateVo {
 	public void setStoreReservationMax(int storeReservationMax) {
 		this.storeReservationMax = storeReservationMax;
 	}
-	
-	//methods
+
 	@Override
 	public String toString() {
 		return "ReservationDateVo [reservationDateNo=" + reservationDateNo + ", storeNo=" + storeNo
-				+ ", storeReservationDate=" + storeReservationDate + ", storeReservationTotal=" + storeReservationTotal
-				+ ", storeReservationMax=" + storeReservationMax + "]";
+				+ ", storeReservationDate=" + storeReservationDate + ", dateType=" + dateType
+				+ ", storeReservationTotal=" + storeReservationTotal + ", storeReservationMax=" + storeReservationMax
+				+ "]";
 	}
 	
 }

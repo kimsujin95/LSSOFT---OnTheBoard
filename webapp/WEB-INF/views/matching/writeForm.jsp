@@ -109,7 +109,7 @@
 
 					<label for="">시간</label>
 					<br>
-					<!-- <label for="time">⌚</label> --><input class="date-time" type="time" id="time" value="">
+					<!-- <label for="time">⌚</label> --><input class="date-time" type="time" id="time" name="matchingTime" value="">
 
 					<br>
 				</div>

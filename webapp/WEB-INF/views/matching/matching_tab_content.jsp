@@ -65,112 +65,115 @@
 					<!-- 경기 -->
 					<div role="tabpanel" class="tab-pane" id="location-gyeonggi">
 						<ul class="location-medium">
-							<li><input type="checkbox" id="gyeonggi"> <label for="gyeonggi">경기전체</label></li>
+							<li><input type="checkbox" id="gyeonggi" value="경기"> <label for="gyeonggi">경기전체</label></li>
+							<li><input type="checkbox" id="gyeonggi-gapyeong" value="가평군"> <label for="gyeonggi-gapyeong">가평군</label></li>
+							<li><input type="checkbox" id="gyeonggi-goyang" value="고양시"> <label for="gyeonggi-goyang">고양시</label></li>
+							<li><input type="checkbox" id="gyeonggi-" value=""> <label for="gyeonggi-"></label></li>
 						</ul>
 					</div>
 
 					<!-- 인천 -->
 					<div role="tabpanel" class="tab-pane" id="location-incheon">
 						<ul class="location-medium">
-							<li><input type="checkbox" id="incheon"> <label for="incheon">인천전체</label></li>
+							<li><input type="checkbox" id="incheon" value="인천"> <label for="incheon">인천전체</label></li>
 						</ul>
 					</div>
 
 					<!-- 부산 -->
 					<div role="tabpanel" class="tab-pane" id="location-busan">
 						<ul class="location-medium">
-							<li><input type="checkbox" id="busan"> <label for="busan">부산전체</label></li>
+							<li><input type="checkbox" id="busan" value="부산"> <label for="busan">부산전체</label></li>
 						</ul>
 					</div>
 
 					<!-- 대구 -->
 					<div role="tabpanel" class="tab-pane" id="location-daegu">
 						<ul class="location-medium">
-							<li><input type="checkbox" id="daegu"> <label for="daegu">대구전체</label></li>
+							<li><input type="checkbox" id="daegu" value="대구"> <label for="daegu">대구전체</label></li>
 						</ul>
 					</div>
 
 					<!-- 광주 -->
 					<div role="tabpanel" class="tab-pane" id="location-gwangju">
 						<ul class="location-medium">
-							<li><input type="checkbox" id="gwangju"> <label for="gwangju">광주전체</label></li>
+							<li><input type="checkbox" id="gwangju" value="광주"> <label for="gwangju">광주전체</label></li>
 						</ul>
 					</div>
 
 					<!-- 대전 -->
 					<div role="tabpanel" class="tab-pane" id="location-daejeon">
 						<ul class="location-medium">
-							<li><input type="checkbox" id="daejeon"> <label for="daejeon">대전전체</label></li>
+							<li><input type="checkbox" id="daejeon" value="대전"> <label for="daejeon">대전전체</label></li>
 						</ul>
 					</div>
 
 					<!-- 울산 -->
 					<div role="tabpanel" class="tab-pane" id="location-ulsan">
 						<ul class="location-medium">
-							<li><input type="checkbox" id="ulsan"> <label for="ulsan">울산전체</label></li>
+							<li><input type="checkbox" id="ulsan" value="울산"> <label for="ulsan">울산전체</label></li>
 						</ul>
 					</div>
 
 					<!-- 세종 -->
 					<div role="tabpanel" class="tab-pane" id="location-sejong">
 						<ul class="location-medium">
-							<li><input type="checkbox" id="sejong"> <label for="sejong">세종전체</label></li>
+							<li><input type="checkbox" id="sejong" value="세종"> <label for="sejong">세종전체</label></li>
 						</ul>
 					</div>
 
 					<!-- 강원 -->
 					<div role="tabpanel" class="tab-pane" id="location-gangwon">
 						<ul class="location-medium">
-							<li><input type="checkbox" id="gangwon"> <label for="gangwon">강원도전체</label></li>
+							<li><input type="checkbox" id="gangwon" value="강원"> <label for="gangwon">강원전체</label></li>
 						</ul>
 					</div>
 
 					<!-- 경남 -->
 					<div role="tabpanel" class="tab-pane" id="location-gyeongnam">
 						<ul class="location-medium">
-							<li><input type="checkbox" id="gyeongnam"> <label for="gyeongnam">경남전체</label></li>
+							<li><input type="checkbox" id="gyeongnam" value="경남"> <label for="gyeongnam">경남전체</label></li>
 						</ul>
 					</div>
 
 					<!-- 경북 -->
 					<div role="tabpanel" class="tab-pane" id="location-gyeongbuk">
 						<ul class="location-medium">
-							<li><input type="checkbox" id="gyeongbuk"> <label for="gyeongbuk">경북전체</label></li>
+							<li><input type="checkbox" id="gyeongbuk" value="경북"> <label for="gyeongbuk">경북전체</label></li>
 						</ul>
 					</div>
 
 					<!-- 전남 -->
 					<div role="tabpanel" class="tab-pane" id="location-jeonnam">
 						<ul class="location-medium">
-							<li><input type="checkbox" id="jeonnam"> <label for="jeonnam">전남전체</label></li>
+							<li><input type="checkbox" id="jeonnam" value="전남"> <label for="jeonnam">전남전체</label></li>
 						</ul>
 					</div>
 
 					<!-- 전북 -->
 					<div role="tabpanel" class="tab-pane" id="location-jeonbuk">
 						<ul class="location-medium">
-							<li><input type="checkbox" id="jeonbuk"> <label for="jeonbuk">전북전체</label></li>
+							<li><input type="checkbox" id="jeonbuk" value="전북"> <label for="jeonbuk">전북전체</label></li>
 						</ul>
 					</div>
 
 					<!-- 충남 -->
 					<div role="tabpanel" class="tab-pane" id="location-chungnam">
 						<ul class="location-medium">
-							<li><input type="checkbox" id="chungnam"> <label for="chungnam">충남전체</label></li>
+							<li><input type="checkbox" id="chungnam" value="충남"> <label for="chungnam">충남전체</label></li>
 						</ul>
 					</div>
 
 					<!-- 충북 -->
 					<div role="tabpanel" class="tab-pane" id="location-chungbuk">
 						<ul class="location-medium">
-							<li><input type="checkbox" id="chungbuk"> <label for="chungbuk">충북전체</label></li>
+							<li><input type="checkbox" id="chungbuk" value="충북"> <label for="chungbuk">충북전체</label></li>
 						</ul>
 					</div>
 
 					<!-- 제주 -->
 					<div role="tabpanel" class="tab-pane" id="location-jeju">
 						<ul class="location-medium">
-							<li><input type="checkbox" id="jeju"> <label for="jeju">제주전체</label></li>
+							<li><input type="checkbox" id="jeju" value="제주"> <label for="jeju">제주전체</label></li>
 						</ul>
 					</div>
 

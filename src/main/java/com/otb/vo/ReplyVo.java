@@ -7,18 +7,20 @@ public class ReplyVo {
 	private int userNo;
 	private String replyContent;
 	private String replyRegDate;
+	private String userNickname;
 	
 	public ReplyVo() {
 		super();
 	}
 	
-	public ReplyVo(int replyNo, int commentNo, int userNo, String replyContent, String replyRegDate) {
+	public ReplyVo(int replyNo, int commentNo, int userNo, String replyContent, String replyRegDate, String userNickname) {
 		super();
 		this.replyNo = replyNo;
 		this.commentNo = commentNo;
 		this.userNo = userNo;
 		this.replyContent = replyContent;
 		this.replyRegDate = replyRegDate;
+		this.userNickname = userNickname;
 	}
 
 	public int getReplyNo() {
@@ -61,10 +63,18 @@ public class ReplyVo {
 		this.replyRegDate = replyRegDate;
 	}
 
+	public String getUserNickname() {
+		return userNickname;
+	}
+
+	public void setUserNickname(String userNickname) {
+		this.userNickname = userNickname;
+	}
+
 	@Override
 	public String toString() {
 		return "ReplyVo [replyNo=" + replyNo + ", commentNo=" + commentNo + ", userNo=" + userNo + ", replyContent="
-				+ replyContent + ", replyRegDate=" + replyRegDate + "]";
+				+ replyContent + ", replyRegDate=" + replyRegDate + ", userNickname=" + userNickname + "]";
 	}
-	
+
 }

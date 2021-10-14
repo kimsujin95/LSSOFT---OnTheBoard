@@ -15,10 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.otb.sevice.MatchingService;
-import com.otb.vo.GameVo;
+import com.otb.vo.CommentVo;
 import com.otb.vo.MatchingGroupVo;
 import com.otb.vo.MatchingVo;
-import com.otb.vo.SigunguVo;
 import com.otb.vo.UserVo;
 
 @Controller
@@ -85,7 +84,7 @@ public class MatchingController {
 
 	// 매칭글 읽기
 	@RequestMapping("/read")
-	public String read(HttpSession session, Model model, @RequestParam(value = "no") int matchingNo) {
+	public String read(HttpSession session, Model model, @RequestParam("no") int matchingNo) {
 		System.out.println("매칭 컨트롤러: read;;;");
 		System.out.println(matchingNo);
 		
@@ -123,13 +122,26 @@ public class MatchingController {
 	}
 	
 	// 매칭글 읽기 - 매칭상태 변경
+	@ResponseBody
 	@RequestMapping("statusComplete")
-	public String statusComplete(@RequestParam("no") int matchingNo) {
-		System.out.println("매칭 컨트롤러: statusComplete;;;");
+	public int statusComplete(@RequestParam("matchingNo") int matchingNo) {
+		System.out.println("매칭 컨트롤러: API-statusComplete;;;");
 		System.out.println(matchingNo);
 		
 		int statusComplete = matchingService.statusComplete(matchingNo);
-		return "redirect:/matching/read?no=" + matchingNo;
+		return statusComplete;
+	}
+	
+	// 매칭글 읽기 - 댓글 등록/출력
+	@ResponseBody
+	@RequestMapping("/commentWrite")
+	public CommentVo commentWrite(CommentVo commentVo) {
+		System.out.println("매칭 컨트롤러: API-commentWrite;;;");
+		System.out.println(commentVo);
+		
+		CommentVo commentInfo = matchingService.commentWriteInfo(commentVo);
+		
+		return commentInfo;
 	}
 	
 	
@@ -149,15 +161,6 @@ public class MatchingController {
 		System.out.println("매칭 컨트롤러: modifyForm;;;");
 
 		return "/matching/modifyForm";
-	}
-
-	// 매칭글 삭제
-	@RequestMapping("/delete")
-	public String delete() {
-		System.out.println("매칭 컨트롤러: delete;;;");
-		// deleteForm == modal
-
-		return "redirect:/matching/main";
 	}
 
 }

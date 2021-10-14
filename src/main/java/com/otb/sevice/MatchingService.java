@@ -10,10 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.otb.dao.MatchingDao;
 import com.otb.dao.UserDao;
-import com.otb.vo.GameVo;
+import com.otb.vo.CommentVo;
 import com.otb.vo.MatchingGroupVo;
 import com.otb.vo.MatchingVo;
-import com.otb.vo.SigunguVo;
 import com.otb.vo.UserVo;
 
 @Service
@@ -97,6 +96,9 @@ public class MatchingService {
 			System.out.println("매칭 서비스: read;;;");
 			System.out.println(matchingNo);
 			
+			// 1 증가
+			int hitsUp = matchingDao.hitsUp(matchingNo);
+			
 			// 클릭한 매칭 번호로 글정보 불러오기
 			MatchingVo matchingVo = matchingDao.read(matchingNo);
 			
@@ -115,14 +117,15 @@ public class MatchingService {
 			List<UserVo> matchingMemberInfoList = matchingDao.matchingMemberInfoList(matchingNo);
 			System.out.println(matchingMemberInfoList);
 			
+			List<CommentVo> commentList = matchingDao.commentList(matchingNo);
+			System.out.println(commentList);
+			
 			// Map으로 묶기
 			Map<String, Object> readInfo = new HashMap<String, Object>();
 			readInfo.put("matchingVo", matchingVo);
 			readInfo.put("writerInfo", writerInfo);
 			readInfo.put("matchingMemberInfoList", matchingMemberInfoList);
-			
-			// 클릭 후 조회수 1 증가
-			int hitsUp = matchingDao.hitsUp(matchingNo);
+			readInfo.put("commentList", commentList);
 			
 			return readInfo;
 		}
@@ -172,6 +175,21 @@ public class MatchingService {
 		
 		int statusComplete = matchingDao.statusComplete(matchingNo);
 		return statusComplete;
+	}
+	
+	// 매칭글 읽기 - 댓글 등록/출력
+	public CommentVo commentWriteInfo(CommentVo commentVo) {
+		System.out.println("매칭 서비스: commentWriteInfo;;;");
+		
+		// 댓글 등록
+		int commentWrite = matchingDao.commentWrite(commentVo);
+		System.out.println(commentVo);
+		
+		// 등록된 댓글 정보 불러오기
+		int commentNo = commentVo.getCommentNo();
+		CommentVo commentInfo = matchingDao.commentInfo(commentNo);
+		
+		return commentInfo;
 	}
 	
 

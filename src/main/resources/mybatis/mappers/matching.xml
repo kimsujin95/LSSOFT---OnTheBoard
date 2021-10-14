@@ -13,6 +13,7 @@
 		<result column="matching_hits" property="matchingHits" />
 		<result column="matching_status" property="matchingStatus" />
 		<result column="matching_date" property="matchingDate" />
+		<result column="matching_time" property="matchingTime" />
 		<result column="matching_permission_gender" property="matchingPermissionGender" />
 		<result column="matching_reg_date" property="matchingRegDate" />
 		<result column="matching_member" property="matchingMember" />
@@ -58,6 +59,24 @@
 		<result column="sido_code" property="sidoCode" />
 		<result column="sigungu_name" property="sigunguName" />
 		<result column="sido_name" property="sidoName" />
+	</resultMap>
+	
+	<resultMap id="resultMapCommentVo" type="CommentVo">
+		<result column="comment_no" property="commentNo" />
+		<result column="matching_no" property="matchingNo" />
+		<result column="user_no" property="userNo" />
+		<result column="comment_content" property="commentContent" />
+		<result column="comment_reg_date" property="commentRegDate" />
+		<result column="user_nickname" property="userNickname" />
+	</resultMap>
+	
+	<resultMap id="resultMapReplyVo" type="ReplyVo">
+		<result column="reply_no" property="replyNo" />
+		<result column="comment_no" property="commentNo" />
+		<result column="user_no" property="userNo" />
+		<result column="reply_content" property="replyContent" />
+		<result column="reply_reg_date" property="replyRegDate" />
+		<result column="user_nickname" property="userNickname" />
 	</resultMap>
 
 	<!-- 매칭 리스트 -->
@@ -172,7 +191,7 @@
 		]]>
 	</select>
 
-	<!-- 매칭 글 등록 -->
+	<!-- 매칭글 등록 -->
 	<insert id="write" parameterType="MatchingVo">
 		<selectKey keyProperty="matchingNo" resultType="int" order="BEFORE">
 			<![CDATA[
@@ -184,7 +203,7 @@
 		</selectKey>
 		<![CDATA[
 			INSERT INTO
-				matching(matching_no, user_no, matching_title, matching_content, matching_people, matching_date, sido_code, sigungu_code, matching_permission_gender, theme_no, game_no, matching_status, matching_hits, matching_reg_date)
+				matching(matching_no, user_no, matching_title, matching_content, matching_people, matching_date, matching_time, sido_code, sigungu_code, matching_permission_gender, theme_no, game_no, matching_status, matching_hits, matching_reg_date)
 			VALUES
 				(
 					#{ matchingNo },
@@ -193,6 +212,7 @@
 					#{ matchingContent },
 					#{ matchingPeople },
 					#{ matchingDate },
+					#{ matchingTime },
 					#{ sidoCode },
 					#{ sigunguCode },
 					#{ matchingPermissionGender },
@@ -220,7 +240,7 @@
 		]]>
 	</select>
 
-	<!-- 매칭 글 읽기 -->
+	<!-- 매칭글 읽기 -->
 	<select id="read" parameterType="int" resultMap="resultMapMatchingVo">
 		<![CDATA[
 			SELECT
@@ -233,21 +253,29 @@
 			    m.matching_status,
 			    to_char(m.matching_reg_date, 'yyyy. mm. dd. hh24:mi') matching_reg_date,
 			    to_char(m.matching_date, 'yyyy. mm. dd. ') matching_date,
+			    m.matching_time,
+			    m.matching_permission_gender,
 			    g.game_name_ko,
-			    t.theme_name
+			    t.theme_name,
+			    sd.sido_name,
+			    sg.sigungu_name
 			FROM
 			    matching m
 			    LEFT OUTER JOIN game g
 			    ON m.game_no = g.game_no
 			    LEFT OUTER JOIN theme t
 			    ON m.theme_no = t.theme_no
+			    LEFT OUTER JOIN sido sd
+			    ON m.sido_code = sd.sido_code
+			    LEFT OUTER JOIN sigungu sg
+			    ON m.sigungu_code = sg.sigungu_code
 			WHERE
 				matching_no = #{ matchingNo }
 		]]>
 	</select>
 	
 	
-	<!-- 매칭 글 읽기 - 조회수 증가 -->
+	<!-- 매칭글 읽기 - 조회수 증가 -->
 	<update id="hitsUp">
 		<![CDATA[
 			UPDATE
@@ -258,8 +286,28 @@
 				matching_no = #{ matchingNo }
 		]]>
 	</update>
+	
+	<!-- 매칭글 읽기 - 댓글 리스트 불러오기 -->
+	<select id="commentList" parameterType="int" resultMap="resultMapCommentVo">
+		<![CDATA[
+			SELECT
+			    c.comment_no,
+			    c.matching_no,
+			    c.user_no,
+			    c.comment_content,
+			    to_char(c.comment_reg_date, 'yyyy. mm. dd. hh24:mi') comment_reg_date,
+			    u.user_nickname
+			FROM
+			    comments c LEFT OUTER JOIN users u
+			    ON c.user_no = u.user_no
+			WHERE
+			    matching_no = #{ matchingNo }
+			ORDER BY
+			    comment_no ASC
+		]]>
+	</select>
 
-	<!-- 매칭 글 읽기 - 매칭 참가 신청 -->
+	<!-- 매칭글 읽기 - 매칭 참가 신청 -->
 	<insert id="joinMatching" parameterType="matchingGroupVo">
 		<![CDATA[
 			INSERT INTO
@@ -272,7 +320,7 @@
 				)
 		]]>	
 	</insert>
-	<!-- 매칭 글 읽기 - 매칭 참가 취소 -->
+	<!-- 매칭글 읽기 - 매칭 참가 취소 -->
 	<delete id="outMatching" parameterType="matchingGroupVo">
 		<![CDATA[
 			DELETE FROM
@@ -283,7 +331,7 @@
 		]]>
 	</delete>
 	
-	<!-- 리스트 / 매칭 글 읽기 - 현재 매칭 참가중인 인원 수 -->
+	<!-- 리스트 / 매칭글 읽기 - 현재 매칭 참가중인 인원 수 -->
 	<select id="matchingMember" parameterType="int" resultType="int">
 		<![CDATA[
 			SELECT
@@ -295,7 +343,7 @@
 		]]>
 	</select>
 	
-	<!-- 매칭 글 읽기 - 현재 매칭 참가중인 인원 정보 -->
+	<!-- 매칭글 읽기 - 현재 매칭 참가중인 인원 정보 -->
 	<select id="matchingMemberInfoList" parameterType="int" resultMap="resultMapUserVo">
 		<![CDATA[
 			SELECT
@@ -320,6 +368,7 @@
 		]]>
 	</select>
 	
+	<!-- 매칭글 읽기 - 매칭상태 변경 -->
 	<update id="statusComplete" parameterType="int">
 		<![CDATA[
 			UPDATE
@@ -330,6 +379,46 @@
 				matching_no = #{ matchingNo }
 		]]>
 	</update>
+	
+	<!-- 매칭글 읽기 - 댓글 작성 -->
+	<insert id="commentWrite" parameterType="commentVo">
+		<selectKey keyProperty="commentNo" resultType="int" order="BEFORE">
+			<![CDATA[
+				SELECT
+					seq_comment_no.NEXTVAL
+				FROM
+					dual
+			]]>
+		</selectKey>
+		<![CDATA[
+			INSERT INTO
+				comments
+			VALUES
+				(
+					#{ commentNo },
+					#{ matchingNo },
+					#{ userNo },
+					#{ commentContent },
+					sysdate
+				)
+		]]>
+	</insert>
+	
+	<!-- 매칭글 읽기 - 댓글 정보 불러오기 -->
+	<select id="commentInfo" parameterType="int" resultMap="resultMapCommentVo">
+		<![CDATA[
+			SELECT
+				comment_no,
+				user_no,
+				matching_no,
+				comment_content,
+				to_char(comment_reg_date, 'yyyy. mm. dd. hh24:mi') comment_reg_date
+			FROM
+				comments
+			WHERE
+				comment_no = #{ commentNo }
+		]]>
+	</select>
 	
 	<!-- (재영)스토어인포 - 에약 페이지에서 호스트인 그룹 -->
 	<select id="userHostMatchingList" parameterType="int" resultMap="resultMapMatchingVo">

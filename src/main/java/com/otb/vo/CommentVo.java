@@ -7,18 +7,20 @@ public class CommentVo {
 	private int userNo;
 	private String commentContent;
 	private String commentRegDate;
+	private String userNickname;
 	
 	public CommentVo() {
 		super();
 	}
 	
-	public CommentVo(int commentNo, int matchingNo, int userNo, String commentContent, String commentRegDate) {
+	public CommentVo(int commentNo, int matchingNo, int userNo, String commentContent, String commentRegDate, String userNickname) {
 		super();
 		this.commentNo = commentNo;
 		this.matchingNo = matchingNo;
 		this.userNo = userNo;
 		this.commentContent = commentContent;
 		this.commentRegDate = commentRegDate;
+		this.userNickname = userNickname;
 	}
 
 	public int getCommentNo() {
@@ -60,11 +62,20 @@ public class CommentVo {
 	public void setCommentRegDate(String commentRegDate) {
 		this.commentRegDate = commentRegDate;
 	}
+	
+	public String getUserNickname() {
+		return userNickname;
+	}
+
+	public void setUserNickname(String userNickname) {
+		this.userNickname = userNickname;
+	}
 
 	@Override
 	public String toString() {
 		return "CommentVo [commentNo=" + commentNo + ", matchingNo=" + matchingNo + ", userNo=" + userNo
-				+ ", commentContent=" + commentContent + ", commentRegDate=" + commentRegDate + "]";
+				+ ", commentContent=" + commentContent + ", commentRegDate=" + commentRegDate + ", userNickname="
+				+ userNickname + "]";
 	}
-	
+
 }

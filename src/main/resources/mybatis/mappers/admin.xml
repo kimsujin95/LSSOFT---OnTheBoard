@@ -159,7 +159,7 @@
 				,#{storeReservationDate}
 				,#{storeReservationTotal}
 				,#{storeReservationMax}
-				,#{dateType}
+				,TO_CHAR(TO_DATE(#{storeReservationDate}), 'D')
 			)
 		]]>
 	</insert>

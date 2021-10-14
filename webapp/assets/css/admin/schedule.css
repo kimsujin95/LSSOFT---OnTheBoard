@@ -19,7 +19,7 @@ th.dow:first-child {
 	color: red;
 }
 
-th.dow:nth-child(7) {
+th.dow:last-child {
 	color: blue;
 }
 

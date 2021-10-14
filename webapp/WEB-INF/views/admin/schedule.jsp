@@ -184,12 +184,13 @@
 	
 	function dateInsert() {
 		$("#date-input").val($(".date").datepicker("getFormattedDate"));
-		    console.log($("#date-input").val());
+	    console.log($("#date-input").val());
 	};
 </script>
 
 <!-- 스케쥴 등록 및 확인 선택 -->
 <script type="text/javascript">
+
 	$("#scheduleCheck").on("click", function(){
 		if($("#scheduleCheck").text() === "스케쥴 확인") {
 			console.log("스케쥴 확인 클릭");

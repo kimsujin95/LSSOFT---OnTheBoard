@@ -16,6 +16,8 @@
 		<typeAlias alias="ReservationDateVo" type="com.otb.vo.ReservationDateVo" />
 		<typeAlias alias="SidoVo" type="com.otb.vo.SidoVo" />
 		<typeAlias alias="SigunguVo" type="com.otb.vo.SigunguVo" />
+		<typeAlias alias="CommentVo" type="com.otb.vo.CommentVo" />
+		<typeAlias alias="ReplyVo" type="com.otb.vo.ReplyVo" />
 	</typeAliases>
 	
 	<mappers>

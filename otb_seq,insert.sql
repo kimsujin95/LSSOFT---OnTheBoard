@@ -134,64 +134,7 @@ VALUES
         sysdate
     );
 
--- INSERT GAME
-INSERT INTO 
-    game(game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no)
-VALUES
-    (
-        seq_game_no.nextval,
-        '보난자',
-        'Bonanza',
-        'upload\thumb\1.png',
-        '3명~5명',
-        '만 10세이상',
-        '45분',
-        '초급',
-        'upload\desc\1.jpg',
-        'OwgKvBQ7bqs',
-        2
-    );
-            
-INSERT INTO 
-    game(game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no)
-VALUES
-    (
-        seq_game_no.nextval,
-        '아컴호러',
-        'Arkham Horror',
-        'upload\thumb\2.png',
-        '1명~4명',
-        '만 12세이상',
-        '60분',
-        '고급',
-        'upload\desc\2.jpg',
-        'OkaaG0_oAtI',
-        7
-    );
-   
-INSERT INTO 
-    game(game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no)
-VALUES
-    (
-        seq_game_no.nextval,
-        '할리갈리',
-        'Halli Galli',
-        'upload\thumb\3.png',
-        '2명~6명',
-        '만 6세이상',
-        '10분',
-        '초급',
-        'upload\desc\3.jpg',
-        '0q0yClzjADk',
-        5
-    );
--- // INSERT GAME
-
 -- INSERT THEME
-CREATE SEQUENCE seq_theme_no 
-INCREMENT BY 1
-START WITH 1;
-
 INSERT INTO
         THEME(  theme_no, theme_name)
 VALUES (
@@ -325,7 +268,7 @@ INSERT INTO
 VALUES
     (
         seq_sido_no.NEXTVAL,
-        '시도1'
+        '서울'
     );
 
 INSERT INTO
@@ -333,7 +276,7 @@ INSERT INTO
 VALUES
     (
         seq_sido_no.NEXTVAL,
-        '시도2'
+        '경기'
     );
 
 INSERT INTO
@@ -341,7 +284,7 @@ INSERT INTO
 VALUES
     (
         seq_sido_no.NEXTVAL,
-        '시도3'
+        '인천'
     );
 -- // INSERT SIDO
 
@@ -352,7 +295,7 @@ VALUES
     (
         seq_sigungu_no.NEXTVAL,
         1,
-        '시군구1-1'
+        '강남구'
     );
 
 INSERT INTO
@@ -361,7 +304,7 @@ VALUES
     (
         seq_sigungu_no.NEXTVAL,
         1,
-        '시군구1-2'
+        '강동구'
     );
 
 INSERT INTO
@@ -370,7 +313,7 @@ VALUES
     (
         seq_sigungu_no.NEXTVAL,
         1,
-        '시군구1-3'
+        '강북구'
     );
 
 INSERT INTO
@@ -379,7 +322,7 @@ VALUES
     (
         seq_sigungu_no.NEXTVAL,
         1,
-        '시군구1-4'
+        '강서구'
     );
 
 INSERT INTO
@@ -388,7 +331,7 @@ VALUES
     (
         seq_sigungu_no.NEXTVAL,
         1,
-        '시군구1-5'
+        '관악구'
     );
 
 INSERT INTO
@@ -397,7 +340,7 @@ VALUES
     (
         seq_sigungu_no.NEXTVAL,
         2,
-        '시군구2-1'
+        '가평군'
     );
 
 INSERT INTO
@@ -406,7 +349,7 @@ VALUES
     (
         seq_sigungu_no.NEXTVAL,
         2,
-        '시군구2-2'
+        '고양시'
     );
 
 INSERT INTO
@@ -415,7 +358,7 @@ VALUES
     (
         seq_sigungu_no.NEXTVAL,
         2,
-        '시군구2-3'
+        '과천시'
     );
 
 INSERT INTO
@@ -424,7 +367,7 @@ VALUES
     (
         seq_sigungu_no.NEXTVAL,
         2,
-        '시군구2-4'
+        '광명시'
     );
 
 INSERT INTO
@@ -433,7 +376,7 @@ VALUES
     (
         seq_sigungu_no.NEXTVAL,
         2,
-        '시군구2-5'
+        '광주시'
     );
 
 INSERT INTO
@@ -442,7 +385,7 @@ VALUES
     (
         seq_sigungu_no.NEXTVAL,
         3,
-        '시군구3-1'
+        '강화군'
     );
 
 INSERT INTO
@@ -451,7 +394,7 @@ VALUES
     (
         seq_sigungu_no.NEXTVAL,
         3,
-        '시군구3-2'
+        '계양구'
     );
 
 INSERT INTO
@@ -460,7 +403,7 @@ VALUES
     (
         seq_sigungu_no.NEXTVAL,
         3,
-        '시군구3-3'
+        '남동구'
     );
 
 INSERT INTO
@@ -469,7 +412,7 @@ VALUES
     (
         seq_sigungu_no.NEXTVAL,
         3,
-        '시군구3-4'
+        '동구'
     );
 
 INSERT INTO
@@ -478,7 +421,7 @@ VALUES
     (
         seq_sigungu_no.NEXTVAL,
         3,
-        '시군구3-5'
+        '미주홀구'
     );
 -- // INSERT SIGUNGU
 

@@ -69,7 +69,7 @@
 					<tbody>
 						<tr>
 							<td><input class="margin-left-none" type="checkbox" id="male" value="남" name="gender-limit"> <label for="male">남</label> <input type="checkbox" id="female" value="여" name="gender-limit"> <label for="female">여</label> <input type="checkbox" id="sex-none" value="성별무관" name="gender-limit"> <label for="sex-none">무관</label></td>
-							<td><input class="margin-left-none" type="checkbox" id="10s" value="10대"> <label for="10s">10대</label> <input type="checkbox" id="20s" value="20대"> <label for="20s">20대</label> <input type="checkbox" id="30s" value="30대"> <label for="30s">30대</label> <input type="checkbox" id="40s" value="40대"> <label for="40s">40대</label> <input type="checkbox" id="50s" value="50대"> <label for="50s">50대</label> <input type="checkbox" id="age-none" value="나이무관"> <label for="age-none">무관</label></td>
+							<td><input class="margin-left-none" type="checkbox" id="10s" value="10대"> <label for="10s">10대</label> <input type="checkbox" id="20s" value="20대"> <label for="20s">20대</label> <input type="checkbox" id="30s" value="30대"> <label for="30s">30대</label> <input type="checkbox" id="40s" value="40대"> <label for="40s">40대</label> <input type="checkbox" id="age-none" value="나이무관"> <label for="age-none">무관</label></td>
 							<td><input class="margin-left-none" type="checkbox" id="matching-ing" value="매칭중"> <label for="matching-ing">매칭중</label> <input type="checkbox" id="matching-end" value="매칭완료"> <label for="matching-end">매칭완료</label></td>
 						</tr>
 					</tbody>
@@ -157,13 +157,10 @@
 <script>
 
 // 매칭 리스트
-
-	// ready - 페이지 출력 전에 실행시킴
 	$(document).ready(function() {
 		fetch();
 	});
 	
-	// ready 내부 ajax
 	function fetch() {
 		$.ajax({
 			url: '${pageContext.request.contextPath}/matching/list',
@@ -181,7 +178,6 @@
 		});
 	};
 	
-	// ajax에 사용할 반복문 출력 HTML코드
 	function render(matchingList, matchingMemberList) {
 		var listHtml = '<tr id="readMatching" onClick="location.href=\'${pageContext.request.contextPath}/matching/read?no=' + matchingList.matchingNo + '\'">'
 							+ '<td>' + matchingList.matchingStatus + '</td>'
@@ -196,11 +192,10 @@
 
 		$('#listHtml').append(listHtml);
 	};
-	
-	// -- 매칭 리스트(페이지 출력 전에 실행시킴) --
+// -- 매칭 리스트 --
 
 // 옵션 선택 값 추가/삭제
-	$('input[type="checkbox"]').on('click', function (){
+	$('#content').on('click', 'input[type="checkbox"]', function (){
 		var inputClick = $(this).val();
 		
 		if ($(this).is(':checked')) {

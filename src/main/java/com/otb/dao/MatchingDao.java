@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.otb.vo.CommentVo;
 import com.otb.vo.GameVo;
 import com.otb.vo.MatchingGroupVo;
 import com.otb.vo.MatchingVo;
@@ -34,18 +35,18 @@ public class MatchingDao {
 	// 매칭 메인페이지 - 시도 코드에 맞는 시군구 리스트
 	public List<SigunguVo> tabContentSigunguList(int sidoCode) {
 		System.out.println("매칭 다오: tabContentSigunguList;;;");
-		
+
 		List<SigunguVo> tabContentSigunguList = sqlSession.selectList("matching.tabContentSigunguList", sidoCode);
-		
+
 		return tabContentSigunguList;
 	}
-	
+
 	// 매칭 메인페이지 - 테마 코드에 맞는 게임 리스트
 	public List<GameVo> tabContentGameList(int themeNo) {
 		System.out.println("매칭 다오: tabContentGameList;;;");
-		
+
 		List<GameVo> gameList = sqlSession.selectList("matching.tabContentGameList", themeNo);
-		
+
 		return gameList;
 	}
 
@@ -139,6 +140,15 @@ public class MatchingDao {
 
 		return hitsUp;
 	}
+	
+	// 매칭글 읽기 - 댓글 리스트 불러오기
+	public List<CommentVo> commentList(int matchingNo) {
+		System.out.println("매칭 다오: commentList;;;");
+		
+		List<CommentVo> commentList = sqlSession.selectList("matching.commentList", matchingNo);
+		
+		return commentList;
+	}
 
 	// 매칭글 읽기 - 매칭 참가 신청
 	public int joinMatching(MatchingGroupVo matchingGroupVo) {
@@ -182,5 +192,24 @@ public class MatchingDao {
 		int statusComplete = sqlSession.update("matching.statusComplete", matchingNo);
 		return statusComplete;
 	}
+	
+	// 매칭글 읽기 - 댓글 등록
+	public int commentWrite(CommentVo commentVo) {
+		System.out.println("매칭 서비스: commentWrite;;;");
+		
+		int commentWrite = sqlSession.insert("matching.commentWrite", commentVo);
+		
+		return commentWrite;
+	}
+	
+	// 매칭글 읽기 - 등록된 댓글정보 불러오기
+	public CommentVo commentInfo(int commentNo) {
+		System.out.println("매칭 서비스: commentInfo;;;");
+		
+		CommentVo commentInfo = sqlSession.selectOne("matching.commentInfo", commentNo);
+		
+		return commentInfo;
+	}
+	
 
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.otb.dao.MatchingDao;
 import com.otb.dao.UserDao;
+import com.otb.vo.CommentVo;
 import com.otb.vo.GameVo;
 import com.otb.vo.MatchingGroupVo;
 import com.otb.vo.MatchingVo;
@@ -28,29 +29,29 @@ public class MatchingService {
 	// 매칭 메인페이지 - tab_content 지역/게임 리스트
 	public Map<String, Object> tabContent() {
 		System.out.println("매칭 서비스: tabContent;;;");
-		
+
 		Map<String, Object> tabContent = new HashMap<>();
 		tabContent.put("sidoList", matchingDao.sidoList());
 		tabContent.put("themeList", matchingDao.themeList());
-		
+
 		return tabContent;
 	}
-	
+
 	// 매칭 메인페이지 - 시도 코드에 맞는 시군구 리스트
 	public List<SigunguVo> tabContentSigunguList(int sidoCode) {
 		System.out.println("매칭 서비스: tabContentSigunguList;;;");
-		
+
 		List<SigunguVo> tabContentSigunguList = matchingDao.tabContentSigunguList(sidoCode);
-		
+
 		return tabContentSigunguList;
 	}
-	
+
 	// 매칭 메인페이지 - 테마 코드에 맞는 게임 리스트
 	public List<GameVo> tabContentGameList(int themeNo) {
 		System.out.println("매칭 서비스: tabContentSigunguList;;;");
-		
+
 		List<GameVo> gameList = matchingDao.tabContentGameList(themeNo);
-		
+
 		return gameList;
 	}
 	
@@ -126,6 +127,9 @@ public class MatchingService {
 			System.out.println("매칭 서비스: read;;;");
 			System.out.println(matchingNo);
 			
+			// 1 증가
+			int hitsUp = matchingDao.hitsUp(matchingNo);
+			
 			// 클릭한 매칭 번호로 글정보 불러오기
 			MatchingVo matchingVo = matchingDao.read(matchingNo);
 			
@@ -144,14 +148,15 @@ public class MatchingService {
 			List<UserVo> matchingMemberInfoList = matchingDao.matchingMemberInfoList(matchingNo);
 			System.out.println(matchingMemberInfoList);
 			
+			List<CommentVo> commentList = matchingDao.commentList(matchingNo);
+			System.out.println(commentList);
+			
 			// Map으로 묶기
 			Map<String, Object> readInfo = new HashMap<String, Object>();
 			readInfo.put("matchingVo", matchingVo);
 			readInfo.put("writerInfo", writerInfo);
 			readInfo.put("matchingMemberInfoList", matchingMemberInfoList);
-			
-			// 클릭 후 조회수 1 증가
-			int hitsUp = matchingDao.hitsUp(matchingNo);
+			readInfo.put("commentList", commentList);
 			
 			return readInfo;
 		}
@@ -201,6 +206,21 @@ public class MatchingService {
 		
 		int statusComplete = matchingDao.statusComplete(matchingNo);
 		return statusComplete;
+	}
+	
+	// 매칭글 읽기 - 댓글 등록/출력
+	public CommentVo commentWriteInfo(CommentVo commentVo) {
+		System.out.println("매칭 서비스: commentWriteInfo;;;");
+		
+		// 댓글 등록
+		int commentWrite = matchingDao.commentWrite(commentVo);
+		System.out.println(commentVo);
+		
+		// 등록된 댓글 정보 불러오기
+		int commentNo = commentVo.getCommentNo();
+		CommentVo commentInfo = matchingDao.commentInfo(commentNo);
+		
+		return commentInfo;
 	}
 	
 

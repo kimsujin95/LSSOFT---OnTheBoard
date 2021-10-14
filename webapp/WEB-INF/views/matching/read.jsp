@@ -18,6 +18,9 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="${pageContext.request.contextPath}/assets/bootstrap/bootstrap.js"></script>
 
+<!-- SEWWT ALERT -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/matching/matching.css" type="text/css">
 
@@ -46,7 +49,7 @@
 		</div>
 		<!-- // SUB TITLE -->
 		<div id="content-title">
-			[ 할리갈리 ] ${readInfo.matchingVo.matchingTitle}
+			[ ${readInfo.matchingVo.gameNameKo} ] ${readInfo.matchingVo.matchingTitle}
 			<br>
 			${readInfo.writerInfo.userNickname} (${readInfo.writerInfo.userAge}
 			<c:choose>
@@ -68,7 +71,7 @@
 				<img src="${pageContext.request.contextPath}/assets/images/matching/할리갈리.jpg" alt="게임값" width="100%">
 				<br>
 				<br>
-				<a href="#">할리갈리</a>
+				<a href="#">${readInfo.matchingVo.gameNameKo}</a>
 			</div>
 			<div class="col-md-3 border-right">
 				<table id=table-game-info>
@@ -77,28 +80,28 @@
 						<col width="230px">
 					</colgroup>
 					<tr>
-						<th>장르</th>
-						<td>가족</td>
+						<th>테마</th>
+						<td>${readInfo.matchingVo.themeName}</td>
 					</tr>
 					<tr>
 						<th>날짜</th>
-						<td>2021. 11. 11.</td>
+						<td>${readInfo.matchingVo.matchingDate}</td>
 					</tr>
 					<tr>
 						<th>시간</th>
-						<td>15:00</td>
+						<td>${readInfo.matchingVo.matchingTime}</td>
 					</tr>
 					<tr>
 						<th>지역</th>
-						<td>서울 강남구</td>
+						<td>${readInfo.matchingVo.sidoName}&nbsp;${readInfo.matchingVo.sigunguName}</td>
 					</tr>
 					<tr>
-						<th>성별</th>
-						<td>남</td>
+						<th>성별제한</th>
+						<td>${readInfo.matchingVo.matchingPermissionGender}</td>
 					</tr>
 					<tr>
-						<th>나이</th>
-						<td>20대, 30대</td>
+						<th>나이제한</th>
+						<td>작업안됨</td>
 					</tr>
 					<tr class="border-none">
 						<th>인원<br>(<span id="joinMatchingMember">${readInfo.matchingVo.matchingMember}</span>/${readInfo.matchingVo.matchingPeople})
@@ -133,7 +136,7 @@
 			<div class="col-md-4 text-right">
 				<c:if test="${readInfo.writerInfo.userNo eq authUser.userNo}">
 					<c:if test="${readInfo.matchingVo.matchingStatus eq '매칭중'}">
-						<a href="${pageContext.request.contextPath}/matching/statusComplete?no=${readInfo.matchingVo.matchingNo}"><button id="btn-statusComplete" class="btn-red">매칭완료</button></a>
+						<button id="btn-statusComplete" class="btn-red" data-no="${readInfo.matchingVo.matchingNo}">매칭완료</button>
 					</c:if>
 					<c:if test="${readInfo.matchingVo.matchingStatus eq '매칭완료'}">
 						<a href="${pageContext.request.contextPath}/store/storelist"><button class="btn-blue">예약하기</button></a>
@@ -143,7 +146,7 @@
 			<div class="col-md-5 text-right">
 				<c:if test="${readInfo.writerInfo.userNo eq authUser.userNo}">
 					<a href="${pageContext.request.contextPath}/matching/modifyForm"><button class="btn-blue">수정</button></a>
-					<button id="btnDel-modal" class="btn-white">삭제</button>
+					<button id="btn-del" class="btn-white">삭제</button>
 				</c:if>
 				<a href="${pageContext.request.contextPath}/matching/main"><button class="btn-white">목록</button></a>
 			</div>
@@ -153,34 +156,35 @@
 		<div>댓글</div>
 		<br>
 
-		<div id="content-comment" class="row">
-			<div class="col-md-1 content-comment-img">
-				<img src="${pageContext.request.contextPath}/assets/images/matching/bonobono.png" alt="" width="45%">
-			</div>
-			<div class="col-md-11 content-comment-1">
-				<div class="clearfix">
-					<div class="comment">
-						<strong>[ 할갈woman ]</strong>
-						<br>
-						시간조정 가능할까요
+		<div id="comment" class="row">
+			<c:forEach items="${readInfo.commentList}" var="commentVo" varStatus="status">
+				<div class="col-md-1 comment-img">
+					<img src="${pageContext.request.contextPath}/assets/images/matching/bonobono.png" alt="" width="45%">'
+				</div>
+				<div class="col-md-11 comment-1">
+					<div class="clearfix">
+						<div class="comment">
+							<strong>[ ${commentVo.userNickname} <c:if test="${readInfo.writerInfo.userNo eq commentVo.userNo}"><span class="text-sm-red">작성자</span></c:if> ]</strong><br>
+							${commentVo.commentContent}
+						</div>
+					</div>
+					<div class="comment-button">
+						<button class="btn btn-xs">수정</button>
+						<button class="btn btn-xs">삭제</button>
+					</div>
+					<div class="comment-2">
+						${commentVo.commentRegDate}&nbsp;&nbsp;&nbsp;<span data-comment_no="${commentVo.commentNo}" class="cursor-pointer">답글쓰기</span>
 					</div>
 				</div>
-				<div class="comment-button">
-					<button class="btn btn-xs">수정</button>
-					<button class="btn btn-xs">삭제</button>
-				</div>
-				<div class="content-comment-2">
-					2021. 11. 11. 12:12 &nbsp;&nbsp; <span class="cursor-pointer">답글쓰기</span>
-				</div>
-			</div>
+			</c:forEach>
 		</div>
 
-		<div id="content-comment-answer" class="row">
+		<div id="comment-answer" class="row">
 			<div class="col-md-1"></div>
-			<div class="col-md-1 content-comment-img">
+			<div class="col-md-1 comment-img">
 				<img src="${pageContext.request.contextPath}/assets/images/matching/bonobono.png" alt="" width="45%">
 			</div>
-			<div class="col-md-10 content-comment-1">
+			<div class="col-md-10 comment-1">
 				<div class="clearfix">
 					<div class="comment">
 						<strong>[ 할갈man <span>작성자</span> ]
@@ -193,18 +197,18 @@
 					<button class="btn btn-xs">수정</button>
 					<button class="btn btn-xs">삭제</button>
 				</div>
-				<div class="content-comment-2">
+				<div class="comment-2">
 					2021. 11. 11. 12:22 &nbsp;&nbsp; <span class="cursor-pointer">답글쓰기</span>
 				</div>
 			</div>
 		</div>
 
-		<div id="content-comment-answer" class="row">
+		<div id="comment-answer" class="row">
 			<div class="col-md-1"></div>
-			<div class="col-md-1 content-comment-img">
+			<div class="col-md-1 comment-img">
 				<img src="${pageContext.request.contextPath}/assets/images/matching/bonobono.png" alt="" width="45%">
 			</div>
-			<div class="col-md-10 content-comment-1">
+			<div class="col-md-10 comment-1">
 				<div class="clearfix">
 					<div class="comment">
 						<strong>[ 할갈woman ]</strong>
@@ -216,7 +220,7 @@
 					<button class="btn btn-xs">수정</button>
 					<button class="btn btn-xs">삭제</button>
 				</div>
-				<div class="content-comment-2">
+				<div class="comment-2">
 					2021. 11. 11. 12:27 &nbsp;&nbsp; <span class="cursor-pointer">답글쓰기</span>
 				</div>
 			</div>
@@ -225,14 +229,15 @@
 		<br>
 		<br>
 
+		<!-- 댓글 작성 textarea -->
 		<c:if test="${authUser != null}">
-			<div id="content-comment-write">
-				<div class="content-comment-write-1">
+			<div id="comment-write">
+				<div class="comment-write-1">
 					<strong>${authUser.userNickname}</strong>
 				</div>
-				<textarea name="comment" id="content-comment-write-text" placeholder="댓글을 남겨주세요."></textarea>
-				<div class="content-comment-write-2">
-					<span class="cursor-pointer">등록</span>
+				<textarea name="commentContent" id="comment-write-text" placeholder="댓글을 남겨주세요."></textarea>
+				<div class="comment-write-2">
+					<button id="btnCommentWrite" class="cursor-pointer" data-user_no="${authUser.userNo}" data-matching_no="${readInfo.matchingVo.matchingNo}">등록</button>
 				</div>
 			</div>
 		</c:if>
@@ -242,7 +247,7 @@
 	<!-- FOOTER -->
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 	<!-- // FOOTER -->
-
+	<input id="matchingNoValue" type="hidden" value="${readInfo.matchingVo.matchingNo}">
 </body>
 
 <script>
@@ -329,26 +334,107 @@ $('#btn-outMatching').on('click', function() {
 // 매칭완료 클릭 - 매칭완료 상태로 변경
 $('#btn-statusComplete').on('click', function() {
 	
-	alert('매칭완료 상태로 변경 되었습니다.\n예약을 진행해 주세요.');
+	var matchingNo = $(this).data('no');
+	console.log(matchingNo);
 	
-	/* 	$.ajax({
-		url: '${pageContext.request.contextPath}/matching/statusComplete',
-		type: 'post',
-		data: { matchingNo: matchingNo },
-		success: function(statusChange) {
-			if (statusChange === 1) {
-				console.log(statusChange + '매칭상태 변경 성공');
-			} else {
-				console.log(statusChange + '매칭상태 변경 실패');
+	swal({
+		title: '매칭 상태를 변경 하시겠습니까?',
+		text: '매칭 상태 변경 확인',
+		icon: 'success',
+		closeOnClickOutside: false,
+		
+		buttons: {
+			cancle: {
+				text: '취소',
+				value: false,
+				className: 'btn btn-danger'
+			},
+			confirm: {
+				text: '매칭완료',
+				value: true,
+				className: 'btn btn-primary'
 			}
+		}
+	}).then((result) => {
+		if(result === true) {
+			
+			$.ajax({
+				url: '${pageContext.request.contextPath}/matching/statusComplete',
+				type: 'post',
+				data: { matchingNo: matchingNo },
+				success: function(statusChange) {
+					if (statusChange === 1) {
+						console.log(statusChange + '매칭상태 변경 성공');
+					} else {
+						console.log(statusChange + '매칭상태 변경 실패');
+					}
+				},
+				error: function(XHR, status, error) {
+					console.log(status + ' : ' + error);
+				}
+			});
+			
+			location.href = '${pageContext.request.contextPath}/matching/read?no=' + matchingNo;
+		}
+	});
+});
+// -- 매칭완료 클릭 - 매칭완료 상태로 변경 --
+
+// 댓글 등록
+$('#btnCommentWrite').on('click', function() {
+	var userNo = $(this).data('user_no');
+	console.log(userNo);
+	var matchingNo = $(this).data('matching_no');
+	console.log(matchingNo);
+	var commentContent = $('[name="commentContent"]').val();
+	console.log(commentContent);
+	
+	var commentVo = {
+			userNo: userNo,
+			matchingNo: matchingNo,
+			commentContent: commentContent
+	}
+	
+	$.ajax({
+		url: '${pageContext.request.contextPath}/matching/commentWrite',
+		type: 'post',
+		data: commentVo,
+		success: function(commentInfo) {
+			console.log(commentInfo);
+			commentHTML(commentInfo);
+			$('#comment-write-text').val('');
 		},
 		error: function(XHR, status, error) {
 			console.log(status + ' : ' + error);
 		}
-	}); */
+	});
+	
 });
-// -- 매칭완료 클릭 - 매칭완료 상태로 변경 --
 
+function commentHTML(commentInfo) {
+	var commentSTR = '<div class="col-md-1 comment-img">'
+					+ 	'<img src="${pageContext.request.contextPath}/assets/images/matching/bonobono.png" alt="" width="45%">'
+					+ '</div>'
+					+ '<div class="col-md-11 comment-1">'
+					+ 	'<div class="clearfix">'
+					+ 		'<div class="comment">'
+					+ 		'<strong>[ ${authUser.userNickname} <c:if test="${readInfo.writerInfo.userNo eq authUser.userNo}"><span class="text-sm-red">작성자</span></c:if> ]</strong><br>'
+					+ 		commentInfo.commentContent
+					+ 		'</div>'
+					+ 	'</div>'
+					+ 	'<div class="comment-button">'
+					+ 		'<button class="btn btn-xs">수정</button>'
+					+ 		'<button class="btn btn-xs">삭제</button>'
+					+ 	'</div>'
+					+ 	'<div class="comment-2">'
+					+ 		commentInfo.commentRegDate + '&nbsp;&nbsp;<span data-comment_no="' + commentInfo.commentNo + '" class="cursor-pointer">답글쓰기</span>'
+					+ 	'</div>'
+					+ '</div>';
+	
+	$('#comment').append(commentSTR);
+}
+// -- 댓글 등록 --
+				
 </script>
 
 </html>

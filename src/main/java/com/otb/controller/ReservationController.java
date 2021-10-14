@@ -22,15 +22,18 @@ public class ReservationController {
 	
 	@ResponseBody
 	@RequestMapping("/reservationinfo/{storeNo}")
-	public String reservationinfo(@PathVariable("storeNo")int storeNo, @RequestParam ("checkedTime[]") String[] checkedTime, @RequestParam("matchingNo") int matchingNo) {
+	public String reservationinfo(@PathVariable("storeNo")int storeNo, @RequestParam ("checkedTime[]") String[] checkedTime, @RequestParam("matchingNo") int matchingNo, @RequestParam("selectedDate") String selectedDate) {
+		
 		System.out.println("[reservationController.reservationinfo]");
 		
 		//받아온 데이터 출력
 		for(int i = 0; i < checkedTime.length; i++)  {
 			System.out.println("checkedTime" + "[" + i + "] : " + checkedTime[i]);
 		}
+		
 		System.out.println("매칭_그룹번호 : " + matchingNo);
 		System.out.println("매장번호 : " + storeNo);
+		System.out.println("선택된날짜 : " + selectedDate);
 		
 		Map<String, Object> revselinfo = new HashMap<String, Object>();
 		
@@ -41,6 +44,7 @@ public class ReservationController {
 		reservationService.getreservationinfo(revselinfo);
 		
 		return "1";
+		
 	}
 	
 }

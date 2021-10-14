@@ -109,13 +109,17 @@ textarea {
 	margin: 8px 0px 0px 30px;
 }
 
+#select-option-checkbox label {
+	font-size: 16px;
+}
+
 #select-option-checkbox tr {
 	border-bottom: 1px solid #e2e2e2;
 }
 
 #select-option-checkbox>thead>tr>th {
 	text-align: center;
-	font-size: 16px;
+	font-size: 19px;
 	padding: 8px;
 	letter-spacing: 10px;
 }
@@ -204,7 +208,13 @@ textarea {
 	border-radius: 5px;
 }
 
-#write-form #datepick {
+#write-form .date-time {
+	height: 22px;
+	border-radius: 5px;
+	padding: 10.5px 5px;
+}
+
+/* #write-form #datepick {
 	height: 18px;
 	width: 120px;
 	font-size: 12px;
@@ -218,7 +228,7 @@ textarea {
 	text-align: center;
 	border: none;
 	font-size: 12px;
-}
+} */
 
 #write-form #content {
 	border-radius: 5px;
@@ -285,14 +295,14 @@ textarea {
 	margin: 0px 3px;
 }
 
-#content-comment .content-comment-1 {
+#comment .comment-1 {
 	border: 1px solid lightgray;
 	border-radius: 5px;
 	background-color: #f3f1f1;
 	padding: 5px;
 }
 
-#content-comment .content-comment-img, #content-comment-answer .content-comment-img
+#comment .comment-img, #comment-answer .comment-img
 	{
 	margin: 0px;
 	padding: 0px 5px 0px 0px;
@@ -300,60 +310,66 @@ textarea {
 	cursor: pointer;
 }
 
-#content-comment .content-comment-2, #content-comment-answer .content-comment-2
+#comment .comment-2, #comment-answer .comment-2
 	{
 	font-size: 12px;
 	color: gray;
 }
 
-#content-comment .comment, #content-comment-answer .comment {
+#comment .comment, #comment-answer .comment {
 	float: left;
 }
 
-#content-comment .comment-button, #content-comment-answer .comment-button
+#comment .comment-button, #comment-answer .comment-button
 	{
 	float: right;
 }
 
-#content-comment .comment-button button, #content-comment-answer .comment-button button
+#comment .comment-button button, #comment-answer .comment-button button
 	{
 	font-size: 10px;
 	color: gray;
 	margin-right: 5px;
 }
 
-#content-comment-answer {
+#comment .text-sm-red {
+	color: #ff0000;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+#comment-answer {
 	margin-top: 5px;
 }
 
-#content-comment-answer .comment span {
+#comment-answer .comment span {
 	color: ff1f67;
 	font-size: 5px;
 }
 
-#content-comment-answer .content-comment-1 {
+#comment-answer .comment-1 {
 	border: 1px solid lightgray;
 	border-radius: 10px;
 	padding: 5px;
 }
 
-#content-comment-write {
+#comment-write {
 	border: 1px solid #5a5a5a;
 	padding: 5px;
 	border-radius: 10px;
 }
 
-#content-comment-write .content-comment-write-1 {
+#comment-write .comment-write-1 {
 	margin-bottom: 3px;
 }
 
-#content-comment-write .content-comment-write-2 {
+#comment-write .comment-write-2 {
 	margin-right: 5px;
 	text-align: right;
 	color: gray;
 }
 
-#content-comment-write-text {
+#comment-write-text {
 	width: 100%;
 	height: 80px;
 	border: none;

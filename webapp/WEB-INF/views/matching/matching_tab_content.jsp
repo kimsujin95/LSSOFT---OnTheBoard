@@ -21,7 +21,8 @@
 					</ul>
 				</div>
 
-				<div id="location-tabpanel" class="col-xs-8 tab-content overflow-scroll">
+
+				<div class="col-xs-8 tab-content overflow-scroll">
 					<c:forEach items="${tabContent.sidoList}" var="sidoVo" varStatus="status">
 						<div role="tabpanel" class="tab-pane" id="location-${sidoVo.sidoCode}">
 							<ul class="location-medium loca-${sidoVo.sidoCode}">
@@ -47,110 +48,11 @@
 				<div class="col-xs-8 tab-content overflow-scroll">
 					<!-- 전략 -->
 					<div role="tabpanel" class="tab-pane active" id="style-strategy">
-						<ul id="game-name">
-							<li><input type="checkbox" id="strategy"> <label for="strategy">전략전체</label></li>
-							<li><input type="checkbox" id="game-terapoming"> <label for="game-terapoming">테라포밍 마스(12)</label></li>
+						<ul class="game-name">
+							<li><input type="checkbox" id="strategy" value="전략"> <label for="strategy">전략전체</label></li>
+							<li><input type="checkbox" id="game-terapoming"> <label for="game-terapoming">테라포밍 마스</label></li>
 						</ul>
 					</div>
-
-					<!-- 추상 -->
-					<div role="tabpanel" class="tab-pane" id="style-abstract">
-						<ul id="game-name">
-							<li><input type="checkbox" id="abstract"> <label for="abstract">추상전체</label></li>
-						</ul>
-					</div>
-
-					<!-- 컬렉터블 -->
-					<div role="tabpanel" class="tab-pane" id="style-collectible">
-						<ul id="game-name">
-							<li><input type="checkbox" id="collectible"> <label for="collectible">컬렉터블전체</label></li>
-						</ul>
-					</div>
-
-					<!-- 가족 -->
-					<div role="tabpanel" class="tab-pane" id="style-family">
-						<ul id="game-name">
-							<li><input type="checkbox" id="family"> <label for="family">가족전체</label></li>
-						</ul>
-					</div>
-
-					<!-- 어린이 -->
-					<div role="tabpanel" class="tab-pane" id="style-kids">
-						<ul id="game-name">
-							<li><input type="checkbox" id="kids"> <label for="kids">어린이전체</label></li>
-						</ul>
-					</div>
-
-					<!-- 파티 -->
-					<div role="tabpanel" class="tab-pane" id="style-party">
-						<ul id="game-name">
-							<li><input type="checkbox" id="party"> <label for="party">파티전체</label></li>
-						</ul>
-					</div>
-
-					<!-- 테마 -->
-					<div role="tabpanel" class="tab-pane" id="style-theme">
-						<ul id="game-name">
-							<li><input type="checkbox" id="theme"> <label for="theme">테마전체</label></li>
-						</ul>
-					</div>
-
-					<!-- 워게임 -->
-					<div role="tabpanel" class="tab-pane" id="style-wargame">
-						<ul id="game-name">
-							<li><input type="checkbox" id="wargame"> <label for="wargame">워게임전체</label></li>
-						</ul>
-					</div>
-
-					<!-- 한글 -->
-					<div role="tabpanel" class="tab-pane" id="style-korean">
-						<ul id="game-name">
-							<li><input type="checkbox" id="korean"> <label for="korean">한글전체</label></li>
-						</ul>
-					</div>
-
-					<!-- 카드 -->
-					<div role="tabpanel" class="tab-pane" id="style-card">
-						<ul id="game-name">
-							<li><input type="checkbox" id="card"> <label for="card">카드전체</label></li>
-						</ul>
-					</div>
-
-					<!-- 경제 -->
-					<div role="tabpanel" class="tab-pane" id="style-economy">
-						<ul id="game-name">
-							<li><input type="checkbox" id="economy"> <label for="economy">경제전체</label></li>
-						</ul>
-					</div>
-
-					<!-- 협력 -->
-					<div role="tabpanel" class="tab-pane" id="style-cooperation">
-						<ul id="game-name">
-							<li><input type="checkbox" id="cooperation"> <label for="cooperation">협력전체</label></li>
-						</ul>
-					</div>
-
-					<!-- 퍼즐 -->
-					<div role="tabpanel" class="tab-pane" id="style-puzzle">
-						<ul id="game-name">
-							<li><input type="checkbox" id="puzzle"> <label for="puzzle">퍼즐전체</label></li>
-						</ul>
-					</div>
-
-					<!-- 모험 -->
-					<div role="tabpanel" class="tab-pane" id="style-adventure">
-						<ul id="game-name">
-							<li><input type="checkbox" id="adventure"> <label for="adventure">모험전체</label></li>
-						</ul>
-					</div>
-
-					<!-- 주사위 -->
-					<div role="tabpanel" class="tab-pane" id="style-dice">
-						<ul id="game-name">
-							<li><input type="checkbox" id="dice"> <label for="dice">주사위전체</label></li>
-						</ul>
-					</div>
-
 				</div>
 			</div>
 		</div>
@@ -190,7 +92,7 @@
 		console.log(sidoCode);
 		console.log(sidoName);
 		
-		$('.loca-' + sidoCode + '').empty();
+		$('.loca-' + sidoCode).empty();
 		
 		$.ajax({
 			url: '${pageContext.request.contextPath}/matching/tabContentSigunguList',
@@ -209,8 +111,9 @@
 	});
 	
 	function sigunguTabpanel(sigunguVo) {
-		var sigunguLi = '<li><input type="checkbox" id="seoul-' + sigunguVo.sigunguCode + '" value="' + sigunguVo.sidoName + ' ' + sigunguVo.sigunguName + '"><label for="seoul-' + sigunguVo.sigunguCode + '">' + sigunguVo.sigunguName + '</label></li>';
+		var sigunguLi = '<li><input type="checkbox" id="seoul-' + sigunguVo.sigunguCode + '" value="' + sigunguVo.sigunguName + '"><label for="seoul-' + sigunguVo.sigunguCode + '">' + sigunguVo.sigunguName + '</label></li>';
 		$('.loca-' + sigunguVo.sidoCode + '').append(sigunguLi);
+		// $('#' + sigunguVo.sidoCode + '-all').append(sigunguLi);
 	};
 // -- 시도 코드에 맞는 시군구 리스트 불러오기 --
 

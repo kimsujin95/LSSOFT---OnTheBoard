@@ -85,21 +85,22 @@
 	padding: 3px;
 	width: 50%;
 	text-align: left;
-	font-size: 16px;
+	font-size: 19px;
+	font-weight: bold;
 }
 
-#location-tabpanel .location-medium {
+#location .location-medium {
 	margin: 0px;
 	padding: 0px;
 }
 
-#location-tabpanel .location-medium li {
+#location .location-medium li {
 	float: left;
 	/* margin: 3px; */
 	padding: 3px;
 	width: 33.3%;
 	text-align: left;
-	font-size: 13px;
+	font-size: 16px;
 }
 
 #game-style {
@@ -113,19 +114,24 @@
 	padding: 3px;
 	width: 50%;
 	text-align: left;
-	font-size: 16px;
+	font-size: 19px;
+	font-weight: bold;
 }
 
-#game-name {
+#game-style-name .game-name {
 	margin: 0px;
 	padding: 0px;
 }
 
-#game-name li {
+#game-style-name .game-name li {
 	float: left;
 	/* margin: 3px; */
 	padding: 3px;
-	width: 33.3%;
+	width: 33.%;
 	text-align: left;
-	font-size: 13px;
+	font-size: 16px;
+}
+
+input[type="checkbox"] {
+	margin-right: 10px;
 }

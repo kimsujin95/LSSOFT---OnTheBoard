@@ -27,7 +27,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 <link href="${pageContext.request.contextPath}/assets/css/datepicker.css" rel="stylesheet" type="text/css">
-<script src="resources/js/plugin/datepicker/bootstrap-datepicker.ko.min.js"></script>
+<!-- <script src="resources/js/plugin/datepicker/bootstrap-datepicker.ko.min.js"></script> -->
 
 <title>MATCHING</title>
 </head>
@@ -102,14 +102,14 @@
 
 					<label for="">날짜</label>
 					<br>
-					<!-- <label for="datepick">📅</label> --> <input id="datepick" name="matchingDate" type="date" value="">
+					<!-- <label for="datepick">📅</label> --><input class="date-time" id="datepick" name="matchingDate" type="date" value="">
 
 					<br>
 					<br>
 
 					<label for="">시간</label>
 					<br>
-					<label for="time">⌚</label> <input type="text" id="time">
+					<!-- <label for="time">⌚</label> --><input class="date-time" type="time" id="time" name="matchingTime" value="">
 
 					<br>
 				</div>
@@ -117,19 +117,17 @@
 					<label for="">지역</label>
 					<br>
 					<div class="col-xs-6">
-						시/도 선택&nbsp;&nbsp;<select name="sidoCode" id="select-sido">
-							<option>지역 선택</option>
+						시/도 선택&nbsp;&nbsp;
+						<select name="sidoCode" id="select-sido">
 							<c:forEach items="${writeUserMap.sidoList}" var="sidoVo" varStatus="status">
-								<option value="${sidoVo.sidoCode}">${sidoVo.sidoName}</option>
+								<option class="option-sido" value="${sidoVo.sidoCode}">${sidoVo.sidoName}</option>
 							</c:forEach>
 						</select>
 					</div>
 					<div class="col-xs-6">
-						시/군/구 선택&nbsp;&nbsp;<select name="sigunguCode" id="select-sigungu">
+						시/군/구 선택&nbsp;&nbsp;
+						<select name="sigunguCode" id="select-sigungu">
 							<option>지역 선택</option>
-							<c:forEach items="${writeUserMap.sigunguList}" var="sigunguVo">
-								<option value="${sigunguVo.sigunguCode}">${sigunguVo.sigunguName}</option>
-							</c:forEach>
 						</select>
 					</div>
 
@@ -160,7 +158,7 @@
 
 					<label for="">나이제한</label>
 					<br>
-					<input type="checkbox" id="10s" value="10대"> <label for="10s">10대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="20s" value="20s"> <label for="20s">20대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="30s" value="30s"> <label for="30s">30대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="40s" value="40s"> <label for="40s">40대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="none" value="none"> <label for="none">나이무관</label>
+					<input type="checkbox" id="10s" value="10대"> <label for="10s">10대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="20s" value="20대"> <label for="20s">20대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="30s" value="30대"> <label for="30s">30대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="40s" value="40대"> <label for="40s">40대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="ageNone" value="나이무관"> <label for="ageNone">나이무관</label>
 
 					<br>
 					<br>
@@ -189,7 +187,7 @@
 </body>
 
 <script>
-	/* $('#datepick').datepicker(
+/* $('#datepick').datepicker(
 			{
 				language : 'ko',
 				todayBtn : 'linked',
@@ -206,7 +204,35 @@
 				today : "오늘",
 				titleFormat : "yyyy년 mm월",
 				weekStart : 0
-			}); */
+}); */
+
+$('#select-sido').on('click', function() {
+	var sidoCode = $(this).val();
+	console.log(sidoCode);
+	
+	$('#select-sigungu').html('<option>지역 선택</option>');
+	
+	$.ajax({
+		url: '${pageContext.request.contextPath}/matching/tabContentSigunguList',
+		type: 'post',
+		data: { sidoCode: sidoCode },
+		success: function(sigunguList) {
+			console.log(sigunguList);
+			for (var i = 0; i < sigunguList.length; i++) {
+				sigunguSelect(sigunguList[i]);
+			}
+		},
+		error: function(XHR, status, error) {
+			console.log(status + ' : ' + error);s
+		}
+	});
+});
+
+function sigunguSelect(sigunguVo) {
+	var sigunguOption = '<option value="' + sigunguVo.sigunguCode + '">' + sigunguVo.sigunguName + '</option>';
+	
+	$('#select-sigungu').append(sigunguOption);
+}
 </script>
 
 </html>

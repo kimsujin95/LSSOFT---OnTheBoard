@@ -2,7 +2,7 @@
 DROP SEQUENCE seq_users_no;
 DROP SEQUENCE seq_game_no;
 DROP SEQUENCE seq_theme_no;
-DROP SEQUENCE seq_game__bookmark_no;
+DROP SEQUENCE seq_bookmark_no;
 DROP SEQUENCE seq_matching_no;
 DROP SEQUENCE seq_sido_no;
 DROP SEQUENCE seq_sigungu_no;
@@ -211,7 +211,7 @@ VALUES (
 
 -- INSERT GAME
 INSERT INTO 
-    game
+    game(game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no)
 VALUES
     (
         seq_game_no.nextval,
@@ -226,9 +226,9 @@ VALUES
         'OwgKvBQ7bqs',
         2
     );
-
+            
 INSERT INTO 
-    game
+    game(game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no)
 VALUES
     (
         seq_game_no.nextval,
@@ -245,7 +245,7 @@ VALUES
     );
    
 INSERT INTO 
-    game
+    game(game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no)
 VALUES
     (
         seq_game_no.nextval,

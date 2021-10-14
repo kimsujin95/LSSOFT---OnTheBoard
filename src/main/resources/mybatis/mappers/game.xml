@@ -143,12 +143,12 @@
 				game_bookmark
 			VALUES (
 					seq_bookmark_no.nextval
-				,	game_no
-				,	user_no)	
+				,	#{game_no}
+				,	#{user_no})	
 		]]>
 		</insert>
 		<!-- 찜횟수 추가 -->
-		<update id="bookmarkUp" parameterType="GameVo">
+		<update id="bookmarkCountUp" parameterType="GameVo">
 		<![CDATA[
 			UPDATE
 				game
@@ -182,7 +182,7 @@
 		]]>
 		</delete>
 		<!-- 찜횟수 삭제 -->
-		<update id="BookmarkDown" parameterType="GameVo">
+		<update id="bookmarkCountDown" parameterType="GameVo">
 		<![CDATA[
 			UPDATE
 				game
@@ -193,6 +193,48 @@
 		]]>
 		</update>
 		
-		<!-- 페이징 -->	
-		
+		<!-- 페이징 -->
+		<select id="pageTotal" resultType="int">
+		<![CDATA[
+						
+		]]>
+		</select>	
+		<!-- 시작끝블록 페이징 -->
+		<select id="paigngList" resultMap="resultMapGameVo">
+		<![CDATA[
+		SELECT game_no
+					,		game_name_ko
+					,		game_people
+					,		game_age
+					,		game_time
+					,		game_difficulty
+					,		game_path_thumbnail
+					,		theme_no 
+                    ,       rn
+		FROM (
+			SELECT ROWNUM RN, game_no
+					,		game_name_ko
+					,		game_people
+					,		game_age
+					,		game_time
+					,		game_difficulty
+					,		game_path_thumbnail
+					,		theme_no  
+				FROM (
+						SELECT 
+                            game_no
+					,		game_name_ko
+					,		game_people
+					,		game_age
+					,		game_time
+					,		game_difficulty
+					,		game_path_thumbnail
+					,		theme_no  
+						FROM game
+						ORDER BY GAME_NO DESC
+						) A
+				)
+		WHERE RN BETWEEN #{start} AND #{end};
+		]]>
+		</select>
 </mapper>

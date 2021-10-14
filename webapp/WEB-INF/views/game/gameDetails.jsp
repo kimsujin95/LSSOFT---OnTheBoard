@@ -28,7 +28,15 @@
 
 <!-- js -->
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/gameDetails.js"></script>
 
+<script>
+	function goList(page) {
+		var form = document.getElementById("listForm");
+		form.curPage.value = page;
+		form.submit();
+	}
+</script>
 </head>
 
 <body>
@@ -47,7 +55,9 @@
 					<ul>
 						<li><a href="${pageContext.request.contextPath}/main">메인</a></li>
 						<li><a href="${pageContext.request.contextPath}/game/list">게임목록</a></li>
-						<li class="last-li"><a href="${pageContext.request.contextPath}/game/gameDetails?gameNo=${gameVo.gameNo}">게임세부정보</a></li>
+						<li class="last-li"><a
+							href="${pageContext.request.contextPath}/game/gameDetails?gameNo=${gameVo.gameNo}"
+						>게임세부정보</a></li>
 					</ul>
 				</div>
 			</div>
@@ -56,7 +66,7 @@
 		<!-- /.sub-container -->
 		<!-- main -->
 		<div id="main" class="container">
-		
+
 			<!-- .gameDetail -->
 			<div class="gameDetail">
 				<!-- .gameInfo -->
@@ -64,7 +74,9 @@
 					<!-- .innerbox -->
 					<div class="innerbox">
 						<div class="thum">
-							<img src="${pageContext.request.contextPath}/upload/${gameVo.gameThumbImg }" alt="${gameVo.gameNameKo }">
+							<img src="${pageContext.request.contextPath}/upload/${gameVo.gameThumbImg }"
+								alt="${gameVo.gameNameKo }"
+							>
 						</div>
 						<!--별점 평점 기능 넣기-->
 						<div id="star-rater"></div>
@@ -78,10 +90,39 @@
 								<li><em>게임시간</em>${gameVo.gameTime}</li>
 								<li><em>게임난이도</em>${gameVo.gameDifficulty}</li>
 
-								<li><em>게임테마</em><a href="">#${gameVo.themeNo} </a></li>
+								<li><em>게임테마</em><a href="javascript:">#${gameVo.themeNo} </a></li>
 							</ul>
 							<div class="bbssvc">
-								<button class="btn-blue">찜하기</button>
+								<c:choose>
+									<%-- 로그인 상태일때 - 찜가능--%>
+									<c:when test="${not empty sessionScope.userNo}">
+										<c:choose>
+											<c:when test="${empty gameBookmarkNo}">
+												<%-- 찜아닐때 --%>
+												<button class="btn-blue addBookmark" id="bookmark" onclick="addBookmark(this)">
+													찜하기
+													<c:out value="${gameVo.hitCount}" />
+												</button>
+											</c:when>
+											<c:otherwise>
+												<%-- 찜했을때--%>
+												<button class="btn-blue removeBookmark" id="removeBookmark"
+													onclick="removeBookmark(this)"
+												>
+													찜하기
+													<c:out value="${gameVo.hitCount}" />
+												</button>
+											</c:otherwise>
+										</c:choose>
+									</c:when>
+									<%-- 로그인 상태가 아닐때  - 찜못함--%>
+									<c:otherwise>
+										<button class="btn-blue bookmark-notlogin" id="bookmark-notlogin">
+											찜하기
+											<c:out value="${gameVo.hitCount}" />
+										</button>
+									</c:otherwise>
+								</c:choose>
 								<button class="btn-red">매칭바로가기</button>
 							</div>
 
@@ -103,113 +144,99 @@
 				<!-- #gameIntro -->
 				<div id="gameIntro">
 
-					<div >
-						<img src="${pageContext.request.contextPath}/upload/${gameVo.gameDescription }" alt="${gameVo.gameNameKo }">
+					<div>
+						<img src="${pageContext.request.contextPath}/upload/${gameVo.gameDescription }"
+							alt="${gameVo.gameNameKo }"
+						>
 					</div>
 				</div>
-			
-			<!-- /#gameIntro -->
-			<!-- .tabMenu01 -->
-			<div class="tabMenu01" id="gameStoreTab">
-				<ul class="tab nav-tabs nav-justified">
-					<li class="current_l"><a href="#gameIntroTab" data-toggle="tab">게임소개</a></li>
-					<li class="current"><a href="#gameStoreTab" data-toggle="tab">보유매장</a></li>
-					<li class="current_l"><a href="#gameGuideTab" data-toggle="tab">게임가이드</a></li>
-				</ul>
-			</div>
-			<!-- /.tabMenu01 -->
-			<!-- #gameStore -->
-			<div id="gameStore">
-				<!--.bbsList02-->
-				<div class="bbsList02" id="gmaeStorelistTab">
-					<div class="innerbox">
-						<table>
-							<caption hidden>보유매장 리스트</caption>
-							<thead>
-								<tr class="listHead" style="text-align: center;"">
-									<th id="num">번호</th>
-									<th id="storename">매장명</th>
-									<th id="storelocation">위치</th>
-									<th id="storeTelnum">전화번호</th>
-									<th id="storDetail">매장정보</th>
-								</tr>
-							</thead>
-							<tbody style="border-bottom: 0px; text-align: center;">
-								<tr class="listBody">
-									<td>1</td>
-									<td>강남보드게임</td>
-									<td>서울시 강남구 역삼동</td>
-									<td>02-555-1234</td>
-									<td><span class="linkStore"><a href="${storeVo.ownStore }">매장정보<br>상세보기
-										</a></span></td>
-								</tr>
-								<tr class="storeList_body">
-									<td>2</td>
-									<td>강남보드게임</td>
-									<td>서울시 강남구 역삼동</td>
-									<td>02-555-1234</td>
-									<td><span class="linkStore"><a href="">매장정보<br>상세보기
-										</a></span></td>
-								</tr>
-								<tr class="storeList_body">
-									<td>3</td>
-									<td>강남보드게임</td>
-									<td>서울시 강남구 역삼동</td>
-									<td>02-555-1234</td>
-									<td><span class="linkStore"><a href="">매장정보<br>상세보기
-										</a></span></td>
-								</tr>
-								<tr class="storeList_body">
-									<td>4</td>
-									<td>강남보드게임</td>
-									<td>서울시 강남구 역삼동</td>
-									<td>02-555-1234</td>
-									<td><span class="linkStore"><a href="">매장정보<br>상세보기
-										</a></span></td>
-								</tr>
-							
-							</tbody>
 
-						</table>
+				<!-- /#gameIntro -->
+				<!-- .tabMenu01 -->
+				<div class="tabMenu01" id="gameStoreTab">
+					<ul class="tab nav-tabs nav-justified">
+						<li class="current_l"><a href="#gameIntroTab" data-toggle="tab">게임소개</a></li>
+						<li class="current"><a href="#gameStoreTab" data-toggle="tab">보유매장</a></li>
+						<li class="current_l"><a href="#gameGuideTab" data-toggle="tab">게임가이드</a></li>
+					</ul>
+				</div>
+				<!-- /.tabMenu01 -->
+				<!-- #gameStore -->
+				<div id="gameStore">
+					<!--.bbsList02-->
+					<div class="bbsList02" id="gmaeStorelistTab">
+						<div class="innerbox">
+							<table>
+								<caption hidden>보유매장 리스트</caption>
+								<thead>
+									<tr class="listHead" style="text-align: center;"">
+										<th id="num">번호</th>
+										<th id="storename">매장명</th>
+										<th id="storelocation">위치</th>
+										<th id="storeTelnum">전화번호</th>
+										<th id="storDetail">매장정보</th>
+									</tr>
+								</thead>
+								<tbody style="border-bottom: 0px; text-align: center;">
+									<tr class="listBody">
+										<td>1</td>
+										<td>강남보드게임</td>
+										<td>서울시 강남구 역삼동</td>
+										<td>02-555-1234</td>
+										<td><span class="linkStore"><a href="${storeVo.ownStore }">매장정보<br>상세보기
+											</a></span></td>
+									</tr>
+									<tr class="storeList_body">
+										<td>2</td>
+										<td>강남보드게임</td>
+										<td>서울시 강남구 역삼동</td>
+										<td>02-555-1234</td>
+										<td><span class="linkStore"><a href="">매장정보<br>상세보기
+											</a></span></td>
+									</tr>
+
+								</tbody>
+
+							</table>
+						</div>
+					</div>
+					<!-- /.bbsList02 -->
+				</div>
+				<!-- /#gameStore -->
+				<!-- .tabMenu01 -->
+
+				<!-- #gameGuide -->
+				<!-- .tabMenu01 -->
+				<div class="tabMenu01" id="gameGuideTab">
+					<ul class="tab nav-tabs nav-justified" id="gameGuide">
+						<li class="current_l"><a href="#gameIntroTab" data-toggle="tab">게임소개</a></li>
+						<li class="current_l"><a href="#gameStoreTab" data-toggle="tab">보유매장</a></li>
+						<li class="current"><a href="#gameGuideTab" data-toggle="tab">게임가이드</a></li>
+					</ul>
+				</div>
+
+				<div id="gameGuide">
+					<!--<h3>게임가이드</h3>-->
+					<div class="videowrap">
+						<div class="embed-container">
+							<iframe width="100%" height="485" src="https://www.youtube.com/embed/${gameVo.gameGuide}"
+								title="YouTube video player" showinfo="0" loading="lazy" marginheight="30"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowfullscreen
+							> </iframe>
+						</div>
 					</div>
 				</div>
-				<!-- /.bbsList02 -->
+				<!-- /#gameGuide -->
 			</div>
-			<!-- /#gameStore -->
-			<!-- .tabMenu01 -->
-
-			<!-- #gameGuide -->
-			<!-- .tabMenu01 -->
-			<div class="tabMenu01" id="gameGuideTab">
-				<ul class="tab nav-tabs nav-justified" id="gameGuide">
-					<li class="current_l"><a href="#gameIntroTab" data-toggle="tab">게임소개</a></li>
-					<li class="current_l"><a href="#gameStoreTab" data-toggle="tab">보유매장</a></li>
-					<li class="current"><a href="#gameGuideTab" data-toggle="tab">게임가이드</a></li>
-				</ul>
-			</div>
-
-			<div id="gameGuide">
-				<!--<h3>게임가이드</h3>-->
-				<div class="videowrap">
-					<div class="embed-container">
-						<iframe width="100%" height="485" src="https://www.youtube.com/embed/${gameVo.gameGuide}"
-							title="YouTube video player" showinfo="0" loading="lazy" marginheight="30"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-							allowfullscreen>
-						</iframe>
-					</div>
-				</div>
-			</div>
-			<!-- /#gameGuide -->
+			<!-- /.gameDetail -->
 		</div>
-		<!-- /.gameDetail -->
-	</div>
-	<!-- /.container -->
+		<!-- /.container -->
 
 
-	<!-- Footer -->
-	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
-	<!-- /#Footer -->
+		<!-- Footer -->
+		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+		<!-- /#Footer -->
 	</div>
 	<!-- /#wrap -->
 

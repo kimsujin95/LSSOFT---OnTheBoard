@@ -11,8 +11,10 @@ import org.springframework.stereotype.Service;
 import com.otb.dao.MatchingDao;
 import com.otb.dao.UserDao;
 import com.otb.vo.CommentVo;
+import com.otb.vo.GameVo;
 import com.otb.vo.MatchingGroupVo;
 import com.otb.vo.MatchingVo;
+import com.otb.vo.SigunguVo;
 import com.otb.vo.UserVo;
 
 @Service
@@ -23,6 +25,35 @@ public class MatchingService {
 	
 	@Autowired
 	private UserDao userDao;
+	
+	// 매칭 메인페이지 - tab_content 지역/게임 리스트
+	public Map<String, Object> tabContent() {
+		System.out.println("매칭 서비스: tabContent;;;");
+
+		Map<String, Object> tabContent = new HashMap<>();
+		tabContent.put("sidoList", matchingDao.sidoList());
+		tabContent.put("themeList", matchingDao.themeList());
+
+		return tabContent;
+	}
+
+	// 매칭 메인페이지 - 시도 코드에 맞는 시군구 리스트
+	public List<SigunguVo> tabContentSigunguList(int sidoCode) {
+		System.out.println("매칭 서비스: tabContentSigunguList;;;");
+
+		List<SigunguVo> tabContentSigunguList = matchingDao.tabContentSigunguList(sidoCode);
+
+		return tabContentSigunguList;
+	}
+
+	// 매칭 메인페이지 - 테마 코드에 맞는 게임 리스트
+	public List<GameVo> tabContentGameList(int themeNo) {
+		System.out.println("매칭 서비스: tabContentSigunguList;;;");
+
+		List<GameVo> gameList = matchingDao.tabContentGameList(themeNo);
+
+		return gameList;
+	}
 	
 	// 매칭 리스트
 	public Map<String, Object> list(List<String> keyword) {

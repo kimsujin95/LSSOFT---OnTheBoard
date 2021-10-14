@@ -31,6 +31,24 @@ public class MatchingDao {
 
 		return matchingList;
 	}
+	
+	// 매칭 메인페이지 - 시도 코드에 맞는 시군구 리스트
+	public List<SigunguVo> tabContentSigunguList(int sidoCode) {
+		System.out.println("매칭 다오: tabContentSigunguList;;;");
+
+		List<SigunguVo> tabContentSigunguList = sqlSession.selectList("matching.tabContentSigunguList", sidoCode);
+
+		return tabContentSigunguList;
+	}
+
+	// 매칭 메인페이지 - 테마 코드에 맞는 게임 리스트
+	public List<GameVo> tabContentGameList(int themeNo) {
+		System.out.println("매칭 다오: tabContentGameList;;;");
+
+		List<GameVo> gameList = sqlSession.selectList("matching.tabContentGameList", themeNo);
+
+		return gameList;
+	}
 
 	// 마이페이지 - 매칭 리스트
 	public List<MatchingVo> mypageList(int userNo) {

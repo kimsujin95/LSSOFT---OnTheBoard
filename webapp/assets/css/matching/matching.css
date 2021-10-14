@@ -109,13 +109,17 @@ textarea {
 	margin: 8px 0px 0px 30px;
 }
 
+#select-option-checkbox label {
+	font-size: 16px;
+}
+
 #select-option-checkbox tr {
 	border-bottom: 1px solid #e2e2e2;
 }
 
 #select-option-checkbox>thead>tr>th {
 	text-align: center;
-	font-size: 16px;
+	font-size: 19px;
 	padding: 8px;
 	letter-spacing: 10px;
 }

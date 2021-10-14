@@ -17,6 +17,10 @@
 		<result column="matching_permission_gender" property="matchingPermissionGender" />
 		<result column="matching_reg_date" property="matchingRegDate" />
 		<result column="matching_member" property="matchingMember" />
+		<result column="theme_no" property="themeNo" />
+		<result column="game_no" property="gameNo" />
+		<result column="sido_no" property="sidoNo" />
+		<result column="sigungu_no" property="sigunguNo" />
 		<result column="theme_name" property="themeName" />
 		<result column="game_name_ko" property="gameNameKo" />
 		<result column="sido_name" property="sidoName" />
@@ -110,6 +114,8 @@
 		<![CDATA[
 				m.matching_status
 				|| m.matching_permission_gender
+				|| sd.sido_name
+				|| sg.sigungu_name
 				LIKE '%'||#{keyword}||'%'
 		]]>
 		</foreach>
@@ -117,6 +123,38 @@
 		<![CDATA[
 			ORDER BY
 				m.matching_no DESC
+		]]>
+	</select>
+	
+	<!-- 메인 - 시도 코드에 맞는 시군구 리스트 -->
+	<select id="tabContentSigunguList" parameterType="int" resultMap="resultMapSigunguVo">
+		<![CDATA[
+			SELECT
+			    sg.sido_code,
+			    sd.sido_name,
+			    sg.sigungu_code,
+			    sg.sigungu_name
+			FROM
+			    sigungu sg LEFT OUTER JOIN sido sd
+			    ON sg.sido_code = sd.sido_code
+			WHERE
+			    sg.sido_code = #{ sidoCode }
+		]]>
+	</select>
+
+	<!-- 메인 - 테마 번호에 맞는 게임 리스트 -->
+	<select id="tabContentGameList" parameterType="int" resultMap="resultMapGameVo">
+		<![CDATA[
+			SELECT
+				g.theme_no,
+				t.theme_name,
+				g.game_no,
+				g.game_name_ko
+			FROM
+				game g LEFT OUTER JOIN theme t
+				ON g.theme_no = t.theme_no
+			WHERE
+				g.theme_no = #{ themeNo }
 		]]>
 	</select>
 	

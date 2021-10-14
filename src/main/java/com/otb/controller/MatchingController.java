@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.otb.sevice.MatchingService;
 import com.otb.vo.CommentVo;
+import com.otb.vo.GameVo;
 import com.otb.vo.MatchingGroupVo;
 import com.otb.vo.MatchingVo;
+import com.otb.vo.SigunguVo;
 import com.otb.vo.UserVo;
 
 @Controller
@@ -27,12 +29,38 @@ public class MatchingController {
 	@Autowired
 	private MatchingService matchingService;
 
-	// 매칭 메인페이지(ajax리스트)
+	// 매칭 메인페이지(tab-content, ajax리스트)
 	@RequestMapping("/main")
-	public String main() {
+	public String main(Model model) {
 		System.out.println("매칭 컨트롤러: main;;;");
 		
+		Map<String, Object> tabContent = matchingService.tabContent();
+		model.addAttribute("tabContent", tabContent);
+		
 		return "/matching/list";
+	}
+	
+	// 매칭 메인페이지/매칭글 등록폼 - 시도 코드에 맞는 시군구 리스트
+	@ResponseBody
+	@RequestMapping("/tabContentSigunguList")
+	public List<SigunguVo> tabContentSigunguList(int sidoCode) {
+		System.out.println("매칭 컨트롤러: API-tabContentSigunguList;;;");
+		System.out.println(sidoCode);
+
+		List<SigunguVo> sigunguList = matchingService.tabContentSigunguList(sidoCode);
+
+		return sigunguList;
+	}
+
+	// 매칭 메인페이지/매칭글 등록폼 - 테마 코드에 맞는 게임 리스트
+	@ResponseBody
+	@RequestMapping("/tabContentGameList")
+	public List<GameVo> tabContentGameList(int themeNo) {
+		System.out.println("매칭 컨트롤러: API-tabContentGameList;;;");
+		System.out.println(themeNo);
+
+		List<GameVo> gameList = matchingService.tabContentGameList(themeNo);
+		return gameList;
 	}
 	
 	// 매칭리스트 API

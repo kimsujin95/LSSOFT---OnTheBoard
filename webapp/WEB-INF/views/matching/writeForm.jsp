@@ -27,7 +27,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 <link href="${pageContext.request.contextPath}/assets/css/datepicker.css" rel="stylesheet" type="text/css">
-<script src="resources/js/plugin/datepicker/bootstrap-datepicker.ko.min.js"></script>
+<!-- <script src="resources/js/plugin/datepicker/bootstrap-datepicker.ko.min.js"></script> -->
 
 <title>MATCHING</title>
 </head>
@@ -117,19 +117,17 @@
 					<label for="">지역</label>
 					<br>
 					<div class="col-xs-6">
-						시/도 선택&nbsp;&nbsp;<select name="sidoCode" id="select-sido">
-							<option>지역 선택</option>
+						시/도 선택&nbsp;&nbsp;
+						<select name="sidoCode" id="select-sido">
 							<c:forEach items="${writeUserMap.sidoList}" var="sidoVo" varStatus="status">
-								<option value="${sidoVo.sidoCode}">${sidoVo.sidoName}</option>
+								<option class="option-sido" value="${sidoVo.sidoCode}">${sidoVo.sidoName}</option>
 							</c:forEach>
 						</select>
 					</div>
 					<div class="col-xs-6">
-						시/군/구 선택&nbsp;&nbsp;<select name="sigunguCode" id="select-sigungu">
+						시/군/구 선택&nbsp;&nbsp;
+						<select name="sigunguCode" id="select-sigungu">
 							<option>지역 선택</option>
-							<c:forEach items="${writeUserMap.sigunguList}" var="sigunguVo">
-								<option value="${sigunguVo.sigunguCode}">${sigunguVo.sigunguName}</option>
-							</c:forEach>
 						</select>
 					</div>
 
@@ -189,7 +187,7 @@
 </body>
 
 <script>
-	/* $('#datepick').datepicker(
+/* $('#datepick').datepicker(
 			{
 				language : 'ko',
 				todayBtn : 'linked',
@@ -206,7 +204,35 @@
 				today : "오늘",
 				titleFormat : "yyyy년 mm월",
 				weekStart : 0
-			}); */
+}); */
+
+$('#select-sido').on('click', function() {
+	var sidoCode = $(this).val();
+	console.log(sidoCode);
+	
+	$('#select-sigungu').html('<option>지역 선택</option>');
+	
+	$.ajax({
+		url: '${pageContext.request.contextPath}/matching/tabContentSigunguList',
+		type: 'post',
+		data: { sidoCode: sidoCode },
+		success: function(sigunguList) {
+			console.log(sigunguList);
+			for (var i = 0; i < sigunguList.length; i++) {
+				sigunguSelect(sigunguList[i]);
+			}
+		},
+		error: function(XHR, status, error) {
+			console.log(status + ' : ' + error);s
+		}
+	});
+});
+
+function sigunguSelect(sigunguVo) {
+	var sigunguOption = '<option value="' + sigunguVo.sigunguCode + '">' + sigunguVo.sigunguName + '</option>';
+	
+	$('#select-sigungu').append(sigunguOption);
+}
 </script>
 
 </html>

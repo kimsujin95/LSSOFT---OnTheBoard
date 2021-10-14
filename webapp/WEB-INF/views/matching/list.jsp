@@ -157,13 +157,10 @@
 <script>
 
 // 매칭 리스트
-
-	// ready - 페이지 출력 전에 실행시킴
 	$(document).ready(function() {
 		fetch();
 	});
 	
-	// ready 내부 ajax
 	function fetch() {
 		$.ajax({
 			url: '${pageContext.request.contextPath}/matching/list',
@@ -181,7 +178,6 @@
 		});
 	};
 	
-	// ajax에 사용할 반복문 출력 HTML코드
 	function render(matchingList, matchingMemberList) {
 		var listHtml = '<tr id="readMatching" onClick="location.href=\'${pageContext.request.contextPath}/matching/read?no=' + matchingList.matchingNo + '\'">'
 							+ '<td>' + matchingList.matchingStatus + '</td>'
@@ -196,11 +192,10 @@
 
 		$('#listHtml').append(listHtml);
 	};
-	
-	// -- 매칭 리스트(페이지 출력 전에 실행시킴) --
+// -- 매칭 리스트 --
 
 // 옵션 선택 값 추가/삭제
-	$('input[type="checkbox"]').on('click', function (){
+	$('#content').on('click', 'input[type="checkbox"]', function (){
 		var inputClick = $(this).val();
 		
 		if ($(this).is(':checked')) {

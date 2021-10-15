@@ -12,7 +12,7 @@ ul,ol,li{
 
 #store-info-top-content{
     width: 100%;
-    padding-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 /* 이미지 슬라이드, 매장 상세정보 CSS */
@@ -50,6 +50,13 @@ ul,ol,li{
     border: none;
 }
 
+.store-details-info .top-td {
+	text-align: center;
+	font-size: 18px;
+	color: #ff1f67;
+	text-shadow: 2px 2px 5px #ff1f67;
+}
+
 .store-details-info tr {
 	border-bottom: 1px solid #e2e2e2;
 }
@@ -57,7 +64,7 @@ ul,ol,li{
 .store-details-info td {
 	border-bottom: 1px solid #e2e2e2;
 	padding-left: 15px;
-	font-size: 17px;
+	font-size: 15px;
 	font-weight: bold;
 	letter-spacing: 2px;
 }
@@ -74,7 +81,7 @@ ul,ol,li{
 	padding: 0px;
     width: 60px;
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
     border-right: 1px solid #e2e2e2;
 }
 
@@ -91,10 +98,6 @@ ul,ol,li{
     text-align: center;
     margin-top: 10px;
     padding-bottom: 10px;
-}
-
-.star-score{
-    padding-left: 30px;
 }
 
 /*리뷰 게시 구역*/

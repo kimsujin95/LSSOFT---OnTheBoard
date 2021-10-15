@@ -101,10 +101,12 @@
 				<table class="store-details-info">
 				
 				<colgroup>
-					<col width="15%">
-					<col width="85%">
+					<col width="12%">
+					<col width="88%">
 				</colgroup>
-
+					<tr>
+						<td class="top-td" colspan="2">${storeInfo.storeName}</td>
+					</tr>
 					<tr class="icons-row">
 						<td class="icons-span"><i class="fas fa-info-circle"></i></td>
 						<c:if test="${storeInfo.storeDesc != null}">
@@ -155,15 +157,19 @@
 							<td>주말 매장 이용요금 입력란 입니다.</td>
 						</c:if>
 					</tr>
+					<tr class="icons-row">
+						<td class="icons-span"><i class="far fa-star"></i></td>
+						<td>4.66/5</td>
+					</tr>
 
 				</table>
 
 			</div>
 			<!-- 매장 이름, 평점 -->
-			<div id="store-score-line">
+			<%-- <div id="store-score-line">
 				<span>${storeInfo.storeName}</span><br>
 				<span class="star-score"><i class="far fa-star"></i>4.66/5</span>
-			</div>
+			</div> --%>
 		</div>
 
 		<!-- 리뷰 게시구역 -->

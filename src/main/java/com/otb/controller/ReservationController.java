@@ -30,6 +30,11 @@ public class ReservationController {
 		for(int i = 0; i < checkedTime.length; i++)  {
 			System.out.println("checkedTime" + "[" + i + "] : " + checkedTime[i]);
 		}
+		
+		int lastTime = checkedTime.length;
+		System.out.println("체크된 첫번째 시간 : " + checkedTime[0]);
+		System.out.println("체크된 마지막 시간 : " + checkedTime[lastTime-1]);
+		
 		System.out.println("매장이름 : " + storeName);
 		System.out.println("매칭_그룹번호 : " + matchingNo);
 		System.out.println("매장번호 : " + storeNo);

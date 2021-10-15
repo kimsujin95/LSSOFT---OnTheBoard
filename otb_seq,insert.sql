@@ -361,6 +361,39 @@ insert into reservation_time
 values(SEQ_RESERVATION_TIME_NO.nextval, 1, '11');
 
 insert into reservation_time
+values(SEQ_RESERVATION_TIME_NO.nextval, 1, '12');
+
+insert into reservation_time
+values(SEQ_RESERVATION_TIME_NO.nextval, 1, '13');
+
+insert into reservation_time
+values(SEQ_RESERVATION_TIME_NO.nextval, 1, '14');
+
+insert into reservation_time
+values(SEQ_RESERVATION_TIME_NO.nextval, 1, '15');
+
+insert into reservation_time
+values(SEQ_RESERVATION_TIME_NO.nextval, 1, '16');
+
+insert into reservation_time
+values(SEQ_RESERVATION_TIME_NO.nextval, 1, '17');
+
+insert into reservation_time
+values(SEQ_RESERVATION_TIME_NO.nextval, 1, '18');
+
+insert into reservation_time
+values(SEQ_RESERVATION_TIME_NO.nextval, 1, '19');
+
+insert into reservation_time
+values(SEQ_RESERVATION_TIME_NO.nextval, 1, '20');
+
+insert into reservation_time
+values(SEQ_RESERVATION_TIME_NO.nextval, 1, '21');
+
+insert into reservation_time
+values(SEQ_RESERVATION_TIME_NO.nextval, 1, '22');
+
+insert into reservation_time
 values(SEQ_RESERVATION_TIME_NO.nextval, 2, '09');
 
 insert into reservation_time

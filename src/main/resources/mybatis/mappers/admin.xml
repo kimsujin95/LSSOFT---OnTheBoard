@@ -115,6 +115,18 @@
 		]]>
 	</update>
 	
+	<!-- 매장 이미지 호출 -->
+	<select id="selectListStoreImage" parameterType="int" resultMap="resultMapStoreImage">
+		<![CDATA[
+			SELECT 
+				 store_image_no
+				,store_path_image
+			FROM
+				store_image
+			WHERE store_no = #{storeNo}
+		]]>
+	</select>
+	
 	<!-- 매장 이미지 등록 -->
 	<insert id="insertStoreImage" parameterType="StoreImageVo">
 		<selectKey keyProperty="storeImageNo" resultType="int" order="BEFORE">

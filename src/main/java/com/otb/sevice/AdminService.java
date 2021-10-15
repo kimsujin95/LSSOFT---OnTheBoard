@@ -50,16 +50,26 @@ public class AdminService {
 		adminDao.updateStoreInfo(storeVo);
 	}
 	
+	//매장 이미지 호출
+	public List<StoreImageVo> getStoreImageList(int storeNo) {
+		List<StoreImageVo> storeImageList = adminDao.selectImageList(storeNo);
+		
+		System.out.println("이미지 호출 완료");
+		
+//		for(StoreImageVo storeImage : storeImageList) {
+//			System.out.println(storeImage.toString());
+//		}
+		
+		return storeImageList;
+	}
+	
 	//매장 이미지 등록
-	public void restoreImages(List<MultipartFile> fileList, int userNo) {
+	public void restoreImages(List<MultipartFile> fileList, int storeNo) {
 		
 		System.out.println("서비스 도착");
 		
 		//저장 폴더 경로
 		String saveDirectory = "C:\\JavaStudy\\upload\\otb";
-		
-		//매장 번호 호출
-		int storeNo = adminDao.selectStore(userNo).getStoreNo();
 		
 		//이미지 저장
 		for(MultipartFile image : fileList) {

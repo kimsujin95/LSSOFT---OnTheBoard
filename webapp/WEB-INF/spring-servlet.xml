@@ -47,6 +47,7 @@
 
 	<!-- url매핑 -->
 	<mvc:resources mapping="/upload/**" location="file:C:/javaStudy/otb/src/img/" />
+	<mvc:resources mapping="/storeImage/**" location="file:C:/javaStudy/upload/otb" />
 	
 	<bean class="java.lang.String" id="uploadPath">
  		<constructor-arg value="C:\Javastudy\workspace_web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\OnTheBoard\

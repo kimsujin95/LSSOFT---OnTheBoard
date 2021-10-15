@@ -1,5 +1,7 @@
 package com.otb.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -34,6 +36,12 @@ public class AdminDao {
 	public void updateStoreInfo(StoreVo storeVo) {
 		sqlSession.update("admin.updateStoreInfo", storeVo);
 		System.out.println("업데이트 완료");
+	}
+	
+	//매장 이미지 호출
+	public List<StoreImageVo> selectImageList(int storeNo) {
+		List<StoreImageVo> storeImageList = sqlSession.selectList("admin.selectListStoreImage", storeNo);
+		return storeImageList;
 	}
 	
 	//매장 이미지 등록 - ajax

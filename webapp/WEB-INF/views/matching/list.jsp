@@ -68,7 +68,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><input class="margin-left-none" type="checkbox" id="male" value="남" name="gender-limit"> <label for="male">남</label> <input type="checkbox" id="female" value="여" name="gender-limit"> <label for="female">여</label> <input type="checkbox" id="sex-none" value="성별무관" name="gender-limit"> <label for="sex-none">무관</label></td>
+							<td><input class="margin-left-none" type="checkbox" id="male" value="남자" name="gender-limit"> <label for="male">남</label> <input type="checkbox" id="female" value="여자" name="gender-limit"> <label for="female">여</label> <input type="checkbox" id="sex-none" value="성별무관" name="gender-limit"> <label for="sex-none">무관</label></td>
 							<td><input class="margin-left-none" type="checkbox" id="10s" value="10대"> <label for="10s">10대</label> <input type="checkbox" id="20s" value="20대"> <label for="20s">20대</label> <input type="checkbox" id="30s" value="30대"> <label for="30s">30대</label> <input type="checkbox" id="40s" value="40대"> <label for="40s">40대</label> <input type="checkbox" id="age-none" value="나이무관"> <label for="age-none">무관</label></td>
 							<td><input class="margin-left-none" type="checkbox" id="matching-ing" value="매칭중"> <label for="matching-ing">매칭중</label> <input type="checkbox" id="matching-end" value="매칭완료"> <label for="matching-end">매칭완료</label></td>
 						</tr>
@@ -111,7 +111,7 @@
 						<th>제목</th>
 						<th>게임</th>
 						<th>인원</th>
-						<th>성별</th>
+						<th>성별제한</th>
 						<th>지역</th>
 						<th>시작날짜</th>
 					</tr>

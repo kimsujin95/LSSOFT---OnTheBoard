@@ -18,6 +18,7 @@
 		<typeAlias alias="SigunguVo" type="com.otb.vo.SigunguVo" />
 		<typeAlias alias="CommentVo" type="com.otb.vo.CommentVo" />
 		<typeAlias alias="ReplyVo" type="com.otb.vo.ReplyVo" />
+		<typeAlias alias="CommentReplyVo" type="com.otb.vo.CommentReplyVo" />
 	</typeAliases>
 	
 	<mappers>

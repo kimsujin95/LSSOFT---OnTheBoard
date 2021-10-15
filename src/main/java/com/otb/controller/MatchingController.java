@@ -19,6 +19,7 @@ import com.otb.vo.CommentVo;
 import com.otb.vo.GameVo;
 import com.otb.vo.MatchingGroupVo;
 import com.otb.vo.MatchingVo;
+import com.otb.vo.ReplyVo;
 import com.otb.vo.SigunguVo;
 import com.otb.vo.UserVo;
 
@@ -163,7 +164,7 @@ public class MatchingController {
 	// 매칭글 읽기 - 댓글 등록/출력
 	@ResponseBody
 	@RequestMapping("/commentWrite")
-	public CommentVo commentWrite(CommentVo commentVo) {
+	public CommentVo commentWrite(@ModelAttribute CommentVo commentVo) {
 		System.out.println("매칭 컨트롤러: API-commentWrite;;;");
 		System.out.println(commentVo);
 		
@@ -172,6 +173,17 @@ public class MatchingController {
 		return commentInfo;
 	}
 	
+	// 매칭글 읽기 - 답글 등록/출력
+	@ResponseBody
+	@RequestMapping("/replyWrite")
+	public ReplyVo replyWrite(@ModelAttribute ReplyVo replyVo) {
+		System.out.println("매칭 컨트롤러: API-replyWrite;;;");
+		System.out.println(replyVo);
+		
+		ReplyVo replyInfo = matchingService.replyWriteInfo(replyVo);
+		
+		return replyInfo;
+	}
 	
 	
 	

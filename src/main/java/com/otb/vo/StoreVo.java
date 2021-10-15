@@ -24,6 +24,11 @@ public class StoreVo {
 	public StoreVo() {
 	}
 	
+	public StoreVo(int storeChargeweek, int storeChargeWeekend) {
+		this.storeChargeWeek = storeChargeweek;
+		this.storeChargeWeekend = storeChargeWeekend;
+	}
+	
 	public StoreVo(int storeNo, String storeName, double storeLat, double storeLng) {
 		super();
 		this.storeNo = storeNo;

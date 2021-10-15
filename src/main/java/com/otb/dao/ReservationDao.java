@@ -19,20 +19,23 @@ public class ReservationDao {
 		
 		System.out.println("다오매장번호 : " + storeNo);
 		
-		StoreVo storeCharge = sqlSession.selectOne("getstoreCharge",storeNo);
+		StoreVo storeCharge = sqlSession.selectOne("reservation.getstoreCharge",storeNo);
 		
 		System.out.println("주중_매장_요금제 : " + storeCharge.getStoreChargeWeek());
 		System.out.println("주말_매장_요금제 : " + storeCharge.getStoreChargeWeekend());
 		
-		return null;
+		return storeCharge;
 	}
 	
+	//DateType 값 구하기(주중, 주말 구분)
 	public String getDateType(ReservationDateVo revDate) {
 		System.out.println("[reservationDao.getDateType]");
 		
-		sqlSession.selectOne("getDateType", revDate);
+		String dateType = sqlSession.selectOne("reservation.getDateType", revDate);
 		
-		return null;
+		System.out.println("dateType : " + dateType);
+		
+		return dateType;
 	}
 	
 }

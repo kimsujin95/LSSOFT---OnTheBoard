@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.otb.sevice.ReservationService;
 import com.otb.vo.ReservationDateVo;
+import com.otb.vo.ReservationVo;
 
 @Controller
 @RequestMapping(value="/reservation", method = { RequestMethod.GET, RequestMethod.POST })
@@ -20,7 +21,7 @@ public class ReservationController {
 	
 	@ResponseBody
 	@RequestMapping("/reservationinfo/{storeNo}")
-	public String reservationinfo(@PathVariable("storeNo")int storeNo, @RequestParam ("checkedTime[]") String[] checkedTime, @RequestParam("matchingNo") int matchingNo, @RequestParam("selectedDate") String selectedDate) {
+	public String reservationinfo(@PathVariable("storeNo")int storeNo, @RequestParam ("checkedTime[]") String[] checkedTime, @RequestParam("matchingNo") int matchingNo, @RequestParam("selectedDate") String selectedDate, @RequestParam("storeName") String storeName, @RequestParam("revType") String revType) {
 		
 		System.out.println("[reservationController.reservationinfo]");
 		
@@ -28,20 +29,19 @@ public class ReservationController {
 		for(int i = 0; i < checkedTime.length; i++)  {
 			System.out.println("checkedTime" + "[" + i + "] : " + checkedTime[i]);
 		}
-		
+		System.out.println("매장이름 : " + storeName);
 		System.out.println("매칭_그룹번호 : " + matchingNo);
 		System.out.println("매장번호 : " + storeNo);
 		System.out.println("선택된날짜 : " + selectedDate);
+		System.out.println("예약방식 : " + revType);
 		
 		ReservationDateVo revdate = new ReservationDateVo(storeNo, selectedDate);
 		
-		reservationService.getreservationinfo(matchingNo, checkedTime, revdate);
+		ReservationVo reservationInfo = reservationService.getreservationinfo(matchingNo, checkedTime, revdate, revType);
 		
-		
+		System.out.println("예약컨트롤러_예약정보Vo : " + reservationInfo);
 		
 		return "1";
-		
-		
 		
 	}
 	

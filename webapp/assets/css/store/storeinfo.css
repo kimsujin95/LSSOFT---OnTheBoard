@@ -128,7 +128,7 @@ ul,ol,li{
   right: 0;
 }
 
-.user_review > li > .user_profile_img, .review_writer_info{
+.user_review li > .user_profile_img, .review_writer_info{
     float: left;
 }
 

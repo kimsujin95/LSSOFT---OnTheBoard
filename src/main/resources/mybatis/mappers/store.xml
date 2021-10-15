@@ -35,7 +35,9 @@
 	<select id="getgrouplist" parameterType="int" resultType="com.otb.vo.UserVo">
 		<![CDATA[
 			select mg.user_no as userNo,
-      			   u.user_nickname as userNickname
+      			   u.user_nickname as userNickname,
+      			   u.user_path_profile as userPathProfile,
+       			   u.user_gender as userGender
 			from matching_group mg, users u
 			where mg.user_no = u.user_no and
       			  mg.matching_no = #{matchingno}

@@ -25,7 +25,7 @@ public class ReservationController {
 	//예약 내역 확인용 모달창에 예약정보 보내기
 	@ResponseBody
 	@RequestMapping("/reservationinfo/{storeNo}")
-	public Map<String, Object> reservationinfo(@PathVariable("storeNo")int storeNo, @RequestParam ("checkedTime[]") String[] checkedTime, @RequestParam("matchingNo") int matchingNo, @RequestParam("selectedDate") String selectedDate, @RequestParam("storeName") String storeName, @RequestParam("revType") String revType) {
+	public ReservationVo reservationinfo(@PathVariable("storeNo")int storeNo, @RequestParam ("checkedTime[]") String[] checkedTime, @RequestParam("matchingNo") int matchingNo, @RequestParam("selectedDate") String selectedDate, @RequestParam("storeName") String storeName, @RequestParam("revType") String revType) {
 		
 		System.out.println("[reservationController.reservationinfo]");
 		
@@ -45,11 +45,11 @@ public class ReservationController {
 		
 		System.out.println("예약컨트롤러_예약정보Vo : " + reservationInfo);
 		
-		Map<String, Object> revInfo = new HashMap<String, Object>();
-		revInfo.put("reservationInfo", reservationInfo);
-		revInfo.put("storeName", storeName);
+		//Map<String, Object> revInfo = new HashMap<String, Object>();
+		//revInfo.put("reservationInfo", reservationInfo);
 		
-		return revInfo;
+		
+		return reservationInfo;
 		
 	}
 	

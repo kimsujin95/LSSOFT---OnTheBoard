@@ -50,6 +50,8 @@ public class ReservationService {
 		List<UserVo> groupList = storeDao.grouplist(matchingNo);
 		System.out.println("그룹원 정보 : " + groupList);
 		
+		
+		
 		//예약날짜번호 구하기
 		int reservationDateNo = storeDao.getDateNo(revDate);
 		System.out.println("예약날짜_번호 : " + reservationDateNo);

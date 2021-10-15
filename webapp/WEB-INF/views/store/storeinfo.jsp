@@ -565,9 +565,42 @@
 	<!-- FOOTER -->
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 	<!-- // FOOTER -->
-	
-	
-	
+
+	<div class="modal fade" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">예약 입력정보</h4>
+				</div>
+				<div class="modal-body">
+					<table>
+						<tr>
+							<td colspan="2" class="modal_storeName"></td>
+						</tr>
+						<tr>
+							<td class="modal_chargeTotal"></td>
+							<td class="modal_chargePeople"></td>
+						</tr>
+						<tr>
+							<td class="modal_revDate"></td>
+							<td class="modal_revTime"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+					<button type="button" class="btn btn-primary">예약하기</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
 	<!-- Datepicker -->
 	<script type="text/javascript">
 		
@@ -696,7 +729,7 @@
           		
           	});
         	
-        	//예약버튼 클릭 시 시간대 체크된 항목들만 배열에 담기
+        	//예약버튼 클릭 시 예약에 필요한 데이터 컨트롤러로 넘기기
         	$('#rev_btn').on('click',function(){
 				
 				var chdval = new Array();
@@ -744,15 +777,26 @@
     		        type : 'POST',
     		        data : revinfo,
     		        
-    		        success : function(val) {
+    		        success : function(reservationInfo) {
     		            // ajax 랜더링 for문
-						console.log("도착");
-    		        	
+    		            console.log("예약정보_도착");
+						console.log(reservationInfo);
+						
+						$('.modal_storeName').text("매장 이름 : " + storeName);
+						$('.modal_chargeTotal').text("총 금액 : " + reservationInfo.reservationChargeTotal);
+						$('.modal_chargePeople').text("결제금액 : " + reservationInfo.reservationChargePeople);
+						$('.modal_revDate').text("예약일 : " + reservationInfo.)
+						
+						$('#myModal').modal('show');
+						
+						
+						
     		        }, // success 
     				
     		        error : function(XHR, status, error) {
     					
     		        	console.error(status + " : " + error);
+    		        	
     		        	}
     		        
     		    }); // $.ajax */
@@ -761,20 +805,6 @@
         		
         })
 		     	
-     	/* //클릭한 시간을 배열에 담기
-     	function insertTime(checkedvalue, selectTimeArray){
-     		
-			for(var i = 0; i < revtimeArray.length; i++){
-				
-				if(checkedvalue == revtimeArray[i]){
-					
-					selectTimeArray[i] = checkedvalue;
-					
-				}
-				
-			}
-			
-		} */
      	
     </script>
 

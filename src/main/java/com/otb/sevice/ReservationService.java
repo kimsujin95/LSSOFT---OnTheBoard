@@ -1,5 +1,7 @@
 package com.otb.sevice;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +11,7 @@ import com.otb.dao.StoreDao;
 import com.otb.vo.ReservationDateVo;
 import com.otb.vo.ReservationVo;
 import com.otb.vo.StoreVo;
+import com.otb.vo.UserVo;
 
 @Service
 public class ReservationService {
@@ -40,7 +43,12 @@ public class ReservationService {
 		//매장 번호로 매장 시간당 요금을 가져온다.(총 요금 계산에 사용)
 		StoreVo storeChargeVo = reservationDao.getstoreCharge(revDate.getStoreNo());
 		
+		//매칭번호에 속하는 참여자의 인원수를 뽑아온다.
 		int matchingMember = matchingDao.matchingMember(matchingNo);
+		
+		//매칭 그룹원 리스트 뽑아오기
+		List<UserVo> groupList = storeDao.grouplist(matchingNo);
+		System.out.println("그룹원 정보 : " + groupList);
 		
 		//예약날짜번호 구하기
 		int reservationDateNo = storeDao.getDateNo(revDate);

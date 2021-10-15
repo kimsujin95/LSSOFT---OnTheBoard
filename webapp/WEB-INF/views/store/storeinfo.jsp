@@ -9,12 +9,18 @@
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"
+>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <!-- CSS -->
-<link href="${pageContext.request.contextPath}/assets/css/common.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/assets/css/store/storeinfo.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/common.css" rel="stylesheet"
+	type="text/css"
+>
+<link href="${pageContext.request.contextPath}/assets/css/store/storeinfo.css" rel="stylesheet"
+	type="text/css"
+>
 
 <!-- jQuery -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
@@ -25,7 +31,9 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!-- fontawesome cdn -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+	rel="stylesheet"
+>
 
 </head>
 <body>
@@ -73,25 +81,31 @@
 						<!-- 이미지의 개수만큼 item을 만든다. 중요한 포인트는 carousel-indicators의 li 태그 개수와 item의 개수는 일치해야 한다. -->
 						<div class="item active">
 							<!-- 아미지 설정- -->
-							<img src="${pageContext.request.contextPath}/assets/images/admin/BoardGameStore.jpg" class="store_img">
+							<img src="${pageContext.request.contextPath}/assets/images/admin/BoardGameStore.jpg"
+								class="store_img"
+							>
 							<!-- 캡션 설정 (생략 가능) -->
 							<!-- 글자 색은 검은색 -->
 							<div class="carousel-caption">매장이미지1 입니다.</div>
 						</div>
 						<div class="item">
-							<img src="${pageContext.request.contextPath}/assets/images/admin/BoardGameStore2.jpg" class="store_img">
+							<img src="${pageContext.request.contextPath}/assets/images/admin/BoardGameStore2.jpg"
+								class="store_img"
+							>
 							<div class="carousel-caption">매장이미지2 입니다.</div>
 						</div>
 					</div>
 					<!-- 왼쪽 화살표 버튼 -->
 					<!-- href는 carousel의 id를 가르킨다. -->
-					<a class="left carousel-control" href="#carousel-store-img-generic" role="button" data-slide="prev"> <!-- 왼쪽 화살표 --> <span
-						class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<a class="left carousel-control" href="#carousel-store-img-generic" role="button"
+						data-slide="prev"
+					> <!-- 왼쪽 화살표 --> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 					</a>
 					<!-- 오른쪽 화살표 버튼 -->
 					<!-- href는 carousel의 id를 가르킨다. -->
-					<a class="right carousel-control" href="#carousel-store-img-generic" role="button" data-slide="next"> <!-- 오른쪽 화살표 --> <span
-						class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<a class="right carousel-control" href="#carousel-store-img-generic" role="button"
+						data-slide="next"
+					> <!-- 오른쪽 화살표 --> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 					</a>
 				</div>
 			</div>
@@ -105,19 +119,19 @@
 						<c:if test="${storeInfo.storeDesc != null}">
 							<td>${storeInfo.storeDesc}</td>
 						</c:if>
-						
+
 						<c:if test="${storeInfo.storeDesc == null }">
 							<td>매장 소개글 입력란 입니다.</td>
 						</c:if>
-						
+
 					</tr>
 
 					<tr class="icons-row">
 						<td class="icons-span"><i class="fas fa-phone-square"></i></td>
 						<c:if test="${storeInfo.storePhoneNo != null}">
 							<td>매장 전화번호 : ${storeInfo.storePhoneNo}</td>
-						</c:if>						
-						
+						</c:if>
+
 						<c:if test="${storeInfo.storePhoneNo == null}">
 							<td>매장 전화번호 입력란 입니다.</td>
 						</c:if>
@@ -127,20 +141,20 @@
 						<td rowspan="2" class="icons-span"><i class="fas fa-compass"></i></td>
 						<c:if test="${storeInfo.storeAddressRoad != null}">
 							<td>매장 주소 : ${storeInfo.storeAddressRoad}</td>
-						</c:if>						
-						
+						</c:if>
+
 						<c:if test="${storeInfo.storeAddressRoad == null}">
 							<td>매장 주소 입력란 입니다.</td>
 						</c:if>
-						
+
 					</tr>
 
 					<tr class="icons-row">
 						<td rowspan="2" class="icons-span"><i class="fas fa-wallet"></i></td>
 						<c:if test="${storeInfo.storeChargeWeek != null}">
 							<td>주중 요금 : ${storeInfo.storeChargeWeek}</td>
-						</c:if>						
-						
+						</c:if>
+
 						<c:if test="${storeInfo.storeChargeWeek == null}">
 							<td>주중 매장 이용요금 입력란 입니다.</td>
 						</c:if>
@@ -148,8 +162,8 @@
 					<tr>
 						<c:if test="${storeInfo.storeChargeWeekend != null}">
 							<td>주말 요금 : ${storeInfo.storeChargeWeekend}</td>
-						</c:if>						
-						
+						</c:if>
+
 						<c:if test="${storeInfo.storeChargeWeekend == null}">
 							<td>주말 매장 이용요금 입력란 입니다.</td>
 						</c:if>
@@ -242,98 +256,126 @@
 
 							<button class="datebar_btn" type="button" data-date="15" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"15" <span style="pointer-events: none;" class="ir">일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"15" <span
+									style="pointer-events: none;" class="ir"
+								>일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">수</span>
 
 							</button>
 
 							<button class="datebar_btn" type="button" data-date="16" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"16" <span style="pointer-events: none;" class="ir">일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"16" <span
+									style="pointer-events: none;" class="ir"
+								>일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">목</span>
 
 							</button>
 
 							<button class="datebar_btn" type="button" data-date="17" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"17" <span style="pointer-events: none;" class="ir">일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"17" <span
+									style="pointer-events: none;" class="ir"
+								>일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">금</span>
 
 							</button>
 
 							<button class="datebar_btn" type="button" data-date="18" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"18" <span style="pointer-events: none;" class="ir">일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"18" <span
+									style="pointer-events: none;" class="ir"
+								>일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">토</span>
 
 							</button>
 
 							<button class="datebar_btn" type="button" data-date="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"19" <span style="pointer-events: none;" class="ir">일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"19" <span
+									style="pointer-events: none;" class="ir"
+								>일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">일</span>
 
 							</button>
 
 							<button class="datebar_btn" type="button" data-date="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"20" <span style="pointer-events: none;" class="ir">일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"20" <span
+									style="pointer-events: none;" class="ir"
+								>일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">월</span>
 
 							</button>
 
 							<button class="datebar_btn" type="button" data-date="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"21" <span style="pointer-events: none;" class="ir">일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"21" <span
+									style="pointer-events: none;" class="ir"
+								>일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">화</span>
 
 							</button>
 
 							<button class="datebar_btn" type="button" data-date="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"22" <span style="pointer-events: none;" class="ir">일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"22" <span
+									style="pointer-events: none;" class="ir"
+								>일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">수</span>
 
 							</button>
 
 							<button class="datebar_btn" type="button" data-date="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"23" <span style="pointer-events: none;" class="ir">일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"23" <span
+									style="pointer-events: none;" class="ir"
+								>일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">목</span>
 
 							</button>
 
 							<button class="datebar_btn" type="button" data-date="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"24" <span style="pointer-events: none;" class="ir">일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"24" <span
+									style="pointer-events: none;" class="ir"
+								>일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">금</span>
 
 							</button>
 
 							<button class="datebar_btn" type="button" data-date="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"25" <span style="pointer-events: none;" class="ir">일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"25" <span
+									style="pointer-events: none;" class="ir"
+								>일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">토</span>
 
 							</button>
 
 							<button class="datebar_btn" type="button" data-date="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"26" <span style="pointer-events: none;" class="ir">일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"26" <span
+									style="pointer-events: none;" class="ir"
+								>일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">일</span>
 
 							</button>
 
 							<button class="datebar_btn" type="button" data-date="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"27" <span style="pointer-events: none;" class="ir">일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"27" <span
+									style="pointer-events: none;" class="ir"
+								>일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">월</span>
 
 							</button>
 
 							<button class="datebar_btn" type="button" data-date="" month="">
 
-								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"28" <span style="pointer-events: none;" class="ir">일</span>
+								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"28" <span
+									style="pointer-events: none;" class="ir"
+								>일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">화</span>
 
 							</button>
@@ -348,7 +390,9 @@
 					<!-- 달력 보기 -->
 					<div class="bg-line">
 						<input type="hidden" id="datepicker" value=""> <input type="hidden" id="date_selected">
-						<button type="button" id="calendar" onclick="$('#datepicker').datepicker('show')" class="btn-calendar-large" title="달력보기">달력보기</button>
+						<button type="button" id="calendar" onclick="$('#datepicker').datepicker('show')"
+							class="btn-calendar-large" title="달력보기"
+						>달력보기</button>
 					</div>
 				</div>
 			</div>
@@ -358,10 +402,12 @@
 				<!-- 예약 인원 선택 -->
 				<div class="select_rev_info_area">
 					<ul class="nav nav-tabs nav-justified" role="tablist" id="how_to_choice_people">
-						<li role="presentation" class="active"><a href="#choice_by_count" aria-controls="choice_by_count" role="tab" data-toggle="tab">직접
-								입력</a></li>
-						<li role="presentation"><a href="#choice_by_grouplist" aria-controls="choice_by_grouplist" role="tab" data-toggle="tab">그룹
-								리스트에서 선택</a></li>
+						<li role="presentation" class="active"><a href="#choice_by_count"
+							aria-controls="choice_by_count" role="tab" data-toggle="tab"
+						>직접 입력</a></li>
+						<li role="presentation"><a href="#choice_by_grouplist"
+							aria-controls="choice_by_grouplist" role="tab" data-toggle="tab"
+						>그룹 리스트에서 선택</a></li>
 					</ul>
 
 					<div class="tab-content">
@@ -387,9 +433,12 @@
 								<ul id="grouplist">
 									<!-- 매칭이 완료된 그룹 리스트 -->
 									<!-- 내역이 없을 시 리스트 존재x 텍스트 띄워주기 -->
-									<c:forEach items="${userDataInfoMap.userHostMatchingList}" var="matchingVo" varStatus="status">
-										<li role="presentation" class="selgroup" data-no="${matchingVo.matchingNo}"><a href="#chosen_group" aria-controls="chosen_group" role="tab" data-toggle="tab"> <span
-												class="groupUser">${status.index + 1}. ${matchingVo.matchingTitle}</span>
+									<c:forEach items="${userDataInfoMap.userHostMatchingList}" var="matchingVo"
+										varStatus="status"
+									>
+										<li role="presentation" class="selgroup" data-no="${matchingVo.matchingNo}"><a
+											href="#chosen_group" aria-controls="chosen_group" role="tab" data-toggle="tab"
+										> <span class="groupUser">${status.index + 1}. ${matchingVo.matchingTitle}</span>
 										</a></li>
 									</c:forEach>
 								</ul>
@@ -465,7 +514,9 @@
 
 					<ul>
 
-						<li class="game-list"><img src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg">
+						<li class="game-list"><img
+							src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg"
+						>
 							<table>
 								<tr>
 									<td>voidFall</td>
@@ -514,7 +565,9 @@
 	<!-- FOOTER -->
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 	<!-- // FOOTER -->
-
+	
+	
+	
 	<!-- Datepicker -->
 	<script type="text/javascript">
 		
@@ -724,7 +777,7 @@
 		} */
      	
     </script>
-	
+
 	<!-- 이미지 출력 -->
 	<script>
         $(function () {
@@ -743,7 +796,7 @@
         })
     </script>
 	<!-- /이미지 출력 -->
-	
+
 	<!-- 페이징 -->
 	<script type="text/javascript">
         var totalData = 1000;    // 총 데이터 수 --> 실제로는 DB에서 가져온다.

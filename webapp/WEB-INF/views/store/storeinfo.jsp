@@ -99,17 +99,20 @@
 			<div id="store-details" class="store-main-sub-content">
 
 				<table class="store-details-info">
+				
+				<colgroup>
+					<col width="20%">
+					<col width="80%">
+				</colgroup>
 
 					<tr class="icons-row">
 						<td class="icons-span"><i class="fas fa-info-circle"></i></td>
 						<c:if test="${storeInfo.storeDesc != null}">
 							<td>${storeInfo.storeDesc}</td>
 						</c:if>
-
 						<c:if test="${storeInfo.storeDesc == null }">
 							<td>매장 소개글 입력란 입니다.</td>
 						</c:if>
-
 					</tr>
 
 					<tr class="icons-row">
@@ -117,7 +120,6 @@
 						<c:if test="${storeInfo.storePhoneNo != null}">
 							<td>매장 전화번호 : ${storeInfo.storePhoneNo}</td>
 						</c:if>
-
 						<c:if test="${storeInfo.storePhoneNo == null}">
 							<td>매장 전화번호 입력란 입니다.</td>
 						</c:if>
@@ -128,19 +130,19 @@
 						<c:if test="${storeInfo.storeAddressRoad != null}">
 							<td>매장 주소 : ${storeInfo.storeAddressRoad}</td>
 						</c:if>
-
 						<c:if test="${storeInfo.storeAddressRoad == null}">
 							<td>매장 주소 입력란 입니다.</td>
 						</c:if>
-
 					</tr>
 
+					<tr>
+						<td>상세주소</td>
+					</tr>
 					<tr class="icons-row">
 						<td rowspan="2" class="icons-span"><i class="fas fa-wallet"></i></td>
 						<c:if test="${storeInfo.storeChargeWeek != null}">
 							<td>주중 요금 : ${storeInfo.storeChargeWeek}</td>
 						</c:if>
-
 						<c:if test="${storeInfo.storeChargeWeek == null}">
 							<td>주중 매장 이용요금 입력란 입니다.</td>
 						</c:if>
@@ -149,7 +151,6 @@
 						<c:if test="${storeInfo.storeChargeWeekend != null}">
 							<td>주말 요금 : ${storeInfo.storeChargeWeekend}</td>
 						</c:if>
-
 						<c:if test="${storeInfo.storeChargeWeekend == null}">
 							<td>주말 매장 이용요금 입력란 입니다.</td>
 						</c:if>

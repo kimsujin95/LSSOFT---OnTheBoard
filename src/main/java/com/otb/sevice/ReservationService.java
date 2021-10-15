@@ -26,14 +26,23 @@ public class ReservationService {
 			System.out.println("선택한 시간 : " + checkedTime[i]);	
 		}
 		
-		//매장 번호로 매장 시간당 요금을 가져온다.
-		StoreVo storechargeperhour = reservationDao.getstoreCharge(revDate.getStoreNo());
-		
-		
-		
+		//주중, 주말을 구분하는 DateType값 가져오기(총 요금 계산에 사용)
 		String DateType = reservationDao.getDateType(revDate);
+		System.out.println("예약다오_데이트타입 : " + DateType);
 		
-		//String dateType = 
+		//매장 번호로 매장 시간당 요금을 가져온다.(총 요금 계산에 사용)
+		StoreVo storeChargeVo = reservationDao.getstoreCharge(revDate.getStoreNo());
+		
+		//선택한 시간대에 대한 총 요금
+		int revChargeTotal;
+		
+		if(DateType == "1" || DateType == "7") {
+			revChargeTotal = storeChargeVo.getStoreChargeWeekend() * checkedTime.length;
+		}else {
+			revChargeTotal = storeChargeVo.getStoreChargeWeek() * checkedTime.length;
+		}
+		
+		System.out.println("총 예약 요금 : " + revChargeTotal);
 		
 		return null;
 		

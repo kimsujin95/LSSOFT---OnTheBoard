@@ -38,10 +38,7 @@ public class ReservationController {
 		reservationService.getreservationinfo(matchingNo, checkedTime, revdate);
 		
 		
-		
 		return "1";
-		
-		
 		
 	}
 	

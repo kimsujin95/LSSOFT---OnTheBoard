@@ -14,4 +14,14 @@
 		]]>
 	</select>
 	
+	<!-- DateType 가져오기 -->
+	<select id="getDateType" parameterType="ReservationDateVo" resultType="String">
+		<![CDATA[
+			select date_type as dateType
+			from reservation_date
+			where store_no = #{storeNo} and store_reservation_date = #{storeReservationDate}
+		]]>
+	</select>
+	
+	
 </mapper>

@@ -20,30 +20,29 @@ public class MatchingVo {
 	private String sigunguName;
 	private int matchingPeople;
 	private String matchingPermissionGender;
-	private String matchingPermissionTeens;
-	private String matchingPermissionTwenties;
-	private String matchingPermissionThirties;
-	private String matchingPermissionFourties;
-	private String matchingPermissionAllAge;
+//	private String matchingPermissionTeens;
+//	private String matchingPermissionTwenties;
+//	private String matchingPermissionThirties;
+//	private String matchingPermissionFourties;
+//	private String matchingPermissionAllAge;
 	private String matchingTitle;
 	private String matchingContent;
 	private String matchingRegDate;
 	private int matchingHits;
 	private String matchingStatus;
 	private int matchingMember;
+	private String matchingPermissionAge;
 	
 	
 	public MatchingVo() {
 		super();
 	}
-	
+
 	public MatchingVo(int matchingNo, int userNo, String userNickname, int userBirthDate, int userAge,
 			String userGender, int themeNo, String themeName, int gameNo, String gameNameKo, String matchingDate,
 			String matchingTime, int sidoCode, String sidoName, int sigunguCode, String sigunguName, int matchingPeople,
-			String matchingPermissionGender, String matchingPermissionTeens, String matchingPermissionTwenties,
-			String matchingPermissionThirties, String matchingPermissionFourties, String matchingPermissionAllAge,
-			String matchingTitle, String matchingContent, String matchingRegDate, int matchingHits,
-			String matchingStatus, int matchingMember) {
+			String matchingPermissionGender, String matchingTitle, String matchingContent, String matchingRegDate,
+			int matchingHits, String matchingStatus, int matchingMember, String matchingPermissionAge) {
 		super();
 		this.matchingNo = matchingNo;
 		this.userNo = userNo;
@@ -63,17 +62,13 @@ public class MatchingVo {
 		this.sigunguName = sigunguName;
 		this.matchingPeople = matchingPeople;
 		this.matchingPermissionGender = matchingPermissionGender;
-		this.matchingPermissionTeens = matchingPermissionTeens;
-		this.matchingPermissionTwenties = matchingPermissionTwenties;
-		this.matchingPermissionThirties = matchingPermissionThirties;
-		this.matchingPermissionFourties = matchingPermissionFourties;
-		this.matchingPermissionAllAge = matchingPermissionAllAge;
 		this.matchingTitle = matchingTitle;
 		this.matchingContent = matchingContent;
 		this.matchingRegDate = matchingRegDate;
 		this.matchingHits = matchingHits;
 		this.matchingStatus = matchingStatus;
 		this.matchingMember = matchingMember;
+		this.matchingPermissionAge = matchingPermissionAge;
 	}
 
 	public int getMatchingNo() {
@@ -107,11 +102,11 @@ public class MatchingVo {
 	public void setUserBirthDate(int userBirthDate) {
 		this.userBirthDate = userBirthDate;
 	}
-	
+
 	public int getUserAge() {
 		return userAge;
 	}
-	
+
 	public void setUserAge(int userAge) {
 		this.userAge = userAge;
 	}
@@ -124,12 +119,28 @@ public class MatchingVo {
 		this.userGender = userGender;
 	}
 
+	public int getThemeNo() {
+		return themeNo;
+	}
+
+	public void setThemeNo(int themeNo) {
+		this.themeNo = themeNo;
+	}
+
 	public String getThemeName() {
 		return themeName;
 	}
 
 	public void setThemeName(String themeName) {
 		this.themeName = themeName;
+	}
+
+	public int getGameNo() {
+		return gameNo;
+	}
+
+	public void setGameNo(int gameNo) {
+		this.gameNo = gameNo;
 	}
 
 	public String getGameNameKo() {
@@ -156,12 +167,28 @@ public class MatchingVo {
 		this.matchingTime = matchingTime;
 	}
 
+	public int getSidoCode() {
+		return sidoCode;
+	}
+
+	public void setSidoCode(int sidoCode) {
+		this.sidoCode = sidoCode;
+	}
+
 	public String getSidoName() {
 		return sidoName;
 	}
 
 	public void setSidoName(String sidoName) {
 		this.sidoName = sidoName;
+	}
+
+	public int getSigunguCode() {
+		return sigunguCode;
+	}
+
+	public void setSigunguCode(int sigunguCode) {
+		this.sigunguCode = sigunguCode;
 	}
 
 	public String getSigunguName() {
@@ -186,46 +213,6 @@ public class MatchingVo {
 
 	public void setMatchingPermissionGender(String matchingPermissionGender) {
 		this.matchingPermissionGender = matchingPermissionGender;
-	}
-
-	public String getMatchingPermissionTeens() {
-		return matchingPermissionTeens;
-	}
-
-	public void setMatchingPermissionTeens(String matchingPermissionTeens) {
-		this.matchingPermissionTeens = matchingPermissionTeens;
-	}
-
-	public String getMatchingPermissionTwenties() {
-		return matchingPermissionTwenties;
-	}
-
-	public void setMatchingPermissionTwenties(String matchingPermissionTwenties) {
-		this.matchingPermissionTwenties = matchingPermissionTwenties;
-	}
-
-	public String getMatchingPermissionThirties() {
-		return matchingPermissionThirties;
-	}
-
-	public void setMatchingPermissionThirties(String matchingPermissionThirties) {
-		this.matchingPermissionThirties = matchingPermissionThirties;
-	}
-
-	public String getMatchingPermissionFourties() {
-		return matchingPermissionFourties;
-	}
-
-	public void setMatchingPermissionFourties(String matchingPermissionFourties) {
-		this.matchingPermissionFourties = matchingPermissionFourties;
-	}
-
-	public String getMatchingPermissionAllAge() {
-		return matchingPermissionAllAge;
-	}
-
-	public void setMatchingPermissionAllAge(String matchingPermissionAllAge) {
-		this.matchingPermissionAllAge = matchingPermissionAllAge;
 	}
 
 	public String getMatchingTitle() {
@@ -267,7 +254,7 @@ public class MatchingVo {
 	public void setMatchingStatus(String matchingStatus) {
 		this.matchingStatus = matchingStatus;
 	}
-	
+
 	public int getMatchingMember() {
 		return matchingMember;
 	}
@@ -276,36 +263,12 @@ public class MatchingVo {
 		this.matchingMember = matchingMember;
 	}
 
-	public int getSidoCode() {
-		return sidoCode;
+	public String getMatchingPermissionAge() {
+		return matchingPermissionAge;
 	}
 
-	public void setSidoCode(int sidoCode) {
-		this.sidoCode = sidoCode;
-	}
-
-	public int getSigunguCode() {
-		return sigunguCode;
-	}
-
-	public void setSigunguCode(int sigunguCode) {
-		this.sigunguCode = sigunguCode;
-	}
-
-	public int getThemeNo() {
-		return themeNo;
-	}
-
-	public void setThemeNo(int themeNo) {
-		this.themeNo = themeNo;
-	}
-
-	public int getGameNo() {
-		return gameNo;
-	}
-
-	public void setGameNo(int gameNo) {
-		this.gameNo = gameNo;
+	public void setMatchingPermissionAge(String matchingPermissionAge) {
+		this.matchingPermissionAge = matchingPermissionAge;
 	}
 
 	@Override
@@ -316,12 +279,9 @@ public class MatchingVo {
 				+ gameNameKo + ", matchingDate=" + matchingDate + ", matchingTime=" + matchingTime + ", sidoCode="
 				+ sidoCode + ", sidoName=" + sidoName + ", sigunguCode=" + sigunguCode + ", sigunguName=" + sigunguName
 				+ ", matchingPeople=" + matchingPeople + ", matchingPermissionGender=" + matchingPermissionGender
-				+ ", matchingPermissionTeens=" + matchingPermissionTeens + ", matchingPermissionTwenties="
-				+ matchingPermissionTwenties + ", matchingPermissionThirties=" + matchingPermissionThirties
-				+ ", matchingPermissionFourties=" + matchingPermissionFourties + ", matchingPermissionAllAge="
-				+ matchingPermissionAllAge + ", matchingTitle=" + matchingTitle + ", matchingContent=" + matchingContent
-				+ ", matchingRegDate=" + matchingRegDate + ", matchingHits=" + matchingHits + ", matchingStatus="
-				+ matchingStatus + ", matchingMember=" + matchingMember + "]";
+				+ ", matchingTitle=" + matchingTitle + ", matchingContent=" + matchingContent + ", matchingRegDate="
+				+ matchingRegDate + ", matchingHits=" + matchingHits + ", matchingStatus=" + matchingStatus
+				+ ", matchingMember=" + matchingMember + ", matchingPermissionAge=" + matchingPermissionAge + "]";
 	}
 	
 }

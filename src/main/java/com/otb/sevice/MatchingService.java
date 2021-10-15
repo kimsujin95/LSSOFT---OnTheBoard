@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.otb.dao.MatchingDao;
 import com.otb.dao.UserDao;
+import com.otb.vo.CommentReplyVo;
 import com.otb.vo.CommentVo;
 import com.otb.vo.GameVo;
 import com.otb.vo.MatchingGroupVo;
@@ -128,7 +129,7 @@ public class MatchingService {
 			System.out.println("매칭 서비스: read;;;");
 			System.out.println(matchingNo);
 			
-			// 1 증가
+			// 조회수 1 증가
 			int hitsUp = matchingDao.hitsUp(matchingNo);
 			
 			// 클릭한 매칭 번호로 글정보 불러오기
@@ -149,15 +150,28 @@ public class MatchingService {
 			List<UserVo> matchingMemberInfoList = matchingDao.matchingMemberInfoList(matchingNo);
 			System.out.println(matchingMemberInfoList);
 			
+			/**/
+			// 매칭글의 댓글 리스트
 			List<CommentVo> commentList = matchingDao.commentList(matchingNo);
-			System.out.println(commentList);
+			System.out.println("글 리스트: " + commentList);
+			
+			// 매칭글의 답글 리스트
+			List<ReplyVo> replyList = matchingDao.replyList(matchingNo);
+			System.out.println("답글 리스트: " + replyList);
+			/**/
+			
+			// 매칭글의 댓글/답글 리스트 불러오기
+//			List<CommentReplyVo> commentReplyList = matchingDao.commentReplyList(matchingNo);
+//			System.out.println("댓글/답글 리스트: " + commentReplyList);
 			
 			// Map으로 묶기
 			Map<String, Object> readInfo = new HashMap<String, Object>();
 			readInfo.put("matchingVo", matchingVo);
 			readInfo.put("writerInfo", writerInfo);
 			readInfo.put("matchingMemberInfoList", matchingMemberInfoList);
+//			readInfo.put("commentReplyList", commentReplyList);
 			readInfo.put("commentList", commentList);
+			readInfo.put("replyList", replyList);
 			
 			return readInfo;
 		}
@@ -239,6 +253,4 @@ public class MatchingService {
 		return replyInfo;
 	}
 	
-	
-
 }

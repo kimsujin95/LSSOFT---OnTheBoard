@@ -48,6 +48,17 @@ public class StoreDao {
 		return userHostMatchingList;
 	}
 	
+	//매장정보
+	public List<StoreVo> getstoreInfo(int storeNo) {
+		System.out.println("[storeDao.getstoreInfo]");
+		
+		List<StoreVo> storeInfo = sqlSession.selectList("getstoreInfo", storeNo);
+		
+		System.out.println("스토어다오_매장정보 : " + storeInfo);
+		
+		return storeInfo;
+	}
+	
 	//그룹원들 정보 가져오기
 	public List<UserVo> grouplist(int matchingno){
 		System.out.println("[StoreDao.grouplist]");

@@ -334,22 +334,22 @@ INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 16, '제주시' );
 -- // INSERT SIGUNGU
 
 -- INSERT STORE
-INSERT INTO store(store_no, store_name, store_latitude, store_longitude)
-VALUES ( seq_store_no.nextval, '보드게임카페1', 37.494366186594405, 127.01825129365432 );
+INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+VALUES ( seq_store_no.nextval, '보드게임카페1', 37.494366186594405, 127.01825129365432, '02-1111-1111', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '111시 111구 111동 111로', '1111-111');
 
-INSERT INTO store(store_no, store_name, store_latitude, store_longitude)
-VALUES ( seq_store_no.nextval, '보드게임카페2', 37.499336756210546, 127.0322302565823 );
+INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+VALUES ( seq_store_no.nextval, '보드게임카페2', 37.499336756210546, 127.0322302565823, '02-2222-2222', '보드게임카페2 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '222시 222구 222동 222로', '2222-222');
 
-INSERT INTO store(store_no, store_name, store_latitude, store_longitude)
-VALUES ( seq_store_no.nextval, '보드게임카페3', 37.50207799788094, 127.02286735499807 );
+INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+VALUES ( seq_store_no.nextval, '보드게임카페3', 37.50207799788094, 127.02286735499807, '02-3333-3333', '보드게임카페3 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '333시 333구 333동 333로', '3333-333');
 -- // INSERT STORE
     
  -- INSERT RESERVATIONDATE
 insert into reservation_date
-values(SEQ_RESERVATION_DATE_NO.nextval, 1, '2021/10/05', 20, 4);
+values(SEQ_RESERVATION_DATE_NO.nextval, 1, '2021/10/05', 20, 4, '1');
 
 insert into reservation_date
-values(SEQ_RESERVATION_DATE_NO.nextval, 2, '2021/10/05', 20, 4);
+values(SEQ_RESERVATION_DATE_NO.nextval, 2, '2021/10/05', 20, 4, '1');
 
 insert into reservation_time
 values(SEQ_RESERVATION_TIME_NO.nextval, 1, '09');

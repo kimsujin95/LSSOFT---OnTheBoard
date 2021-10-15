@@ -15,6 +15,7 @@
 		<result column="matching_date" property="matchingDate" />
 		<result column="matching_time" property="matchingTime" />
 		<result column="matching_permission_gender" property="matchingPermissionGender" />
+		<result column="matching_permission_age" property="matchingPermissionAge" />
 		<result column="matching_reg_date" property="matchingRegDate" />
 		<result column="matching_member" property="matchingMember" />
 		<result column="theme_no" property="themeNo" />
@@ -83,6 +84,19 @@
 		<result column="reply_user_nickname" property="replyUserNickname" />
 		<result column="comment_user_nickname" property="commentUserNickname" />
 	</resultMap>
+	
+	<resultMap id="resultMapCommentReplyVo" type="CommentReplyVo">
+		<result column="comment_user_no" property="commentUserNo" />
+		<result column="comment_no" property="commentNo" />
+		<result column="comment_user_nickname" property="commentUserNickname" />
+		<result column="comment_content" property="commentContent" />
+		<result column="comment_reg_date" property="commentRegDate" />
+		<result column="user_no" property="userNo" />
+		<result column="reply_no" property="replyNo" />
+		<result column="reply_user_uickname" property="replyUserNickname" />
+		<result column="reply_content" property="replyContent" />
+		<result column="reply_reg_date" property="replyRegDate" />
+	</resultMap>
 
 	<!-- 매칭 리스트 -->
 	<select id="list" parameterType="java.util.List" resultMap="resultMapMatchingVo">
@@ -95,6 +109,7 @@
 				m.matching_people,
 				to_char(m.matching_date, 'yyyy. mm. dd. ') matching_date,
 				m.matching_permission_gender,
+				m.matching_permission_age,
 				m.matching_status,
 				m.matching_hits,
 				m.matching_reg_date,
@@ -115,6 +130,7 @@
 		<![CDATA[
 				m.matching_status
 				|| m.matching_permission_gender
+				|| m.matching_permission_age
 				|| sd.sido_name
 				|| sg.sigungu_name
 				LIKE '%'||#{keyword}||'%'
@@ -242,24 +258,25 @@
 		</selectKey>
 		<![CDATA[
 			INSERT INTO
-				matching(matching_no, user_no, matching_title, matching_content, matching_people, matching_date, matching_time, sido_code, sigungu_code, matching_permission_gender, theme_no, game_no, matching_status, matching_hits, matching_reg_date)
+				matching
 			VALUES
 				(
 					#{ matchingNo },
 					#{ userNo },
-					#{ matchingTitle},
-					#{ matchingContent },
-					#{ matchingPeople },
-					#{ matchingDate },
-					#{ matchingTime },
-					#{ sidoCode },
-					#{ sigunguCode },
-					#{ matchingPermissionGender },
 					#{ themeNo },
 					#{ gameNo },
-					'매칭중',
+					#{ matchingDate },
+					#{ matchingTime },
+					#{ matchingTitle},
+					#{ matchingContent },
+					#{ sidoCode },
+					#{ sigunguCode },
+					#{ matchingPeople },
+					#{ matchingPermissionGender },
+					#{ matchingPermissionAge },
+					sysdate,
 					0,
-					sysdate
+					'매칭중'
 				)
 		]]>
 	</insert>
@@ -294,6 +311,7 @@
 			    to_char(m.matching_date, 'yyyy. mm. dd. ') matching_date,
 			    m.matching_time,
 			    m.matching_permission_gender,
+			    m.matching_permission_age,
 			    g.game_name_ko,
 			    t.theme_name,
 			    sd.sido_name,
@@ -325,7 +343,7 @@
 				matching_no = #{ matchingNo }
 		]]>
 	</update>
-	
+
 	<!-- 매칭글 읽기 - 댓글 리스트 불러오기 -->
 	<select id="commentList" parameterType="int" resultMap="resultMapCommentVo">
 		<![CDATA[
@@ -345,6 +363,66 @@
 			    comment_no ASC
 		]]>
 	</select>
+	<!-- 매칭글 읽기 - 답글 리스트 불러오기 -->
+	<select id="replyList" parameterType="int" resultMap="resultMapReplyVo">
+		<![CDATA[
+			SELECT
+				r.reply_no,
+			    r.comment_no,
+			    r.user_no,
+			    r.reply_content,
+			    to_char(r.reply_reg_date, 'yyyy. mm. dd. hh24:mi') reply_reg_date,
+			    u.user_nickname reply_user_nickname
+			FROM
+			    reply r
+			    LEFT OUTER JOIN comments c
+			    ON r.comment_no = c.comment_no
+			    LEFT OUTER JOIN users u
+			    ON r.user_no = u.user_no
+			WHERE
+			    c.matching_no = #{ matchingNo }
+		]]>
+	</select>
+
+	<!-- 매칭글 읽기 - 댓글/답글 리스트 불러오기 -->
+	<!-- <select id="commentReplyList" parameterType="int" resultMap="resultMapCommentReplyVo">
+		<![CDATA[
+			SELECT
+				cu.user_no comment_user_no,
+			    r.comment_no,
+			    cu.user_nickname comment_user_nickname,
+			    cu.comment_content,
+			    to_char(cu.comment_reg_date, 'yyyy. mm. dd. hh24:mi') comment_reg_date,
+			    r.user_no,
+			    r.reply_no,
+			    u.user_nickname reply_user_nickname,
+			    r.reply_content,
+			    to_char(r.reply_reg_date, 'yyyy. mm. dd. hh24:mi') reply_reg_date
+			FROM
+			    reply r
+			    LEFT OUTER JOIN comments c
+			    ON r.comment_no = c.comment_no
+			    LEFT OUTER JOIN users u
+			    ON r.user_no = u.user_no
+			    LEFT OUTER JOIN ( SELECT
+			                        u.user_nickname,
+			                        c.comment_no,
+			                        c.comment_reg_date,
+			                        c.comment_content,
+			                        c.user_no
+			                    FROM
+			                        comments c LEFT OUTER JOIN users u
+			                        ON c.user_no = u.user_no
+			                    WHERE
+			                        c.comment_no = comment_no ) cu
+			    ON r.comment_no = cu.comment_no
+			WHERE
+			    c.matching_no = #{ matchingNo }
+			ORDER BY
+			    c.comment_no ASC,
+			    r.reply_no ASC
+		]]>
+	</select> -->
 
 	<!-- 매칭글 읽기 - 매칭 참가 신청 -->
 	<insert id="joinMatching" parameterType="matchingGroupVo">

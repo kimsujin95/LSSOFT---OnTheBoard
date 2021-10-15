@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.otb.vo.CommentReplyVo;
 import com.otb.vo.CommentVo;
 import com.otb.vo.GameVo;
 import com.otb.vo.MatchingGroupVo;
@@ -142,6 +143,7 @@ public class MatchingDao {
 		return hitsUp;
 	}
 	
+	/**/
 	// 매칭글 읽기 - 댓글 리스트 불러오기
 	public List<CommentVo> commentList(int matchingNo) {
 		System.out.println("매칭 다오: commentList;;;");
@@ -150,6 +152,26 @@ public class MatchingDao {
 		
 		return commentList;
 	}
+	
+	// 매칭글 읽기 - 답글 리스트 불러오기
+	public List<ReplyVo> replyList(int matchingNo) {
+		System.out.println("매칭 다오: replyList;;;");
+		
+		List<ReplyVo> replyList = sqlSession.selectList("matching.replyList", matchingNo);
+		
+		return replyList;
+	}
+	/**/
+	
+	// 매칭글 읽기 - 댓글/답글 리스트 불러오기
+	/*
+	public List<CommentReplyVo> commentReplyList(int matchingNo) {
+		System.out.println("매칭 다오: commentReplyList;;;");
+		List<CommentReplyVo> commentReplyList = sqlSession.selectList("matching.commentReplyList", matchingNo);
+		
+		return commentReplyList;
+	}
+	*/
 
 	// 매칭글 읽기 - 매칭 참가 신청
 	public int joinMatching(MatchingGroupVo matchingGroupVo) {

@@ -50,7 +50,7 @@
 					<div role="tabpanel" class="tab-pane active" id="style-strategy">
 						<ul class="game-name">
 							<li><input type="checkbox" id="strategy" value="전략"> <label for="strategy">전략전체</label></li>
-							<li><input type="checkbox" id="game-terapoming"> <label for="game-terapoming">테라포밍 마스</label></li>
+							<li><input type="checkbox" id="game-terapoming" value="보난자"> <label for="game-terapoming">테라포밍 마스</label></li>
 						</ul>
 					</div>
 				</div>

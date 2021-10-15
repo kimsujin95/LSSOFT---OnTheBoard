@@ -49,7 +49,7 @@
 		</div>
 		<!-- // SUB TITLE -->
 		<div id="content-title">
-			[ ${readInfo.matchingVo.gameNameKo} ] ${readInfo.matchingVo.matchingTitle}
+			<span class="test-color-basic">[ ${readInfo.matchingVo.gameNameKo} ]</span> ${readInfo.matchingVo.matchingTitle}
 			<br>
 			${readInfo.writerInfo.userNickname} (${readInfo.writerInfo.userAge}
 			<c:choose>
@@ -101,7 +101,7 @@
 					</tr>
 					<tr>
 						<th>나이제한</th>
-						<td>작업안됨</td>
+						<td>${readInfo.matchingVo.matchingPermissionAge}</td>
 					</tr>
 					<tr class="border-none">
 						<th>인원<br>(<span id="joinMatchingMember">${readInfo.matchingVo.matchingMember}</span>/${readInfo.matchingVo.matchingPeople})
@@ -156,7 +156,7 @@
 		<div>댓글</div>
 		<br>
 
-		<!-- 현 게시글의 댓글 리스트 -->
+		<!-- 댓글/답글 리스트 -->
 		<div id="comment" class="row">
 			<c:forEach items="${readInfo.commentList}" var="commentVo" varStatus="status">
 			<div class="row comment-all">
@@ -183,36 +183,40 @@
 				</div>
 			</div>
 			<div class="input-reply-${commentVo.commentNo}">
+			<c:forEach items="${readInfo.replyList}" var="replyVo" varStatus="status">
+			<c:if test="${commentVo.commentNo eq replyVo.commentNo}">
+				<div class="row comment-answer">
+					<div class="col-md-1"></div>
+					<div class="col-md-1 comment-img">
+						<img src="${pageContext.request.contextPath}/assets/images/matching/bonobono.png" alt="" width="45%">
+					</div>
+					<div class="col-md-10 comment-1">
+						<div class="clearfix">
+							<div class="comment">
+								<strong>[ ${replyVo.replyUserNickname} <c:if test="${readInfo.writerInfo.userNo eq commentVo.userNo}"><span class="text-sm-red">작성자</span></c:if> ]</strong><br>
+								<strong>${replyVo.commentUserNickname}</strong> ${replyVo.replyContent}
+							</div>
+						</div>
+						<div class="comment-button">
+							<button class="btn btn-xs">수정</button>
+							<button class="btn btn-xs">삭제</button>
+						</div>
+						<div class="comment-2">
+							${replyVo.replyRegDate} &nbsp;&nbsp;
+							<c:if test="${authUser != null}">
+								<span class="cursor-pointer">답글쓰기</span>
+							</c:if>
+						</div>
+					</div>
+				</div>
+			</c:if>
+			</c:forEach>
 			</div>
 			<div class="reply-box-${commentVo.commentNo}">
 			</div>
 			</c:forEach>
 		</div>
-		<!-- // 현 게시글의 댓글 리스트 -->
-
-		<%-- <div id="comment-answer" class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-1 comment-img">
-				<img src="${pageContext.request.contextPath}/assets/images/matching/bonobono.png" alt="" width="45%">
-			</div>
-			<div class="col-md-10 comment-1">
-				<div class="clearfix">
-					<div class="comment">
-						<strong>[ 할갈man <span>작성자</span> ]
-						</strong>
-						<br>
-						<strong>할갈woman</strong> 가능합니다^^
-					</div>
-				</div>
-				<div class="comment-button">
-					<button class="btn btn-xs">수정</button>
-					<button class="btn btn-xs">삭제</button>
-				</div>
-				<div class="comment-2">
-					2021. 11. 11. 12:22 &nbsp;&nbsp; <span class="cursor-pointer">답글쓰기</span>
-				</div>
-			</div>
-		</div> --%>
+		<!-- // 댓글/답글 리스트 -->
 
 		<br>
 		<br>

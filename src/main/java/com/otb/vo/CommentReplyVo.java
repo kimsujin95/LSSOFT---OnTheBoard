@@ -2,6 +2,7 @@ package com.otb.vo;
 
 public class CommentReplyVo {
 
+	private int commentUserNo;
 	private int commentNo;
 	private String commentUserNickname;
 	private String commentContent;
@@ -16,9 +17,11 @@ public class CommentReplyVo {
 		super();
 	}
 	
-	public CommentReplyVo(int commentNo, String commentUserNickname, String commentContent, String commentRegDate,
-			int userNo, int replyNo, String replyUserNickname, String replyContent, String replyRegDate) {
+	public CommentReplyVo(int commentUserNo, int commentNo, String commentUserNickname, String commentContent,
+			String commentRegDate, int userNo, int replyNo, String replyUserNickname, String replyContent,
+			String replyRegDate) {
 		super();
+		this.commentUserNo = commentUserNo;
 		this.commentNo = commentNo;
 		this.commentUserNickname = commentUserNickname;
 		this.commentContent = commentContent;
@@ -28,6 +31,14 @@ public class CommentReplyVo {
 		this.replyUserNickname = replyUserNickname;
 		this.replyContent = replyContent;
 		this.replyRegDate = replyRegDate;
+	}
+
+	public int getCommentUserNo() {
+		return commentUserNo;
+	}
+
+	public void setCommentUserNo(int commentUserNo) {
+		this.commentUserNo = commentUserNo;
 	}
 
 	public int getCommentNo() {
@@ -104,10 +115,10 @@ public class CommentReplyVo {
 
 	@Override
 	public String toString() {
-		return "CommentReplyVo [commentNo=" + commentNo + ", commentUserNickname=" + commentUserNickname
-				+ ", commentContent=" + commentContent + ", commentRegDate=" + commentRegDate + ", userNo=" + userNo
-				+ ", replyNo=" + replyNo + ", replyUserNickname=" + replyUserNickname + ", replyContent=" + replyContent
-				+ ", replyRegDate=" + replyRegDate + "]";
+		return "CommentReplyVo [commentUserNo=" + commentUserNo + ", commentNo=" + commentNo + ", commentUserNickname="
+				+ commentUserNickname + ", commentContent=" + commentContent + ", commentRegDate=" + commentRegDate
+				+ ", userNo=" + userNo + ", replyNo=" + replyNo + ", replyUserNickname=" + replyUserNickname
+				+ ", replyContent=" + replyContent + ", replyRegDate=" + replyRegDate + "]";
 	}
-	
+
 }

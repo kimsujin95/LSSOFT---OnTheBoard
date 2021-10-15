@@ -95,13 +95,14 @@
 		<div class="container padding-none">
 			<table id="table-matchingList">
 				<colgroup>
-					<col width="125px">
-					<col width="115px">
-					<col width="335px">
+					<col width="90px">
+					<col width="65px">
+					<col width="270px">
 					<col width="185px">
-					<col width="75px">
-					<col width="75px">
-					<col width="155px">
+					<col width="60px">
+					<col width="120px">
+					<col width="90px">
+					<col width="230px">
 					<col width="145px">
 				</colgroup>
 				<thead>
@@ -111,8 +112,9 @@
 						<th>제목</th>
 						<th>게임</th>
 						<th>인원</th>
-						<th>성별제한</th>
 						<th>지역</th>
+						<th>성별제한</th>
+						<th>나이제한</th>
 						<th>시작날짜</th>
 					</tr>
 				</thead>
@@ -185,8 +187,9 @@
 							+ '<td>' + matchingList.matchingTitle + '</td>'
 							+ '<td>' + matchingList.gameNameKo + '</td>'
 							+ '<td>' + matchingMemberList + '/' + matchingList.matchingPeople + '</td>'
-							+ '<td>' + matchingList.matchingPermissionGender + '</td>'
 							+ '<td>' + matchingList.sidoName + '\t' + matchingList.sigunguName + '</td>'
+							+ '<td>' + matchingList.matchingPermissionGender + '</td>'
+							+ '<td>' + matchingList.matchingPermissionAge + '</td>'
 							+ '<td>' + matchingList.matchingDate + '</td>'
 						+ '</tr>';
 

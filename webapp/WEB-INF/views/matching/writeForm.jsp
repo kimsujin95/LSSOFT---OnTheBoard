@@ -158,8 +158,12 @@
 
 					<label for="">나이제한</label>
 					<br>
-					<input type="checkbox" id="10s" value="10대"> <label for="10s">10대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="20s" value="20대"> <label for="20s">20대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="30s" value="30대"> <label for="30s">30대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="40s" value="40대"> <label for="40s">40대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="ageNone" value="나이무관"> <label for="ageNone">나이무관</label>
-
+					<input type="checkbox" name="matchingPermissionAge" id="10s" value="10대"> <label for="10s">10대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="matchingPermissionAge" id="20s" value="20대"> <label for="20s">20대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="matchingPermissionAge" id="30s" value="30대"> <label for="30s">30대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="matchingPermissionAge" id="40s" value="40대"> <label for="40s">40대</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="matchingPermissionAge" id="ageNone" value="나이무관"> <label for="ageNone">나이무관</label>
+                                           
 					<br>
 					<br>
 

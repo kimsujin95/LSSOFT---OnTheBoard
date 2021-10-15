@@ -31,9 +31,9 @@ public class ReservationController {
 			System.out.println("checkedTime" + "[" + i + "] : " + checkedTime[i]);
 		}
 		
-		int lastTime = checkedTime.length;
+		String lastTime = checkedTime[checkedTime.length-1];
 		System.out.println("체크된 첫번째 시간 : " + checkedTime[0]);
-		System.out.println("체크된 마지막 시간 : " + checkedTime[lastTime-1]);
+		System.out.println("체크된 마지막 시간 : " + lastTime);
 		
 		System.out.println("매장이름 : " + storeName);
 		System.out.println("매칭_그룹번호 : " + matchingNo);
@@ -49,7 +49,6 @@ public class ReservationController {
 		
 		//Map<String, Object> revInfo = new HashMap<String, Object>();
 		//revInfo.put("reservationInfo", reservationInfo);
-		
 		
 		return reservationInfo;
 		

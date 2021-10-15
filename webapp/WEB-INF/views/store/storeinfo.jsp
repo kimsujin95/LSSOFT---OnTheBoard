@@ -159,20 +159,10 @@
 				</table>
 
 			</div>
-
-		</div>
-
-		<!-- 매장 이름, 평점 -->
-		<div id="store-score-line">
-			<div>
-				<table id="star-table">
-					<tr>
-						<td>${storeInfo.storeName}</td>
-					</tr>
-					<tr>
-						<td class="star-score"><i class="far fa-star"></i>4.66/5</td>
-					</tr>
-				</table>
+			<!-- 매장 이름, 평점 -->
+			<div id="store-score-line">
+				<span>${storeInfo.storeName}</span><br>
+				<span class="star-score"><i class="far fa-star"></i>4.66/5</span>
 			</div>
 		</div>
 

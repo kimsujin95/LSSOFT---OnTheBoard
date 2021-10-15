@@ -59,7 +59,7 @@ ul,ol,li{
 	padding-left: 15px;
 	font-size: 17px;
 	font-weight: bold;
-	letter-spacing: 3px;
+	letter-spacing: 2px;
 }
 
 .icons-row{
@@ -85,19 +85,12 @@ ul,ol,li{
 
 /* 매장 이름, 매장 평점 */
 #store-score-line{
-    border-top: 2px solid red;
+    border-bottom: 1px solid #ff1f67;
     width: 100%;
     font-size: 16px;
-}
-
-#star-table{
+    text-align: center;
     margin-top: 10px;
-    margin-left: 220px;
-    margin-bottom: 10px;
-}
-
-#star-table tr{
-    margin-top: 5px;
+    padding-bottom: 10px;
 }
 
 .star-score{

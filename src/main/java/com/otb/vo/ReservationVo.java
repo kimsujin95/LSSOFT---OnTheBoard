@@ -16,6 +16,14 @@ public class ReservationVo {
 		
 	}
 	
+	public ReservationVo(int storeNo, int reservationChargeTotal, int reservationChargePeople, String reservationType, int reservationDateNo) {
+		this.storeNo = storeNo;
+		this.reservationChargeTotal = reservationChargeTotal;
+		this.reservationChargePeople = reservationChargePeople;
+		this.reservationType = reservationType;
+		this.reservationDateNo = reservationDateNo;
+	}
+	
 	public ReservationVo(int reservationNo, int storeNo, int reservationChargeTotal, int reservationChargePeople,
 			String reservationStatus, String reservationType, int reservationDateNo) {
 		super();

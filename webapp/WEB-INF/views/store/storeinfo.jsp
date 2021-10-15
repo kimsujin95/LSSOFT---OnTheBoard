@@ -649,6 +649,8 @@
 				var chdval = new Array();
 				var groupNo;
 				var seldate;
+				var storeName = '${storeInfo.storeName}';
+				var revType;
 				
 				$('input').each(function(){
 					
@@ -662,6 +664,12 @@
 				
 				groupNo = $('li[class="selgroup active"]').data("no");
 				
+				if(groupNo != null){
+					revType="group"
+				}else{
+					revType="choice"
+				}
+				
 				seldate = $('#time_table').data("date");
 				
 				console.log(chdval);
@@ -670,7 +678,9 @@
 				var revinfo = {
 						checkedTime : chdval,
 						matchingNo : groupNo,
-						selectedDate : seldate
+						selectedDate : seldate,
+						storeName : storeName,
+						revType : revType
 				};
 				
 				console.log(revinfo);

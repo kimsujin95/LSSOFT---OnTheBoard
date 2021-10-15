@@ -10,6 +10,7 @@ import com.otb.vo.CommentVo;
 import com.otb.vo.GameVo;
 import com.otb.vo.MatchingGroupVo;
 import com.otb.vo.MatchingVo;
+import com.otb.vo.ReplyVo;
 import com.otb.vo.SidoVo;
 import com.otb.vo.SigunguVo;
 import com.otb.vo.ThemeVo;
@@ -201,7 +202,6 @@ public class MatchingDao {
 		
 		return commentWrite;
 	}
-	
 	// 매칭글 읽기 - 등록된 댓글정보 불러오기
 	public CommentVo commentInfo(int commentNo) {
 		System.out.println("매칭 서비스: commentInfo;;;");
@@ -211,5 +211,21 @@ public class MatchingDao {
 		return commentInfo;
 	}
 	
+	// 매칭글 읽기 - 답글 등록
+	public int replyWrite(ReplyVo replyVo) {
+		System.out.println("매칭 서비스: replyWrite;;;");
+		
+		int replyWrite = sqlSession.insert("matching.replyWrite", replyVo);
+		
+		return replyWrite;
+	}
+	// 매칭글 읽기 - 등록된 답글정보 불러오기
+	public ReplyVo replyInfo(int replyNo) {
+		System.out.println("매칭 서비스: replyNo;;;");
+		
+		ReplyVo replyInfo = sqlSession.selectOne("matching.replyInfo", replyNo);
+		
+		return replyInfo;
+	}
 
 }

@@ -14,6 +14,7 @@ import com.otb.vo.CommentVo;
 import com.otb.vo.GameVo;
 import com.otb.vo.MatchingGroupVo;
 import com.otb.vo.MatchingVo;
+import com.otb.vo.ReplyVo;
 import com.otb.vo.SigunguVo;
 import com.otb.vo.UserVo;
 
@@ -222,6 +223,22 @@ public class MatchingService {
 		
 		return commentInfo;
 	}
+	
+	// 매칭글 읽기 - 답글 등록/출력
+	public ReplyVo replyWriteInfo(ReplyVo replyVo) {
+		System.out.println("매칭 서비스: replyWriteInfo;;;");
+		
+		// 답글 등록
+		int replyWrite = matchingDao.replyWrite(replyVo);
+		System.out.println(replyVo);
+		
+		// 등록된 답글 정보 불러오기
+		int replyNo = replyVo.getReplyNo();
+		ReplyVo replyInfo = matchingDao.replyInfo(replyNo);
+		
+		return replyInfo;
+	}
+	
 	
 
 }

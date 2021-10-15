@@ -156,8 +156,10 @@
 		<div>댓글</div>
 		<br>
 
+		<!-- 현 게시글의 댓글 리스트 -->
 		<div id="comment" class="row">
 			<c:forEach items="${readInfo.commentList}" var="commentVo" varStatus="status">
+			<div class="row comment-all">
 				<div class="col-md-1 comment-img">
 					<img src="${pageContext.request.contextPath}/assets/images/matching/bonobono.png" alt="" width="45%">'
 				</div>
@@ -173,13 +175,22 @@
 						<button class="btn btn-xs">삭제</button>
 					</div>
 					<div class="comment-2">
-						${commentVo.commentRegDate}&nbsp;&nbsp;&nbsp;<span data-comment_no="${commentVo.commentNo}" class="cursor-pointer">답글쓰기</span>
+						${commentVo.commentRegDate}&nbsp;&nbsp;&nbsp;
+						<c:if test="${authUser != null}">
+						<span data-comment_no="${commentVo.commentNo}" class="cursor-pointer btn-comment-reply">답글쓰기</span>
+						</c:if>
 					</div>
 				</div>
+			</div>
+			<div class="input-reply-${commentVo.commentNo}">
+			</div>
+			<div class="reply-box-${commentVo.commentNo}">
+			</div>
 			</c:forEach>
 		</div>
+		<!-- // 현 게시글의 댓글 리스트 -->
 
-		<div id="comment-answer" class="row">
+		<%-- <div id="comment-answer" class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-1 comment-img">
 				<img src="${pageContext.request.contextPath}/assets/images/matching/bonobono.png" alt="" width="45%">
@@ -201,30 +212,7 @@
 					2021. 11. 11. 12:22 &nbsp;&nbsp; <span class="cursor-pointer">답글쓰기</span>
 				</div>
 			</div>
-		</div>
-
-		<div id="comment-answer" class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-1 comment-img">
-				<img src="${pageContext.request.contextPath}/assets/images/matching/bonobono.png" alt="" width="45%">
-			</div>
-			<div class="col-md-10 comment-1">
-				<div class="clearfix">
-					<div class="comment">
-						<strong>[ 할갈woman ]</strong>
-						<br>
-						<strong>할갈man</strong> 16 ㄱㄱ
-					</div>
-				</div>
-				<div class="comment-button">
-					<button class="btn btn-xs">수정</button>
-					<button class="btn btn-xs">삭제</button>
-				</div>
-				<div class="comment-2">
-					2021. 11. 11. 12:27 &nbsp;&nbsp; <span class="cursor-pointer">답글쓰기</span>
-				</div>
-			</div>
-		</div>
+		</div> --%>
 
 		<br>
 		<br>
@@ -418,7 +406,7 @@ function commentHTML(commentInfo) {
 					+ '<div class="col-md-11 comment-1">'
 					+ 	'<div class="clearfix">'
 					+ 		'<div class="comment">'
-					+ 		'<strong>[ ${authUser.userNickname} <c:if test="${readInfo.writerInfo.userNo eq authUser.userNo}"><span class="text-sm-red">작성자</span></c:if> ]</strong><br>'
+					+ 		'<strong>[ ' + commentInfo.userNickname + ' <c:if test="${readInfo.writerInfo.userNo eq authUser.userNo}"><span class="text-sm-red">작성자</span></c:if> ]</strong><br>'
 					+ 		commentInfo.commentContent
 					+ 		'</div>'
 					+ 	'</div>'
@@ -427,14 +415,93 @@ function commentHTML(commentInfo) {
 					+ 		'<button class="btn btn-xs">삭제</button>'
 					+ 	'</div>'
 					+ 	'<div class="comment-2">'
-					+ 		commentInfo.commentRegDate + '&nbsp;&nbsp;<span data-comment_no="' + commentInfo.commentNo + '" class="cursor-pointer">답글쓰기</span>'
+					+ 		commentInfo.commentRegDate + '&nbsp;&nbsp;<span data-comment_no="' + commentInfo.commentNo + '" class="cursor-pointer btn-comment-reply">답글쓰기</span>'
 					+ 	'</div>'
+					+ '</div>'
+					+ '<div class="reply-box-' + commentInfo.commentNo +'">'
 					+ '</div>';
 	
 	$('#comment').append(commentSTR);
 }
 // -- 댓글 등록 --
-				
+
+// 답글 등록
+$('#comment').on('click', '.btn-comment-reply', function() {
+	var commentNo = $(this).data('comment_no');
+	console.log(commentNo);
+	
+	var replyBox = '<div class="reply-box-empty">'
+				+	'<div>'
+				+ 		'<strong>${authUser.userNickname}</strong>'
+				+ 		'<textarea class="comment-reply-text" placeholder="답글을 남겨주세요."></textarea>'
+				+	'</div>'
+				+ 	'<div class="reply-box-btn">'
+				+ 		'<button class="btnReplyWrite" class="cursor-pointer" data-user_no="${authUser.userNo}">등록</button>'
+				+ 	'</div>'
+				+ '</div>';
+	
+	$('.reply-box-empty').remove();
+	$('.reply-box-' + commentNo).append(replyBox);
+	
+	$('.reply-box-' + commentNo).on('click', '.btnReplyWrite', function() {
+		console.log('답글등록버튼');
+		var replyContent = $('.comment-reply-text').val();
+		console.log(replyContent);
+		console.log(commentNo);
+		var userNo = $(this).data('user_no');
+		console.log(userNo);
+		
+		var replyVo = {
+				commentNo: commentNo,
+				userNo: userNo,
+				replyContent: replyContent
+		}
+		
+		$.ajax({
+			url: '${pageContext.request.contextPath}/matching/replyWrite',
+			type: 'post',
+			data: replyVo,
+			success: function(replyInfo) {
+				console.log(replyInfo);
+				replyHTML(replyInfo);
+			},
+			error: function(XHR, status, error) {
+				console.log(status + ' : ' + error);
+			}
+		});
+	});
+});
+
+function replyHTML(replyInfo) {
+	var replySTR = '<div class="col-md-1"></div>'
+				+ 		'<div class="col-md-1 comment-img">'
+				+ 			'<img src="${pageContext.request.contextPath}/assets/images/matching/bonobono.png" alt="" width="45%">'
+				+ 		'</div>'
+				+ 		'<div class="col-md-10 comment-1">'
+				+ 			'<div class="clearfix">'
+				+ 				'<div class="comment">'
+				+ 				'<strong>[ ' + replyInfo.replyUserNickname + ' <c:if test="${readInfo.writerInfo.userNo eq authUser.userNo}"><span class="text-sm-red">작성자</span></c:if> ]</strong><br>'
+				+ 				'<strong>' + replyInfo.commentUserNickname + '</strong> ' + replyInfo.replyContent
+				+ 			'</div>'
+				+ 		'</div>'
+				+ 		'<div class="comment-button">'
+				+ 			'<button class="btn btn-xs">수정</button>'
+				+ 			'<button class="btn btn-xs">삭제</button>'
+				+ 		'</div>'
+				+ 		'<div class="comment-2">'
+				+ 			replyInfo.replyRegDate + '&nbsp;&nbsp;<span data-comment_no="' + replyInfo.commentNo + '" class="cursor-pointer btn-comment-reply">답글쓰기</span>'
+				+ 		'</div>'
+				+ 	'</div>'
+				+ 	'<div class="reply-box-' + replyInfo.commentNo + '">'
+				+ 	'</div>';
+			
+	$('.reply-box-empty').remove();
+	$('.reply-box-' + replyInfo.commentNo).remove();
+	$('.input-reply-' + replyInfo.commentNo).append(replySTR);
+}
+
+// -- 답글 등록 --
+
 </script>
 
 </html>

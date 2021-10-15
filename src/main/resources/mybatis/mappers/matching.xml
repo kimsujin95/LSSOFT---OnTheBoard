@@ -80,7 +80,8 @@
 		<result column="user_no" property="userNo" />
 		<result column="reply_content" property="replyContent" />
 		<result column="reply_reg_date" property="replyRegDate" />
-		<result column="user_nickname" property="userNickname" />
+		<result column="reply_user_nickname" property="replyUserNickname" />
+		<result column="comment_user_nickname" property="commentUserNickname" />
 	</resultMap>
 
 	<!-- 매칭 리스트 -->
@@ -441,20 +442,73 @@
 				)
 		]]>
 	</insert>
-	
 	<!-- 매칭글 읽기 - 댓글 정보 불러오기 -->
 	<select id="commentInfo" parameterType="int" resultMap="resultMapCommentVo">
 		<![CDATA[
 			SELECT
-				comment_no,
-				user_no,
-				matching_no,
-				comment_content,
-				to_char(comment_reg_date, 'yyyy. mm. dd. hh24:mi') comment_reg_date
+				c.comment_no,
+				c.user_no,
+				u.user_nickname,
+				c.matching_no,
+				c.comment_content,
+				to_char(c.comment_reg_date, 'yyyy. mm. dd. hh24:mi') comment_reg_date
 			FROM
-				comments
+				comments c LEFT OUTER JOIN users u
+				ON c.user_no = u.user_no
 			WHERE
-				comment_no = #{ commentNo }
+				c.comment_no = #{ commentNo }
+		]]>
+	</select>
+	
+	<!-- 매칭글 읽기 - 답글 작성 -->
+	<insert id="replyWrite" parameterType="replyVo">
+		<selectKey keyProperty="replyNo" resultType="int" order="BEFORE">
+			<![CDATA[
+				SELECT
+					seq_reply_no.NEXTVAL
+				FROM
+					dual
+			]]>
+		</selectKey>
+		<![CDATA[
+			INSERT INTO
+				reply
+			VALUES
+				(
+					#{ replyNo },
+					#{ commentNo },
+					#{ userNo },
+					#{ replyContent },
+					sysdate
+				)
+		]]>
+	</insert>
+	<!-- 매칭글 읽기 - 답글 정보 불러오기 -->
+	<select id="replyInfo" parameterType="int" resultMap="resultMapReplyVo">
+		<![CDATA[
+			SELECT
+			    r.reply_no,
+			    r.comment_no,
+			    r.user_no,
+			    u.user_nickname reply_user_nickname,
+			    cu.user_nickname comment_user_nickname,
+			    r.reply_content,
+			    to_char(r.reply_reg_date, 'yyyy. mm. dd. hh24:mi') reply_reg_date
+			FROM
+			    reply r
+			    LEFT OUTER JOIN users u
+			    ON r.user_no = u.user_no
+			    LEFT OUTER JOIN (SELECT
+			                        u.user_nickname,
+			                        c.comment_no
+			                    FROM
+			                        comments c LEFT OUTER JOIN users u
+			                        ON c.user_no = u.user_no
+			                    WHERE
+			                        c.comment_no = comment_no) cu
+			    ON r.comment_no = cu.comment_no
+			WHERE
+				r.reply_no = #{ replyNo }
 		]]>
 	</select>
 	

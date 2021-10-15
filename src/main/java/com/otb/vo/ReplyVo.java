@@ -7,20 +7,23 @@ public class ReplyVo {
 	private int userNo;
 	private String replyContent;
 	private String replyRegDate;
-	private String userNickname;
+	private String replyUserNickname;
+	private String commentUserNickname;
 	
 	public ReplyVo() {
 		super();
 	}
 	
-	public ReplyVo(int replyNo, int commentNo, int userNo, String replyContent, String replyRegDate, String userNickname) {
+	public ReplyVo(int replyNo, int commentNo, int userNo, String replyContent, String replyRegDate,
+			String replyUserNickname, String commentUserNickname) {
 		super();
 		this.replyNo = replyNo;
 		this.commentNo = commentNo;
 		this.userNo = userNo;
 		this.replyContent = replyContent;
 		this.replyRegDate = replyRegDate;
-		this.userNickname = userNickname;
+		this.replyUserNickname = replyUserNickname;
+		this.commentUserNickname = commentUserNickname;
 	}
 
 	public int getReplyNo() {
@@ -63,18 +66,27 @@ public class ReplyVo {
 		this.replyRegDate = replyRegDate;
 	}
 
-	public String getUserNickname() {
-		return userNickname;
+	public String getReplyUserNickname() {
+		return replyUserNickname;
 	}
 
-	public void setUserNickname(String userNickname) {
-		this.userNickname = userNickname;
+	public void setReplyUserNickname(String replyUserNickname) {
+		this.replyUserNickname = replyUserNickname;
+	}
+
+	public String getCommentUserNickname() {
+		return commentUserNickname;
+	}
+
+	public void setCommentUserNickname(String commentUserNickname) {
+		this.commentUserNickname = commentUserNickname;
 	}
 
 	@Override
 	public String toString() {
 		return "ReplyVo [replyNo=" + replyNo + ", commentNo=" + commentNo + ", userNo=" + userNo + ", replyContent="
-				+ replyContent + ", replyRegDate=" + replyRegDate + ", userNickname=" + userNickname + "]";
+				+ replyContent + ", replyRegDate=" + replyRegDate + ", replyUserNickname=" + replyUserNickname
+				+ ", commentUserNickname=" + commentUserNickname + "]";
 	}
 
 }

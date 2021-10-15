@@ -91,7 +91,7 @@
 				<c:forEach items="${gameList }" var="gameVo" varStatus="status">
 					<li>
 					<div class="thum">
-						<a href="${pageContext.request.contextPath}/game/gameDetails?no=${gameVo.gameNo}"><img src="${pageContext.request.contextPath}/upload/${gameVo.gameThumbImg }" alt="${gameVo.gameNameKo}"></a>
+						<a href="${pageContext.request.contextPath}/game/gameDetails?no=${gameVo.gameNo}"><img src="${pageContext.request.contextPath}/assets/upload/${gameVo.gameThumbImg }" alt="${gameVo.gameNameKo}"></a>
 					</div>
 					<div class="desc">
 						<p class="title">

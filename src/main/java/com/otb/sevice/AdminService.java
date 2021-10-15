@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -50,7 +51,7 @@ public class AdminService {
 		adminDao.updateStoreInfo(storeVo);
 	}
 	
-	//매장 이미지 호출
+	//매장 이미지 전체 호출
 	public List<StoreImageVo> getStoreImageList(int storeNo) {
 		List<StoreImageVo> storeImageList = adminDao.selectImageList(storeNo);
 		
@@ -64,12 +65,15 @@ public class AdminService {
 	}
 	
 	//매장 이미지 등록
-	public void restoreImages(List<MultipartFile> fileList, int storeNo) {
+	public List<StoreImageVo> restoreImages(List<MultipartFile> fileList, int storeNo) {
 		
 		System.out.println("서비스 도착");
 		
 		//저장 폴더 경로
-		String saveDirectory = "C:\\JavaStudy\\upload\\otb";
+		String saveDirectory = "C:\\JavaStudy\\otb\\src\\img\\store";
+		
+		//돌려보낼 추가된 이미지 리스트
+		List<StoreImageVo> addedStoreImageList = new ArrayList<StoreImageVo>();
 		
 		//이미지 저장
 		for(MultipartFile image : fileList) {
@@ -86,7 +90,7 @@ public class AdminService {
 			//저장 경로
 			String storePathImage = saveDirectory +"\\"+ saveName;
 			
-			StoreImageVo storeImage = new StoreImageVo(storeNo, storePathImage);
+			StoreImageVo storeImage = new StoreImageVo(storeNo, saveName);
 			System.out.println(storeImage.toString());
 
 			try {
@@ -105,12 +109,18 @@ public class AdminService {
 				int storeImageNo = storeImage.getStoreImageNo();
 				System.out.println("매장 이미지 번호 " + storeImageNo);
 				
+				//추가된 이미지 호출
+				StoreImageVo addedStoreImage = adminDao.selectOneStoreImage(storeImageNo);
+				addedStoreImageList.add(addedStoreImage);
+				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		
+			
 		}
+		
+		return addedStoreImageList;
 		
 	}	
 

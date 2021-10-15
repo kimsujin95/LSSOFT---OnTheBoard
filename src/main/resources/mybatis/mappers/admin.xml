@@ -115,7 +115,7 @@
 		]]>
 	</update>
 	
-	<!-- 매장 이미지 호출 -->
+	<!-- 매장 이미지 리스트 호출 -->
 	<select id="selectListStoreImage" parameterType="int" resultMap="resultMapStoreImage">
 		<![CDATA[
 			SELECT 
@@ -124,6 +124,19 @@
 			FROM
 				store_image
 			WHERE store_no = #{storeNo}
+			ORDER BY store_image_no DESC
+		]]>
+	</select>
+	
+	<!-- 추가된 이미지 호출 -->
+	<select id="selectOneStoreImage" parameterType="int" resultMap="resultMapStoreImage">
+		<![CDATA[
+			SELECT 
+				 store_image_no
+				,store_path_image
+			FROM
+				store_image
+			WHERE store_image_no = #{storeImageNo}
 		]]>
 	</select>
 	

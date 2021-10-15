@@ -44,6 +44,12 @@ public class AdminDao {
 		return storeImageList;
 	}
 	
+	//추가된 이미지 호출
+	public StoreImageVo selectOneStoreImage(int storeImageNo) {
+		StoreImageVo addedStoreImage = sqlSession.selectOne("admin.selectOneStoreImage", storeImageNo);
+		return addedStoreImage;
+	}
+		
 	//매장 이미지 등록 - ajax
 	public void insertStoreImage(StoreImageVo storeImage) {
 		sqlSession.insert("admin.insertStoreImage", storeImage);

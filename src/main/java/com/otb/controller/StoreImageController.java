@@ -39,14 +39,15 @@ public class StoreImageController {
 	//매장 이미지 등록
 	@ResponseBody
 	@RequestMapping(value = "/storeImageUpload/{storeNo}", method = {RequestMethod.GET, RequestMethod.POST})
-	public void imageUpload(MultipartHttpServletRequest mtfRequest, @PathVariable("storeNo") int storeNo) {
+	public List<StoreImageVo> imageUpload(MultipartHttpServletRequest mtfRequest, @PathVariable("storeNo") int storeNo) {
 		System.out.println("파일 이미지 업로드 도착");
 		
 		//받아온 멀티파트 파일을 리스트 형태로 구성
 		List<MultipartFile> fileList = mtfRequest.getFiles("files");
+		//이미지 저장, 저장한 리스트 호출
+		List<StoreImageVo> addedStoreImageList = adminService.restoreImages(fileList, storeNo);
 		
-		adminService.restoreImages(fileList, storeNo);
-		
+		return addedStoreImageList;
 	}
 	
 	//매장 이미지 삭제

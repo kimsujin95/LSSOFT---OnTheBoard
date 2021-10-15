@@ -16,6 +16,7 @@
 
 <!-- js -->
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/assets/bootstrap/bootstrap.js"></script>
 
 <!-- 도로명 주소 api -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -146,13 +147,9 @@
 									</th>
 									<td>
 										<div id="image-inserted" class="pull-left border-default">
-											<%-- <c:forEach begin="0" end="4">
-												<div class="image-area">
-													<img src="${pageContext.request.contextPath }/assets/images/admin/BoardGameStore.jpg">
-													<img src="${pageContext.request.contextPath }/assets/images/admin/BoardGameStore2.jpg">
-													<img src="${pageContext.request.contextPath }/assets/images/admin/BoardGameStore.jpg">
-												</div>
-											</c:forEach> --%>
+												<!-- 매장 이미지 영역 -->											
+											<div class="image-area">
+											</div>
 										</div>
 										<label for="image-upload" class="btn btn-primary pull-left">사진 등록하기</label>
 										<input id="image-upload" name="storeImages[]" type="file" multiple="multiple" accept=".jpg, .png">
@@ -188,16 +185,44 @@
 	</div>
 	<!-- //컨텐츠 -->
 	
+	<!-- 이미지보기 팝업(모달)창 -->
+	<div class="modal fade" id="viewModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">이미지보기</h4>
+				</div>
+				<div class="modal-body">
+					<div class="formgroup">
+						<img id="viewModelImg" src="">
+						<!-- ajax로 처리 : 이미지출력 위치-->
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+					<button type="button" class="btn btn-danger" id="btnDel">삭제</button>
+				</div>
+
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+	
 </body>
 
 <!-- onload 시 form 태그 주소 구분 -->
 <script type="text/javascript">
 	$(window).on("load", function(){
-
+		//onload 시, form 태그의 주소 값 구분
 		if(${empty storeInfo }) {
 			$("#form").attr("action", "${pageContext.request.contextPath }/admin/storeInfoInsert");
 			var button = $("button[type=submit]");
-			button.text("등록하기");			
+			button.text("등록하기");
 		} else {
 			//매장 정보가 있을 때, 등록된 매장 이미지를 렌더링
 			var storeNo = ${storeInfo.storeNo};
@@ -207,16 +232,12 @@
 				type : "POST",
 			    success : function(data) {
 		    		console.log("호출 완료");
-		    		var storeImageList = data;
-		    		console.log("storeImageList");
-		    		console.log(storeImageList);
-		    		console.log(storeImageList.length);
-		    		for(var i = 0; i < storeImageList.length; i++) {
-		    			for(var j = 0; j < 3; j++) {
-		    				
-		    			}
+		    		var storeImgList = data;
+		    		console.log(storeImgList);
+							    		
+		    		for(var i = 0; i < storeImgList.length; i++) {
+		    			render(storeImgList[i], "list");
 		    		}
-		    		
 			    },
 			    err : function(jqXHR, textStatus, errorThrown) {
 			    	alert("업로드 에러\ncode : " + jqXHR.status + "\nerror message : " + jqXHR.responseText);
@@ -226,13 +247,23 @@
 		}
 			
 	});
+
+	function render(storeImg, type) {
+		var htmlTags = '<img src="${pageContext.request.contextPath }/upload/store/' + storeImg.storePathImage + '" data-img="'+ storeImg.storeImageNo +'">';
+		
+		if(type === "list") {
+			$(".image-area").append(htmlTags);
+		} else if (type === "add") {
+			$(".image-area").prepend(htmlTags);
+		}
+		
+	}
+	
 </script>
 
 <!-- 매장 이미지 등록 및 삭제 ajax -->
 <script type="text/javascript">
 	
-	
-
 	//input 태그에 파일이 추가되었을 때
 	$("#image-upload").on("input", addFiles);
 
@@ -273,7 +304,13 @@
 		    processData: false,
 		    contentType: false,
 		    success : function(data) {
-		    	
+		    	console.log("추가 완료");
+	    		var storeImgList = data;
+	    		console.log(storeImgList);
+						    		
+	    		for(var i = 0; i < storeImgList.length; i++) {
+	    			render(storeImgList[i], "add");
+	    		}
 		    },
 		    err : function(jqXHR, textStatus, errorThrown) {
 		    	alert("업로드 에러\ncode : " + jqXHR.status + "\nerror message : " + jqXHR.responseText);
@@ -281,7 +318,15 @@
 		});
 		
 	}
+	
+	//매장 이미지를 확대하여 보기
+	$(".image-area").on("click", "[data-img]",function(){
+		console.log("이미지 확대 클릭");
+		console.log($(this).data("img"));
 		
+		$("#viewModal").modal();
+	});
+	
 </script>
 
 <!-- 지도 및 도로명 주소 api -->

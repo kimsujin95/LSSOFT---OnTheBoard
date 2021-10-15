@@ -63,14 +63,11 @@ div#image-inserted {
 }
 
 div.image-area img {
-	margin: 15px 20px 15px 0px;
+	margin: 15px 17px;
 	width: 140px;
 	height: 140px;
 }
 
-div.image-area img:first-child {
-	margin-left: 30px;
-}
 input#image-upload {
 	display: none;
 }

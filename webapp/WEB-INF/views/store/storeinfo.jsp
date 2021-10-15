@@ -738,7 +738,6 @@
 						$('.modal_chargePeople').text("결제금액 : " + reservationInfo.reservationChargePeople);
 						$('.modal_revDate').text("예약일 : " + seldate);
 						
-						
 						$('#myModal').modal('show');
 						
     		        }, // success 

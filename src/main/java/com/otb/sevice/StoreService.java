@@ -54,10 +54,10 @@ public class StoreService {
 	}
 	
 	//매장정보
-	public List<StoreVo> storeInfo(int storeNo) {
+	public StoreVo storeInfo(int storeNo) {
 		System.out.println("[storeService.storeInfo]");
 		
-		List<StoreVo> storeInfo = storeDao.getstoreInfo(storeNo);
+		StoreVo storeInfo = storeDao.getstoreInfo(storeNo);
 		
 		System.out.println("스토어서비스_매장정보 : " + storeInfo);
 		

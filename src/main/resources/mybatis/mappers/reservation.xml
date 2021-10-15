@@ -4,5 +4,14 @@
 
 <mapper namespace="reservation">
 
+	<!-- 매장 요금제 꺼내오기 -->
+	<select id="getstoreCharge" parameterType="int" resultType="StoreVo">
+		<![CDATA[
+			select store_charge_week as storeChargeWeek,
+       			   store_charge_weekend as storeChargeWeekend
+				   from store
+				   where store_no = #{storeNo}
+		]]>
+	</select>
 	
 </mapper>

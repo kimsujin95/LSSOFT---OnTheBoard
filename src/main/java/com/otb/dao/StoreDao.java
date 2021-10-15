@@ -49,10 +49,10 @@ public class StoreDao {
 	}
 	
 	//매장정보
-	public List<StoreVo> getstoreInfo(int storeNo) {
+	public StoreVo getstoreInfo(int storeNo) {
 		System.out.println("[storeDao.getstoreInfo]");
 		
-		List<StoreVo> storeInfo = sqlSession.selectList("getstoreInfo", storeNo);
+		StoreVo storeInfo = sqlSession.selectOne("getstoreInfo", storeNo);
 		
 		System.out.println("스토어다오_매장정보 : " + storeInfo);
 		

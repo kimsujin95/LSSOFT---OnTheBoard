@@ -15,6 +15,11 @@ public class ReservationDateVo {
 		
 	}
 	
+	public ReservationDateVo(int storeNo, String storeReservationDate) {
+		this.storeNo = storeNo;
+		this.storeReservationDate = storeReservationDate;
+	}
+	
 	public ReservationDateVo(int reservationDateNo, int storeNo, String storeReservationDate, String dateType,
 			int storeReservationTotal, int storeReservationMax) {
 		super();

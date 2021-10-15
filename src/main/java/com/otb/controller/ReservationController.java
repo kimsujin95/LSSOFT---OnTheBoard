@@ -1,8 +1,5 @@
 package com.otb.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.otb.sevice.ReservationService;
+import com.otb.vo.ReservationDateVo;
 
 @Controller
 @RequestMapping(value="/reservation", method = { RequestMethod.GET, RequestMethod.POST })
@@ -26,7 +24,7 @@ public class ReservationController {
 		
 		System.out.println("[reservationController.reservationinfo]");
 		
-		//받아온 데이터 출력
+		//선택한 시간대 출력
 		for(int i = 0; i < checkedTime.length; i++)  {
 			System.out.println("checkedTime" + "[" + i + "] : " + checkedTime[i]);
 		}
@@ -35,15 +33,15 @@ public class ReservationController {
 		System.out.println("매장번호 : " + storeNo);
 		System.out.println("선택된날짜 : " + selectedDate);
 		
-		Map<String, Object> revselinfo = new HashMap<String, Object>();
+		ReservationDateVo revdate = new ReservationDateVo(storeNo, selectedDate);
 		
-		revselinfo.put("storeNo", storeNo);
-		revselinfo.put("checkedTime", checkedTime);
-		revselinfo.put("matchingNo", matchingNo);
+		reservationService.getreservationinfo(matchingNo, checkedTime, revdate);
 		
-		reservationService.getreservationinfo(revselinfo);
+		
 		
 		return "1";
+		
+		
 		
 	}
 	

@@ -109,7 +109,7 @@
 
 					<label for="">시간</label>
 					<br>
-					<!-- <label for="time">⌚</label> --><input class="date-time" type="time" id="time" name="matchingTime" value="">
+					<!-- <label for="time">⌚</label> --><input class="date-time" type="time" id="time" name="matchingTime">
 
 					<br>
 				</div>
@@ -149,8 +149,8 @@
 					<br>
 					<select id="sex-limit" name="matchingPermissionGender">
 						<option value="성별무관">성별무관</option>
-						<option value="여">여</option>
-						<option value="남">남</option>
+						<option value="여자">여</option>
+						<option value="남자">남</option>
 					</select>
 
 					<br>

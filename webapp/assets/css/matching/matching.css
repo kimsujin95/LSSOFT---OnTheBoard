@@ -295,6 +295,14 @@ textarea {
 	margin: 0px 3px;
 }
 
+#comment div {
+	margin: 0px;
+}
+
+#comment .comment-all {
+	margin-bottom: 7px;
+}
+
 #comment .comment-1 {
 	border: 1px solid lightgray;
 	border-radius: 5px;
@@ -373,6 +381,23 @@ textarea {
 	width: 100%;
 	height: 80px;
 	border: none;
+}
+
+#comment div.reply-box-empty {
+	margin: 0px 0px 5px 150px;
+	padding: 5px;
+	border: 1px solid #5a5a5a;
+	border-radius: 10px;
+}
+
+#comment .reply-box-empty .comment-reply-text {
+	width: 100%;
+	height: 80px;
+	border: none;
+}
+
+#comment .reply-box-empty .reply-box-btn {
+	text-align: right;
 }
 
 .nav-justified .active>a {

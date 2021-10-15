@@ -145,7 +145,7 @@
 				<div id="gameIntro">
 
 					<div>
-						<img src="${pageContext.request.contextPath}/upload/${gameVo.gameDescription }"
+						<img src="${pageContext.request.contextPath}/assets/upload/${gameVo.gameDescription }"
 							alt="${gameVo.gameNameKo }"
 						>
 					</div>

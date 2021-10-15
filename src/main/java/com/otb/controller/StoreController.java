@@ -85,7 +85,13 @@ public class StoreController {
 			System.out.println(userDataInfoMap);
 			model.addAttribute("userDataInfoMap", userDataInfoMap);
 		}
-
+		
+		List<StoreVo> storeInfo = storeService.storeInfo(storeNo);
+		
+		System.out.println("스토어컨트롤러_매장정보 : " + storeInfo);
+		
+		model.addAttribute("storeInfo", storeInfo);
+		
 		/* model.addAttribute("storeNo", storeNo); */
 		
 		return "/store/storeinfo";

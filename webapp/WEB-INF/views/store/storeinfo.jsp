@@ -102,31 +102,31 @@
 
 					<tr class="icons-row">
 						<td class="icons-span"><i class="fas fa-info-circle"></i></td>
-						<td>매장세부정보 입력란 입니다.</td>
+						<td>${storeDesc}</td>
 					</tr>
 
 
 					<tr class="icons-row">
 						<td class="icons-span"><i class="fas fa-phone-square"></i></td>
-						<td>매장 전화번호 입력란 입니다.</td>
+						<td>${storePhoneNo}</td>
 					</tr>
 
 
 					<tr class="icons-row">
 						<td rowspan="2" class="icons-span"><i class="fas fa-compass"></i></td>
-						<td>매장 주소 입력란 입니다.</td>
+						<td>${storeAddressRoad}</td>
 					</tr>
 					<tr>
-						<td>매장 상세주소 입력란 입니다.</td>
+						<td>${storeAddressDetail}</td>
 					</tr>
 
 
 					<tr class="icons-row">
 						<td rowspan="2" class="icons-span"><i class="fas fa-wallet"></i></td>
-						<td>매장 시간당 요금 입력란 입니다.</td>
+						<td>주중 시간당 요금 : ${storeChargeWeek}</td>
 					</tr>
 					<tr>
-						<td>매장 시간당 요금 입력란 입니다.</td>
+						<td>주말 시간당 요금 : ${storeChargeWeekend}</td>
 					</tr>
 
 				</table>

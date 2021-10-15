@@ -53,6 +53,17 @@ public class StoreService {
 		return userDataInfoMap;
 	}
 	
+	//매장정보
+	public List<StoreVo> storeInfo(int storeNo) {
+		System.out.println("[storeService.storeInfo]");
+		
+		List<StoreVo> storeInfo = storeDao.getstoreInfo(storeNo);
+		
+		System.out.println("스토어서비스_매장정보 : " + storeInfo);
+		
+		return storeInfo;
+	}
+	
 	//그룹원들 정보 가져오기
 	public List<UserVo> grouplist(int matchingno){
 		System.out.println("[StoreService.grouplist]");

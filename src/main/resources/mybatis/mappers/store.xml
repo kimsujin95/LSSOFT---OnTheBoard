@@ -42,6 +42,22 @@
 		]]>
 	</select>
 	
+	<!-- 매장정보 가져오기 -->
+	<select id="getstoreInfo" parameterType="int" resultType="StoreVo">
+		<![CDATA[
+			select store_description as storeDesc,
+				   store_name as storeName,
+       			   store_phone_no as storePhoneNo,
+       			   store_charge_week as storeChargeWeek,
+       			   store_charge_weekend as storeChargeWeekend,
+      			   store_address_road as storeAddressRoad,
+       			   store_address_detail as storeAddressDetail
+			from store
+			where store_no = #{storeNo} 
+		]]>
+	</select>
+	
+	
 	<!-- 매장번호, 날짜데이터로 예약날짜번호값 가져오기 -->
 	<select id="getDateInfo" parameterType="ReservationDateVo" resultType="int">
 		<![CDATA[

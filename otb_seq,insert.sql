@@ -46,100 +46,31 @@ INSERT INTO users(user_no, user_id, user_password, user_name, user_nickname, use
 VALUES ( seq_users_no.NEXTVAL, 'zxc', 'zxc', 'zxc', 'zxc', 'female', '19791111', 1, sysdate );
 
 -- INSERT THEME
-INSERT INTO THEME( theme_no, theme_name)
-VALUES ( SEQ_THEME_NO.nextval, '전략');
-
-INSERT INTO THEME( theme_no, theme_name)
-VALUES ( SEQ_THEME_NO.nextval, '추상');
-
-INSERT INTO THEME( theme_no, theme_name)
-VALUES ( SEQ_THEME_NO.nextval, '컬렉터블');
-
-INSERT INTO THEME( theme_no, theme_name)
-VALUES ( SEQ_THEME_NO.nextval, '가족');
-
-INSERT INTO THEME( theme_no, theme_name)
-VALUES ( SEQ_THEME_NO.nextval, '파티');
-
-INSERT INTO THEME( theme_no, theme_name)
-VALUES ( SEQ_THEME_NO.nextval, '어린이');
-
-INSERT INTO THEME( theme_no, theme_name)
-VALUES ( SEQ_THEME_NO.nextval, '테마');
-
-INSERT INTO THEME( theme_no, theme_name)
-VALUES ( SEQ_THEME_NO.nextval, '워게임');
-
-INSERT INTO THEME( theme_no, theme_name)
-VALUES ( SEQ_THEME_NO.nextval, '한글');
-
-INSERT INTO THEME( theme_no, theme_name)
-VALUES ( SEQ_THEME_NO.nextval, '경제');
-
-INSERT INTO THEME( theme_no, theme_name)
-VALUES ( SEQ_THEME_NO.nextval, '협력');
-
-INSERT INTO THEME( theme_no, theme_name)
-VALUES ( SEQ_THEME_NO.nextval, '퍼즐');
-
-INSERT INTO THEME( theme_no, theme_name)
-VALUES ( SEQ_THEME_NO.nextval, '모험');
-
-INSERT INTO THEME( theme_no, theme_name)
-VALUES ( SEQ_THEME_NO.nextval, '주사위');
+INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '전략');
+INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '추상');
+INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '컬렉터블');
+INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '가족');
+INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '파티');
+INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '어린이');
+INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '테마');
+INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '워게임');
+INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '한글');
+INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '경제');
+INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '협력');
+INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '퍼즐');
+INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '모험');
+INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '주사위');
 -- // INSERT THEME
 
 -- INSERT GAME
-INSERT INTO 
-    game(game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no)
-VALUES
-    (
-        seq_game_no.nextval,
-        '보난자',
-        'Bonanza',
-        'upload\thumb\1.png',
-        '3명~5명',
-        '만 10세이상',
-        '45분',
-        '초급',
-        'upload\desc\1.jpg',
-        'OwgKvBQ7bqs',
-        2
-    );
+INSERT INTO game(game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no)
+VALUES ( seq_game_no.nextval, '보난자', 'Bonanza', 'upload\thumb\1.png', '3명~5명', '만 10세이상', '45분', '초급', 'upload\desc\1.jpg', 'OwgKvBQ7bqs', 2 );
             
-INSERT INTO 
-    game(game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no)
-VALUES
-    (
-        seq_game_no.nextval,
-        '아컴호러',
-        'Arkham Horror',
-        'upload\thumb\2.png',
-        '1명~4명',
-        '만 12세이상',
-        '60분',
-        '고급',
-        'upload\desc\2.jpg',
-        'OkaaG0_oAtI',
-        7
-    );
+INSERT INTO game(game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no)
+VALUES ( seq_game_no.nextval, '아컴호러', 'Arkham Horror', 'upload\thumb\2.png', '1명~4명', '만 12세이상', '60분', '고급', 'upload\desc\2.jpg', 'OkaaG0_oAtI', 7 );
    
-INSERT INTO 
-    game(game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no)
-VALUES
-    (
-        seq_game_no.nextval,
-        '할리갈리',
-        'Halli Galli',
-        'upload\thumb\3.png',
-        '2명~6명',
-        '만 6세이상',
-        '10분',
-        '초급',
-        'upload\desc\3.jpg',
-        '0q0yClzjADk',
-        5
-    );
+INSERT INTO game(game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no)
+VALUES ( seq_game_no.nextval, '할리갈리', 'Halli Galli', 'upload\thumb\3.png', '2명~6명', '만 6세이상', '10분', '초급', 'upload\desc\3.jpg', '0q0yClzjADk', 5 );
 -- // INSERT GAME
 
 -- INSERT SIDO
@@ -402,55 +333,23 @@ INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 16, '서귀포시' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 16, '제주시' );
 -- // INSERT SIGUNGU
 
--- INSERT MATCHING
-INSERT INTO matching(matching_no, user_no, matching_title, matching_content, matching_people, matching_date, matching_time, sido_code, sigungu_code, matching_permission_gender, theme_no, game_no, matching_status, matching_hits, matching_reg_date)
-VALUES (1, 1, 'test1', 'test1', 2, '2021-11-11', '11:11', 1, 1, '여', 1, 1, '매칭중', 0, sysdate );
-
-INSERT INTO matching(matching_no, user_no, matching_title, matching_content, matching_people, matching_date, matching_time, sido_code, sigungu_code, matching_permission_gender, theme_no, game_no, matching_status, matching_hits, matching_reg_date)
-VALUES (2, 2, 'test2', 'test2', 3, '2021-11-11', '11:11', 2, 27, '남', 2, 2, '매칭중', 0, sysdate );
-
-INSERT INTO matching(matching_no, user_no, matching_title, matching_content, matching_people, matching_date, matching_time, sido_code, sigungu_code, matching_permission_gender, theme_no, game_no, matching_status, matching_hits, matching_reg_date)
-VALUES (3, 3, 'test3', 'test3', 4, '2021-11-11', '11:11', 3, 52, '남', 3, 3, '매칭중', 0, sysdate );
--- // INSERT MATCHING
-
 -- INSERT STORE
-INSERT INTO
-    store(store_no, store_name, store_latitude, store_longitude)
-VALUES
-    (
-        seq_store_no.nextval,
-        '보드게임카페1',
-        37.494366186594405,
-        127.01825129365432
-    );
+INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+VALUES ( seq_store_no.nextval, '보드게임카페1', 37.494366186594405, 127.01825129365432, '02-1111-1111', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '111시 111구 111동 111로', '1111-111');
 
-INSERT INTO
-    store(store_no, store_name, store_latitude, store_longitude)
-VALUES
-    (
-        seq_store_no.nextval,
-        '보드게임카페2',
-        37.499336756210546,
-        127.0322302565823
-    );
+INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+VALUES ( seq_store_no.nextval, '보드게임카페2', 37.499336756210546, 127.0322302565823, '02-2222-2222', '보드게임카페2 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '222시 222구 222동 222로', '2222-222');
 
-INSERT INTO
-    store(store_no, store_name, store_latitude, store_longitude)
-VALUES
-    (
-        seq_store_no.nextval,
-        '보드게임카페3',
-        37.50207799788094,
-        127.02286735499807
-    );
+INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+VALUES ( seq_store_no.nextval, '보드게임카페3', 37.50207799788094, 127.02286735499807, '02-3333-3333', '보드게임카페3 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '333시 333구 333동 333로', '3333-333');
 -- // INSERT STORE
     
  -- INSERT RESERVATIONDATE
 insert into reservation_date
-values(SEQ_RESERVATION_DATE_NO.nextval, 1, '2021/10/05', 20, 4);
+values(SEQ_RESERVATION_DATE_NO.nextval, 1, '2021/10/05', 20, 4, '1');
 
 insert into reservation_date
-values(SEQ_RESERVATION_DATE_NO.nextval, 2, '2021/10/05', 20, 4);
+values(SEQ_RESERVATION_DATE_NO.nextval, 2, '2021/10/05', 20, 4, '1');
 
 insert into reservation_time
 values(SEQ_RESERVATION_TIME_NO.nextval, 1, '09');

@@ -101,8 +101,8 @@
 				<table class="store-details-info">
 				
 				<colgroup>
-					<col width="20%">
-					<col width="80%">
+					<col width="15%">
+					<col width="85%">
 				</colgroup>
 
 					<tr class="icons-row">
@@ -136,7 +136,7 @@
 					</tr>
 
 					<tr>
-						<td>상세주소</td>
+						<td>상세 주소 : </td>
 					</tr>
 					<tr class="icons-row">
 						<td rowspan="2" class="icons-span"><i class="fas fa-wallet"></i></td>

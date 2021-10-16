@@ -233,7 +233,7 @@ $('#select-sido').on('click', function() {
 
 function sigunguSelect(sigunguVo) {
 	var sigunguOption = '<option value="' + sigunguVo.sigunguCode + '">' + sigunguVo.sigunguName + '</option>';
-	
+
 	$('#select-sigungu').append(sigunguOption);
 }
 </script>

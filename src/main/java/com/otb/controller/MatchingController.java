@@ -116,7 +116,7 @@ public class MatchingController {
 	public String read(HttpSession session, Model model, @RequestParam("no") int matchingNo) {
 		System.out.println("매칭 컨트롤러: read;;;");
 		System.out.println(matchingNo);
-		
+
 		// 클릭한 매칭글 번호 받아서 데이터(글/작성자 정보) 불러오기
 		Map<String, Object> readInfo = matchingService.read(matchingNo);
 		System.out.println(readInfo);

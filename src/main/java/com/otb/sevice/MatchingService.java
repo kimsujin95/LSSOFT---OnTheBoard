@@ -166,7 +166,7 @@ public class MatchingService {
 			// 매칭글의 댓글/답글 리스트 불러오기
 //			List<CommentReplyVo> commentReplyList = matchingDao.commentReplyList(matchingNo);
 //			System.out.println("댓글/답글 리스트: " + commentReplyList);
-			
+
 			// Map으로 묶기
 			Map<String, Object> readInfo = new HashMap<String, Object>();
 			readInfo.put("matchingVo", matchingVo);

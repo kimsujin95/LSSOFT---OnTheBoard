@@ -206,7 +206,7 @@ public class MatchingDao {
 
 		return matchingMemberInfoList;
 	}
-	
+
 	// 매칭글 읽기 - 현재 매창에 참가중이 유저 번호 리스트
 	public List<Integer> groupUserNoList(int matchingNo) {
 		System.out.println("매칭 다오: groupUserNo;;;");

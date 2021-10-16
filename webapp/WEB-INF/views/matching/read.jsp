@@ -599,7 +599,7 @@ $('#btn-del-matching').on('click', function() {
 					console.log(status + ' : ' + error);
 				}
 			});
-			
+
 			location.href = '${pageContext.request.contextPath}/matching/main';
 		}
 	});

@@ -60,6 +60,7 @@ INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '협력'
 INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '퍼즐');
 INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '모험');
 INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '주사위');
+INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '카드');
 -- // INSERT THEME
 
 -- INSERT GAME

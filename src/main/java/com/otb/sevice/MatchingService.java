@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.otb.dao.MatchingDao;
 import com.otb.dao.UserDao;
-import com.otb.vo.CommentReplyVo;
 import com.otb.vo.CommentVo;
 import com.otb.vo.GameVo;
 import com.otb.vo.MatchingGroupVo;
@@ -150,6 +149,10 @@ public class MatchingService {
 			List<UserVo> matchingMemberInfoList = matchingDao.matchingMemberInfoList(matchingNo);
 			System.out.println(matchingMemberInfoList);
 			
+			// 매칭에 참여중인 유저 번호 리스트
+			List<Integer> groupUserNoList = matchingDao.groupUserNoList(matchingNo);
+			System.out.println(groupUserNoList);
+			
 			/**/
 			// 매칭글의 댓글 리스트
 			List<CommentVo> commentList = matchingDao.commentList(matchingNo);
@@ -172,6 +175,7 @@ public class MatchingService {
 //			readInfo.put("commentReplyList", commentReplyList);
 			readInfo.put("commentList", commentList);
 			readInfo.put("replyList", replyList);
+			readInfo.put("groupUserNoList", groupUserNoList);
 			
 			return readInfo;
 		}
@@ -253,4 +257,13 @@ public class MatchingService {
 		return replyInfo;
 	}
 	
+	// 매칭글/매칭그룹 삭제
+	public int matchingDelete(int matchingNo) {
+		System.out.println("매칭 서비스: matchingDelete;;;");
+		
+		int deleteMatchingGroup = matchingDao.deleteMatchingGroup(matchingNo);
+		int deleteMatching = matchingDao.deleteMatching(matchingNo);
+		
+		return deleteMatching;
+	}
 }

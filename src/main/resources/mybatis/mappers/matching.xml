@@ -485,6 +485,18 @@
 		]]>
 	</select>
 	
+	<!-- 매칭글 읽기 - 현재 매칭 참가중인 유저 번호 리스트 -->
+	<select id="groupUserNoList" parameterType="int" resultType="int">
+		<![CDATA[
+			SELECT
+				user_no
+			FROM
+				matching_group
+			WHERE
+				matching_no = #{ matchingNo }
+		]]>
+	</select>
+	
 	<!-- 매칭글 읽기 - 매칭상태 변경 -->
 	<update id="statusComplete" parameterType="int">
 		<![CDATA[
@@ -602,5 +614,25 @@
 			    user_no = #{ userNo }
 		]]>
 	</select>
+	
+	<!-- 매칭글 삭제 -->
+	<delete id="deleteMatching" parameterType="int">
+		<![CDATA[
+			DELETE FROM
+				matching
+			WHERE
+				matching_no = #{ matchingNo }
+		]]>
+	</delete>
+	
+	<!-- 매칭그룹 삭제 -->
+	<delete id="deleteMatchingGroup" parameterType="int">
+		<![CDATA[
+			DELETE FROM
+				matching_group
+			WHERE
+				matching_no = #{ matchingNo }
+		]]>
+	</delete>
 
 </mapper>

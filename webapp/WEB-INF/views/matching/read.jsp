@@ -7,7 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/bootstrap.css">
@@ -67,13 +66,13 @@
 		<hr>
 
 		<div class="row">
-			<div id="game-img-info" class="col-md-3 text-center">
+			<div id="game-img-info" class="col-xs-3 text-center">
 				<img src="${pageContext.request.contextPath}/assets/images/matching/할리갈리.jpg" alt="게임값" width="100%">
 				<br>
 				<br>
 				<a href="#">${readInfo.matchingVo.gameNameKo}</a>
 			</div>
-			<div class="col-md-3 border-right">
+			<div class="col-xs-3 border-right">
 				<table id=table-game-info>
 					<colgroup>
 						<col width="100px">
@@ -122,18 +121,26 @@
 				</table>
 			</div>
 
-			<div id="content-content" class="col-md-6">${readInfo.matchingVo.matchingContent}</div>
+			<div id="content-content" class="col-xs-6">${readInfo.matchingVo.matchingContent}</div>
 		</div>
 		<div id="read-btn" class="row">
-			<div class="col-md-3 text-center">
+			<div class="col-xs-3 text-center">
 				<c:if test="${readInfo.writerInfo.userNo ne authUser.userNo && not empty authUser && readInfo.matchingVo.matchingStatus eq '매칭중'}">
 					<c:if test="${readInfo.matchingVo.matchingMember ne readInfo.matchingVo.matchingPeople}">
-						<button id="btn-joinMatching" class="btn-white" data-user_no="${authUser.userNo}" data-matching_no="${readInfo.matchingVo.matchingNo}" data-now_member="${readInfo.matchingVo.matchingMember}" data-total_member="${readInfo.matchingVo.matchingPeople}">참가신청</button>
+						<c:choose>
+							<c:when test="${readInfo.groupUserNoList.contains(authUser.userNo)}">
+							</c:when>
+							<c:otherwise>
+							<button id="btn-joinMatching" class="btn-white" data-user_no="${authUser.userNo}" data-matching_no="${readInfo.matchingVo.matchingNo}" data-now_member="${readInfo.matchingVo.matchingMember}" data-total_member="${readInfo.matchingVo.matchingPeople}">참가신청</button>
+							</c:otherwise>
+						</c:choose>
 					</c:if>
+					<c:if test="${readInfo.groupUserNoList.contains(authUser.userNo)}">
 					<button id="btn-outMatching"  class="btn-red" data-user_no="${authUser.userNo}" data-matching_no="${readInfo.matchingVo.matchingNo}">참가취소</button>
+					</c:if>
 				</c:if>
 			</div>
-			<div class="col-md-4 text-right">
+			<div class="col-xs-4 text-right">
 				<c:if test="${readInfo.writerInfo.userNo eq authUser.userNo}">
 					<c:if test="${readInfo.matchingVo.matchingStatus eq '매칭중'}">
 						<button id="btn-statusComplete" class="btn-red" data-no="${readInfo.matchingVo.matchingNo}">매칭완료</button>
@@ -143,10 +150,9 @@
 					</c:if>
 				</c:if>
 			</div>
-			<div class="col-md-5 text-right">
+			<div class="col-xs-5 text-right">
 				<c:if test="${readInfo.writerInfo.userNo eq authUser.userNo}">
-					<a href="${pageContext.request.contextPath}/matching/modifyForm"><button class="btn-blue">수정</button></a>
-					<button id="btn-del" class="btn-white">삭제</button>
+					<button id="btn-del-matching" class="btn-white" data-no="${readInfo.matchingVo.matchingNo}">삭제</button>
 				</c:if>
 				<a href="${pageContext.request.contextPath}/matching/main"><button class="btn-white">목록</button></a>
 			</div>
@@ -160,10 +166,10 @@
 		<div id="comment" class="row">
 			<c:forEach items="${readInfo.commentList}" var="commentVo" varStatus="status">
 			<div class="row comment-all">
-				<div class="col-md-1 comment-img">
+				<div class="col-xs-1 comment-img">
 					<img src="${pageContext.request.contextPath}/assets/images/matching/bonobono.png" alt="" width="45%">'
 				</div>
-				<div class="col-md-11 comment-1">
+				<div class="col-xs-11 comment-1">
 					<div class="clearfix">
 						<div class="comment">
 							<strong>[ ${commentVo.userNickname} <c:if test="${readInfo.writerInfo.userNo eq commentVo.userNo}"><span class="text-sm-red">작성자</span></c:if> ]</strong><br>
@@ -186,11 +192,11 @@
 			<c:forEach items="${readInfo.replyList}" var="replyVo" varStatus="status">
 			<c:if test="${commentVo.commentNo eq replyVo.commentNo}">
 				<div class="row comment-answer">
-					<div class="col-md-1"></div>
-					<div class="col-md-1 comment-img">
+					<div class="col-xs-1"></div>
+					<div class="col-xs-1 comment-img">
 						<img src="${pageContext.request.contextPath}/assets/images/matching/bonobono.png" alt="" width="45%">
 					</div>
-					<div class="col-md-10 comment-1">
+					<div class="col-xs-10 comment-1">
 						<div class="clearfix">
 							<div class="comment">
 								<strong>[ ${replyVo.replyUserNickname} <c:if test="${readInfo.writerInfo.userNo eq commentVo.userNo}"><span class="text-sm-red">작성자</span></c:if> ]</strong><br>
@@ -251,31 +257,52 @@ $('#btn-joinMatching').on('click', function(){
 	console.log(userNo);
 	console.log(matchingNo);
 	
-	
-
 	var matchingGroupVo = {
 			userNo: userNo,
 			matchingNo: matchingNo
 	};
-
 	console.log(matchingGroupVo);
 
-	$.ajax({
-		url: '${pageContext.request.contextPath}/matching/joinMatching',
-		type: 'post',
-		data: matchingGroupVo,
-		success: function(joinMatchingInfo){
-			console.log(joinMatchingInfo.userInfo);
-			renderJoin(joinMatchingInfo.userInfo);
-			
-			console.log(joinMatchingInfo.matchingMember);
-			$('#joinMatchingMember').text(joinMatchingInfo.matchingMember);
-		},
-		error: function(XHR, status, error) {
-			console.log(status + ' : ' + error);
-		}
+	swal({
+		title: '매칭 그룹에 참가 하시겠습니까?',
+		text: '매칭 그룹 참가 확인',
+		icon: 'warning',
+		closeOnClickOutside: false,
 		
+		buttons: {
+			cancle: {
+				text: '취소',
+				value: false,
+				className: 'btn btn-danger'
+			},
+			confirm: {
+				text: '참가',
+				value: true,
+				className: 'btn btn-primary'
+			}
+		}
+	}).then((result) => {
+		if(result === true) {
+			
+			$.ajax({
+				url: '${pageContext.request.contextPath}/matching/joinMatching',
+				type: 'post',
+				data: matchingGroupVo,
+				success: function(joinMatchingInfo){
+					console.log(joinMatchingInfo.userInfo);
+					renderJoin(joinMatchingInfo.userInfo);
+					console.log(joinMatchingInfo.matchingMember);
+					$('#joinMatchingMember').text(joinMatchingInfo.matchingMember);
+				},
+				error: function(XHR, status, error) {
+					console.log(status + ' : ' + error);
+				}
+			});
+			
+			location.href = '${pageContext.request.contextPath}/matching/read?no=' + matchingNo;
+		}
 	});
+	
 	var nowMember = $(this).data("now_member");
 	console.log(nowMember)
 	var totalMember = $(this).data("total_member");
@@ -308,16 +335,41 @@ $('#btn-outMatching').on('click', function() {
 	};
 	console.log(matchingGroupVo);
 	
-	$.ajax({
-		url: '${pageContext.request.contextPath}/matching/outMatching',
-		type: 'post',
-		data: matchingGroupVo,
-		success: function(matchingMember) {
-			$('[data-no=' + userNo + ']').remove();
-			$('#joinMatchingMember').text(matchingMember);
-		},
-		error: function(XHR, status, error) {
-			console.log(status + ' : ' + error);
+	swal({
+		title: '매칭 그룹에서 탈퇴 하시겠습니까?',
+		text: '매칭 그룹 탈퇴 확인',
+		icon: 'warning',
+		closeOnClickOutside: false,
+		
+		buttons: {
+			cancle: {
+				text: '취소',
+				value: false,
+				className: 'btn btn-primary'
+			},
+			confirm: {
+				text: '탈퇴',
+				value: true,
+				className: 'btn btn-danger'
+			}
+		}
+	}).then((result) => {
+		if(result === true) {
+			
+			$.ajax({
+				url: '${pageContext.request.contextPath}/matching/outMatching',
+				type: 'post',
+				data: matchingGroupVo,
+				success: function(matchingMember) {
+					$('[data-no=' + userNo + ']').remove();
+					$('#joinMatchingMember').text(matchingMember);
+				},
+				error: function(XHR, status, error) {
+					console.log(status + ' : ' + error);
+				}
+			});
+			
+			location.href = '${pageContext.request.contextPath}/matching/read?no=' + matchingNo;
 		}
 	});
 });
@@ -404,10 +456,10 @@ $('#btnCommentWrite').on('click', function() {
 });
 
 function commentHTML(commentInfo) {
-	var commentSTR = '<div class="col-md-1 comment-img">'
+	var commentSTR = '<div class="col-xs-1 comment-img">'
 					+ 	'<img src="${pageContext.request.contextPath}/assets/images/matching/bonobono.png" alt="" width="45%">'
 					+ '</div>'
-					+ '<div class="col-md-11 comment-1">'
+					+ '<div class="col-xs-11 comment-1">'
 					+ 	'<div class="clearfix">'
 					+ 		'<div class="comment">'
 					+ 		'<strong>[ ' + commentInfo.userNickname + ' <c:if test="${readInfo.writerInfo.userNo eq authUser.userNo}"><span class="text-sm-red">작성자</span></c:if> ]</strong><br>'
@@ -477,11 +529,11 @@ $('#comment').on('click', '.btn-comment-reply', function() {
 });
 
 function replyHTML(replyInfo) {
-	var replySTR = '<div class="col-md-1"></div>'
-				+ 		'<div class="col-md-1 comment-img">'
+	var replySTR = '<div class="col-xs-1"></div>'
+				+ 		'<div class="col-xs-1 comment-img">'
 				+ 			'<img src="${pageContext.request.contextPath}/assets/images/matching/bonobono.png" alt="" width="45%">'
 				+ 		'</div>'
-				+ 		'<div class="col-md-10 comment-1">'
+				+ 		'<div class="col-xs-10 comment-1">'
 				+ 			'<div class="clearfix">'
 				+ 				'<div class="comment">'
 				+ 				'<strong>[ ' + replyInfo.replyUserNickname + ' <c:if test="${readInfo.writerInfo.userNo eq authUser.userNo}"><span class="text-sm-red">작성자</span></c:if> ]</strong><br>'
@@ -505,6 +557,54 @@ function replyHTML(replyInfo) {
 }
 
 // -- 답글 등록 --
+
+// 매칭글 삭제
+$('#btn-del-matching').on('click', function() {
+	var matchingNo = $(this).data('no');
+	console.log(matchingNo);
+	
+	swal({
+		title: '매칭글을 삭제 하시겠습니까?',
+		text: '매칭글 삭제 확인',
+		icon: 'warning',
+		closeOnClickOutside: false,
+		
+		buttons: {
+			cancle: {
+				text: '취소',
+				value: false,
+				className: 'btn btn-primary'
+			},
+			confirm: {
+				text: '삭제',
+				value: true,
+				className: 'btn btn-danger'
+			}
+		}
+	}).then((result) => {
+		if(result === true) {
+			
+			$.ajax({
+				url: '${pageContext.request.contextPath}/matching/matchingDelete',
+				type: 'post',
+				data: { matchingNo: matchingNo },
+				success: function(matchingDelete) {
+					if (matchingDelete === 1) {
+						console.log(matchingDelete + '매칭상태 변경 성공');
+					} else {
+						console.log(matchingDelete + '매칭상태 변경 실패');
+					}
+				},
+				error: function(XHR, status, error) {
+					console.log(status + ' : ' + error);
+				}
+			});
+			
+			location.href = '${pageContext.request.contextPath}/matching/main';
+		}
+	});
+});
+// -- 매칭글 삭제 --
 
 </script>
 

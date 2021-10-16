@@ -185,22 +185,16 @@ public class MatchingController {
 		return replyInfo;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	// 매칭글 수정폼
-	@RequestMapping("/modifyForm")
-	public String modify() {
-		System.out.println("매칭 컨트롤러: modifyForm;;;");
+	// 매칭글/매칭그룹 삭제
+	@ResponseBody
+	@RequestMapping("/matchingDelete")
+	public int matchingDelete(@RequestParam("matchingNo") int matchingNo) {
+		System.out.println("매칭 컨트롤러: matchingDelete;;;");
+		System.out.println(matchingNo);
+		
+		int delete = matchingService.matchingDelete(matchingNo);
 
-		return "/matching/modifyForm";
+		return delete;
 	}
 
 }

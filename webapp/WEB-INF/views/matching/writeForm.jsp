@@ -7,7 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/bootstrap.css">
@@ -56,8 +55,8 @@
 
 		<form id="write-form" action="${pageContext.request.contextPath}/matching/write" method="get">
 			<div class="row">
-				<div class="col-md-1"></div>
-				<div class="col-md-5">
+				<div class="col-xs-1"></div>
+				<div class="col-xs-5">
 					<label for="title">제목</label>
 					<br>
 					<input id="title" type="text" name="matchingTitle" placeholder="제목을 입력해 주세요." value="">
@@ -113,7 +112,7 @@
 
 					<br>
 				</div>
-				<div class="col-md-5 border-left row">
+				<div class="col-xs-5 border-left row">
 					<label for="">지역</label>
 					<br>
 					<div class="col-xs-6">
@@ -171,7 +170,7 @@
 					<br>
 					<textarea name="matchingContent" id="content" cols="60" rows="5" placeholder="내용을 입력해 주세요."></textarea>
 				</div>
-				<div class="col-md-1"></div>
+				<div class="col-xs-1"></div>
 			</div>
 
 			<br>

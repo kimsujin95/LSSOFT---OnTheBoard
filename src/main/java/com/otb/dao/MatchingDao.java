@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.otb.vo.CommentReplyVo;
 import com.otb.vo.CommentVo;
 import com.otb.vo.GameVo;
 import com.otb.vo.MatchingGroupVo;
@@ -207,10 +206,18 @@ public class MatchingDao {
 
 		return matchingMemberInfoList;
 	}
+	
+	// 매칭글 읽기 - 현재 매창에 참가중이 유저 번호 리스트
+	public List<Integer> groupUserNoList(int matchingNo) {
+		System.out.println("매칭 다오: groupUserNo;;;");
+		List<Integer> groupUserNoList = sqlSession.selectList("matching.groupUserNoList", matchingNo);
+		
+		return groupUserNoList;
+	}
 
 	// 매칭글 읽기 - 매칭상태 변경
 	public int statusComplete(int matchingNo) {
-		System.out.println("매칭 서비스: statusComplete;;;");
+		System.out.println("매칭 다오: statusComplete;;;");
 
 		int statusComplete = sqlSession.update("matching.statusComplete", matchingNo);
 		return statusComplete;
@@ -218,7 +225,7 @@ public class MatchingDao {
 	
 	// 매칭글 읽기 - 댓글 등록
 	public int commentWrite(CommentVo commentVo) {
-		System.out.println("매칭 서비스: commentWrite;;;");
+		System.out.println("매칭 다오: commentWrite;;;");
 		
 		int commentWrite = sqlSession.insert("matching.commentWrite", commentVo);
 		
@@ -226,7 +233,7 @@ public class MatchingDao {
 	}
 	// 매칭글 읽기 - 등록된 댓글정보 불러오기
 	public CommentVo commentInfo(int commentNo) {
-		System.out.println("매칭 서비스: commentInfo;;;");
+		System.out.println("매칭 다오: commentInfo;;;");
 		
 		CommentVo commentInfo = sqlSession.selectOne("matching.commentInfo", commentNo);
 		
@@ -235,7 +242,7 @@ public class MatchingDao {
 	
 	// 매칭글 읽기 - 답글 등록
 	public int replyWrite(ReplyVo replyVo) {
-		System.out.println("매칭 서비스: replyWrite;;;");
+		System.out.println("매칭 다오: replyWrite;;;");
 		
 		int replyWrite = sqlSession.insert("matching.replyWrite", replyVo);
 		
@@ -243,11 +250,29 @@ public class MatchingDao {
 	}
 	// 매칭글 읽기 - 등록된 답글정보 불러오기
 	public ReplyVo replyInfo(int replyNo) {
-		System.out.println("매칭 서비스: replyNo;;;");
+		System.out.println("매칭 다오: replyNo;;;");
 		
 		ReplyVo replyInfo = sqlSession.selectOne("matching.replyInfo", replyNo);
 		
 		return replyInfo;
+	}
+	
+	// 매칭글 삭제
+	public int deleteMatching(int matchingNo) {
+		System.out.println("매칭 다오: deleteMatching;;;");
+		
+		int deleteMatching = sqlSession.delete("matching.deleteMatching", matchingNo);
+		
+		return deleteMatching;
+	}
+	
+	// 매칭그룹 삭제
+	public int deleteMatchingGroup(int matchingNo) {
+		System.out.println("매칭 다오: deleteMatchingGroup;;;");
+		
+		int deleteMatchingGroup = sqlSession.delete("matching.deleteMatchingGroup", matchingNo);
+		
+		return deleteMatchingGroup;
 	}
 
 }

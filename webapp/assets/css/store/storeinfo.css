@@ -101,16 +101,37 @@ ul,ol,li{
 }
 
 /*리뷰 게시 구역*/
+.review {
+	width: 100%;
+	height: 150px;
+	margin-bottom: 20px;
+}
+
+.review div {
+	height: 100%;
+}
+
 .store-review-wraper{
-    position: relative;
-    padding: 20px 0 20px 0;
+	border-bottom: 1px solid #ff1f67;
+	margin-bottom: 50px;
+}
+
+.store-review-wraper .write_review {
+	text-align: right;
+}
+
+.store-review-wraper #review-write-box {
+	width: 100%;
+	height: 80px;
+	resize: none;
+	border: 2px solid #000;
+	border-radius: 5px;
 }
 
 .paging-wrap{
     width: 100%;
     height: 80px;
     text-align: center;
-    position: relative;
 }
 
 .pagination{
@@ -129,18 +150,16 @@ ul,ol,li{
 }
 
 .write_review{
-  position: absolute;
   bottom: 0;
   right: 0;
+  margin-bottom: 20px;
 }
 
 .user_review li > .user_profile_img, .review_writer_info{
-    float: left;
 }
 
 .user_profile_img {
-    width: 20%;
-    height: 100%;
+	padding: 0px;
 }
 
 .user_profile_img > img{
@@ -148,39 +167,37 @@ ul,ol,li{
     height: 100%;
     object-fit: cover;
     vertical-align: 0;
-    border-left: 2px solid #ff1f67;
-    border-top: 2px solid #ff1f67;
-    border-bottom: 2px solid #ff1f67;
+    border: 1px solid #ff1f67;
+    border-right: none;
 }
 
 .review-section > .user_review{
-   display: inline-block; 
 }
 
 .user_review{
-    width: 500px;
-    height: 100px;
-    margin : 15px 40px 15px 40px;
 }
 
 .user_review > li{
-    height: 100%;
 }
 
 .review_writer_info{
-    width: 80%;
-    height: 100%;
+	padding: 0px;
+}
+
+.review_writer_info .first-review-table{
+	margin-right: 10px;
 }
 
 .review_writer_info > table {
-    background-color: #ccc;
-    border: 2px solid #ff1f67;
+    border: 1px solid #ff1f67;
+    width: 99%;
     height: 100%;
-    width: 100%;
+    border-left: none;
 }
 
 .review_writer_info td{
     font-size: 12px;
+    padding-left: 15px;
 }
 
 

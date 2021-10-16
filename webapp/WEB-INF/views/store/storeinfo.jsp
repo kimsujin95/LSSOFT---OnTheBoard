@@ -174,57 +174,93 @@
 
 		<!-- 리뷰 게시구역 -->
 		<div class="store-review-wraper">
-			<div style="border: 2px solid black;">
-
 				<!-- 리뷰 반복 출력 -->
-				<div class="user_review">
-				
-					<ul class="review-section" id="review">
-
-						<li>
-
-							<div class="user_profile_img">
-								<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
-							</div>
-
-							<div class="review_writer_info">
-
-								<table>
-									<tr>
-										<td>드웨인_존슨</td>
-									</tr>
-									<tr>
-										<td>2021/09/15</td>
-									</tr>
-									<tr>
-										<td>사장님도 친절하고 가게도 완전 깨끗~</td>
-									</tr>
-								</table>
-
-							</div>
-
-						</li>
-
-					</ul>
+				<div class="review user_review container">
+					<div class="col-xs-2 user_profile_img">
+						<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
+					</div>
+					<div class="col-xs-4 review_writer_info first-review-table">
+						<table>
+							<tr>
+								<td>카리나</td>
+							</tr>
+							<tr>
+								<td>2021/09/15</td>
+							</tr>
+							<tr>
+								<td>사장님도 친절하고 가게도 완전 깨끗~</td>
+							</tr>
+						</table>
+					</div>
 					
+					<div class="col-xs-2 user_profile_img">
+						<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
+					</div>
+					<div class="col-xs-4 review_writer_info">
+						<table>
+							<tr>
+								<td>윈터</td>
+							</tr>
+							<tr>
+								<td>2021/09/15</td>
+							</tr>
+							<tr>
+								<td>사장님도 친절하고 가게도 완전 깨끗~</td>
+							</tr>
+						</table>
+					</div>
 				</div>
-				
-			</div>
+				<div class="review user_review container">
+					<div class="col-xs-2 user_profile_img">
+						<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
+					</div>
+					<div class="col-xs-4 review_writer_info first-review-table">
+						<table>
+							<tr>
+								<td>카리나</td>
+							</tr>
+							<tr>
+								<td>2021/09/15</td>
+							</tr>
+							<tr>
+								<td>사장님도 친절하고 가게도 완전 깨끗~</td>
+							</tr>
+						</table>
+					</div>
+					
+					<div class="col-xs-2 user_profile_img">
+						<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
+					</div>
+					<div class="col-xs-4 review_writer_info">
+						<table>
+							<tr>
+								<td>윈터</td>
+							</tr>
+							<tr>
+								<td>2021/09/15</td>
+							</tr>
+							<tr>
+								<td>사장님도 친절하고 가게도 완전 깨끗~</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			
 			<!-- 리뷰 페이징 -->
 			<div class="paging-wrap">
-
 				<ul class="pagination" id="pages"></ul>
-
-				<!-- 리뷰 작성하기 버튼 -->
-				<div class="write_review">
-					<button type="button" id="review_btn" class="btn-red">리뷰남기기</button>
-				</div>
-
+			</div>
+			<div>
+				<textarea id="review-write-box" placeholder="리뷰를 작성해 주세요."></textarea>
+			</div>
+			<!-- 리뷰 작성하기 버튼 -->
+			<div class="write_review">
+				<button type="button" id="review_btn" class="btn-white">리뷰등록</button>
 			</div>
 		</div>
 
-		<!-- 예약 사전설정 구역(날짜,시간) -->
 
+		<!-- 예약 사전설정 구역(날짜,시간) -->
 		<div id="on-the-board-include">
 
 			<div id="store-reservation-set-section">

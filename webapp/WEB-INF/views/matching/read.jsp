@@ -249,7 +249,6 @@
 </body>
 
 <script>
-
 // 매칭 참가 버튼 클릭: 참가자 리스트 출력
 $('#btn-joinMatching').on('click', function(){
 	var userNo = $(this).data("user_no");
@@ -555,7 +554,6 @@ function replyHTML(replyInfo) {
 	$('.reply-box-' + replyInfo.commentNo).remove();
 	$('.input-reply-' + replyInfo.commentNo).append(replySTR);
 }
-
 // -- 답글 등록 --
 
 // 매칭글 삭제

@@ -1,5 +1,7 @@
 package com.otb.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,8 +82,17 @@ public class AdminController {
 	//schedule - 조회(ajax)
 	@ResponseBody
 	@RequestMapping(value = "/scheduleLookup", method = {RequestMethod.GET, RequestMethod.POST})
-	public void scheduleLookup() {
+	public Map<String, Object> scheduleLookup(@ModelAttribute ReservationDateVo reservationDateVo, HttpSession session) {
+		System.out.println("스케쥴 조회 도착");
+
+		int storeNo = ((StoreVo)session.getAttribute("storeInfo")).getStoreNo();
+		reservationDateVo.setStoreNo(storeNo);
 		
+		System.out.println(reservationDateVo.toString());
+		
+		Map<String, Object> reservationData = adminService.lookupSchedule(reservationDateVo);
+		
+		return reservationData;
 	}
 	
 	//////////////////////////////////////// 매장 정보 등록 및 수정 ////////////////////////////////////////

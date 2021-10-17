@@ -5,7 +5,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -177,4 +179,78 @@ public class AdminService {
 		
 	}
 
+	//매장 스케쥴 조회
+	public Map<String, Object> lookupSchedule(ReservationDateVo reservationDateVo) {
+		
+		int dateNo = adminDao.selectDateNo(reservationDateVo);
+		System.out.println("날짜 번호" + dateNo);
+		
+		Map<String, Object> reservationData = new HashMap<String, Object>();
+		
+		if(dateNo == 0) {
+			System.out.println();
+			return null;
+		} else {
+			String[] times = new String[14];
+			List<String> timeList = adminDao.selectTimeList(dateNo);
+			ReservationDateVo reservationPeoples = adminDao.selectReservationPeoples(dateNo);
+			int storeReservationTotal = reservationPeoples.getStoreReservationTotal();
+			int storeReservationMax = reservationPeoples.getStoreReservationMax();
+			
+			for(int i = 0; i < timeList.size(); i ++) {
+				switch (timeList.get(i)) {
+				case "09":
+					times[0] = timeList.get(i);
+					break;
+				case "10":
+					times[1] = timeList.get(i);
+					break;
+				case "11":
+					times[2] = timeList.get(i);
+					break;
+				case "12":
+					times[3] = timeList.get(i);
+					break;
+				case "13":
+					times[4] = timeList.get(i);
+					break;
+				case "14":
+					times[5] = timeList.get(i);
+					break;
+				case "15":
+					times[6] = timeList.get(i);
+					break;
+				case "16":
+					times[7] = timeList.get(i);
+					break;
+				case "17":
+					times[8] = timeList.get(i);
+					break;
+				case "18":
+					times[9] = timeList.get(i);
+					break;
+				case "19":
+					times[10] = timeList.get(i);
+					break;
+				case "20":
+					times[11] = timeList.get(i);
+					break;
+				case "21":
+					times[12] = timeList.get(i);
+					break;
+				case "22":
+					times[13] = timeList.get(i);
+					break;
+
+				default:
+					break;
+				}
+			}
+			reservationData.put("times", times);
+			reservationData.put("storeReservationTotal", storeReservationTotal);
+			reservationData.put("storeReservationMax", storeReservationMax);
+		}
+		return reservationData;
+	}
+	
 }

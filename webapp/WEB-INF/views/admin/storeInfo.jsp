@@ -196,7 +196,7 @@
 					<h4 class="modal-title">이미지보기</h4>
 				</div>
 				<div class="modal-body">
-					<div class="formgroup">
+					<div class="form-group">
 						<img id="viewModelImg" src="">
 						<!-- ajax로 처리 : 이미지출력 위치-->
 					</div>
@@ -219,14 +219,13 @@
 <script type="text/javascript">
 	$(window).on("load", function(){
 		//onload 시, form 태그의 주소 값 구분
-		if(${empty storeInfo }) {
+		if(${empty storeInfo}) {
 			$("#form").attr("action", "${pageContext.request.contextPath }/admin/storeInfoInsert");
 			var button = $("button[type=submit]");
 			button.text("등록하기");
 		} else {
 			//매장 정보가 있을 때, 등록된 매장 이미지를 렌더링
-			var storeNo = ${storeInfo.storeNo};
-			console.log(storeNo);
+			console.log(${storeInfo.storeNo} );
 			$.ajax({
 			    url : "${pageContext.request.contextPath }/storeImageLookup/${storeInfo.storeNo}",
 				type : "POST",
@@ -320,11 +319,30 @@
 	}
 	
 	//매장 이미지를 확대하여 보기
+	var selectedImage;
 	$(".image-area").on("click", "[data-img]",function(){
 		console.log("이미지 확대 클릭");
 		console.log($(this).data("img"));
-		
+		selectedImage = $(this).data("img");
+
 		$("#viewModal").modal();
+		
+		$("#viewModelImg").attr("src", $(this).attr("src"));
+	});
+	
+	$("#btnDel").on("click", function(){
+		console.log("삭제버튼 클릭");
+		//삭제 요청
+		$.ajax({
+		    type : "POST",
+		    url : "${pageContext.request.contextPath }/storeImageRemove/" + selectedImage,
+		    success : function(data) {
+		    },
+		    err : function(jqXHR, textStatus, errorThrown) {
+		    	alert("업로드 에러\ncode : " + jqXHR.status + "\nerror message : " + jqXHR.responseText);
+		    }
+		});
+		
 	});
 	
 </script>

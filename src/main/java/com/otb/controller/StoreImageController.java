@@ -51,9 +51,14 @@ public class StoreImageController {
 	}
 	
 	//매장 이미지 삭제
-	@RequestMapping(value = "/storeImageRemove", method = {RequestMethod.GET, RequestMethod.POST})
-	public void imageRemove() {
+	@ResponseBody
+	@RequestMapping(value = "/storeImageRemove/{storeImageNo}", method = {RequestMethod.GET, RequestMethod.POST})
+	public boolean imageRemove(@PathVariable("storeImageNo") int storeImageNo) {
 		
+		System.out.println("이미지 삭제 도착");
+		System.out.println(storeImageNo);
+		
+		return false;
 	}
 	//////////////////////////////////////// 이미지 등록, 삭제 ////////////////////////////////////////
 

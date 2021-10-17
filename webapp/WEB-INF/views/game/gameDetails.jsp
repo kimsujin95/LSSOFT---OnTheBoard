@@ -74,7 +74,7 @@
 					<!-- .innerbox -->
 					<div class="innerbox">
 						<div class="thum">
-							<img src="${pageContext.request.contextPath}/upload/${gameVo.gameThumbImg }"
+							<img src="${pageContext.request.contextPath}/assets/upload/${gameVo.gameThumbImg }"
 								alt="${gameVo.gameNameKo }"
 							>
 						</div>
@@ -89,8 +89,7 @@
 								<li><em>게임인원</em>${gameVo.gamePeople}</li>
 								<li><em>게임시간</em>${gameVo.gameTime}</li>
 								<li><em>게임난이도</em>${gameVo.gameDifficulty}</li>
-
-								<li><em>게임테마</em><a href="javascript:">#${gameVo.themeNo} </a></li>
+								<li><em>게임테마</em><a href="javascript:">#${gameVo.themeName} </a></li>
 							</ul>
 							<div class="bbssvc">
 								<c:choose>

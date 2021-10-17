@@ -144,8 +144,10 @@
 	<insert id="insertStoreImage" parameterType="StoreImageVo">
 		<selectKey keyProperty="storeImageNo" resultType="int" order="BEFORE">
 			<![CDATA[
-				 SELECT sequence_store_image_no.NEXTVAL 
-				 FROM DUAL
+				 SELECT 
+				 	sequence_store_image_no.NEXTVAL 
+				 FROM 
+				 	DUAL
 			]]>
 		</selectKey>
 		<![CDATA[
@@ -161,10 +163,36 @@
 	<!-- 매장 예약 날짜 조회(유무 확인) -->
 	<select id="selectDateNo" parameterType="ReservationDateVo" resultType="int">
 		<![CDATA[
-			SELECT reservation_date_no
-			FROM RESERVATION_DATE
+			SELECT 
+				reservation_date_no
+			FROM 
+				RESERVATION_DATE
 			WHERE store_reservation_date = #{storeReservationDate}
 			  AND store_no = #{storeNo}
+		]]>
+	</select>
+	
+	<!-- 매장 스케쥴 조회 -->
+	<select id="selectTimeList" parameterType="int" resultType ="String">
+		<![CDATA[
+			SELECT 
+				store_reservation_time
+			FROM 
+				reservation_time
+			WHERE reservation_date_no = #{reservationDateNo}
+			ORDER BY store_reservation_time ASC
+		]]>
+	</select>
+	
+	<!-- 매장 예약 가능 인원 수 조회 -->
+	<select id="selectReservationPeoples" parameterType="int" resultMap="resultMapReservationDate">
+		<![CDATA[
+			SELECT 
+			    store_reservation_total,
+			    store_reservation_max
+			from
+			    reservation_date
+			WHERE reservation_date_no = #{reservationDateNo}
 		]]>
 	</select>
 	
@@ -172,8 +200,10 @@
 	<insert id="insertDate" parameterType="ReservationDateVo">
 		<selectKey keyProperty="reservationDateNo" resultType="int" order="BEFORE">
 			<![CDATA[
-				 SELECT sequence_reservation_date_no.NEXTVAL 
-				 FROM DUAL
+				 SELECT 
+				 	sequence_reservation_date_no.NEXTVAL 
+				 FROM 
+				 	DUAL
 			]]>
 		</selectKey>
 		<![CDATA[
@@ -204,7 +234,8 @@
 	<!-- 매장 예약 시간 삭제 -->
 	<delete id="deleteTime" parameterType="int">
 		<![CDATA[
-			DELETE reservation_time
+			DELETE 
+				reservation_time
 			WHERE reservation_date_no = #{reservationDateNo}
 		]]>
 	</delete>

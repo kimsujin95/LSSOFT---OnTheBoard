@@ -16,6 +16,7 @@
 		<result column="game_description" property="gameDescription" />
 		<result column="game_guide" property="gameGuide" />
 		<result column="theme_no" property="themeNo" />
+		<result column="theme_name" property="themeName" />
 		<result column="game_img" property="gameImg" />
 		<result column="hit_count" property="hitCount" />
 	</resultMap>
@@ -92,6 +93,7 @@
 			,		game_age
 			,		game_time
 			,		game_difficulty
+			,   	t.theme_no
 			,		theme_name
 			,		game_description
 			,		game_guide

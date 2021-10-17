@@ -23,7 +23,6 @@ public class AdminDao {
 		System.out.println(userNo);
 		
 		StoreVo storeVo = sqlSession.selectOne("admin.selectStore", userNo);
-		
 		return storeVo;
 	}
 	
@@ -63,6 +62,16 @@ public class AdminDao {
 		} else {
 			return 0;
 		}
+	}
+	
+	//스케쥴 조회 - 해당 날짜의 예약 가능 인원 수 체크
+	public ReservationDateVo selectReservationPeoples(int dateNo) {
+		return sqlSession.selectOne("admin.selectReservationPeoples", dateNo);
+	}
+	
+	//매장 스케쥴 조회
+	public List<String> selectTimeList(int dateNo) {
+		return sqlSession.selectList("admin.selectTimeList", dateNo);
 	}
 	
 	//스케쥴 등록 - 날짜

@@ -61,8 +61,13 @@
 					<!-- 달력 영역 -->
 					<div id="calendar" class="container-fluid">
 						<div class="row">
-							<div id="picker-container" class="date col-xs-6">
+							<!-- 예약 다중 입력용 -->
+							<div id="picker-container-insert" class="col-xs-6">
 								<input id="date-input" type="hidden" name="date">
+							</div>
+							<!-- 예약 다중 입력용 -->
+							<div id="picker-container-lookup" class="col-xs-6">
+								<input id="date-lookup" type="hidden" name="date">
 							</div>
 							<div class="col-xs-6">
 								<div id="table-area">
@@ -171,21 +176,87 @@
 <!-- 데이트 피커 -->
 <script type="text/javascript">
 	window.onload = function() {
-		/* div에 데이트 피커 선언 */
-		$(".date").datepicker({
+		/* div에 데이트 피커 선언 - 입력용 */
+		$("#picker-container-insert").datepicker({
 			format: "yyyy/mm/dd"
 			,todayHighlight: true
 			,multidate : true
 		});
 		
 		/* input type="hidden"에 데이터 저장 */
-		$(".date").on("changeDate", dateInsert);
+		$("#picker-container-insert").on("changeDate", dateInsert);
+		
+		/* div에 데이트 피커 선언 - 입력용 */
+		$("#picker-container-lookup").datepicker({
+			format: "yyyy/mm/dd"
+			,todayHighlight: true
+		});
+		
+		/* input type="hidden"에 데이터 저장 */
+		$("#picker-container-lookup").on("changeDate", dateLookup);
+		
+		$("#picker-container-lookup").hide();
 	}
 	
 	function dateInsert() {
-		$("#date-input").val($(".date").datepicker("getFormattedDate"));
+		$("#date-input").val($("#picker-container-insert").datepicker("getFormattedDate"));
 	    console.log($("#date-input").val());
 	};
+
+	function dateLookup() {
+		$("#date-lookup").val($("#picker-container-lookup").datepicker("getFormattedDate"));
+	    console.log($("#date-lookup").val());
+	    /* 스케쥴 확인 */
+		
+	    var date = $("#date-lookup").val();
+	    var labels = $(".time-select");
+	    var max = $("[name=storeReservationMax]");
+	    var total = $("[name=storeReservationTotal]");
+	    
+		//ajax로 스케쥴 데이터 등록
+		if(date === "") {
+			labels.removeClass("btn-primary");
+			max.val("");
+			total.val("");
+		} else {
+			$.ajax({
+			    //요청 코드
+			    url: "${pageContext.request.contextPath }/admin/scheduleLookup",				//데이터를 받을 주소를 입력
+			    type: "get",				//get, post 데이터를 보낼 때, 방식을 설정
+			    //contentType: "application/json",
+				data: {
+					storeReservationDate : date
+				},	
+				success : function(data) {
+					
+					console.log(data);
+					var times = data.times;
+					
+					if(times == null) {
+						console.log("data 비어 있음")
+						labels.removeClass("btn-primary");
+						
+						max.val("");
+						total.val("");
+						
+					} else {
+						for(var i = 0; i < times.length; i ++) {
+							if(times[i] != null) {
+								$("[for=btn-check-"+ times[i] +"]").addClass("btn-primary");
+							}
+						}
+						
+						max.val(data.storeReservationMax);
+						total.val(data.storeReservationTotal);
+						
+					}
+				}, err : function(jqXHR, textStatus, errorThrown) {
+			    	alert("호출 에러\ncode : " + jqXHR.status + "\nerror message : " + jqXHR.responseText);
+			    }  
+			});
+		}
+	};
+	
 </script>
 
 <!-- 스케쥴 등록 및 확인 선택 -->
@@ -195,25 +266,36 @@
 		if($("#scheduleCheck").text() === "스케쥴 확인") {
 			console.log("스케쥴 확인 클릭");
 	
-			$("#insert").text("수정");
+			$("#insert").hide();
 			$("#scheduleCheck").text("스케쥴 일괄 변경");
 			
-			$(".date").datepicker({
-				format: "yyyy/mm/dd"
-				,todayHighlight: true
-			});
+			$("#picker-container-insert").hide();
+			$("#picker-container-lookup").show();
 			
+			var date = $("#date-lookup").val();
+			
+			if(date != null) {
+				dateLookup();
+			}
+
 		} else if ($("#scheduleCheck").text() === "스케쥴 일괄 변경") {
 			console.log("스케쥴 일괄 변경");
 	
-			$("#insert").text("등록");
+			$("#insert").show();
 			$("#scheduleCheck").text("스케쥴 확인");
 			
-			$(".date").datepicker({
-				format: "yyyy/mm/dd"
-				,todayHighlight: true
-				,multidate : true
-			});
+		    var labels = $(".time-select");
+			labels.removeClass("btn-primary");
+			
+			var max = $("[name=storeReservationMax]");
+			max.val("");
+			
+		    var total = $("[name=storeReservationTotal]");
+		    total.val("");
+		    
+			$("#picker-container-lookup").hide();
+			$("#picker-container-insert").show();
+	
 		}
 		
 	});
@@ -233,7 +315,9 @@
 	});
 
 	//등록 버튼 클릭 시, 선택된 날짜 및 시간 정보를 ajax로 등록 요청
-	$("#insert").on("click", function(){
+	$("#insert").on("click", scheduleInsert);
+	
+	function scheduleInsert(){
 		
 	    var date = $("#date-input").val();
 	    var times = [];
@@ -293,7 +377,7 @@
 	        //contentType: "application/json",
 	        data: allData	//보내는 데이터의 형식, 객체를 생성하여 집어넣어도 된다
 		});
-	});
+	}
 </script>
 
 </html>

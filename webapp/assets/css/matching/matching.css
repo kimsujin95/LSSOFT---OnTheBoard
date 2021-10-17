@@ -244,6 +244,11 @@ textarea {
 	font-size: 22px;
 }
 
+#content-title .text-share {
+	font-size: 13px;
+	color: #a2a2a2;
+}
+
 #content-title .c-t-float-l {
 	float: left;
 	font-size: 15px;

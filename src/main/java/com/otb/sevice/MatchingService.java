@@ -153,7 +153,6 @@ public class MatchingService {
 			List<Integer> groupUserNoList = matchingDao.groupUserNoList(matchingNo);
 			System.out.println(groupUserNoList);
 			
-			/**/
 			// 매칭글의 댓글 리스트
 			List<CommentVo> commentList = matchingDao.commentList(matchingNo);
 			System.out.println("글 리스트: " + commentList);
@@ -161,7 +160,6 @@ public class MatchingService {
 			// 매칭글의 답글 리스트
 			List<ReplyVo> replyList = matchingDao.replyList(matchingNo);
 			System.out.println("답글 리스트: " + replyList);
-			/**/
 			
 			// 매칭글의 댓글/답글 리스트 불러오기
 //			List<CommentReplyVo> commentReplyList = matchingDao.commentReplyList(matchingNo);

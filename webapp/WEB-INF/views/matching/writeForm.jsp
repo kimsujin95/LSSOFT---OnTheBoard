@@ -77,8 +77,8 @@
 
 					<label for="game-style">테마</label>
 					<br>
-					<select id="game-style" name="themeNo">
-						<option value="game-style-none">테 마 선 택</option>
+					<select id="game-theme" name="themeNo">
+						<option value="0">테마 선택</option>
 						<c:forEach items="${writeUserMap.themeList}" var="themeVo">
 							<option value="${themeVo.themeNo}">${themeVo.themeName}</option>
 						</c:forEach>
@@ -90,7 +90,7 @@
 					<label for="game-name">게임</label>
 					<br>
 					<select id="game-name" name="gameNo">
-						<option value="game-name-none">게 임 선 택</option>
+						<option value="0">게임 선택</option>
 						<c:forEach items="${writeUserMap.gameList}" var="gameVo">
 							<option value="${gameVo.gameNo}">${gameVo.gameNameKo}</option>
 						</c:forEach>
@@ -108,7 +108,7 @@
 
 					<label for="">시간</label>
 					<br>
-					<!-- <label for="time">⌚</label> --><input class="date-time" type="time" id="time" name="matchingTime">
+					<!-- <label for="time">⌚</label> --><input class="date-time" type="time" id="timepick" name="matchingTime">
 
 					<br>
 				</div>
@@ -118,6 +118,7 @@
 					<div class="col-xs-6">
 						시/도 선택&nbsp;&nbsp;
 						<select name="sidoCode" id="select-sido">
+							<option value="0">지역 선택</option>
 							<c:forEach items="${writeUserMap.sidoList}" var="sidoVo" varStatus="status">
 								<option class="option-sido" value="${sidoVo.sidoCode}">${sidoVo.sidoName}</option>
 							</c:forEach>
@@ -126,7 +127,6 @@
 					<div class="col-xs-6">
 						시/군/구 선택&nbsp;&nbsp;
 						<select name="sigunguCode" id="select-sigungu">
-							<option>지역 선택</option>
 						</select>
 					</div>
 
@@ -144,7 +144,7 @@
 					<br>
 					<br>
 
-					<label for="">성별제한</label>
+					<label for="sex-limit">성별제한</label>
 					<br>
 					<select id="sex-limit" name="matchingPermissionGender">
 						<option value="성별무관">성별무관</option>
@@ -168,7 +168,7 @@
 
 					<label for="content">내용</label>
 					<br>
-					<textarea name="matchingContent" id="content" cols="60" rows="5" placeholder="내용을 입력해 주세요."></textarea>
+					<textarea name="matchingContent" id="textarea" cols="60" rows="5" placeholder="내용을 입력해 주세요."></textarea>
 				</div>
 				<div class="col-xs-1"></div>
 			</div>
@@ -177,7 +177,7 @@
 
 			<div id="write-btn" class="text-center">
 				<a href="${pageContext.request.contextPath}/matching/main"><button type="button" class="btn-white">취소</button></a>
-				<button type="submit" class="btn-red">등록</button>
+				<button id="btn-write" type="submit" class="btn-red">등록</button>
 			</div>
 		</form>
 	</div>
@@ -209,11 +209,10 @@
 				weekStart : 0
 }); */
 
+// 선택 시도에 맞는 시군구 SELECT_OPTION 리스트
 $('#select-sido').on('click', function() {
 	var sidoCode = $(this).val();
 	console.log(sidoCode);
-	
-	$('#select-sigungu').html('<option>지역 선택</option>');
 	
 	$.ajax({
 		url: '${pageContext.request.contextPath}/matching/tabContentSigunguList',
@@ -221,21 +220,76 @@ $('#select-sido').on('click', function() {
 		data: { sidoCode: sidoCode },
 		success: function(sigunguList) {
 			console.log(sigunguList);
-			for (var i = 0; i < sigunguList.length; i++) {
-				sigunguSelect(sigunguList[i]);
+			if (sigunguList.length != 0) {
+				$('#select-sigungu').html('<option value="0">지역 선택</option>');
+				for (var i = 0; i < sigunguList.length; i++) {
+					sigunguSelect(sigunguList[i]);
+				}
 			}
 		},
 		error: function(XHR, status, error) {
-			console.log(status + ' : ' + error);s
+			console.log(status + ' : ' + error);
 		}
 	});
 });
 
 function sigunguSelect(sigunguVo) {
 	var sigunguOption = '<option value="' + sigunguVo.sigunguCode + '">' + sigunguVo.sigunguName + '</option>';
-
+	
 	$('#select-sigungu').append(sigunguOption);
 }
+// -- 선택 시도에 맞는 시군구 SELECT_OPTION 리스트 --
+
+// 등록 버튼 눌렀을 때 빈칸 경고창
+$('#btn-write').on('click', function() {
+	var title = $('#title').val();
+	console.log(title);
+	var gameTheme = $('#game-theme').val();
+	console.log(gameTheme);
+	var gameName = $('#game-name').val();
+	console.log(gameName);
+	var date = $('#datepick').val();
+	console.log(date);
+	var time = $('#timepick').val();
+	console.log(time);
+	var sido = $('#select-sido').val();
+	console.log(sido);
+	var sigungu = $('#select-sigungu').val();
+	console.log(sigungu);
+	var limitAge = $('input[type="checkbox"]');
+	var content = $('#textarea').val();
+	console.log(content);
+	
+	if (title === '') {
+		alert('제목을 입력해 주세요');
+		event.preventDefault();
+	} else if(gameTheme === '0') {
+		alert('테마를 선택해 주세요');
+		event.preventDefault();
+	} else if(gameName === '0') {
+		alert('게임을 선택해 주세요');
+		event.preventDefault();
+	} else if(date === '') {
+		alert('시작날짜를 선택해 주세요');
+		event.preventDefault();
+	} else if(time === '') {
+		alert('시작시간를 선택해 주세요');
+		event.preventDefault();
+	} else if(sido === '0') {
+		alert('시도 지역을 선택해 주세요');
+		event.preventDefault();
+	} else if(sigungu === '0') {
+		alert('시군구 지역을 선택해 주세요');
+		event.preventDefault();
+	} else if(limitAge.is(':checked') == false) {
+		alert('나이제한을 선택해 주세요');
+		event.preventDefault();
+	} else if(content === '') {
+		alert('내용을 입력해 주세요');
+		event.preventDefault();
+	}
+});
+// -- 등록 버튼 눌렀을 때 빈칸 경고창 --
 </script>
 
 </html>

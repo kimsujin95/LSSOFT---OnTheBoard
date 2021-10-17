@@ -59,7 +59,7 @@
 			<div class="clearfix">
 				<div class="c-t-float-l">${readInfo.matchingVo.matchingRegDate}&nbsp;조회수 ${readInfo.matchingVo.matchingHits}</div>
 				<div class="c-t-float-r">
-					<span>[URL복사]</span>
+					<span class="text-share">[공유하기]</span>
 				</div>
 			</div>
 		</div>
@@ -199,13 +199,13 @@
 					<div class="col-xs-10 comment-1">
 						<div class="clearfix">
 							<div class="comment">
-								<strong>[ ${replyVo.replyUserNickname} <c:if test="${readInfo.writerInfo.userNo eq commentVo.userNo}"><span class="text-sm-red">작성자</span></c:if> ]</strong><br>
+								<strong>[ ${replyVo.replyUserNickname} <span class="text-sm-red">작성자</span> ]</strong><br>
 								<strong>${replyVo.commentUserNickname}</strong> ${replyVo.replyContent}
 							</div>
 						</div>
 						<div class="comment-button">
-							<button class="btn btn-xs">수정</button>
-							<button class="btn btn-xs">삭제</button>
+							<%-- <button class="btn btn-xs">수정</button>
+							<button class="btn btn-xs">삭제</button> --%>
 						</div>
 						<div class="comment-2">
 							${replyVo.replyRegDate} &nbsp;&nbsp;
@@ -235,7 +235,7 @@
 				</div>
 				<textarea name="commentContent" id="comment-write-text" placeholder="댓글을 남겨주세요."></textarea>
 				<div class="comment-write-2">
-					<button id="btnCommentWrite" class="cursor-pointer" data-user_no="${authUser.userNo}" data-matching_no="${readInfo.matchingVo.matchingNo}">등록</button>
+					<button id="btnCommentWrite" class="btn btn-xs cursor-pointer" data-user_no="${authUser.userNo}" data-matching_no="${readInfo.matchingVo.matchingNo}">등록</button>
 				</div>
 			</div>
 		</c:if>

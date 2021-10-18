@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.otb.dao.AdminDao;
 import com.otb.dao.StoreDao;
+import com.otb.vo.GameVo;
 import com.otb.vo.MatchingVo;
 import com.otb.vo.ReservationDateVo;
 import com.otb.vo.ReservationTimeVo;
@@ -64,6 +65,9 @@ public class StoreService {
 		
 		StoreVo storeInfo = storeDao.getstoreInfo(storeNo);
 		List<StoreImageVo> storeimgList = adminDao.selectImageList(storeNo);
+		List<GameVo> ownedGameList = storeDao.ownedGameList(storeNo);
+
+		
 		
 		System.out.println("스토어서비스_매장정보 : " + storeInfo);
 		
@@ -71,6 +75,7 @@ public class StoreService {
 		
 		storeinfo.put("storeInfo", storeInfo);
 		storeinfo.put("storeimgList", storeimgList);
+		storeinfo.put("ownedGameList", ownedGameList);
 		
 		return storeinfo;
 	}

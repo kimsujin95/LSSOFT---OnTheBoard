@@ -513,6 +513,46 @@
 
 
 		<!-- 매장 내 보유게임 리스트, 검색 구역 -->
+		<!-- 매장 내 보유게임 리스트, 검색 구역 -->
+		<hr>
+		<div id="main" class="gameList">
+			<h3>매장 보유 게임목록</h3>
+			<ul class="bbsList04" id="gameList">
+				<c:forEach items="${storeInfo.ownedGameList}" var="gameVo" varStatus="status">
+					<li>
+						<div class="thum">
+							<a href="${pageContext.request.contextPath}/game/gameDetails?no=${gameVo.gameNo}"><img
+								src="${pageContext.request.contextPath}/assets/upload/${gameVo.gameThumbImg }" alt="${gameVo.gameNameKo}"></a>
+						</div>
+						<div class="desc">
+							<p class="title">
+								<a href="${pageContext.request.contextPath}/game/gameDetails?no=${gameVo.gameNo}">${gameVo.gameNameKo}</a>
+							</p>
+							<table>
+								<tbody>
+									<tr>
+										<th>게임인원</th>
+										<td>${gameVo.gamePeople}</td>
+									</tr>
+									<tr>
+										<th>게임연령</th>
+										<td>${gameVo.gameAge}</td>
+									</tr>
+									<tr>
+										<th>게임시간</th>
+										<td>${gameVo.gameTime}</td>
+									</tr>
+									<tr>
+										<th>게임난이도</th>
+										<td>${gameVo.gameDifficulty}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</li>
+				</c:forEach>
+			</ul>
+		</div>
 		<%-- <div id="store-main-bottom-content">
 
 			<div id="store-game-list">

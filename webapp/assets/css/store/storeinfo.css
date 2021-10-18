@@ -478,10 +478,11 @@ button, input {
 }
 
 #choice_by_grouplist > div{
-    max-height: 400px;
+    max-height: 200px;
     overflow: scroll;
     overflow-x: hidden;
 }
+
 
 /* .select-by-no > button{
     position: absolute;
@@ -497,9 +498,15 @@ button, input {
 
 /* 예약 인원 선택 */
 .tab-content{
+	display:inline-block;
     border: 1px solid #ddd;
     height: auto;
     width: 25%;
+}
+
+.tab-pane{
+	min-height:200px;
+	max-height:200px;
 }
 
 #choice_by_count table{
@@ -532,7 +539,8 @@ button.time_btn {
 
 /* 예약시간 선택 버튼 */ 
 #time_table_wrap {
-	display:inline-block;
+	float:right;
+	width:75%;
 	
 }
 
@@ -580,3 +588,47 @@ button.time_btn {
 .modal-body tr td{
 	border : 1px solid #ddd;
 }
+
+/* 보유 게임 리스트 */
+#main {min-width:320px;margin:0;padding:0 10px;}
+#main{width:100%;max-width:1200px;margin:40px auto 0;}
+
+.gameList{position:relative;}
+.gameList .listType{position:absolute;right:15px;top:101px;}
+.gameList .sortSelect{position:relative;left:0;top:0;margin:15px 0 0;padding:0;}
+
+.bbsList04{overflow:hidden;margin:30px -5px 20px;}
+.bbsList04 li dl{padding:19px 10px 6px;}
+.bbsList04 li dt{margin-bottom:10px;font-size:15px;}
+.bbsList04 li dd li{font-size:12px;}
+
+.bbsList04{overflow:hidden;margin:30px -5px 40px;}
+
+.bbsList04 li .box{padding:19px 18px 8px;border:1px solid #d8d8d8;box-shadow:2px 2px 2px #f2f2f2;}
+.bbsList04 li .box .thum{text-align:center;}
+.bbsList04 li .box .thum img{width:119px;height:119px;}
+.bbsList04 li .desc {border:1px solid #d8d8d8; padding:16px; border-top:0px;}
+.bbsList04 li .title{margin:5px 0 13px;font-size:20px;line-height:24px;height:50px;overflow:hidden;}
+.bbsList04 li table{width:100%;}
+.bbsList04 li th{font-size:12px;line-height:26px;color:#9d9d9d;text-align:left;}
+.bbsList04 li th img{margin-right:5px;line-height:0;vertical-align:middle;}
+.bbsList04 li td{font-size:14px;line-height:26px;text-align:right;}
+
+.bbsList04 li{float:left;width:20%;padding:0 5px;margin-bottom:10px;}
+.bbsList04 li .thum {border:1px solid #d8d8d8;position:relative;text-align:center;}
+.bbsList04 li .thum img{width:100%;}
+.bbsList04 li .thum .over{position:absolute;left:0;top:0;width:100%;height:100%;background:url();}
+.bbsList04 li .thum .over span{position:absolute;right:0;top:0;display:inline-block;padding:5px 10px 3px;font-size:16px;color:#fff;background:#d03333;}
+.bbsList04 li dl{padding:18px; border:1px solid #d8d8d8; border-top:none;}
+.bbsList04 li dt{margin:10px 0 13px; font-size:20px; line-height:24px; height:24px; overflow:hidden; text-align:left;}
+.bbsList04 li dt a{color:#333;}
+.bbsList04 li dd ul{overflow:hidden;}
+.bbsList04 li dd li{display:block; width:100%;height:28px;padding:0;margin-bottom:0;font-size:14px;color:#666;white-space:nowrap;}
+.bbsList04 li dd li:nth-child(2n+2){width:48%;}
+.bbsList04 li dd li:nth-child(5){width:100%;text-transform:uppercase;white-space:normal;}
+.bbsList04 li dd li img{margin-right:10px;vertical-align:middle;}
+
+.bbsList04 li dd table{width:100%;}
+.bbsList04 li dd th{font-size:14px;line-height:26px;color:#9d9d9d;text-align:left;}
+.bbsList04 li dd th img{margin-right:8px;line-height:0;vertical-align:middle;}
+.bbsList04 li dd td{font-size:14px;line-height:26px;text-align:right;}

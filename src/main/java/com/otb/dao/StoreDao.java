@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.otb.vo.GameVo;
 import com.otb.vo.MatchingVo;
 import com.otb.vo.ReservationDateVo;
 import com.otb.vo.ReservationTimeVo;
@@ -83,5 +84,13 @@ public class StoreDao {
 		
 		return reservationableTimeList;
 	}
+	
+	//매장 게임 리스트
+	public List<GameVo> ownedGameList(int storeNo) {
+	      
+	      List<GameVo> ownedGameList = sqlSession.selectList("store.ownedGameList", storeNo);
+	      
+	      return ownedGameList;
+	   }
 	
 }

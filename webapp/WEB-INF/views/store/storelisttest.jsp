@@ -110,7 +110,7 @@
 			},
 
 			success : function(searchstorelist) {
-
+			
 				//키워드 검색을 통해 넘겨받은 매장리스트값을 목록표출 함수로 넘겨준다.
 				displayPlaces(searchstorelist);
 

@@ -4,6 +4,24 @@
 
 <mapper namespace="store">
 
+   <resultMap id="resultMapGameVo" type="GameVo">
+      <result column="game_no" property="gameNo" />
+      <result column="game_name_ko" property="gameNameKo" />
+      <result column="game_name_en" property="gameNameEn" />
+      <result column="game_path_thumbnail" property="gameThumbImg" />
+      <result column="game_people" property="gamePeople" />
+      <result column="game_age" property="gameAge" />
+      <result column="game_time" property="gameTime" />
+      <result column="game_difficulty" property="gameDifficulty" />
+      <result column="game_description" property="gameDescription" />
+      <result column="game_guide" property="gameGuide" />
+      <result column="theme_no" property="themeNo" />
+      <result column="theme_name" property="themeName" />
+      <result column="game_img" property="gameImg" />
+      <result column="hit_count" property="hitCount" />
+      <result column="rownum" property="rownum" />
+   </resultMap>
+
 	<!-- 매장 리스트 불러오기 -->
 	<select id="list" resultType="com.otb.vo.StoreVo">
 		<![CDATA[
@@ -79,4 +97,24 @@
 			order by store_reservation_time asc
 		]]>
 	</select>
+	
+	<!-- 매장 게임 리스트 -->
+	<select id="ownedGameList" parameterType="int" resultMap="resultMapGameVo">
+      <![CDATA[
+         SELECT
+            og.game_no,
+             g.game_name_ko,
+             g.game_path_thumbnail,
+             g.game_people,
+             g.game_age,
+             g.game_time,
+             g.game_difficulty
+         FROM
+             owned_game og LEFT OUTER JOIN game g
+             ON og.game_no = g.game_no
+         WHERE store_no = #{ storeNo }
+      ]]>
+   </select>
+   
+   
 </mapper>

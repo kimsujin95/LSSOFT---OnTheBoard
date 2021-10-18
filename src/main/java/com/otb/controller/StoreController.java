@@ -86,7 +86,7 @@ public class StoreController {
 			model.addAttribute("userDataInfoMap", userDataInfoMap);
 		}
 		
-		StoreVo storeInfo = storeService.storeInfo(storeNo);
+		Map<String, Object> storeInfo = storeService.storeInfo(storeNo);
 		
 		System.out.println("스토어컨트롤러_매장정보 : " + storeInfo);
 		

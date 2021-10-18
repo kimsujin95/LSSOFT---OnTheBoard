@@ -55,9 +55,10 @@ public class ReservationController {
 		
 	}
 	
+	//예약 등록
 	@ResponseBody
 	@RequestMapping("/reservationinsert")
-	public int reservationinsert(ReservationVo reservationInfo,Model model) {
+	public int reservationinsert(ReservationVo reservationInfo) {
 		System.out.println("[reservationController.reservationinsert]");
 		
 		System.out.println("[예약 입력 정보 : ]" + reservationInfo);

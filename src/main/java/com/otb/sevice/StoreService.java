@@ -7,10 +7,12 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.otb.dao.AdminDao;
 import com.otb.dao.StoreDao;
 import com.otb.vo.MatchingVo;
 import com.otb.vo.ReservationDateVo;
 import com.otb.vo.ReservationTimeVo;
+import com.otb.vo.StoreImageVo;
 import com.otb.vo.StoreVo;
 import com.otb.vo.UserVo;
 
@@ -19,6 +21,9 @@ public class StoreService {
 	
 	@Autowired
 	private StoreDao storeDao;
+	@Autowired
+	private AdminDao adminDao;
+	
 	
 	//매장 리스트
 	public List<StoreVo> storeList(){
@@ -54,14 +59,20 @@ public class StoreService {
 	}
 	
 	//매장정보
-	public StoreVo storeInfo(int storeNo) {
+	public Map<String, Object> storeInfo(int storeNo) {
 		System.out.println("[storeService.storeInfo]");
 		
 		StoreVo storeInfo = storeDao.getstoreInfo(storeNo);
+		List<StoreImageVo> storeimgList = adminDao.selectImageList(storeNo);
 		
 		System.out.println("스토어서비스_매장정보 : " + storeInfo);
 		
-		return storeInfo;
+		Map<String, Object> storeinfo = new HashMap<String, Object>();
+		
+		storeinfo.put("storeInfo", storeInfo);
+		storeinfo.put("storeimgList", storeimgList);
+		
+		return storeinfo;
 	}
 	
 	//그룹원들 정보 가져오기

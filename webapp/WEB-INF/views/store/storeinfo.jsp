@@ -112,51 +112,56 @@
 					</tr>
 					<tr class="icons-row">
 						<td class="icons-span"><i class="fas fa-info-circle"></i></td>
-						<c:if test="${storeInfo.storeDesc != null}">
-							<td>${storeInfo.storeDesc}</td>
+						<c:if test="${storeInfo.storeInfo.storeDesc != null}">
+							<td>${storeInfo.storeInfo.storeDesc}</td>
 						</c:if>
-						<c:if test="${storeInfo.storeDesc == null }">
+						<c:if test="${storeInfo.storeInfo.storeDesc == null }">
 							<td>매장 소개글 입력란 입니다.</td>
 						</c:if>
 					</tr>
 
 					<tr class="icons-row">
 						<td class="icons-span"><i class="fas fa-phone-square"></i></td>
-						<c:if test="${storeInfo.storePhoneNo != null}">
-							<td>매장 전화번호 : ${storeInfo.storePhoneNo}</td>
+						<c:if test="${storeInfo.storeInfo.storePhoneNo != null}">
+							<td>매장 전화번호 : ${storeInfo.storeInfo.storePhoneNo}</td>
 						</c:if>
-						<c:if test="${storeInfo.storePhoneNo == null}">
+						<c:if test="${storeInfo.storeInfo.storePhoneNo == null}">
 							<td>매장 전화번호 입력란 입니다.</td>
 						</c:if>
 					</tr>
 
 					<tr class="icons-row">
 						<td rowspan="2" class="icons-span"><i class="fas fa-compass"></i></td>
-						<c:if test="${storeInfo.storeAddressRoad != null}">
-							<td>매장 주소 : ${storeInfo.storeAddressRoad}</td>
+						<c:if test="${storeInfo.storeInfo.storeAddressRoad != null}">
+							<td>매장 주소 : ${storeInfo.storeInfo.storeAddressRoad}</td>
 						</c:if>
-						<c:if test="${storeInfo.storeAddressRoad == null}">
+						<c:if test="${storeInfo.storeInfo.storeAddressRoad == null}">
 							<td>매장 주소 입력란 입니다.</td>
 						</c:if>
 					</tr>
-
 					<tr>
-						<td>상세 주소 :</td>
+						<c:if test="${storeInfo.storeInfo.storeAddressDetail != null}">
+							<td>상세 주소 : ${storeInfo.storeInfo.storeAddressDetail}</td>
+						</c:if>
+						<c:if test="${storeInfo.storeInfo.storeAddressDetail == null}">
+							<td>매장 상세주소 입력란 입니다.</td>
+						</c:if>
 					</tr>
+
 					<tr class="icons-row">
 						<td rowspan="2" class="icons-span"><i class="fas fa-wallet"></i></td>
-						<c:if test="${storeInfo.storeChargeWeek != null}">
-							<td>주중 요금 : ${storeInfo.storeChargeWeek}</td>
+						<c:if test="${storeInfo.storeInfo.storeChargeWeek != null}">
+							<td>주중 요금 : ${storeInfo.storeInfo.storeChargeWeek}</td>
 						</c:if>
-						<c:if test="${storeInfo.storeChargeWeek == null}">
+						<c:if test="${storeInfo.storeInfo.storeChargeWeek == null}">
 							<td>주중 매장 이용요금 입력란 입니다.</td>
 						</c:if>
 					</tr>
 					<tr>
-						<c:if test="${storeInfo.storeChargeWeekend != null}">
-							<td>주말 요금 : ${storeInfo.storeChargeWeekend}</td>
+						<c:if test="${storeInfo.storeInfo.storeChargeWeekend != null}">
+							<td>주말 요금 : ${storeInfo.storeInfo.storeChargeWeekend}</td>
 						</c:if>
-						<c:if test="${storeInfo.storeChargeWeekend == null}">
+						<c:if test="${storeInfo.storeInfo.storeChargeWeekend == null}">
 							<td>주말 매장 이용요금 입력란 입니다.</td>
 						</c:if>
 					</tr>
@@ -422,13 +427,17 @@
 							<div>
 								<table>
 									<tr>
-										<td><button class="btn_minus">
+										<td>
+											<button class="btn_minus">
 												<i class="fas fa-minus"></i>
-											</button></td>
+											</button>
+										</td>
 										<td>선택한 인원수 표기</td>
-										<td><button class="btn_plus">
+										<td>
+											<button class="btn_plus">
 												<i class="fas fa-plus"></i>
-											</button></td>
+											</button>
+										</td>
 									</tr>
 								</table>
 							</div>

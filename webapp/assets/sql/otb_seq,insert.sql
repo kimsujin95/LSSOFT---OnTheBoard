@@ -117,6 +117,7 @@ INSERT INTO sido VALUES ( seq_sido_no.NEXTVAL, '제주' );
 -- // INSERT SIDO
 
 -- INSERT SIGUNGU
+-- 시도1 - 1 ~ 25
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 1, '강남구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 1, '강동구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 1, '강북구' );
@@ -142,7 +143,7 @@ INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 1, '은평구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 1, '종로구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 1, '중구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 1, '중랑구' );
-
+-- 시도2 - 26 ~ 48
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 2, '가평군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 2, '고양시' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 2, '과천시' );
@@ -166,8 +167,7 @@ INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 2, '여주시' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 2, '연천군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 2, '오산시' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 2, '용인시' );
-
-
+-- 시도3 - 49 ~ 58
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 3, '강화군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 3, '계양구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 3, '남동구' );
@@ -178,7 +178,7 @@ INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 3, '서구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 3, '연수구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 3, '옹진군');
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 3, '중구' );
-
+-- 시도4 - 59 ~ 74
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 4, '강서구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 4, '금정구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 4, '기장군' );
@@ -195,7 +195,7 @@ INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 4, '연제구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 4, '영도구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 4, '중구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 4, '해운대구' );
-
+-- 시도5 - 75 ~ 82
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 5, '남구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 5, '달서구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 5, '달성군' );
@@ -204,25 +204,25 @@ INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 5, '북구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 5, '서구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 5, '수성구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 5, '중구' );
-
+-- 시도6 - 83 ~ 87
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 6, '광산구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 6, '남구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 6, '동구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 6, '북구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 6, '서구' );
-
+-- 시도7 - 88 ~ 92
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 7, '대덕구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 7, '동구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 7, '서구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 7, '유성구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 7, '중구' );
-
+-- 시도8 - 93 ~ 97
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 8, '남구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 8, '동구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 8, '북구' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 8, '울주군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 8, '중구' );
-
+-- 시도9 - 98 ~ 115
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 9, '강릉시' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 9, '고성군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 9, '동해시' );
@@ -241,7 +241,7 @@ INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 9, '평창군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 9, '홍천군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 9, '화천군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 9, '횡성군' );
-
+-- 시도10 - 116 ~ 133
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 10, '거제시' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 10, '거창군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 10, '고성군' );
@@ -260,7 +260,7 @@ INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 10, '하동군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 10, '함안군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 10, '함양군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 10, '합천군' );
-
+-- 시도11 - 134 ~ 156
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 11, '경산시' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 11, '경주시' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 11, '고령군' );
@@ -284,7 +284,7 @@ INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 11, '청도군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 11, '청송군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 11, '칠곡군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 11, '포항시' );
-
+-- 시도12 - 157 ~ 178
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 12, '강진군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 12, '고흥군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 12, '곡성군' );
@@ -307,7 +307,7 @@ INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 12, '진도군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 12, '함평군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 12, '해남군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 12, '화순군' );
-
+-- 시도13 - 179 ~ 192
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 13, '고창군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 13, '군산시' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 13, '김제시' );
@@ -322,7 +322,7 @@ INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 13, '장수군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 13, '전주시' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 13, '정읍시' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 13, '진안군' );
-
+-- 시도14 - 193 ~ 208
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 14, '계룡시' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 14, '공주시' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 14, '금산군' );
@@ -339,7 +339,7 @@ INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 14, '천안시' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 14, '청양군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 14, '태안군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 14, '홍성군' );
-
+-- 시도15 - 209 ~ 220
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 15, '괴산군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 15, '단양군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 15, '보은군' );
@@ -352,14 +352,56 @@ INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 15, '진천군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 15, '청원군' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 15, '청주시' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 15, '충주시' );
-
+-- 시도16 - 221, 222
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 16, '서귀포시' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 16, '제주시' );
 -- // INSERT SIGUNGU
 
 -- INSERT MATCHING/GROUP
-INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 1, 1, '2022-11-11', '15:00', '제목', '내용', 1, 11, 3, '여자', '10대', sysdate, 0, '매칭중' );
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 1, '2022-11-11', '15:00', '제목1', '내용1', 1, 14, 2, '여자', '10대,20대', sysdate, 0, '매칭중' );
 INSERT INTO matching_group VALUES ( 1, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 2, '2022-11-11', '15:00', '제목2', '내용2', 2, 33, 3, '남자', '10대,20대,30대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 2, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 3, '2022-11-11', '15:00', '제목3', '내용3', 3, 52, 4, '성별무관', '20대,30대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 3, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 4, '2022-11-11', '15:00', '제목4', '내용4', 4, 63, 2, '여자', '30대,40대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 4, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 5, '2022-11-11', '15:00', '제목5', '내용5', 5, 77, 3, '남자', '30대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 5, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 6, '2022-11-11', '15:00', '제목6', '내용6', 6, 85, 4, '성별무관', '나이무관', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 6, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 7, '2022-11-11', '15:00', '제목7', '내용7', 7, 90, 2, '여자', '40대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 7, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 8, '2022-11-11', '15:00', '제목8', '내용8', 8, 93, 3, '남자', '나이무관', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 8, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 9, '2022-11-11', '15:00', '제목9', '내용9', 9, 111, 4, '성별무관', '10대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 9, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 10, '2022-11-11', '15:00', '제목10', '내용10', 10, 118, 2, '여자', '20대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 10, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 11, '2022-11-11', '15:00', '제목11', '내용11', 11, 144, 3, '남자', '30대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 11, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 12, '2022-11-11', '15:00', '제목12', '내용12', 12, 170, 4, '성별무관', '10대,20대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 12, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 13, '2022-11-11', '15:00', '제목13', '내용13', 13, 180, 2, '여자', '10대,20대,30대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 13, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 14, '2022-11-11', '15:00', '제목14', '내용14', 14, 193, 3, '남자', '나이무관', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 14, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 15, '2022-11-11', '15:00', '제목15', '내용15', 15, 220, 4, '성별무관', '20대,30대,40대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 15, 1, 3, sysdate );
 -- // INSERT MATCHING/GROUP
 
 -- INSERT STORE

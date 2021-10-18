@@ -1,0 +1,61 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+* {
+	font-family: 'Nanum Gothic';
+}
+
+h1, h3, p {
+	font-family: "Hanna";
+}
+
+
+.panel-body {
+	font-family: "Hanna";
+}
+
+.carousel-inner>.item>img {
+	top: 0;
+	left: 0;
+	width: 800px;
+	height: 500px;
+}
+
+.jumbotron>#jumbotron1 {
+	background-image:
+		url('https://redbutton.co.kr/wp-content/uploads/2021/04/MAIN%EB%B0%B0%EB%84%88%EC%9D%B4%EB%AF%B8%EC%A7%801-scaled.jpg');
+	background-size: cover;
+	text-shadow: black 0.2em 0.2em 0.2em;
+}
+
+.jumbotron {
+	background-color: #f5f6f7;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+#jumbotron1 {
+	background-image:
+		url(https://redbutton.co.kr/wp-content/uploads/2021/03/매장찾기.png);
+}
+
+#jumbotron3 {
+	background-image:
+		url(https://redbutton.co.kr/wp-content/uploads/2021/03/%EB%B3%B4%EB%93%9C%EA%B2%8C%EC%9E%84%EC%B9%B4%ED%8E%98.jpg);
+}
+
+
+#slogan {
+	margin-top: 50px;
+	background-image:
+		url(https://redbutton.co.kr/wp-content/uploads/2021/04/MAIN%EB%B0%B0%EB%84%88%EC%9D%B4%EB%AF%B8%EC%A7%801-scaled.jpg);
+	background-size: cover;
+	background-position: center center;
+	height: 330px;
+}
+
+#matchingInfo {
+	color: #FFFFFF;
+}

@@ -99,11 +99,11 @@
 			<div id="store-details" class="store-main-sub-content">
 
 				<table class="store-details-info">
-				
-				<colgroup>
-					<col width="12%">
-					<col width="88%">
-				</colgroup>
+
+					<colgroup>
+						<col width="12%">
+						<col width="88%">
+					</colgroup>
 					<tr>
 						<td class="top-td" colspan="2">${storeInfo.storeName}</td>
 					</tr>
@@ -138,7 +138,7 @@
 					</tr>
 
 					<tr>
-						<td>상세 주소 : </td>
+						<td>상세 주소 :</td>
 					</tr>
 					<tr class="icons-row">
 						<td rowspan="2" class="icons-span"><i class="fas fa-wallet"></i></td>
@@ -174,40 +174,42 @@
 
 		<!-- 리뷰 게시구역 -->
 		<div class="store-review-wraper">
-				<!-- 리뷰 반복 출력 -->
+			<!-- 리뷰 반복 출력 -->
+			<div class="review_section">
 				<div class="review user_review container">
-					<div class="col-xs-2 user_profile_img">
-						<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
-					</div>
-					<div class="col-xs-4 review_writer_info first-review-table">
-						<table>
-							<tr>
-								<td>카리나</td>
-							</tr>
-							<tr>
-								<td>2021/09/15</td>
-							</tr>
-							<tr>
-								<td>사장님도 친절하고 가게도 완전 깨끗~</td>
-							</tr>
-						</table>
-					</div>
-					
-					<div class="col-xs-2 user_profile_img">
-						<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
-					</div>
-					<div class="col-xs-4 review_writer_info">
-						<table>
-							<tr>
-								<td>윈터</td>
-							</tr>
-							<tr>
-								<td>2021/09/15</td>
-							</tr>
-							<tr>
-								<td>사장님도 친절하고 가게도 완전 깨끗~</td>
-							</tr>
-						</table>
+					<div class="review_container">
+						<div class="col-xs-2 user_profile_img">
+							<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
+						</div>
+						<div class="col-xs-4 review_writer_info first-review-table">
+							<table>
+								<tr>
+									<td>카리나</td>
+								</tr>
+								<tr>
+									<td>2021/09/15</td>
+								</tr>
+								<tr>
+									<td>사장님도 친절하고 가게도 완전 깨끗~</td>
+								</tr>
+							</table>
+						</div>
+						<div class="col-xs-2 user_profile_img">
+							<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
+						</div>
+						<div class="col-xs-4 review_writer_info">
+							<table>
+								<tr>
+									<td>윈터</td>
+								</tr>
+								<tr>
+									<td>2021/09/15</td>
+								</tr>
+								<tr>
+									<td>사장님도 친절하고 가게도 완전 깨끗~</td>
+								</tr>
+							</table>
+						</div>
 					</div>
 				</div>
 				<div class="review user_review container">
@@ -227,7 +229,7 @@
 							</tr>
 						</table>
 					</div>
-					
+
 					<div class="col-xs-2 user_profile_img">
 						<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
 					</div>
@@ -245,7 +247,7 @@
 						</table>
 					</div>
 				</div>
-			
+			</div>
 			<!-- 리뷰 페이징 -->
 			<div class="paging-wrap">
 				<ul class="pagination" id="pages"></ul>
@@ -275,98 +277,112 @@
 						</div>
 						<div class="date-area" id="formDeList">
 
-							<button class="datebar_btn" type="button" data-date="15" ><!-- month="" -->
+							<button class="datebar_btn" type="button" data-date="15">
+								<!-- month="" -->
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"15" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">수</span>
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date="16"><!-- month="" -->
+							<button class="datebar_btn" type="button" data-date="16">
+								<!-- month="" -->
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"16" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">목</span>
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date="17"><!-- month="" -->
+							<button class="datebar_btn" type="button" data-date="17">
+								<!-- month="" -->
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"17" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">금</span>
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date="18"><!-- month="" -->
+							<button class="datebar_btn" type="button" data-date="18">
+								<!-- month="" -->
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"18" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">토</span>
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date=""><!-- month="" -->
+							<button class="datebar_btn" type="button" data-date="">
+								<!-- month="" -->
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"19" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">일</span>
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date=""><!-- month="" -->
+							<button class="datebar_btn" type="button" data-date="">
+								<!-- month="" -->
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"20" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">월</span>
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date=""><!-- month="" -->
+							<button class="datebar_btn" type="button" data-date="">
+								<!-- month="" -->
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"21" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">화</span>
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date=""><!-- month="" -->
+							<button class="datebar_btn" type="button" data-date="">
+								<!-- month="" -->
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"22" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">수</span>
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date=""><!-- month="" -->
+							<button class="datebar_btn" type="button" data-date="">
+								<!-- month="" -->
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"23" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">목</span>
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date=""><!-- month="" -->
+							<button class="datebar_btn" type="button" data-date="">
+								<!-- month="" -->
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"24" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">금</span>
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date=""><!-- month="" -->
+							<button class="datebar_btn" type="button" data-date="">
+								<!-- month="" -->
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"25" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">토</span>
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date=""><!-- month="" -->
+							<button class="datebar_btn" type="button" data-date="">
+								<!-- month="" -->
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"26" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">일</span>
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date=""><!-- month="" -->
+							<button class="datebar_btn" type="button" data-date="">
+								<!-- month="" -->
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"27" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">월</span>
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date=""><!-- month="" -->
+							<button class="datebar_btn" type="button" data-date="">
+								<!-- month="" -->
 
 								<span class="ir">2021년 9월</span> <em style="pointer-events: none;">"28" <span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">화</span>
@@ -393,10 +409,8 @@
 				<!-- 예약 인원 선택 -->
 				<div class="select_rev_info_area">
 					<ul class="nav nav-tabs nav-justified" role="tablist" id="how_to_choice_people">
-						<li role="presentation" class="active"><a href="#choice_by_count" aria-controls="choice_by_count" role="tab" data-toggle="tab">직접
-								입력</a></li>
-						<li role="presentation"><a href="#choice_by_grouplist" aria-controls="choice_by_grouplist" role="tab" data-toggle="tab">그룹
-								리스트에서 선택</a></li>
+						<li role="presentation" class="active"><a href="#choice_by_count" aria-controls="choice_by_count" role="tab" data-toggle="tab">직접 입력</a></li>
+						<li role="presentation"><a href="#choice_by_grouplist" aria-controls="choice_by_grouplist" role="tab" data-toggle="tab">그룹 리스트에서 선택</a></li>
 					</ul>
 
 					<div class="tab-content">
@@ -485,7 +499,7 @@
 
 
 		<!-- 매장 내 보유게임 리스트, 검색 구역 -->
-		<div id="store-main-bottom-content">
+		<%-- <div id="store-main-bottom-content">
 
 			<div id="store-game-list">
 
@@ -541,7 +555,7 @@
 
 			</div>
 
-		</div>
+		</div> --%>
 
 
 	</div>
@@ -565,12 +579,12 @@
 							<td colspan="2" class="modal_storeName"></td>
 						</tr>
 						<tr>
+							<td class="modal_revDate"></td>
 							<td class="modal_chargeTotal"></td>
-							<td class="modal_chargePeople"></td>
 						</tr>
 						<tr>
-							<td class="modal_revDate"></td>
 							<td class="modal_revTime"></td>
+							<td class="modal_chargePeople"></td>
 						</tr>
 					</table>
 				</div>
@@ -766,14 +780,58 @@
     		            console.log("예약정보_도착");
 						console.log(reservationInfo);
 						
-						$('.modal_storeName').text("매장 이름 : " + storeName);
-						$('.modal_chargeTotal').text("총 금액 : " + reservationInfo.reservationChargeTotal);
-						$('.modal_chargePeople').text("결제금액 : " + reservationInfo.reservationChargePeople);
-						$('.modal_revDate').text("예약일 : " + seldate);
+						
+						if(reservationInfo.reservationType == "group"){
+							
+							console.log("그룹예약");
+							$('.modal_storeName').text("매장 이름 : " + storeName);
+							$('.modal_chargeTotal').text("총 금액 : " + reservationInfo.reservationChargeTotal);
+							$('.modal_chargePeople').text("결제금액 : " + reservationInfo.reservationChargePeople);
+							$('.modal_revDate').text("예약일 : " + seldate);
+							$('.modal_revTime').text("예약 시간 : " + chdval[0] + ":00 ~ " + chdval[chdval.length-1] + ":00");
+							
+							
+						}else if(reservationInfo.reservationType == "personal"){
+							console.log("개인예약");
+							
+							
+						}
 						
 						$('#myModal').modal('show');
 						
-    		        }, // success 
+						$('.btn-primary').on('click',function(){
+							
+							var reservationVo = {
+									storeNo : ${storeNo},
+									reservationChargeTotal : reservationInfo.reservationChargeTotal,
+									reservationChargePeople : reservationInfo.reservationChargePeople,
+									reservationType : reservationInfo.reservationType,
+									reservationDateNo : reservationInfo.reservationDateNo
+							}
+							
+							console.log("예약하기 버튼 클릭");
+							
+							$.ajax({
+			    		        cache : false,
+			    		        url : "${pageContext.request.contextPath}/reservation/reservationinsert",
+			    		        type : 'POST',
+			    		        data : reservationVo,
+			    		        
+			    		        success : function() {
+			    		            // ajax 랜더링 for문
+			    		        	
+			    		        	
+			    		        }, // success
+			    				
+			    		        error : function(XHR, status, error) {
+			    					
+			    		        	console.error(status + " : " + error);
+			    		        	}
+			    		    }); // $.ajax */
+							
+						})
+						
+    		        }, // success
     				
     		        error : function(XHR, status, error) {
     					
@@ -784,9 +842,9 @@
     		    }); // $.ajax */
 				
         	})
-        		
+        	
         })
-		     	
+		 	
      	
     </script>
 

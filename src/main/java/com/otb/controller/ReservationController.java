@@ -54,4 +54,16 @@ public class ReservationController {
 		
 	}
 	
+	@ResponseBody
+	@RequestMapping("/reservationinsert")
+	public String reservationinsert(ReservationVo reservationInfo) {
+		System.out.println("[reservationController.reservationinsert]");
+		
+		System.out.println("[예약 입력 정보 : ]" + reservationInfo);
+		
+		reservationService.insertreservation(reservationInfo);
+		
+		return null;
+	}
+	
 }

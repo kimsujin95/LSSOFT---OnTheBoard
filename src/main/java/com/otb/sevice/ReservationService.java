@@ -63,10 +63,10 @@ public class ReservationService {
 		//주중, 주말 판별해서 시간당 요금제 구하기
 		if("1".equals(DateType) || "7".equals(DateType)) {
 			System.out.println("주말");
-			revChargeTotal = storeChargeVo.getStoreChargeWeekend() * checkedTime.length;
+			revChargeTotal = storeChargeVo.getStoreChargeWeekend() * checkedTime.length * groupList.size();
 		}else {
 			System.out.println("주중");
-			revChargeTotal = storeChargeVo.getStoreChargeWeek() * checkedTime.length;
+			revChargeTotal = storeChargeVo.getStoreChargeWeek() * checkedTime.length * groupList.size();
 		}
 		
 		//에약방식(그룹, 개인)
@@ -89,8 +89,18 @@ public class ReservationService {
 		
 		System.out.println("예약서비스_예약정보Vo : " + reservationInfo);
 		
+		
 		return reservationInfo;
 		
+	}
+	
+	//예약정보 insert
+	public String insertreservation(ReservationVo reservationInfo) {
+		System.out.println("[reservationService.insertreservation]");
+		
+		reservationDao.insertreservation(reservationInfo);
+		
+		return null;
 	}
 	
 }

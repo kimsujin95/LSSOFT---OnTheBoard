@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.otb.vo.ReservationDateVo;
+import com.otb.vo.ReservationVo;
 import com.otb.vo.StoreVo;
 
 @Repository
@@ -38,4 +39,12 @@ public class ReservationDao {
 		return dateType;
 	}
 	
+	//예약 insert
+	public String insertreservation(ReservationVo reservationInfo) {
+		System.out.println("[reservationDao.insertreservation]");
+		
+		sqlSession.insert("reservation.insertreservation",reservationInfo);
+		
+		return null;
+	}
 }

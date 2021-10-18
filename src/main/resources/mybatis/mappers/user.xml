@@ -30,6 +30,7 @@
 			      user_no
 			     ,user_id
 				 ,user_nickname
+				 ,user_name
 				 ,user_grade
 			FROM 
 			      users
@@ -49,6 +50,7 @@
 			      user_no
 			     ,user_id
 				 ,user_nickname
+				 ,user_name
 				 ,user_gender
 				 ,user_birth_date
 				 ,to_char(sysdate, 'yyyy') - to_char(user_birth_date, 'yyyy') + 1 user_age

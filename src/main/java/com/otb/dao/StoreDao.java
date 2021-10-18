@@ -37,6 +37,15 @@ public class StoreDao {
 		return sqlSession.selectList("store.searchList",keyword);
 		
 	}
+
+	//매장 키워드 검색
+	public List<StoreVo> storeSearchList(int gameNo){
+		
+		System.out.println("[StoreDao.storeSearchList] - 게임 번호 검색");
+		
+		return sqlSession.selectList("store.gameOwnedList",gameNo);
+		
+	}
 	
 	// 호스트인 유저의 매칭 리스트
 	public List<MatchingVo> userHostMatchingList(int userNo) {

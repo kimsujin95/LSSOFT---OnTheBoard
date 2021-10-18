@@ -48,9 +48,35 @@
 		<!-- // SUB TITLE -->
 		<div id="Store_main_content" class="container">
 
-			<!-- 지역, 게임, 키워드 검색 -->
-			<c:import url="/WEB-INF/views/store/tab_content.jsp"></c:import>
-
+						<!-- TAB CONTENT -->
+			<div id="tap-content-wrap" class="container">
+				<ul class="nav nav-tabs nav-justified" role="tablist" id="myTab">
+					<li role="presentation"><a href="#game-style-name" aria-controls="game-style-name" role="tab" data-toggle="tab">게임으로 매장 검색</a></li>
+				</ul>
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane" id="game-style-name">
+						<div class="row">
+							<div class="col-xs-4 border-right overflow-scroll">
+								<ul id="game-style">
+									<c:forEach items="${tabContent.themeList}" var="themeVo" varStatus="status">
+										<li class="theme-li" role="presentation" data-theme_no="${themeVo.themeNo}" data-theme_name="${themeVo.themeName}"><a href="#theme-${themeVo.themeNo}" aria-controls="theme-${themeVo.themeNo}" role="tab" data-toggle="tab">${themeVo.themeName}</a></li>
+									</c:forEach>
+								</ul>
+							</div>
+							<div class="col-xs-8 tab-content overflow-scroll">
+								<c:forEach items="${tabContent.themeList}" var="themeVo" varStatus="status">
+									<div role="tabpanel" class="tab-pane" id="theme-${themeVo.themeNo}">
+										<ul class="game-name game-${themeVo.themeNo}">
+										</ul>
+									</div>
+								</c:forEach>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- // TAB CONTENT -->
+			
 			<!-- 지도 -->
 			<div class="map_wrap">
 				<div id="map" style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
@@ -58,7 +84,7 @@
 				<div id="menu_wrap" class="bg_white">
 					<div class="option">
 						<div>
-							<form onsubmit="searchStore(); return false;">
+							<form onsubmit="searchStore('keydown'); return false;">
 								키워드 : <input name="keyword" type="text" value="" id="keyword" size="15">
 								<button type="submit">검색하기</button>
 							</form>
@@ -89,6 +115,52 @@
 	<!-- // FOOTER -->
 
 </body>
+
+<!-- 탭 -->
+<script type="text/javascript">
+	//테마 코드에 맞는 게임 리스트 불러오기
+	$('#game-style').on('click', 'li', function() {
+		var themeNo = $(this).data('theme_no');
+		var themeName = $(this).data('theme_name');
+		
+		$('.game-' + themeNo).empty();
+		
+		if (themeNo === 0) {
+			$.ajax({
+				url: '${pageContext.request.contextPath}/matching/gameList',
+				type: 'post',
+				success: function(gameList) {
+					for (var i = 0; i < gameList.length; i++) {
+						gameTabpanel(gameList[i]);
+					}
+				},
+				error: function(XHR, status, error) {
+					console.log(status + ' : ' + error);
+				}
+			});
+		} else {
+			$.ajax({
+				url: '${pageContext.request.contextPath}/matching/tabContentGameList',
+				type: 'post',
+				data: { themeNo: themeNo },
+				success: function(gameList) {
+					for (var i = 0; i < gameList.length; i++) {
+						gameTabpanel(gameList[i]);
+					}
+				},
+				error: function(XHR, status, error) {
+					console.log(status + ' : ' + error);
+				}
+			});
+		}
+	});
+	
+	function gameTabpanel(gameVo) {
+		var gameLi = '<li class="pull-left"><input class="btn-check" type="radio" name="gameNo" id="game-' + gameVo.gameNo + '" value="' + gameVo.gameNo + '"><label class="btn btn-secondary" for="game-' + gameVo.gameNo + '">' + gameVo.gameNameKo + '</label></li>';
+		$('.game-' + gameVo.themeNo + '').append(gameLi);
+	};
+	//-- 테마 코드에 맞는 게임 리스트 불러오기 --
+</script>
 
 <!-- 카카오 지도 키워드 검색 -->
 <script>
@@ -127,7 +199,7 @@
 	marker.setPosition(coords);
 	
 	//li.items 클릭 시, 해당 위치로 이동
-	$("li.item").on("click",function(){
+	$("ul#searchlist").on("click", "li",function(){
 		
 		console.log("리스트 온 클릭 이벤트");
 		console.log(this);
@@ -145,12 +217,44 @@
 
 <!-- 매장 리스트 검색용 - ajax -->
 <script type="text/javascript">
-
+	
+	$("ul.game-name").on("click", "li",function(){
+		var keyword = $(this).children("input").val();
+		console.log("게임 이름 선택");
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath}/store/storesearchlist",
+			type : 'POST',
+			data : {
+				gameNo : keyword
+			},
+	
+			success : function(searchStoreList) {
+			
+				//키워드 검색을 통해 넘겨받은 매장리스트값을 목록표출 함수로 넘겨준다.
+				console.log(searchStoreList);
+				$("#searchlist li").remove();
+				
+				for(var i = 0; i < searchStoreList.length; i ++) {
+					render(searchStoreList[i]);
+				}
+				
+			}, // success 
+	
+			error : function(XHR, status, error) {
+	
+				console.error(status + " : " + error);
+	
+			}
+		}); // $.ajax */
+		
+	});
+	
 	//키워드 검색요청 함수
 	function searchStore() {
-	
+		
 		var keyword = document.getElementById('keyword').value;
-	
+			
 		if (!keyword.replace(/^\s+|\s+$/g, '')) {
 			alert('키워드를 입력해주세요!');
 			return false;
@@ -169,6 +273,10 @@
 				console.log(searchStoreList);
 				$("#searchlist li").remove();
 				
+				for(var i = 0; i < searchStoreList.length; i ++) {
+					render(searchStoreList[i]);
+				}
+				
 			}, // success 
 	
 			error : function(XHR, status, error) {
@@ -177,6 +285,21 @@
 	
 			}
 		}); // $.ajax */
+		
+	}
+	
+	function render(storeInfo) {
+		var htmlTags="";
+		htmlTags+='<li class="item" data-lng="'+storeInfo.storeLng+'" data-lat="'+storeInfo.storeLat+'">';
+		htmlTags+=	'<a class="font-size-16" href="${pageContext.request.contextPath }/store/storeinfo/'+storeInfo.storeNo+'">'+storeInfo.storeName+'</a>';
+		htmlTags+=	'<div> 주소 : '+storeInfo.storeAddressRoad+' </div>';
+		htmlTags+=	'<div> 전화번호 : '+storeInfo.storePhoneNo+' </div>';
+		htmlTags+=	'<div> 평일 : '+storeInfo.storeChargeWeek+' </div>';
+		htmlTags+=	'<div> 주말 : '+storeInfo.storeChargeWeekend+' </div>';
+		htmlTags+='</li>';
+		
+		$("#searchlist").append(htmlTags);
+		
 	}
 	
 </script>

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.otb.sevice.MatchingService;
 import com.otb.sevice.StoreService;
 import com.otb.vo.ReservationDateVo;
 import com.otb.vo.StoreVo;
@@ -26,6 +27,8 @@ public class StoreController {
 
 	@Autowired
 	private StoreService storeService;
+	@Autowired
+	private MatchingService matchingService;
 
 	// 매장 리스트
 	@RequestMapping("/storelist")
@@ -34,17 +37,27 @@ public class StoreController {
 		List<StoreVo> storeList = storeService.getStoreList();
 		model.addAttribute("storeList", storeList);
 		
+		Map<String, Object> tabContent = matchingService.tabContent();
+		model.addAttribute("tabContent", tabContent);
+		
 		return "/store/storelisttest";
 	}
 
 	// 매장 검색
 	@ResponseBody
 	@RequestMapping("/storesearchlist")
-	public List<StoreVo> storeSearchList(@RequestParam(value = "keyword", defaultValue = "") String keyword) {
+	public List<StoreVo> storeSearchList(@RequestParam(value = "keyword", defaultValue = "") String keyword,
+										 @RequestParam(value = "gameNo", defaultValue = "0") int gameNo	) {
 		
 		System.out.println("[StoreController.storesearchlist]");
 		System.out.println(keyword);
-		List<StoreVo> searchlist = storeService.storeSearchList(keyword);
+		List<StoreVo> searchlist;
+		if(gameNo != 0) {
+			System.out.println(gameNo);
+			searchlist = storeService.getOwnedStoreList(gameNo);
+		} else {
+			searchlist = storeService.storeSearchList(keyword);
+		}
 
 		System.out.println(searchlist);
 

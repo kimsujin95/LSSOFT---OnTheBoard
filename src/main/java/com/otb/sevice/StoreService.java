@@ -46,6 +46,15 @@ public class StoreService {
 		
 	}
 	
+	//해당 게임을 보유한 매장 검색
+	public List<StoreVo> getOwnedStoreList(int gameNo) {
+		System.out.println("스토어 서비스 게임 보유 리스트");
+		
+		List<StoreVo> storeList = storeDao.storeSearchList(gameNo);
+		
+		return storeList;
+	}
+	
 	// 유저 예약 페이지 정보
 	public Map<String, Object> userDataInfoMap(int userNo) {
 		System.out.println("[StoreService.userDataInfoMap]");

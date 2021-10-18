@@ -83,6 +83,27 @@
 		</if>
 	</select>
 
+	<!-- 매장 검색 리스트 불러오기 -->
+	<select id="gameOwnedList" parameterType="int" resultMap="resultMapAdminVo">
+		<![CDATA[
+			SELECT 
+				 s.store_no
+				,store_name
+				,store_address_road
+				,store_address_detail
+				,store_latitude
+				,store_longitude
+				,store_phone_no
+				,store_charge_week
+				,store_charge_weekend
+			FROM
+				 store s
+				,owned_game o
+			WHERE s.store_no = o.store_no
+			  AND o.game_no = #{gameNo}			
+		]]>
+	</select>
+
 	<!-- 로그인 한 사용자의 정보로 그룹리스트 가져오기 -->
 	<select id="getgrouplist" parameterType="int" resultType="com.otb.vo.UserVo">
 		<![CDATA[

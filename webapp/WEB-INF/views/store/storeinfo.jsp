@@ -812,7 +812,7 @@
 							console.log("예약하기 버튼 클릭");
 							
 							$.ajax({
-			    		        cache : false,
+								cache : false,
 			    		        url : "${pageContext.request.contextPath}/reservation/reservationinsert",
 			    		        type : 'POST',
 			    		        data : reservationVo,

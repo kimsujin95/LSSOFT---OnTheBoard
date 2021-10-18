@@ -297,9 +297,8 @@ $('#btn-joinMatching').on('click', function(){
 					console.log(status + ' : ' + error);
 				}
 			});
-			
-			location.href = '${pageContext.request.contextPath}/matching/read?no=' + matchingNo;
 		}
+		location.href = '${pageContext.request.contextPath}/matching/read?no=' + matchingNo;
 	});
 	
 	var nowMember = $(this).data("now_member");

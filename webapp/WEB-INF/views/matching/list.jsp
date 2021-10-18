@@ -54,9 +54,7 @@
 					<li role="presentation" class="active"><a href="#location" aria-controls="location" role="tab" data-toggle="tab">지역</a></li>
 					<li role="presentation"><a href="#game-style-name" aria-controls="game-style-name" role="tab" data-toggle="tab">장르/게임</a></li>
 				</ul>
-			
 				<div class="tab-content">
-			
 					<div role="tabpanel" class="tab-pane active" id="location">
 						<input type="text" id="ipt-keyword" value="" placeholder="지역 검색">
 						<hr>
@@ -68,8 +66,6 @@
 									</c:forEach>
 								</ul>
 							</div>
-			
-			
 							<div class="col-xs-8 tab-content overflow-scroll">
 								<c:forEach items="${tabContent.sidoList}" var="sidoVo" varStatus="status">
 									<div role="tabpanel" class="tab-pane" id="location-${sidoVo.sidoCode}">
@@ -92,7 +88,6 @@
 									</c:forEach>
 								</ul>
 							</div>
-			
 							<div class="col-xs-8 tab-content overflow-scroll">
 								<c:forEach items="${tabContent.themeList}" var="themeVo" varStatus="status">
 									<div role="tabpanel" class="tab-pane" id="theme-${themeVo.themeNo}">
@@ -103,7 +98,6 @@
 							</div>
 						</div>
 					</div>
-			
 				</div>
 			</div>
 			<!-- // TAB CONTENT -->

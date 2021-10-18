@@ -64,14 +64,36 @@ INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '카드'
 -- // INSERT THEME
 
 -- INSERT GAME
-INSERT INTO game(game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no)
-VALUES ( seq_game_no.nextval, '보난자', 'Bonanza', 'upload\thumb\1.png', '3명~5명', '만 10세이상', '45분', '초급', 'upload\desc\1.jpg', 'OwgKvBQ7bqs', 2 );
-            
-INSERT INTO game(game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no)
-VALUES ( seq_game_no.nextval, '아컴호러', 'Arkham Horror', 'upload\thumb\2.png', '1명~4명', '만 12세이상', '60분', '고급', 'upload\desc\2.jpg', 'OkaaG0_oAtI', 7 );
-   
-INSERT INTO game(game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no)
-VALUES ( seq_game_no.nextval, '할리갈리', 'Halli Galli', 'upload\thumb\3.png', '2명~6명', '만 6세이상', '10분', '초급', 'upload\desc\3.jpg', '0q0yClzjADk', 5 );
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'보난자','Bonanza','/thum/1.png','3명~5명','만 10세이상','45분','초급','/desc/1.jpg','OwgKvBQ7bqs',2);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'아컴호러','Arkham Horror','/thum/2.png','1명~4명','만 12세이상','60분','고급','/desc/2.jpg','OkaaG0_oAtI',7);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'할리갈리','Halli Galli','/thum/3.png','2명~6명','만 6세이상','10분','초급','/desc/3.jpg','0q0yClzjADk',5);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'블리츠크리그','Blitzkrieg!','/thum/4.png','1명~2명','만 14세이상','20분','초급','/desc/4.jpg','y9L__EI7dw8',8);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'딕싯','Dixit','/thum/5.png','3명~8명','만 8세이상','30분','초급','/desc/5.jpg','L7Dd7nZcEEw',4);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'7원더스','7 Wonders','/thum/6.jpg','3명~7명','만 14세이상','30분','초급','/desc/6.jpg','HBUMGsAP4Gc',4);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'치킨차차 숨바꼭질','Zicke Zacke','/thum/7.png','2명~5명','만 4세이상','15분','초급','/desc/7.jpg','7a-u9BJkKJw',6);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'카탄: 카드게임','Catan: Das schnelle Kartenspiel','/thum/8.png','2명~4명','만 10세이상','30분','중급','/desc/8.jpg','37V2ajpMEic',4);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'테라포밍 마스','Terraforming Mars','/thum/9.jpg','1명~5명','만 14세이상','90분','고급','/desc/9.jpg','a52Pq1-JCiw',1);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'뱅','Bang!','/thum/10.png','4명~7명','만 8세이상','20분','초급','/desc/10.jpg','IK3S970wSn8',5);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'보난자','Bohnanza','/thum/11.png','3명~5명','만 10세이상','45분','초급','/desc/11.jpg','OwgKvBQ7bqs',4);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'잭스님트','6 Nimmt!','/thum/12.png','2명~10명','만 8세이상','20분','초급','/desc/12.jpg','9q7SQ6ylIug',4);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'우봉고','Ubongo','/thum/13.jpg','1명~4명','만 8세이상','20분','초급','/desc/13.jpg','A3Mbn0m25eA',12);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'우노','Uno','/thum/14.png','2명~10명','만 7세이상','20분','초급','/desc/14.jpg','bbtMloNezvM',6);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'팬데믹','Pandemic','/thum/15.png','2명~4명','만 8세이상','45분','중급','/desc/15.jpg','urllnrCU_G0',11);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'골드러시','Gold River','/thum/16.jpg','2명~5명','만 8세이상','30분','초급','/desc/16.jpg','vdblou9WbYs',11);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'다빈치 코드','Da Vinci Code','/thum/17.jpg','2명~4명','만 7세이상','10분','초급','/desc/17.jpg','LkFj3833w14',4);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'신비아파트 라온',null,'/thum/18.png','2명~4명','만 5세이상','10분','초급','/desc/18.jpg','qaaoxbNYbv4',6);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'마블 봅슬레이','Marble Bobsleigh','/thum/19.jpg','2명~4명','만 6세이상','15분','초급','/desc/19.jpg','0Cn_HesTgQc',6);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'워드 캡처','Word Capture','/thum/20.png','2명~6명','만 6세이상','10분','초급','/desc/20.jpg','SDlMApcaWoI',5);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'아줄:여름 별장','Azul: Summer Pavilion','/thum/21.jpg','2명~4명','만 8세이상','30분','중급','/desc/21.jpg','KkuPCmA-EIY',1);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'영리한 여우','Ganz schön clever','/thum/22.png','1명~4명','만 8세이상','30분','중급','/desc/22.jpg','86ARFeHUMeM',14);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'판타지 왕국','Fantasy Realms','/thum/23.jpg','2명~6명','만 10세이상','10분','초급','/desc/23.png','oF4mSFUV4Aw',1);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'데드 맨스 드로우','Dead Mans Draw','/thum/24.png','2명~4명','만 13세이상','20분','초급','/desc/24.png','E4gWW_NEjdw',5);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'신비아파트 젬블로',null,'/thum/25.png','1명~6명','만 5세이상','20분','초급','/desc/25.jpg','dujYg_a2g1k',6);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'브레인 스톰','Brain Storm','/thum/26.png','2명~10명','만 12세이상','10분','초급','/desc/26.jpg','m-bYp-2wWM8',5);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'라온 채우기',null,'/thum/27.png','2명~4명','만 5세이상','20분','초급','/desc/27.jpg','QplCLm1LL5o',5);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'뮤즈','Muse','/thum/28.png','2명~10명','만 6세이상','10분','초급','/desc/28.png','0osy8uC4bdU',4);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'역사의 흐름','Flow of History','/thum/29.png','2명~5명','만 13세이상','60분','고급','/desc/29.png','EES0IDdJnF4',1);
+INSERT INTO game (game_no, game_name_ko, game_name_en, game_path_thumbnail, game_people, game_age, game_time, game_difficulty, game_description, game_guide, theme_no) VALUES (seq_game_no.NEXTVAL,'스플렌더','Splender','/thum/30.png','2명~4명','만 10세이상','30분','중급','/desc/30.jpg','78Ga9vT3eIE',1);
 -- // INSERT GAME
 
 -- INSERT SIDO
@@ -334,6 +356,11 @@ INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 16, '서귀포시' );
 INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 16, '제주시' );
 -- // INSERT SIGUNGU
 
+-- INSERT MATCHING/GROUP
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 1, 1, '2022-11-11', '15:00', '제목', '내용', 1, 11, 3, '여자', '10대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 1, 1, 3, sysdate );
+-- // INSERT MATCHING/GROUP
+
 -- INSERT STORE
 INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
 VALUES ( seq_store_no.nextval, '보드게임카페1', 37.494366186594405, 127.01825129365432, '02-1111-1111', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '111시 111구 111동 111로', '1111-111');
@@ -346,57 +373,57 @@ VALUES ( seq_store_no.nextval, '보드게임카페3', 37.50207799788094, 127.022
 -- // INSERT STORE
     
  -- INSERT RESERVATIONDATE
-insert into reservation_date
-values(SEQ_RESERVATION_DATE_NO.nextval, 1, '2021/10/05', 20, 4, '1');
+INSERT INTO reservation_date
+VALUES(SEQ_RESERVATION_DATE_NO.nextval, 1, '2021/10/05', 20, 4, '1');
 
-insert into reservation_date
-values(SEQ_RESERVATION_DATE_NO.nextval, 2, '2021/10/05', 20, 4, '5');
+INSERT INTO reservation_date
+VALUES(SEQ_RESERVATION_DATE_NO.nextval, 2, '2021/10/05', 20, 4, '5');
 
-insert into reservation_time
-values(SEQ_RESERVATION_TIME_NO.nextval, 1, '09');
+INSERT INTO reservation_time
+VALUES(SEQ_RESERVATION_TIME_NO.nextval, 1, '09');
 
-insert into reservation_time
-values(SEQ_RESERVATION_TIME_NO.nextval, 1, '10');
+INSERT INTO reservation_time
+VALUES(SEQ_RESERVATION_TIME_NO.nextval, 1, '10');
 
-insert into reservation_time
-values(SEQ_RESERVATION_TIME_NO.nextval, 1, '11');
+INSERT INTO reservation_time
+VALUES(SEQ_RESERVATION_TIME_NO.nextval, 1, '11');
 
-insert into reservation_time
-values(SEQ_RESERVATION_TIME_NO.nextval, 1, '12');
+INSERT INTO reservation_time
+VALUES(SEQ_RESERVATION_TIME_NO.nextval, 1, '12');
 
-insert into reservation_time
-values(SEQ_RESERVATION_TIME_NO.nextval, 1, '13');
+INSERT INTO reservation_time
+VALUES(SEQ_RESERVATION_TIME_NO.nextval, 1, '13');
 
-insert into reservation_time
-values(SEQ_RESERVATION_TIME_NO.nextval, 1, '14');
+INSERT INTO reservation_time
+VALUES(SEQ_RESERVATION_TIME_NO.nextval, 1, '14');
 
-insert into reservation_time
-values(SEQ_RESERVATION_TIME_NO.nextval, 1, '15');
+INSERT INTO reservation_time
+VALUES(SEQ_RESERVATION_TIME_NO.nextval, 1, '15');
 
-insert into reservation_time
-values(SEQ_RESERVATION_TIME_NO.nextval, 1, '16');
+INSERT INTO reservation_time
+VALUES(SEQ_RESERVATION_TIME_NO.nextval, 1, '16');
 
-insert into reservation_time
-values(SEQ_RESERVATION_TIME_NO.nextval, 1, '17');
+INSERT INTO reservation_time
+VALUES(SEQ_RESERVATION_TIME_NO.nextval, 1, '17');
 
-insert into reservation_time
-values(SEQ_RESERVATION_TIME_NO.nextval, 1, '18');
+INSERT INTO reservation_time
+VALUES(SEQ_RESERVATION_TIME_NO.nextval, 1, '18');
 
-insert into reservation_time
-values(SEQ_RESERVATION_TIME_NO.nextval, 1, '19');
+INSERT INTO reservation_time
+VALUES(SEQ_RESERVATION_TIME_NO.nextval, 1, '19');
 
-insert into reservation_time
-values(SEQ_RESERVATION_TIME_NO.nextval, 1, '20');
+INSERT INTO reservation_time
+VALUES(SEQ_RESERVATION_TIME_NO.nextval, 1, '20');
 
-insert into reservation_time
-values(SEQ_RESERVATION_TIME_NO.nextval, 1, '21');
+INSERT INTO reservation_time
+VALUES(SEQ_RESERVATION_TIME_NO.nextval, 1, '21');
 
-insert into reservation_time
-values(SEQ_RESERVATION_TIME_NO.nextval, 1, '22');
+INSERT INTO reservation_time
+VALUES(SEQ_RESERVATION_TIME_NO.nextval, 1, '22');
 
-insert into reservation_time
-values(SEQ_RESERVATION_TIME_NO.nextval, 2, '09');
+INSERT INTO reservation_time
+VALUES(SEQ_RESERVATION_TIME_NO.nextval, 2, '09');
 
-insert into reservation_time
-values(SEQ_RESERVATION_TIME_NO.nextval, 2, '10');
+INSERT INTO reservation_time
+VALUES(SEQ_RESERVATION_TIME_NO.nextval, 2, '10');
 -- // INSERT RESERVATIONDATE

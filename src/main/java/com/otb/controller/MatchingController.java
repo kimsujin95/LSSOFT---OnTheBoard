@@ -92,13 +92,23 @@ public class MatchingController {
 
 		return "/matching/writeForm";
 	}
+	// 매칭글 작성 폼 - 게임 전체 리스트
+	@ResponseBody
+	@RequestMapping("/gameList")
+	public List<GameVo> gameList() {
+		System.out.println("매칭 컨트롤러: API-gameList;;;");
+		
+		List<GameVo> gameList = matchingService.gameList();
+		
+		return gameList;
+	}
 
 	// 매칭글 등록
 	@RequestMapping("/write")
 	public String write(@ModelAttribute MatchingVo matchingVo, HttpSession session) {
 		System.out.println("매칭 컨트롤러: write;;;");
 		System.out.println(matchingVo);
-
+		
 		// matchingVo에 글 작성자(userNo) 추가하기
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		int userNo = authUser.getUserNo();

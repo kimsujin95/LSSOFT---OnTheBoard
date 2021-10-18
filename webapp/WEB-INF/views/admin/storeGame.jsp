@@ -58,22 +58,22 @@
 						<div id="search-area">
 							<div id="select-area">
 								<!-- 정렬 -->
-								<select>
+								<select name="sort">
 									<option>정렬</option>
-									<option>오름차순</option>
-									<option>내림차순</option>
+									<option value="asc">오름차순</option>
+									<option value="desc">내림차순</option>
 								</select>
 								<!-- 보유 유무 -->
-								<select>
+								<select name="owned">
 									<option>전체</option>
-									<option>보유중</option>
-									<option>보유 게임 제외</option>
+									<option value="owned">보유중</option>
+									<option value="except">보유 게임 제외</option>
 								</select>
 								<!-- 장르 -->
-								<select>
+								<select name="theme">
 									<option>장르</option>
 									<c:forEach items="${themeList}" var="themeList">
-										<option>${themeList.themeName }</option>
+										<option value="${themeList.themeNo}">${themeList.themeName }</option>
 									</c:forEach>
 								</select>
 							</div>				
@@ -182,6 +182,7 @@
 	        	console.log(data);
 	        	$("#gamelist-area > tr").remove();
 	        	drawList(data);
+	        	window.scrollTo(0, 0);	//페이지를 상단으로
 	        }, err : function(jqXHR, textStatus, errorThrown) {
 		    	alert("호출 에러\ncode : " + jqXHR.status + "\nerror message : " + jqXHR.responseText);
 		    }  
@@ -204,8 +205,13 @@
 		
 	}
 	
+	/* 검색 조건 추가 */
+	$("[name]").on("change", function(){
+		console.log("네임 변경");
+	});
+	
 	function drawList(data) {
-		var gameList = data.storeGameList;
+		var  gameList = data.storeGameList;
 		for(var i = 0; i < gameList.length; i++) {
 			render(gameList[i]);
 		}
@@ -235,6 +241,7 @@
 	
 </script>
 
+<!-- 게임 매장 등록 -->
 <script type="text/javascript">
 	$("#gamelist-area").on("click", ".insert-btn",function(){
 		console.log("등록 버튼 클릭 이벤트");

@@ -29,17 +29,18 @@ public class StoreController {
 
 	// 매장 리스트
 	@RequestMapping("/storelist")
-	public String storelist() {
+	public String storelist(Model model) {
 		System.out.println("[StoreController.storelist]");
-
+		List<StoreVo> storeList = storeService.getStoreList();
+		model.addAttribute("storeList", storeList);
+		
 		return "/store/storelisttest";
 	}
 
 	// 매장 검색
 	@ResponseBody
 	@RequestMapping("/storesearchlist")
-	public List<StoreVo> storeSearchList(@RequestParam(value = "keyword", defaultValue = "") String keyword,
-			Model model) {
+	public List<StoreVo> storeSearchList(@RequestParam(value = "keyword", defaultValue = "") String keyword) {
 		
 		System.out.println("[StoreController.storesearchlist]");
 		System.out.println(keyword);
@@ -47,26 +48,9 @@ public class StoreController {
 
 		System.out.println(searchlist);
 
-//			model.addAttribute("searchList", searchList);
-
 		return searchlist;
 
 	}
-
-//	//매장 정보 테스트 페이지
-//	@RequestMapping("/storelisttest")
-//	public String storelisttest(Model model) {
-//		
-//		System.out.println("[StoreController.storelisttest]");
-//		
-//		List<StoreVo> storeListtest = storeService.storeList();
-//		
-//		model.addAttribute("storeList", storeListtest);
-//
-//		System.out.println("[StoreController.storelisttest.storeList :" + storeListtest + " ]");
-//		
-//		return "/store/storelisttest";
-//	}
 
 	// 매장 상세정보 페이지
 	@RequestMapping("/storeinfo/{storeNo}")

@@ -20,11 +20,11 @@ public class StoreDao {
 	private SqlSession sqlSession;
 	
 	//매장 리스트
-	public List<StoreVo> storeList(){
+	public List<StoreVo> selectStoreList(){
 		
 		System.out.println("[StoreDao.storeList]");
 		
-		List<StoreVo> storeList = sqlSession.selectList("store.list");
+		List<StoreVo> storeList = sqlSession.selectList("store.selectStoreList");
 		
 		return storeList;
 	};

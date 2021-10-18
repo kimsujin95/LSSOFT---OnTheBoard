@@ -45,13 +45,13 @@
          <!-- /.subtitle -->
          <div>
          <!--#searchForm-->
-         <p class="context">아래 메뉴에서 원하는 조건을 선택하면, 만족하는 보드게임을 찾으실 수 있습니다.</p>
+        <!--  <p class="context">아래 메뉴에서 원하는 조건을 선택하면, 만족하는 보드게임을 찾으실 수 있습니다.</p> -->
         	
-         <div class="bbssvc">
+         <%-- <div class="bbssvc">
          	<c:if test="${authUser != null }">
 				<a href="${ pageContext.request.contextPath }/game/gameUpload"><button class="btn-blue">게임등록</button></a>
 			</c:if>	
-         </div>
+         </div> --%>
 			<form name="searchForm" id="searchForm" method="POST" action>
 				<input type="hidden" name="pagenum" id="pagenum" value="1"> <input type="hidden"
 					name="view_type" id="view_type" value="bg"
@@ -122,6 +122,7 @@
 				</c:forEach>
 			</ul>
 			<!--#gameList-->
+			
 			<!--.paging-->
 			<div id="paging">
 				<div class="paging text-center">
@@ -141,6 +142,7 @@
 				</div>
 			</div>
 			<!--/.paging-->
+		
 		</div>
 		<!--/#container-->
 		

@@ -27,10 +27,10 @@ public class StoreService {
 	
 	
 	//매장 리스트
-	public List<StoreVo> storeList(){
+	public List<StoreVo> getStoreList(){
 		System.out.println("[StoreService.storeList()]");
 		
-		List<StoreVo> storeList = storeDao.storeList();
+		List<StoreVo> storeList = storeDao.selectStoreList();
 		
 		return storeList;
 	}

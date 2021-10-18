@@ -71,6 +71,7 @@ public class GameService {
 		pageMap.put("storeNo", storeNo);
 		
 		List<GameVo> storeGameList = gameDao.selectStoreGameList(pageMap);
+		
 		//보유 게임 리스트
 		List<OwnedGameVo> storeOwnedList = adminDao.selectOwnedList(storeNo);
 		

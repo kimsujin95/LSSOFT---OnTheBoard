@@ -82,7 +82,7 @@
 		<![CDATA[
 			INSERT INTO store
 			VALUES(
-				 sequence_store_no.NEXTVAL
+				 seq_store_no.NEXTVAL
 				,#{userNo}
 				,#{storeType}
 				,#{storeName}
@@ -153,7 +153,7 @@
 		<selectKey keyProperty="storeImageNo" resultType="int" order="BEFORE">
 			<![CDATA[
 				 SELECT 
-				 	sequence_store_image_no.NEXTVAL 
+				 	seq_store_image_no.NEXTVAL 
 				 FROM 
 				 	DUAL
 			]]>
@@ -219,7 +219,7 @@
 		<selectKey keyProperty="reservationDateNo" resultType="int" order="BEFORE">
 			<![CDATA[
 				 SELECT 
-				 	sequence_reservation_date_no.NEXTVAL 
+				 	seq_reservation_date_no.NEXTVAL 
 				 FROM 
 				 	DUAL
 			]]>
@@ -242,7 +242,7 @@
 		<![CDATA[
 			INSERT INTO reservation_time
 			VALUES(
-				 sequence_reservation_time_no.NEXTVAL
+				 seq_reservation_time_no.NEXTVAL
 				,#{reservationDateNo}
 				,#{storeReservationTime}
 			)
@@ -263,7 +263,7 @@
 		<![CDATA[
 			INSERT INTO owned_game
 			VALUES (
-			     SEQUENCE_OWNED_GAME_NO.nextval
+			     SEQ_OWNED_GAME_NO.nextval
 			    ,#{storeNo}
 			    ,#{gameNo}
 			)

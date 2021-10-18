@@ -133,6 +133,7 @@
 				|| m.matching_permission_age
 				|| sd.sido_name
 				|| sg.sigungu_name
+				|| g.game_name_ko
 				LIKE '%'||#{keyword}||'%'
 		]]>
 		</foreach>

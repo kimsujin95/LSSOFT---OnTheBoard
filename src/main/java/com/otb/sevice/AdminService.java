@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.otb.dao.AdminDao;
+import com.otb.vo.OwnedGameVo;
 import com.otb.vo.ReservationDateVo;
 import com.otb.vo.ReservationTimeVo;
 import com.otb.vo.StoreImageVo;
@@ -251,6 +252,18 @@ public class AdminService {
 			reservationData.put("storeReservationMax", storeReservationMax);
 		}
 		return reservationData;
+	}
+	
+	//매장 보유 게임 등록
+	public void restoreOwnedGame(OwnedGameVo ownedGame) {
+		System.out.println("서비스 도착");
+		adminDao.insertOwnedGame(ownedGame);
+	}
+
+	//매장 보유 게임 삭제
+	public void removeOwnedGame(OwnedGameVo ownedGame) {
+		System.out.println("서비스 도착");
+		adminDao.deleteOwnedGame(ownedGame);
 	}
 	
 }

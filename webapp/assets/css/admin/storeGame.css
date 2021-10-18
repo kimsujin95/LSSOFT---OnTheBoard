@@ -39,6 +39,7 @@ td.img-area {
 img.game-img {
 	width: 140px;
 	height: 140px;
+	object-fit: cover;
 }
 
 /* 게임 이미지 */

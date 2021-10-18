@@ -12,7 +12,7 @@
 <!-- css  -->
 <link href="${pageContext.request.contextPath }/assets/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/admin/common.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/admin/gameList.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/admin/storeGame.css" rel="stylesheet" type="text/css">
 
 <!-- js -->
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery-1.12.4.js"></script>
@@ -108,16 +108,7 @@
 									<th>등록 관리</th>
 								</tr>
 							</thead>
-							<tbody>
-								<c:forEach begin="0" end="9" varStatus="status">	
-									<tr>
-										<td>${status.count}</td>
-										<td class="img-area"><img class="game-img" src="${pageContext.request.contextPath }/upload/141232323.jpg"></td>
-										<td>카드게임</td>
-										<td>보난자<br>Bonanza</td>
-										<td><button class="insert-btn btn btn-primary" type="submit">등록</button></td>
-									</tr>
-								</c:forEach>
+							<tbody id="gamelist-area">
 							</tbody>
 						</table>
 						<!-- 테이블 영역 -->
@@ -156,9 +147,111 @@
 	<!-- //컨텐츠 -->
 </body>
 
+<!-- 게임 리스트 호출 -->
 <script type="text/javascript">
-	$(".insert-btn").on("click", function(){
+	window.onload = function() {
+	$.ajax({
+	        //요청 코드
+	        url: "${pageContext.request.contextPath }/admin/gameList/${storeInfo.storeNo}",				//데이터를 받을 주소를 입력
+	        type: "get",				//get, post 데이터를 보낼 때, 방식을 설정
+	        success : function(data) {
+	        	console.log(data);
+	        	drawList(data);
+	        }, err : function(jqXHR, textStatus, errorThrown) {
+		    	alert("호출 에러\ncode : " + jqXHR.status + "\nerror message : " + jqXHR.responseText);
+		    }  
+		});
+	};
+	
+	/* pageing */
+	$("[class=page-link]").on("click", function(){
+		event.preventDefault();
+		console.log($(this).text());
+		console.log("onclick 이벤트")
+		var crtPage = $(this).text();
+		console.log(crtPage);
+		$.ajax({
+	        //요청 코드
+	        url: "${pageContext.request.contextPath }/admin/gameList/${storeInfo.storeNo}",				//데이터를 받을 주소를 입력
+	        type: "get",				//get, post 데이터를 보낼 때, 방식을 설정
+	        data: {
+	        	crtPage : crtPage
+	        },
+	        success : function(data) {
+	        	console.log(data);
+	        	$("#gamelist-area > tr").remove();
+	        	drawList(data);
+	        }, err : function(jqXHR, textStatus, errorThrown) {
+		    	alert("호출 에러\ncode : " + jqXHR.status + "\nerror message : " + jqXHR.responseText);
+		    }  
+		});
+	});
+	
+	function render(gameVo) {
+		var htmlTags ="";
+		htmlTags+="<tr>";
+		htmlTags+="	<td>"+ gameVo.gameNo+"</td>";
+		htmlTags+='	<td class="img-area"><img class="game-img" src="${pageContext.request.contextPath}/assets/upload/'+ gameVo.gameThumbImg +'"></td>';
+		htmlTags+="	<td>"+ gameVo.themeName +"</td>";
+		htmlTags+="	<td>"+ gameVo.gameNameKo +"</td>";
+		htmlTags+='	<td><button class="insert-btn btn btn-primary" type="submit" data-game="'+gameVo.gameNo+'">등록</button></td>';
+		htmlTags+="</tr>";
+		
+		$("#gamelist-area").append(htmlTags);
+		
+	}
+	
+	function drawList(data) {
+		var gameList = data.storeGameList;
+		for(var i = 0; i < gameList.length; i++) {
+			render(gameList[i]);
+		}
+		
+		var ownedList = data.storeOwnedList;
+		var insertBtn = [];
+		
+		console.log($("[data-game]").data("game"));
+		
+		$("[data-game]").each(function(i) {
+			 insertBtn.push($(this));
+		});
+		
+		console.log(insertBtn);
+		
+		for(var i = 0; i < ownedList.length; i++) {
+			for(var j = 0; j < insertBtn.length; j++) {
+				if(ownedList[i].gameNo == insertBtn[j].data("game")){
+					insertBtn[j].text("등록 취소");
+					insertBtn[j].removeClass("btn-primary");
+					insertBtn[j].addClass("btn-danger");
+				}
+			}
+		}
+	}
+	
+	
+</script>
+
+<script type="text/javascript">
+	$("#gamelist-area").on("click", ".insert-btn",function(){
 		console.log("등록 버튼 클릭 이벤트");
+		
+		var gameNo = $(this).data("game");
+		console.log(gameNo);
+		
+		var ownedGame = {
+			gameNo :gameNo
+			,storeNo : ${storeInfo.storeNo}
+		}
+		
+		console.log(ownedGame);
+		
+		$.ajax({
+	        //요청 코드
+	        url: "${pageContext.request.contextPath }/admin/gameInsert",				//데이터를 받을 주소를 입력
+	        type: "get",				//get, post 데이터를 보낼 때, 방식을 설정
+	        data: ownedGame
+		});
 		
 		var isInserted = $(this).text();
 		
@@ -170,11 +263,28 @@
 			
 			window.alert("보유 게임 항목에서 삭제됩니다.")
 			
+			
+			var gameNo = $(this).data("game");
+			console.log(gameNo);
+			
+			var ownedGame = {
+				gameNo :gameNo
+				,storeNo : ${storeInfo.storeNo}
+			}
+			
+			console.log(ownedGame);
+			
+			$.ajax({
+		        //요청 코드
+		        url: "${pageContext.request.contextPath }/admin/gameDelete",				//데이터를 받을 주소를 입력
+		        type: "get",				//get, post 데이터를 보낼 때, 방식을 설정
+		        data: ownedGame
+			});
+			
 			$(this).text("등록");
 			$(this).removeClass("btn-danger");
 			$(this).addClass("btn-primary");
 		}
-		
 		
 	});
 </script>

@@ -19,6 +19,7 @@
 		<result column="theme_name" property="themeName" />
 		<result column="game_img" property="gameImg" />
 		<result column="hit_count" property="hitCount" />
+		<result column="rownum" property="rownum" />
 	</resultMap>
 
 	<resultMap id="resultMapGameBookmarkVo" type="GameBookmarkVo">
@@ -239,4 +240,41 @@
 		WHERE RN BETWEEN #{start} AND #{end};
 		]]>
 		</select>
+		
+		<!-- 매장 등록용 게임 리스트 -->
+		<select id="storeGameList" parameterType="map" resultMap="resultMapGameVo">
+			<![CDATA[
+				SELECT
+				    rg.*
+				FROM
+				    (SELECT
+				        ROWNUM rn
+				        ,og.*
+				     FROM
+				        (select
+				            game_no
+				            ,game_name_ko
+				            ,game_name_en
+				            ,theme_name
+				            ,g.game_path_thumbnail
+				         FROM
+				            game g
+				            , theme t
+				         WHERE g.theme_no = t.theme_no
+				         ORDER BY game_no ASC) og) rg
+				WHERE rg.rn BETWEEN #{startNum} 
+				  AND #{endNum}
+			]]>		
+		</select>
+		
+		<!-- 게임 리스트 카운트 -->
+		<select id="selectCnt" resultType="int">
+			<![CDATA[
+				SELECT
+					count(game_no)
+				FROM
+   					game	
+			]]>
+		</select>
+		
 </mapper>

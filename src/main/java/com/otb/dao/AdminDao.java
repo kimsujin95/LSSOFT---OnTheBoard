@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.otb.vo.OwnedGameVo;
 import com.otb.vo.ReservationDateVo;
 import com.otb.vo.ReservationTimeVo;
 import com.otb.vo.StoreImageVo;
@@ -91,4 +92,22 @@ public class AdminDao {
 		System.out.println("스케쥴 다오 - 시간 삭제");
 		sqlSession.insert("admin.deleteTime", dateNo);
 	}
+	
+	//매장 보유게임 등록
+	public void insertOwnedGame(OwnedGameVo ownedGame) {
+		System.out.println("보유 게임 - 등록");
+		sqlSession.insert("admin.insertOwnedGame", ownedGame);
+	}
+
+	//매장 보유게임 삭제
+	public void deleteOwnedGame(OwnedGameVo ownedGame) {
+		System.out.println("보유 게임 - 삭제");
+		sqlSession.insert("admin.deleteOwnedGame", ownedGame);
+	}
+	
+	//매장 보유 게임 확인
+	public List<OwnedGameVo> selectOwnedList(int storeNo) {
+		return sqlSession.selectList("admin.selectOwnedList", storeNo);
+	}
+	
 }

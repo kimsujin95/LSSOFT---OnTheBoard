@@ -7,12 +7,15 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.otb.sevice.AdminService;
+import com.otb.sevice.GameService;
+import com.otb.vo.OwnedGameVo;
 import com.otb.vo.ReservationDateVo;
 import com.otb.vo.StoreVo;
 import com.otb.vo.UserVo;
@@ -23,6 +26,8 @@ public class AdminController {
 	
 	@Autowired
 	private AdminService adminService;
+	@Autowired
+	private GameService gameService;
 	
 //	//admin - 메인 화면
 //	@RequestMapping(value = "/main", method = {RequestMethod.GET, RequestMethod.POST})
@@ -155,13 +160,47 @@ public class AdminController {
 
 	
 	//admin - 보유 게임관리
-	@RequestMapping(value = "/gameList", method = {RequestMethod.GET, RequestMethod.POST})
-	public String gameList() {
-		System.out.println("admin - gameList --------------------------------------------------------");
-		return "/admin/gameList";
+	@RequestMapping(value = "/storeGame", method = {RequestMethod.GET, RequestMethod.POST})
+	public String storeGame() {
+		System.out.println("admin - storeGame --------------------------------------------------------");
+		return "/admin/storeGame";
+	}
+	
+	//게임 리스트 - 페이징	
+	@ResponseBody
+	@RequestMapping(value = "/gameList/{storeNo}", method = {RequestMethod.GET, RequestMethod.POST})
+	public Map<String, Object> gameList(@PathVariable("storeNo") int storeNo, 
+								@RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage) {
+		System.out.println("게임 리스트 호출");
+		System.out.println(storeNo);
+		Map<String, Object> listMap = gameService.getStoreGameList(storeNo, crtPage);
+		return listMap;
+	}
+	
+	//게임 등록
+	@ResponseBody
+	@RequestMapping(value = "/gameInsert", method = {RequestMethod.GET, RequestMethod.POST})
+	public void gameInsert(@ModelAttribute OwnedGameVo ownedGame) {
+		System.out.println("게임등록 도착");
+		System.out.println(ownedGame.toString());
+		
+		adminService.restoreOwnedGame(ownedGame);
+		System.out.println("등록 완료");
 	}
 
-	//admin - 보유 게임관리
+	//게임 삭제
+	@ResponseBody
+	@RequestMapping(value = "/gameDelete", method = {RequestMethod.GET, RequestMethod.POST})
+	public void gameDelete(@ModelAttribute OwnedGameVo ownedGame) {
+		System.out.println("게임삭제 도착");
+		System.out.println(ownedGame.toString());
+		
+		adminService.removeOwnedGame(ownedGame);
+		System.out.println("삭제 완료");
+		
+	}
+	
+	//admin - 매출 관리
 	@RequestMapping(value = "/status", method = {RequestMethod.GET, RequestMethod.POST})
 	public String status() {
 		System.out.println("admin - status --------------------------------------------------------");

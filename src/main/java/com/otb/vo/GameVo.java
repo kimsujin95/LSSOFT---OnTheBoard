@@ -15,6 +15,7 @@ public class GameVo {
 	private String gameGuide;
 	private int themeNo;
 	private String themeName;
+	private int rownum;
 	
 	private String gameThumbImg;
 	private int hitCount;
@@ -27,7 +28,7 @@ public class GameVo {
 
 	public GameVo(int gameNo, String gameNameKo, String gameNameEn, String gameImg, String gamePeople, String gameAge,
 			String gameTime, String gameDifficulty, String gameDescription, String gameGuide, int themeNo,
-			String themeName, String gameThumbImg, int hitCount) {
+			String themeName, int rownum, String gameThumbImg, int hitCount) {
 		super();
 		this.gameNo = gameNo;
 		this.gameNameKo = gameNameKo;
@@ -41,6 +42,7 @@ public class GameVo {
 		this.gameGuide = gameGuide;
 		this.themeNo = themeNo;
 		this.themeName = themeName;
+		this.rownum = rownum;
 		this.gameThumbImg = gameThumbImg;
 		this.hitCount = hitCount;
 	}
@@ -207,13 +209,21 @@ public class GameVo {
 		this.hitCount = hitCount;
 	}
 
+	public int getRownum() {
+		return rownum;
+	}
+
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
+	}
+
 	@Override
 	public String toString() {
 		return "GameVo [gameNo=" + gameNo + ", gameNameKo=" + gameNameKo + ", gameNameEn=" + gameNameEn + ", gameImg="
 				+ gameImg + ", gamePeople=" + gamePeople + ", gameAge=" + gameAge + ", gameTime=" + gameTime
 				+ ", gameDifficulty=" + gameDifficulty + ", gameDescription=" + gameDescription + ", gameGuide="
-				+ gameGuide + ", themeNo=" + themeNo + ", themeName=" + themeName + ", gameThumbImg=" + gameThumbImg
-				+ ", hitCount=" + hitCount + "]";
+				+ gameGuide + ", themeNo=" + themeNo + ", themeName=" + themeName + ", rownum=" + rownum
+				+ ", gameThumbImg=" + gameThumbImg + ", hitCount=" + hitCount + "]";
 	}
 	
 

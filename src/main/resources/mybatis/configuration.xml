@@ -19,6 +19,7 @@
 		<typeAlias alias="CommentVo" type="com.otb.vo.CommentVo" />
 		<typeAlias alias="ReplyVo" type="com.otb.vo.ReplyVo" />
 		<typeAlias alias="CommentReplyVo" type="com.otb.vo.CommentReplyVo" />
+		<typeAlias alias="OwnedGameVo" type="com.otb.vo.OwnedGameVo" />
 	</typeAliases>
 	
 	<mappers>

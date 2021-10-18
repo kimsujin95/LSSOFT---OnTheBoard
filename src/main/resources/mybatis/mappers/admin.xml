@@ -47,6 +47,14 @@
 		<result column="store_reservation_time" property="storeReservationTime" />
 	</resultMap>
 	
+	<!-- OwnedGameVo resultMap -->
+	<resultMap id="resultMapOwnedGameVo" type="OwnedGameVo">
+		<result column="owned_game_no" property="ownedGameNo" />
+		<result column="store_no" property="storeNo" />
+		<result column="game_no" property="gameNo" />
+	</resultMap>
+	
+	
 	<!-- 매장 정보 호출 -->
 	<select id="selectStore" parameterType="int" resultMap="resultMapAdminVo">
 		<![CDATA[
@@ -239,5 +247,40 @@
 			WHERE reservation_date_no = #{reservationDateNo}
 		]]>
 	</delete>
+	
+	<!-- 보유게임 등록 -->
+	<insert id="insertOwnedGame" parameterType="OwnedGameVo">
+		<![CDATA[
+			INSERT INTO owned_game
+			VALUES (
+			     SEQUENCE_OWNED_GAME_NO.nextval
+			    ,#{storeNo}
+			    ,#{gameNo}
+			)
+		]]>
+	</insert>
+	
+	<!-- 보유게임 삭제 -->
+	<delete id="deleteOwnedGame" parameterType="OwnedGameVo">
+		<![CDATA[
+			DELETE
+				owned_game
+			WHERE store_no = #{storeNo}
+			  AND game_no = #{gameNo}
+		]]>
+	</delete>
+	
+	<!-- 보유게임 리스트 -->
+	<select id="selectOwnedList" parameterType="int" resultMap="resultMapOwnedGameVo">
+		<![CDATA[
+			SELECT
+			    owned_game_no
+			    ,store_no
+			    ,game_no
+			FROM
+			    owned_game
+			WHERE store_no = #{storeNo}
+		]]>
+	</select>
 	
 </mapper>

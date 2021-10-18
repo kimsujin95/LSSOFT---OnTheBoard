@@ -10,7 +10,7 @@
 		<li class="list-group-item"><a href="${pageContext.request.contextPath }/admin/main">매장 관리</a></li>
 		<li class="list-group-item"><a href="${pageContext.request.contextPath }/admin/schedule">스케쥴 관리</a></li>
 		<li class="list-group-item"><a href="${pageContext.request.contextPath }/admin/reservation">예약 관리</a></li>
-		<li class="list-group-item"><a href="${pageContext.request.contextPath }/admin/gameList">보유 게임</a></li>
+		<li class="list-group-item"><a href="${pageContext.request.contextPath }/admin/storeGame">보유 게임</a></li>
 		<%-- <li class="list-group-item"><a href="${pageContext.request.contextPath }/admin/status">매출 현황</a></li> --%>
 	</ul>
 	<!-- //사이드 바 -->

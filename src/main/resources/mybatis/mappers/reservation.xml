@@ -27,9 +27,10 @@
 	<insert id="insertreservation" parameterType="ReservationVo">
 		<![CDATA[
 			insert into reservation(reservation_no, store_no, reservation_charge_total, reservation_charge_people, reservation_status, reservation_type, reservation_date_no)
-			values(seq_reservation_no.NEXTVAL, #{storeNo}, #{reservationChargeTotal}, #{reservationChargePeople}, '예약대기', #{reservationType}, #{reservationDateNo})
+			values(seq_reservation_no.NEXTVAL, #{storeNo}, #{reservationChargeTotal}, #{reservationChargePeople}, '예약완료', #{reservationType}, #{reservationDateNo})
 		]]>
 	</insert>
+	
 	
 	
 </mapper>

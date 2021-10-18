@@ -40,7 +40,7 @@ public class StoreController {
 	@RequestMapping("/storesearchlist")
 	public List<StoreVo> storeSearchList(@RequestParam(value = "keyword", defaultValue = "") String keyword,
 			Model model) {
-
+		
 		System.out.println("[StoreController.storesearchlist]");
 		System.out.println(keyword);
 		List<StoreVo> searchlist = storeService.storeSearchList(keyword);

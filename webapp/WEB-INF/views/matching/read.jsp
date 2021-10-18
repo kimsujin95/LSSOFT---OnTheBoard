@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/matching/matching.css" type="text/css">
 
-<title>MATCHING</title>
+<title>On The Board: Matching</title>
 </head>
 
 <body>

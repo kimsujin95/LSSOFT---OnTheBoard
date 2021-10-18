@@ -28,7 +28,7 @@
 <link href="${pageContext.request.contextPath}/assets/css/datepicker.css" rel="stylesheet" type="text/css">
 <!-- <script src="resources/js/plugin/datepicker/bootstrap-datepicker.ko.min.js"></script> -->
 
-<title>MATCHING</title>
+<title>On The Board: Matching</title>
 </head>
 
 <body>
@@ -75,10 +75,10 @@
 					<br>
 					<br>
 
-					<label for="game-style">테마</label>
+					<label for="select-theme">테마</label>
 					<br>
-					<select id="game-theme" name="themeNo">
-						<option value="0">테마 선택</option>
+					<select id="select-theme" name="themeNo">
+						<!-- <option value="0">테마 선택</option> -->
 						<c:forEach items="${writeUserMap.themeList}" var="themeVo">
 							<option value="${themeVo.themeNo}">${themeVo.themeName}</option>
 						</c:forEach>
@@ -87,9 +87,9 @@
 					<br>
 					<br>
 
-					<label for="game-name">게임</label>
+					<label for="select-game">게임</label>
 					<br>
-					<select id="game-name" name="gameNo">
+					<select id="select-game" name="gameNo">
 						<option value="0">게임 선택</option>
 						<c:forEach items="${writeUserMap.gameList}" var="gameVo">
 							<option value="${gameVo.gameNo}">${gameVo.gameNameKo}</option>
@@ -239,14 +239,59 @@ function sigunguSelect(sigunguVo) {
 	$('#select-sigungu').append(sigunguOption);
 }
 // -- 선택 시도에 맞는 시군구 SELECT_OPTION 리스트 --
+// 선택 테마에 맞는 게임 SELECT_OPTION 리스트
+$('#select-theme').on('click', function() {
+	var themeNo = $(this).val();
+	console.log(themeNo);
+	
+	$.ajax({
+		url: '${pageContext.request.contextPath}/matching/tabContentGameList',
+		type: 'post',
+		data: { themeNo: themeNo },
+		success: function(gameList) {
+			console.log(gameList);
+			if (gameList.length != 0) {
+				$('#select-game').html('<option value="0">게임 선택</option>');
+				for (var i = 0; i < gameList.length; i++) {
+					gameSelect(gameList[i]);
+				}
+			} else if (gameList.length === 0) {
+				$.ajax({
+					url: '${pageContext.request.contextPath}/matching/gameList',
+					type: 'post',
+					success: function(gameAllList) {
+						console.log(gameAllList);
+						$('#select-game').html('<option value="0">게임 선택</option>');
+						for (var i = 0; i < gameAllList.length; i++) {
+							$('#select-game').append('<option value="' + gameAllList[i].gameNo + '">' + gameAllList[i].gameNameKo + '</option>');
+						}
+					},
+					error: function(XHR, status, error) {
+						console.log(status + ' : ' + error);
+					}
+				});
+			}
+		},
+		error: function(XHR, status, error) {
+			console.log(status + ' : ' + error);
+		}
+	});
+});
+
+function gameSelect(gameVo) {
+	var gameOption = '<option value="' + gameVo.gameNo + '">' + gameVo.gameNameKo + '</option>';
+	
+	$('#select-game').append(gameOption);
+}
+// -- 선택 테마에 맞는 게임 SELECT_OPTION 리스트 --
 
 // 등록 버튼 눌렀을 때 빈칸 경고창
 $('#btn-write').on('click', function() {
 	var title = $('#title').val();
 	console.log(title);
-	var gameTheme = $('#game-theme').val();
-	console.log(gameTheme);
-	var gameName = $('#game-name').val();
+	/* var gameTheme = $('#select-theme').val();
+	console.log(gameTheme); */
+	var gameName = $('#select-game').val();
 	console.log(gameName);
 	var date = $('#datepick').val();
 	console.log(date);
@@ -263,10 +308,10 @@ $('#btn-write').on('click', function() {
 	if (title === '') {
 		alert('제목을 입력해 주세요');
 		event.preventDefault();
-	} else if(gameTheme === '0') {
+	}/*  else if(gameTheme === '0') {
 		alert('테마를 선택해 주세요');
 		event.preventDefault();
-	} else if(gameName === '0') {
+	}  */else if(gameName === '0') {
 		alert('게임을 선택해 주세요');
 		event.preventDefault();
 	} else if(date === '') {

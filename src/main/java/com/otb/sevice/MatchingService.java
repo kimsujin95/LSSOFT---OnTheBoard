@@ -94,6 +94,13 @@ public class MatchingService {
 		
 		return writeUserInfo;
 	}
+	// 매칭글 작성 폼 - 게임 전체 리스트
+	public List<GameVo> gameList() {
+		System.out.println("매칭 서비스: gameList;;;");
+		List<GameVo> gameList = matchingDao.gameList();
+		
+		return gameList;
+	}
 	
 	// 매칭글 등록
 	public int write(MatchingVo matchingVo) {

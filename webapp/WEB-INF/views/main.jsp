@@ -20,14 +20,6 @@
 <!-- 타이틀 -->
 <title>On The Board: Main</title>
 
-
-<style>
-div .main-img {
-	text-align: center;
-}
-</style>
-
-
 </head>
 <body>
 
@@ -97,7 +89,8 @@ div .main-img {
 		<div class="jumbotron" id="jumbotron2">
 			<div class="container">
 				<h1>Stores</h1>
-				<p>온 더 보드는 보드판 위에선 모두가 평등하다는 뜻으로, 이용자 누구나 쉽고 빠르게 보드겜을 즐길 수 있게 이어주는 멀티 플랫폼입니다.</p>
+				<p>온 더 보드에서는 전국 200여개의 보드게임전문점에 대한 정보와 내 주변에서 가볍게 즐길 수 있는 카페 정보를 제공합니다.
+				<br>온 더 보드를 통해 쉽게 찾고 쉽게 예약하세요!</p>
 
 				<!-- Carousel container -->
 				<div id="my-pics" class="carousel slide" data-ride="carousel" style="width: 800px; margin: auto;">
@@ -200,27 +193,27 @@ div .main-img {
 
 						<!-- Slide 1 -->
 						<div class="item active">
-							<img src="${pageContext.request.contextPath}/assets/images/main/boardGame1.jpg">
+							<img src="${pageContext.request.contextPath}/assets/upload/thum/30.png">
 						</div>
 
 						<!-- Slide 2 -->
 						<div class="item">
-							<img src="${pageContext.request.contextPath}/assets/images/main/boardGame2.jpg">
+							<img src="${pageContext.request.contextPath}/assets/upload/thum/26.png">
 						</div>
 
 						<!-- Slide 3 -->
 						<div class="item">
-							<img src="${pageContext.request.contextPath}/assets/images/main/boardGame3.jpg">
+							<img src="${pageContext.request.contextPath}/assets/upload/thum/22.png">
 						</div>
 
 						<!-- Slide 4 -->
 						<div class="item">
-							<img src="${pageContext.request.contextPath}/assets/images/main/boardGame4.jpg">
+							<img src="${pageContext.request.contextPath}/assets/upload/thum/1.png">
 						</div>
 
 						<!-- Slide 5 -->
 						<div class="item">
-							<img src="${pageContext.request.contextPath}/assets/images/main/boardGame5.jpg">
+							<img src="${pageContext.request.contextPath}/assets/upload/thum/2.png">
 						</div>
 
 

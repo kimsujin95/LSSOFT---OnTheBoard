@@ -101,13 +101,14 @@ ul,ol,li{
 }
 
 /*리뷰 게시 구역*/
+.review_section{
+	
+}
+
 .review {
 	display : inline-block;
 	width: 40%;
-}
-
-.review div {
-	/* height: 100%; */
+	height:100%;
 }
 
 .store-review-wraper{
@@ -194,7 +195,7 @@ ul,ol,li{
 
 .review_writer_info > table {
     border: 1px solid #ff1f67;
-    width: 99%;
+    width: 100%;
     height: 100%;
     border-left: none;
 }
@@ -478,7 +479,7 @@ button, input {
 }
 
 #choice_by_grouplist > div{
-    max-height: 200px;
+    max-height: 150px;
     overflow: scroll;
     overflow-x: hidden;
 }
@@ -505,8 +506,8 @@ button, input {
 }
 
 .tab-pane{
-	min-height:200px;
-	max-height:200px;
+	min-height:150px;
+	max-height:150px;
 }
 
 #choice_by_count table{
@@ -541,47 +542,53 @@ button.time_btn {
 #time_table_wrap {
 	float:right;
 	width:75%;
-	
+	height:auto;
 }
 
 #time_table{
-	max-height:250px;
+	min-height:152px;
+	max-height:152px;
 }
 
 #time_table > li{
 	display:inline-block;
-	width:50px;
+	text-align:center;
+	width:14.2%;
+	height:40%;
 }
 
 #time_table > li input{
 	background-color:#ff1f67;
+	display:none;
+	
 }
 
-#time_table > li button{
-	display:inline-block;
-	background-color:none;
-	width:50px;
-	margin:5px;
-	text-align:center;
+#time_table > li > label{
+	width:100%;
+	height:100%;
+	margin: 0;
+	border : 1px solid #ddd;
 }
 
-#time_table > li .btn_active {
+#time_table > li .btn_active ~ label{
+	background-color: #ff1f67;
+	color: #fff;
+}
+
+#time_table > li .btn_active ~ label:hover{
 	background-color: #fff;
-	color: #ff1f67;
+	color: #000000;
 }
 
-#time_table > li .btn_active:hover{
-	background-color:#ff1f67;
-	color : #fff;
+#time_table > li .btn_active_click ~ label{
+	background-color: #fff;
+	color: #000000;
 }
 
-#time_table > li .btn_active_click {
-	background-color:#ff1f67;
-	color : #fff;
-}
-
-#time_table > li .btn_inactive{
-	cursor:default;
+#time_table > li .btn_active_click ~ label:hover{
+	background-color: #ff1f67;
+	color: #fff;
+	
 }
 
 /* 모달 css */

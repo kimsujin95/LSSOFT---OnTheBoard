@@ -222,41 +222,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="review user_review container">
-					<div class="col-xs-2 user_profile_img">
-						<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
-					</div>
-					<div class="col-xs-4 review_writer_info first-review-table">
-						<table>
-							<tr>
-								<td>카리나</td>
-							</tr>
-							<tr>
-								<td>2021/09/15</td>
-							</tr>
-							<tr>
-								<td>사장님도 친절하고 가게도 완전 깨끗~</td>
-							</tr>
-						</table>
-					</div>
-
-					<div class="col-xs-2 user_profile_img">
-						<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
-					</div>
-					<div class="col-xs-4 review_writer_info">
-						<table>
-							<tr>
-								<td>윈터</td>
-							</tr>
-							<tr>
-								<td>2021/09/15</td>
-							</tr>
-							<tr>
-								<td>사장님도 친절하고 가게도 완전 깨끗~</td>
-							</tr>
-						</table>
-					</div>
-				</div>
+				
 			</div>
 			<!-- 리뷰 페이징 -->
 			<div class="paging-wrap">

@@ -126,6 +126,18 @@ public class AdminService {
 		return addedStoreImageList;
 		
 	}	
+	
+	//매장 이미지 삭제
+	public boolean removeImage(StoreImageVo storeImage) {
+		int removeCheck = adminDao.deleteStoreImage(storeImage);
+		System.out.println(removeCheck);
+		
+		if(removeCheck == 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	//매장 스케쥴 등록
 	public void addSchedule(String date, String[] times, ReservationDateVo reservationDateVo) {

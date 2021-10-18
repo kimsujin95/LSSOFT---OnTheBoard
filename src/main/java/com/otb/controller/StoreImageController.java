@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -52,13 +53,15 @@ public class StoreImageController {
 	
 	//매장 이미지 삭제
 	@ResponseBody
-	@RequestMapping(value = "/storeImageRemove/{storeImageNo}", method = {RequestMethod.GET, RequestMethod.POST})
-	public boolean imageRemove(@PathVariable("storeImageNo") int storeImageNo) {
+	@RequestMapping(value = "/storeImageRemove", method = {RequestMethod.GET, RequestMethod.POST})
+	public boolean imageRemove(@ModelAttribute StoreImageVo storeImage) {
 		
 		System.out.println("이미지 삭제 도착");
-		System.out.println(storeImageNo);
+		System.out.println(storeImage.toString());
 		
-		return false;
+		boolean removeOk = adminService.removeImage(storeImage);
+		
+		return removeOk;
 	}
 	//////////////////////////////////////// 이미지 등록, 삭제 ////////////////////////////////////////
 

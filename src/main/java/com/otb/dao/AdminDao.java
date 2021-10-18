@@ -56,6 +56,11 @@ public class AdminDao {
 		System.out.println("이미지 저장 완료");
 	}
 	
+	//매장 이미지 삭제 - ajax
+	public int deleteStoreImage(StoreImageVo storeImage) {
+		return sqlSession.delete("admin.deleteStoreImage",storeImage);
+	}
+	
 	//스케쥴 조회 - 날짜/ 해당 날짜가 있을 경우 날짜 번호를 리턴, 없을 경우 0을 리턴
 	public int selectDateNo(ReservationDateVo reservationDateVo) {
 		if(sqlSession.selectOne("admin.selectDateNo", reservationDateVo) != null) {

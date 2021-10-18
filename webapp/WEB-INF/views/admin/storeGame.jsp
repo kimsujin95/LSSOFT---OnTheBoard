@@ -193,8 +193,10 @@
 		htmlTags+="<tr>";
 		htmlTags+="	<td>"+ gameVo.gameNo+"</td>";
 		htmlTags+='	<td class="img-area"><img class="game-img" src="${pageContext.request.contextPath}/assets/upload/'+ gameVo.gameThumbImg +'"></td>';
-		htmlTags+="	<td>"+ gameVo.themeName +"</td>";
-		htmlTags+="	<td>"+ gameVo.gameNameKo +"</td>";
+		htmlTags+="	<td> " + gameVo.themeName + " </td>";
+		htmlTags+="	<td>";
+		htmlTags+="		<a href='${pageContext.request.contextPath}/game/gameDetails?no="+gameVo.gameNo+"'> "+ gameVo.gameNameKo +"</a>";
+		htmlTags+=" </td>"
 		htmlTags+='	<td><button class="insert-btn btn btn-primary" type="submit" data-game="'+gameVo.gameNo+'">등록</button></td>';
 		htmlTags+="</tr>";
 		

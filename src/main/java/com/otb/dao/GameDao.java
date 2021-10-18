@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.otb.vo.GameVo;
+import com.otb.vo.StoreVo;
 import com.otb.vo.ThemeVo;
 
 @Repository
@@ -59,6 +60,11 @@ public class GameDao {
 	//테마 호출
 	public List<ThemeVo> selectThemeList() {
 		return sqlSession.selectList("game.selectThemeList");
+	}
+	
+	//보유한 매장 호출
+	public List<StoreVo> selectOwnedStoreList(int gameNo) {
+		return sqlSession.selectList("game.selectOwnedStoreList", gameNo);
 	}
 	
 }

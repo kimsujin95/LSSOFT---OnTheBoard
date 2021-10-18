@@ -28,13 +28,22 @@
 		<result column="game_bookmark_no" property="gameBookmarkNo" />
 	</resultMap>
 	
-	<resultMap id="ReseultMapThemeVo" type="ThemeVo">
+	<resultMap id="reseultMapThemeVo" type="ThemeVo">
 		<result column="theme_no" property="themeNo" />
 		<result column="theme_name" property="themeName" />
 	</resultMap>
 	
+	<!-- StoreVo resultMap -->
+	<resultMap id="resultMapAdminVo" type="StoreVo">
+		<result column="store_no" property="storeNo" />
+		<result column="store_name" property="storeName" />
+		<result column="store_business_no" property="storeBusinessNo" />
+		<result column="store_address_road" property="storeAddressRoad" />
+		<result column="store_phone_no" property="storePhoneNo" />
+	</resultMap>
+	
 	<!-- 테마 목록 -->
-	<select id="selectThemeList" resultMap="ReseultMapThemeVo">
+	<select id="selectThemeList" resultMap="reseultMapThemeVo">
 		<![CDATA[
 			SELECT
 				 theme_no
@@ -291,6 +300,22 @@
 					count(game_no)
 				FROM
    					game	
+			]]>
+		</select>
+		
+		<!-- 보유한 매장 호출 -->
+		<select id="selectOwnedStoreList" parameterType="int" resultMap="resultMapAdminVo">
+			<![CDATA[
+				SELECT
+				    s.store_no
+				    ,store_name
+				    ,s.store_address_road
+				    ,s.store_phone_no
+				 FROM 
+				 	owned_game og,
+				    store s
+				 WHERE og.store_no = s.store_no
+				   AND game_no = #{gameNo}
 			]]>
 		</select>
 		

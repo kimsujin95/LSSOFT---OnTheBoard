@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.otb.sevice.GameService;
 import com.otb.vo.GameVo;
+import com.otb.vo.StoreVo;
 
 @Controller
 @RequestMapping(value="/game", method= {RequestMethod.GET, RequestMethod.POST})
@@ -43,9 +44,14 @@ public class GameController {
 		
 		GameVo gameVo = gameService.gameDetails(gameNo);
 		System.out.println(gameVo);
-				
-		model.addAttribute("gameVo", gameVo);
 		
+		List<StoreVo> ownedstoreList = gameService.getOwnedStoreList(gameNo);
+		for(int i = 0; i < ownedstoreList.size(); i++) {
+			System.out.println(ownedstoreList.get(i).toString());
+		}
+		
+		model.addAttribute("gameVo", gameVo);
+		model.addAttribute("ownedStoreList", ownedstoreList);
 		return"/game/gameDetails";
 	}
 	

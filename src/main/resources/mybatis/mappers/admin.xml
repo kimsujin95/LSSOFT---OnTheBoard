@@ -168,6 +168,16 @@
 		]]>
 	</insert>
 	
+	<!-- 매장 이미지 삭제 -->
+	<delete id="deleteStoreImage" parameterType="StoreImageVo">
+		<![CDATA[
+			DELETE
+				store_image
+			WHERE store_image_no = #{storeImageNo}
+			  AND store_no = #{storeNo}
+		]]>
+	</delete>
+	
 	<!-- 매장 예약 날짜 조회(유무 확인) -->
 	<select id="selectDateNo" parameterType="ReservationDateVo" resultType="int">
 		<![CDATA[

@@ -43,7 +43,7 @@ public class OwnedGameVo {
 
 	@Override
 	public String toString() {
-		return "OwnedGame [ownedGameNo=" + ownedGameNo + ", storeNo=" + storeNo + ", gameNo=" + gameNo + "]";
+		return "OwnedGameVo [ownedGameNo=" + ownedGameNo + ", storeNo=" + storeNo + ", gameNo=" + gameNo + "]";
 	}
 	
 }

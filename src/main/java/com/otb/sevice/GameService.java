@@ -12,6 +12,7 @@ import com.otb.dao.AdminDao;
 import com.otb.dao.GameDao;
 import com.otb.vo.GameVo;
 import com.otb.vo.OwnedGameVo;
+import com.otb.vo.StoreVo;
 import com.otb.vo.ThemeVo;
 
 @Service
@@ -111,6 +112,13 @@ public class GameService {
 		return listMap;
 	
 	}
+	
+	//게임 보유 매장 리스트
+	public List<StoreVo> getOwnedStoreList(int gameNo) {
+		List<StoreVo> ownedStoreList = gameDao.selectOwnedStoreList(gameNo);
+		return ownedStoreList;
+	}
+	
 	/*
 	@Autowired(required=false)
 	@Qualifier("uploadPath")

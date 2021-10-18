@@ -203,7 +203,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-					<button type="button" class="btn btn-danger" id="btnDel">삭제</button>
+					<button type="button" class="btn btn-danger" id="btnDel" data-dismiss="modal">삭제</button>
 				</div>
 
 			</div>
@@ -330,13 +330,24 @@
 		$("#viewModelImg").attr("src", $(this).attr("src"));
 	});
 	
+	//매장 이미지 삭제
 	$("#btnDel").on("click", function(){
 		console.log("삭제버튼 클릭");
 		//삭제 요청
 		$.ajax({
 		    type : "POST",
-		    url : "${pageContext.request.contextPath }/storeImageRemove/" + selectedImage,
+		    url : "${pageContext.request.contextPath }/storeImageRemove",
+		    data : {
+		    	storeImageNo : selectedImage
+		    	,storeNo : ${storeInfo.storeNo}
+		    },
 		    success : function(data) {
+		    	if(data == true) {
+		    		console.log("이미지가 삭제되었습니다");
+		    		$("[data-img=" + selectedImage + "]").remove();
+		    	} else {
+		    		console.log("삭제 실패");
+		    	}
 		    },
 		    err : function(jqXHR, textStatus, errorThrown) {
 		    	alert("업로드 에러\ncode : " + jqXHR.status + "\nerror message : " + jqXHR.responseText);

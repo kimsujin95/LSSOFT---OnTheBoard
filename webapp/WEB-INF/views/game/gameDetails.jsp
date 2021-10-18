@@ -166,9 +166,8 @@
 					<div class="bbsList02" id="gmaeStorelistTab">
 						<div class="innerbox">
 							<table>
-								<caption hidden>보유매장 리스트</caption>
 								<thead>
-									<tr class="listHead" style="text-align: center;"">
+									<tr class="listHead" style="text-align: center">
 										<th id="num">번호</th>
 										<th id="storename">매장명</th>
 										<th id="storelocation">위치</th>
@@ -177,23 +176,19 @@
 									</tr>
 								</thead>
 								<tbody style="border-bottom: 0px; text-align: center;">
-									<tr class="listBody">
-										<td>1</td>
-										<td>강남보드게임</td>
-										<td>서울시 강남구 역삼동</td>
-										<td>02-555-1234</td>
-										<td><span class="linkStore"><a href="${storeVo.ownStore }">매장정보<br>상세보기
-											</a></span></td>
-									</tr>
-									<tr class="storeList_body">
-										<td>2</td>
-										<td>강남보드게임</td>
-										<td>서울시 강남구 역삼동</td>
-										<td>02-555-1234</td>
-										<td><span class="linkStore"><a href="">매장정보<br>상세보기
-											</a></span></td>
-									</tr>
-
+									<c:forEach items="${ownedStoreList }" var="ownedStore" varStatus="status">
+										<tr class="listBody">
+											<td>${status.count }</td>
+											<td>${ownedStore.storeName }</td>
+											<td>${ownedStore.storeAddressRoad }</td>
+											<td>${ownedStore.storePhoneNo }</td>
+											<td>
+												<span class="linkStore">
+													<a href="${pageContext.request.contextPath }/store/storeinfo/${ownedStore.storeNo}">매장정보<br>상세보기</a>
+												</span>
+											</td>
+										</tr>
+									</c:forEach>
 								</tbody>
 
 							</table>

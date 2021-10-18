@@ -46,6 +46,7 @@ INSERT INTO users(user_no, user_id, user_password, user_name, user_nickname, use
 VALUES ( seq_users_no.NEXTVAL, 'zxc', 'zxc', 'zxc', 'zxc', 'female', '19791111', 1, sysdate );
 
 -- INSERT THEME
+INSERT INTO THEME( theme_no, theme_name) VALUES ( 0, '테마 전체');
 INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '전략');
 INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '추상');
 INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '컬렉터블');

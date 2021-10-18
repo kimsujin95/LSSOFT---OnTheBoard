@@ -305,6 +305,11 @@ textarea {
 	margin: 0px 3px;
 }
 
+#comment-reply-wrap {
+	font-size: 20px;
+	font-weight: bold;
+}
+
 #comment div {
 	margin: 0px;
 }

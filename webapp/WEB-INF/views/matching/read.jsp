@@ -159,7 +159,7 @@
 		</div>
 		<hr>
 
-		<div>댓글</div>
+		<div id="comment-reply-wrap">댓글</div>
 		<br>
 
 		<!-- 댓글/답글 리스트 -->

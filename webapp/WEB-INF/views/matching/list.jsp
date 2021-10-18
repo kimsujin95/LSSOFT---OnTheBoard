@@ -355,10 +355,20 @@
 // 옵션 선택 값 추가/삭제
 	$('#content').on('click', 'input[type="checkbox"]', function (){
 		var inputClick = $(this).val();
+		var keyword = new Array();
 		
 		if ($(this).is(':checked')) {
 			console.log(inputClick);
 			$('#y-select-opt').append('<button class="btn-selectDel" data-value="' + inputClick + '">' + inputClick + '<img src="${pageContext.request.contextPath}/assets/images/matching/btn-X.png"></button>');
+			
+			// 옵션 선택 리스트에서 X아이콘 클릭으로 삭제
+			$('#y-select-opt').on('click', '.btn-selectDel', function() {
+				console.log('btn-selectDel');
+				var selectDel = $(this).data('value');
+				console.log(selectDel);
+				$('input[type="checkbox"][value="' + selectDel + '"]').removeAttr('checked');
+				$(this).remove();
+			});
 		} else {
 			$(this).removeAttr('checked');
 			console.log('selectDel');
@@ -366,8 +376,6 @@
 		}
 		
 		// 선택된 옵션에 맞는 리스트 출력
-		var keyword = new Array();
-		
 		$('input').each(function() {
 			if ($(this).is(':checked')) {
 				var checked = $(this).val();
@@ -397,16 +405,6 @@
 		// -- 선택된 옵션에 맞는 리스트 출력 --
 	});
 // -- 옵션 선택 값 추가/삭제 --
-	
-	// 옵션 선택 리스트에서 클릭으로 삭제
-	$('#y-select-opt').on('click', '.btn-selectDel', function() {
-		console.log('btn-selectDel');
-		var selectDel = $(this).data('value');
-		console.log(selectDel);
-		$('input[type="checkbox"][value="' + selectDel + '"]').removeAttr('checked');
-		$(this).remove();
-	});
-	
 	// 선택초기화
 	$('.btn-reset').on('click', function() {
 		$('#y-select-opt').empty();

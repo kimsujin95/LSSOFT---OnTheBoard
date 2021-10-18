@@ -1,11 +1,13 @@
 package com.otb.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,7 @@ import com.otb.sevice.GameService;
 import com.otb.vo.OwnedGameVo;
 import com.otb.vo.ReservationDateVo;
 import com.otb.vo.StoreVo;
+import com.otb.vo.ThemeVo;
 import com.otb.vo.UserVo;
 
 @Controller
@@ -161,8 +164,13 @@ public class AdminController {
 	
 	//admin - 보유 게임관리
 	@RequestMapping(value = "/storeGame", method = {RequestMethod.GET, RequestMethod.POST})
-	public String storeGame() {
+	public String storeGame(Model model) {
 		System.out.println("admin - storeGame --------------------------------------------------------");
+		List<ThemeVo> themeList = gameService.getThemeList();
+		for(int i = 0; i < themeList.size(); i++) {
+			System.out.println(themeList.get(i).toString());
+		}
+		model.addAttribute("themeList", themeList);
 		return "/admin/storeGame";
 	}
 	

@@ -12,6 +12,7 @@ import com.otb.dao.AdminDao;
 import com.otb.dao.GameDao;
 import com.otb.vo.GameVo;
 import com.otb.vo.OwnedGameVo;
+import com.otb.vo.ThemeVo;
 
 @Service
 public class GameService {
@@ -21,9 +22,14 @@ public class GameService {
 	@Autowired
 	private GameDao gameDao;
 	
+	//테마 목록
+	public List<ThemeVo> getThemeList() {
+		List<ThemeVo> themeList = gameDao.selectThemeList();
+		return themeList;
+	}
 	
 	//게임목록
-	public List<GameVo> gameList(){
+	public List<GameVo> gameList() {
 		System.out.println("[GameService.gameList()]");
 		
 		List<GameVo> gameList = gameDao.gameList();

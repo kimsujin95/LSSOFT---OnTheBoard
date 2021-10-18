@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.otb.vo.GameVo;
+import com.otb.vo.ThemeVo;
 
 @Repository
 public class GameDao {
@@ -53,6 +54,11 @@ public class GameDao {
 	//게임 리스트 카운트
 	public int selectCnt() {
 		return sqlSession.selectOne("game.selectCnt");
+	}
+	
+	//테마 호출
+	public List<ThemeVo> selectThemeList() {
+		return sqlSession.selectList("game.selectThemeList");
 	}
 	
 }

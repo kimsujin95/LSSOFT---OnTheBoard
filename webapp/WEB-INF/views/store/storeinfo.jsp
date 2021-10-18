@@ -185,7 +185,7 @@
 			<!-- 리뷰 반복 출력 -->
 			<div class="review_section">
 				<div class="review user_review container">
-					<div class="review_container">
+					<div class="review">
 						<div class="col-xs-2 user_profile_img">
 							<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
 						</div>
@@ -202,6 +202,8 @@
 								</tr>
 							</table>
 						</div>
+					</div>
+					<div class="review">
 						<div class="col-xs-2 user_profile_img">
 							<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
 						</div>

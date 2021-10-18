@@ -102,8 +102,8 @@ ul,ol,li{
 
 /*리뷰 게시 구역*/
 .review {
-	width: 100%;
-	height: 150px;
+	display : inline-block;
+	width: 40%;
 	margin-bottom: 20px;
 }
 
@@ -176,10 +176,6 @@ ul,ol,li{
 .review_container{
 	width:80%;
 	height:90%;
-}
-
-.user_review > li{
-	
 }
 
 .review_writer_info{

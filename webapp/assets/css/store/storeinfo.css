@@ -104,7 +104,6 @@ ul,ol,li{
 .review {
 	display : inline-block;
 	width: 40%;
-	margin-bottom: 20px;
 }
 
 .review div {
@@ -157,6 +156,7 @@ ul,ol,li{
 
 .user_profile_img {
 	padding: 0px;
+	width : 30%;
 }
 
 .user_profile_img > img{
@@ -180,6 +180,12 @@ ul,ol,li{
 
 .review_writer_info{
 	padding: 0px;
+	height:100%;
+	width:70%;
+}
+
+.review_writer_info table tbody tr td{
+	height:100%;
 }
 
 .review_writer_info .first-review-table{

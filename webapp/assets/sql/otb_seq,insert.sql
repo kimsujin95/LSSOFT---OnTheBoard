@@ -7,11 +7,11 @@ DROP SEQUENCE seq_matching_no;
 DROP SEQUENCE seq_sido_no;
 DROP SEQUENCE seq_sigungu_no;
 DROP SEQUENCE seq_store_no;
-DROP SEQUENCE seq_reservation_no;
 DROP SEQUENCE seq_reservation_date_no;
 DROP SEQUENCE seq_reservation_time_no;
 DROP SEQUENCE seq_comment_no;
 DROP SEQUENCE seq_reply_no;
+DROP SEQUENCE sequence_store_image_no;
 
 CREATE SEQUENCE seq_users_no START WITH 1 INCREMENT BY 1 NOCACHE;
 CREATE SEQUENCE seq_game_no START WITH 1 INCREMENT BY 1 NOCACHE;
@@ -21,16 +21,16 @@ CREATE SEQUENCE seq_matching_no START WITH 1 INCREMENT BY 1 NOCACHE;
 CREATE SEQUENCE seq_sido_no START WITH 1 INCREMENT BY 1 NOCACHE;
 CREATE SEQUENCE seq_sigungu_no START WITH 1 INCREMENT BY 1 NOCACHE;
 CREATE SEQUENCE seq_store_no START WITH 1 INCREMENT BY 1 NOCACHE;
-CREATE SEQUENCE seq_reservation_no START WITH 1 INCREMENT BY 1 NOCACHE;
 CREATE SEQUENCE seq_reservation_date_no START WITH 1 INCREMENT BY 1 NOCACHE;
 CREATE SEQUENCE seq_reservation_time_no START WITH 1 INCREMENT BY 1 NOCACHE;
 CREATE SEQUENCE seq_comment_no START WITH 1 INCREMENT BY 1 NOCACHE;
 CREATE SEQUENCE seq_reply_no START WITH 1 INCREMENT BY 1 NOCACHE;
+CREATE SEQUENCE sequence_store_image_no START WITH 1 INCREMENT BY 1 NOCACHE;
 -- // SEQUENCE
 
 -- INSERT USERS
 INSERT INTO users(user_no, user_id, user_password, user_name, user_nickname, user_gender, user_birth_date, user_grade, user_reg_date)
-VALUES ( seq_users_no.NEXTVAL, 'test1', '1234', 'test1', 'test1', 'male', '19901111', 1, sysdate );
+VALUES ( seq_users_no.NEXTVAL, 'test1', '1234', 'test1', 'test1', 'male', '19901111', 2, sysdate );
 
 INSERT INTO users(user_no, user_id, user_password, user_name, user_nickname, user_gender, user_birth_date, user_grade, user_reg_date)
 VALUES ( seq_users_no.NEXTVAL, 'test2', '1234', 'test2', 'test2', 'female', '19931111', 1, sysdate );
@@ -407,8 +407,8 @@ INSERT INTO matching_group VALUES ( 15, 1, 3, sysdate );
 -- // INSERT MATCHING/GROUP
 
 -- INSERT STORE
-INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
-VALUES ( seq_store_no.nextval, '보드게임카페1', 37.494366186594405, 127.01825129365432, '02-1111-1111', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '111시 111구 111동 111로', '1111-111');
+INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+VALUES ( seq_store_no.nextval, 1, '보드게임카페1', 37.494366186594405, 127.01825129365432, '02-1111-1111', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '111시 111구 111동 111로', '1111-111');
 
 INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
 VALUES ( seq_store_no.nextval, '보드게임카페2', 37.499336756210546, 127.0322302565823, '02-2222-2222', '보드게임카페2 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '222시 222구 222동 222로', '2222-222');

@@ -27,6 +27,9 @@
 <!-- fontawesome cdn -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
+<!-- SEWWT ALERT -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 <body>
 
@@ -590,7 +593,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-					<button type="button" class="btn btn-primary">예약하기</button>
+					<button type="button" id="btn-last-rev" class="btn btn-primary">예약하기</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -799,7 +802,7 @@
 						
 						$('#myModal').modal('show');
 						
-						$('.btn-primary').on('click',function(){
+						$('#btn-last-rev').on('click',function(){
 							
 							var reservationVo = {
 									storeNo : ${storeNo},
@@ -817,9 +820,36 @@
 			    		        type : 'POST',
 			    		        data : reservationVo,
 			    		        
-			    		        success : function() {
+			    		        success : function(count) {
 			    		            // ajax 랜더링 for문
-			    		        	
+			    		            if(count == 1){
+			    		            	swal({
+			    		            		title: '예약 성공',
+			    		            		icon: 'success',
+			    		            		closeOnClickOutside: false,
+			    		            		
+			    		            		buttons: {
+			    		            			cancle: {
+			    		            				text: '메인으로',
+			    		            				value: false,
+			    		            				className: 'btn btn-primary'
+			    		            			},
+			    		            			confirm: {
+			    		            				text: '예약내역',
+			    		            				value: true,
+			    		            				className: 'btn btn-info'
+			    		            			}
+			    		            		}
+			    		            	}).then((result) => {
+			    		            		if(result === true) {
+			    		            			location.href='${pageContext.request.contextPath}/mypage/history';
+			    		            		} else {
+			    		            			location.href='${pageContext.request.contextPath}/main';
+			    		            		}
+			    		            	});
+			    		            } else{
+			    		            	window.alert("실패");
+			    		            }
 			    		        	
 			    		        }, // success
 			    				

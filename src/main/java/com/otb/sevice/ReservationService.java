@@ -95,12 +95,12 @@ public class ReservationService {
 	}
 	
 	//예약정보 insert
-	public String insertreservation(ReservationVo reservationInfo) {
+	public int insertreservation(ReservationVo reservationInfo) {
 		System.out.println("[reservationService.insertreservation]");
 		
-		reservationDao.insertreservation(reservationInfo);
+		int count = reservationDao.insertreservation(reservationInfo);
 		
-		return null;
+		return count;
 	}
 	
 }

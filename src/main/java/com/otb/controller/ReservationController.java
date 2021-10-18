@@ -57,15 +57,22 @@ public class ReservationController {
 	
 	@ResponseBody
 	@RequestMapping("/reservationinsert")
-	public String reservationinsert(ReservationVo reservationInfo,Model model) {
+	public int reservationinsert(ReservationVo reservationInfo,Model model) {
 		System.out.println("[reservationController.reservationinsert]");
 		
 		System.out.println("[예약 입력 정보 : ]" + reservationInfo);
 		
-		reservationService.insertreservation(reservationInfo);
+		int count = reservationService.insertreservation(reservationInfo);
 		
-		return "redirect:/reservation/revhistory";
+		return count;
 		
+	}
+	
+	@RequestMapping("/revhistory")
+	public String reservationhistory() {
+		System.out.println("[reservationController.reservationhistory]");
+		
+		return "/reservation/revhistory";
 	}
 	
 }

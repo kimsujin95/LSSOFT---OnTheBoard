@@ -40,11 +40,11 @@ public class ReservationDao {
 	}
 	
 	//예약 insert
-	public String insertreservation(ReservationVo reservationInfo) {
+	public int insertreservation(ReservationVo reservationInfo) {
 		System.out.println("[reservationDao.insertreservation]");
 		
-		sqlSession.insert("reservation.insertreservation",reservationInfo);
+		int count = sqlSession.insert("reservation.insertreservation",reservationInfo);
 		
-		return null;
+		return count;
 	}
 }

@@ -72,8 +72,9 @@
 								<!-- 장르 -->
 								<select>
 									<option>장르</option>
-									<option>추상 게임</option>
-									<option>협력 게임</option>
+									<c:forEach items="${themeList}" var="themeList">
+										<option>${themeList.themeName }</option>
+									</c:forEach>
 								</select>
 							</div>				
 									

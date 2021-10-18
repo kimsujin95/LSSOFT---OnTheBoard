@@ -27,7 +27,24 @@
 		<result column="game_no" property="gameNo" />
 		<result column="game_bookmark_no" property="gameBookmarkNo" />
 	</resultMap>
-		
+	
+	<resultMap id="ReseultMapThemeVo" type="ThemeVo">
+		<result column="theme_no" property="themeNo" />
+		<result column="theme_name" property="themeName" />
+	</resultMap>
+	
+	<!-- 테마 목록 -->
+	<select id="selectThemeList" resultMap="ReseultMapThemeVo">
+		<![CDATA[
+			SELECT
+				 theme_no
+				,theme_name
+			FROM
+				theme
+			ORDER BY theme_no ASC
+		]]>
+	</select>	
+	
 	<!-- 게임목록 (썸네일리스트) -->
 	<select id="list" resultMap="resultMapGameVo">
 		<![CDATA[

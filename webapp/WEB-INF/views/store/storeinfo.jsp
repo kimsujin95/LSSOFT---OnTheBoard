@@ -175,7 +175,7 @@
 		</div>
 
 		<!-- 리뷰 게시구역 -->
-		<div class="store-review-wraper">
+		<%-- <div class="store-review-wraper">
 			<!-- 리뷰 반복 출력 -->
 			<div class="review_section">
 				<div class="review user_review container">
@@ -229,9 +229,8 @@
 			<div class="write_review">
 				<button type="button" id="review_btn" class="btn-white">리뷰등록</button>
 			</div>
-		</div>
-
-
+		</div> --%>
+		
 		<!-- 예약 사전설정 구역(날짜,시간) -->
 		<div id="on-the-board-include">
 
@@ -246,14 +245,6 @@
 							<div class="year" style="left: 30px; opacity: 1; z-index: 1;">2021.10</div>
 						</div>
 						<div class="date-area" id="formDeList">
-
-							<button class="datebar_btn" type="button" data-date="2021/10/19">
-								<!-- month="" -->
-
-								<span class="ir">2021년 10월</span> <em style="pointer-events: none;">19<span style="pointer-events: none;" class="ir">일</span>
-								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">화</span>
-
-							</button>
 
 							<button class="datebar_btn" type="button" data-date="2021/10/20">
 								<!-- month="" -->
@@ -356,6 +347,14 @@
 
 								<span class="ir">2021년 10월</span> <em style="pointer-events: none;">1<span style="pointer-events: none;" class="ir">일</span>
 								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">월</span>
+
+							</button>
+
+							<button class="datebar_btn" type="button" data-date="2021/11/02">
+								<!-- month="" -->
+
+								<span class="ir">2021년 10월</span> <em style="pointer-events: none;">2<span style="pointer-events: none;" class="ir">일</span>
+								</em> <span class="day-kr" style="pointer-events: none; display: inline-block">화</span>
 
 							</button>
 
@@ -715,7 +714,7 @@
         	if(revtimeArray === reservationableTime){
         		var itemStr = '<input type="checkbox" id="chb_'+revtimeArray+'" class="btn_active" name="btn_active" value="'+ revtimeArray +'"><label for="chb_'+revtimeArray+'">'+ revtimeArray + ":00" +'</label>';
         	}else{
-        		var itemStr = '<label>'+ revtimeArray +'</label>';
+        		var itemStr = '<label class="">'+ revtimeArray +":00"+'</label>';
         	}
 			
     	    el.innerHTML = itemStr;

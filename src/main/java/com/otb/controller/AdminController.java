@@ -1,5 +1,6 @@
 package com.otb.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.otb.sevice.AdminService;
 import com.otb.sevice.GameService;
+import com.otb.vo.AdminReservationVo;
 import com.otb.vo.OwnedGameVo;
 import com.otb.vo.ReservationDateVo;
 import com.otb.vo.StoreVo;
@@ -211,20 +213,39 @@ public class AdminController {
 
 	// admin - 예약 관리
 	@RequestMapping(value = "/reservation", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reservation(HttpSession session) {
+	public String reservation(HttpSession session, Model model
+							 ,@RequestParam(value = "sort", required = false, defaultValue = "desc") String sort
+							 ,@RequestParam(value = "keyWord", required = false, defaultValue = "none") String keyWord
+							 ,@RequestParam(value = "searchWord", required = false, defaultValue = "") String searchWord) {
 		System.out.println("예약 관리");
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
-
+		System.out.println(sort);
 		if (authUser != null) {
-			int userNo = authUser.getUserNo();
-			StoreVo storeInfo = adminService.getStore(userNo);
-			session.setAttribute("storeInfo", storeInfo);
 
+			int storeNo = ((StoreVo) session.getAttribute("storeInfo")).getStoreNo();
+			
+			Map<String, Object>searchKey = new HashMap<String, Object>();
+			
+			searchKey.put("storeNo", storeNo);
+			searchKey.put("sort", sort);
+			searchKey.put("keyWord", keyWord);
+			searchKey.put("searchWord", searchWord);
+			
+			List<AdminReservationVo> reservationList = adminService.getReservationList(searchKey);
+			model.addAttribute("reservationList", reservationList);
+			
 			return "/admin/reservation";
 		} else {
 			return "/admin/error";
 		}
 		
+	}
+	
+	//예약 하나 정보 - ajax
+	@ResponseBody
+	@RequestMapping(value = "/reservation/detail", method = { RequestMethod.GET, RequestMethod.POST })
+	public AdminReservationVo reservationDetail(@RequestParam("reservationNo") int reservationNo) {
+		return adminService.getReservationVo(reservationNo);
 	}
 
 	//////////////////////////////////////// 매장 예약 정보 확인 및 수정 //////////////////////////////////////// ////////////////////////////////////////

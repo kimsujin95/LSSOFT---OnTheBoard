@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.otb.dao.AdminDao;
+import com.otb.vo.AdminReservationVo;
 import com.otb.vo.OwnedGameVo;
 import com.otb.vo.ReservationDateVo;
 import com.otb.vo.ReservationTimeVo;
@@ -276,6 +277,25 @@ public class AdminService {
 	public void removeOwnedGame(OwnedGameVo ownedGame) {
 		System.out.println("서비스 도착");
 		adminDao.deleteOwnedGame(ownedGame);
+	}
+	
+	//매장에 등록된 예약 호출
+	public List<AdminReservationVo> getReservationList(Map<String, Object> searchKey) {
+		
+		List<AdminReservationVo> reservationList = adminDao.selectReservationList(searchKey);
+		
+		for(AdminReservationVo reservationVo : reservationList) {
+			System.out.println(reservationVo.toString());
+		}
+		
+		return reservationList;
+		
+	}
+	
+	//예약정보 하나 호출
+	public AdminReservationVo getReservationVo(int reservationNo) {
+		AdminReservationVo adminReservationVo = adminDao.selectReservation(reservationNo);
+		return adminReservationVo;
 	}
 	
 }

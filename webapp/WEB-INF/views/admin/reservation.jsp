@@ -62,8 +62,8 @@
 					<!-- 검색 영역 -->
 					<div id="search-bar" class="border-default">
 						<!-- 날짜 선택 영역 -->
-						<div id="date-area" class="clearfix">
-							<!-- 시작일 -->
+						<!-- <div id="date-area" class="clearfix">
+							시작일
 							
 							<div id="date-picker" class="input-daterange input-group pull-left">
 							  	<span class="input-group-addon">예약일</span>
@@ -72,47 +72,42 @@
 								<input type="text" class="form-control" name="end" placeholder="📅">
 							</div>
 							
-							<!-- 버튼 그룹 -->
+							버튼 그룹
 							<div id="date-btn" class="btn-group btn-group pull-left">
 								<button type="button" class="btn">전체</button>
 								<button type="button" class="btn">오늘</button>
 								<button type="button" class="btn">내일</button>
 								<button type="button" class="btn">일주일</button>
 							</div>
-							<!-- 버튼 그룹 -->
-						</div>
+							버튼 그룹
+						</div> -->
 						<!-- //날짜 선택 영역-->
 					
 						<!-- 검색어 입력 영역 -->
 						<div id="search-area">
-							<div id="select-area">
-								<!-- 정렬 -->
-								<select>
-									<option>정렬</option>
-									<option>오름차순</option>
-									<option>내림차순</option>
-								</select>
-								<!-- 진행도 -->
-								<select>
-									<option>진행 단계</option>
-									<option>예약 완료</option>
-									<option>결제중</option>
-									<option>예약 취소</option>
-								</select>
-							</div>
-							
-							<!-- 검색어 입력 -->
-							<div id="keyword-area">
-								<!-- 검색어 선택 -->
-								<select>
-									<option>전체</option>
-									<option>예약자명</option>
-									<option>핸드폰</option>
-								</select>
-								<!-- //검색어 선택 -->
-								<input type="search" placeholder="검색어를 입력해주세요.">
-								<button class="btn btn-sm btn-primary" type="submit">조회</button>
-							</div>
+							<form action="${pageContext.request.contextPath }/admin/reservation">
+								<div id="select-area">
+									<!-- 정렬 -->
+									<select name="sort">
+										<option>정렬</option>
+										<option value="desc">내림차순</option>
+										<option value="asc">오름차순</option>
+									</select>
+								</div>
+								
+								<!-- 검색어 입력 -->
+								<div id="keyword-area">
+									<!-- 검색어 선택 -->
+									<select name="keyWord">
+										<option>전체</option>
+										<option value="userName">예약자명</option>
+										<option value="userPhoneNo">핸드폰</option>
+									</select>
+									<!-- //검색어 선택 -->
+									<input type="search" name="searchWord" placeholder="검색어를 입력해주세요.">
+									<button class="btn btn-sm btn-primary" type="submit">조회</button>
+								</div>
+							</form>	
 						</div>
 						<!-- 검색어 입력 영역 -->
 					</div>
@@ -136,22 +131,18 @@
 									<th>핸드폰</th>
 									<th>진행단계</th>
 									<th>금액</th>
-									<th>결제인원</th>
-									<th>잔여금액</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach begin="0" end="14">	
+								<c:forEach items="${reservationList}" var="reservationInfo">	
 									<tr>
-										<td>2021-09-01</td>
-										<td>4</td>
-										<td>12:00 ~ 16:00</td>
-										<td class="user_name"><a>최영교</a></td>
-										<td>010-1111-1111</td>
-										<td>결제중</td>
-										<td>40000</td>
-										<td>3</td>
-										<td>10000</td>
+										<td>${reservationInfo.reservationDate}</td>
+										<td>${reservationInfo.reservationChargePeople}</td>
+										<td>${reservationInfo.times}</td>
+										<td class="user_name" data-no="${reservationInfo.reservationNo}"><a>${reservationInfo.userName}</a></td>
+										<td>${reservationInfo.userPhoneNo}</td>
+										<td>${reservationInfo.reservationStatus}</td>
+										<td>${reservationInfo.reservationChargeTotal}</td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -209,22 +200,16 @@
 					<!-- 예약 정보 -->
 					<table class="reservation-detail border-default font-size-14">
 						<tr>
-							<th>예약번호</th><td>1234</td>
-							<th>예약일</th><td>2021-09-01</td>
+							<th>예약번호</th><td id="reservation-no"></td>
+							<th>예약일</th><td id="reservation-date"></td>
 						</tr>
 						<tr>
-							<th>예약자</th><td>최영교</td>
-							<th>핸드폰</th><td>010-1111-1111</td>
+							<th>예약자</th><td id="reservation-name"></td>
+							<th>핸드폰</th><td id="reservation-phone"></td>
 						</tr>
 						<tr>
-							<th>인원</th><td>4</td>
-							<th>금액</th><td>40000</td>
-						</tr>
-						<tr>
-							<th>결제 인원</th>
-							<td>3/4</td>
-							<th>잔금</th>
-							<td>10000</td>
+							<th>인원</th><td id="reservation-people"></td>
+							<th>금액</th><td id="reservation-charge"></td>
 						</tr>
 					</table>
 					<!-- //예약 정보 -->
@@ -279,6 +264,54 @@
 	/* 예약 상세 보기 */
 	$(".user_name").on("click", function(){
 		console.log("유저 이름 클릭");	
+		var reservationNo = $(this).data("no");
+		console.log(reservationNo);
+		
+		$.ajax({
+	        //요청 코드
+	        url: "${pageContext.request.contextPath }/admin/reservation/detail",				//데이터를 받을 주소를 입력
+	        type: "get",				//get, post 데이터를 보낼 때, 방식을 설정
+	        data: {
+	        	reservationNo : reservationNo
+	        },
+	        success : function(data) {
+	        	console.log(data);
+	        	console.log("완료");
+	        	
+	        	$("#reservation-no").text(data.reservationNo);
+	        	$("#reservation-date").text(data.reservationDate);
+	        	$("#reservation-name").text(data.userName);
+	        	$("#reservation-phone").text(data.userPhoneNo);
+	        	$("#reservation-people").text(data.reservationChargePeople);
+	        	$("#reservation-charge").text(data.reservationChargeTotal);
+	        	
+	        	switch (data.reservationStatus) {
+				case "예약완료":
+					$("#reserv-ok").attr('checked', 'checked');
+					console.log("예약 완료")
+					break;
+				case "결제중":
+					$("#reserv-ing").attr('checked', 'checked');
+					console.log("결제중")
+					break;
+				case "예약취소":
+					$("#reserv-cancel").attr('checked', 'checked');
+					console.log("예약취소")
+					break;
+
+				default:
+					break;
+				}
+	        	
+	        	$("#btn-modify").on("click", function(){
+	        		console.log("수정하기");
+	        		console.log(reservationNo);
+	        	}	
+	        }, err : function(jqXHR, textStatus, errorThrown) {
+		    	alert("호출 에러\ncode : " + jqXHR.status + "\nerror message : " + jqXHR.responseText);
+		    }  
+		});
+		
 		$("#addModal").modal();
 	});
 	
@@ -286,7 +319,6 @@
 		format: "yyyy/mm/dd"
 	    ,autoclose: true
 	});
-	
 </script>
 
 </html>

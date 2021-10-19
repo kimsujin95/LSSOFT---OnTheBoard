@@ -1,11 +1,13 @@
 package com.otb.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.otb.vo.AdminReservationVo;
 import com.otb.vo.OwnedGameVo;
 import com.otb.vo.ReservationDateVo;
 import com.otb.vo.ReservationTimeVo;
@@ -115,4 +117,12 @@ public class AdminDao {
 		return sqlSession.selectList("admin.selectOwnedList", storeNo);
 	}
 	
+	//매장에 등록된 예약 호출
+	public List<AdminReservationVo> selectReservationList(Map<String, Object> searchKey) {
+		return sqlSession.selectList("admin.selectReservationList", searchKey);
+	}
+	//매장에 등록된 예약 하나
+	public AdminReservationVo selectReservation(int reservationNo) {
+		return sqlSession.selectOne("admin.selectReservation", reservationNo);
+	}
 }

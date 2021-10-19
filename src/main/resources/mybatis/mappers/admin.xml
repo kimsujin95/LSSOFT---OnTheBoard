@@ -54,6 +54,17 @@
 		<result column="game_no" property="gameNo" />
 	</resultMap>
 	
+	<!-- AdminReservationVo resultMap -->
+	<resultMap id="resultMapAdminReservationVo" type="AdminReservationVo">
+		<result column="reservation_no" property="reservationNo" />
+		<result column="store_reservation_date" property="reservationDate" />
+		<result column="reservation_charge_people" property="reservationChargePeople" />
+		<result column="times" property="times" />
+		<result column="user_name" property="userName" />
+		<result column="user_phone_no" property="userPhoneNo" />
+		<result column="reservation_status" property="reservationStatus" />
+		<result column="reservation_charge_total" property="reservationChargeTotal" />
+	</resultMap>
 	
 	<!-- 매장 정보 호출 -->
 	<select id="selectStore" parameterType="int" resultMap="resultMapAdminVo">
@@ -290,6 +301,119 @@
 			FROM
 			    owned_game
 			WHERE store_no = #{storeNo}
+		]]>
+	</select>
+	
+	<!-- 예약 목록 리스트 -->
+	<select id="selectReservationList" parameterType="map" resultMap="resultMapAdminReservationVo">
+		<![CDATA[
+			SELECT 
+			    r.reservation_no    
+			    ,TO_CHAR(store_reservation_date,'yyyy-mm-dd') store_reservation_date
+			    ,r.reservation_charge_people
+			    ,tg.times
+			    ,umrm.user_name
+			    ,umrm.user_phone_no
+			    ,r.reservation_status
+			    ,r.reservation_charge_total
+			FROM 
+			     reservation_date rd
+			    ,reservation r
+			    ,(SELECT
+			            u.user_name
+			            ,u.user_phone_no
+			            ,mrm.reservation_no
+			        FROM
+			            users u,
+			            (select DISTINCT
+			                m.user_no
+			                ,rm.reservation_no
+			             FROM
+			                reservation_member rm
+			                ,matching m
+			             WHERE rm.matching_no = m.matching_no) mrm
+			        WHERE u.user_no = mrm.user_no) umrm
+			    ,(SELECT
+			        rtgr.reservation_no
+			        ,MIN(rt.store_reservation_time) || ':00 ~ ' || MAX(rt.store_reservation_time) || ':00' as times
+			     FROM 
+			         reservation_time rt
+			        ,(SELECT 
+			            rtg.reservation_time_no
+			            ,r.reservation_no
+			         FROM
+			             reservation_time_group rtg
+			            ,reservation r
+			         WHERE rtg.reservation_no = r.reservation_no
+			           AND r.store_no = #{storeNo}) rtgr
+			     WHERE rt.reservation_time_no = rtgr.reservation_time_no
+			     GROUP BY rtgr.reservation_no) tg
+			WHERE
+			    r.reservation_date_no = rd.reservation_date_no
+			AND r.reservation_no = umrm.reservation_no 
+			AND r.reservation_no = tg.reservation_no
+		]]>
+		<if test="sort == 'asc'">
+			<![CDATA[
+				ORDER BY store_reservation_date ASC
+			]]>
+		</if>
+		<if test="sort == 'desc'">
+			<![CDATA[
+				ORDER BY store_reservation_date DESC
+			]]>
+		</if>
+		
+	</select>
+	
+	<!-- 예약 하나 확인 리스트 -->
+	<select id="selectReservation" parameterType="int" resultMap="resultMapAdminReservationVo">
+		<![CDATA[
+			SELECT 
+			    r.reservation_no    
+			    ,TO_CHAR(store_reservation_date,'yyyy-mm-dd') store_reservation_date
+			    ,r.reservation_charge_people
+			    ,tg.times
+			    ,umrm.user_name
+			    ,umrm.user_phone_no
+			    ,r.reservation_status
+			    ,r.reservation_charge_total
+			FROM 
+			     reservation_date rd
+			    ,reservation r
+			    ,(SELECT
+			            u.user_name
+			            ,u.user_phone_no
+			            ,mrm.reservation_no
+			        FROM
+			            users u,
+			            (select DISTINCT
+			                m.user_no
+			                ,rm.reservation_no
+			             FROM
+			                reservation_member rm
+			                ,matching m
+			             WHERE rm.matching_no = m.matching_no) mrm
+			        WHERE u.user_no = mrm.user_no) umrm
+			    ,(SELECT
+			        rtgr.reservation_no
+			        ,MIN(rt.store_reservation_time) || ':00 ~ ' || MAX(rt.store_reservation_time) || ':00' as times
+			     FROM 
+			         reservation_time rt
+			        ,(SELECT 
+			            rtg.reservation_time_no
+			            ,r.reservation_no
+			         FROM
+			             reservation_time_group rtg
+			            ,reservation r
+			         WHERE rtg.reservation_no = r.reservation_no
+			           AND r.reservation_no = #{reservationNo}) rtgr
+			     WHERE rt.reservation_time_no = rtgr.reservation_time_no
+			     GROUP BY rtgr.reservation_no) tg
+			WHERE
+			    r.reservation_date_no = rd.reservation_date_no
+			AND r.reservation_no = umrm.reservation_no 
+			AND r.reservation_no = tg.reservation_no
 		]]>
 	</select>
 	

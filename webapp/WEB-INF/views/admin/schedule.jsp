@@ -23,7 +23,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath }/assets/css/datepicker.css" rel="stylesheet" type="text/css">
 
-<title>admin-schedule</title>
+<title>On The Board: Store Management</title>
 
 </head>
 <body>

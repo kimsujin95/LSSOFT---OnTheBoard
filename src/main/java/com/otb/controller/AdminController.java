@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,21 +37,14 @@ public class AdminController {
 	@RequestMapping(value = "/main", method = { RequestMethod.GET, RequestMethod.POST })
 	public String storeInfo(HttpSession session) {
 
-		// System.out.println("admin - storeInfo
-		// --------------------------------------------------------");
-
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
 
 		if (authUser != null) {
 			int userNo = authUser.getUserNo();
 			StoreVo storeInfo = adminService.getStore(userNo);
-
-			// System.out.println(storeInfo.toString());
-
 			session.setAttribute("storeInfo", storeInfo);
 
 			return "/admin/storeInfo";
-
 		} else {
 			return "/admin/error";
 		}
@@ -96,10 +88,17 @@ public class AdminController {
 
 	// admin - 스케쥴
 	@RequestMapping(value = "/schedule", method = { RequestMethod.GET, RequestMethod.POST })
-	public String schedule() {
-		// System.out.println("admin - schedule
-		// --------------------------------------------------------");
-		return "/admin/schedule";
+	public String schedule(HttpSession session) {
+
+
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+
+		if (authUser != null) {
+			return "/admin/schedule";
+		} else {
+			return "/admin/error";
+		}
+		
 	}
 
 	// schedule - 등록(ajax)
@@ -107,9 +106,6 @@ public class AdminController {
 	@RequestMapping(value = "/scheduleInsert", method = { RequestMethod.GET, RequestMethod.POST })
 	public void scheduleInsert(@RequestParam("date") String date, @RequestParam("times[]") String[] times,
 			@ModelAttribute ReservationDateVo reservationDateVo, HttpSession session) {
-//		System.out.println("스케쥴 인서트 도착");
-//		System.out.println(date);
-//		System.out.println(reservationDateVo.toString());
 
 		int storeNo = ((StoreVo) session.getAttribute("storeInfo")).getStoreNo();
 		reservationDateVo.setStoreNo(storeNo);
@@ -142,23 +138,39 @@ public class AdminController {
 
 	// admin - 보유 게임관리
 	@RequestMapping(value = "/storeGame", method = { RequestMethod.GET, RequestMethod.POST })
-	public String storeGame(Model model) {
+	public String storeGame(HttpSession session, Model model) {
 		System.out.println("admin - storeGame --------------------------------------------------------");
-		List<ThemeVo> themeList = gameService.getThemeList();
-		for (int i = 0; i < themeList.size(); i++) {
-			System.out.println(themeList.get(i).toString());
+		
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		
+		if (authUser != null) {
+		
+			List<ThemeVo> themeList = gameService.getThemeList();
+			
+			for (int i = 0; i < themeList.size(); i++) {
+				System.out.println(themeList.get(i).toString());
+			}
+			
+			model.addAttribute("themeList", themeList);
+			
+			return "/admin/storeGame";
+		} else {
+			return "/admin/error";
 		}
-		model.addAttribute("themeList", themeList);
-		return "/admin/storeGame";
+		
+		
 	}
 
 	// 게임 리스트 - 페이징
 	@ResponseBody
-	@RequestMapping(value = "/gameList/{storeNo}", method = { RequestMethod.GET, RequestMethod.POST })
-	public Map<String, Object> gameList(@PathVariable("storeNo") int storeNo,
+	@RequestMapping(value = "/gameList", method = { RequestMethod.GET, RequestMethod.POST })
+	public Map<String, Object> gameList(HttpSession session,
 			@RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage) {
 		System.out.println("게임 리스트 호출");
+		
+		int storeNo = ((StoreVo) session.getAttribute("storeInfo")).getStoreNo();
 		System.out.println(storeNo);
+		
 		Map<String, Object> listMap = gameService.getStoreGameList(storeNo, crtPage);
 		return listMap;
 	}
@@ -166,21 +178,28 @@ public class AdminController {
 	// 게임 등록
 	@ResponseBody
 	@RequestMapping(value = "/gameInsert", method = { RequestMethod.GET, RequestMethod.POST })
-	public void gameInsert(@ModelAttribute OwnedGameVo ownedGame) {
+	public void gameInsert(HttpSession session, @ModelAttribute OwnedGameVo ownedGame) {
 		System.out.println("게임등록 도착");
+		
+		int storeNo = ((StoreVo) session.getAttribute("storeInfo")).getStoreNo();
+		ownedGame.setStoreNo(storeNo);
 		System.out.println(ownedGame.toString());
-
+		
 		adminService.restoreOwnedGame(ownedGame);
 		System.out.println("등록 완료");
+		
 	}
 
 	// 게임 삭제
 	@ResponseBody
 	@RequestMapping(value = "/gameDelete", method = { RequestMethod.GET, RequestMethod.POST })
-	public void gameDelete(@ModelAttribute OwnedGameVo ownedGame) {
+	public void gameDelete(HttpSession session, @ModelAttribute OwnedGameVo ownedGame) {
 		System.out.println("게임삭제 도착");
+		
+		int storeNo = ((StoreVo) session.getAttribute("storeInfo")).getStoreNo();
+		ownedGame.setStoreNo(storeNo);
 		System.out.println(ownedGame.toString());
-
+	
 		adminService.removeOwnedGame(ownedGame);
 		System.out.println("삭제 완료");
 
@@ -192,10 +211,20 @@ public class AdminController {
 
 	// admin - 예약 관리
 	@RequestMapping(value = "/reservation", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reservation() {
-		// System.out.println("admin - reservation
-		// --------------------------------------------------------");
-		return "/admin/reservation";
+	public String reservation(HttpSession session) {
+		System.out.println("예약 관리");
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+
+		if (authUser != null) {
+			int userNo = authUser.getUserNo();
+			StoreVo storeInfo = adminService.getStore(userNo);
+			session.setAttribute("storeInfo", storeInfo);
+
+			return "/admin/reservation";
+		} else {
+			return "/admin/error";
+		}
+		
 	}
 
 	//////////////////////////////////////// 매장 예약 정보 확인 및 수정 //////////////////////////////////////// ////////////////////////////////////////

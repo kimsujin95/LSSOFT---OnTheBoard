@@ -17,7 +17,7 @@
 <!-- js -->
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery-1.12.4.js"></script>
 
-<title>admin-gameList</title>
+<title>On The Board: Store Management</title>
 
 </head>
 <body>
@@ -57,21 +57,15 @@
 						<!-- 검색어 입력 영역 -->
 						<div id="search-area">
 							<div id="select-area">
-								<!-- 정렬 -->
-								<select name="sort">
-									<option>정렬</option>
-									<option value="asc">오름차순</option>
-									<option value="desc">내림차순</option>
-								</select>
 								<!-- 보유 유무 -->
 								<select name="owned">
-									<option>전체</option>
+									<option value="all">전체</option>
 									<option value="owned">보유중</option>
 									<option value="except">보유 게임 제외</option>
 								</select>
 								<!-- 장르 -->
 								<select name="theme">
-									<option>장르</option>
+									<option value="all">장르</option>
 									<c:forEach items="${themeList}" var="themeList">
 										<option value="${themeList.themeNo}">${themeList.themeName }</option>
 									</c:forEach>
@@ -81,10 +75,6 @@
 							<!-- 검색어 입력 -->
 							<div id="keyword-area">
 								<!-- 이름 한/영 선택 -->
-								<select>
-									<option>한글</option>
-									<option>영어</option>
-								</select>
 								<input type="search" placeholder="제목을 입력해주세요.">
 								<button class="btn btn-sm btn-primary" type="submit">🔍 검색</button>
 							</div>
@@ -117,19 +107,19 @@
 						<!-- 페이징 -->
 						<div id="paging">
 							  <ul class="pagination">
-							    <li class="page-item">
-							      <a class="page-link" href="#" aria-label="Previous">
-							        <span aria-hidden="true">&laquo;</span>
-							      </a>
-							    </li>
-							    <li class="page-item"><a class="page-link" href="#">1</a></li>
-							    <li class="page-item"><a class="page-link" href="#">2</a></li>
-							    <li class="page-item"><a class="page-link" href="#">3</a></li>
-							    <li class="page-item">
-							      <a class="page-link" href="#" aria-label="Next">
-							        <span aria-hidden="true">&raquo;</span>
-							      </a>
-							    </li>
+								<li class="page-item">
+						      		<a class="page-link" href="#" aria-label="Previous">
+						        		<span aria-hidden="true">&laquo;</span>
+						      		</a>
+						    	</li>
+								<li class="page-item"><a class="page-link" href="#">1</a></li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item">
+						      		<a class="page-link" href="#" aria-label="Next">
+						        		<span aria-hidden="true">&raquo;</span>
+						      		</a>
+						    	</li>
 							  </ul>
 						</div>
 						<!-- 페이징 -->
@@ -153,7 +143,7 @@
 	window.onload = function() {
 	$.ajax({
 	        //요청 코드
-	        url: "${pageContext.request.contextPath }/admin/gameList/${storeInfo.storeNo}",				//데이터를 받을 주소를 입력
+	        url: "${pageContext.request.contextPath }/admin/gameList",				//데이터를 받을 주소를 입력
 	        type: "get",				//get, post 데이터를 보낼 때, 방식을 설정
 	        success : function(data) {
 	        	console.log(data);
@@ -164,7 +154,7 @@
 		});
 	};
 	
-	/* pageing */
+	/* paging */
 	$("[class=page-link]").on("click", function(){
 		event.preventDefault();
 		console.log($(this).text());
@@ -173,7 +163,7 @@
 		console.log(crtPage);
 		$.ajax({
 	        //요청 코드
-	        url: "${pageContext.request.contextPath }/admin/gameList/${storeInfo.storeNo}",				//데이터를 받을 주소를 입력
+	        url: "${pageContext.request.contextPath }/admin/gameList",				//데이터를 받을 주소를 입력
 	        type: "get",				//get, post 데이터를 보낼 때, 방식을 설정
 	        data: {
 	        	crtPage : crtPage
@@ -202,13 +192,7 @@
 		htmlTags+="</tr>";
 		
 		$("#gamelist-area").append(htmlTags);
-		
 	}
-	
-	/* 검색 조건 추가 */
-	$("[name]").on("change", function(){
-		console.log("네임 변경");
-	});
 	
 	function drawList(data) {
 		var  gameList = data.storeGameList;
@@ -219,13 +203,11 @@
 		var ownedList = data.storeOwnedList;
 		var insertBtn = [];
 		
-		console.log($("[data-game]").data("game"));
+		//console.log($("[data-game]").data("game"));
 		
 		$("[data-game]").each(function(i) {
 			 insertBtn.push($(this));
 		});
-		
-		console.log(insertBtn);
 		
 		for(var i = 0; i < ownedList.length; i++) {
 			for(var j = 0; j < insertBtn.length; j++) {
@@ -237,7 +219,6 @@
 			}
 		}
 	}
-	
 	
 </script>
 
@@ -251,7 +232,6 @@
 		
 		var ownedGame = {
 			gameNo :gameNo
-			,storeNo : ${storeInfo.storeNo}
 		}
 		
 		console.log(ownedGame);
@@ -279,7 +259,6 @@
 			
 			var ownedGame = {
 				gameNo :gameNo
-				,storeNo : ${storeInfo.storeNo}
 			}
 			
 			console.log(ownedGame);

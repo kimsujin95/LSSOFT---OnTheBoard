@@ -36,13 +36,13 @@ CREATE SEQUENCE seq_owned_game_no START WITH 1 INCREMENT BY 1 NOCACHE;
 
 -- INSERT USERS
 INSERT INTO users(user_no, user_id, user_password, user_name, user_nickname, user_gender, user_birth_date, user_grade, user_reg_date)
-VALUES ( seq_users_no.NEXTVAL, 'test1', '1234', 'test1', 'test1', 'male', '19901111', 2, sysdate );
+VALUES ( seq_users_no.NEXTVAL, 'test1', '1234', 'test1', 'test1', 'male', '19901111', 1, sysdate );
 
 INSERT INTO users(user_no, user_id, user_password, user_name, user_nickname, user_gender, user_birth_date, user_grade, user_reg_date)
 VALUES ( seq_users_no.NEXTVAL, 'test2', '1234', 'test2', 'test2', 'female', '19931111', 1, sysdate );
 
 INSERT INTO users(user_no, user_id, user_password, user_name, user_nickname, user_gender, user_birth_date, user_grade, user_reg_date)
-VALUES ( seq_users_no.NEXTVAL, 'test3', '1234', 'test3', 'test3', 'male', '19951111', 1, sysdate );
+VALUES ( seq_users_no.NEXTVAL, 'CAFEKANU', 'kanu123', '카페카누', '카페카누', 'male', '19881111', 2, sysdate );
 
 INSERT INTO users(user_no, user_id, user_password, user_name, user_nickname, user_gender, user_birth_date, user_grade, user_reg_date)
 VALUES ( seq_users_no.NEXTVAL, 'asd', 'asd', 'asd', 'asd', 'female', '19991111', 1, sysdate );
@@ -52,7 +52,6 @@ VALUES ( seq_users_no.NEXTVAL, 'qwe', 'qwe', 'qwe', 'qwe', 'male', '19911111', 1
 
 INSERT INTO users(user_no, user_id, user_password, user_name, user_nickname, user_gender, user_birth_date, user_grade, user_reg_date)
 VALUES ( seq_users_no.NEXTVAL, 'zxc', 'zxc', 'zxc', 'zxc', 'female', '19791111', 1, sysdate );
-
 -- INSERT THEME
 INSERT INTO THEME( theme_no, theme_name) VALUES ( 0, '테마 전체');
 INSERT INTO THEME( theme_no, theme_name) VALUES ( SEQ_THEME_NO.nextval, '전략');
@@ -366,61 +365,91 @@ INSERT INTO sigungu VALUES ( seq_sigungu_no.NEXTVAL, 16, '제주시' );
 -- // INSERT SIGUNGU
 
 -- INSERT MATCHING/GROUP
-INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 1, '2022-11-11', '15:00', '제목1', '내용1', 1, 14, 2, '여자', '10대,20대', sysdate, 0, '매칭중' );
-INSERT INTO matching_group VALUES ( 1, 1, 3, sysdate );
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 3, '2022-11-11', '15:00', '광란의 할리갈리!!!!!', '내용1', 1, 8, 2, '성별무관', '나이무관', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 1, 1, 2, sysdate );
 
-INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 2, '2022-11-11', '15:00', '제목2', '내용2', 2, 33, 3, '남자', '10대,20대,30대', sysdate, 0, '매칭중' );
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 2, '2022-11-11', '15:00', '아컴호러 하실분 구해요!!', '내용2', 2, 33, 3, '남자', '10대,20대,30대', sysdate, 0, '매칭중' );
 INSERT INTO matching_group VALUES ( 2, 1, 3, sysdate );
 
-INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 3, '2022-11-11', '15:00', '제목3', '내용3', 3, 52, 4, '성별무관', '20대,30대', sysdate, 0, '매칭중' );
-INSERT INTO matching_group VALUES ( 3, 1, 3, sysdate );
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 3, '2022-11-11', '15:00', '할리갈비 파티!!!', '내용3', 3, 52, 4, '성별무관', '20대,30대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 3, 1, 4, sysdate );
 
-INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 4, '2022-11-11', '15:00', '제목4', '내용4', 4, 63, 2, '여자', '30대,40대', sysdate, 0, '매칭중' );
-INSERT INTO matching_group VALUES ( 4, 1, 3, sysdate );
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 4, '2022-11-11', '15:00', '블리츠크리그 입니당~', '내용4', 4, 63, 2, '여자', '30대,40대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 4, 1, 2, sysdate );
 
-INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 5, '2022-11-11', '15:00', '제목5', '내용5', 5, 77, 3, '남자', '30대', sysdate, 0, '매칭중' );
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 3, '2022-11-11', '15:00', '할리! 갈리! 할리! 갈리!', '내용5', 1, 6, 3, '남자', '나이무관', sysdate, 0, '매칭중' );
 INSERT INTO matching_group VALUES ( 5, 1, 3, sysdate );
 
-INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 6, '2022-11-11', '15:00', '제목6', '내용6', 6, 85, 4, '성별무관', '나이무관', sysdate, 0, '매칭중' );
-INSERT INTO matching_group VALUES ( 6, 1, 3, sysdate );
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 6, '2022-11-11', '15:00', '7원더스 SEVEN', '내용6', 6, 85, 4, '성별무관', '나이무관', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 6, 1, 4, sysdate );
 
-INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 7, '2022-11-11', '15:00', '제목7', '내용7', 7, 90, 2, '여자', '40대', sysdate, 0, '매칭중' );
-INSERT INTO matching_group VALUES ( 7, 1, 3, sysdate );
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 7, '2022-11-11', '15:00', '치킨차차 숨바꼭질 치킨 각~', '내용7', 7, 90, 2, '여자', '40대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 7, 1, 2, sysdate );
 
-INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 8, '2022-11-11', '15:00', '제목8', '내용8', 8, 93, 3, '남자', '나이무관', sysdate, 0, '매칭중' );
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 3, '2022-11-11', '15:00', '할리갈리 맨~~~~', '내용8', 1, 11, 3, '남자', '나이무관', sysdate, 0, '매칭중' );
 INSERT INTO matching_group VALUES ( 8, 1, 3, sysdate );
 
-INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 9, '2022-11-11', '15:00', '제목9', '내용9', 9, 111, 4, '성별무관', '10대', sysdate, 0, '매칭중' );
-INSERT INTO matching_group VALUES ( 9, 1, 3, sysdate );
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 9, '2022-11-11', '15:00', '전략 No. 1 테라포밍 마스 ㄱ', '내용9', 9, 111, 4, '성별무관', '10대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 9, 1, 4, sysdate );
 
-INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 10, '2022-11-11', '15:00', '제목10', '내용10', 10, 118, 2, '여자', '20대', sysdate, 0, '매칭중' );
-INSERT INTO matching_group VALUES ( 10, 1, 3, sysdate );
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 10, '2022-11-11', '15:00', '뱅 하실분 뱅뱅Bang~', '내용10', 10, 118, 2, '여자', '20대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 10, 1, 2, sysdate );
 
-INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 11, '2022-11-11', '15:00', '제목11', '내용11', 11, 144, 3, '남자', '30대', sysdate, 0, '매칭중' );
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 3, '2022-11-11', '15:00', '할갈man들 뭉쳐!', '내용11', 1, 16, 3, '남자', '30대', sysdate, 0, '매칭중' );
 INSERT INTO matching_group VALUES ( 11, 1, 3, sysdate );
 
-INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 12, '2022-11-11', '15:00', '제목12', '내용12', 12, 170, 4, '성별무관', '10대,20대', sysdate, 0, '매칭중' );
-INSERT INTO matching_group VALUES ( 12, 1, 3, sysdate );
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 12, '2022-11-11', '15:00', '여러분 잭스님트 한번 하실까요?', '내용12', 12, 170, 4, '성별무관', '10대,20대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 12, 1, 4, sysdate );
 
-INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 13, '2022-11-11', '15:00', '제목13', '내용13', 13, 180, 2, '여자', '10대,20대,30대', sysdate, 0, '매칭중' );
-INSERT INTO matching_group VALUES ( 13, 1, 3, sysdate );
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 13, '2022-11-11', '15:00', '우봉고 고고고!', '내용13', 13, 180, 2, '여자', '10대,20대,30대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 13, 1, 2, sysdate );
 
-INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 14, '2022-11-11', '15:00', '제목14', '내용14', 14, 193, 3, '남자', '나이무관', sysdate, 0, '매칭중' );
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 3, '2022-11-11', '15:00', '할리갈리 하는 남자들.', '내용14', 1, 5, 3, '남자', '20대', sysdate, 0, '매칭중' );
 INSERT INTO matching_group VALUES ( 14, 1, 3, sysdate );
 
-INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 15, '2022-11-11', '15:00', '제목15', '내용15', 15, 220, 4, '성별무관', '20대,30대,40대', sysdate, 0, '매칭중' );
-INSERT INTO matching_group VALUES ( 15, 1, 3, sysdate );
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 15, '2022-11-11', '15:00', '팬데믹 하쉴?', '내용15', 15, 220, 4, '성별무관', '20대,30대,40대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 15, 1, 4, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 16, '2022-11-11', '15:00', '금빛섬광 골드러시 드루와!', '내용15', 16, 221, 2, '남자', '20대,30대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 16, 1, 2, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 17, '2022-11-11', '15:00', '할리갈리 갈리할리!!', '내용15', 1, 1, 3, '남자', '20대,30대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 17, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 8, '2022-11-11', '15:00', '카탄 고고!', '내용8', 8, 93, 3, '남자', '나이무관', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 18, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 11, '2022-11-11', '15:00', '콩 카드게임 보난~자!', '내용11', 11, 144, 3, '남자', '30대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 19, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 14, '2022-11-11', '15:00', '보드게임 우노! 유노?', '내용14', 14, 193, 3, '남자', '나이무관', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 20, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 3, '2022-11-11', '15:00', '할리갈리에 미친남자!!!', '내용14', 1, 3, 3, '남자', '10대,20대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 21, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 5, '2022-11-11', '15:00', '딕싯 딕싯 딕싯 !!!', '내용5', 5, 77, 3, '남자', '30대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 21, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 3, '2022-11-11', '15:00', '할리갈리 모집합니다~', '내용5', 1, 7, 3, '성별무관', '10대,20대,30개', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 22, 1, 3, sysdate );
+
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 1, '2022-11-11', '15:00', '보난자 함께 하실분~', '내용1', 1, 14, 2, '여자', '10대,20대', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 23, 1, 2, sysdate );
 -- // INSERT MATCHING/GROUP
 
 -- INSERT STORE
 INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
-VALUES ( seq_store_no.nextval, 1, '보드게임카페1', 37.494366186594405, 127.01825129365432, '02-1111-1111', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '111시 111구 111동 111로', '1111-111');
+VALUES ( seq_store_no.nextval, 3, '카누', 37.494366186594405, 127.01825129365432, '02-1111-1111', '일상을 공유하는 카누카페 입니다! 많은 이용 부탁드립니다^^', 3300, 4400, '서울시 강남구 테헤란로 152', '1층 카페-카누');
 
 INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
-VALUES ( seq_store_no.nextval, '보드게임카페2', 37.499336756210546, 127.0322302565823, '02-2222-2222', '보드게임카페2 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '222시 222구 222동 222로', '2222-222');
+VALUES ( seq_store_no.nextval, '네스카페', 37.499336756210546, 127.0322302565823, '02-2222-2222', '보드게임카페2 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '222시 222구 222동 222로', '2222-222');
 
 INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
-VALUES ( seq_store_no.nextval, '보드게임카페3', 37.50207799788094, 127.02286735499807, '02-3333-3333', '보드게임카페3 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '333시 333구 333동 333로', '3333-333');
+VALUES ( seq_store_no.nextval, '폴 바셋', 37.50207799788094, 127.02286735499807, '02-3333-3333', '보드게임카페3 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '333시 333구 333동 333로', '3333-333');
+
+INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+VALUES ( seq_store_no.nextval, '맥심', 37.50207799788094, 127.02286735499807, '02-3333-3333', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '111시 111구 111동 111로', '1111-111');
 -- // INSERT STORE
     
  -- INSERT RESERVATIONDATE
@@ -478,3 +507,5 @@ VALUES(SEQ_RESERVATION_TIME_NO.nextval, 2, '09');
 INSERT INTO reservation_time
 VALUES(SEQ_RESERVATION_TIME_NO.nextval, 2, '10');
 -- // INSERT RESERVATIONDATE
+
+COMMIT;

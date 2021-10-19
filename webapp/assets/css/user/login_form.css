@@ -107,65 +107,52 @@ body {
 	line-height: 25px;
 }
 
-.Easy-sgin-in-wrap {
+.Easy-sgin-in-wrap{
+
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	padding-top: 40px;
-}
 
-.Easy-sgin-in-wrap h2 {
+}
+.Easy-sgin-in-wrap h2{
 	font-size: 20px;
 }
-
-.Easy-sgin-in-wrap .sign-button-list {
-	padding-top: 25px;
+.Easy-sgin-in-wrap .sign-button-list
+{
+	padding-top:25px;
 	list-style: none;
 	width: 465px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
-
-.Easy-sgin-in-wrap .sign-button-list li {
+.Easy-sgin-in-wrap .sign-button-list li{
 	padding-bottom: 10px;
 }
-
-.Easy-sgin-in-wrap .sign-button-list .loglogo {
-	height: 50px;
-	width: auto;
-	align-items: center;
-	cursor: pointer;
-}
-
-.Easy-sgin-in-wrap .sign-button-list li button {
+.Easy-sgin-in-wrap .sign-button-list li button{
 	width: 465px;
 	height: 56px;
-	border: solid 1px var(- -border-gray-color);
-	text-align: center;
+	border: solid 1px var(--border-gray-color);
 	background: white;
+	text-align: center;
 }
-
-.Easy-sgin-in-wrap .sign-button-list li button i {
+.Easy-sgin-in-wrap .sign-button-list li button i{
 	padding-left: 15px;
 	font-size: 20px;
 }
 
-.Easy-sgin-in-wrap .sign-button-list li button span {
-	padding-left: 20px;
-	font-size: 18px;
-	text-align: center;
-}
 
-.Easy-sgin-in-wrap .forget-msg {
-	color: var(- -font-color);
+.Easy-sgin-in-wrap .forget-msg{
+	color:var(--font-color);
 	font-size: 14px;
 	padding-top: 10px;
+
 }
 
-.Easy-sgin-in-wrap .sign-button-list li button span {
-	padding-left: 20px;
-	font-size: 18px;
+.Easy-sgin-in-wrap .sign-button-list li button .loglogo{
+	height: 50px;
+	text-align: center;
 }
 
 footer {

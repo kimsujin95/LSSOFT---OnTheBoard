@@ -116,9 +116,9 @@ public class MatchingController {
 		System.out.println(matchingVo);
 
 		// 글쓰기 폼에서 받은 데이터 묶어서 INSERT
-		int write = matchingService.write(matchingVo);
+		int matchingNo = matchingService.write(matchingVo);
 
-		return "redirect:/matching/main";
+		return "redirect:/matching/read?no=" + matchingNo;
 	}
 
 	// 매칭글 읽기

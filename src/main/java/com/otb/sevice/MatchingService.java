@@ -127,7 +127,7 @@ public class MatchingService {
 		int createMatchingGroup = matchingDao.createMatchingGroup(matchingGroupVo);
 		
 
-		return write;
+		return matchingNo;
 	}
 
 	// 매칭글 읽기

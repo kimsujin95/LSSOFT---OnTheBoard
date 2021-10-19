@@ -1,5 +1,7 @@
 package com.otb.dao;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -43,6 +45,23 @@ public class UserDao {
 		System.out.println("[UserDao.updateUserGrade()]");
 		
 		return sqlSession.update("user.updateUserGrade", userVo);
+		
+	}
+	
+	// 회원정보 수정
+	public int updateUser(UserVo userVo) {
+		System.out.println("[UserDao.updateUser()]");
+
+		return sqlSession.update("user.updateUser", userVo);
+	}
+	
+	//프로필 수정
+	
+	public int updateProfile(Map<String, Object> profileMap) {
+		
+		System.out.println("[UserDao.updateProfile()]");
+		
+		return sqlSession.update("user.updateProfile", profileMap);
 		
 	}
 	

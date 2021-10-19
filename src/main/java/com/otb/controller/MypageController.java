@@ -10,8 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.otb.sevice.MypageService;
+import com.otb.sevice.UserService;
 import com.otb.vo.MatchingVo;
 import com.otb.vo.UserVo;
 
@@ -21,6 +23,7 @@ public class MypageController {
 	
 	@Autowired
 	private MypageService mypageService;
+	private UserService userService;
 	
 	//메인
 	@RequestMapping(value="/main", method = {RequestMethod.GET, RequestMethod.POST})
@@ -59,18 +62,42 @@ public class MypageController {
 		return "/mypage/matching_history";
 	}
 	
-	
-	//회원정보수정
-	@RequestMapping(value="/modify", method = {RequestMethod.GET, RequestMethod.POST})
-	public String modifyInfo() {
-		
-		return "/mypage/modify_form";
-	}
-	
+
 	//프로필수정
 	@RequestMapping(value="/modifyProfile", method = {RequestMethod.GET, RequestMethod.POST})
-	public String modifyProfile() {
+	public String modifyProfile(HttpSession session, Model model, @ModelAttribute UserVo userVo, MultipartFile userPathProfile) {
 		
+		System.out.println("[MypageController.modifyProfile()]");
+		
+		int userNo = ((UserVo) session.getAttribute("authUser")).getUserNo();
+		
+		UserVo userInfo = userService.getUserInfo(userNo);
+		
+		String userNickname = (userService.getUserInfo(userNo)).getUserNickname();
+		
+		int count = mypageService.modifyProfile(userNickname, userPathProfile);
+		
+		model.addAttribute("userVo", userInfo);
+		
+		System.out.println(count + "건이 수정되었습니다.");
+		
+		return "redirect:/main";
+	}
+	
+	//프로필수정폼
+	@RequestMapping(value="/modifyProfileForm", method = {RequestMethod.GET, RequestMethod.POST})
+	public String modifyProfileForm(HttpSession session, Model model) {
+		
+		System.out.println("[MypageController.modifyProfileForm()]");
+		
+		int userNo = ((UserVo) session.getAttribute("authUser")).getUserNo();
+		
+		UserVo userVo = userService.getUserInfo(userNo);
+		
+		System.out.println("Profile: " + userVo);
+		
+		model.addAttribute("userVo", userVo);
+				
 		return "/mypage/profile_modify";
 	}
 	

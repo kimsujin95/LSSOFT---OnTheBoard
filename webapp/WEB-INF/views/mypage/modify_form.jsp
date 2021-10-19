@@ -52,130 +52,166 @@
 
 
 
-		<!-- content-->
-		<div id="content">
+		<!-- wrapper -->
+		<div id="wrapper">
 
-			<!-- ID -->
-			<div>
-				<h3 class="join_title">
-					<label for="id">아이디</label>
-				</h3>
-				<span class="box int_id"> sonheungmin7 </span> <span class="error_next_box"></span>
-			</div>
+			<!-- content-->
+			<div id="content">
 
-			<!-- PW1 -->
-			<div>
-				<h3 class="join_title">
-					<label for="pswd1">비밀번호</label>
-				</h3>
-				<span class="box int_pass"> <input type="text" id="pswd1" class="int" maxlength="20">
-				</span> <span class="error_next_box"></span>
-			</div>
+				<form id="modifyForm" method="post" action="${pageContext.request.contextPath}/user/modify">
 
-			<!-- PW2 -->
-			<div>
-				<h3 class="join_title">
-					<label for="pswd2">비밀번호 재확인</label>
-				</h3>
-				<span class="box int_pass_check"> <input type="text" id="pswd2" class="int" maxlength="20">
-				</span> <span class="error_next_box"></span>
-			</div>
-
-			<!-- NAME -->
-			<div>
-				<h3 class="join_title">
-					<label for="name">이름</label>
-				</h3>
-				<span class="box int_name"> <input type="text" id="name" class="int" maxlength="20">
-				</span> <span class="error_next_box"></span>
-			</div>
-
-			<!-- BIRTH -->
-			<div>
-				<h3 class="join_title">
-					<label for="yy">생년월일</label>
-				</h3>
-
-				<div id="bir_wrap">
-					<!-- BIRTH_YY -->
-					<div id="bir_yy">
-						<span class="box"> <input type="text" id="yy" class="int" maxlength="4" placeholder="년(4자)">
-						</span>
+					<!-- ID -->
+					<div>
+						<h3 class="join_title">
+							<label for="id">아이디</label>
+						</h3>
+						<span class="box int_id"> ${userVo.userId } </span> <span class="error_next_box"></span>
 					</div>
 
-					<!-- BIRTH_MM -->
-					<div id="bir_mm">
-						<span class="box"> <select id="mm" class="sel">
-								<option>월</option>
-								<option value="01">1</option>
-								<option value="02">2</option>
-								<option value="03">3</option>
-								<option value="04">4</option>
-								<option value="05">5</option>
-								<option value="06">6</option>
-								<option value="07">7</option>
-								<option value="08">8</option>
-								<option value="09">9</option>
-								<option value="10">10</option>
-								<option value="11">11</option>
-								<option value="12">12</option>
+					<!-- PW1 -->
+					<div>
+						<h3 class="join_title">
+							<label for="pswd1">비밀번호</label>
+						</h3>
+						<span class="box int_pass"> <input type="password" name="userPassword" id="pswd1" class="int" value="${userVo.userPassword }"
+							maxlength="20">
+						</span> <span class="error_next_box"></span>
+					</div>
+
+					<!-- PW2 -->
+					<div>
+						<h3 class="join_title">
+							<label for="pswd2">비밀번호 재확인</label>
+						</h3>
+						<span class="box int_pass_check"> <input type="password" id="pswd2" class="int"
+							maxlength="20">
+						</span> <span class="error_next_box"></span>
+					</div>
+
+					<!-- NAME -->
+					<div>
+						<h3 class="join_title">
+							<label for="name">이름</label>
+						</h3>
+						<span class="box int_name"> <input type="text" name="userName" id="name" class="int" value="${userVo.userName }" maxlength="20">
+						</span> <span class="error_next_box"></span>
+					</div>
+
+
+					<!-- BIRTH -->
+					<div>
+						<h3 class="join_title">
+							<label for="yy">생년월일</label>
+						</h3>
+
+						<div id="bir_wrap">
+							<!-- BIRTH_YY -->
+							<div id="bir_yy">
+								<span class="box"> <input type="text" name="userBirthDate" id="yy" class="int" maxlength="8" value="${userVo.userBirthDate }">
+								</span>
+							</div>
+
+							<!--
+					
+						<div id="bir_mm">
+							<span class="box"> <select id="mm" name="month" class="sel">
+									<option>월</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+							</select>
+							</span>
+						</div>
+
+				
+						<div id="bir_dd">
+							<span class="box"> <input type="text" name="date" id="dd" class="int" maxlength="2" placeholder="일">
+							</span>
+						</div>
+						
+						-->
+
+						</div>
+						<span class="error_next_box"></span>
+					</div>
+
+					<!-- GENDER -->
+					<div>
+						<h3 class="join_title">
+							<label for="gender">성별</label>
+						</h3>
+						<span class="box gender_code"> <select id="gender" name="userGender" class="sel">
+								<option>성별</option>
+								<c:if test="${userVo.userGender == 'male' }">
+									<option value="male" selected="selected">남자</option>
+									<option value="female">여자</option>
+								</c:if>
+
+								<c:if test="${userVo.userGender == 'femail' }">
+									<option value="female" selected="selected">여자</option>
+									<option value="male">남자</option>
+								</c:if>
 						</select>
+						</span> <span class="error_next_box"></span>
+					</div>
+
+					<!-- EMAIL -->
+					<div>
+						<h3 class="join_title">
+							<label for="email">이메일</label>
+						</h3>
+						<span class="box int_email"> <input type="text" name="userEmail" id="email" class="int" value="${userVo.userEmail }" maxlength="100">
+						</span> <span class="error_next_box"></span>
+					</div>
+
+					<!-- MOBILE -->
+					<div>
+						<h3 class="join_title">
+							<label for="phoneNo">휴대전화</label>
+						</h3>
+						<span class="box int_mobile"> <input type="tel" id="mobile" name="userPhoneNo" class="int" maxlength="16" value="${userVo.userPhoneNo }"
+							placeholder="전화번호 입력">
+						</span> <span class="error_next_box"></span>
+					</div>
+
+					<!--ADDRESS-->
+					<div>
+						<h3 class="join_title">
+							<label for="address">주소<span class="optional">(선택)</span></label>
+						</h3>
+						<span class="box int_address"> <input type="text" id="address" class="int" placeholder="주소 입력">
 						</span>
 					</div>
 
-					<!-- BIRTH_DD -->
-					<div id="bir_dd">
-						<span class="box"> <input type="text" id="dd" class="int" maxlength="2" placeholder="일">
-						</span>
+
+					<!-- JOIN BTN-->
+					<div class="btn_area">
+						<button type="submit" id="btnJoin">
+							<span>수정하기</span>
+						</button>
+						<button type="button" id="btnExit" onclick="location.href='${pageContext.request.contextPath}/main'">
+							<span>돌아가기</span>
+						</button>
 					</div>
 
-				</div>
-				<span class="error_next_box"></span>
-			</div>
+				</form>
 
-			<!-- EMAIL -->
-			<div>
-				<h3 class="join_title">
-					<label for="email">이메일</label>
-				</h3>
-				<span class="box int_email"> <input type="text" id="email" class="int" maxlength="100" placeholder="선택입력">
-				</span> <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>
 			</div>
+			<!-- content-->
 
-			<!-- MOBILE -->
-			<div>
-				<h3 class="join_title">
-					<label for="phoneNo">휴대전화</label>
-				</h3>
-				<span class="box int_mobile"> <input type="tel" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력">
-				</span> <span class="error_next_box"></span>
-			</div>
-
-			<!--ADDRESS-->
-			<div>
-				<h3 class="join_title">
-					<label for="address">주소<span class="optional">(선택)</span></label>
-				</h3>
-				<span class="box int_address"> <input type="text" id="address" class="int" placeholder="주소 입력">
-				</span>
-			</div>
-
-			<!-- JOIN BTN-->
-			<div class="btn_area">
-				<button type="button" id="btnJoin">
-					<span>수정하기</span>
-				</button>
-				<button type="button" id="btnExit">
-					<span>돌아가기</span>
-				</button>
-			</div>
 
 		</div>
-		<!-- content-->
-
-
+		<!-- wrapper -->
 	</div>
-	<!-- wrapper -->
 
 
 	<!-- FOOTER -->

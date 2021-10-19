@@ -41,21 +41,25 @@
         ]]>
 
 	</select>
-	
-		<select id="selectUserByNo" parameterType="int" resultMap="resultMapUserVo">
+
+	<select id="selectUserByNo" parameterType="int" resultMap="resultMapUserVo">
 
 		<!-- 정보조회용 -->
 		<![CDATA[
 			SELECT  
 			      user_no
 			     ,user_id
+			     ,user_password
 				 ,user_nickname
 				 ,user_name
 				 ,user_gender
-				 ,user_birth_date
+				 ,user_email
+				 ,user_phone_no
+				 ,to_char(user_birth_date, 'yyyymmdd') user_birth_date
 				 ,to_char(sysdate, 'yyyy') - to_char(user_birth_date, 'yyyy') + 1 user_age
 				 ,user_grade
 				 ,user_reg_date
+				 ,user_path_profile
 			FROM 
 			      users
 			WHERE 
@@ -91,7 +95,7 @@
 			   )
 		]]>
 	</insert>
-	
+
 	<!-- 회원등급변경 -->
 	<update id="updateUserGrade" parameterType="UserVo">
 	
@@ -103,8 +107,53 @@
 			WHERE 
 			    user_no = #{userNo}
        	    ]]>
-	
+
 	</update>
-	
+
+	<!-- 회원정보 수정 -->
+	<update id="updateUser" parameterType="UserVo">
+		<![CDATA[
+			UPDATE 
+				 users
+			SET 
+				 user_password = #{userPassword}
+			    ,user_name = #{userName}
+			    ,user_birth_date = #{userBirthDate}
+			    ,user_email = #{userEmail}
+			    ,user_gender = #{userGender}
+			    ,user_phone_no = #{userPhoneNo}
+			WHERE 
+			 	user_no = #{userNo}    
+		]]>
+	</update>
+
+	<!-- 프로필 수정 -->
+	<update id="updateProfile" parameterType="map">
+		<![CDATA[
+			UPDATE 
+				 users
+			SET 
+				 user_nickname = #{userNickname}
+		
+			]]>
+
+		<if test="#{userPathProfile} != null">
+		
+				<![CDATA[
+				
+			userPathProfile = #{userPathProfile}
+		
+				]]>
+
+		</if>
+		
+		<![CDATA[
+
+			WHERE 
+			 	user_id = #{userId}    
+		]]>
+
+	</update>
+
 
 </mapper>

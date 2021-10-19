@@ -40,9 +40,8 @@
 								<li><a href="${pageContext.request.contextPath }/mypage/history">예약내역</a></li>
 								<li><a href="${pageContext.request.contextPath }/mypage/matching">매칭내역</a></li>
 								<li><a href="${pageContext.request.contextPath }/mypage/activity">활동내역</a></li>
-								<li><a href="${pageContext.request.contextPath }/mypage/bookmark">찜목록</a></li>
-								<li><a href="${pageContext.request.contextPath }/mypage/modifyProfile">프로필</a></li>
-								<li><a href="${pageContext.request.contextPath }/mypage/modify">회원정보수정</a></li>
+								<li><a href="${pageContext.request.contextPath }/mypage/modifyProfileForm">프로필</a></li>
+								<li><a href="${pageContext.request.contextPath }/user/modifyForm">회원정보수정</a></li>
 								<li><a href="${pageContext.request.contextPath }/mypage/business">사업자전환</a></li>
 								<li><a href="${pageContext.request.contextPath }/message/inbox">메세지</a></li>
 							</ul>

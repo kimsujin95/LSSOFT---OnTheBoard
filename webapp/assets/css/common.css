@@ -114,6 +114,9 @@ header ul>li {
 }
 
 /*소메뉴*/
+
+
+
 .small-menu {
 	width: 1200px;
 	font-size: 10px;
@@ -180,6 +183,7 @@ header ul>li {
  */
 .sub-container>.subtitle .context1 {
 	float: left;
+	font-family: "Nanum Gothic";
 }
 
 .sub-container>.subtitle .context2 {

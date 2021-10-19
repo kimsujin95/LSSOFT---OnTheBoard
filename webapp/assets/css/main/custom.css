@@ -56,6 +56,17 @@ h1, h3, p {
 	height: 330px;
 }
 
+#slogan2 {
+	margin-top: 50px;
+	background-image:
+		url(https://redbutton.co.kr/wp-content/uploads/2021/04/MAIN%EB%B0%B0%EB%84%88%EC%9D%B4%EB%AF%B8%EC%A7%801-scaled.jpg);
+	background-size: cover;
+	background-position: center center;
+	text-align: center;
+	height: 330px;
+	color: #ffffff;
+}
+
 #matchingInfo {
 	color: #FFFFFF;
 }

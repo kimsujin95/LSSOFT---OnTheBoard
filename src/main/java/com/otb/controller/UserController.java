@@ -92,7 +92,7 @@ public class UserController {
 	@RequestMapping(value="/modifyUserGrade", method = {RequestMethod.GET, RequestMethod.POST})
 	public String confirm(@ModelAttribute UserVo userVo, HttpSession session) {
 		
-		System.out.println("[MypageController.confirm()]");
+		System.out.println("[UserController.modifyUserGrade()]");
 		
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
 		
@@ -107,6 +107,46 @@ public class UserController {
 		authUser.setUserGrade(userVo.getUserGrade());
 				
 		return "/mypage/confirm";
+	}
+	
+	//회원정보수정폼
+	@RequestMapping(value="/modifyForm", method = {RequestMethod.GET, RequestMethod.POST})
+	public String modifyForm(Model model, HttpSession session) {
+		
+		System.out.println("UserController.modifyForm()]");
+		
+		int userNo = ((UserVo) session.getAttribute("authUser")).getUserNo();
+		
+		UserVo userVo = userService.getUserInfo(userNo);
+		
+		model.addAttribute("userVo", userVo);
+				
+		return "/mypage/modify_form";
+	}
+	
+	//회원정보수정
+	@RequestMapping(value="/modify", method = {RequestMethod.GET, RequestMethod.POST})
+	public String modify(@ModelAttribute UserVo userVo, HttpSession session) {
+		System.out.println("[UserController.modify()]");
+
+		// 세션에서 로그인한 사용자 정보 가져오기
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+
+		// 로그인한 사용자 no값 가져오기
+		int userNo = authUser.getUserNo();
+
+		// 로그인한 사용자 no값 추가
+		userVo.setUserNo(userNo);
+
+		// userService를 통해 로그인한 사용자 정보 수정
+		userService.modifyUser(userVo);
+		
+		System.out.println("수정된 정보" + userVo);
+
+		// 세션에 이름 변경
+		authUser.setUserName(userVo.getUserName());
+		
+		return "redirect:/main";
 	}
 
 }

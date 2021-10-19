@@ -13,6 +13,7 @@
 
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/bootstrap.css">
+<script src="${pageContext.request.contextPath}/assets/bootstrap/bootstrap.js"></script>
 
 <!-- jQuery -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
@@ -52,51 +53,36 @@
 		</div>
 		<!-- // SUB TITLE -->
 
-		<div class="table-container">
-			<table class="table table-hover">
+			<div class="table-container">
+				<table class="table table-hover">
 
-				<thead>
-					<tr>
-						<th>번호</th>
-						<th>글제목</th>
-						<th>매칭날짜</th>
-						<th>비고</th>
-						<th>상세정보</th>
-					</tr>
-				</thead>
-				<tbody>
-
-					<c:forEach items="${matchingList}" var="matchingVo" varStatus="status">
+					<thead>
 						<tr>
-	
-							<td>${matchingVo.matchingNo}</td>
-							<td>${matchingVo.matchingTitle}</td>
-							<td>${matchingVo.matchingRegDate}</td>
-							<td>${matchingVo.matchingStatus}</td>
-							<td><a href="${pageContext.request.contextPath}/matching/read?no=${matchingVo.matchingNo}">상세정보</a></td>
-							
+							<th>번호</th>
+							<th>글제목</th>
+							<th>매칭날짜</th>
+							<th>비고</th>
+							<th>상세정보</th>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
+					</thead>
+					<tbody>
 
-		<div id="paging-wrap" class="text-center">
-			<div id="paging">
-				<ul>
+						<c:forEach items="${matchingList}" var="matchingVo" varStatus="status">
+							<tr>
 
-					<li>‹</li>
-					<li>1</li>
-					<li>2</li>
-					<li>3</li>
-					<li>›</li>
+								<td>${matchingVo.matchingNo}</td>
+								<td>${matchingVo.matchingTitle}</td>
+								<td>${matchingVo.matchingRegDate}</td>
+								<td>${matchingVo.matchingStatus}</td>
+								<td><a href="${pageContext.request.contextPath}/matching/read?no=${matchingVo.matchingNo}">상세정보</a></td>
 
-				</ul>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
 		</div>
 
-
-	</div>
 
 	<!-- FOOTER -->
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>

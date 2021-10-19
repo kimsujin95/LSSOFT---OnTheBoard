@@ -50,7 +50,7 @@
 
 
 		<div class="container bootstrap snippets bootdey">
-			<h3 class="text-primary">손흥민's Profile</h3>
+			<h3 class="text-primary">${userVo.userNickname }'s Profile</h3>
 			<hr>
 			<div class="row">
 				<!-- left column -->
@@ -60,9 +60,9 @@
 						<h6>사진선택...</h6>
 						<input type="file" class="form-control"> <br> <br>
 						<ul>
-							<li class="font-size-16">이름: 손흥민</li>
-							<li class="font-size-16">연령: 20대</li>
-							<li class="font-size-16">가입일: 2021-09-01</li>
+							<li class="font-size-16">닉네임: ${userVo.userNickname }</li>
+							<li class="font-size-16">나이: ${userVo.userAge }</li>
+							<li class="font-size-16">가입일: ${userVo.userRegDate }</li>
 						</ul>
 					</div>
 				</div>
@@ -70,43 +70,18 @@
 				<!-- edit form column -->
 				<div class="col-md-9 personal-info">
 					<div class="alert alert-info alert-dismissable">
-						<a class="panel-close close" data-dismiss="alert">×</a> <i class="fa fa-coffee"></i> This is an <strong>.alert</strong>. Use this to show
-						important messages to the user.
+						<a class="panel-close close" data-dismiss="alert">×</a> <i class="fa fa-coffee"></i> 수정 완료 후 수정을 눌러주세요.
 					</div>
 
 					<form class="form-horizontal" role="form">
+					
 						<div class="form-group">
 							<label class="col-lg-3 control-label">닉네임:</label>
 							<div class="col-lg-8">
-								<input class="form-control" type="text" value="슈퍼손은슈퍼콘">
+								<input class="form-control" type="text" value="${userVo.userNickname }">
 							</div>
 						</div>
-						<div class="form-group">
-							<label class="col-lg-3 control-label">연령:</label>
-							<div class="col-lg-8">
-								<div class="ui-select">
-									<select id="user-age" class="form-control">
-										<option value="10s">10대</option>
-										<option value="20s">20대</option>
-										<option value="20s">30대</option>
-										<option value="20s">40대</option>
-										<option value="20s">50대</option>
-										<option value="20s">60대</option>
-									</select>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-lg-3 control-label">성별:</label>
-							<div class="col-lg-8">
-								<div class="ui-select">
-									<select id="user-gender" class="form-control">
-										<option value="male">남</option>
-										<option value="female">여</option>
-									</select>
-								</div>
-							</div>
-						</div>
+	
 						<div class="btn-area">
 							<button class="btn-red">수정</button>
 							<button class="btn-gray">취소</button>

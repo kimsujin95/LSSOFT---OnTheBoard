@@ -12,19 +12,12 @@
 <!-- css  -->
 <link href="${pageContext.request.contextPath }/assets/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
-
+<link href="${pageContext.request.contextPath }/assets/css/main/custom.css" rel="stylesheet" type="text/css">
 <!-- js -->
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery-1.12.4.js"></script>
-
+<script src="${pageContext.request.contextPath}/assets/bootstrap/bootstrap.js"></script>
 <!-- 타이틀 -->
 <title>Insert title here</title>
-
-
-<style>
-div .main-img {
-	text-align: center;
-}
-</style>
 
 
 </head>
@@ -34,25 +27,14 @@ div .main-img {
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
 	<!-- 컨테이너 - 메인 -->
-	<div id="main" class="container">
-
-
-		<div class="main-img">
-				
-			<br>
-		
-			<img src="${pageContext.request.contextPath}/assets/images/boardgamemain.png" height="250px">
-			
-			<br><br>
-			
-			<h3>사업자 회원으로 변경되었습니다.</h3>
-			<a href="${pageContext.request.contextPath}/admin/storeInfo">매장관리 페이지로 가기</a>
-			
-			<br><br><br><br>
-			
+	<div class="container">
+		<div class="jumbotron" id="slogan2">
+			<P>사업자 전환이 완료되었습니다. 다시 로그인 해주세요!</P>
+			<p>
+				<a class="btn btn-danger center " href="${pageContext.request.contextPath }/user/loginForm" role="button">로그인 하기</a>
+			</p>
+			<div class="container"></div>
 		</div>
-
-
 	</div>
 
 	<!-- 푸터 -->

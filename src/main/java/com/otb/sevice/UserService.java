@@ -59,5 +59,13 @@ public class UserService {
 		
 	}
 	
+	// 회원정보 수정
+	public int modifyUser(UserVo userVo) {
+		System.out.println("[UserService.modifyUser()]");
 
+		int count = userDao.updateUser(userVo);
+		return count;
+	}
+
+	
 }

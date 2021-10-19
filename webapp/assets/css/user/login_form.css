@@ -127,7 +127,7 @@ body{
 	width: 465px;
 	height: 56px;
 	border: solid 1px var(--border-gray-color);
-	text-align: left;
+	text-align: center;
 	background: white;
 }
 .Easy-sgin-in-wrap .sign-button-list li button i{
@@ -138,13 +138,24 @@ body{
 .Easy-sgin-in-wrap .sign-button-list li button span{
 	padding-left: 20px;
 	font-size: 18px;
+	text-align: center;
 }
 .Easy-sgin-in-wrap .forget-msg{
 	color:var(--font-color);
 	font-size: 14px;
 	padding-top: 10px;
-
 }
+
+#logo {
+	height: 50px;
+	align-items: center;
+}
+
+.Easy-sgin-in-wrap .sign-button-list li button span{
+	padding-left: 20px;
+	font-size: 18px;
+}
+
 footer{
    
 	padding-top: 95px;

@@ -146,9 +146,10 @@ body{
 	padding-top: 10px;
 }
 
-#logo {
+#loglogo {
 	height: 50px;
 	align-items: center;
+	cursor: pointer;
 }
 
 .Easy-sgin-in-wrap .sign-button-list li button span{

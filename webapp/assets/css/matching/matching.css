@@ -159,15 +159,15 @@ textarea {
 	cursor: pointer;
 }
 
-#paging-wrap {
+#pagination-wrap {
 	margin-top: 15px;
 }
 
-#paging-wrap #paging {
+#pagination-wrap #pagination {
 	display: inline-block;
 }
 
-#paging-wrap #paging li {
+#pagination-wrap #pagination li {
 	list-style-type: none;
 	float: left;
 	padding: 2px 8px;
@@ -177,7 +177,7 @@ textarea {
 	font-weight: bold;
 }
 
-#paging-wrap #paging li.li-pd {
+#pagination-wrap #pagination li.li-pd {
 	padding: 2px 9.5px;
 }
 

@@ -157,14 +157,14 @@ public class ReservationService {
 
 			// reservation_time_group_테이블 insert
 			reservationDao.insertreservationTimeGroup(reservationtimegroupVo);
-
+			
 		}
-
+		
 		ReservationMemberVo reservationMemberVo = new ReservationMemberVo();
-
+		
 		// reservationChargePer 구하기
 		int reservationChargePer = revChargeTotal / revChargePeople;
-
+		
 		// 예약멤버 테이블 insert
 		for (int i = 0; i < userNoList.size(); i++) {
 			reservationMemberVo.setUserNo(userNoList.get(i));
@@ -176,7 +176,7 @@ public class ReservationService {
 
 			// reservation_Member_테이블 insert
 			reservationDao.insertreservationMember(reservationMemberVo);
-
+			
 		}
 
 		System.out.println("[예약 테이블 insert END]");

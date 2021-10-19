@@ -6,12 +6,10 @@
 
 	<!-- 사이드 바 -->
 	<ul id="nav-list" class="list-group font-size-14">
-		<%-- <li class="list-group-item"><a href="${pageContext.request.contextPath }/admin/main">메인 화면</a></li> --%>
 		<li class="list-group-item"><a href="${pageContext.request.contextPath }/admin/main">매장 관리</a></li>
 		<li class="list-group-item"><a href="${pageContext.request.contextPath }/admin/schedule">스케쥴 관리</a></li>
 		<li class="list-group-item"><a href="${pageContext.request.contextPath }/admin/reservation">예약 관리</a></li>
 		<li class="list-group-item"><a href="${pageContext.request.contextPath }/admin/storeGame">보유 게임</a></li>
-		<%-- <li class="list-group-item"><a href="${pageContext.request.contextPath }/admin/status">매출 현황</a></li> --%>
 	</ul>
 	<!-- //사이드 바 -->
 
@@ -32,28 +30,26 @@
 
 		<!-- 랭크 리스트 -->
 		<ol id="rank-list" class="list-inline font-size-14">
-			<%-- <c:forEach begin="0" end="4" varStatus="status"> --%>
-				<li>
-					<span class="rank-num pull-left">1</span> 
-					<span class="rank-subject"><a>글룸 헤이븐</a></span>
-				</li>
-				<li>
-					<span class="rank-num pull-left">2</span> 
-					<span class="rank-subject"><a>테라포밍 마스</a></span>
-				</li>
-				<li>
-					<span class="rank-num pull-left">3</span> 
-					<span class="rank-subject"><a>뱅</a></span>
-				</li>
-				<li>
-					<span class="rank-num pull-left">4</span> 
-					<span class="rank-subject"><a>할리갈리</a></span>
-				</li>
-				<li>
-					<span class="rank-num pull-left">5</span> 
-					<span class="rank-subject"><a>보난자</a></span>
-				</li>
-			<%-- </c:forEach> --%>
+			<li>
+				<span class="rank-num pull-left">1</span> 
+				<span class="rank-subject"><a>글룸 헤이븐</a></span>
+			</li>
+			<li>
+				<span class="rank-num pull-left">2</span> 
+				<span class="rank-subject"><a>테라포밍 마스</a></span>
+			</li>
+			<li>
+				<span class="rank-num pull-left">3</span> 
+				<span class="rank-subject"><a>뱅</a></span>
+			</li>
+			<li>
+				<span class="rank-num pull-left">4</span> 
+				<span class="rank-subject"><a>할리갈리</a></span>
+			</li>
+			<li>
+				<span class="rank-num pull-left">5</span> 
+				<span class="rank-subject"><a>보난자</a></span>
+			</li>
 		</ol>
 		<!-- //랭크 리스트 -->
 		

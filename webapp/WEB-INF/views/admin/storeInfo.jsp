@@ -23,7 +23,7 @@
 <!-- 카카오 맵 api -->
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c694e05d69f948b3793c67975a2ef4a5&libraries=services"></script>
 
-<title>admin-storeInfo</title>
+<title>On The Board: Store Management</title>
 
 </head>
 <body>
@@ -227,7 +227,7 @@
 			//매장 정보가 있을 때, 등록된 매장 이미지를 렌더링
 			console.log(${storeInfo.storeNo} );
 			$.ajax({
-			    url : "${pageContext.request.contextPath }/storeImageLookup/${storeInfo.storeNo}",
+			    url : "${pageContext.request.contextPath }/storeImageLookup",
 				type : "POST",
 			    success : function(data) {
 		    		console.log("호출 완료");
@@ -298,7 +298,7 @@
 		//ajax로 전송
 		$.ajax({
 		    type : "POST",
-		    url : "${pageContext.request.contextPath }/storeImageUpload/${storeInfo.storeNo}",
+		    url : "${pageContext.request.contextPath }/storeImageUpload",
 		    data : formData,
 		    processData: false,
 		    contentType: false,
@@ -339,7 +339,6 @@
 		    url : "${pageContext.request.contextPath }/storeImageRemove",
 		    data : {
 		    	storeImageNo : selectedImage
-		    	,storeNo : ${storeInfo.storeNo}
 		    },
 		    success : function(data) {
 		    	if(data == true) {

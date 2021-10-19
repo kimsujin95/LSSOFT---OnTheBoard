@@ -24,7 +24,7 @@
 <link href="${pageContext.request.contextPath }/assets/css/datepicker.css" rel="stylesheet" type="text/css">
 <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />-->
 
-<title>admin-reservation management</title>
+<title>On The Board: Store Management</title>
 
 </head>
 <body>

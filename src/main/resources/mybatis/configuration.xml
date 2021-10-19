@@ -23,6 +23,7 @@
 		<typeAlias alias="RevInfoVo" type="com.otb.vo.RevInfoVo" />
 		<typeAlias alias="ReservationTimeGroupVo" type="com.otb.vo.ReservationTimeGroupVo" />
 		<typeAlias alias="ReservationMemberVo" type="com.otb.vo.ReservationMemberVo" />
+		<typeAlias alias="ReservationListVo" type="com.otb.vo.ReservationListVo" />
 	</typeAliases>
 	
 	<mappers>

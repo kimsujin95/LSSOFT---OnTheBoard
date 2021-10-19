@@ -165,3 +165,17 @@
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
 }
+label.game-label {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+}
+
+label.game-label:hover {
+	background-color: #ff1f67;
+	color: white;
+}
+
+li.li-size {
+	width: 33.3%;
+}

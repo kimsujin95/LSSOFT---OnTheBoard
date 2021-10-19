@@ -64,7 +64,7 @@
 							<div class="col-xs-4 border-right overflow-scroll">
 								<ul id="game-style">
 									<c:forEach items="${tabContent.themeList}" var="themeVo" varStatus="status">
-										<li class="theme-li" role="presentation" data-theme_no="${themeVo.themeNo}" data-theme_name="${themeVo.themeName}"><a href="#theme-${themeVo.themeNo}" aria-controls="theme-${themeVo.themeNo}" role="tab" data-toggle="tab">${themeVo.themeName}</a></li>
+										<li class="theme-li" role="presentation" data-theme_no="${themeVo.themeNo}" data-theme_name="${themeVo.themeName}"><a class="btn" href="#theme-${themeVo.themeNo}" aria-controls="theme-${themeVo.themeNo}" role="tab" data-toggle="tab">${themeVo.themeName}</a></li>
 									</c:forEach>
 								</ul>
 							</div>
@@ -162,7 +162,7 @@
 	});
 	
 	function gameTabpanel(gameVo) {
-		var gameLi = '<li class="pull-left"><input class="btn-check" type="radio" name="gameNo" id="game-' + gameVo.gameNo + '" value="' + gameVo.gameNo + '"><label class="btn btn-secondary" for="game-' + gameVo.gameNo + '">' + gameVo.gameNameKo + '</label></li>';
+		var gameLi = '<li class="pull-left li-size"><input class="btn-check" type="radio" name="gameNo" id="game-' + gameVo.gameNo + '" value="' + gameVo.gameNo + '"><label class="game-label btn btn-secondary" for="game-' + gameVo.gameNo + '">' + gameVo.gameNameKo + '</label></li>';
 		$('.game-' + gameVo.themeNo + '').append(gameLi);
 	};
 	//-- 테마 코드에 맞는 게임 리스트 불러오기 --

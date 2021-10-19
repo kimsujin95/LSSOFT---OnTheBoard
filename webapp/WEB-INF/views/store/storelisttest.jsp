@@ -224,6 +224,44 @@
 <!-- 매장 리스트 검색용 - ajax -->
 <script type="text/javascript">
 	
+	var param = location.search;
+	
+	if( param.includes("gameNo")) {
+		console.log(param);
+		var paramArr = param.split("=");
+		var gameNo = paramArr[1];
+		console.log(gameNo);
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath}/store/storesearchlist",
+			type : 'POST',
+			data : {
+				gameNo : gameNo
+			},
+	
+			success : function(searchStoreList) {
+			
+				//키워드 검색을 통해 넘겨받은 매장리스트값을 목록표출 함수로 넘겨준다.
+				console.log(searchStoreList);
+				$("#searchlist li").remove();
+				
+				for(var i = 0; i < searchStoreList.length; i ++) {
+					render(searchStoreList[i]);
+				}
+				
+			}, // success 
+	
+			error : function(XHR, status, error) {
+	
+				console.error(status + " : " + error);
+	
+			}
+		}); // $.ajax */
+		
+	} else {
+		console.log("파라미터 없음");
+	}
+	
 	$("ul.game-name").on("click", "li",function(){
 		var keyword = $(this).children("input").val();
 		console.log("게임 이름 선택");

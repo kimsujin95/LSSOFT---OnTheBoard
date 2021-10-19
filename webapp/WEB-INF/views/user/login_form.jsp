@@ -45,12 +45,12 @@
 						<h2>다른 로그인 수단</h2>
 						<ul class="sign-button-list">
 							<li><button>
-									<img id="logo" src="${pageContext.request.contextPath}/assets/images/icons/naver.png">
-									<SPAN>네이버</SPAN>
+									<img id="loglogo" src="${pageContext.request.contextPath}/assets/images/icons/naver.png">
+									
 								</button></li>
 							<li><button>
-									<img id="logo" src="${pageContext.request.contextPath}/assets/images/icons/kakaotalk.png">
-								<SPAN>카카오</SPAN>
+									<img id="loglogo" src="${pageContext.request.contextPath}/assets/images/icons/kakaotalk.png">
+							
 								</button></li>
 						</ul>
 						<p class="forget-msg">

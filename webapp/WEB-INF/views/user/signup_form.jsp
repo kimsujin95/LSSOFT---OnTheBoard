@@ -11,7 +11,7 @@
 <body>
 	<!-- header -->
 	<div id="header">
-		<img src="${pageContext.request.contextPath}/assets/images/logo.png" id="logo">
+		<a href="${pageContext.request.contextPath}/main"><img src="${pageContext.request.contextPath}/assets/images/logo.png" id="logo"></a>
 	</div>
 
 
@@ -37,7 +37,9 @@
 					<h3 class="join_title">
 						<label for="pswd1">비밀번호</label>
 					</h3>
-					<span class="box int_pass"> <input type="password" name="userPassword"id="pswd1" class="int" maxlength="20">
+					<span class="box int_pass"> <input type="password" name="userPassword" id="pswd1" class="int" maxlength="20">
+					<span id="alertTxt">사용불가</span>
+					<img src="${pageContext.request.contextPath}/assets/images/icons/m_icon_pass.png" id="pswd1_img1" class="pswdImg">
 					</span> <span class="error_next_box"></span>
 				</div>
 
@@ -47,6 +49,7 @@
 						<label for="pswd2">비밀번호 재확인</label>
 					</h3>
 					<span class="box int_pass_check"> <input type="password" id="pswd2" class="int" maxlength="20">
+					<img src="${pageContext.request.contextPath}/assets/images/icons/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg">
 					</span> <span class="error_next_box"></span>
 				</div>
 
@@ -82,35 +85,6 @@
 							<span class="box"> <input type="text" name="userBirthDate" id="yy" class="int" maxlength="8" placeholder="생년월일( 8자리'yyyymmdd' )">
 							</span>
 						</div>
-						
-						<!--
-					
-						<div id="bir_mm">
-							<span class="box"> <select id="mm" name="month" class="sel">
-									<option>월</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
-									<option value="9">9</option>
-									<option value="10">10</option>
-									<option value="11">11</option>
-									<option value="12">12</option>
-							</select>
-							</span>
-						</div>
-
-				
-						<div id="bir_dd">
-							<span class="box"> <input type="text" name="date" id="dd" class="int" maxlength="2" placeholder="일">
-							</span>
-						</div>
-						
-						-->
 
 					</div>
 					<span class="error_next_box"></span>
@@ -155,13 +129,13 @@
 					<span class="box int_address"> <input type="text" id="address" class="int" placeholder="주소 입력">
 					</span>
 				</div>
-				
+
 				<!-- GRADE -->
-				
+
 				<div>
 					<input type="hidden" id="grade" name="userGrade" value="1">
 				</div>
-				
+
 				<!-- JOIN BTN-->
 				<div class="btn_area">
 					<button type="submit" id="btnJoin">
@@ -178,4 +152,11 @@
 	<!-- wrapper -->
 
 </body>
+
+<script src="${pageContext.request.contextPath}/assets/js/signUp.js">
+
+</script>
+
+
+
 </html>

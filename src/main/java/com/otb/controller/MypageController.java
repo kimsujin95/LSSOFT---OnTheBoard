@@ -86,7 +86,7 @@ public class MypageController {
 	
 	//프로필수정폼
 	@RequestMapping(value="/modifyProfileForm", method = {RequestMethod.GET, RequestMethod.POST})
-	public String modifyProfileForm(HttpSession session, Model model) {
+	public String modifyProfileForm( HttpSession session, Model model) {
 		
 		System.out.println("[MypageController.modifyProfileForm()]");
 		

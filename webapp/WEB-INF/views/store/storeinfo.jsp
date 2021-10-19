@@ -879,7 +879,36 @@
 		        type : 'POST',
 		        data : revInfoVo,
 		        
-		        success : function(revInfoVo) {
+		        success : function(count) {
+		        	
+		        	 if(count == 1){
+ 		            	swal({
+ 		            		title: '예약 성공',
+ 		            		icon: 'success',
+ 		            		closeOnClickOutside: false,
+ 		            		
+ 		            		buttons: {
+ 		            			cancle: {
+ 		            				text: '메인으로',
+ 		            				value: false,
+ 		            				className: 'btn btn-primary'
+ 		            			},
+ 		            			confirm: {
+ 		            				text: '예약내역',
+ 		            				value: true,
+ 		            				className: 'btn btn-info'
+ 		            			}
+ 		            		}
+ 		            	}).then((result) => {
+ 		            		if(result === true) {
+ 		            			location.href='${pageContext.request.contextPath}/mypage/history';
+ 		            		} else {
+ 		            			location.href='${pageContext.request.contextPath}/main';
+ 		            		}
+ 		            	});
+ 		            } else{
+ 		            	window.alert("실패");
+ 		            }
 		        	
 		        }, // success
 		        error : function(XHR, status, error) {

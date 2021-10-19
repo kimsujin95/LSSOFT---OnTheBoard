@@ -59,7 +59,7 @@ public class ReservationController {
 	//예약 등록
 	@ResponseBody
 	@RequestMapping("/reservationinsert")
-	public RevInfoVo reservationinsert(@ModelAttribute RevInfoVo revInfoVo, @RequestParam ("chdTimeArray[]") String[] chdTimeArray) {
+	public int reservationinsert(@ModelAttribute RevInfoVo revInfoVo, @RequestParam ("chdTimeArray[]") String[] chdTimeArray) {
 		System.out.println("[reservationController.reservationinsert]");
 		
 		System.out.println("[예약 입력 정보 : ]" + revInfoVo);
@@ -71,7 +71,7 @@ public class ReservationController {
 		
 		int count = reservationService.insertreservation(revInfoVo, chdTimeArray);
 		
-		return revInfoVo;
+		return count;
 		
 	}
 	

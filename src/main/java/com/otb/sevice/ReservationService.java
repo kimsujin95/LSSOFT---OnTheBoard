@@ -196,7 +196,7 @@ public class ReservationService {
 		 * //int count = reservationDao.insertreservation(reservationInfo); chdTimeArray
 		 * 
 		 */
-		return 0;
+		return 1;
 	}
 
 }

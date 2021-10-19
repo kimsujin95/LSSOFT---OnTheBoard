@@ -74,5 +74,16 @@
 		]]>
 	</insert>
 	
+	<!-- 예약내역 리스트 가져오기 -->
+	<select id="getReservationList" parameterType="int" resultType="ReservationListVo">
+		<![CDATA[
+			select rev.reservation_no as reservationNo,
+       			   st.store_name as storeName,
+       			   rd.store_reservation_date as reservationDate,
+       			   rev.reservation_status as reservationStatus
+			from reservation rev, reservation_member rm, reservation_date rd, store st
+			where rm.user_no = #{userNo} and rev.reservation_no = rm.reservation_no and rev.reservation_date_no = rd.reservation_date_no and rev.store_no = st.store_no
+		]]>
+	</select>
 	
 </mapper>

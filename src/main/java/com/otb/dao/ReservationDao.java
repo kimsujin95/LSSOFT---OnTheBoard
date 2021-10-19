@@ -1,10 +1,13 @@
 package com.otb.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.otb.vo.ReservationDateVo;
+import com.otb.vo.ReservationListVo;
 import com.otb.vo.ReservationMemberVo;
 import com.otb.vo.ReservationTimeGroupVo;
 import com.otb.vo.ReservationTimeVo;
@@ -90,7 +93,7 @@ public class ReservationDao {
 		return 0;
 	}
 	
-	//
+	//예약 멤버 테이블 insert
 	public int insertreservationMember(ReservationMemberVo reservationMemberVo) {
 		System.out.println("[reservationDao.insertreservationMember]");
 		
@@ -99,6 +102,16 @@ public class ReservationDao {
 		System.out.println("reservation_Member_table_insert [성공]");
 		
 		return 0;
+	}
+	
+	//예약 내역 리스트 가져오기
+	public List<ReservationListVo> getReservationList(int userNo){
+		System.out.println("[reservationDao.getReservationList]");
+		
+		List<ReservationListVo> reservationList = sqlSession.selectList("reservation.getReservationList",userNo);
+		System.out.println("예약내역 리스트 Vo.reservationDao : " + reservationList);
+		
+		return reservationList;
 	}
 	
 	

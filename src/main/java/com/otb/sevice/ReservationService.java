@@ -9,6 +9,7 @@ import com.otb.dao.MatchingDao;
 import com.otb.dao.ReservationDao;
 import com.otb.dao.StoreDao;
 import com.otb.vo.ReservationDateVo;
+import com.otb.vo.ReservationListVo;
 import com.otb.vo.ReservationMemberVo;
 import com.otb.vo.ReservationTimeGroupVo;
 import com.otb.vo.ReservationTimeVo;
@@ -122,7 +123,7 @@ public class ReservationService {
 			System.out.println("주중");
 			revChargeTotal = storeChargeVo.getStoreChargeWeek() * chdTimeArray.length * revChargePeople;
 		}
-		
+
 		// 예약날짜번호 구하기
 		int reservationDateNo = storeDao.getDateNo2(revInfoVo);
 
@@ -132,10 +133,10 @@ public class ReservationService {
 		reservationDao.insertreservation(reservationInfo);
 
 		int reservationNo = reservationInfo.getReservationNo();
-		
+
 		System.out.println("예약 일렬 번호");
 		System.out.println(reservationNo);
-		
+
 		// 예약 시간 정보(ReservationTimeVo.reservationTimeNo)구하기
 		// 예약일렬번호O
 		for (int i = 0; i < chdTimeArray.length; i++) {
@@ -149,37 +150,37 @@ public class ReservationService {
 			System.out.println("===========================================");
 			System.out.println("reservationNo = " + reservationNo);
 			System.out.println("reservation_time_no = " + reservation_time_no);
-			
+
 			ReservationTimeGroupVo reservationtimegroupVo = new ReservationTimeGroupVo();
 			reservationtimegroupVo.setReservationNo(reservationNo);
 			reservationtimegroupVo.setReservationTimeNo(reservation_time_no);
-			
-			//reservation_time_group_테이블 insert
+
+			// reservation_time_group_테이블 insert
 			reservationDao.insertreservationTimeGroup(reservationtimegroupVo);
-			
+
 		}
 
 		ReservationMemberVo reservationMemberVo = new ReservationMemberVo();
-		
-		//reservationChargePer 구하기
-		int reservationChargePer = revChargeTotal/revChargePeople;
-		
-		//예약멤버 테이블 insert
-		for(int i = 0; i < userNoList.size(); i++) {
+
+		// reservationChargePer 구하기
+		int reservationChargePer = revChargeTotal / revChargePeople;
+
+		// 예약멤버 테이블 insert
+		for (int i = 0; i < userNoList.size(); i++) {
 			reservationMemberVo.setUserNo(userNoList.get(i));
 			reservationMemberVo.setReservationChargePer(reservationChargePer);
 			reservationMemberVo.setMatchingNo(revInfoVo.getGroupNo());
 			reservationMemberVo.setReservationNo(reservationNo);
-			
+
 			System.out.println("reservationMemberVo : " + reservationMemberVo);
-			
-			//reservation_Member_테이블 insert
+
+			// reservation_Member_테이블 insert
 			reservationDao.insertreservationMember(reservationMemberVo);
-			
+
 		}
-		
+
 		System.out.println("[예약 테이블 insert END]");
-		
+
 		// 예약일렬번호 reservationInfo
 		// 시간번호
 
@@ -198,15 +199,15 @@ public class ReservationService {
 		 */
 		return 1;
 	}
-	
-	//마이페이지 예약정보 가져오기
-	public int selectReservationInfoList(int userNo) {
+
+	// 마이페이지 예약정보 가져오기
+	public List<ReservationListVo> selectReservationInfoList(int userNo) {
 		System.out.println("[reservationService.selectReservationInfoList]");
 		
+		List<ReservationListVo> reservationList = reservationDao.getReservationList(userNo);
+		System.out.println("예약내역 리스트 Vo.reservationService : " + reservationList);
 		
-		
-		return 0;
+		return reservationList;
 	}
-	
 
 }

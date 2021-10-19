@@ -70,7 +70,7 @@
 	<insert id="insertreservationMember" parameterType="ReservationMemberVo">
 		<![CDATA[
 			insert into reservation_member
-			values(seq_reservation_member_no.NEXTVAL, #{userNo}, #{reservationChargePer}, #{matchingNo}, #{reservationNo})
+			values(seq_reservation_member_no.NEXTVAL, #{userNo}, #{reservationChargePer}, #{reservationNo}, #{matchingNo})
 		]]>
 	</insert>
 	

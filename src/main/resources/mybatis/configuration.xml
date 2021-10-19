@@ -20,6 +20,9 @@
 		<typeAlias alias="ReplyVo" type="com.otb.vo.ReplyVo" />
 		<typeAlias alias="CommentReplyVo" type="com.otb.vo.CommentReplyVo" />
 		<typeAlias alias="OwnedGameVo" type="com.otb.vo.OwnedGameVo" />
+		<typeAlias alias="RevInfoVo" type="com.otb.vo.RevInfoVo" />
+		<typeAlias alias="ReservationTimeGroupVo" type="com.otb.vo.ReservationTimeGroupVo" />
+		<typeAlias alias="ReservationMemberVo" type="com.otb.vo.ReservationMemberVo" />
 	</typeAliases>
 	
 	<mappers>

@@ -146,7 +146,7 @@
 						<button id="btn-statusComplete" class="btn-red" data-no="${readInfo.matchingVo.matchingNo}">매칭완료</button>
 					</c:if>
 					<c:if test="${readInfo.matchingVo.matchingStatus eq '매칭완료'}">
-						<a href="${pageContext.request.contextPath}/store/storelist"><button class="btn-blue">예약하기</button></a>
+						<button id="btn-store-list" class="btn-blue" data-no="${readInfo.matchingVo.gameNo}">예약하기</button>
 					</c:if>
 				</c:if>
 			</div>
@@ -554,6 +554,38 @@ function replyHTML(replyInfo) {
 	$('.input-reply-' + replyInfo.commentNo).append(replySTR);
 }
 // -- 답글 등록 --
+
+// 예약하기 버튼
+/* <a href="${readInfo.matchingVo.gameNo}"> */
+	$('#btn-store-list').on('click', function() {
+		var gameNo = $(this).data('no');
+		console.log(gameNo);
+		
+		swal({
+			title: '매장 리스트로 이동 하겠습니까?',
+			text: '매칭 예약 확인',
+			icon: 'success',
+			closeOnClickOutside: false,
+			
+			buttons: {
+				cancle: {
+					text: '취소',
+					value: false,
+					className: 'btn btn-danger'
+				},
+				confirm: {
+					text: '확인',
+					value: true,
+					className: 'btn btn-primary'
+				}
+			}
+		}).then((result) => {
+			if(result === true) {
+				location.href = '${pageContext.request.contextPath}/store/storelist?gameNo=' + gameNo;
+			}
+		});
+	});
+// -- 예약하기 버튼 --
 
 // 매칭글 삭제
 $('#btn-del-matching').on('click', function() {

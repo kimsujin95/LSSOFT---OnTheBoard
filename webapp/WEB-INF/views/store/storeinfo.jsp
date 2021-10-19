@@ -74,17 +74,12 @@
 					<!-- class는 carousel-inner로 설정하고 role은 listbox에서 설정한다. -->
 					<div id="img-slide-list" class="carousel-inner" role="listbox">
 						<!-- 이미지의 개수만큼 item을 만든다. 중요한 포인트는 carousel-indicators의 li 태그 개수와 item의 개수는 일치해야 한다. -->
-						<div class="item active">
-							<!-- 아미지 설정- -->
-							<img src="${pageContext.request.contextPath}/assets/images/admin/BoardGameStore.jpg" class="store_img">
-							<!-- 캡션 설정 (생략 가능) -->
-							<!-- 글자 색은 검은색 -->
-							<div class="carousel-caption">매장이미지1 입니다.</div>
-						</div>
-						<div class="item">
-							<img src="${pageContext.request.contextPath}/assets/images/admin/BoardGameStore2.jpg" class="store_img">
-							<div class="carousel-caption">매장이미지2 입니다.</div>
-						</div>
+						<div class="item active"><img src="" class="store_img"></div>
+						<c:forEach items="${storeInfo.storeimgList}" var="imgVo" varStatus="status">
+						   <div class="item">
+						      <img src="${pageContext.request.contextPath}/upload/store/${imgVo.storePathImage}" class="store_img">
+						   </div>
+						</c:forEach>
 					</div>
 					<!-- 왼쪽 화살표 버튼 -->
 					<!-- href는 carousel의 id를 가르킨다. -->

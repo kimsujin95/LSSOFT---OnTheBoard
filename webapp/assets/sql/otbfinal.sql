@@ -881,13 +881,13 @@ INSERT INTO users(user_no, user_id, user_password, user_name, user_nickname, use
 VALUES ( seq_users_no.NEXTVAL, 'zxc', 'zxc', 'zxc', 'zxc', 'female', '19791111', 1, sysdate );
 
 INSERT INTO users(user_no, user_id, user_password, user_name, user_nickname, user_gender, user_birth_date, user_grade, user_reg_date)
-VALUES ( seq_users_no.NEXTVAL, 'rose1234', '1234', '김로제', '로제', 'female', '19961111', 1, sysdate );
+VALUES ( seq_users_no.NEXTVAL, 'rose1234', '1234', '김로제', '로제', 'female', '19970211', 1, sysdate );
 
 INSERT INTO users(user_no, user_id, user_password, user_name, user_nickname, user_gender, user_birth_date, user_grade, user_reg_date)
-VALUES ( seq_users_no.NEXTVAL, 'jisu1234', '1234', '김지수', '지수', 'female', '19961111', 1, sysdate );
+VALUES ( seq_users_no.NEXTVAL, 'jisu1234', '1234', '김지수', '지수', 'female', '19950103', 1, sysdate );
 
 INSERT INTO users(user_no, user_id, user_password, user_name, user_nickname, user_gender, user_birth_date, user_grade, user_reg_date)
-VALUES ( seq_users_no.NEXTVAL, 'lisa1234', '1234', '이리사', '리사', 'female', '19961111', 1, sysdate );
+VALUES ( seq_users_no.NEXTVAL, 'lisa1234', '1234', '이리사', '리사', 'female', '19970327', 1, sysdate );
 
 -- INSERT THEME
 INSERT INTO THEME( theme_no, theme_name) VALUES ( 0, '테마 전체');
@@ -1266,13 +1266,13 @@ INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 3, '2022-11-11', '1
 INSERT INTO matching_group VALUES ( 21, 1, 3, sysdate );
 
 INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 5, '2022-11-11', '15:00', '딕싯 딕싯 딕싯 !!!', '내용5', 5, 77, 3, '남자', '30대', sysdate, 0, '매칭중' );
-INSERT INTO matching_group VALUES ( 21, 1, 3, sysdate );
-
-INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 3, '2022-11-11', '15:00', '할리갈리 모집합니다~', '내용5', 1, 7, 3, '성별무관', '10대,20대,30개', sysdate, 0, '매칭중' );
 INSERT INTO matching_group VALUES ( 22, 1, 3, sysdate );
 
+INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 3, '2022-11-11', '15:00', '할리갈리 모집합니다~', '내용5', 1, 7, 3, '성별무관', '10대,20대,30개', sysdate, 0, '매칭중' );
+INSERT INTO matching_group VALUES ( 23, 1, 3, sysdate );
+
 INSERT INTO matching VALUES ( seq_matching_no.NEXTVAL, 1, 0, 1, '2022-11-11', '15:00', '보난자 함께 하실분~', '내용1', 1, 14, 2, '여자', '10대,20대', sysdate, 0, '매칭중' );
-INSERT INTO matching_group VALUES ( 23, 1, 2, sysdate );
+INSERT INTO matching_group VALUES ( 24, 1, 2, sysdate );
 -- // INSERT MATCHING/GROUP
 
 -- INSERT STORE
@@ -1285,37 +1285,37 @@ VALUES ( seq_store_no.nextval, '네스카페', 37.499336756210546, 127.032230256
 INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
 VALUES ( seq_store_no.nextval, '폴-바셋', 37.50207799788094, 127.02286735499807, '010-3452-2311', '보드게임카페3 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '경기도 용인시 기흥구 언남로 15', '1층 폴-바셋');
 
-INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
 VALUES ( seq_store_no.nextval, '맥심', 37.50207799718094, 127.02286735419807, '010-3711-2343', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '충청남도 천안시 서북구 불당2길 10', '1층 카페-맥심');
 
-INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
 VALUES ( seq_store_no.nextval, '네스프레소', 37.50207799518094, 127.02286735449807, '010-5345-3341', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '충청북도 청주시 상당구 대성로 145', '1층 네스프레소 카페');
 
-INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
 VALUES ( seq_store_no.nextval, '스타벅스', 37.50207799418094, 127.02226735449807, '010-7641-2216', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '대전광역시 서구 문정로 112번안길 8-12', '1층 스타벅스');
 
-INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
 VALUES ( seq_store_no.nextval, '문벅스', 37.50207799518024, 127.02286435449807, '010-2795-7842', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '전라북도 전주시 완산구 팔달로 191-4', '1층 문벅스');
 
-INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
 VALUES ( seq_store_no.nextval, '제리앤탐스', 37.50207792518024, 127.02226435449807, '010-2763-6212', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '충청남도 부여군 부여읍 정림로 48-17', '1층 제리앤탐스');
 
-INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
 VALUES ( seq_store_no.nextval, 'G-SEVEN', 37.50202792518024, 127.02226439449807, '010-7001-1007', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '충청남도 논산시 시민로 194번길 12-4', '1층 G-SEVEN');
 
-INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
 VALUES ( seq_store_no.nextval, '커피콩', 37.50202792598024, 127.02226439489807, '010-8821-1299', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '경기도 평택시 어인남로 4번길 34-3', '1층 커피콩');
 
-INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
 VALUES ( seq_store_no.nextval, '커피의 바나나', 37.50202792498024, 127.02266439489807, '010-1328-2231', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '강원도 춘천시 충열로 296-18', '1층 커피의 바나나');
 
-INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
 VALUES ( seq_store_no.nextval, '뚝배기커피', 37.50203792498024, 127.02266439419807, '010-6451-4431', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '강원도 원주시 단구로 319-2', '1층 뚝배기커피');
 
-INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
 VALUES ( seq_store_no.nextval, '할리스커피', 37.50201792498024, 127.02066439489807, '010-1328-2231', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '서울특별시 서초구 효령로 21길 9', '1층 할리스커피');
 
-INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
 VALUES ( seq_store_no.nextval, '야너카', 37.50201792498524, 127.02066439489857, '010-7867-1121', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '경기도 성남시 분당구 야탑로 105번길 19', '1층 야너카');
 -- // INSERT STORE
     

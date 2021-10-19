@@ -52,7 +52,7 @@
 			<div id="tap-content-wrap" class="container">
 				<ul class="nav nav-tabs nav-justified" role="tablist" id="myTab">
 					<li role="presentation" class="active"><a href="#location" aria-controls="location" role="tab" data-toggle="tab">지역</a></li>
-					<li role="presentation"><a href="#game-style-name" aria-controls="game-style-name" role="tab" data-toggle="tab">장르/게임</a></li>
+					<li role="presentation"><a href="#game-style-name" aria-controls="game-style-name" role="tab" data-toggle="tab">게임</a></li>
 				</ul>
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane active" id="location">
@@ -174,19 +174,17 @@
 			</table>
 		</div>
 
-		<div id="paging-wrap" class="text-center">
-			<div id="paging">
+		<div id="pagination-wrap" class="text-center">
+			<div id="pagination">
 				<ul>
-					<li>«</li>
-					<li class="li-pd">‹</li>
+					<!-- <li>«</li> -->
+					<!-- <li class="li-pd">‹</li> -->
 					<li>1</li>
 					<li>2</li>
 					<li>3</li>
 					<li>4</li>
 					<li>5</li>
-					<li>6</li>
-					<li>7</li>
-					<li class="li-pd">›</li>
+					<!-- <li class="li-pd">›</li> -->
 					<li>»</li>
 				</ul>
 			</div>

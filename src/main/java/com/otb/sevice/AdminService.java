@@ -143,8 +143,8 @@ public class AdminService {
 	public void addSchedule(String date, String[] times, ReservationDateVo reservationDateVo) {
 //		System.out.println("스케쥴 서비스 도착");
 		String[] days = date.split(",");
-		
 		for(int i = 0; i < days.length; i ++) {
+			System.out.println(days[i]);
 			reservationDateVo.setStoreReservationDate(days[i]);
 			
 			//날짜 번호를 찾는다

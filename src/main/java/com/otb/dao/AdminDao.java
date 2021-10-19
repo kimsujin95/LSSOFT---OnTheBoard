@@ -95,7 +95,7 @@ public class AdminDao {
 	//스케쥴 삭제 - 시간
 	public void deleteTime(int dateNo) {
 		System.out.println("스케쥴 다오 - 시간 삭제");
-		sqlSession.insert("admin.deleteTime", dateNo);
+		sqlSession.delete("admin.deleteTime", dateNo);
 	}
 	
 	//매장 보유게임 등록

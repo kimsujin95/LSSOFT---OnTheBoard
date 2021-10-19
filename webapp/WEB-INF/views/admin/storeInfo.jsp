@@ -379,7 +379,7 @@
 	});
 	
 	//등록된 매장 정보가 있을 때
-	if(${storeInfo != null}) {
+	if(${storeInfo != null && storeInfo.storeLng != 0}) {
 		
 		//console.log("매장 정보 있음")
 		

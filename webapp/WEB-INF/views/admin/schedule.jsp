@@ -240,6 +240,7 @@
 						total.val("");
 						
 					} else {
+						labels.removeClass("btn-primary");
 						for(var i = 0; i < times.length; i ++) {
 							if(times[i] != null) {
 								$("[for=btn-check-"+ times[i] +"]").addClass("btn-primary");
@@ -288,7 +289,7 @@
 			labels.removeClass("btn-primary");
 			
 			var max = $("[name=storeReservationMax]");
-			max.val("");
+			max.val("2");
 			
 		    var total = $("[name=storeReservationTotal]");
 		    total.val("");
@@ -321,7 +322,8 @@
 		
 	    var date = $("#date-input").val();
 	    var times = [];
-		var storeReservationMax = Number($("select[name=storeReservationMax]").val());
+	    
+	    var storeReservationMax = Number($("select[name=storeReservationMax]").val());
 	    var storeReservationTotal = Number($("input[name=storeReservationTotal]").val());
 	    
 	    $("input[name='times']:checked").each(function(i) {
@@ -344,13 +346,6 @@
 	    	console.log("시간 미선택");
 	    	return false;
 	    }
-	    
-	    console.log("storeReservationTotal < storeReservationMax");
-    	
-    	console.log(storeReservationTotal);
-    	console.log(storeReservationMax);
-    	
-    	console.log(storeReservationTotal < storeReservationMax);
 	    
 	    if(storeReservationTotal < storeReservationMax) {
 	    	alert("총 예약 가능 인원이 1회 최대 예약 인원보다 작을 수 없습니다.")
@@ -377,6 +372,10 @@
 	        //contentType: "application/json",
 	        data: allData	//보내는 데이터의 형식, 객체를 생성하여 집어넣어도 된다
 		});
+	    
+	    //체크박스 값 초기화
+	    $("input[name='times']:checked").prop("checked", false);
+	    
 	}
 </script>
 

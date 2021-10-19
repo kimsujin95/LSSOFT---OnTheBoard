@@ -806,7 +806,7 @@
 							$('.modal_chargeTotal').text("총 금액 : " + reservationInfo.reservationChargeTotal);
 							$('.modal_chargePeople').text("예약 인원 : " + reservationInfo.reservationChargePeople + "명");
 							$('.modal_revDate').text("예약일 : " + seldate);
-							$('.modal_revTime').text("예약 시간 : " + chdval[0] + ":00 ~ " + chdval[chdval.length-1] + ":00");
+							$('.modal_revTime').text("예약 시간 : " + chdval[0] + ":00 / " + chdval[chdval.length-1] + ":00");
 							
 							
 						}else if(reservationInfo.reservationType == "personal"){
@@ -1045,8 +1045,16 @@
         
     	// 그룹원 항목을 Element로 반환하는 함수
     	function getListItem(index, grouplistinfo) {
+    		var gender;
+    		
+    		if(grouplistinfo.userGender == "male"){
+    			gender = "남";
+    		}else{
+    			gender = "여";
+    		}
+    		
     	    var el = document.createElement('li'),
-    	    itemStr = '<label class="groupwon">'+ "닉네임: " + grouplistinfo.userNickname +'</label>';
+    	    itemStr = '<label class="groupwon">'+ "그룹원: " + grouplistinfo.userNickname + " " + gender + " " + grouplistinfo.userAge + '</label>';
     	    el.innerHTML = itemStr;
     	    el.className = 'item';
     	    return el;

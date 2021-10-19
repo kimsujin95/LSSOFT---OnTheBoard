@@ -111,7 +111,9 @@
 			       u.user_name as userName,
       			   u.user_nickname as userNickname,
       			   u.user_path_profile as userPathProfile,
-       			   u.user_gender as userGender
+       			   u.user_gender as userGender,
+       			   to_char(user_birth_date, 'yyyymmdd') as userBirthDate,
+				   to_char(sysdate, 'yyyy') - to_char(user_birth_date, 'yyyy') + 1 as userAge
 			from matching_group mg, users u
 			where mg.user_no = u.user_no and
       			  mg.matching_no = #{matchingno}

@@ -45,11 +45,11 @@
 						<h2>다른 로그인 수단</h2>
 						<ul class="sign-button-list">
 							<li><button>
-									<img id="loglogo" src="${pageContext.request.contextPath}/assets/images/icons/naver.png">
+									<img class="loglogo" src="${pageContext.request.contextPath}/assets/images/icons/naver.png">
 									
 								</button></li>
 							<li><button>
-									<img id="loglogo" src="${pageContext.request.contextPath}/assets/images/icons/kakaotalk.png">
+									<img class="loglogo" src="${pageContext.request.contextPath}/assets/images/icons/kakaotalk.png">
 							
 								</button></li>
 						</ul>

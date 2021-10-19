@@ -146,7 +146,7 @@ body{
 	padding-top: 10px;
 }
 
-#loglogo {
+.loglogo {
 	height: 50px;
 	align-items: center;
 	cursor: pointer;

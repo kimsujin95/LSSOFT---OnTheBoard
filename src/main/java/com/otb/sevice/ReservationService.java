@@ -198,5 +198,15 @@ public class ReservationService {
 		 */
 		return 1;
 	}
+	
+	//마이페이지 예약정보 가져오기
+	public int selectReservationInfoList(int userNo) {
+		System.out.println("[reservationService.selectReservationInfoList]");
+		
+		
+		
+		return 0;
+	}
+	
 
 }

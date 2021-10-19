@@ -37,7 +37,7 @@
 					<h3 class="join_title">
 						<label for="pswd1">비밀번호</label>
 					</h3>
-					<span class="box int_pass"> <input type="text" name="userPassword"id="pswd1" class="int" maxlength="20">
+					<span class="box int_pass"> <input type="password" name="userPassword"id="pswd1" class="int" maxlength="20">
 					</span> <span class="error_next_box"></span>
 				</div>
 
@@ -46,7 +46,7 @@
 					<h3 class="join_title">
 						<label for="pswd2">비밀번호 재확인</label>
 					</h3>
-					<span class="box int_pass_check"> <input type="text" id="pswd2" class="int" maxlength="20">
+					<span class="box int_pass_check"> <input type="password id="pswd2" class="int" maxlength="20">
 					</span> <span class="error_next_box"></span>
 				</div>
 

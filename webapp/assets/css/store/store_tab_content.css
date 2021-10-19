@@ -34,6 +34,12 @@
 	color: #000;
 }
 
+.row {
+	border: 1px solid rgb(221, 221, 221);
+	width: 1200px;
+	margin: 0;
+}
+
 #ipt-keyword {
 	margin: 10px 0px -10px 0px;
 	background-image: url(../images/matching/img-search.png);
@@ -47,11 +53,13 @@
 	border-color: #ff1f67;
 }
 
-#tap-content-wrap .overflow-scroll {
+.row > .overflow-scroll {
 	height: 200px;
 	overflow: auto;
 	margin: 0px 15px 0px -15px;
 }
+
+
 
 #tap-content-wrap .overflow-scroll::-webkit-scrollbar {
 	width: 10px;
@@ -104,11 +112,16 @@
 
 #game-style li {
 	float: left;
-	/* margin: 3px; */
 	padding: 3px;
 	width: 50%;
-	text-align: left;
+	height: 30px;
+	text-align: center;
 	font-size: 16px;
+}
+
+#game-style li a{
+	display: inline-block;
+	width: 100%;
 }
 
 #game-name {

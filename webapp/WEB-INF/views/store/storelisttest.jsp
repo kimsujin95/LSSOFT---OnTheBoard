@@ -50,11 +50,16 @@
 
 						<!-- TAB CONTENT -->
 			<div id="tap-content-wrap" class="container">
-				<ul class="nav nav-tabs nav-justified" role="tablist" id="myTab">
-					<li role="presentation"><a href="#game-style-name" aria-controls="game-style-name" role="tab" data-toggle="tab">게임으로 매장 검색</a></li>
-				</ul>
+				
 				<div class="tab-content">
-					<div role="tabpanel" class="tab-pane" id="game-style-name">
+					<div class="tab-header">
+						<ul class="nav nav-tabs nav-justified" role="tablist" id="myTab">
+							<li role="presentation">
+								<a href="#game-style-name" aria-controls="game-style-name" role="tab" data-toggle="tab">게임으로 매장 검색</a>
+							</li>
+						</ul>
+					</div>
+					<div role="tabpanel" class="tab-pane container" id="game-style-name">
 						<div class="row">
 							<div class="col-xs-4 border-right overflow-scroll">
 								<ul id="game-style">
@@ -118,6 +123,7 @@
 
 <!-- 탭 -->
 <script type="text/javascript">
+	
 	//테마 코드에 맞는 게임 리스트 불러오기
 	$('#game-style').on('click', 'li', function() {
 		var themeNo = $(this).data('theme_no');

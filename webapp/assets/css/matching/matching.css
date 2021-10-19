@@ -264,9 +264,15 @@ textarea {
 	color: #666;
 }
 
+#game-img-info > img {
+	width: 230px;
+	height: 230px;
+}
+
 #game-img-info a {
 	font-size: 22px;
 	font-weight: bold;
+	color: #ff1f67;
 }
 
 #table-game-info {

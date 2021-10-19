@@ -40,7 +40,7 @@
 				<div class="context1 font-size-24">매칭게시판</div>
 				<div class="context2 clearfix">
 					<ul>
-						<li><a href="#">매칭게시판</a></li>
+						<li><a href="${pageContext.request.contextPath}/matching/main">매칭게시판</a></li>
 						<li class="last-li"><a href="#">매칭글</a></li>
 					</ul>
 				</div>
@@ -67,10 +67,10 @@
 
 		<div class="row">
 			<div id="game-img-info" class="col-xs-3 text-center">
-				<img src="${pageContext.request.contextPath}/assets/images/matching/할리갈리.jpg" alt="게임값" width="100%">
+				<img src="${pageContext.request.contextPath}/assets/upload/${readInfo.matchingVo.gamePathThumbnail}" alt="${readInfo.matchingVo.gameNameKo}" width="100%">
 				<br>
 				<br>
-				<a href="#">${readInfo.matchingVo.gameNameKo}</a>
+				<a href="${pageContext.request.contextPath}/game/gameDetails?no=${readInfo.matchingVo.gameNo}">${readInfo.matchingVo.gameNameKo}</a>
 			</div>
 			<div class="col-xs-3 border-right">
 				<table id=table-game-info>

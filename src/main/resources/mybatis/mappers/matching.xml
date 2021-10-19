@@ -26,6 +26,7 @@
 		<result column="game_name_ko" property="gameNameKo" />
 		<result column="sido_name" property="sidoName" />
 		<result column="sigungu_name" property="sigunguName" />
+		<result column="game_path_thumbnail" property="gamePathThumbnail" />
 	</resultMap>
 	
 	<resultMap id="resultMapMatchingGroupVo" type="MatchingGroupVo">
@@ -313,10 +314,12 @@
 			    m.matching_time,
 			    m.matching_permission_gender,
 			    m.matching_permission_age,
+			    g.game_no,
 			    g.game_name_ko,
 			    t.theme_name,
 			    sd.sido_name,
-			    sg.sigungu_name
+			    sg.sigungu_name,
+			    g.game_path_thumbnail
 			FROM
 			    matching m
 			    LEFT OUTER JOIN game g

@@ -32,6 +32,7 @@ public class MatchingVo {
 	private String matchingStatus;
 	private int matchingMember;
 	private String matchingPermissionAge;
+	private String gamePathThumbnail;
 	
 	
 	public MatchingVo() {
@@ -42,7 +43,8 @@ public class MatchingVo {
 			String userGender, int themeNo, String themeName, int gameNo, String gameNameKo, String matchingDate,
 			String matchingTime, int sidoCode, String sidoName, int sigunguCode, String sigunguName, int matchingPeople,
 			String matchingPermissionGender, String matchingTitle, String matchingContent, String matchingRegDate,
-			int matchingHits, String matchingStatus, int matchingMember, String matchingPermissionAge) {
+			int matchingHits, String matchingStatus, int matchingMember, String matchingPermissionAge,
+			String gamePathThumbnail) {
 		super();
 		this.matchingNo = matchingNo;
 		this.userNo = userNo;
@@ -69,6 +71,7 @@ public class MatchingVo {
 		this.matchingStatus = matchingStatus;
 		this.matchingMember = matchingMember;
 		this.matchingPermissionAge = matchingPermissionAge;
+		this.gamePathThumbnail = gamePathThumbnail;
 	}
 
 	public int getMatchingNo() {
@@ -271,6 +274,14 @@ public class MatchingVo {
 		this.matchingPermissionAge = matchingPermissionAge;
 	}
 
+	public String getGamePathThumbnail() {
+		return gamePathThumbnail;
+	}
+
+	public void setGamePathThumbnail(String gamePathThumbnail) {
+		this.gamePathThumbnail = gamePathThumbnail;
+	}
+
 	@Override
 	public String toString() {
 		return "MatchingVo [matchingNo=" + matchingNo + ", userNo=" + userNo + ", userNickname=" + userNickname
@@ -281,7 +292,8 @@ public class MatchingVo {
 				+ ", matchingPeople=" + matchingPeople + ", matchingPermissionGender=" + matchingPermissionGender
 				+ ", matchingTitle=" + matchingTitle + ", matchingContent=" + matchingContent + ", matchingRegDate="
 				+ matchingRegDate + ", matchingHits=" + matchingHits + ", matchingStatus=" + matchingStatus
-				+ ", matchingMember=" + matchingMember + ", matchingPermissionAge=" + matchingPermissionAge + "]";
+				+ ", matchingMember=" + matchingMember + ", matchingPermissionAge=" + matchingPermissionAge
+				+ ", gamePathThumbnail=" + gamePathThumbnail + "]";
 	}
-	
+
 }

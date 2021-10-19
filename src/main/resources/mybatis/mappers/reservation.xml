@@ -23,14 +23,56 @@
 		]]>
 	</select>
 	
+	
+	
+		<!-- DateType 가져오기 -->
+	<select id="getDateType2" parameterType="RevInfoVo" resultType="String">
+		<![CDATA[
+			select date_type as dateType
+			from reservation_date
+			where store_no = #{storeNo} and store_reservation_date = #{seldate}
+		]]>
+	</select>
+	
 	<!-- 예약정보 입력 -->
 	<insert id="insertreservation" parameterType="ReservationVo">
+		<selectKey keyProperty="reservationNo" resultType="int" order="BEFORE">	
+			select seq_reservation_no.NEXTVAL from dual
+		</selectKey>
+		
 		<![CDATA[
 			insert into reservation(reservation_no, store_no, reservation_charge_total, reservation_charge_people, reservation_status, reservation_type, reservation_date_no)
-			values(seq_reservation_no.NEXTVAL, #{storeNo}, #{reservationChargeTotal}, #{reservationChargePeople}, '예약완료', #{reservationType}, #{reservationDateNo})
+			values(#{reservationNo}, #{storeNo}, #{reservationChargeTotal}, #{reservationChargePeople}, '예약완료', #{reservationType}, #{reservationDateNo})
 		]]>
 	</insert>
 	
+	
+	<!-- 예약 가능 시간 no가져오기-->
+	<select id="getRereservationTime" parameterType="ReservationTimeVo" resultType="int">
+		<![CDATA[
+			select reservation_time_no as reservationTimeNo
+			from reservation_time
+			where reservation_date_no = #{reservationDateNo} 
+			and store_reservation_time = #{storeReservationTime}
+		]]>
+	</select>
+	
+	
+	<!-- 예약 시간 정보 테이블 insert -->
+	<insert id="insertreservationTimeGroup" parameterType="ReservationTimeGroupVo">
+		<![CDATA[
+			insert into reservation_time_group
+			values(seq_reservation_time_group_no.NEXTVAL, #{reservationNo}, #{reservationTimeNo})
+		]]>
+	</insert>
+	
+	<!-- 예약 멤버 테이블 insert -->
+	<insert id="insertreservationMember" parameterType="ReservationMemberVo">
+		<![CDATA[
+			insert into reservation_member
+			values(seq_reservation_member_no.NEXTVAL, #{userNo}, #{reservationChargePer}, #{matchingNo}, #{reservationNo})
+		]]>
+	</insert>
 	
 	
 </mapper>

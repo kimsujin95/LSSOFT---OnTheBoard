@@ -101,18 +101,18 @@ ul,ol,li{
 }
 
 /*리뷰 게시 구역*/
-.review_section{
-	
-}
 
 .review {
 	display : inline-block;
 	width: 40%;
 	height:100%;
+	margin: 40px 58px 40px 58px;
 }
 
+
 .store-review-wraper{
-	border-bottom: 1px solid #ff1f67;
+	border-top: 1px solid #ff1f67;
+	border-bottom: 1px solid #e2e2e2;
 	margin-bottom: 50px;
 }
 
@@ -185,8 +185,8 @@ ul,ol,li{
 	width:70%;
 }
 
-.review_writer_info table tbody tr td{
-	height:100%;
+.review_writer_info > table > tbody > tr{
+	height:48.1px;
 }
 
 .review_writer_info .first-review-table{
@@ -483,6 +483,18 @@ button, input {
     overflow: scroll;
     overflow-x: hidden;
 }
+
+#grouplist li {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	width: 49%;
+}
+
+#grouplist li a {
+	color: #ff1f67;
+}
+
 
 
 /* .select-by-no > button{

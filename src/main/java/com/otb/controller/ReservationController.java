@@ -2,6 +2,7 @@ package com.otb.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.otb.sevice.ReservationService;
 import com.otb.vo.ReservationDateVo;
 import com.otb.vo.ReservationVo;
+import com.otb.vo.RevInfoVo;
 
 @Controller
 @RequestMapping(value="/reservation", method = { RequestMethod.GET, RequestMethod.POST })
@@ -57,14 +59,19 @@ public class ReservationController {
 	//예약 등록
 	@ResponseBody
 	@RequestMapping("/reservationinsert")
-	public int reservationinsert(ReservationVo reservationInfo) {
+	public RevInfoVo reservationinsert(@ModelAttribute RevInfoVo revInfoVo, @RequestParam ("chdTimeArray[]") String[] chdTimeArray) {
 		System.out.println("[reservationController.reservationinsert]");
 		
-		System.out.println("[예약 입력 정보 : ]" + reservationInfo);
+		System.out.println("[예약 입력 정보 : ]" + revInfoVo);
 		
-		int count = reservationService.insertreservation(reservationInfo);
 		
-		return count;
+		for(int i=0; i<chdTimeArray.length;i++) {
+			System.out.println(chdTimeArray[i]);
+		}
+		
+		int count = reservationService.insertreservation(revInfoVo, chdTimeArray);
+		
+		return revInfoVo;
 		
 	}
 	

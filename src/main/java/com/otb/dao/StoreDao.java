@@ -10,6 +10,7 @@ import com.otb.vo.GameVo;
 import com.otb.vo.MatchingVo;
 import com.otb.vo.ReservationDateVo;
 import com.otb.vo.ReservationTimeVo;
+import com.otb.vo.RevInfoVo;
 import com.otb.vo.StoreVo;
 import com.otb.vo.UserVo;
 
@@ -82,6 +83,17 @@ public class StoreDao {
 		
 		return sqlSession.selectOne("store.getDateInfo",reservationDateVo);
 	}
+	
+	
+
+	//매장번호, 날짜데이터로 예약날짜번호 값 가져오기
+	public int getDateNo2(RevInfoVo revInfoVo){
+		System.out.println("[StoreDao.getDateInfo2]");
+		
+		return sqlSession.selectOne("store.getDateInfo2",revInfoVo);
+	}
+	
+	
 	
 	//예약날짜번호 값으로 해당 매장 예약가능 시간대 정보 가져오기
 	public List<ReservationTimeVo> getStoreRevTime(int reservationDateNo) {

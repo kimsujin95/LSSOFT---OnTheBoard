@@ -255,7 +255,7 @@
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date="2021/10/20">
+							<button class="datebar_btn" type="button" data-date="16">
 								<!-- month="" -->
 
 								<span class="ir">2021년 10월</span> <em style="pointer-events: none;">20<span style="pointer-events: none;" class="ir">일</span>
@@ -263,7 +263,7 @@
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date="2021/10/21">
+							<button class="datebar_btn" type="button" data-date="17">
 								<!-- month="" -->
 
 								<span class="ir">2021년 10월</span> <em style="pointer-events: none;">21<span style="pointer-events: none;" class="ir">일</span>
@@ -271,7 +271,7 @@
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date="2021/10/22">
+							<button class="datebar_btn" type="button" data-date="18">
 								<!-- month="" -->
 
 								<span class="ir">2021년 10월</span> <em style="pointer-events: none;">22<span style="pointer-events: none;" class="ir">일</span>
@@ -279,7 +279,7 @@
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date="2021/10/23">
+							<button class="datebar_btn" type="button" data-date="">
 								<!-- month="" -->
 
 								<span class="ir">2021년 10월</span> <em style="pointer-events: none;">23<span style="pointer-events: none;" class="ir">일</span>
@@ -287,7 +287,7 @@
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date="2021/10/24">
+							<button class="datebar_btn" type="button" data-date="">
 								<!-- month="" -->
 
 								<span class="ir">2021년 10월</span> <em style="pointer-events: none;">24<span style="pointer-events: none;" class="ir">일</span>
@@ -295,7 +295,7 @@
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date="2021/10/25">
+							<button class="datebar_btn" type="button" data-date="">
 								<!-- month="" -->
 
 								<span class="ir">2021년 10월</span> <em style="pointer-events: none;">25<span style="pointer-events: none;" class="ir">일</span>
@@ -303,7 +303,7 @@
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date="2021/10/26">
+							<button class="datebar_btn" type="button" data-date="">
 								<!-- month="" -->
 
 								<span class="ir">2021년 10월</span> <em style="pointer-events: none;">26<span style="pointer-events: none;" class="ir">일</span>
@@ -311,7 +311,7 @@
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date="2021/10/27">
+							<button class="datebar_btn" type="button" data-date="">
 								<!-- month="" -->
 
 								<span class="ir">2021년 10월</span> <em style="pointer-events: none;">27<span style="pointer-events: none;" class="ir">일</span>
@@ -319,7 +319,7 @@
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date="2021/10/28">
+							<button class="datebar_btn" type="button" data-date="">
 								<!-- month="" -->
 
 								<span class="ir">2021년 10월</span> <em style="pointer-events: none;">28<span style="pointer-events: none;" class="ir">일</span>
@@ -327,7 +327,7 @@
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date="2021/10/29">
+							<button class="datebar_btn" type="button" data-date="">
 								<!-- month="" -->
 
 								<span class="ir">2021년 10월</span> <em style="pointer-events: none;">29<span style="pointer-events: none;" class="ir">일</span>
@@ -335,7 +335,7 @@
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date="2021/10/30">
+							<button class="datebar_btn" type="button" data-date="">
 								<!-- month="" -->
 
 								<span class="ir">2021년 10월</span> <em style="pointer-events: none;">30<span style="pointer-events: none;" class="ir">일</span>
@@ -343,7 +343,7 @@
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date="2021/10/31">
+							<button class="datebar_btn" type="button" data-date="">
 								<!-- month="" -->
 
 								<span class="ir">2021년 10월</span> <em style="pointer-events: none;">31<span style="pointer-events: none;" class="ir">일</span>
@@ -351,7 +351,7 @@
 
 							</button>
 
-							<button class="datebar_btn" type="button" data-date="2021/11/01">
+							<button class="datebar_btn" type="button" data-date="">
 								<!-- month="" -->
 
 								<span class="ir">2021년 10월</span> <em style="pointer-events: none;">1<span style="pointer-events: none;" class="ir">일</span>
@@ -818,7 +818,64 @@
 						
 						$('#myModal').modal('show');
 						
-				
+						$('#btn-last-rev').on('click',function(){
+							
+							var reservationVo = {
+									storeNo : ${storeNo},
+									reservationChargeTotal : reservationInfo.reservationChargeTotal,
+									reservationChargePeople : reservationInfo.reservationChargePeople,
+									reservationType : reservationInfo.reservationType,
+									reservationDateNo : reservationInfo.reservationDateNo
+							}
+							
+							console.log("예약하기 버튼 클릭");
+							
+							$.ajax({
+								cache : false,
+			    		        url : "${pageContext.request.contextPath}/reservation/reservationinsert",
+			    		        type : 'POST',
+			    		        data : reservationVo,
+			    		        
+			    		        success : function(count) {
+			    		            // ajax 랜더링 for문
+			    		            if(count == 1){
+			    		            	swal({
+			    		            		title: '예약 성공',
+			    		            		icon: 'success',
+			    		            		closeOnClickOutside: false,
+			    		            		
+			    		            		buttons: {
+			    		            			cancle: {
+			    		            				text: '메인으로',
+			    		            				value: false,
+			    		            				className: 'btn btn-primary'
+			    		            			},
+			    		            			confirm: {
+			    		            				text: '예약내역',
+			    		            				value: true,
+			    		            				className: 'btn btn-info'
+			    		            			}
+			    		            		}
+			    		            	}).then((result) => {
+			    		            		if(result === true) {
+			    		            			location.href='${pageContext.request.contextPath}/mypage/history';
+			    		            		} else {
+			    		            			location.href='${pageContext.request.contextPath}/main';
+			    		            		}
+			    		            	});
+			    		            } else{
+			    		            	window.alert("실패");
+			    		            }
+			    		        	
+			    		        }, // success
+			    				
+			    		        error : function(XHR, status, error) {
+			    					
+			    		        	console.error(status + " : " + error);
+			    		        	}
+			    		    }); // $.ajax */
+							
+						})
 						
     		        }, // success
     				
@@ -834,60 +891,7 @@
         	
         })
 		 	
-    
-        
-        
-        
-		//예약하기 버튼 클릭
-		$('#btn-last-rev').on('click',function(){
-			console.log("클릭");
-			
-			var revInfoVo = {};
-			
-			//스토어번호
-			revInfoVo.storeNo = ${storeNo}
-			
-			//날짜
-		    var seldate = $('#time_table').data("date");
-		    revInfoVo.seldate = seldate;
-			
-			//시간들
-			var chdTimeArray = new Array();
-			$('input').each(function(){
-          			if($(this).is(':checked')){
-          				var checked = ($(this).val());
-          				chdTimeArray.push(checked);
-          			}
-          	});
-			
-			revInfoVo.chdTimeArray = chdTimeArray;
-			
-			
-			//매칭번호
-			var groupNo = $('li[class="selgroup active"]').data("no");
-			revInfoVo.groupNo = groupNo;
-			
-			//타입 "group"
-			var revType = "group";
-			revInfoVo.revType = revType;
-			
-			
-			console.log(revInfoVo);
-			
-			$.ajax({
-		        url : "${pageContext.request.contextPath}/reservation/reservationinsert",
-		        type : 'POST',
-		        data : revInfoVo,
-		        
-		        success : function(revInfoVo) {
-		        	
-		        }, // success
-		        error : function(XHR, status, error) {
-		        	console.error(status + " : " + error);
-		        }
-		    }); // $.ajax */
-			
-		})    
+     	
     </script>
 
 	<!-- 이미지 출력 -->

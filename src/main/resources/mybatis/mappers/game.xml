@@ -176,27 +176,28 @@
 	</select>
 	
 	<!-- 찜하기 -->
-		<insert id="addBookmark" parameterType="GameBookmarkVo">
-		<![CDATA[
-			INSERT INTO
-				game_bookmark
-			VALUES (
-					seq_bookmark_no.nextval
-				,	#{game_no}
-				,	#{user_no})	
-		]]>
-		</insert>
-		<!-- 찜횟수 추가 -->
-		<update id="bookmarkCountUp" parameterType="GameVo">
-		<![CDATA[
-			UPDATE
-				game
-			SET
-				hit_count = hit_count + 1
-			WHERE
-				game_no =#{gameNo}	
-		]]>
-		</update>
+	<insert id="addBookmark" parameterType="GameBookmarkVo">
+	<![CDATA[
+		INSERT INTO
+			game_bookmark
+		VALUES (
+				seq_bookmark_no.nextval
+			,	#{game_no}
+			,	#{user_no})	
+	]]>
+	</insert>
+	
+	<!-- 찜횟수 추가 -->
+	<update id="bookmarkCountUp" parameterType="GameVo">
+	<![CDATA[
+		UPDATE
+			game
+		SET
+			hit_count = hit_count + 1
+		WHERE
+			game_no =#{gameNo}	
+	]]>
+	</update>
 		
 	<!-- 찜횟수 총합 -->
 		<select id="bookmarkCount" resultType="GameVo" parameterType="GameVo">

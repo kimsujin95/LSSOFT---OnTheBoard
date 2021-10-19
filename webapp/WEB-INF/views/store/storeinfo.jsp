@@ -74,17 +74,11 @@
 					<!-- class는 carousel-inner로 설정하고 role은 listbox에서 설정한다. -->
 					<div id="img-slide-list" class="carousel-inner" role="listbox">
 						<!-- 이미지의 개수만큼 item을 만든다. 중요한 포인트는 carousel-indicators의 li 태그 개수와 item의 개수는 일치해야 한다. -->
-						<div class="item active">
-							<!-- 아미지 설정- -->
-							<img src="${pageContext.request.contextPath}/assets/images/admin/BoardGameStore.jpg" class="store_img">
-							<!-- 캡션 설정 (생략 가능) -->
-							<!-- 글자 색은 검은색 -->
-							<div class="carousel-caption">매장이미지1 입니다.</div>
-						</div>
-						<div class="item">
-							<img src="${pageContext.request.contextPath}/assets/images/admin/BoardGameStore2.jpg" class="store_img">
-							<div class="carousel-caption">매장이미지2 입니다.</div>
-						</div>
+						<c:forEach items="${storeInfo.storeimgList}" var="imgVo" varStatus="status">
+						   <div class="item">
+						      <img src="${pageContext.request.contextPath}/upload/store/${imgVo.storePathImage}" class="store_img">
+						   </div>
+						</c:forEach>
 					</div>
 					<!-- 왼쪽 화살표 버튼 -->
 					<!-- href는 carousel의 id를 가르킨다. -->
@@ -108,7 +102,7 @@
 						<col width="88%">
 					</colgroup>
 					<tr>
-						<td class="top-td" colspan="2">${storeInfo.storeName}</td>
+						<td class="top-td" colspan="2">${storeInfo.storeInfo.storeName}</td>
 					</tr>
 					<tr class="icons-row">
 						<td class="icons-span"><i class="fas fa-info-circle"></i></td>
@@ -622,6 +616,11 @@
 	<!-- Datepicker -->
 	<script type="text/javascript">
 		
+		$(window).on('load', function() {
+	      var active = $('#img-slide-list').children().first();
+	        active.addClass('active');
+	   });
+	
 		$.datepicker.setDefaults({
 	        dateFormat: 'yy/mm/dd',
 	        prevText: '이전 달',
@@ -753,7 +752,7 @@
 				var chdval = new Array();
 				var groupNo;
 				var seldate;
-				var storeName = '${storeInfo.storeName}';
+				var storeName = '${storeInfo.storeInfo.storeName}';
 				var revType;
 				
 				$('input').each(function(){
@@ -806,7 +805,7 @@
 							console.log("그룹예약");
 							$('.modal_storeName').text("매장 이름 : " + storeName);
 							$('.modal_chargeTotal').text("총 금액 : " + reservationInfo.reservationChargeTotal);
-							$('.modal_chargePeople').text("결제금액 : " + reservationInfo.reservationChargePeople);
+							$('.modal_chargePeople').text("예약 인원 : " + reservationInfo.reservationChargePeople + "명");
 							$('.modal_revDate').text("예약일 : " + seldate);
 							$('.modal_revTime').text("예약 시간 : " + chdval[0] + ":00 ~ " + chdval[chdval.length-1] + ":00");
 							

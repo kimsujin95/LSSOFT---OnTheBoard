@@ -72,13 +72,8 @@ public class ReservationService {
 		//에약방식(그룹, 개인)
 		System.out.println("예약방식 : " + revType);
 		
-		//에약방식에 따라 1/N 결제 금액 구하기
-		//개인 결제시 (총 금액 = 개인 결제금액)
-		if("group".equals(revType)) {
-			revChargePeople = (revChargeTotal / matchingMember);
-		}else {
-			revChargePeople = revChargeTotal;
-		}
+		//예약 인원수 
+		revChargePeople = matchingMember;
 		
 		System.out.println("총 예약 요금 : " + revChargeTotal);
 		System.out.println("매칭 참여한 인원 수 : " + matchingMember);
@@ -99,7 +94,11 @@ public class ReservationService {
 		
 		int count = reservationDao.insertreservation(reservationInfo);
 		
+		
+		
 		return count;
 	}
+	
+	
 	
 }

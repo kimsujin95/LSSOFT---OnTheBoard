@@ -1,98 +1,98 @@
+/* 유저 */
 DROP TABLE users 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 게임 정보 */
 DROP TABLE game 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 테마-해시태그 */
 DROP TABLE theme 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 게임 찜 목록 */
 DROP TABLE game_bookmark 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 매장 찜 목록 */
 DROP TABLE store_bookmark 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 매장 */
 DROP TABLE store 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 예약 정보 */
 DROP TABLE reservation 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 예약 가능 날짜 */
 DROP TABLE reservation_date 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 예약 가능 시간 */
 DROP TABLE reservation_time 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 보유 게임 정보 */
 DROP TABLE owned_game 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 지역 정보 */
 DROP TABLE sido 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 세부 지역 */
 DROP TABLE sigungu 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 매칭 정보 */
 DROP TABLE matching 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 댓글 */
 DROP TABLE comments 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 답글 */
 DROP TABLE reply 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 리뷰 정보 */
 DROP TABLE store_review 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 메세지 정보 */
 DROP TABLE message 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 매장이미지 */
 DROP TABLE store_image 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 예약시간정보 */
 DROP TABLE reservation_time_group 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 매칭멤버 */
 DROP TABLE matching_group 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 예약맴버 */
 DROP TABLE reservation_member 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 게임 테마 등록 */
 DROP TABLE hashtag 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 유저 */
-
 CREATE TABLE users (
-	user_no NUMBER(20) NOT NULL, /* 유저 일련번호 */
+	user_no VARCHAR2(20) NOT NULL, /* 유저 일련번호 */
 	user_id VARCHAR2(20), /* 아이디 */
 	user_password VARCHAR2(20), /* 비밀번호 */
 	user_name VARCHAR2(20), /* 이름 */
-	user_nickname VARCHAR2(50), /* 닉네임 */
+	user_nickname VARCHAR2(20), /* 닉네임 */
 	user_gender VARCHAR2(20), /* 성별 */
 	user_email VARCHAR2(50), /* 이메일 */
 	user_birth_date DATE, /* 생년월일 */
@@ -103,41 +103,6 @@ CREATE TABLE users (
 	sido_code NUMBER(20), /* 시도 번호 */
 	sigungu_code NUMBER(20) /* 시군구 번호 */
 );
-
-COMMENT ON TABLE users IS '유저';
-
-COMMENT ON COLUMN users.user_no IS '유저 일련번호';
-
-COMMENT ON COLUMN users.user_id IS '아이디';
-
-COMMENT ON COLUMN users.user_password IS '비밀번호';
-
-COMMENT ON COLUMN users.user_name IS '이름';
-
-COMMENT ON COLUMN users.user_nickname IS '닉네임';
-
-COMMENT ON COLUMN users.user_gender IS '성별';
-
-COMMENT ON COLUMN users.user_email IS '이메일';
-
-COMMENT ON COLUMN users.user_birth_date IS '생년월일';
-
-COMMENT ON COLUMN users.user_phone_no IS '휴대전화';
-
-COMMENT ON COLUMN users.user_grade IS '유저 등급(사업자/ 일반 유저)';
-
-COMMENT ON COLUMN users.user_path_profile IS '프로필 사진 경로';
-
-COMMENT ON COLUMN users.user_reg_date IS '가입일';
-
-COMMENT ON COLUMN users.sido_code IS '시도 번호';
-
-COMMENT ON COLUMN users.sigungu_code IS '시군구 번호';
-
-CREATE UNIQUE INDEX PK_users
-	ON users (
-		user_no ASC
-	);
 
 ALTER TABLE users
 	ADD
@@ -162,37 +127,6 @@ CREATE TABLE game (
 	hit_count NUMBER(20) /* 찜횟수 */
 );
 
-COMMENT ON TABLE game IS '게임 정보';
-
-COMMENT ON COLUMN game.game_no IS '게임 일련번호';
-
-COMMENT ON COLUMN game.game_name_ko IS '이름(한글)';
-
-COMMENT ON COLUMN game.game_name_en IS '이름(영어)';
-
-COMMENT ON COLUMN game.game_path_thumbnail IS '썸네일 경로';
-
-COMMENT ON COLUMN game.game_people IS '게임 인원';
-
-COMMENT ON COLUMN game.game_age IS '게임연령';
-
-COMMENT ON COLUMN game.game_time IS '게임시간';
-
-COMMENT ON COLUMN game.game_difficulty IS '게임난이도';
-
-COMMENT ON COLUMN game.game_description IS '게임설명--본문';
-
-COMMENT ON COLUMN game.game_guide IS '게임 가이드 - 유튜브 주소';
-
-COMMENT ON COLUMN game.theme_no IS '테마 고유번호';
-
-COMMENT ON COLUMN game.hit_count IS '찜횟수';
-
-CREATE UNIQUE INDEX PK_game
-	ON game (
-		game_no ASC
-	);
-
 ALTER TABLE game
 	ADD
 		CONSTRAINT PK_game
@@ -206,17 +140,6 @@ CREATE TABLE theme (
 	theme_name VARCHAR2(20) /* 테마 종류 */
 );
 
-COMMENT ON TABLE theme IS '테마-해시태그';
-
-COMMENT ON COLUMN theme.theme_no IS '테마 고유번호';
-
-COMMENT ON COLUMN theme.theme_name IS '테마 종류';
-
-CREATE UNIQUE INDEX PK_theme
-	ON theme (
-		theme_no ASC
-	);
-
 ALTER TABLE theme
 	ADD
 		CONSTRAINT PK_theme
@@ -228,21 +151,8 @@ ALTER TABLE theme
 CREATE TABLE game_bookmark (
 	game_bookmark_no NUMBER(20) NOT NULL, /* 게임 찜 번호 */
 	game_no NUMBER(20), /* 게임 일련번호 */
-	user_no NUMBER(20) /* 유저 일련번호 */
+	user_no VARCHAR2(20) /* 유저 일련번호 */
 );
-
-COMMENT ON TABLE game_bookmark IS '게임 찜 목록';
-
-COMMENT ON COLUMN game_bookmark.game_bookmark_no IS '게임 찜 번호';
-
-COMMENT ON COLUMN game_bookmark.game_no IS '게임 일련번호';
-
-COMMENT ON COLUMN game_bookmark.user_no IS '유저 일련번호';
-
-CREATE UNIQUE INDEX PK_game_bookmark
-	ON game_bookmark (
-		game_bookmark_no ASC
-	);
 
 ALTER TABLE game_bookmark
 	ADD
@@ -254,22 +164,9 @@ ALTER TABLE game_bookmark
 /* 매장 찜 목록 */
 CREATE TABLE store_bookmark (
 	store_bookmark_no NUMBER(20) NOT NULL, /* 매장 찜 번호 */
-	user_no NUMBER(20), /* 유저 일련번호 */
+	user_no VARCHAR2(20), /* 유저 일련번호 */
 	store_no NUMBER(20) /* 매장 일련번호 */
 );
-
-COMMENT ON TABLE store_bookmark IS '매장 찜 목록';
-
-COMMENT ON COLUMN store_bookmark.store_bookmark_no IS '매장 찜 번호';
-
-COMMENT ON COLUMN store_bookmark.user_no IS '유저 일련번호';
-
-COMMENT ON COLUMN store_bookmark.store_no IS '매장 일련번호';
-
-CREATE UNIQUE INDEX PK_store_bookmark
-	ON store_bookmark (
-		store_bookmark_no ASC
-	);
 
 ALTER TABLE store_bookmark
 	ADD
@@ -281,7 +178,7 @@ ALTER TABLE store_bookmark
 /* 매장 */
 CREATE TABLE store (
 	store_no NUMBER(20) NOT NULL, /* 매장 일련번호 */
-	user_no NUMBER(20), /* 유저 일련번호 */
+	user_no VARCHAR2(20), /* 유저 일련번호 */
 	store_type VARCHAR(10), /* 업종 */
 	store_name VARCHAR2(100), /* 매장 이름 */
 	store_business_no VARCHAR2(100), /* 사업자 번호 */
@@ -296,43 +193,6 @@ CREATE TABLE store (
 	sido_code NUMBER(20), /* 시도 번호 */
 	sigungu_code NUMBER(20) /* 시군구 번호 */
 );
-
-COMMENT ON TABLE store IS '매장';
-
-COMMENT ON COLUMN store.store_no IS '매장 일련번호';
-
-COMMENT ON COLUMN store.user_no IS '유저 일련번호';
-
-COMMENT ON COLUMN store.store_type IS '업종';
-
-COMMENT ON COLUMN store.store_name IS '매장 이름';
-
-COMMENT ON COLUMN store.store_business_no IS '사업자 번호';
-
-COMMENT ON COLUMN store.store_address_road IS '매장 주소(도로명)';
-
-COMMENT ON COLUMN store.store_address_detail IS '매장 상세주소';
-
-COMMENT ON COLUMN store.store_latitude IS '위도';
-
-COMMENT ON COLUMN store.store_longitude IS '경도';
-
-COMMENT ON COLUMN store.store_phone_no IS '대표전화 ';
-
-COMMENT ON COLUMN store.store_description IS '매장소개';
-
-COMMENT ON COLUMN store.store_charge_week IS '요금평일';
-
-COMMENT ON COLUMN store.store_charge_weekend IS '요금주말';
-
-COMMENT ON COLUMN store.sido_code IS '시도 번호';
-
-COMMENT ON COLUMN store.sigungu_code IS '시군구 번호';
-
-CREATE UNIQUE INDEX PK_store
-	ON store (
-		store_no ASC
-	);
 
 ALTER TABLE store
 	ADD
@@ -352,27 +212,6 @@ CREATE TABLE reservation (
 	reservation_date_no NUMBER(20) /* 날짜 번호 */
 );
 
-COMMENT ON TABLE reservation IS '예약 정보';
-
-COMMENT ON COLUMN reservation.reservation_no IS '예약 일련번호';
-
-COMMENT ON COLUMN reservation.store_no IS '매장 일련번호';
-
-COMMENT ON COLUMN reservation.reservation_charge_total IS '총금액(시간*인원)';
-
-COMMENT ON COLUMN reservation.reservation_charge_people IS '결제 인원';
-
-COMMENT ON COLUMN reservation.reservation_status IS '예약상태';
-
-COMMENT ON COLUMN reservation.reservation_type IS '예약구분(일반, 매칭)';
-
-COMMENT ON COLUMN reservation.reservation_date_no IS '날짜 번호';
-
-CREATE UNIQUE INDEX PK_reservation
-	ON reservation (
-		reservation_no ASC
-	);
-
 ALTER TABLE reservation
 	ADD
 		CONSTRAINT PK_reservation
@@ -390,25 +229,6 @@ CREATE TABLE reservation_date (
 	date_type VARCHAR(10) /* 주말 구분 */
 );
 
-COMMENT ON TABLE reservation_date IS '예약 가능 날짜';
-
-COMMENT ON COLUMN reservation_date.reservation_date_no IS '날짜 번호';
-
-COMMENT ON COLUMN reservation_date.store_no IS '매장 일련번호';
-
-COMMENT ON COLUMN reservation_date.store_reservation_date IS '날짜';
-
-COMMENT ON COLUMN reservation_date.store_reservation_total IS '총인원  40';
-
-COMMENT ON COLUMN reservation_date.store_reservation_max IS '1회최대인원 4';
-
-COMMENT ON COLUMN reservation_date.date_type IS '주말 구분';
-
-CREATE UNIQUE INDEX PK_reservation_date
-	ON reservation_date (
-		reservation_date_no ASC
-	);
-
 ALTER TABLE reservation_date
 	ADD
 		CONSTRAINT PK_reservation_date
@@ -422,19 +242,6 @@ CREATE TABLE reservation_time (
 	reservation_date_no NUMBER(20), /* 날짜 번호 */
 	store_reservation_time VARCHAR2(50) /* 예약 가능 시간 */
 );
-
-COMMENT ON TABLE reservation_time IS '예약 가능 시간';
-
-COMMENT ON COLUMN reservation_time.reservation_time_no IS '시간 번호';
-
-COMMENT ON COLUMN reservation_time.reservation_date_no IS '날짜 번호';
-
-COMMENT ON COLUMN reservation_time.store_reservation_time IS '예약 가능 시간';
-
-CREATE UNIQUE INDEX PK_reservation_time
-	ON reservation_time (
-		reservation_time_no ASC
-	);
 
 ALTER TABLE reservation_time
 	ADD
@@ -450,19 +257,6 @@ CREATE TABLE owned_game (
 	game_no NUMBER(20) /* 게임 일련번호 */
 );
 
-COMMENT ON TABLE owned_game IS '보유 게임 정보';
-
-COMMENT ON COLUMN owned_game.owned_game_no IS '보유게임 번호';
-
-COMMENT ON COLUMN owned_game.store_no IS '매장 일련번호';
-
-COMMENT ON COLUMN owned_game.game_no IS '게임 일련번호';
-
-CREATE UNIQUE INDEX PK_owned_game
-	ON owned_game (
-		owned_game_no ASC
-	);
-
 ALTER TABLE owned_game
 	ADD
 		CONSTRAINT PK_owned_game
@@ -475,17 +269,6 @@ CREATE TABLE sido (
 	sido_code NUMBER(20) NOT NULL, /* 시도 번호 */
 	sido_name VARCHAR2(20) /* 시도 이름 */
 );
-
-COMMENT ON TABLE sido IS '지역 정보';
-
-COMMENT ON COLUMN sido.sido_code IS '시도 번호';
-
-COMMENT ON COLUMN sido.sido_name IS '시도 이름';
-
-CREATE UNIQUE INDEX PK_sido
-	ON sido (
-		sido_code ASC
-	);
 
 ALTER TABLE sido
 	ADD
@@ -501,20 +284,6 @@ CREATE TABLE sigungu (
 	sigungu_name VARCHAR2(20) /* 시군구 이름 */
 );
 
-COMMENT ON TABLE sigungu IS '세부 지역';
-
-COMMENT ON COLUMN sigungu.sigungu_code IS '시군구 번호';
-
-COMMENT ON COLUMN sigungu.sido_code IS '시도 번호';
-
-COMMENT ON COLUMN sigungu.sigungu_name IS '시군구 이름';
-
-CREATE UNIQUE INDEX PK_sigungu
-	ON sigungu (
-		sigungu_code ASC,
-		sido_code ASC
-	);
-
 ALTER TABLE sigungu
 	ADD
 		CONSTRAINT PK_sigungu
@@ -526,61 +295,22 @@ ALTER TABLE sigungu
 /* 매칭 정보 */
 CREATE TABLE matching (
 	matching_no NUMBER(20) NOT NULL, /* 매칭 번호 */
-	user_no NUMBER(20), /* 유저 일련번호 */
+	user_no VARCHAR2(20), /* 유저 일련번호 */
 	theme_no NUMBER(20), /* 테마 고유번호 */
 	game_no NUMBER(20), /* 게임 일련번호 */
 	matching_date DATE, /* 날짜 */
 	matching_time VARCHAR2(20), /* 시간(텍스트) */
-	matching_title VARCHAR2(200), /* 제목 */
-	matching_content VARCHAR2(1000), /* 내용 */
+	matching_title VARCHAR2(50), /* 제목 */
+	matching_content VARCHAR2(500), /* 내용 */
 	sido_code NUMBER(20), /* 시도 번호 */
 	sigungu_code NUMBER(20), /* 시군구 번호 */
 	matching_people VARCHAR2(20), /* 인원 */
 	matching_permission_gender VARCHAR2(20), /* 성별 제한 */
-	matching_permission_age VARCHAR2(100), /* 연령 제한 무관 */
+	matching_permission_age VARCHAR2(20), /* 연령 제한 무관 */
 	matching_reg_date DATE, /* 등록일 */
 	matching_hits NUMBER(20), /* 조회수 */
-	matching_status VARCHAR2(50) /* 매칭상태 */
+	matching_status VARCHAR2(20) /* 매칭상태 */
 );
-
-COMMENT ON TABLE matching IS '매칭 정보';
-
-COMMENT ON COLUMN matching.matching_no IS '매칭 번호';
-
-COMMENT ON COLUMN matching.user_no IS '유저 일련번호';
-
-COMMENT ON COLUMN matching.theme_no IS '테마 고유번호';
-
-COMMENT ON COLUMN matching.game_no IS '게임 일련번호';
-
-COMMENT ON COLUMN matching.matching_date IS '날짜';
-
-COMMENT ON COLUMN matching.matching_time IS '시간(텍스트)';
-
-COMMENT ON COLUMN matching.matching_title IS '제목';
-
-COMMENT ON COLUMN matching.matching_content IS '내용';
-
-COMMENT ON COLUMN matching.sido_code IS '시도 번호';
-
-COMMENT ON COLUMN matching.sigungu_code IS '시군구 번호';
-
-COMMENT ON COLUMN matching.matching_people IS '인원';
-
-COMMENT ON COLUMN matching.matching_permission_gender IS '성별 제한';
-
-COMMENT ON COLUMN matching.matching_permission_age IS '연령 제한 무관';
-
-COMMENT ON COLUMN matching.matching_reg_date IS '등록일';
-
-COMMENT ON COLUMN matching.matching_hits IS '조회수';
-
-COMMENT ON COLUMN matching.matching_status IS '매칭상태';
-
-CREATE UNIQUE INDEX PK_matching
-	ON matching (
-		matching_no ASC
-	);
 
 ALTER TABLE matching
 	ADD
@@ -593,27 +323,10 @@ ALTER TABLE matching
 CREATE TABLE comments (
 	comment_no NUMBER(20) NOT NULL, /* 댓글 번호 */
 	matching_no NUMBER(20), /* 매칭 번호 */
-	user_no NUMBER(20), /* 유저 일련번호(댓글 작성자) */
+	user_no VARCHAR2(20), /* 유저 일련번호(댓글 작성자) */
 	comment_content VARCHAR2(500), /* 내용 */
 	comment_reg_date DATE /* 등록시간 */
 );
-
-COMMENT ON TABLE comments IS '댓글';
-
-COMMENT ON COLUMN comments.comment_no IS '댓글 번호';
-
-COMMENT ON COLUMN comments.matching_no IS '매칭 번호';
-
-COMMENT ON COLUMN comments.user_no IS '유저 일련번호(댓글 작성자)';
-
-COMMENT ON COLUMN comments.comment_content IS '내용';
-
-COMMENT ON COLUMN comments.comment_reg_date IS '등록시간';
-
-CREATE UNIQUE INDEX PK_comments
-	ON comments (
-		comment_no ASC
-	);
 
 ALTER TABLE comments
 	ADD
@@ -626,27 +339,10 @@ ALTER TABLE comments
 CREATE TABLE reply (
 	reply_no NUMBER(20) NOT NULL, /* 답글 번호 */
 	comment_no NUMBER(20), /* 댓글 번호 */
-	user_no NUMBER(20), /* 유저 일련번호(답글 작성자) */
+	user_no VARCHAR2(20), /* 유저 일련번호(답글 작성자) */
 	reply_content VARCHAR2(500), /* 내용 */
 	reply_reg_date DATE /* 등록시간 */
 );
-
-COMMENT ON TABLE reply IS '답글';
-
-COMMENT ON COLUMN reply.reply_no IS '답글 번호';
-
-COMMENT ON COLUMN reply.comment_no IS '댓글 번호';
-
-COMMENT ON COLUMN reply.user_no IS '유저 일련번호(답글 작성자)';
-
-COMMENT ON COLUMN reply.reply_content IS '내용';
-
-COMMENT ON COLUMN reply.reply_reg_date IS '등록시간';
-
-CREATE UNIQUE INDEX PK_reply
-	ON reply (
-		reply_no ASC
-	);
 
 ALTER TABLE reply
 	ADD
@@ -663,29 +359,8 @@ CREATE TABLE store_review (
 	store_review_content VARCHAR2(500), /* 리뷰 내용 */
 	store_review_score NUMBER(10), /* 평점 */
 	store_review_reg_date DATE, /* 등록일 */
-	user_no NUMBER(20) /* 유저 일련번호(작성자) */
+	user_no VARCHAR2(20) /* 유저 일련번호(작성자) */
 );
-
-COMMENT ON TABLE store_review IS '리뷰 정보';
-
-COMMENT ON COLUMN store_review.store_review_no IS '리뷰 일련번호';
-
-COMMENT ON COLUMN store_review.reservation_no IS '예약 일련번호';
-
-COMMENT ON COLUMN store_review.store_no IS '매장 일련번호';
-
-COMMENT ON COLUMN store_review.store_review_content IS '리뷰 내용';
-
-COMMENT ON COLUMN store_review.store_review_score IS '평점';
-
-COMMENT ON COLUMN store_review.store_review_reg_date IS '등록일';
-
-COMMENT ON COLUMN store_review.user_no IS '유저 일련번호(작성자)';
-
-CREATE UNIQUE INDEX PK_store_review
-	ON store_review (
-		store_review_no ASC
-	);
 
 ALTER TABLE store_review
 	ADD
@@ -697,34 +372,13 @@ ALTER TABLE store_review
 /* 메세지 정보 */
 CREATE TABLE message (
 	message_no NUMBER(20) NOT NULL, /* 메세지 일련번호 */
-	user_send NUMBER(20), /* 보낸사람 닉네임 */
-	user_receive NUMBER(20), /* 받은사람 닉네임 */
+	user_send VARCHAR2(20), /* 보낸사람 닉네임 */
+	user_receive VARCHAR2(20), /* 받은사람 닉네임 */
 	message_content VARCHAR2(500), /* 내용 */
 	message_send_date DATE, /* 보낸 시간 */
 	message_read_date DATE, /* 받은 시간 */
 	message_read_check NUMBER(20) /* 메세지 확인 */
 );
-
-COMMENT ON TABLE message IS '메세지 정보';
-
-COMMENT ON COLUMN message.message_no IS '메세지 일련번호';
-
-COMMENT ON COLUMN message.user_send IS '보낸사람 닉네임';
-
-COMMENT ON COLUMN message.user_receive IS '받은사람 닉네임';
-
-COMMENT ON COLUMN message.message_content IS '내용';
-
-COMMENT ON COLUMN message.message_send_date IS '보낸 시간';
-
-COMMENT ON COLUMN message.message_read_date IS '받은 시간';
-
-COMMENT ON COLUMN message.message_read_check IS '메세지 확인';
-
-CREATE UNIQUE INDEX PK_message
-	ON message (
-		message_no ASC
-	);
 
 ALTER TABLE message
 	ADD
@@ -740,19 +394,6 @@ CREATE TABLE store_image (
 	store_path_image VARCHAR2(500) /* 이미지경로 */
 );
 
-COMMENT ON TABLE store_image IS '매장이미지';
-
-COMMENT ON COLUMN store_image.store_image_no IS '매장이미지번호';
-
-COMMENT ON COLUMN store_image.store_no IS '매장 일련번호';
-
-COMMENT ON COLUMN store_image.store_path_image IS '이미지경로';
-
-CREATE UNIQUE INDEX PK_store_image
-	ON store_image (
-		store_image_no ASC
-	);
-
 ALTER TABLE store_image
 	ADD
 		CONSTRAINT PK_store_image
@@ -767,19 +408,6 @@ CREATE TABLE reservation_time_group (
 	reservation_time_no NUMBER(20) /* 시간 번호 */
 );
 
-COMMENT ON TABLE reservation_time_group IS '예약시간정보';
-
-COMMENT ON COLUMN reservation_time_group.reservation_time_group_no IS '예약그룹번호';
-
-COMMENT ON COLUMN reservation_time_group.reservation_no IS '예약 일련번호';
-
-COMMENT ON COLUMN reservation_time_group.reservation_time_no IS '시간 번호';
-
-CREATE UNIQUE INDEX PK_reservation_time_group
-	ON reservation_time_group (
-		reservation_time_group_no ASC
-	);
-
 ALTER TABLE reservation_time_group
 	ADD
 		CONSTRAINT PK_reservation_time_group
@@ -790,46 +418,19 @@ ALTER TABLE reservation_time_group
 /* 매칭멤버 */
 CREATE TABLE matching_group (
 	matching_no NUMBER(20) NOT NULL, /* 매칭 번호 */
-	user_no NUMBER(20), /* 유저 일련번호 */
+	user_no VARCHAR2(20), /* 유저 일련번호 */
 	matching_people VARCHAR2(20), /* 인원 */
 	join_reg_date DATE /* 참가시간 */
 );
 
-COMMENT ON TABLE matching_group IS '매칭멤버';
-
-COMMENT ON COLUMN matching_group.matching_no IS '매칭 번호';
-
-COMMENT ON COLUMN matching_group.user_no IS '유저 일련번호';
-
-COMMENT ON COLUMN matching_group.matching_people IS '인원';
-
-COMMENT ON COLUMN matching_group.join_reg_date IS '참가시간';
-
 /* 예약맴버 */
 CREATE TABLE reservation_member (
 	reservation_member_no NUMBER(20) NOT NULL, /* 예약멤버번호 */
-	user_no NUMBER(20), /* 유저 일련번호 */
+	user_no VARCHAR2(20), /* 유저 일련번호 */
 	reservation_charge_per NUMBER(20), /* 입금금액 */
 	reservation_no NUMBER(20), /* 예약 일련번호 */
 	matching_no NUMBER(20) /* 매칭 번호 */
 );
-
-COMMENT ON TABLE reservation_member IS '예약맴버';
-
-COMMENT ON COLUMN reservation_member.reservation_member_no IS '예약멤버번호';
-
-COMMENT ON COLUMN reservation_member.user_no IS '유저 일련번호';
-
-COMMENT ON COLUMN reservation_member.reservation_charge_per IS '입금금액';
-
-COMMENT ON COLUMN reservation_member.reservation_no IS '예약 일련번호';
-
-COMMENT ON COLUMN reservation_member.matching_no IS '매칭 번호';
-
-CREATE UNIQUE INDEX PK_reservation_member
-	ON reservation_member (
-		reservation_member_no ASC
-	);
 
 ALTER TABLE reservation_member
 	ADD
@@ -844,19 +445,6 @@ CREATE TABLE hashtag (
 	theme_no NUMBER(20), /* 테마 고유번호 */
 	game_no NUMBER(20) /* 게임 일련번호 */
 );
-
-COMMENT ON TABLE hashtag IS '게임 테마 등록';
-
-COMMENT ON COLUMN hashtag.hashtag_no IS '게임 테마 번호';
-
-COMMENT ON COLUMN hashtag.theme_no IS '테마 고유번호';
-
-COMMENT ON COLUMN hashtag.game_no IS '게임 일련번호';
-
-CREATE UNIQUE INDEX PK_hashtag
-	ON hashtag (
-		hashtag_no ASC
-	);
 
 ALTER TABLE hashtag
 	ADD
@@ -1230,7 +818,11 @@ ALTER TABLE hashtag
 		REFERENCES game (
 			game_no
 		);
-        
+
+-------------------------------------------------------------------------------
+-------------------------------SEQUENCE / INSERT-------------------------------
+-------------------------------------------------------------------------------
+
 -- SEQUENCE
 DROP SEQUENCE seq_users_no;
 DROP SEQUENCE seq_game_no;
@@ -1277,7 +869,7 @@ INSERT INTO users(user_no, user_id, user_password, user_name, user_nickname, use
 VALUES ( seq_users_no.NEXTVAL, 'test2', '1234', 'test2', 'test2', 'female', '19931111', 1, sysdate );
 
 INSERT INTO users(user_no, user_id, user_password, user_name, user_nickname, user_gender, user_birth_date, user_grade, user_reg_date)
-VALUES ( seq_users_no.NEXTVAL, 'CAFEKANU', 'kanu123', '카페카누', '카페카누', 'male', '19881111', 2, sysdate );
+VALUES ( seq_users_no.NEXTVAL, 'CAFEKANU', 'kanu123', '공유', '카페카누', 'male', '19881111', 2, sysdate );
 
 INSERT INTO users(user_no, user_id, user_password, user_name, user_nickname, user_gender, user_birth_date, user_grade, user_reg_date)
 VALUES ( seq_users_no.NEXTVAL, 'asd', 'asd', 'asd', 'asd', 'female', '19991111', 1, sysdate );
@@ -1685,16 +1277,46 @@ INSERT INTO matching_group VALUES ( 23, 1, 2, sysdate );
 
 -- INSERT STORE
 INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
-VALUES ( seq_store_no.nextval, 3, '카누', 37.494366186594405, 127.01825129365432, '02-1111-1111', '일상을 공유하는 카누카페 입니다! 많은 이용 부탁드립니다^^', 3300, 4400, '서울시 강남구 테헤란로 152', '1층 카페-카누');
+VALUES ( seq_store_no.nextval, 3, '카누', 37.494366186594405, 127.01825129365432, '010-6601-3431', '일상을 공유하는 카누카페 입니다! 많은 이용 부탁드립니다^^', 3300, 4400, '서울시 강남구 테헤란로 152', '1층 카페-카누');
 
 INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
-VALUES ( seq_store_no.nextval, '네스카페', 37.499336756210546, 127.0322302565823, '02-2222-2222', '보드게임카페2 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '222시 222구 222동 222로', '2222-222');
+VALUES ( seq_store_no.nextval, '네스카페', 37.499336756210546, 127.0322302565823, '010-5274-1634', '보드게임카페2 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '인천광역시 계양구 아나지로 158', '1층 네스카페');
 
 INSERT INTO store(store_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
-VALUES ( seq_store_no.nextval, '폴 바셋', 37.50207799788094, 127.02286735499807, '02-3333-3333', '보드게임카페3 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '333시 333구 333동 333로', '3333-333');
+VALUES ( seq_store_no.nextval, '폴-바셋', 37.50207799788094, 127.02286735499807, '010-3452-2311', '보드게임카페3 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '경기도 용인시 기흥구 언남로 15', '1층 폴-바셋');
 
 INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
-VALUES ( seq_store_no.nextval, '맥심', 37.50207799788094, 127.02286735499807, '02-3333-3333', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '111시 111구 111동 111로', '1111-111');
+VALUES ( seq_store_no.nextval, '맥심', 37.50207799718094, 127.02286735419807, '010-3711-2343', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '충청남도 천안시 서북구 불당2길 10', '1층 카페-맥심');
+
+INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+VALUES ( seq_store_no.nextval, '네스프레소', 37.50207799518094, 127.02286735449807, '010-5345-3341', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '충청북도 청주시 상당구 대성로 145', '1층 네스프레소 카페');
+
+INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+VALUES ( seq_store_no.nextval, '스타벅스', 37.50207799418094, 127.02226735449807, '010-7641-2216', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '대전광역시 서구 문정로 112번안길 8-12', '1층 스타벅스');
+
+INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+VALUES ( seq_store_no.nextval, '문벅스', 37.50207799518024, 127.02286435449807, '010-2795-7842', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '전라북도 전주시 완산구 팔달로 191-4', '1층 문벅스');
+
+INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+VALUES ( seq_store_no.nextval, '제리앤탐스', 37.50207792518024, 127.02226435449807, '010-2763-6212', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '충청남도 부여군 부여읍 정림로 48-17', '1층 제리앤탐스');
+
+INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+VALUES ( seq_store_no.nextval, 'G-SEVEN', 37.50202792518024, 127.02226439449807, '010-7001-1007', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '충청남도 논산시 시민로 194번길 12-4', '1층 G-SEVEN');
+
+INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+VALUES ( seq_store_no.nextval, '커피콩', 37.50202792598024, 127.02226439489807, '010-8821-1299', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '경기도 평택시 어인남로 4번길 34-3', '1층 커피콩');
+
+INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+VALUES ( seq_store_no.nextval, '커피의 바나나', 37.50202792498024, 127.02266439489807, '010-1328-2231', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '강원도 춘천시 충열로 296-18', '1층 커피의 바나나');
+
+INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+VALUES ( seq_store_no.nextval, '뚝배기커피', 37.50203792498024, 127.02266439419807, '010-6451-4431', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '강원도 원주시 단구로 319-2', '1층 뚝배기커피');
+
+INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+VALUES ( seq_store_no.nextval, '할리스커피', 37.50201792498024, 127.02066439489807, '010-1328-2231', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '서울특별시 서초구 효령로 21길 9', '1층 할리스커피');
+
+INSERT INTO store(store_no, user_no, store_name, store_latitude, store_longitude, store_phone_no, store_description, store_charge_week, store_charge_weekend, store_address_road, store_address_detail)
+VALUES ( seq_store_no.nextval, '야너카', 37.50201792498524, 127.02066439489857, '010-7867-1121', '보드게임카페1 입니다, 많은 이용 부탁드립니다.', 3300, 4400, '경기도 성남시 분당구 야탑로 105번길 19', '1층 야너카');
 -- // INSERT STORE
     
  -- INSERT RESERVATIONDATE
@@ -1753,6 +1375,4 @@ INSERT INTO reservation_time
 VALUES(SEQ_RESERVATION_TIME_NO.nextval, 2, '10');
 -- // INSERT RESERVATIONDATE
 
-commit;
-
-select * from users;
+COMMIT;

@@ -150,7 +150,7 @@
 						<!-- 테이블 영역 -->
 						
 						<!-- 페이징 -->
-						<div id="paging">
+						<!-- <div id="paging">
 							  <ul class="pagination">
 							    <li class="page-item">
 							      <a class="page-link" href="#" aria-label="Previous">
@@ -166,7 +166,7 @@
 							      </a>
 							    </li>
 							  </ul>
-						</div>
+						</div> -->
 						<!-- 페이징 -->
 						
 					</div>
@@ -274,6 +274,7 @@
 	        data: {
 	        	reservationNo : reservationNo
 	        },
+	        
 	        success : function(data) {
 	        	console.log(data);
 	        	console.log("완료");
@@ -286,27 +287,54 @@
 	        	$("#reservation-charge").text(data.reservationChargeTotal);
 	        	
 	        	switch (data.reservationStatus) {
-				case "예약완료":
-					$("#reserv-ok").attr('checked', 'checked');
-					console.log("예약 완료")
-					break;
-				case "결제중":
-					$("#reserv-ing").attr('checked', 'checked');
-					console.log("결제중")
-					break;
-				case "예약취소":
-					$("#reserv-cancel").attr('checked', 'checked');
-					console.log("예약취소")
-					break;
-
-				default:
-					break;
+					case "예약완료":
+						$("#reserv-ok").attr('checked', 'checked');
+						console.log("예약 완료")
+						break;
+					case "결제중":
+						$("#reserv-ing").attr('checked', 'checked');
+						console.log("결제중")
+						break;
+					case "예약취소":
+						$("#reserv-cancel").attr('checked', 'checked');
+						console.log("예약취소")
+						break;
+	
+					default:
+						break;
 				}
 	        	
-	        	$("#btn-modify").on("click", function(){
+        		$("#btn-modify").on("click", function(){
 	        		console.log("수정하기");
 	        		console.log(reservationNo);
-	        	}	
+	        		
+	        		var reservationStatus = "예약취소";
+	        		
+	        		var allData = {
+        				reservationNo : reservationNo
+        				,reservationStatus : reservationStatus
+	        		}
+	        		
+		        		$.ajax({
+		        	        //요청 코드
+		        	        url: "${pageContext.request.contextPath }/admin/reservation/modify",				//데이터를 받을 주소를 입력
+		        	        type: "post",				//get, post 데이터를 보낼 때, 방식을 설정
+		        	        data: allData,	//보내는 데이터의 형식, 객체를 생성하여 집어넣어도 된다
+		        	        
+		        	        //데이터를 받는 코드
+		        	        success: function(resultData) {
+		        	        	console.log(resultData);
+		        	        	if(resultData == true) {
+		        	        		window.location.reload();
+		        	        	}
+		        	        },
+		        	        error: function(jqXHR, textStatus, errorThrown) {
+		        	            alert("업로드 에러\ncode : " + jqXHR.status + "\nerror message : " + jqXHR.responseText);
+		        	        }
+		        		});
+	        		
+	        	});
+	        	
 	        }, err : function(jqXHR, textStatus, errorThrown) {
 		    	alert("호출 에러\ncode : " + jqXHR.status + "\nerror message : " + jqXHR.responseText);
 		    }  

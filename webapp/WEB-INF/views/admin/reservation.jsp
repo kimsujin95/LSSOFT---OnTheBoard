@@ -219,12 +219,12 @@
 						<tr>
 							<th>진행 사항</th>
 							<td>
-								<input class="form-check-input" id="reserv-ok" type="radio" name="reservation-status">
-								<label class="form-check-label" for="reserv-ok">예약 완료</label>
-								<input class="form-check-input" id="reserv-ing" type="radio" name="reservation-status">
+								<input class="form-check-input" id="reserv-ok" type="radio" name="reservationStatus" value="예약완료">
+								<label class="form-check-label" for="reserv-ok">예약완료</label>
+								<input class="form-check-input" id="reserv-ing" type="radio" name="reservationStatus" value="결제중">
 								<label class="form-check-label" for="reserv-ing">결제중</label>
-								<input class="form-check-input" id="reserv-cancel" type="radio" name="reservation-status">
-								<label class="form-check-label" for="reserv-cancel">예약 취소</label>
+								<input class="form-check-input" id="reserv-cancel" type="radio" name="reservationStatus" value="예약취소">
+								<label class="form-check-label" for="reserv-cancel">예약취소</label>
 							</td>
 						</tr>
 						<tr>
@@ -289,7 +289,7 @@
 	        	switch (data.reservationStatus) {
 					case "예약완료":
 						$("#reserv-ok").attr('checked', 'checked');
-						console.log("예약 완료")
+						console.log("예약완료")
 						break;
 					case "결제중":
 						$("#reserv-ing").attr('checked', 'checked');
@@ -308,7 +308,8 @@
 	        		console.log("수정하기");
 	        		console.log(reservationNo);
 	        		
-	        		var reservationStatus = "예약취소";
+	        		var reservationStatus = $("input[name=reservationStatus]:checked").val();
+	        		console.log(reservationStatus);
 	        		
 	        		var allData = {
         				reservationNo : reservationNo

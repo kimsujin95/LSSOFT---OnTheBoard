@@ -417,4 +417,12 @@
 		]]>
 	</select>
 	
+	<update id="updateReservation" parameterType="AdminReservationVo">
+		<![CDATA[
+			UPDATE reservation
+			SET reservation_status = #{reservationStatus} 
+			WHERE reservation_no = #{reservationNo}
+		]]>		
+	</update>
+	
 </mapper>

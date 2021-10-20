@@ -248,6 +248,17 @@ public class AdminController {
 		return adminService.getReservationVo(reservationNo);
 	}
 
+	//예약 수정 
+	@ResponseBody
+	@RequestMapping(value = "/reservation/modify", method = { RequestMethod.GET, RequestMethod.POST })
+	public boolean reservationModify(@ModelAttribute AdminReservationVo modifyReservation) {
+		
+		System.out.println(modifyReservation.toString());
+		
+		boolean modifyCheck = adminService.modifyReservation(modifyReservation);
+		
+		return modifyCheck;
+	}
 	//////////////////////////////////////// 매장 예약 정보 확인 및 수정 //////////////////////////////////////// ////////////////////////////////////////
 
 }

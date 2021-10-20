@@ -298,4 +298,17 @@ public class AdminService {
 		return adminReservationVo;
 	}
 	
+	//예약 수정
+	public boolean modifyReservation (AdminReservationVo modifyReservation) {
+		
+		int updateCheck = adminDao.updateReservation(modifyReservation);
+		System.out.println(updateCheck);
+		if(updateCheck == 1) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+	
 }

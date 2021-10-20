@@ -121,8 +121,15 @@ public class AdminDao {
 	public List<AdminReservationVo> selectReservationList(Map<String, Object> searchKey) {
 		return sqlSession.selectList("admin.selectReservationList", searchKey);
 	}
+	
 	//매장에 등록된 예약 하나
 	public AdminReservationVo selectReservation(int reservationNo) {
 		return sqlSession.selectOne("admin.selectReservation", reservationNo);
 	}
+	
+	//예약 수정
+	public int updateReservation(AdminReservationVo modifyReservation) {
+		return sqlSession.update("admin.updateReservation", modifyReservation);
+	}
+	
 }

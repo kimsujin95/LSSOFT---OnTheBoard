@@ -168,68 +168,10 @@
 
 			</div>
 			<!-- 매장 이름, 평점 -->
-			<%-- <div id="store-score-line">
-				<span>${storeInfo.storeName}</span><br>
-				<span class="star-score"><i class="far fa-star"></i>4.66/5</span>
-			</div> --%>
+			
 		</div>
 
 		<!-- 리뷰 게시구역 -->
-		<%-- <div class="store-review-wraper">
-			<!-- 리뷰 반복 출력 -->
-			<div class="review_section">
-				<div class="review user_review container">
-					<div class="review">
-						<div class="col-xs-2 user_profile_img">
-							<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
-						</div>
-						<div class="col-xs-4 review_writer_info first-review-table">
-							<table>
-								<tr>
-									<td>카리나</td>
-								</tr>
-								<tr>
-									<td>2021/09/15</td>
-								</tr>
-								<tr>
-									<td>사장님도 친절하고 가게도 완전 깨끗~</td>
-								</tr>
-							</table>
-						</div>
-					</div>
-					<div class="review">
-						<div class="col-xs-2 user_profile_img">
-							<img src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
-						</div>
-						<div class="col-xs-4 review_writer_info">
-							<table>
-								<tr>
-									<td>윈터</td>
-								</tr>
-								<tr>
-									<td>2021/09/15</td>
-								</tr>
-								<tr>
-									<td>사장님도 친절하고 가게도 완전 깨끗~</td>
-								</tr>
-							</table>
-						</div>
-					</div>
-				</div>
-				
-			</div>
-			<!-- 리뷰 페이징 -->
-			<div class="paging-wrap">
-				<ul class="pagination" id="pages"></ul>
-			</div>
-			<div>
-				<textarea id="review-write-box" placeholder="리뷰를 작성해 주세요."></textarea>
-			</div>
-			<!-- 리뷰 작성하기 버튼 -->
-			<div class="write_review">
-				<button type="button" id="review_btn" class="btn-white">리뷰등록</button>
-			</div>
-		</div> --%>
 		
 		<!-- 예약 사전설정 구역(날짜,시간) -->
 		<div id="on-the-board-include">
@@ -384,25 +326,7 @@
 
 					<div class="tab-content">
 						<label>그룹 선택</label>
-						<!-- <div role="tabpanel" class="tab-pane active" id="choice_by_count">
-							<div>
-								<table>
-									<tr>
-										<td>
-											<button class="btn_minus">
-												<i class="fas fa-minus"></i>
-											</button>
-										</td>
-										<td>선택한 인원수 표기</td>
-										<td>
-											<button class="btn_plus">
-												<i class="fas fa-plus"></i>
-											</button>
-										</td>
-									</tr>
-								</table>
-							</div>
-						</div> -->
+						
 						<div role="tabpanel" class="tab-pane active" id="choice_by_grouplist">
 							<div>
 								<!-- 그룹 리스트 나열해 주기-->
@@ -421,13 +345,7 @@
 
 							<!-- 그룹리스트중 하나 선택 시 그룹원들의 리스트가 matching_group_info에 나열 -->
 							<ul id="matching_group_info"></ul>
-
-							<%-- <ul class="group_wrap">
-								<!-- 그룹 구성원 인원수 만큼 프로필 게시 -->
-								<li class="group_user_info"><img class="group_user_profile_img" src="${pageContext.request.contextPath}/assets/images/store/DJ.jpg">
-									<label>드웨인_존슨</label></li>
-								<!-- //그룹 구성원 인원수 만큼 프로필 게시 -->
-							</ul> --%>
+							
 						</div>
 					</div>
 
@@ -438,29 +356,6 @@
 					</div>
 
 				</div>
-				<!-- <div class="number-of-people-choice-area">
-                    <p class="people">인원 수 선택</p>
-                    인원수 선택 구역
-                    <div class="people-choice-area">
-                        직접 선택
-                        <div class="people-select-btn">
-                            <div class="select-by-no">
-                                <button type="button" class="btn-tab on" id="">직접 선택</button>
-                                <div class="people-no-select-section">
-                                </div>
-                            </div>
-                        </div>
-                        그룹으로 선택
-                        <div class="people-select-btn">
-                            <div class="select-by-group">
-                                <button type="button" class="btn-tab on" id="">그룹으로 선택</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="time-choice-area">
-                </div> -->
-
 
 			</div>
 
@@ -512,64 +407,6 @@
 				</c:forEach>
 			</ul>
 		</div>
-		<%-- <div id="store-main-bottom-content">
-
-			<div id="store-game-list">
-
-				<div id="store-game-list-head">
-					<ul>
-						<li>매장 내 게임 목록</li>
-						<li class="game-list-breadcrumb">검색 필터></li>
-					</ul>
-				</div>
-
-				<div id="store-game-list-body">
-
-					<ul>
-
-						<li class="game-list"><img src="${pageContext.request.contextPath}/assets/images/store/voidfall.jpg">
-							<table>
-								<tr>
-									<td>voidFall</td>
-								</tr>
-								<tr>
-									<td>1-6 <i class="fas fa-users"></i></td>
-								</tr>
-								<tr>
-									<td>playing Time : 90min</td>
-								</tr>
-							</table></li>
-
-					</ul>
-
-				</div>
-
-			</div>
-
-			<div id="store-game-search">
-
-				<div id="game-cate-select">
-					<ul>
-						<li><a href="#">게임 카테고리 선택</a>
-							<ul>
-								<li><a href="#">전략</a></li>
-								<li><a href="#">추리</a></li>
-								<li><a href="#">협동</a></li>
-								<li><a href="#">탐험</a></li>
-							</ul></li>
-					</ul>
-				</div>
-
-				<div id="game-search-ipt-keyword">
-
-					<label><input type="text" placeholder="게임 이름으로 검색"></label>
-
-				</div>
-
-			</div>
-
-		</div> --%>
-
 
 	</div>
 

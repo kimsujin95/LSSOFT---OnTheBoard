@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/matching/matching_tab_content.css" type="text/css">
 
 <title>On The Board: Matching</title>
+
 </head>
 
 <body>
@@ -137,6 +138,16 @@
 		</div>
 		<!-- // SELECT OPTION -->
 
+		<input type="text" id="search-keyword" value="" placeholder="검색">
+
+		<select name="search">
+		    <option value="" selected="selected">직업선택</option>
+		    <option value="제목">제목</option>
+		    <option value="게임">게임</option>
+		    <option value="지역">지역</option>
+		    <option value="나이제한">나이제한</option>
+		</select>
+
 		<br>
 		<br>
 		<br>
@@ -205,6 +216,31 @@
 </body>
 
 <script>
+
+$('#search-keyword').keyup(function(){
+	   var keyword = new Array();
+	   var textValue=$(this).val();
+	   console.log(textValue);
+	   keyword.push(textValue);
+	   
+	   $('#listHtml').html('');
+	   $.ajax({
+	      url: '${pageContext.request.contextPath}/matching/list',
+	      type: 'post',
+	      data: { keyword: keyword },
+	      success: function(matchingListMap) {
+	         console.log('컨트롤러 방문해서 검색 리스트 갖고 오기 성공');
+	         
+	         for (var i = 0; i < matchingListMap.matchingList.length; i++) {
+	            render(matchingListMap.matchingList[i], matchingListMap.matchingMemberList[i]);
+	         }
+	      },
+	      error: function(XHR, status, error) {
+	         console.log(status + ' : ' + error);
+	      }
+	   });
+	});
+	
 //옵션 선택 리스트 탭
 	// 메뉴가 선택되어 active가 되기 전 이벤트
 	$('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
@@ -310,6 +346,7 @@
 		fetch();
 	});
 	
+
 	function fetch() {
 		$.ajax({
 			url: '${pageContext.request.contextPath}/matching/list',
@@ -320,6 +357,7 @@
 				for (var i = 0; i < matchingListMap.matchingList.length; i++) {
 					render(matchingListMap.matchingList[i], matchingListMap.matchingMemberList[i]);
 				}
+				console.log( matchingListMap );
 			},
 			error: function(XHR, status, error) {
 				console.log(status + ' : ' + error);

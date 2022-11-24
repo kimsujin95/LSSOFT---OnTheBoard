@@ -130,6 +130,7 @@
 		<foreach collection="list" item="keyword" separator="and">
 		<![CDATA[
 				m.matching_status
+				|| m.matching_title
 				|| m.matching_permission_gender
 				|| m.matching_permission_age
 				|| sd.sido_name

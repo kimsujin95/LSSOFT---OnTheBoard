@@ -67,7 +67,8 @@ public class UserController {
 
 	@RequestMapping(value = "/signupForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String signupForm() {
-
+		
+		System.out.println("[SIGNUP FORM]");
 		return "/user/signup_form";
 	}
 

@@ -1,5 +1,7 @@
 package com.otb.vo;
 
+import java.util.List;
+
 public class MatchingVo {
 	
 	private int matchingNo;
@@ -33,8 +35,7 @@ public class MatchingVo {
 	private int matchingMember;
 	private String matchingPermissionAge;
 	private String gamePathThumbnail;
-	
-	
+
 	public MatchingVo() {
 		super();
 	}
@@ -294,6 +295,11 @@ public class MatchingVo {
 				+ matchingRegDate + ", matchingHits=" + matchingHits + ", matchingStatus=" + matchingStatus
 				+ ", matchingMember=" + matchingMember + ", matchingPermissionAge=" + matchingPermissionAge
 				+ ", gamePathThumbnail=" + gamePathThumbnail + "]";
+	}
+
+	public List<MatchingVo> selectSearchList(MatchingVo matchingVo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
